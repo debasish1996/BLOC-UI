@@ -50,4 +50,42 @@
       <input blocInput type="text" placeholder="Custom border radius" style="--bloc-input-radius: 999px" />
     </div>
   </div>
+
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Prefix icon</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Search field with a leading icon.</p>
+    <bloc-input-group>
+      <bloc-prefix><app-icon name="search" /></bloc-prefix>
+      <input blocInput type="search" placeholder="Search..." />
+    </bloc-input-group>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Suffix icon</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Input with a trailing action icon.</p>
+    <bloc-input-group>
+      <input blocInput type="email" placeholder="Enter email" />
+      <bloc-suffix><app-icon name="mail" /></bloc-suffix>
+    </bloc-input-group>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Prefix &amp; suffix</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Both adornments combined.</p>
+    <bloc-input-group>
+      <bloc-prefix><app-icon name="search" /></bloc-prefix>
+      <input blocInput type="text" placeholder="Search..." />
+      <bloc-suffix><app-icon name="x" /></bloc-suffix>
+    </bloc-input-group>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Attribute selector</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Same group using attribute directives on divs.</p>
+    <div blocInputGroup>
+      <span blocPrefix><app-icon name="lock" /></span>
+      <input blocInput type="password" placeholder="Enter password" />
+      <span blocSuffix><app-icon name="eye" /></span>
+    </div>
+  </div>
 </div>

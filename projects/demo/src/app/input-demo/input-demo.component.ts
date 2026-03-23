@@ -1,10 +1,11 @@
 import { Component, signal } from '@angular/core';
-import { BlocInputDirective } from 'bloc-ui';
+import { BlocInputDirective, BlocInputGroupDirective, BlocPrefixDirective, BlocSuffixDirective } from 'bloc-ui';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
   selector: 'app-input-demo',
   standalone: true,
-  imports: [BlocInputDirective],
+  imports: [BlocInputDirective, BlocInputGroupDirective, BlocPrefixDirective, BlocSuffixDirective, IconComponent],
   templateUrl: './input-demo.component.html',
 })
 export class InputDemoComponent {
