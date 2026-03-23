@@ -1,9 +1,7 @@
 {
-  "name": "bloc-ui-theme",
+  "name": "@bloc-ui/theme",
   "version": "0.0.1",
   "sideEffects": ["**/*.css", "**/*.scss"],
   "peerDependencies": {
-    "@angular/common": "^21.2.0",
-    "@angular/core": "^21.2.0"
   }
 }
