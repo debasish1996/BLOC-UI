@@ -58,7 +58,8 @@
             "styles": [
               "projects/demo/src/tailwind.css",
               "projects/demo/src/styles.scss"
-            ]
+            ],
+            "allowedCommonJsDependencies": ["feather-icons"]
           },
           "configurations": {
             "production": {

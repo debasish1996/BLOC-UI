@@ -1,11 +1,16 @@
 import { Component, input, output } from '@angular/core';
 
 @Component({
-  selector: 'bloc-button',
+  selector: 'button[blocButton]',
   standalone: true,
   imports: [],
-  templateUrl: './button.component.html',
+  template: '<ng-content />',
   styleUrl: './button.component.scss',
+  host: {
+    '[class]': '"bloc-button bloc-button--" + variant()',
+    '[disabled]': 'disabled()',
+    '(click)': 'handleClick($event)',
+  },
 })
 export class BlocButtonComponent {
   /** Button variant style. */
@@ -17,7 +22,7 @@ export class BlocButtonComponent {
   /** Emits when the button is clicked. */
   readonly clicked = output<MouseEvent>();
 
-  onClick(event: MouseEvent): void {
+  handleClick(event: MouseEvent): void {
     if (!this.disabled()) {
       this.clicked.emit(event);
     }

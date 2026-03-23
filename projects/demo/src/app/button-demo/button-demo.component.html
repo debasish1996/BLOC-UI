@@ -8,7 +8,7 @@
     <h3 class="m-0 text-base font-semibold text-slate-900">Primary</h3>
     <p class="m-0 text-[0.82rem] text-slate-400">Default action button.</p>
     <div>
-      <bloc-button variant="primary" (clicked)="onButtonClick()">Primary Button</bloc-button>
+      <button blocButton variant="primary" (clicked)="onButtonClick()">Primary Button</button>
     </div>
   </div>
 
@@ -16,7 +16,10 @@
     <h3 class="m-0 text-base font-semibold text-slate-900">Secondary</h3>
     <p class="m-0 text-[0.82rem] text-slate-400">Less prominent action.</p>
     <div>
-      <bloc-button variant="secondary">Secondary Button</bloc-button>
+      <button blocButton variant="secondary" class="flex gap-2">
+        <app-icon name="check" />
+        Secondary Button
+      </button>
     </div>
   </div>
 
@@ -24,7 +27,7 @@
     <h3 class="m-0 text-base font-semibold text-slate-900">Outline</h3>
     <p class="m-0 text-[0.82rem] text-slate-400">Subtle bordered style.</p>
     <div>
-      <bloc-button variant="outline">Outline Button</bloc-button>
+      <button blocButton variant="outline">Outline Button</button>
     </div>
   </div>
 
@@ -32,7 +35,7 @@
     <h3 class="m-0 text-base font-semibold text-slate-900">Disabled</h3>
     <p class="m-0 text-[0.82rem] text-slate-400">Non-interactive state.</p>
     <div>
-      <bloc-button variant="primary" [disabled]="true">Disabled Button</bloc-button>
+      <button blocButton variant="primary" [disabled]="true">Disabled Button</button>
     </div>
   </div>
 
@@ -40,7 +43,7 @@
     <h3 class="m-0 text-base font-semibold text-slate-900">Disabled Outline</h3>
     <p class="m-0 text-[0.82rem] text-slate-400">Outline in disabled state.</p>
     <div>
-      <bloc-button variant="outline" [disabled]="true">Disabled Outline</bloc-button>
+      <button blocButton variant="outline" [disabled]="true">Disabled Outline</button>
     </div>
   </div>
 </div>

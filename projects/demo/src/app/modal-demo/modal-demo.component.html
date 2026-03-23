@@ -8,7 +8,7 @@
     <h3 class="m-0 text-base font-semibold text-slate-900">Default (md)</h3>
     <p class="m-0 text-[0.82rem] text-slate-400">Standard medium-sized modal.</p>
     <div>
-      <bloc-button variant="primary" (clicked)="openModal('md')">Open Modal</bloc-button>
+      <button blocButton variant="primary" (clicked)="openModal('md')">Open Modal</button>
     </div>
   </div>
 
@@ -16,7 +16,7 @@
     <h3 class="m-0 text-base font-semibold text-slate-900">Small</h3>
     <p class="m-0 text-[0.82rem] text-slate-400">Compact modal for short messages.</p>
     <div>
-      <bloc-button variant="secondary" (clicked)="openModal('sm')">Open Small Modal</bloc-button>
+      <button blocButton variant="secondary" (clicked)="openModal('sm')">Open Small Modal</button>
     </div>
   </div>
 
@@ -24,7 +24,7 @@
     <h3 class="m-0 text-base font-semibold text-slate-900">Large</h3>
     <p class="m-0 text-[0.82rem] text-slate-400">Wide modal for detailed content.</p>
     <div>
-      <bloc-button variant="outline" (clicked)="openModal('lg')">Open Large Modal</bloc-button>
+      <button blocButton variant="outline" (clicked)="openModal('lg')">Open Large Modal</button>
     </div>
   </div>
 </div>
@@ -35,7 +35,7 @@
       undone</strong>.</p>
   <p class="m-0 text-slate-400">If you change your mind, click <em>Cancel</em> to go back safely.</p>
   <div slot="footer" class="flex gap-2">
-    <bloc-button variant="outline" (clicked)="closeModal()">Cancel</bloc-button>
-    <bloc-button variant="primary" (clicked)="closeModal()">Confirm</bloc-button>
+    <button blocButton variant="outline" (clicked)="closeModal()">Cancel</button>
+    <button blocButton variant="primary" (clicked)="closeModal()">Confirm</button>
   </div>
 </bloc-modal>
