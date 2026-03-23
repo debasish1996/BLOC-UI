@@ -1,5 +1,41 @@
 /* You can add global styles to this file, and also import other style files */
 
+/* ── Bloc UI design tokens ─────────────────────────────────── */
+:root {
+  /* Typography */
+  --bloc-font-family: 'Inter', system-ui, sans-serif;
+  --bloc-font-size-base: 14px;
+
+  /* Colours */
+  --bloc-primary: #3b82f6;
+  --bloc-secondary: #64748b;
+  --bloc-text: #1e293b;
+  --bloc-muted: #94a3b8;
+  --bloc-border: #e2e8f0;
+  --bloc-surface: #ffffff;
+
+  /* Shape */
+  --bloc-radius: 8px;
+  --bloc-radius-sm: 4px;
+
+  /* Spacing */
+  --bloc-spacing-sm: 8px;
+
+  /* Modal */
+  --bloc-modal-backdrop: rgba(0, 0, 0, 0.45);
+  --bloc-modal-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+  --bloc-modal-z-index: 1000;
+  --bloc-modal-title-size: 1rem;
+  --bloc-modal-title-weight: 600;
+  --bloc-modal-close-size: 1rem;
+  --bloc-modal-header-padding: 16px 20px;
+  --bloc-modal-body-padding: 20px;
+  --bloc-modal-footer-padding: 12px 20px;
+  --bloc-modal-sm: 360px;
+  --bloc-modal-md: 560px;
+  --bloc-modal-lg: 800px;
+}
+
 *, *::before, *::after {
   box-sizing: border-box;
 }
@@ -8,4 +44,7 @@ html, body {
   margin: 0;
   padding: 0;
   height: 100%;
+  font-family: var(--bloc-font-family);
+  font-size: var(--bloc-font-size-base);
+  color: var(--bloc-text);
 }
