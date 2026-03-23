@@ -1,0 +1,46 @@
+<header class="content__header">
+  <h1 class="content__title">Button</h1>
+  <p class="content__subtitle">Explore button variants and states.</p>
+</header>
+
+<div class="demo-grid">
+  <div class="demo-card">
+    <h3 class="demo-card__title">Primary</h3>
+    <p class="demo-card__desc">Default action button.</p>
+    <div class="demo-card__preview">
+      <bloc-button label="Primary Button" variant="primary" (clicked)="onButtonClick()" />
+    </div>
+  </div>
+
+  <div class="demo-card">
+    <h3 class="demo-card__title">Secondary</h3>
+    <p class="demo-card__desc">Less prominent action.</p>
+    <div class="demo-card__preview">
+      <bloc-button label="Secondary Button" variant="secondary" />
+    </div>
+  </div>
+
+  <div class="demo-card">
+    <h3 class="demo-card__title">Outline</h3>
+    <p class="demo-card__desc">Subtle bordered style.</p>
+    <div class="demo-card__preview">
+      <bloc-button label="Outline Button" variant="outline" />
+    </div>
+  </div>
+
+  <div class="demo-card">
+    <h3 class="demo-card__title">Disabled</h3>
+    <p class="demo-card__desc">Non-interactive state.</p>
+    <div class="demo-card__preview">
+      <bloc-button label="Disabled Button" variant="primary" [disabled]="true" />
+    </div>
+  </div>
+
+  <div class="demo-card">
+    <h3 class="demo-card__title">Disabled Outline</h3>
+    <p class="demo-card__desc">Outline in disabled state.</p>
+    <div class="demo-card__preview">
+      <bloc-button label="Disabled Outline" variant="outline" [disabled]="true" />
+    </div>
+  </div>
+</div>

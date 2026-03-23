@@ -1,3 +1,11 @@
 import { Routes } from '@angular/router';
+import { ButtonDemoComponent } from './button-demo/button-demo.component';
+import { InputDemoComponent } from './input-demo/input-demo.component';
+import { ModalDemoComponent } from './modal-demo/modal-demo.component';
 
-export const routes: Routes = [];
+export const routes: Routes = [
+  { path: '', redirectTo: 'button', pathMatch: 'full' },
+  { path: 'button', component: ButtonDemoComponent },
+  { path: 'input', component: InputDemoComponent },
+  { path: 'modal', component: ModalDemoComponent },
+];

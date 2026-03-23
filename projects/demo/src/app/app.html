@@ -3,9 +3,8 @@
   <aside class="sidebar">
     <div class="sidebar__brand">Bloc UI</div>
     <nav class="sidebar__nav">
-      @for (item of menuItems; track item.id) {
-      <button class="sidebar__item" [class.sidebar__item--active]="activeMenu() === item.id"
-        (click)="selectMenu(item.id)">
+      @for (item of menuItems; track item.path) {
+      <button class="sidebar__item" [routerLink]="item.path" routerLinkActive="sidebar__item--active">
         {{ item.label }}
       </button>
       }
@@ -14,145 +13,6 @@
 
   <!-- Main content -->
   <main class="content">
-    <header class="content__header">
-      <h1 class="content__title">
-        {{ activeMenu() === 'button' ? 'Button' : activeMenu() === 'input' ? 'Input' : 'Modal' }}
-      </h1>
-      <p class="content__subtitle">
-        {{ activeMenu() === 'button'
-        ? 'Explore button variants and states.'
-        : activeMenu() === 'input'
-        ? 'Explore input field variants and states.'
-        : 'Explore modal dialog variants and states.' }}
-      </p>
-    </header>
-
-    <!-- Button section -->
-    @if (activeMenu() === 'button') {
-    <div class="demo-grid">
-      <div class="demo-card">
-        <h3 class="demo-card__title">Primary</h3>
-        <p class="demo-card__desc">Default action button.</p>
-        <div class="demo-card__preview">
-          <bloc-button label="Primary Button" variant="primary" (clicked)="onButtonClick()" />
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3 class="demo-card__title">Secondary</h3>
-        <p class="demo-card__desc">Less prominent action.</p>
-        <div class="demo-card__preview">
-          <bloc-button label="Secondary Button" variant="secondary" />
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3 class="demo-card__title">Outline</h3>
-        <p class="demo-card__desc">Subtle bordered style.</p>
-        <div class="demo-card__preview">
-          <bloc-button label="Outline Button" variant="outline" />
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3 class="demo-card__title">Disabled</h3>
-        <p class="demo-card__desc">Non-interactive state.</p>
-        <div class="demo-card__preview">
-          <bloc-button label="Disabled Button" variant="primary" [disabled]="true" />
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3 class="demo-card__title">Disabled Outline</h3>
-        <p class="demo-card__desc">Outline in disabled state.</p>
-        <div class="demo-card__preview">
-          <bloc-button label="Disabled Outline" variant="outline" [disabled]="true" />
-        </div>
-      </div>
-    </div>
-    }
-
-    <!-- Input section -->
-    @if (activeMenu() === 'input') {
-    <div class="demo-grid">
-      <div class="demo-card">
-        <h3 class="demo-card__title">Text Input</h3>
-        <p class="demo-card__desc">Basic text field.</p>
-        <div class="demo-card__preview">
-          <bloc-input label="Full name" placeholder="Enter your name" [(value)]="name" />
-          @if (name()) {
-          <span class="demo-card__hint">Value: {{ name() }}</span>
-          }
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3 class="demo-card__title">Password Input</h3>
-        <p class="demo-card__desc">Masked input for secrets.</p>
-        <div class="demo-card__preview">
-          <bloc-input label="Password" placeholder="Enter password" type="password" [(value)]="passwordValue" />
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3 class="demo-card__title">No Label</h3>
-        <p class="demo-card__desc">Input without a label.</p>
-        <div class="demo-card__preview">
-          <bloc-input placeholder="Search..." [(value)]="inputValue" />
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3 class="demo-card__title">Disabled</h3>
-        <p class="demo-card__desc">Non-interactive state.</p>
-        <div class="demo-card__preview">
-          <bloc-input label="Read-only field" placeholder="Cannot edit" [disabled]="true" />
-        </div>
-      </div>
-    </div>
-    }
-
-    <!-- Modal section -->
-    @if (activeMenu() === 'modal') {
-    <div class="demo-grid">
-      <div class="demo-card">
-        <h3 class="demo-card__title">Default (md)</h3>
-        <p class="demo-card__desc">Standard medium-sized modal.</p>
-        <div class="demo-card__preview">
-          <bloc-button label="Open Modal" variant="primary" (clicked)="openModal('md')" />
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3 class="demo-card__title">Small</h3>
-        <p class="demo-card__desc">Compact modal for short messages.</p>
-        <div class="demo-card__preview">
-          <bloc-button label="Open Small Modal" variant="secondary" (clicked)="openModal('sm')" />
-        </div>
-      </div>
-
-      <div class="demo-card">
-        <h3 class="demo-card__title">Large</h3>
-        <p class="demo-card__desc">Wide modal for detailed content.</p>
-        <div class="demo-card__preview">
-          <bloc-button label="Open Large Modal" variant="outline" (clicked)="openModal('lg')" />
-        </div>
-      </div>
-    </div>
-    }
+    <router-outlet />
   </main>
 </div>
-
-<!-- Live modal overlay -->
-<bloc-modal [isOpen]="modalOpenSize() !== null" [title]="'Modal — ' + (modalOpenSize() ?? 'md')"
-  [size]="modalOpenSize() ?? 'md'" (closed)="closeModal()">
-  <p style="margin: 0 0 12px">Are you sure you want to delete this item? This action is permanent and <strong>cannot be
-      undone</strong>.</p>
-  <p style="margin: 0; color: var(--bloc-muted)">If you change your mind, click <em>Cancel</em> to go back safely.</p>
-  <div slot="footer" style="display:flex; gap: var(--bloc-spacing-sm, 8px)">
-    <bloc-button label="Cancel" variant="outline" (clicked)="closeModal()" />
-    <bloc-button label="Confirm" variant="primary" (clicked)="closeModal()" />
-  </div>
-</bloc-modal>
-
-<router-outlet />

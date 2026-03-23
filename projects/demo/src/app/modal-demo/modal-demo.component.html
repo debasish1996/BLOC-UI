@@ -1,0 +1,41 @@
+<header class="content__header">
+  <h1 class="content__title">Modal</h1>
+  <p class="content__subtitle">Explore modal dialog variants and states.</p>
+</header>
+
+<div class="demo-grid">
+  <div class="demo-card">
+    <h3 class="demo-card__title">Default (md)</h3>
+    <p class="demo-card__desc">Standard medium-sized modal.</p>
+    <div class="demo-card__preview">
+      <bloc-button label="Open Modal" variant="primary" (clicked)="openModal('md')" />
+    </div>
+  </div>
+
+  <div class="demo-card">
+    <h3 class="demo-card__title">Small</h3>
+    <p class="demo-card__desc">Compact modal for short messages.</p>
+    <div class="demo-card__preview">
+      <bloc-button label="Open Small Modal" variant="secondary" (clicked)="openModal('sm')" />
+    </div>
+  </div>
+
+  <div class="demo-card">
+    <h3 class="demo-card__title">Large</h3>
+    <p class="demo-card__desc">Wide modal for detailed content.</p>
+    <div class="demo-card__preview">
+      <bloc-button label="Open Large Modal" variant="outline" (clicked)="openModal('lg')" />
+    </div>
+  </div>
+</div>
+
+<bloc-modal [isOpen]="modalOpenSize() !== null" [title]="'Modal — ' + (modalOpenSize() ?? 'md')"
+  [size]="modalOpenSize() ?? 'md'" (closed)="closeModal()">
+  <p style="margin: 0 0 12px">Are you sure you want to delete this item? This action is permanent and <strong>cannot be
+      undone</strong>.</p>
+  <p style="margin: 0; color: var(--bloc-muted)">If you change your mind, click <em>Cancel</em> to go back safely.</p>
+  <div slot="footer" style="display:flex; gap: var(--bloc-spacing-sm, 8px)">
+    <bloc-button label="Cancel" variant="outline" (clicked)="closeModal()" />
+    <bloc-button label="Confirm" variant="primary" (clicked)="closeModal()" />
+  </div>
+</bloc-modal>

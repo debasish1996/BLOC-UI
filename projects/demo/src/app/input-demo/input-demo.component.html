@@ -1,0 +1,41 @@
+<header class="content__header">
+  <h1 class="content__title">Input</h1>
+  <p class="content__subtitle">Explore input field variants and states.</p>
+</header>
+
+<div class="demo-grid">
+  <div class="demo-card">
+    <h3 class="demo-card__title">Text Input</h3>
+    <p class="demo-card__desc">Basic text field.</p>
+    <div class="demo-card__preview">
+      <bloc-input label="Full name" placeholder="Enter your name" [(value)]="name" />
+      @if (name()) {
+      <span class="demo-card__hint">Value: {{ name() }}</span>
+      }
+    </div>
+  </div>
+
+  <div class="demo-card">
+    <h3 class="demo-card__title">Password Input</h3>
+    <p class="demo-card__desc">Masked input for secrets.</p>
+    <div class="demo-card__preview">
+      <bloc-input label="Password" placeholder="Enter password" type="password" [(value)]="passwordValue" />
+    </div>
+  </div>
+
+  <div class="demo-card">
+    <h3 class="demo-card__title">No Label</h3>
+    <p class="demo-card__desc">Input without a label.</p>
+    <div class="demo-card__preview">
+      <bloc-input placeholder="Search..." [(value)]="inputValue" />
+    </div>
+  </div>
+
+  <div class="demo-card">
+    <h3 class="demo-card__title">Disabled</h3>
+    <p class="demo-card__desc">Non-interactive state.</p>
+    <div class="demo-card__preview">
+      <bloc-input label="Read-only field" placeholder="Cannot edit" [disabled]="true" />
+    </div>
+  </div>
+</div>

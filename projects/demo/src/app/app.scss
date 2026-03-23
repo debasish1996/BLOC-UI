@@ -2,7 +2,6 @@
 .app-shell {
   display: flex;
   min-height: 100vh;
-  font-family: sans-serif;
   background: #f8fafc;
 }
 
@@ -61,65 +60,4 @@
   flex: 1;
   padding: 2rem 2.5rem;
   overflow-y: auto;
-}
-
-.content__header {
-  margin-bottom: 2rem;
-  border-bottom: 1px solid #e2e8f0;
-  padding-bottom: 1rem;
-}
-
-.content__title {
-  margin: 0 0 0.25rem;
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: #0f172a;
-}
-
-.content__subtitle {
-  margin: 0;
-  color: #64748b;
-  font-size: 0.95rem;
-}
-
-/* ── Demo grid ─────────────────────────────────────────────── */
-.demo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.25rem;
-}
-
-.demo-card {
-  background: #fff;
-  border: 1px solid #e2e8f0;
-  border-radius: 10px;
-  padding: 1.25rem 1.5rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.demo-card__title {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 600;
-  color: #0f172a;
-}
-
-.demo-card__desc {
-  margin: 0;
-  font-size: 0.82rem;
-  color: #64748b;
-}
-
-.demo-card__preview {
-  margin-top: 0.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.demo-card__hint {
-  font-size: 0.8rem;
-  color: #3b82f6;
 }
