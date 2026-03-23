@@ -1,20 +1,113 @@
-<main style="max-width: 600px; margin: 2rem auto; font-family: sans-serif;">
-  <h1>Bloc UI Demo</h1>
+<div class="app-shell">
+  <!-- Sidebar -->
+  <aside class="sidebar">
+    <div class="sidebar__brand">Bloc UI</div>
+    <nav class="sidebar__nav">
+      @for (item of menuItems; track item.id) {
+      <button class="sidebar__item" [class.sidebar__item--active]="activeMenu() === item.id"
+        (click)="selectMenu(item.id)">
+        {{ item.label }}
+      </button>
+      }
+    </nav>
+  </aside>
 
-  <section style="display: flex; flex-direction: column; gap: 1rem; align-items: start;">
-    <bloc-input label="Your name" placeholder="Enter your name" [(value)]="name" />
+  <!-- Main content -->
+  <main class="content">
+    <header class="content__header">
+      <h1 class="content__title">{{ activeMenu() === 'button' ? 'Button' : 'Input' }}</h1>
+      <p class="content__subtitle">
+        {{ activeMenu() === 'button'
+        ? 'Explore button variants and states.'
+        : 'Explore input field variants and states.' }}
+      </p>
+    </header>
 
-    <bloc-button [label]="name() ? 'Hello, ' + name() + '!' : 'Click me'" variant="primary"
-      (clicked)="onButtonClick()" />
+    <!-- Button section -->
+    @if (activeMenu() === 'button') {
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3 class="demo-card__title">Primary</h3>
+        <p class="demo-card__desc">Default action button.</p>
+        <div class="demo-card__preview">
+          <bloc-button label="Primary Button" variant="primary" (clicked)="onButtonClick()" />
+        </div>
+      </div>
 
-    <bloc-button variant="secondary">
-      Secondary Button
-    </bloc-button>
+      <div class="demo-card">
+        <h3 class="demo-card__title">Secondary</h3>
+        <p class="demo-card__desc">Less prominent action.</p>
+        <div class="demo-card__preview">
+          <bloc-button label="Secondary Button" variant="secondary" />
+        </div>
+      </div>
 
-    <bloc-button variant="outline" [disabled]="!name()">
-      Outline (type a name to enable)
-    </bloc-button>
-  </section>
-</main>
+      <div class="demo-card">
+        <h3 class="demo-card__title">Outline</h3>
+        <p class="demo-card__desc">Subtle bordered style.</p>
+        <div class="demo-card__preview">
+          <bloc-button label="Outline Button" variant="outline" />
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3 class="demo-card__title">Disabled</h3>
+        <p class="demo-card__desc">Non-interactive state.</p>
+        <div class="demo-card__preview">
+          <bloc-button label="Disabled Button" variant="primary" [disabled]="true" />
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3 class="demo-card__title">Disabled Outline</h3>
+        <p class="demo-card__desc">Outline in disabled state.</p>
+        <div class="demo-card__preview">
+          <bloc-button label="Disabled Outline" variant="outline" [disabled]="true" />
+        </div>
+      </div>
+    </div>
+    }
+
+    <!-- Input section -->
+    @if (activeMenu() === 'input') {
+    <div class="demo-grid">
+      <div class="demo-card">
+        <h3 class="demo-card__title">Text Input</h3>
+        <p class="demo-card__desc">Basic text field.</p>
+        <div class="demo-card__preview">
+          <bloc-input label="Full name" placeholder="Enter your name" [(value)]="name" />
+          @if (name()) {
+          <span class="demo-card__hint">Value: {{ name() }}</span>
+          }
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3 class="demo-card__title">Password Input</h3>
+        <p class="demo-card__desc">Masked input for secrets.</p>
+        <div class="demo-card__preview">
+          <bloc-input label="Password" placeholder="Enter password" type="password" [(value)]="passwordValue" />
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3 class="demo-card__title">No Label</h3>
+        <p class="demo-card__desc">Input without a label.</p>
+        <div class="demo-card__preview">
+          <bloc-input placeholder="Search..." [(value)]="inputValue" />
+        </div>
+      </div>
+
+      <div class="demo-card">
+        <h3 class="demo-card__title">Disabled</h3>
+        <p class="demo-card__desc">Non-interactive state.</p>
+        <div class="demo-card__preview">
+          <bloc-input label="Read-only field" placeholder="Cannot edit" [disabled]="true" />
+        </div>
+      </div>
+    </div>
+    }
+  </main>
+</div>
 
 <router-outlet />

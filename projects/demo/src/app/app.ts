@@ -2,6 +2,8 @@ import { Component, signal } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
 import { BlocButtonComponent, BlocInputComponent } from 'bloc-ui';
 
+export type MenuItem = 'button' | 'input';
+
 @Component({
   selector: 'app-root',
   imports: [RouterOutlet, BlocButtonComponent, BlocInputComponent],
@@ -9,10 +11,21 @@ import { BlocButtonComponent, BlocInputComponent } from 'bloc-ui';
   styleUrl: './app.scss',
 })
 export class App {
-  protected readonly title = signal('demo');
+  protected readonly activeMenu = signal<MenuItem>('button');
   protected readonly name = signal('');
+  protected readonly inputValue = signal('');
+  protected readonly passwordValue = signal('');
+
+  protected readonly menuItems: { id: MenuItem; label: string }[] = [
+    { id: 'button', label: 'Button' },
+    { id: 'input', label: 'Input' },
+  ];
+
+  protected selectMenu(item: MenuItem): void {
+    this.activeMenu.set(item);
+  }
 
   protected onButtonClick(): void {
-    console.log('Button clicked! Name:', this.name());
+    console.log('Primary button clicked!');
   }
 }
