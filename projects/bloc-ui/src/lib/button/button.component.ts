@@ -8,9 +8,6 @@ import { Component, input, output } from '@angular/core';
   styleUrl: './button.component.scss',
 })
 export class BlocButtonComponent {
-  /** Button display label. */
-  readonly label = input<string>('');
-
   /** Button variant style. */
   readonly variant = input<'primary' | 'secondary' | 'outline'>('primary');
 
