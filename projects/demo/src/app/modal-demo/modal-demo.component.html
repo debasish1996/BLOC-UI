@@ -1,29 +1,29 @@
-<header class="content__header">
-  <h1 class="content__title">Modal</h1>
-  <p class="content__subtitle">Explore modal dialog variants and states.</p>
+<header class="mb-8 pb-4 border-b border-slate-200">
+  <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Modal</h1>
+  <p class="m-0 text-slate-400 text-[0.95rem]">Explore modal dialog variants and states.</p>
 </header>
 
-<div class="demo-grid">
-  <div class="demo-card">
-    <h3 class="demo-card__title">Default (md)</h3>
-    <p class="demo-card__desc">Standard medium-sized modal.</p>
-    <div class="demo-card__preview">
+<div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5">
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Default (md)</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Standard medium-sized modal.</p>
+    <div>
       <bloc-button label="Open Modal" variant="primary" (clicked)="openModal('md')" />
     </div>
   </div>
 
-  <div class="demo-card">
-    <h3 class="demo-card__title">Small</h3>
-    <p class="demo-card__desc">Compact modal for short messages.</p>
-    <div class="demo-card__preview">
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Small</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Compact modal for short messages.</p>
+    <div>
       <bloc-button label="Open Small Modal" variant="secondary" (clicked)="openModal('sm')" />
     </div>
   </div>
 
-  <div class="demo-card">
-    <h3 class="demo-card__title">Large</h3>
-    <p class="demo-card__desc">Wide modal for detailed content.</p>
-    <div class="demo-card__preview">
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Large</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Wide modal for detailed content.</p>
+    <div>
       <bloc-button label="Open Large Modal" variant="outline" (clicked)="openModal('lg')" />
     </div>
   </div>
@@ -31,10 +31,10 @@
 
 <bloc-modal [isOpen]="modalOpenSize() !== null" [title]="'Modal — ' + (modalOpenSize() ?? 'md')"
   [size]="modalOpenSize() ?? 'md'" (closed)="closeModal()">
-  <p style="margin: 0 0 12px">Are you sure you want to delete this item? This action is permanent and <strong>cannot be
+  <p class="m-0 mb-3">Are you sure you want to delete this item? This action is permanent and <strong>cannot be
       undone</strong>.</p>
-  <p style="margin: 0; color: var(--bloc-muted)">If you change your mind, click <em>Cancel</em> to go back safely.</p>
-  <div slot="footer" style="display:flex; gap: var(--bloc-spacing-sm, 8px)">
+  <p class="m-0 text-slate-400">If you change your mind, click <em>Cancel</em> to go back safely.</p>
+  <div slot="footer" class="flex gap-2">
     <bloc-button label="Cancel" variant="outline" (clicked)="closeModal()" />
     <bloc-button label="Confirm" variant="primary" (clicked)="closeModal()" />
   </div>

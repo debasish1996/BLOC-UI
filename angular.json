@@ -55,7 +55,10 @@
                 "input": "projects/demo/public"
               }
             ],
-            "styles": ["projects/demo/src/styles.scss"]
+            "styles": [
+              "projects/demo/src/tailwind.css",
+              "projects/demo/src/styles.scss"
+            ]
           },
           "configurations": {
             "production": {

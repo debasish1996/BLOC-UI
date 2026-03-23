@@ -1,12 +1,8 @@
-/* You can add global styles to this file, and also import other style files */
-
-/* ── Bloc UI design tokens ─────────────────────────────────── */
+/* ── Bloc UI design tokens (consumed by the component library) ── */
 :root {
-  /* Typography */
   --bloc-font-family: 'Inter', system-ui, sans-serif;
   --bloc-font-size-base: 14px;
 
-  /* Colours */
   --bloc-primary: #3b82f6;
   --bloc-secondary: #64748b;
   --bloc-text: #1e293b;
@@ -14,14 +10,10 @@
   --bloc-border: #e2e8f0;
   --bloc-surface: #ffffff;
 
-  /* Shape */
   --bloc-radius: 8px;
   --bloc-radius-sm: 4px;
-
-  /* Spacing */
   --bloc-spacing-sm: 8px;
 
-  /* Modal */
   --bloc-modal-backdrop: rgba(0, 0, 0, 0.45);
   --bloc-modal-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
   --bloc-modal-z-index: 1000;
@@ -36,67 +28,11 @@
   --bloc-modal-lg: 800px;
 }
 
-*, *::before, *::after {
-  box-sizing: border-box;
-}
-
 html, body {
-  margin: 0;
-  padding: 0;
   height: 100%;
   font-family: var(--bloc-font-family);
   font-size: var(--bloc-font-size-base);
   color: var(--bloc-text);
-}
-
-/* ── Page header (shared across demo pages) ─────────────────── */
-.content__header {
-  margin-bottom: 2rem;
-  border-bottom: 1px solid var(--bloc-border, #e2e8f0);
-  padding-bottom: 1rem;
-}
-
-.content__title {
-  margin: 0 0 0.25rem;
-  font-size: 1.75rem;
-  font-weight: 700;
-  color: var(--bloc-text, #0f172a);
-}
-
-.content__subtitle {
-  margin: 0;
-  color: var(--bloc-muted, #64748b);
-  font-size: 0.95rem;
-}
-
-/* ── Demo grid (shared across demo pages) ───────────────────── */
-.demo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: 1.25rem;
-}
-
-.demo-card {
-  background: var(--bloc-surface, #fff);
-  border: 1px solid var(--bloc-border, #e2e8f0);
-  border-radius: var(--bloc-radius, 10px);
-  padding: 1.25rem 1.5rem 1.5rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
-}
-
-.demo-card__title {
-  margin: 0;
-  font-size: 1rem;
-  font-weight: 600;
-  color: var(--bloc-text, #0f172a);
-}
-
-.demo-card__desc {
-  margin: 0;
-  font-size: 0.82rem;
-  color: var(--bloc-muted, #64748b);
 }
 
 .demo-card__preview {

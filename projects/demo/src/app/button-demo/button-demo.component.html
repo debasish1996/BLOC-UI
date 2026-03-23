@@ -1,45 +1,45 @@
-<header class="content__header">
-  <h1 class="content__title">Button</h1>
-  <p class="content__subtitle">Explore button variants and states.</p>
+<header class="mb-8 pb-4 border-b border-slate-200">
+  <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Button</h1>
+  <p class="m-0 text-slate-400 text-[0.95rem]">Explore button variants and states.</p>
 </header>
 
-<div class="demo-grid">
-  <div class="demo-card">
-    <h3 class="demo-card__title">Primary</h3>
-    <p class="demo-card__desc">Default action button.</p>
-    <div class="demo-card__preview">
+<div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5">
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Primary</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Default action button.</p>
+    <div>
       <bloc-button label="Primary Button" variant="primary" (clicked)="onButtonClick()" />
     </div>
   </div>
 
-  <div class="demo-card">
-    <h3 class="demo-card__title">Secondary</h3>
-    <p class="demo-card__desc">Less prominent action.</p>
-    <div class="demo-card__preview">
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Secondary</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Less prominent action.</p>
+    <div>
       <bloc-button label="Secondary Button" variant="secondary" />
     </div>
   </div>
 
-  <div class="demo-card">
-    <h3 class="demo-card__title">Outline</h3>
-    <p class="demo-card__desc">Subtle bordered style.</p>
-    <div class="demo-card__preview">
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Outline</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Subtle bordered style.</p>
+    <div>
       <bloc-button label="Outline Button" variant="outline" />
     </div>
   </div>
 
-  <div class="demo-card">
-    <h3 class="demo-card__title">Disabled</h3>
-    <p class="demo-card__desc">Non-interactive state.</p>
-    <div class="demo-card__preview">
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Disabled</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Non-interactive state.</p>
+    <div>
       <bloc-button label="Disabled Button" variant="primary" [disabled]="true" />
     </div>
   </div>
 
-  <div class="demo-card">
-    <h3 class="demo-card__title">Disabled Outline</h3>
-    <p class="demo-card__desc">Outline in disabled state.</p>
-    <div class="demo-card__preview">
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Disabled Outline</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Outline in disabled state.</p>
+    <div>
       <bloc-button label="Disabled Outline" variant="outline" [disabled]="true" />
     </div>
   </div>
