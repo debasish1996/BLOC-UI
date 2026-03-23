@@ -7,7 +7,8 @@ export * from './lib/button/button.component';
 export * from './lib/button/button.module';
 
 // Input
-export * from './lib/input/input.component';
+export * from './lib/input/input.directive';
+export * from './lib/input/input-error.directive';
 export * from './lib/input/input.module';
 
 // Modal

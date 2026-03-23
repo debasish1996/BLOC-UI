@@ -1,5 +1,8 @@
-import { Directive, inject, input } from '@angular/core';
+import { Directive, inject, input, computed, signal, DestroyRef, OnInit, ElementRef } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import { NgControl } from '@angular/forms';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { merge, fromEvent } from 'rxjs';
 
 const INPUT_CSS = [
   // Unlayered — authoritative structural rules, intentionally not overridable
@@ -17,6 +20,12 @@ const INPUT_CSS = [
   'color:var(--bloc-input-color,#374151)}',
   ':where(input.bloc-input:focus){border-color:var(--bloc-input-focus-border,var(--bloc-primary,#6b7280))}',
   ':where(input.bloc-input:disabled){opacity:0.5;cursor:not-allowed}',
+  ':where(input.bloc-input.bloc-input--error){border-color:var(--bloc-input-error-border,var(--bloc-error,#f87171))}',
+  ':where(input.bloc-input.bloc-input--error:focus){border-color:var(--bloc-input-error-border,var(--bloc-error,#f87171))}',
+  // Autofill inside error group — keep bg token consistent
+  'input.bloc-input.bloc-input--error:-webkit-autofill,',
+  'input.bloc-input.bloc-input--error:-webkit-autofill:focus{',
+  '-webkit-box-shadow:0 0 0px 1000px var(--bloc-input-bg,#ffffff) inset!important}',
   // Autofill hack — overpaints Chrome's yellow/blue autofill background
   'input.bloc-input:-webkit-autofill,',
   'input.bloc-input:-webkit-autofill:hover,',
@@ -53,6 +62,11 @@ const INPUT_GROUP_CSS = [
   'display:inline-flex;align-items:center;justify-content:center;flex-shrink:0;',
   'padding:var(--bloc-input-group-adornment-padding,0 8px);',
   'color:var(--bloc-input-group-adornment-color,#9ca3af)}',
+  // Error border on the group wrapper (must live in same layer to override default border)
+  ':where(.bloc-input-group:has(input.bloc-input.bloc-input--error)){border-color:var(--bloc-input-error-border,var(--bloc-error,#f87171))}',
+  ':where(.bloc-input-group:has(input.bloc-input.bloc-input--error:focus)){border-color:var(--bloc-input-error-border,var(--bloc-error,#f87171))}',
+  ':where(.bloc-input-group.bloc-input--error){border-color:var(--bloc-input-error-border,var(--bloc-error,#f87171))}',
+  ':where(.bloc-input-group.bloc-input--error:has(input.bloc-input:focus)){border-color:var(--bloc-input-error-border,var(--bloc-error,#f87171))}',
   '}',
 ].join('');
 
@@ -69,10 +83,12 @@ function ensureGroupStyles(doc: Document): void {
   standalone: true,
   host: {
     '[class.bloc-input]': 'true',
+    '[class.bloc-input--error]': 'hasError()',
     '[attr.autocomplete]': 'autocomplete()',
+    '[attr.aria-invalid]': 'hasError() || null',
   },
 })
-export class BlocInputDirective {
+export class BlocInputDirective implements OnInit {
   /**
    * Controls the browser autocomplete/autofill behaviour.
    * Pass `"off"` to suppress suggestion dropdowns.
@@ -80,8 +96,28 @@ export class BlocInputDirective {
    */
   readonly autocomplete = input<string | null>(null);
 
+  /** Explicit error flag. When `true` the error style is applied regardless of form state. */
+  readonly error = input<boolean>(false);
+
+  private readonly ngControl = inject(NgControl, { optional: true, self: true });
+  private readonly destroyRef = inject(DestroyRef);
+  private readonly el = inject(ElementRef<HTMLInputElement>);
+  private readonly _controlError = signal(false);
+
+  readonly hasError = computed(() => this.error() || this._controlError());
+
   constructor() {
     ensureStyles(inject(DOCUMENT));
+  }
+
+  ngOnInit(): void {
+    const ctrl = this.ngControl?.control;
+    if (!ctrl) return;
+    const sync = () => this._controlError.set(ctrl.invalid && ctrl.touched);
+    // blur sets touched — must listen to it since statusChanges/valueChanges don't fire on blur
+    merge(ctrl.statusChanges, ctrl.valueChanges, fromEvent(this.el.nativeElement, 'blur'))
+      .pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(sync);
   }
 }
 

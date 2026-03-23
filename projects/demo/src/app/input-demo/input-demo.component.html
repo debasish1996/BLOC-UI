@@ -88,4 +88,30 @@
       <span blocSuffix><app-icon name="eye" /></span>
     </div>
   </div>
+
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Error — manual</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Explicit <code>[error]="true"</code> flag.</p>
+    <div class="flex flex-col gap-1">
+      <input blocInput type="text" placeholder="This field has an error" [error]="true" aria-describedby="err-manual" />
+      <bloc-input-error>This field is required.</bloc-input-error>
+    </div>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Error — FormControl</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Driven by <code>invalid &amp;&amp; touched</code>. Click the field then
+      blur.</p>
+    <div class="flex flex-col gap-1">
+      <label class="text-xs font-medium text-slate-700" for="input-email">Email</label>
+      <bloc-input-group>
+        <bloc-prefix><app-icon name="mail" /></bloc-prefix>
+        <input blocInput type="email" placeholder="Enter a valid email" [formControl]="emailCtrl" />
+      </bloc-input-group>
+      @if (emailCtrl.invalid && emailCtrl.touched) {
+      <bloc-input-error>Please enter a valid email address.</bloc-input-error>
+      }
+    </div>
+  </div>
+
 </div>
