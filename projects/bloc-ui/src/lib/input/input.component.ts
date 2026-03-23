@@ -1,102 +1,53 @@
-import { Component, input, output, model, forwardRef } from '@angular/core';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { Directive, inject, input } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
-@Component({
-  selector: 'bloc-input',
+const INPUT_CSS = [
+  // Unlayered — authoritative structural rules, intentionally not overridable
+  'input.bloc-input{outline:none;box-sizing:border-box;appearance:none}',
+  // @layer bloc-input — declared first so any later Tailwind/consumer layer wins
+  '@layer bloc-input{',
+  ':where(input.bloc-input){',
+  'border:1px solid var(--bloc-input-border,var(--bloc-border,#cbd5e1));',
+  'border-radius:var(--bloc-input-radius,4px);',
+  'padding:var(--bloc-input-padding,8px 12px);',
+  'font-size:var(--bloc-input-font-size,14px);',
+  'line-height:1.5;',
+  'width:100%;',
+  'background-color:var(--bloc-input-bg,#ffffff);',
+  'color:var(--bloc-input-color,#374151)}',
+  ':where(input.bloc-input:focus){border-color:var(--bloc-input-focus-border,var(--bloc-primary,#6b7280))}',
+  ':where(input.bloc-input:disabled){opacity:0.5;cursor:not-allowed}',
+  '}',
+].join('');
+
+function ensureStyles(doc: Document): void {
+  if (!doc?.head || doc.getElementById('bloc-input-styles')) return;
+  const style = doc.createElement('style');
+  style.id = 'bloc-input-styles';
+  style.textContent = INPUT_CSS;
+  doc.head.appendChild(style);
+}
+
+@Directive({
+  selector: 'input[blocInput]',
   standalone: true,
-  imports: [],
-  template: `
-    <label class="bloc-input" [class.bloc-input--disabled]="disabled()">
-      @if (label()) {
-        <span class="bloc-input__label">{{ label() }}</span>
-      }
-      <input
-        class="bloc-input__field"
-        [type]="type()"
-        [placeholder]="placeholder()"
-        [disabled]="disabled()"
-        [value]="value()"
-        (input)="onInput($event)"
-        (blur)="onTouched()"
-      />
-    </label>
-  `,
-  styles: [
-    `
-      :host {
-        display: block;
-      }
-      .bloc-input {
-        display: flex;
-        flex-direction: column;
-        gap: 4px;
-      }
-      .bloc-input__label {
-        font-size: 13px;
-        font-weight: 500;
-      }
-      .bloc-input__field {
-        border: 1px solid var(--bloc-border, #cbd5e1);
-        border-radius: 4px;
-        padding: 8px 12px;
-        font-size: 14px;
-        outline: none;
-        &:focus {
-          border-color: var(--bloc-primary, #3b82f6);
-        }
-      }
-      .bloc-input--disabled .bloc-input__field {
-        opacity: 0.5;
-        cursor: not-allowed;
-      }
-    `,
-  ],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => BlocInputComponent),
-      multi: true,
-    },
-  ],
+  host: {
+    '[class.bloc-input]': 'true',
+    '[attr.autocomplete]': 'autocomplete()',
+  },
 })
-export class BlocInputComponent implements ControlValueAccessor {
-  /** Input label text. */
-  readonly label = input<string>('');
+export class BlocInputDirective {
+  /**
+   * Controls the browser autocomplete/autofill behaviour.
+   * Pass `"off"` to suppress suggestion dropdowns.
+   * Defaults to `null` (browser decides).
+   */
+  readonly autocomplete = input<string | null>(null);
 
-  /** Input placeholder text. */
-  readonly placeholder = input<string>('');
-
-  /** Input type attribute. */
-  readonly type = input<string>('text');
-
-  /** Whether the input is disabled. */
-  readonly disabled = input<boolean>(false);
-
-  /** Two-way bound value. */
-  readonly value = model<string>('');
-
-  /** Emits on value change. */
-  readonly valueChange = output<string>();
-
-  private onChange: (value: string) => void = () => { };
-  onTouched: () => void = () => { };
-
-  onInput(event: Event): void {
-    const val = (event.target as HTMLInputElement).value;
-    this.value.set(val);
-    this.valueChange.emit(val);
-    this.onChange(val);
-  }
-
-  writeValue(value: string): void {
-    this.value.set(value ?? '');
-  }
-
-  registerOnChange(fn: (value: string) => void): void {
-    this.onChange = fn;
-  }
-
-  registerOnTouched(fn: () => void): void {
-    this.onTouched = fn;
+  constructor() {
+    ensureStyles(inject(DOCUMENT));
   }
 }
+
+/** @deprecated Use BlocInputDirective */
+export { BlocInputDirective as BlocInputComponent };

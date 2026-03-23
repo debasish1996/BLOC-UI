@@ -1,8 +1,8 @@
 import { NgModule } from '@angular/core';
-import { BlocInputComponent } from './input.component';
+import { BlocInputDirective } from './input.component';
 
 @NgModule({
-  imports: [BlocInputComponent],
-  exports: [BlocInputComponent],
+  imports: [BlocInputDirective],
+  exports: [BlocInputDirective],
 })
 export class BlocInputModule { }

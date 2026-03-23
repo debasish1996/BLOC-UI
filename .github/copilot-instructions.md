@@ -46,6 +46,59 @@ This is a two-package Angular component library workspace:
   border-color: var(--bloc-spinner-track, var(--bloc-border, #d1d5db));
   ```
 
+### CSS cascade hierarchy — mandatory for every component
+
+All styles **must** follow this priority order, highest to lowest:
+
+```
+1. User's own classes / inline styles   (consumer, always wins)
+2. Theme tokens                         (bloc-ui-theme, CSS custom properties)
+3. Barebone structural styles           (bloc-ui, must never override the above)
+```
+
+**How to implement this:**
+
+- Wrap all barebone (structural / reset) declarations in `:where()` so they carry **zero specificity**.
+  Any single class on the element will then override them without `!important`.
+
+  ```css
+  /* ✅ correct — zero specificity, user classes always win */
+  :where(input.bloc-input) {
+    color: var(--bloc-input-color, #374151);
+  }
+
+  /* ❌ wrong — specificity (0,1,1) beats Tailwind utilities (0,1,0) */
+  input.bloc-input {
+    color: var(--bloc-input-color, #374151);
+  }
+  ```
+
+- Structural rules that **must not** be overridden by accident (e.g. `box-sizing`, `outline:none`)
+  may stay in the bare `element.class {}` block since they are intentionally authoritative.
+
+- For injected `<style>` tags (directive pattern, e.g. `BlocInputDirective`, `BlocSpinnerDirective`):
+  - Wrap overridable visual rules in `@layer bloc-<component>` so that Tailwind's later-declared layers (`utilities`, etc.) always win — **layer order determines priority, later = higher**.
+  - Inject the `<style>` tag via **`head.appendChild(style)`** (append to end of `<head>`). This ensures the browser has already processed Tailwind's layer ordering statement (which registers `bloc-input` between `base` and `utilities`) before our `<style>` is seen. If we insert before Tailwind, our layer gets position 0 (lowest priority) and Tailwind preflight overrides it.
+  - Keep intentionally authoritative structural rules (e.g. `box-sizing`, `outline:none`, `appearance`) **unlayered** (`input.class { }`) — unlayered rules always beat any layer.
+  - Use `:where(selector)` inside the layer for extra safety, so intra-layer specificity stays zero.
+
+> **Consumer setup requirement (Tailwind users):** Tailwind's `@import "tailwindcss"` declares
+> `@layer theme, base, components, utilities`. The `bloc-*` layers must be registered **between
+> `base` and `utilities`** before that import, otherwise Tailwind's `base` (preflight) resets
+> will override bloc-ui defaults. Add this line to the top of your `tailwind.css`:
+>
+> ```css
+> @layer theme, base, bloc-input, components, utilities;
+> @import 'tailwindcss';
+> ```
+>
+> Add a matching entry for each bloc-ui directive you use (e.g. `bloc-spinner`, `bloc-input`).
+
+- For SCSS component files (`:host`-based components):
+  - Keep specificity low. Prefer class selectors inside `:where()` for overridable properties.
+
+---
+
 ### Standalone + NgModule
 
 - Every component is `standalone: true`.
