@@ -12,5 +12,6 @@ export class App {
     { path: 'button', label: 'Button' },
     { path: 'input', label: 'Input' },
     { path: 'modal', label: 'Modal' },
+    { path: 'spinner', label: 'Spinner' },
   ];
 }

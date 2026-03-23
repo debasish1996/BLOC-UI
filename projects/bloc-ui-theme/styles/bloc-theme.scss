@@ -1,0 +1,92 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// Bloc UI — Default Theme
+//
+// This file is part of the optional `bloc-ui-theme` package.
+// The `bloc-ui` component library works without it (components use var()
+// fallbacks), but installing this theme gives you the full design system:
+// light/dark modes, consistent tokens, and easy overrides.
+//
+// ── Usage ────────────────────────────────────────────────────────────────────
+//
+//   Option A — angular.json styles array (recommended):
+//     "styles": ["node_modules/bloc-ui-theme/styles/bloc-theme.scss", ...]
+//
+//   Option B — global styles.scss:
+//     @use 'bloc-ui-theme/styles/bloc-theme';
+//
+// ── Overriding tokens ────────────────────────────────────────────────────────
+//
+//   Just redefine any token in your own :root after importing this file:
+//     :root { --bloc-primary: #6366f1; }
+//
+// ── Forcing a theme ──────────────────────────────────────────────────────────
+//
+//   Dark mode follows the OS by default. To pin a mode programmatically:
+//     <html data-theme="dark">   → always dark
+//     <html data-theme="light">  → always light (overrides OS dark preference)
+//
+// ─────────────────────────────────────────────────────────────────────────────
+
+
+// ── Light theme (default) ────────────────────────────────────────────────────
+:root {
+  // Brand
+  --bloc-primary:   #3b82f6;
+  --bloc-secondary: #64748b;
+
+  // Typography
+  --bloc-font-family:    'Inter', system-ui, sans-serif;
+  --bloc-font-size-base: 14px;
+
+  // Neutrals
+  --bloc-text:    #1e293b;
+  --bloc-muted:   #94a3b8;
+  --bloc-border:  #e2e8f0;
+  --bloc-surface: #ffffff;
+
+  // Shape & spacing
+  --bloc-radius:     8px;
+  --bloc-radius-sm:  4px;
+  --bloc-spacing-sm: 8px;
+
+  // Modal
+  --bloc-modal-backdrop:       rgba(0, 0, 0, 0.45);
+  --bloc-modal-shadow:         0 8px 32px rgba(0, 0, 0, 0.15);
+  --bloc-modal-z-index:        1000;
+  --bloc-modal-title-size:     1rem;
+  --bloc-modal-title-weight:   600;
+  --bloc-modal-close-size:     1rem;
+  --bloc-modal-header-padding: 16px 20px;
+  --bloc-modal-body-padding:   20px;
+  --bloc-modal-footer-padding: 12px 20px;
+  --bloc-modal-sm:             360px;
+  --bloc-modal-md:             560px;
+  --bloc-modal-lg:             800px;
+}
+
+
+// ── Dark token overrides ──────────────────────────────────────────────────────
+@mixin _bloc-dark-tokens {
+  --bloc-primary:   #60a5fa;
+  --bloc-secondary: #94a3b8;
+
+  --bloc-text:    #f1f5f9;
+  --bloc-muted:   #475569;
+  --bloc-border:  #334155;
+  --bloc-surface: #1e293b;
+
+  --bloc-modal-backdrop: rgba(0, 0, 0, 0.65);
+  --bloc-modal-shadow:   0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+// Automatic: follows OS preference, suppressible with data-theme="light"
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) {
+    @include _bloc-dark-tokens;
+  }
+}
+
+// Programmatic: pin dark regardless of OS preference
+:root[data-theme='dark'] {
+  @include _bloc-dark-tokens;
+}

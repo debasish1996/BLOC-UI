@@ -33,6 +33,9 @@
       "path": "./projects/bloc-ui/tsconfig.spec.json"
     },
     {
+      "path": "./projects/bloc-ui-theme/tsconfig.lib.json"
+    },
+    {
       "path": "./projects/demo/tsconfig.app.json"
     },
     {

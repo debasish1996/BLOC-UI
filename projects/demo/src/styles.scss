@@ -1,33 +1,3 @@
-/* ── Bloc UI design tokens (consumed by the component library) ── */
-:root {
-  --bloc-font-family: 'Inter', system-ui, sans-serif;
-  --bloc-font-size-base: 14px;
-
-  --bloc-primary: #3b82f6;
-  --bloc-secondary: #64748b;
-  --bloc-text: #1e293b;
-  --bloc-muted: #94a3b8;
-  --bloc-border: #e2e8f0;
-  --bloc-surface: #ffffff;
-
-  --bloc-radius: 8px;
-  --bloc-radius-sm: 4px;
-  --bloc-spacing-sm: 8px;
-
-  --bloc-modal-backdrop: rgba(0, 0, 0, 0.45);
-  --bloc-modal-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
-  --bloc-modal-z-index: 1000;
-  --bloc-modal-title-size: 1rem;
-  --bloc-modal-title-weight: 600;
-  --bloc-modal-close-size: 1rem;
-  --bloc-modal-header-padding: 16px 20px;
-  --bloc-modal-body-padding: 20px;
-  --bloc-modal-footer-padding: 12px 20px;
-  --bloc-modal-sm: 360px;
-  --bloc-modal-md: 560px;
-  --bloc-modal-lg: 800px;
-}
-
 html, body {
   height: 100%;
   font-family: var(--bloc-font-family);

@@ -14,3 +14,7 @@ export * from './lib/input/input.module';
 export * from './lib/modal/modal.component';
 export * from './lib/modal/modal.module';
 
+// Spinner
+export * from './lib/spinner/spinner.directive';
+export * from './lib/spinner/spinner.module';
+
