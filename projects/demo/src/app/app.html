@@ -1,0 +1,20 @@
+<main style="max-width: 600px; margin: 2rem auto; font-family: sans-serif;">
+  <h1>Bloc UI Demo</h1>
+
+  <section style="display: flex; flex-direction: column; gap: 1rem; align-items: start;">
+    <bloc-input label="Your name" placeholder="Enter your name" [(value)]="name" />
+
+    <bloc-button [label]="name() ? 'Hello, ' + name() + '!' : 'Click me'" variant="primary"
+      (clicked)="onButtonClick()" />
+
+    <bloc-button variant="secondary">
+      Secondary Button
+    </bloc-button>
+
+    <bloc-button variant="outline" [disabled]="!name()">
+      Outline (type a name to enable)
+    </bloc-button>
+  </section>
+</main>
+
+<router-outlet />

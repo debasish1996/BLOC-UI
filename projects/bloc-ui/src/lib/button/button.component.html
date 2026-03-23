@@ -1,0 +1,7 @@
+<button class="bloc-button" [class]="'bloc-button--' + variant()" [disabled]="disabled()" (click)="onClick($event)">
+  @if (label()) {
+  {{ label() }}
+  } @else {
+  <ng-content />
+  }
+</button>
