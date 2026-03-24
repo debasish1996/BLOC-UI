@@ -6,6 +6,15 @@
   align-items: center;
   justify-content: center;
   z-index: var(--bloc-modal-z-index, 1000);
+
+  &--hidden {
+    background-color: transparent;
+    pointer-events: none;
+
+    .bloc-modal {
+      pointer-events: auto;
+    }
+  }
 }
 
 .bloc-modal {

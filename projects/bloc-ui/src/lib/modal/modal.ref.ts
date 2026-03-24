@@ -10,14 +10,14 @@ import { Subject } from 'rxjs';
  * ref.close('done');
  * ```
  */
-export class BlocModalRef<C = unknown, R = unknown> {
+export class BlocModalRef<Comp = unknown, R = unknown> {
   private readonly _afterClosed$ = new Subject<R | undefined>();
 
   /** Observable that emits once with the result value when the modal closes. */
   readonly afterClosed$ = this._afterClosed$.asObservable();
 
   /** Instance of the component rendered inside the modal body. */
-  componentInstance!: C;
+  componentInstance!: Comp;
 
   /** @internal Teardown function registered by BlocModalService. */
   _destroy!: () => void;

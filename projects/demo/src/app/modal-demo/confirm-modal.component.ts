@@ -1,8 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { BlocButtonComponent, BlocModalRef, BLOC_MODAL_DATA } from 'bloc-ui';
+import { BlocButtonComponent, BlocModal, BlocModalRef, BLOC_MODAL_DATA } from 'bloc-ui';
 
 export interface ConfirmModalData {
   size: 'sm' | 'md' | 'lg';
+  test: string;
 }
 
 @Component({
@@ -23,10 +24,7 @@ export interface ConfirmModalData {
     </div>
   `,
 })
-export class ConfirmModalComponent {
-  private readonly modalRef = inject(BlocModalRef);
-  readonly data = inject<ConfirmModalData>(BLOC_MODAL_DATA);
-
+export class ConfirmModalComponent extends BlocModal<ConfirmModalData, boolean> {
   cancel(): void { this.modalRef.close(false); }
   confirm(): void { this.modalRef.close(true); }
 }

@@ -9,8 +9,13 @@ import {
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { BlocModalRef } from './modal.ref';
-import { BlocModalConfig, BLOC_MODAL_DATA } from './modal.config';
+import { BlocModal, BlocModalConfig, BLOC_MODAL_DATA } from './modal.config';
 import { BlocModalContainerComponent } from './modal.component';
+
+/** @internal Extracts the result type from a `BlocModal` subclass. */
+type ModalResult<C> = C extends { __blocModalResult?: infer R } ? R : unknown;
+/** @internal Extracts the input/data type from a `BlocModal` subclass. */
+type ModalData<C> = C extends BlocModal<infer D, any> ? D : unknown;
 
 @Injectable({ providedIn: 'root' })
 export class BlocModalService {
@@ -30,11 +35,11 @@ export class BlocModalService {
    * @param config     Optional title, size, backdrop behaviour, and data.
    * @returns          A `BlocModalRef` to close the modal or react to closure.
    */
-  open<C, R = unknown, D = unknown>(
-    component: Type<C>,
-    config: BlocModalConfig<D> = {},
-  ): BlocModalRef<C, R> {
-    const modalRef = new BlocModalRef<C, R>();
+  open<Comp extends BlocModal<any, any>, R = ModalResult<Comp>>(
+    component: Type<Comp>,
+    config: BlocModalConfig<ModalData<Comp>> = {},
+  ): BlocModalRef<Comp, R> {
+    const modalRef = new BlocModalRef<Comp, R>();
 
     // Provide BlocModalRef and optional data to both the shell and the content component.
     const providers: StaticProvider[] = [
@@ -51,7 +56,11 @@ export class BlocModalService {
 
     containerRef.setInput('title', config.title ?? '');
     containerRef.setInput('size', config.size ?? 'md');
+    containerRef.setInput('showBackdrop', config.showBackdrop ?? true);
     containerRef.setInput('closeOnBackdropClick', config.closeOnBackdropClick ?? true);
+    containerRef.setInput('showCloseButton', config.showCloseButton ?? true);
+    containerRef.setInput('backdropClass', config.backdropClass ?? '');
+    containerRef.setInput('panelClass', config.panelClass ?? '');
 
     this._appRef.attachView(containerRef.hostView);
     this._doc.body.appendChild(containerRef.location.nativeElement);
