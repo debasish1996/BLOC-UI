@@ -28,14 +28,3 @@
     </div>
   </div>
 </div>
-
-<bloc-modal [isOpen]="modalOpenSize() !== null" [title]="'Modal — ' + (modalOpenSize() ?? 'md')"
-  [size]="modalOpenSize() ?? 'md'" (closed)="closeModal()">
-  <p class="m-0 mb-3">Are you sure you want to delete this item? This action is permanent and <strong>cannot be
-      undone</strong>.</p>
-  <p class="m-0 text-slate-400">If you change your mind, click <em>Cancel</em> to go back safely.</p>
-  <div slot="footer" class="flex gap-2">
-    <button blocButton variant="outline" (clicked)="closeModal()">Cancel</button>
-    <button blocButton variant="primary" (clicked)="closeModal()">Confirm</button>
-  </div>
-</bloc-modal>

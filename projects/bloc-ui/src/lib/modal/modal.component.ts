@@ -1,36 +1,56 @@
-import { Component, input, output, effect } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, inject, input, ViewChild, ViewContainerRef } from '@angular/core';
+import { BlocModalRef } from './modal.ref';
 
+/**
+ * @internal
+ * Shell component created dynamically by BlocModalService.
+ * Not part of the public API — use BlocModalService.open() instead.
+ */
 @Component({
-  selector: 'bloc-modal',
+  selector: 'bloc-modal-container',
   standalone: true,
-  imports: [CommonModule],
-  templateUrl: './modal.component.html',
+  template: `
+    <div class="bloc-modal-backdrop" (click)="_onBackdropClick()">
+      <div
+        class="bloc-modal"
+        [class]="'bloc-modal--' + size()"
+        role="dialog"
+        aria-modal="true"
+        (click)="$event.stopPropagation()"
+      >
+        <div class="bloc-modal__header">
+          @if (title()) {
+            <h2 class="bloc-modal__title">{{ title() }}</h2>
+          }
+          <button class="bloc-modal__close" aria-label="Close modal" (click)="_close()">
+            &#x2715;
+          </button>
+        </div>
+        <div class="bloc-modal__body">
+          <ng-container #contentOutlet></ng-container>
+        </div>
+      </div>
+    </div>
+  `,
   styleUrl: './modal.component.scss',
 })
-export class BlocModalComponent {
-  /** Whether the modal is visible. */
-  readonly isOpen = input<boolean>(false);
+export class BlocModalContainerComponent {
+  @ViewChild('contentOutlet', { read: ViewContainerRef, static: true })
+  readonly contentVcr!: ViewContainerRef;
 
-  /** Modal header title. */
   readonly title = input<string>('');
-
-  /** Modal size variant. */
   readonly size = input<'sm' | 'md' | 'lg'>('md');
-
-  /** Whether clicking the backdrop closes the modal. */
   readonly closeOnBackdropClick = input<boolean>(true);
 
-  /** Emits when the modal requests to be closed. */
-  readonly closed = output<void>();
+  private readonly _modalRef = inject(BlocModalRef);
 
-  onBackdropClick(): void {
+  _onBackdropClick(): void {
     if (this.closeOnBackdropClick()) {
-      this.closed.emit();
+      this._modalRef.close();
     }
   }
 
-  onClose(): void {
-    this.closed.emit();
+  _close(): void {
+    this._modalRef.close();
   }
 }

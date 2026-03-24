@@ -1,20 +1,25 @@
-import { Component, signal } from '@angular/core';
-import { BlocButtonComponent, BlocModalComponent } from 'bloc-ui';
+import { Component, inject } from '@angular/core';
+import { BlocButtonComponent, BlocModalService } from 'bloc-ui';
+import { ConfirmModalComponent } from './confirm-modal.component';
 
 @Component({
   selector: 'app-modal-demo',
   standalone: true,
-  imports: [BlocButtonComponent, BlocModalComponent],
+  imports: [BlocButtonComponent],
   templateUrl: './modal-demo.component.html',
 })
 export class ModalDemoComponent {
-  readonly modalOpenSize = signal<'sm' | 'md' | 'lg' | null>(null);
+  private readonly modal = inject(BlocModalService);
 
   openModal(size: 'sm' | 'md' | 'lg'): void {
-    this.modalOpenSize.set(size);
-  }
+    const ref = this.modal.open(ConfirmModalComponent, {
+      title: `Modal — ${size}`,
+      size,
+      data: { size },
+    });
 
-  closeModal(): void {
-    this.modalOpenSize.set(null);
+    ref.afterClosed$.subscribe(result => {
+      console.log('Modal closed with:', result);
+    });
   }
 }
