@@ -65,7 +65,7 @@
 
 <!-- Custom classes -->
 <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Custom classes</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5">
+<div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5 mb-10">
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
     <h3 class="m-0 text-base font-semibold text-slate-900">panelClass</h3>
     <p class="m-0 text-[0.82rem] text-slate-400">Extra class applied to the modal panel.</p>
@@ -79,6 +79,43 @@
     <p class="m-0 text-[0.82rem] text-slate-400">Extra class applied to the backdrop.</p>
     <div>
       <button blocButton variant="secondary" (clicked)="openBackdropClass()">Open Modal</button>
+    </div>
+  </div>
+</div>
+
+<!-- Generic Modal Service -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+  Generic Modal Service
+  <span
+    class="ml-2 text-xs font-medium normal-case tracking-normal bg-slate-100 text-slate-500 rounded px-2 py-0.5">BlocGenericModalService</span>
+</h2>
+<p class="m-0 mb-5 text-[0.875rem] text-slate-400">
+  No component class required — just provide a title and message. Use <code class="text-slate-600">alert()</code> for
+  informational messages and <code class="text-slate-600">confirm()</code> for yes/no decisions.
+</p>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5">
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Alert</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Simple message with a single dismiss button.</p>
+    <div>
+      <button blocButton variant="primary" (clicked)="openGenericAlert()">Open Alert</button>
+    </div>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Confirm</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Cancel / Confirm buttons. Result logged to console.</p>
+    <div>
+      <button blocButton variant="secondary" (clicked)="openGenericConfirm()">Open Confirm</button>
+    </div>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Custom button labels</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Override <code class="text-slate-600">confirmText</code> and <code
+        class="text-slate-600">cancelText</code>.</p>
+    <div>
+      <button blocButton variant="outline" (clicked)="openGenericCustomTexts()">Open Modal</button>
     </div>
   </div>
 </div>

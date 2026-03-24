@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { BlocButtonComponent, BlocModalService } from 'bloc-ui';
+import { BlocButtonComponent, BlocGenericModalService, BlocModalService } from 'bloc-ui';
 import { ConfirmModalComponent } from './confirm-modal.component';
 
 @Component({
@@ -10,6 +10,7 @@ import { ConfirmModalComponent } from './confirm-modal.component';
 })
 export class ModalDemoComponent {
   private readonly modal = inject(BlocModalService);
+  private readonly genericModal = inject(BlocGenericModalService);
 
   openModal(size: 'sm' | 'md' | 'lg'): void {
     const ref = this.modal.open(ConfirmModalComponent, {
@@ -58,5 +59,37 @@ export class ModalDemoComponent {
       backdropClass: 'demo-backdrop',
       data: { size: 'md', test: 'Extra class on the backdrop.' },
     });
+  }
+
+  // --- BlocGenericModalService demos ---
+
+  openGenericAlert(): void {
+    this.genericModal.alert({
+      title: 'Notice',
+      message: 'Your session will expire in 5 minutes.',
+    });
+  }
+
+  openGenericConfirm(): void {
+    const ref = this.genericModal.confirm({
+      title: 'Delete item?',
+      message: 'This action is permanent and cannot be undone.',
+    });
+    ref.afterClosed$.subscribe(confirmed =>
+      console.log('Generic confirm result:', confirmed),
+    );
+  }
+
+  openGenericCustomTexts(): void {
+    const ref = this.genericModal.confirm({
+      title: 'Leave page?',
+      message: 'You have unsaved changes. Are you sure you want to leave?',
+      confirmText: 'Leave',
+      cancelText: 'Stay',
+      size: 'sm',
+    });
+    ref.afterClosed$.subscribe(confirmed =>
+      console.log('Leave page:', confirmed),
+    );
   }
 }
