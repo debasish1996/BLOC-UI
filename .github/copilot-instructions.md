@@ -1,5 +1,27 @@
 # Bloc UI — Copilot Guidelines
 
+## Workspace Variables
+
+Shared constants available to all agents and conversations in this workspace.
+
+| Variable        | Value                                     |
+| --------------- | ----------------------------------------- |
+| Repo URL        | `https://github.com/debasish1996/BLOC-UI` |
+| GitHub Owner    | `debasish1996`                            |
+| Repo Name       | `BLOC-UI`                                 |
+| Default Branch  | `main`                                    |
+| Package Manager | `npm`                                     |
+| Node Version    | `24`                                      |
+
+### Packages
+
+| Key     | npm Name         | Path                                  | Current Version               |
+| ------- | ---------------- | ------------------------------------- | ----------------------------- |
+| `core`  | `@bloc-ui/core`  | `projects/bloc-ui/package.json`       | _(read from file at runtime)_ |
+| `theme` | `@bloc-ui/theme` | `projects/bloc-ui-theme/package.json` | _(read from file at runtime)_ |
+
+---
+
 ## Architecture
 
 This is a two-package Angular component library workspace:
