@@ -33,3 +33,7 @@ export * from './lib/radio/radio-group.component';
 export * from './lib/radio/radio.component';
 export * from './lib/radio/radio.module';
 
+// Checkbox
+export * from './lib/checkbox/checkbox.component';
+export * from './lib/checkbox/checkbox.module';
+

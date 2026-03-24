@@ -1,0 +1,89 @@
+// Host — authoritative structural rules
+:host {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+
+  --_box-size: 18px;
+  --_border-radius: 3px;
+  --_check-size: 12px;
+
+  &.bloc-checkbox--sm {
+    --_box-size: 14px;
+    --_border-radius: 2px;
+    --_check-size: 10px;
+    gap: 6px;
+  }
+
+  &.bloc-checkbox--lg {
+    --_box-size: 22px;
+    --_border-radius: 4px;
+    --_check-size: 14px;
+    gap: 10px;
+  }
+
+  &.bloc-checkbox--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  // When label is before the box, push the box to the end via flex order
+  &.bloc-checkbox--label-before .bloc-checkbox__box {
+    order: 1;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--bloc-checkbox-focus-ring, var(--bloc-primary, #6b7280));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+// Box — authoritative structural
+.bloc-checkbox__box {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--_box-size);
+  height: var(--_box-size);
+  border-radius: var(--_border-radius);
+  border-width: 2px;
+  border-style: solid;
+  box-sizing: border-box;
+  transition: background-color 0.15s ease, border-color 0.15s ease;
+}
+
+// Box — overridable visual (zero-specificity via :where)
+:where(.bloc-checkbox__box) {
+  border-color: var(--bloc-checkbox-border,  #aaafb7);
+  background-color: var(--bloc-checkbox-bg, #ffffff);
+}
+
+// Checked: fill the box
+:host.bloc-checkbox--checked .bloc-checkbox__box {
+  border-color: var(--bloc-checkbox-checked-border, var(--bloc-primary, #6b7280));
+  background-color: var(--bloc-checkbox-checked-bg, var(--bloc-primary, #6b7280));
+}
+
+// Check icon — authoritative structural
+.bloc-checkbox__check {
+  width: var(--_check-size);
+  height: var(--_check-size);
+  opacity: 0;
+  transform: scale(0);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+// Check icon — overridable visual (zero-specificity via :where)
+:where(.bloc-checkbox__check) {
+  color: var(--bloc-checkbox-check-color, #ffffff);
+}
+
+// Checked: reveal the check icon
+:host.bloc-checkbox--checked .bloc-checkbox__check {
+  opacity: 1;
+  transform: scale(1);
+}

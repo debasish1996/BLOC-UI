@@ -65,7 +65,7 @@
 
 // Dot ring — overridable visual (zero-specificity via :where)
 :where(.bloc-radio__dot) {
-  border-color: var(--bloc-radio-border, var(--bloc-border, #aaafb7));
+  border-color: var(--bloc-radio-border, #aaafb7);
   background-color: var(--bloc-radio-bg, #ffffff);
 
   &::after {

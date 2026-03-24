@@ -10,6 +10,7 @@ import { RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 export class App {
   readonly menuItems = [
     { path: 'button', label: 'Button' },
+    { path: 'checkbox', label: 'Checkbox' },
     { path: 'input', label: 'Input' },
     { path: 'modal', label: 'Modal' },
     { path: 'radio', label: 'Radio' },
