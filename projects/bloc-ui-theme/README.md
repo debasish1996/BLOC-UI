@@ -15,7 +15,7 @@ npm install @bloc-ui/theme
 Import the theme stylesheet in your application's global styles:
 
 ```scss
-@use "@bloc-ui/theme/styles/bloc-theme";
+@use '@bloc-ui/theme/styles/bloc-theme';
 ```
 
 ## License
