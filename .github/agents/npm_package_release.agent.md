@@ -49,11 +49,20 @@ The user MUST specify which package to release: `core`, `theme`, or `both`.
 
 ## Release
 
+Tags are prefixed by package to trigger the correct CI workflow:
+
+| Package | Tag format             | Example        |
+| ------- | ---------------------- | -------------- |
+| Core    | `core-v<new_version>`  | `core-v1.2.0`  |
+| Theme   | `theme-v<new_version>` | `theme-v1.0.1` |
+
 1. Create a git tag and GitHub release in one step:
    ```
-   gh release create v<new_version> --title "v<new_version>" --notes "Release <npm-name> v<new_version>"
+   gh release create <prefix>-v<new_version> --title "<prefix>-v<new_version>" --notes "Release <npm-name> v<new_version>"
    ```
-2. Confirm the release was created by running `gh release view v<new_version>`.
+   where `<prefix>` is `core` or `theme` depending on the package being released.
+2. Confirm the release was created by running `gh release view <prefix>-v<new_version>`.
+3. When releasing **both** packages, create two separate releases — one per package with its own tag prefix.
 
 ## Constraints
 
