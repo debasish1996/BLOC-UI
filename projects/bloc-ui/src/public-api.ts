@@ -24,3 +24,7 @@ export * from './lib/modal/generic-modal.service';
 export * from './lib/spinner/spinner.directive';
 export * from './lib/spinner/spinner.module';
 
+// Toggle
+export * from './lib/toggle/toggle.component';
+export * from './lib/toggle/toggle.module';
+

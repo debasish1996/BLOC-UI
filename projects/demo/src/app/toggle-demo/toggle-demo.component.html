@@ -1,0 +1,126 @@
+<header class="mb-8 pb-4 border-b border-slate-200">
+  <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Toggle</h1>
+  <p class="m-0 text-slate-400 text-[0.95rem]">
+    Boolean switch component. Works with <code>ngModel</code>, <code>formControl</code>, and
+    <code>formControlName</code>.
+  </p>
+</header>
+
+<!-- Sizes -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Sizes</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-5 mb-10">
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Small</h3>
+    <bloc-toggle size="sm"></bloc-toggle>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Medium (default)</h3>
+    <bloc-toggle></bloc-toggle>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Large</h3>
+    <bloc-toggle size="lg"></bloc-toggle>
+  </div>
+</div>
+
+<!-- States -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">States</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-5 mb-10">
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Default (off)</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Uncontrolled — click to toggle.</p>
+    <div><bloc-toggle></bloc-toggle></div>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Disabled (off)</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Non-interactive via <code>[disabled]</code>.</p>
+    <div><bloc-toggle [disabled]="true"></bloc-toggle></div>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Disabled (on)</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Checked + disabled via <code>FormControl.disable()</code>.</p>
+    <div>
+      <bloc-toggle [formControl]="disabledCtrl"></bloc-toggle>
+    </div>
+  </div>
+</div>
+
+<!-- Inline label via ng-content -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Inline label</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-5 mb-10">
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Label after (default)</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Label appears after the toggle (<code>labelPosition="after"</code>).
+    </p>
+    <div class="flex flex-col gap-2">
+      <bloc-toggle class="text-sm text-slate-700">Enable notifications</bloc-toggle>
+      <bloc-toggle size="sm" class="text-sm text-slate-700">Dark mode</bloc-toggle>
+    </div>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibond text-slate-900">Label before</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Label appears before the toggle (<code>labelPosition="before"</code>).
+    </p>
+    <div class="flex flex-col gap-2">
+      <bloc-toggle labelPosition="before" class="text-sm text-slate-700">Enable notifications</bloc-toggle>
+      <bloc-toggle labelPosition="before" size="sm" class="text-sm text-slate-700">Dark mode</bloc-toggle>
+    </div>
+  </div>
+</div>
+
+<!-- ngModel -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Template-driven (ngModel)</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-5 mb-10">
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Two-way binding</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Bound via <code>[(ngModel)]</code>.</p>
+    <bloc-toggle [(ngModel)]="ngModelValue" class="text-sm text-slate-700">
+      {{ ngModelValue ? 'On' : 'Off' }}
+    </bloc-toggle>
+    <p class="m-0 text-xs text-slate-400">ngModel value: <strong>{{ ngModelValue }}</strong></p>
+  </div>
+</div>
+
+<!-- Reactive forms -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Reactive forms</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-5">
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">FormControl</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Bound via <code>[formControl]</code>.</p>
+    <bloc-toggle [formControl]="reactiveCtrl" class="text-sm text-slate-700">
+      {{ reactiveCtrl.value ? 'Enabled' : 'Disabled' }}
+    </bloc-toggle>
+    <p class="m-0 text-xs text-slate-400">
+      value: <strong>{{ reactiveCtrl.value }}</strong> &nbsp;|&nbsp;
+      touched: <strong>{{ reactiveCtrl.touched }}</strong>
+    </p>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">setDisabledState</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Enable/disable the control from code.</p>
+    <bloc-toggle [formControl]="disabledCtrl" class="text-sm text-slate-700">
+      {{ disabledCtrl.disabled ? 'Form-disabled' : 'Form-enabled' }}
+    </bloc-toggle>
+    <div>
+      <button blocButton variant="outline" (clicked)="toggleDisabled()">
+        {{ disabledCtrl.disabled ? 'Enable' : 'Disable' }} control
+      </button>
+    </div>
+  </div>
+
+  <!-- Custom token override -->
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Custom token</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Override colours via CSS custom properties.</p>
+    <bloc-toggle style="--bloc-toggle-track-checked-bg: #3bf6a2; --bloc-toggle-focus-ring: #3b82f6"
+      [formControl]="reactiveCtrl" class="text-sm text-slate-700">
+      Green track
+    </bloc-toggle>
+  </div>
+</div>

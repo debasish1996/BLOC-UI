@@ -1,0 +1,88 @@
+// Host — authoritative structural rules
+:host {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  user-select: none;
+
+  // Internal size vars — inherited by child elements via CSS cascade
+  --_track-w: var(--bloc-toggle-width, 44px);
+  --_track-h: var(--bloc-toggle-height, 24px);
+  --_thumb-size: 18px;
+  --_thumb-gap: 3px;
+
+  &.bloc-toggle--sm {
+    --_track-w: var(--bloc-toggle-width, 32px);
+    --_track-h: var(--bloc-toggle-height, 18px);
+    --_thumb-size: 12px;
+  }
+
+  &.bloc-toggle--lg {
+    --_track-w: var(--bloc-toggle-width, 56px);
+    --_track-h: var(--bloc-toggle-height, 32px);
+    --_thumb-size: 24px;
+    --_thumb-gap: 4px;
+  }
+
+  &.bloc-toggle--disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  // When label is before the track, push the track to the end via flex order
+  &.bloc-toggle--label-before .bloc-toggle__track {
+    order: 1;
+  }
+
+  &:focus-visible {
+    outline: 2px solid var(--bloc-toggle-focus-ring, var(--bloc-primary, #6b7280));
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+// Track — authoritative structural
+.bloc-toggle__track {
+  position: relative;
+  display: inline-block;
+  flex-shrink: 0;
+  border-radius: 999px;
+  width: var(--_track-w);
+  height: var(--_track-h);
+  transition: background-color 0.2s ease;
+}
+
+// Track — overridable visual (zero-specificity via :where)
+:where(.bloc-toggle__track) {
+  background-color: var(--bloc-toggle-track-bg, #d1d5db);
+}
+
+:host.bloc-toggle--checked .bloc-toggle__track {
+  background-color: var(--bloc-toggle-track-checked-bg, var(--bloc-primary, #6b7280));
+}
+
+// Thumb — authoritative structural
+.bloc-toggle__thumb {
+  position: absolute;
+  border-radius: 50%;
+  top: var(--_thumb-gap);
+  left: var(--_thumb-gap);
+  width: var(--_thumb-size);
+  height: var(--_thumb-size);
+  transition: transform 0.2s ease;
+}
+
+// Thumb — overridable visual (zero-specificity via :where)
+:where(.bloc-toggle__thumb) {
+  background-color: var(--bloc-toggle-thumb-bg, #ffffff);
+  box-shadow: 0 1px 3px var(--bloc-toggle-thumb-shadow, rgba(0, 0, 0, 0.2));
+}
+
+// Checked: slide thumb to the right
+// translate = track-width − thumb-size − 2 × gap
+:host.bloc-toggle--checked .bloc-toggle__thumb {
+  transform: translateX(
+    calc(var(--_track-w) - var(--_thumb-size) - 2 * var(--_thumb-gap))
+  );
+}
