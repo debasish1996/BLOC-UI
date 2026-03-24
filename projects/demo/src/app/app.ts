@@ -12,6 +12,7 @@ export class App {
     { path: 'button', label: 'Button' },
     { path: 'input', label: 'Input' },
     { path: 'modal', label: 'Modal' },
+    { path: 'radio', label: 'Radio' },
     { path: 'spinner', label: 'Spinner' },
     { path: 'toggle', label: 'Toggle' },
   ];

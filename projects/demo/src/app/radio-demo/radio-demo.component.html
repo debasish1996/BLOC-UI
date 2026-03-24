@@ -1,0 +1,165 @@
+<header class="mb-8 pb-4 border-b border-slate-200">
+  <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Radio</h1>
+  <p class="m-0 text-slate-400 text-[0.95rem]">
+    Group of mutually exclusive options. Use <code>bloc-radio-group</code> with <code>ngModel</code>,
+    <code>formControl</code>, or <code>formControlName</code>.
+  </p>
+</header>
+
+<!-- Sizes -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Sizes</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-5 mb-10">
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Small</h3>
+    <bloc-radio-group>
+      <bloc-radio value="a" size="sm" class="text-sm text-slate-700">Option A</bloc-radio>
+      <bloc-radio value="b" size="sm" class="text-sm text-slate-700">Option B</bloc-radio>
+    </bloc-radio-group>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Medium (default)</h3>
+    <bloc-radio-group>
+      <bloc-radio value="a" class="text-sm text-slate-700">Option A</bloc-radio>
+      <bloc-radio value="b" class="text-sm text-slate-700">Option B</bloc-radio>
+    </bloc-radio-group>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Large</h3>
+    <bloc-radio-group>
+      <bloc-radio value="a" size="lg" class="text-slate-700">Option A</bloc-radio>
+      <bloc-radio value="b" size="lg" class="text-slate-700">Option B</bloc-radio>
+    </bloc-radio-group>
+  </div>
+</div>
+
+<!-- States -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">States</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-5 mb-10">
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Group disabled</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">All items disabled via <code>[disabled]</code> on the group.</p>
+    <bloc-radio-group [disabled]="true">
+      <bloc-radio value="a" class="text-sm text-slate-700">Option A</bloc-radio>
+      <bloc-radio value="b" class="text-sm text-slate-700">Option B</bloc-radio>
+    </bloc-radio-group>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Item disabled</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">One option disabled individually.</p>
+    <bloc-radio-group>
+      <bloc-radio value="a" class="text-sm text-slate-700">Option A</bloc-radio>
+      <bloc-radio value="b" [disabled]="true" class="text-sm text-slate-700">Option B (disabled)</bloc-radio>
+      <bloc-radio value="c" class="text-sm text-slate-700">Option C</bloc-radio>
+    </bloc-radio-group>
+  </div>
+</div>
+
+<!-- Label position -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Label position</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-5 mb-10">
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Label after (default)</h3>
+    <bloc-radio-group>
+      <bloc-radio value="a" class="text-sm text-slate-700">Option A</bloc-radio>
+      <bloc-radio value="b" class="text-sm text-slate-700">Option B</bloc-radio>
+    </bloc-radio-group>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Label before (group)</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400"><code>labelPosition="before"</code> on the group.</p>
+    <bloc-radio-group labelPosition="before">
+      <bloc-radio value="a" class="text-sm text-slate-700">Option A</bloc-radio>
+      <bloc-radio value="b" class="text-sm text-slate-700">Option B</bloc-radio>
+    </bloc-radio-group>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Per-item override</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Each item overrides the group default.</p>
+    <bloc-radio-group>
+      <bloc-radio value="a" labelPosition="before" class="text-sm text-slate-700">Before</bloc-radio>
+      <bloc-radio value="b" class="text-sm text-slate-700">After (inherited)</bloc-radio>
+    </bloc-radio-group>
+  </div>
+</div>
+
+<!-- Horizontal layout -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Horizontal layout</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-5 mb-10">
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Row via CSS token</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Override <code>--bloc-radio-group-gap</code> and flex direction with a
+      class.</p>
+    <bloc-radio-group class="!flex-row flex-wrap" style="--bloc-radio-group-gap: 16px">
+      <bloc-radio value="xs" class="text-sm text-slate-700">XS</bloc-radio>
+      <bloc-radio value="sm" class="text-sm text-slate-700">SM</bloc-radio>
+      <bloc-radio value="md" class="text-sm text-slate-700">MD</bloc-radio>
+      <bloc-radio value="lg" class="text-sm text-slate-700">LG</bloc-radio>
+    </bloc-radio-group>
+  </div>
+</div>
+
+<!-- ngModel -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Template-driven (ngModel)</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-5 mb-10">
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Two-way binding</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Bound via <code>[(ngModel)]</code>.</p>
+    <bloc-radio-group [(ngModel)]="ngModelValue">
+      <bloc-radio value="apple" class="text-sm text-slate-700">Apple</bloc-radio>
+      <bloc-radio value="banana" class="text-sm text-slate-700">Banana</bloc-radio>
+      <bloc-radio value="cherry" class="text-sm text-slate-700">Cherry</bloc-radio>
+    </bloc-radio-group>
+    <p class="m-0 text-xs text-slate-400">
+      ngModel value: <strong>{{ ngModelValue || '(none)' }}</strong>
+    </p>
+  </div>
+</div>
+
+<!-- Reactive forms -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Reactive forms</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-5">
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">FormControl</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Bound via <code>[formControl]</code>.</p>
+    <bloc-radio-group [formControl]="reactiveCtrl">
+      <bloc-radio value="xs" class="text-sm text-slate-700">Extra small</bloc-radio>
+      <bloc-radio value="sm" class="text-sm text-slate-700">Small</bloc-radio>
+      <bloc-radio value="md" class="text-sm text-slate-700">Medium</bloc-radio>
+      <bloc-radio value="lg" class="text-sm text-slate-700">Large</bloc-radio>
+    </bloc-radio-group>
+    <p class="m-0 text-xs text-slate-400">
+      value: <strong>{{ reactiveCtrl.value || '(none)' }}</strong> &nbsp;|&nbsp;
+      touched: <strong>{{ reactiveCtrl.touched }}</strong>
+    </p>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">setDisabledState</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Enable/disable the group from code.</p>
+    <bloc-radio-group [formControl]="disabledCtrl">
+      <bloc-radio value="a" class="text-sm text-slate-700">Option A</bloc-radio>
+      <bloc-radio value="b" class="text-sm text-slate-700">Option B</bloc-radio>
+    </bloc-radio-group>
+    <div>
+      <button blocButton variant="outline" (clicked)="toggleDisabled()">
+        {{ disabledCtrl.disabled ? 'Enable' : 'Disable' }} group
+      </button>
+    </div>
+  </div>
+
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Custom token</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Override colours via CSS custom properties.</p>
+    <bloc-radio-group [formControl]="reactiveCtrl"
+      style="--bloc-radio-checked-border: #3b82f6; --bloc-radio-dot-color: #3b82f6; --bloc-radio-focus-ring: #3b82f6">
+      <bloc-radio value="xs" class="text-sm text-slate-700">Extra small</bloc-radio>
+      <bloc-radio value="sm" class="text-sm text-slate-700">Small</bloc-radio>
+      <bloc-radio value="md" class="text-sm text-slate-700">Medium</bloc-radio>
+    </bloc-radio-group>
+  </div>
+</div>

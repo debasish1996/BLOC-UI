@@ -28,3 +28,8 @@ export * from './lib/spinner/spinner.module';
 export * from './lib/toggle/toggle.component';
 export * from './lib/toggle/toggle.module';
 
+// Radio
+export * from './lib/radio/radio-group.component';
+export * from './lib/radio/radio.component';
+export * from './lib/radio/radio.module';
+
