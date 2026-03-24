@@ -1,6 +1,6 @@
 {
   "name": "@bloc-ui/core",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "peerDependencies": {
     "@angular/common": "^21.2.0",
     "@angular/core": "^21.2.0"

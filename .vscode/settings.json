@@ -3,6 +3,12 @@
         "/^git add -A && git commit -m \"chore: release @bloc-ui/core v0\\.0\\.4\"$/": {
             "approve": true,
             "matchCommandLine": true
-        }
+        },
+        "/^git push$/": {
+            "approve": true,
+            "matchCommandLine": true
+        },
+        "git add": true,
+        "git commit": true
     }
 }
