@@ -34,7 +34,7 @@ The user MUST specify which package to release: `core`, `theme`, or `both`.
 
 1. The project name must already be known from the step above. If not, stop and ask.
 2. Read the current version from the target `package.json`.
-3. Ask the user for the bump type: `patch`, `minor`, or `major`. Default to `patch` if not specified.
+3. Use `patch` as the bump type unless the user explicitly specified `minor` or `major`. Do NOT ask the user for the bump type.
 4. Compute the next version by incrementing the appropriate semver segment.
 5. Update the `version` field in:
    - The target package's `package.json` (e.g. `projects/bloc-ui/package.json`).
