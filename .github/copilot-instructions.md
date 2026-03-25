@@ -17,7 +17,7 @@ Shared constants available to all agents and conversations in this workspace.
 
 | Key     | npm Name         | Path                                  | Current Version               |
 | ------- | ---------------- | ------------------------------------- | ----------------------------- |
-| `core`  | `@bloc-ui/core`  | `projects/bloc-ui-core/package.json`       | _(read from file at runtime)_ |
+| `core`  | `@bloc-ui/core`  | `projects/bloc-ui-core/package.json`  | _(read from file at runtime)_ |
 | `theme` | `@bloc-ui/theme` | `projects/bloc-ui-theme/package.json` | _(read from file at runtime)_ |
 
 ---
@@ -28,7 +28,7 @@ This is a two-package Angular component library workspace:
 
 | Package         | Purpose                                                                |
 | --------------- | ---------------------------------------------------------------------- |
-| `bloc-ui-core`       | Component library — structure, behaviour, accessibility                |
+| `bloc-ui-core`  | Component library — structure, behaviour, accessibility                |
 | `bloc-ui-theme` | Optional theme layer — CSS custom properties, colour tokens, dark mode |
 
 ---
@@ -137,8 +137,8 @@ All styles **must** follow this priority order, highest to lowest:
 
 | Concern                                      | Location                               |
 | -------------------------------------------- | -------------------------------------- |
-| HTML structure, accessibility, behaviour     | `bloc-ui-core` component                    |
-| Preset sizes (width/height via class)        | `bloc-ui-core` component SCSS               |
+| HTML structure, accessibility, behaviour     | `bloc-ui-core` component               |
+| Preset sizes (width/height via class)        | `bloc-ui-core` component SCSS          |
 | Colours, typography, dark mode, brand tokens | `bloc-ui-theme/styles/bloc-theme.scss` |
 | Per-app overrides                            | Consumer's own stylesheet              |
 

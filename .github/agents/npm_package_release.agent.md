@@ -11,7 +11,7 @@ Use the **Workspace Variables** section from `copilot-instructions.md` for repo 
 
 | Package | Path                                  | npm name                 |
 | ------- | ------------------------------------- | ------------------------ |
-| Core    | `projects/bloc-ui-core/package.json`       | `@bloc-ui/core`          |
+| Core    | `projects/bloc-ui-core/package.json`  | `@bloc-ui/core`          |
 | Theme   | `projects/bloc-ui-theme/package.json` | `@bloc-ui/theme`         |
 | Root    | `package.json`                        | (private, not published) |
 
