@@ -19,11 +19,7 @@ npm install @bloc-ui/tab
 ## Usage
 
 ```ts
-import {
-  BlocTabGroupComponent,
-  BlocTabComponent,
-  BlocTabModule,
-} from '@bloc-ui/tab';
+import { BlocTabGroupComponent, BlocTabComponent, BlocTabModule } from '@bloc-ui/tab';
 ```
 
 ### Basic
@@ -39,8 +35,7 @@ import {
 ### Sizes
 
 ```html
-<bloc-tab-group size="sm">…</bloc-tab-group>
-<bloc-tab-group size="lg">…</bloc-tab-group>
+<bloc-tab-group size="sm">…</bloc-tab-group> <bloc-tab-group size="lg">…</bloc-tab-group>
 ```
 
 ### Disabled tab
@@ -55,9 +50,7 @@ import {
 ### Controlled selection
 
 ```html
-<bloc-tab-group
-  [selectedIndex]="1"
-  (selectedIndexChange)="onTabChange($event)">
+<bloc-tab-group [selectedIndex]="1" (selectedIndexChange)="onTabChange($event)">
   <bloc-tab label="First">…</bloc-tab>
   <bloc-tab label="Second">…</bloc-tab>
 </bloc-tab-group>
@@ -67,40 +60,40 @@ import {
 
 ## `BlocTabGroupComponent` inputs
 
-| Input           | Type                    | Default | Description                  |
-| --------------- | ----------------------- | ------- | ---------------------------- |
-| `size`          | `'sm' \| 'md' \| 'lg'` | `'md'`  | Tab density preset           |
-| `selectedIndex` | `number`                | `0`     | Index of the initially active tab |
+| Input           | Type                   | Default | Description                       |
+| --------------- | ---------------------- | ------- | --------------------------------- |
+| `size`          | `'sm' \| 'md' \| 'lg'` | `'md'`  | Tab density preset                |
+| `selectedIndex` | `number`               | `0`     | Index of the initially active tab |
 
 ### Outputs
 
-| Output               | Type     | Description                       |
-| -------------------- | -------- | --------------------------------- |
-| `selectedIndexChange`| `number` | Emits when the active tab changes |
+| Output                | Type     | Description                       |
+| --------------------- | -------- | --------------------------------- |
+| `selectedIndexChange` | `number` | Emits when the active tab changes |
 
 ## `BlocTabComponent` inputs
 
-| Input      | Type      | Default | Description              |
-| ---------- | --------- | ------- | ------------------------ |
-| `label`    | `string`  | —       | Tab header label         |
+| Input      | Type      | Default | Description                 |
+| ---------- | --------- | ------- | --------------------------- |
+| `label`    | `string`  | —       | Tab header label            |
 | `disabled` | `boolean` | `false` | Whether the tab is disabled |
 
 ---
 
 ## CSS tokens
 
-| Token                       | Fallback                       | Description                  |
-| --------------------------- | ------------------------------ | ---------------------------- |
-| `--bloc-tab-header-gap`     | `0`                            | Gap between tab buttons      |
-| `--bloc-tab-border`         | `var(--bloc-border, #d1d5db)`  | Header bottom border colour  |
-| `--bloc-tab-padding`        | `10px 16px`                    | Tab button padding           |
-| `--bloc-tab-font-size`      | `0.875rem`                     | Tab button font size         |
-| `--bloc-tab-color`          | `#6b7280`                      | Inactive tab text colour     |
-| `--bloc-tab-hover-color`    | `#374151`                      | Tab hover text colour        |
-| `--bloc-tab-indicator`      | `var(--bloc-primary, #6b7280)` | Active tab indicator colour  |
-| `--bloc-tab-active-color`   | `var(--bloc-primary, #374151)` | Active tab text colour       |
-| `--bloc-tab-focus-ring`     | `var(--bloc-primary, #6b7280)` | Focus ring colour            |
-| `--bloc-tab-body-padding`   | `16px 0`                       | Tab body padding             |
+| Token                     | Fallback                       | Description                 |
+| ------------------------- | ------------------------------ | --------------------------- |
+| `--bloc-tab-header-gap`   | `0`                            | Gap between tab buttons     |
+| `--bloc-tab-border`       | `var(--bloc-border, #d1d5db)`  | Header bottom border colour |
+| `--bloc-tab-padding`      | `10px 16px`                    | Tab button padding          |
+| `--bloc-tab-font-size`    | `0.875rem`                     | Tab button font size        |
+| `--bloc-tab-color`        | `#6b7280`                      | Inactive tab text colour    |
+| `--bloc-tab-hover-color`  | `#374151`                      | Tab hover text colour       |
+| `--bloc-tab-indicator`    | `var(--bloc-primary, #6b7280)` | Active tab indicator colour |
+| `--bloc-tab-active-color` | `var(--bloc-primary, #374151)` | Active tab text colour      |
+| `--bloc-tab-focus-ring`   | `var(--bloc-primary, #6b7280)` | Focus ring colour           |
+| `--bloc-tab-body-padding` | `16px 0`                       | Tab body padding            |
 
 ---
 
