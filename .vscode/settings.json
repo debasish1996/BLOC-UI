@@ -12,5 +12,8 @@
       "git commit": true,
       "gh": true,
       "npx ng": true
-    }
+    },
+    "cSpell.words": [
+      "packagr"
+    ]
 }

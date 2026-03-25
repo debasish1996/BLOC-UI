@@ -17,7 +17,9 @@ Shared constants available to all agents and conversations in this workspace.
 
 | Key     | npm Name         | Path                                  | Current Version               |
 | ------- | ---------------- | ------------------------------------- | ----------------------------- |
+| `kit`   | `@bloc-ui/kit`   | `projects/bloc-ui/package.json`       | _(read from file at runtime)_ |
 | `core`  | `@bloc-ui/core`  | `projects/bloc-ui-core/package.json`  | _(read from file at runtime)_ |
+| `modal` | `@bloc-ui/modal` | `projects/bloc-ui-modal/package.json` | _(read from file at runtime)_ |
 | `theme` | `@bloc-ui/theme` | `projects/bloc-ui-theme/package.json` | _(read from file at runtime)_ |
 
 ---

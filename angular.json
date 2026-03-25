@@ -46,6 +46,26 @@
         }
       }
     },
+    "bloc-ui": {
+      "projectType": "library",
+      "root": "projects/bloc-ui",
+      "sourceRoot": "projects/bloc-ui/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/bloc-ui/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/bloc-ui/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
     "bloc-ui-core": {
       "projectType": "library",
       "root": "projects/bloc-ui-core",

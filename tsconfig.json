@@ -4,19 +4,20 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "bloc-ui-core": ["./dist/bloc-ui-core"],
-      "@bloc-ui/core": ["./dist/bloc-ui-core"],
-      "@bloc-ui/core/button": ["./dist/bloc-ui-core/button"],
-      "@bloc-ui/core/checkbox": ["./dist/bloc-ui-core/checkbox"],
-      "@bloc-ui/core/input": ["./dist/bloc-ui-core/input"],
-      "@bloc-ui/modal": ["./dist/bloc-ui-modal"],
-      "@bloc-ui/core/radio": ["./dist/bloc-ui-core/radio"],
-      "@bloc-ui/core/spinner": ["./dist/bloc-ui-core/spinner"],
-      "@bloc-ui/core/tab": ["./dist/bloc-ui-core/tab"],
-      "@bloc-ui/core/table": ["./dist/bloc-ui-core/table"],
-      "@bloc-ui/core/toast": ["./dist/bloc-ui-core/toast"],
-      "@bloc-ui/core/toggle": ["./dist/bloc-ui-core/toggle"],
-      "@bloc-ui/core/date-picker": ["./dist/bloc-ui-core/date-picker"]
+      "bloc-ui-core": ["./projects/bloc-ui-core/public-api.ts"],
+      "@bloc-ui/core": ["./projects/bloc-ui-core/public-api.ts"],
+      "@bloc-ui/core/button": ["./projects/bloc-ui-core/button/src/public-api.ts"],
+      "@bloc-ui/core/checkbox": ["./projects/bloc-ui-core/checkbox/src/public-api.ts"],
+      "@bloc-ui/core/input": ["./projects/bloc-ui-core/input/src/public-api.ts"],
+      "@bloc-ui/modal": ["./projects/bloc-ui-modal/src/public-api.ts"],
+      "@bloc-ui/kit": ["./projects/bloc-ui/src/public-api.ts"],
+      "@bloc-ui/core/radio": ["./projects/bloc-ui-core/radio/src/public-api.ts"],
+      "@bloc-ui/core/spinner": ["./projects/bloc-ui-core/spinner/src/public-api.ts"],
+      "@bloc-ui/core/tab": ["./projects/bloc-ui-core/tab/src/public-api.ts"],
+      "@bloc-ui/core/table": ["./projects/bloc-ui-core/table/src/public-api.ts"],
+      "@bloc-ui/core/toast": ["./projects/bloc-ui-core/toast/src/public-api.ts"],
+      "@bloc-ui/core/toggle": ["./projects/bloc-ui-core/toggle/src/public-api.ts"],
+      "@bloc-ui/core/date-picker": ["./projects/bloc-ui-core/date-picker/src/public-api.ts"]
     },
     "strict": true,
     "noImplicitOverride": true,
@@ -46,6 +47,9 @@
     },
     {
       "path": "./projects/bloc-ui-modal/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/bloc-ui/tsconfig.lib.json"
     },
     {
       "path": "./projects/bloc-ui-theme/tsconfig.lib.json"

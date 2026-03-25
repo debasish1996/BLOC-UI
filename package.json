@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "build:bloc-ui": "ng build bloc-ui-core && ng build bloc-ui-modal && ng build bloc-ui"
   },
   "private": true,
   "packageManager": "npm@11.9.0",
