@@ -1,15 +1,16 @@
 <div class="flex min-h-screen bg-slate-50">
   <!-- Sidebar -->
-  <aside class="w-[220px] shrink-0 bg-slate-800 text-slate-200 flex flex-col">
-    <div class="px-5 pt-6 pb-4 flex items-center gap-2.5 border-b border-slate-700">
+  <aside class="fixed top-0 left-0 w-55 h-screen bg-slate-800 text-slate-200 flex flex-col overflow-y-auto">
+    <a routerLink="/"
+      class="px-5 pt-6 pb-4 flex items-center gap-2.5 border-b border-slate-700 no-underline cursor-pointer hover:opacity-90 transition-opacity">
       <img src="logo.svg" alt="Bloc UI" class="h-7 w-7" />
       <span class="text-[1.1rem] font-bold tracking-[0.04em] text-white">Bloc UI</span>
-    </div>
+    </a>
     <nav class="flex flex-col py-3">
       @for (item of menuItems; track item.path) {
       <button
         class="cursor-pointer px-5 py-[0.65rem] text-[0.9rem] text-slate-400 hover:bg-[#273549] hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left"
-        [routerLink]="item.path" routerLinkActive="nav-active">
+        [routerLink]="item.path" routerLinkActive="nav-active" [routerLinkActiveOptions]="{ exact: item.path === '' }">
         {{ item.label }}
       </button>
       }
@@ -17,7 +18,7 @@
   </aside>
 
   <!-- Main content -->
-  <main class="flex-1 py-8 px-10 overflow-y-auto">
+  <main class="flex-1 ml-55 py-8 px-10 overflow-y-auto">
     <router-outlet />
   </main>
 </div>

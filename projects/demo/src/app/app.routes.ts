@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { HomeComponent } from './home/home.component';
 import { ButtonDemoComponent } from './button-demo/button-demo.component';
 import { CheckboxDemoComponent } from './checkbox-demo/checkbox-demo.component';
 import { InputDemoComponent } from './input-demo/input-demo.component';
@@ -8,7 +9,7 @@ import { SpinnerDemoComponent } from './spinner-demo/spinner-demo.component';
 import { ToggleDemoComponent } from './toggle-demo/toggle-demo.component';
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'button', pathMatch: 'full' },
+  { path: '', component: HomeComponent, pathMatch: 'full' },
   { path: 'button', component: ButtonDemoComponent },
   { path: 'checkbox', component: CheckboxDemoComponent },
   { path: 'input', component: InputDemoComponent },
