@@ -11,7 +11,7 @@ Lightweight, accessible Angular component library — barebone structure and beh
 
 | Package                                                          | Description                                                            | Version |
 | ---------------------------------------------------------------- | ---------------------------------------------------------------------- | ------- |
-| [`@bloc-ui/core`](https://www.npmjs.com/package/@bloc-ui/core)   | Component library — structure, behaviour, accessibility                | `0.0.6` |
+| [`@bloc-ui/core`](https://www.npmjs.com/package/@bloc-ui/core)   | Component library — structure, behaviour, accessibility                | `0.0.7` |
 | [`@bloc-ui/theme`](https://www.npmjs.com/package/@bloc-ui/theme) | Optional theme layer — CSS custom properties, colour tokens, dark mode | `0.0.2` |
 
 ## Components
