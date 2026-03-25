@@ -2,7 +2,11 @@
 
 > **Latest:** v0.0.1
 
-Tab group component for Angular — part of the [Bloc UI](https://github.com/debasish1996/BLOC-UI) component library.
+Tab group component for Angular — part of the [Bloc UI](https://github.com/debasish1996/BLOC-UI) component library. Supports size presets, disabled tabs, animated active indicator, and selection change events.
+
+**[Live Documentation & Demos](https://debasish1996.github.io/BLOC-UI/)**
+
+> **Tip:** You can also install [`@bloc-ui/kit`](https://www.npmjs.com/package/@bloc-ui/kit) to get this package along with every other Bloc UI component in a single import.
 
 ---
 
@@ -94,6 +98,14 @@ import { BlocTabGroupComponent, BlocTabComponent, BlocTabModule } from '@bloc-ui
 | `--bloc-tab-active-color` | `var(--bloc-primary, #374151)` | Active tab text colour      |
 | `--bloc-tab-focus-ring`   | `var(--bloc-primary, #6b7280)` | Focus ring colour           |
 | `--bloc-tab-body-padding` | `16px 0`                       | Tab body padding            |
+
+---
+
+## Accessibility
+
+- Active panel uses `role="tabpanel"`.
+- Focus-visible outline on tab buttons.
+- Disabled tabs are visually indicated and non-interactive.
 
 ---
 

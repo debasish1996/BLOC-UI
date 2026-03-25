@@ -6,6 +6,8 @@ Lightweight, accessible Angular component library. Barebone structure and behavi
 
 **[Live Documentation & Demos](https://debasish1996.github.io/BLOC-UI/)**
 
+> **Tip:** Need modal, table, toast, date-picker, or tab components too? Install [`@bloc-ui/kit`](https://www.npmjs.com/package/@bloc-ui/kit) for a single all-in-one import, or install each standalone package individually.
+
 ---
 
 ## Installation

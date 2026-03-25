@@ -2,7 +2,11 @@
 
 > **Latest:** v0.0.1
 
-Lightweight data table component for Angular — part of the [Bloc UI](https://github.com/debasish1996/BLOC-UI) component library.
+Lightweight, declarative data table component for Angular — part of the [Bloc UI](https://github.com/debasish1996/BLOC-UI) component library. Supports striped rows, bordered cells, hover highlighting, size presets, and custom cell templates.
+
+**[Live Documentation & Demos](https://debasish1996.github.io/BLOC-UI/)**
+
+> **Tip:** You can also install [`@bloc-ui/kit`](https://www.npmjs.com/package/@bloc-ui/kit) to get this package along with every other Bloc UI component in a single import.
 
 ---
 
@@ -99,6 +103,24 @@ import {
 | `--bloc-table-border`     | `var(--bloc-border, #d1d5db)` | Border colour          |
 | `--bloc-table-stripe-bg`  | `#f9fafb`                     | Striped row background |
 | `--bloc-table-hover-bg`   | `#f3f4f6`                     | Hovered row background |
+
+---
+
+## Custom cell templates
+
+The `blocCellDef` directive provides the implicit template context:
+
+| Variable    | Type                      | Description                   |
+| ----------- | ------------------------- | ----------------------------- |
+| `$implicit` | `unknown`                 | The cell value (`row[field]`) |
+| `row`       | `Record<string, unknown>` | The full row object           |
+
+---
+
+## Accessibility
+
+- Renders semantic `<table>`, `<thead>`, `<tbody>`, `<tr>`, `<th>`, and `<td>` elements.
+- Responsive overflow wrapper on the host element.
 
 ---
 

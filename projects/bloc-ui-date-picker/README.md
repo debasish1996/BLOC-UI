@@ -2,7 +2,11 @@
 
 > **Latest:** v0.0.1
 
-Date picker component with calendar dropdown for Angular — part of the [Bloc UI](https://github.com/debasish1996/BLOC-UI) component library.
+Date picker component with calendar dropdown for Angular — part of the [Bloc UI](https://github.com/debasish1996/BLOC-UI) component library. Supports template-driven and reactive forms, min/max date enforcement, and customisable display format.
+
+**[Live Documentation & Demos](https://debasish1996.github.io/BLOC-UI/)**
+
+> **Tip:** You can also install [`@bloc-ui/kit`](https://www.npmjs.com/package/@bloc-ui/kit) to get this package along with every other Bloc UI component in a single import.
 
 ---
 
@@ -90,6 +94,15 @@ import { BlocDatePickerComponent, BlocDatePickerModule } from '@bloc-ui/date-pic
 | `--bloc-date-picker-today-border`    | `var(--bloc-primary, #6b7280)` | Today border colour      |
 | `--bloc-date-picker-selected-bg`     | `var(--bloc-primary, #6b7280)` | Selected day background  |
 | `--bloc-date-picker-selected-color`  | `#ffffff`                      | Selected day text colour |
+
+---
+
+## Accessibility
+
+- Input sets `aria-expanded` and `aria-haspopup="dialog"` for the calendar dropdown.
+- Dropdown uses `role="dialog"` with `aria-label="Date picker"`.
+- Closes on <kbd>Escape</kbd> key and outside click.
+- Calendar includes a "Today" button for quick navigation.
 
 ---
 

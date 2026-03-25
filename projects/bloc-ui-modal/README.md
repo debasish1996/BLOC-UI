@@ -4,6 +4,10 @@
 
 Modal dialog service for Angular — part of the [Bloc UI](https://github.com/debasish1996/BLOC-UI) component library.
 
+**[Live Documentation & Demos](https://debasish1996.github.io/BLOC-UI/)**
+
+> **Tip:** You can also install [`@bloc-ui/kit`](https://www.npmjs.com/package/@bloc-ui/kit) to get this package along with every other Bloc UI component in a single import.
+
 ---
 
 ## Installation
@@ -103,6 +107,14 @@ export class MyModalComponent extends BlocModal<{ userId: number }, boolean> {
 | `--bloc-modal-title-size`     | `1em`                         | Title font size           |
 | `--bloc-modal-title-weight`   | `600`                         | Title font weight         |
 | `--bloc-muted`                | `#94a3b8`                     | Close button colour       |
+
+---
+
+## Accessibility
+
+- Dialog uses `role="dialog"` and `aria-modal="true"`.
+- Optional close button in the header.
+- Backdrop click can be disabled via `closeOnBackdropClick: false`.
 
 ---
 
