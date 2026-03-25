@@ -15,6 +15,7 @@
       <span class="text-xs text-slate-400">Value: {{ name() }}</span>
       }
     </div>
+    <app-sample-code [code]="snippets.text" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -24,6 +25,7 @@
       <label class="text-xs font-medium text-slate-700" for="input-password">Password</label>
       <input blocInput id="input-password" type="password" placeholder="Enter password" />
     </div>
+    <app-sample-code [code]="snippets.password" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -32,6 +34,7 @@
     <div>
       <input blocInput type="search" placeholder="Search..." />
     </div>
+    <app-sample-code [code]="snippets.noLabel" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -41,6 +44,7 @@
       <label class="text-xs font-medium text-slate-700" for="input-disabled">Read-only field</label>
       <input blocInput id="input-disabled" type="text" placeholder="Cannot edit" disabled />
     </div>
+    <app-sample-code [code]="snippets.disabled" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -49,6 +53,7 @@
     <div>
       <input blocInput type="text" placeholder="Custom border radius" style="--bloc-input-radius: 999px" />
     </div>
+    <app-sample-code [code]="snippets.customToken" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -58,6 +63,7 @@
       <bloc-prefix><app-icon name="search" /></bloc-prefix>
       <input blocInput type="search" placeholder="Search..." />
     </bloc-input-group>
+    <app-sample-code [code]="snippets.prefix" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -67,6 +73,7 @@
       <input blocInput type="email" placeholder="Enter email" />
       <bloc-suffix><app-icon name="mail" /></bloc-suffix>
     </bloc-input-group>
+    <app-sample-code [code]="snippets.suffix" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -77,6 +84,7 @@
       <input blocInput type="text" placeholder="Search..." />
       <bloc-suffix><app-icon name="x" /></bloc-suffix>
     </bloc-input-group>
+    <app-sample-code [code]="snippets.prefixSuffix" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -87,6 +95,7 @@
       <input blocInput type="password" placeholder="Enter password" />
       <span blocSuffix><app-icon name="eye" /></span>
     </div>
+    <app-sample-code [code]="snippets.attrSelector" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -96,6 +105,7 @@
       <input blocInput type="text" placeholder="This field has an error" [error]="true" aria-describedby="err-manual" />
       <bloc-input-error>This field is required.</bloc-input-error>
     </div>
+    <app-sample-code [code]="snippets.errorManual" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -112,6 +122,7 @@
       <bloc-input-error>Please enter a valid email address.</bloc-input-error>
       }
     </div>
+    <app-sample-code [code]="snippets.errorFormControl" />
   </div>
 
 </div>

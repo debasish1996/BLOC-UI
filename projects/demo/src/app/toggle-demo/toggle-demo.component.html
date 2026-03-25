@@ -12,16 +12,19 @@
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
     <h3 class="m-0 text-base font-semibold text-slate-900">Small</h3>
     <bloc-toggle size="sm"></bloc-toggle>
+    <app-sample-code [code]="snippets.sizeSmall" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
     <h3 class="m-0 text-base font-semibold text-slate-900">Medium (default)</h3>
     <bloc-toggle></bloc-toggle>
+    <app-sample-code [code]="snippets.sizeMedium" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
     <h3 class="m-0 text-base font-semibold text-slate-900">Large</h3>
     <bloc-toggle size="lg"></bloc-toggle>
+    <app-sample-code [code]="snippets.sizeLarge" />
   </div>
 </div>
 
@@ -32,12 +35,14 @@
     <h3 class="m-0 text-base font-semibold text-slate-900">Default (off)</h3>
     <p class="m-0 text-[0.82rem] text-slate-400">Uncontrolled — click to toggle.</p>
     <div><bloc-toggle></bloc-toggle></div>
+    <app-sample-code [code]="snippets.default" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
     <h3 class="m-0 text-base font-semibold text-slate-900">Disabled (off)</h3>
     <p class="m-0 text-[0.82rem] text-slate-400">Non-interactive via <code>[disabled]</code>.</p>
     <div><bloc-toggle [disabled]="true"></bloc-toggle></div>
+    <app-sample-code [code]="snippets.disabledOff" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -46,6 +51,7 @@
     <div>
       <bloc-toggle [formControl]="disabledCtrl"></bloc-toggle>
     </div>
+    <app-sample-code [code]="snippets.disabledOn" />
   </div>
 </div>
 
@@ -60,6 +66,7 @@
       <bloc-toggle class="text-sm text-slate-700">Enable notifications</bloc-toggle>
       <bloc-toggle size="sm" class="text-sm text-slate-700">Dark mode</bloc-toggle>
     </div>
+    <app-sample-code [code]="snippets.labelAfter" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -70,6 +77,7 @@
       <bloc-toggle labelPosition="before" class="text-sm text-slate-700">Enable notifications</bloc-toggle>
       <bloc-toggle labelPosition="before" size="sm" class="text-sm text-slate-700">Dark mode</bloc-toggle>
     </div>
+    <app-sample-code [code]="snippets.labelBefore" />
   </div>
 </div>
 
@@ -83,6 +91,7 @@
       {{ ngModelValue ? 'On' : 'Off' }}
     </bloc-toggle>
     <p class="m-0 text-xs text-slate-400">ngModel value: <strong>{{ ngModelValue }}</strong></p>
+    <app-sample-code [code]="snippets.ngModel" />
   </div>
 </div>
 
@@ -99,6 +108,7 @@
       value: <strong>{{ reactiveCtrl.value }}</strong> &nbsp;|&nbsp;
       touched: <strong>{{ reactiveCtrl.touched }}</strong>
     </p>
+    <app-sample-code [code]="snippets.formControl" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -112,6 +122,7 @@
         {{ disabledCtrl.disabled ? 'Enable' : 'Disable' }} control
       </button>
     </div>
+    <app-sample-code [code]="snippets.setDisabled" />
   </div>
 
   <!-- Custom token override -->
@@ -122,5 +133,6 @@
       [formControl]="reactiveCtrl" class="text-sm text-slate-700">
       Green track
     </bloc-toggle>
+    <app-sample-code [code]="snippets.customToken" />
   </div>
 </div>

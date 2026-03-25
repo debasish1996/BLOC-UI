@@ -10,6 +10,7 @@
     <div>
       <button blocButton variant="primary" (clicked)="onButtonClick()">Primary Button</button>
     </div>
+    <app-sample-code [code]="snippets.primary" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -21,6 +22,7 @@
         Secondary Button
       </button>
     </div>
+    <app-sample-code [code]="snippets.secondary" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -29,6 +31,7 @@
     <div>
       <button blocButton variant="outline">Outline Button</button>
     </div>
+    <app-sample-code [code]="snippets.outline" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -37,6 +40,7 @@
     <div>
       <button blocButton variant="primary" [disabled]="true">Disabled Button</button>
     </div>
+    <app-sample-code [code]="snippets.disabled" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -45,6 +49,7 @@
     <div>
       <button blocButton variant="outline" [disabled]="true">Disabled Outline</button>
     </div>
+    <app-sample-code [code]="snippets.disabledOutline" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -54,6 +59,7 @@
       <button blocButton variant="primary" [loading]="loadingPrimary()"
         (clicked)="simulateLoad(loadingPrimary)">Submit</button>
     </div>
+    <app-sample-code [code]="snippets.loadingPrimary" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -63,6 +69,7 @@
       <button blocButton variant="secondary" [loading]="loadingSecondary()"
         (clicked)="simulateLoad(loadingSecondary)">Save Draft</button>
     </div>
+    <app-sample-code [code]="snippets.loadingSecondary" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -72,5 +79,6 @@
       <button blocButton variant="outline" [loading]="loadingOutline()"
         (clicked)="simulateLoad(loadingOutline)">Export</button>
     </div>
+    <app-sample-code [code]="snippets.loadingOutline" />
   </div>
 </div>

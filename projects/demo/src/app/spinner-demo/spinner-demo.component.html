@@ -16,6 +16,7 @@
       <bloc-spinner size="lg" />
       <bloc-spinner size="xl" />
     </div>
+    <app-sample-code [code]="snippets.presetSizes" />
   </div>
 
   <!-- Default (md) -->
@@ -25,6 +26,7 @@
     <div>
       <span blocSpinner></span>
     </div>
+    <app-sample-code [code]="snippets.default" />
   </div>
 
   <!-- Custom width/height inputs -->
@@ -36,6 +38,7 @@
       <span blocSpinner width="56px" height="56px"></span>
       <span blocSpinner width="4rem" height="4rem"></span>
     </div>
+    <app-sample-code [code]="snippets.customInputs" />
   </div>
 
   <!-- Custom via class (Tailwind) -->
@@ -45,6 +48,7 @@
     <div>
       <span blocSpinner class="w-16 h-16"></span>
     </div>
+    <app-sample-code [code]="snippets.customClass" />
   </div>
 
   <!-- Themed via Tailwind text colour -->
@@ -57,6 +61,7 @@
       <span blocSpinner size="lg" class="text-amber-500"></span>
       <span blocSpinner size="lg" class="text-red-500"></span>
     </div>
+    <app-sample-code [code]="snippets.customColour" />
   </div>
 
 </div>

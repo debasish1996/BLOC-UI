@@ -15,6 +15,7 @@
       <bloc-radio value="a" size="sm" class="text-sm text-slate-700">Option A</bloc-radio>
       <bloc-radio value="b" size="sm" class="text-sm text-slate-700">Option B</bloc-radio>
     </bloc-radio-group>
+    <app-sample-code [code]="snippets.sizeSmall" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -23,6 +24,7 @@
       <bloc-radio value="a" class="text-sm text-slate-700">Option A</bloc-radio>
       <bloc-radio value="b" class="text-sm text-slate-700">Option B</bloc-radio>
     </bloc-radio-group>
+    <app-sample-code [code]="snippets.sizeMedium" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -31,6 +33,7 @@
       <bloc-radio value="a" size="lg" class="text-slate-700">Option A</bloc-radio>
       <bloc-radio value="b" size="lg" class="text-slate-700">Option B</bloc-radio>
     </bloc-radio-group>
+    <app-sample-code [code]="snippets.sizeLarge" />
   </div>
 </div>
 
@@ -44,6 +47,7 @@
       <bloc-radio value="a" class="text-sm text-slate-700">Option A</bloc-radio>
       <bloc-radio value="b" class="text-sm text-slate-700">Option B</bloc-radio>
     </bloc-radio-group>
+    <app-sample-code [code]="snippets.groupDisabled" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -54,6 +58,7 @@
       <bloc-radio value="b" [disabled]="true" class="text-sm text-slate-700">Option B (disabled)</bloc-radio>
       <bloc-radio value="c" class="text-sm text-slate-700">Option C</bloc-radio>
     </bloc-radio-group>
+    <app-sample-code [code]="snippets.itemDisabled" />
   </div>
 </div>
 
@@ -66,6 +71,7 @@
       <bloc-radio value="a" class="text-sm text-slate-700">Option A</bloc-radio>
       <bloc-radio value="b" class="text-sm text-slate-700">Option B</bloc-radio>
     </bloc-radio-group>
+    <app-sample-code [code]="snippets.labelAfter" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -75,6 +81,7 @@
       <bloc-radio value="a" class="text-sm text-slate-700">Option A</bloc-radio>
       <bloc-radio value="b" class="text-sm text-slate-700">Option B</bloc-radio>
     </bloc-radio-group>
+    <app-sample-code [code]="snippets.labelBefore" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -84,6 +91,7 @@
       <bloc-radio value="a" labelPosition="before" class="text-sm text-slate-700">Before</bloc-radio>
       <bloc-radio value="b" class="text-sm text-slate-700">After (inherited)</bloc-radio>
     </bloc-radio-group>
+    <app-sample-code [code]="snippets.perItem" />
   </div>
 </div>
 
@@ -100,6 +108,7 @@
       <bloc-radio value="md" class="text-sm text-slate-700">MD</bloc-radio>
       <bloc-radio value="lg" class="text-sm text-slate-700">LG</bloc-radio>
     </bloc-radio-group>
+    <app-sample-code [code]="snippets.horizontal" />
   </div>
 </div>
 
@@ -117,6 +126,7 @@
     <p class="m-0 text-xs text-slate-400">
       ngModel value: <strong>{{ ngModelValue || '(none)' }}</strong>
     </p>
+    <app-sample-code [code]="snippets.ngModel" />
   </div>
 </div>
 
@@ -136,6 +146,7 @@
       value: <strong>{{ reactiveCtrl.value || '(none)' }}</strong> &nbsp;|&nbsp;
       touched: <strong>{{ reactiveCtrl.touched }}</strong>
     </p>
+    <app-sample-code [code]="snippets.formControl" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -150,6 +161,7 @@
         {{ disabledCtrl.disabled ? 'Enable' : 'Disable' }} group
       </button>
     </div>
+    <app-sample-code [code]="snippets.setDisabled" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -161,5 +173,6 @@
       <bloc-radio value="sm" class="text-sm text-slate-700">Small</bloc-radio>
       <bloc-radio value="md" class="text-sm text-slate-700">Medium</bloc-radio>
     </bloc-radio-group>
+    <app-sample-code [code]="snippets.customToken" />
   </div>
 </div>

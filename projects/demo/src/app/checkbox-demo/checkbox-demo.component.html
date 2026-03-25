@@ -12,16 +12,19 @@
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
     <h3 class="m-0 text-base font-semibold text-slate-900">Small</h3>
     <bloc-checkbox size="sm" class="text-sm text-slate-700">Accept terms</bloc-checkbox>
+    <app-sample-code [code]="snippets.sizeSmall" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
     <h3 class="m-0 text-base font-semibold text-slate-900">Medium (default)</h3>
     <bloc-checkbox class="text-sm text-slate-700">Accept terms</bloc-checkbox>
+    <app-sample-code [code]="snippets.sizeMedium" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
     <h3 class="m-0 text-base font-semibold text-slate-900">Large</h3>
     <bloc-checkbox size="lg" class="text-slate-700">Accept terms</bloc-checkbox>
+    <app-sample-code [code]="snippets.sizeLarge" />
   </div>
 </div>
 
@@ -32,12 +35,14 @@
     <h3 class="m-0 text-base font-semibold text-slate-900">Default (unchecked)</h3>
     <p class="m-0 text-[0.82rem] text-slate-400">Uncontrolled — click to toggle.</p>
     <div><bloc-checkbox class="text-sm text-slate-700">Remember me</bloc-checkbox></div>
+    <app-sample-code [code]="snippets.default" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
     <h3 class="m-0 text-base font-semibold text-slate-900">Disabled (unchecked)</h3>
     <p class="m-0 text-[0.82rem] text-slate-400">Non-interactive via <code>[disabled]</code>.</p>
     <div><bloc-checkbox [disabled]="true" class="text-sm text-slate-700">Unavailable</bloc-checkbox></div>
+    <app-sample-code [code]="snippets.disabled" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -46,6 +51,7 @@
     <div>
       <bloc-checkbox [formControl]="disabledCtrl" class="text-sm text-slate-700">Locked on</bloc-checkbox>
     </div>
+    <app-sample-code [code]="snippets.disabledChecked" />
   </div>
 </div>
 
@@ -60,6 +66,7 @@
       <bloc-checkbox class="text-sm text-slate-700">Enable notifications</bloc-checkbox>
       <bloc-checkbox size="sm" class="text-sm text-slate-700">Subscribe to newsletter</bloc-checkbox>
     </div>
+    <app-sample-code [code]="snippets.labelAfter" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -71,6 +78,7 @@
       <bloc-checkbox labelPosition="before" size="sm" class="text-sm text-slate-700">Subscribe to
         newsletter</bloc-checkbox>
     </div>
+    <app-sample-code [code]="snippets.labelBefore" />
   </div>
 </div>
 
@@ -84,6 +92,7 @@
       {{ ngModelValue ? 'Checked' : 'Unchecked' }}
     </bloc-checkbox>
     <p class="m-0 text-xs text-slate-400">ngModel value: <strong>{{ ngModelValue }}</strong></p>
+    <app-sample-code [code]="snippets.ngModel" />
   </div>
 </div>
 
@@ -100,6 +109,7 @@
       value: <strong>{{ reactiveCtrl.value }}</strong> &nbsp;|&nbsp;
       touched: <strong>{{ reactiveCtrl.touched }}</strong>
     </p>
+    <app-sample-code [code]="snippets.formControl" />
   </div>
 
   <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -113,6 +123,7 @@
         {{ disabledCtrl.disabled ? 'Enable' : 'Disable' }} control
       </button>
     </div>
+    <app-sample-code [code]="snippets.setDisabled" />
   </div>
 
   <!-- Custom token override -->
@@ -124,5 +135,6 @@
       [formControl]="reactiveCtrl" class="text-sm text-slate-700">
       Blue checkbox
     </bloc-checkbox>
+    <app-sample-code [code]="snippets.customToken" />
   </div>
 </div>
