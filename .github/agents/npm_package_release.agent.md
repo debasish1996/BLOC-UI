@@ -11,7 +11,7 @@ Use the **Workspace Variables** section from `copilot-instructions.md` for repo 
 
 | Package | Path                                  | npm name                 |
 | ------- | ------------------------------------- | ------------------------ |
-| Core    | `projects/bloc-ui/package.json`       | `@bloc-ui/core`          |
+| Core    | `projects/bloc-ui-core/package.json`       | `@bloc-ui/core`          |
 | Theme   | `projects/bloc-ui-theme/package.json` | `@bloc-ui/theme`         |
 | Root    | `package.json`                        | (private, not published) |
 
@@ -37,10 +37,10 @@ The user MUST specify which package to release: `core`, `theme`, or `both`.
 3. Use `patch` as the bump type unless the user explicitly specified `minor` or `major`. Do NOT ask the user for the bump type.
 4. Compute the next version by incrementing the appropriate semver segment.
 5. Update the `version` field in:
-   - The target package's `package.json` (e.g. `projects/bloc-ui/package.json`).
+   - The target package's `package.json` (e.g. `projects/bloc-ui-core/package.json`).
    - The root `package.json` **only when releasing `core`** (keep root in sync with core).
 6. **Update the project README** (mandatory — do NOT skip):
-   - Read the project's `README.md` (e.g. `projects/bloc-ui/README.md` for core).
+   - Read the project's `README.md` (e.g. `projects/bloc-ui-core/README.md` for core).
    - Update any version badges, install commands, or version references to reflect the new version.
    - If a changelog / "What's new" section exists, add a brief entry for this release.
    - If nothing version-specific exists in the README, add or update a small version badge or note near the top (e.g. `> **Latest:** v<new_version>`).

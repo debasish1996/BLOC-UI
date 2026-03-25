@@ -59,7 +59,7 @@ npm install @bloc-ui/theme
 
 ### Tailwind CSS users
 
-Register bloc-ui cascade layers before importing Tailwind so utilities always win:
+Register bloc-ui-core cascade layers before importing Tailwind so utilities always win:
 
 ```css
 @layer theme, base, bloc-input, bloc-spinner, components, utilities;
@@ -73,7 +73,7 @@ Register bloc-ui cascade layers before importing Tailwind so utilities always wi
 ```
 bloc-ui-workspace/
 ├── projects/
-│   ├── bloc-ui/           # @bloc-ui/core — component library
+│   ├── bloc-ui-core/           # @bloc-ui/core — component library
 │   │   ├── button/
 │   │   ├── checkbox/
 │   │   ├── input/
@@ -97,7 +97,7 @@ npm install
 ng serve
 
 # Build the libraries
-ng build bloc-ui
+ng build bloc-ui-core
 ng build bloc-ui-theme
 
 # Run tests

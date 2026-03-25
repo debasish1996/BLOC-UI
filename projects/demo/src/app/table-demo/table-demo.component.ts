@@ -3,7 +3,7 @@ import {
   BlocTableComponent,
   BlocColumnComponent,
   BlocCellDefDirective,
-} from 'bloc-ui';
+} from 'bloc-ui-core';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
 
 @Component({

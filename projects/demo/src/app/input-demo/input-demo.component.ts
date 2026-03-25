@@ -1,6 +1,6 @@
 import { Component, signal } from '@angular/core';
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
-import { BlocInputDirective, BlocInputGroupDirective, BlocPrefixDirective, BlocSuffixDirective, BlocInputErrorDirective } from 'bloc-ui';
+import { BlocInputDirective, BlocInputGroupDirective, BlocPrefixDirective, BlocSuffixDirective, BlocInputErrorDirective } from 'bloc-ui-core';
 import { IconComponent } from '../icon/icon.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
 

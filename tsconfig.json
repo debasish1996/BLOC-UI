@@ -4,19 +4,19 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "bloc-ui": ["./dist/bloc-ui"],
-      "@bloc-ui/core": ["./dist/bloc-ui"],
-      "@bloc-ui/core/button": ["./dist/bloc-ui/button"],
-      "@bloc-ui/core/checkbox": ["./dist/bloc-ui/checkbox"],
-      "@bloc-ui/core/input": ["./dist/bloc-ui/input"],
+      "bloc-ui-core": ["./dist/bloc-ui-core"],
+      "@bloc-ui/core": ["./dist/bloc-ui-core"],
+      "@bloc-ui/core/button": ["./dist/bloc-ui-core/button"],
+      "@bloc-ui/core/checkbox": ["./dist/bloc-ui-core/checkbox"],
+      "@bloc-ui/core/input": ["./dist/bloc-ui-core/input"],
       "@bloc-ui/modal": ["./dist/bloc-ui-modal"],
-      "@bloc-ui/core/radio": ["./dist/bloc-ui/radio"],
-      "@bloc-ui/core/spinner": ["./dist/bloc-ui/spinner"],
-      "@bloc-ui/core/tab": ["./dist/bloc-ui/tab"],
-      "@bloc-ui/core/table": ["./dist/bloc-ui/table"],
-      "@bloc-ui/core/toast": ["./dist/bloc-ui/toast"],
-      "@bloc-ui/core/toggle": ["./dist/bloc-ui/toggle"],
-      "@bloc-ui/core/date-picker": ["./dist/bloc-ui/date-picker"]
+      "@bloc-ui/core/radio": ["./dist/bloc-ui-core/radio"],
+      "@bloc-ui/core/spinner": ["./dist/bloc-ui-core/spinner"],
+      "@bloc-ui/core/tab": ["./dist/bloc-ui-core/tab"],
+      "@bloc-ui/core/table": ["./dist/bloc-ui-core/table"],
+      "@bloc-ui/core/toast": ["./dist/bloc-ui-core/toast"],
+      "@bloc-ui/core/toggle": ["./dist/bloc-ui-core/toggle"],
+      "@bloc-ui/core/date-picker": ["./dist/bloc-ui-core/date-picker"]
     },
     "strict": true,
     "noImplicitOverride": true,
@@ -39,10 +39,10 @@
   "files": [],
   "references": [
     {
-      "path": "./projects/bloc-ui/tsconfig.lib.json"
+      "path": "./projects/bloc-ui-core/tsconfig.lib.json"
     },
     {
-      "path": "./projects/bloc-ui/tsconfig.spec.json"
+      "path": "./projects/bloc-ui-core/tsconfig.spec.json"
     },
     {
       "path": "./projects/bloc-ui-modal/tsconfig.lib.json"

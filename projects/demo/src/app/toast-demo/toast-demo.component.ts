@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { BlocToastService } from 'bloc-ui';
-import { BlocButtonComponent } from 'bloc-ui';
+import { BlocToastService } from 'bloc-ui-core';
+import { BlocButtonComponent } from 'bloc-ui-core';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
 
 @Component({

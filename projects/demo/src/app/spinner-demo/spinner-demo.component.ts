@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BlocSpinnerDirective } from 'bloc-ui';
+import { BlocSpinnerDirective } from 'bloc-ui-core';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
 
 @Component({

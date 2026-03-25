@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BlocButtonComponent, BlocRadioComponent, BlocRadioGroupComponent } from 'bloc-ui';
+import { BlocButtonComponent, BlocRadioComponent, BlocRadioGroupComponent } from 'bloc-ui-core';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
 
 @Component({

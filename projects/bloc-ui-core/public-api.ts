@@ -1,5 +1,5 @@
 /*
- * Public API Surface of bloc-ui
+ * Public API Surface of bloc-ui-core
  *
  * Re-exports from secondary entry points for backward compatibility.
  * Prefer importing from the specific entry point for smaller bundles:

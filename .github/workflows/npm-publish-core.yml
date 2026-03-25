@@ -26,9 +26,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Build bloc-ui
-        run: npx ng build bloc-ui --configuration production
+      - name: Build bloc-ui-core
+        run: npx ng build bloc-ui-core --configuration production
 
       - name: Publish package
         run: npm publish --access public
-        working-directory: dist/bloc-ui
+        working-directory: dist/bloc-ui-core

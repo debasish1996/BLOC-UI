@@ -17,7 +17,7 @@ Shared constants available to all agents and conversations in this workspace.
 
 | Key     | npm Name         | Path                                  | Current Version               |
 | ------- | ---------------- | ------------------------------------- | ----------------------------- |
-| `core`  | `@bloc-ui/core`  | `projects/bloc-ui/package.json`       | _(read from file at runtime)_ |
+| `core`  | `@bloc-ui/core`  | `projects/bloc-ui-core/package.json`       | _(read from file at runtime)_ |
 | `theme` | `@bloc-ui/theme` | `projects/bloc-ui-theme/package.json` | _(read from file at runtime)_ |
 
 ---
@@ -28,7 +28,7 @@ This is a two-package Angular component library workspace:
 
 | Package         | Purpose                                                                |
 | --------------- | ---------------------------------------------------------------------- |
-| `bloc-ui`       | Component library — structure, behaviour, accessibility                |
+| `bloc-ui-core`       | Component library — structure, behaviour, accessibility                |
 | `bloc-ui-theme` | Optional theme layer — CSS custom properties, colour tokens, dark mode |
 
 ---
@@ -37,7 +37,7 @@ This is a two-package Angular component library workspace:
 
 ### Keep components barebone
 
-- Components in `bloc-ui` must be **as lightweight as possible** — minimal logic, minimal styling.
+- Components in `bloc-ui-core` must be **as lightweight as possible** — minimal logic, minimal styling.
 - Do **not** embed design opinions (colours, shadows, gradients) directly in the component.
 
 ### No static / hard-coded colours
@@ -75,7 +75,7 @@ All styles **must** follow this priority order, highest to lowest:
 ```
 1. User's own classes / inline styles   (consumer, always wins)
 2. Theme tokens                         (bloc-ui-theme, CSS custom properties)
-3. Barebone structural styles           (bloc-ui, must never override the above)
+3. Barebone structural styles           (bloc-ui-core, must never override the above)
 ```
 
 **How to implement this:**
@@ -107,14 +107,14 @@ All styles **must** follow this priority order, highest to lowest:
 > **Consumer setup requirement (Tailwind users):** Tailwind's `@import "tailwindcss"` declares
 > `@layer theme, base, components, utilities`. The `bloc-*` layers must be registered **between
 > `base` and `utilities`** before that import, otherwise Tailwind's `base` (preflight) resets
-> will override bloc-ui defaults. Add this line to the top of your `tailwind.css`:
+> will override bloc-ui-core defaults. Add this line to the top of your `tailwind.css`:
 >
 > ```css
 > @layer theme, base, bloc-input, components, utilities;
 > @import 'tailwindcss';
 > ```
 >
-> Add a matching entry for each bloc-ui directive you use (e.g. `bloc-spinner`, `bloc-input`).
+> Add a matching entry for each bloc-ui-core directive you use (e.g. `bloc-spinner`, `bloc-input`).
 
 - For SCSS component files (`:host`-based components):
   - Keep specificity low. Prefer class selectors inside `:where()` for overridable properties.
@@ -137,8 +137,8 @@ All styles **must** follow this priority order, highest to lowest:
 
 | Concern                                      | Location                               |
 | -------------------------------------------- | -------------------------------------- |
-| HTML structure, accessibility, behaviour     | `bloc-ui` component                    |
-| Preset sizes (width/height via class)        | `bloc-ui` component SCSS               |
+| HTML structure, accessibility, behaviour     | `bloc-ui-core` component                    |
+| Preset sizes (width/height via class)        | `bloc-ui-core` component SCSS               |
 | Colours, typography, dark mode, brand tokens | `bloc-ui-theme/styles/bloc-theme.scss` |
 | Per-app overrides                            | Consumer's own stylesheet              |
 

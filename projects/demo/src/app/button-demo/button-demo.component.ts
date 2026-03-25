@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { BlocButtonComponent } from 'bloc-ui';
+import { BlocButtonComponent } from 'bloc-ui-core';
 import { IconComponent } from '../icon/icon.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
 

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BlocTabGroupComponent, BlocTabComponent } from 'bloc-ui';
+import { BlocTabGroupComponent, BlocTabComponent } from 'bloc-ui-core';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
 
 @Component({
