@@ -4,6 +4,8 @@
 
 Lightweight, accessible Angular component library. Barebone structure and behaviour — no hard-coded colours, no design opinions. Pair with [`@bloc-ui/theme`](https://www.npmjs.com/package/@bloc-ui/theme) to add a visual layer, or bring your own styles via CSS custom properties.
 
+**[Live Documentation & Demos](https://debasish1996.github.io/BLOC-UI/)**
+
 ---
 
 ## Installation
