@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { BlocButtonComponent, BlocGenericModalService, BlocModalService } from 'bloc-ui';
+import { BlocButtonComponent } from '@bloc-ui/core/button';
+import { BlocGenericModalService, BlocModalService } from '@bloc-ui/modal';
 import { ConfirmModalComponent } from './confirm-modal.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
 

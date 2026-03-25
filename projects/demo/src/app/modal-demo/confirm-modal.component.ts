@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { BlocButtonComponent, BlocModal } from 'bloc-ui';
+import { BlocButtonComponent } from '@bloc-ui/core/button';
+import { BlocModal } from '@bloc-ui/modal';
 
 export interface ConfirmModalData {
   size: 'sm' | 'md' | 'lg';

@@ -7,4 +7,3 @@ import { BlocGenericModalService } from './generic-modal.service';
   providers: [BlocModalService, BlocGenericModalService],
 })
 export class BlocModalModule { }
-

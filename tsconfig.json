@@ -9,7 +9,7 @@
       "@bloc-ui/core/button": ["./dist/bloc-ui/button"],
       "@bloc-ui/core/checkbox": ["./dist/bloc-ui/checkbox"],
       "@bloc-ui/core/input": ["./dist/bloc-ui/input"],
-      "@bloc-ui/core/modal": ["./dist/bloc-ui/modal"],
+      "@bloc-ui/modal": ["./dist/bloc-ui-modal"],
       "@bloc-ui/core/radio": ["./dist/bloc-ui/radio"],
       "@bloc-ui/core/spinner": ["./dist/bloc-ui/spinner"],
       "@bloc-ui/core/tab": ["./dist/bloc-ui/tab"],
@@ -43,6 +43,9 @@
     },
     {
       "path": "./projects/bloc-ui/tsconfig.spec.json"
+    },
+    {
+      "path": "./projects/bloc-ui-modal/tsconfig.lib.json"
     },
     {
       "path": "./projects/bloc-ui-theme/tsconfig.lib.json"
