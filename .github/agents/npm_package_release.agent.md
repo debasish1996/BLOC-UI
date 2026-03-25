@@ -1,5 +1,5 @@
 ---
-description: 'Use when: releasing npm packages, publishing to npm, creating GitHub releases, bumping package versions, tagging versions, running gh release create, version bump, publish @bloc-ui/core, @bloc-ui/theme, or @bloc-ui/kit'
+description: 'Use when: releasing npm packages, publishing to npm, creating GitHub releases, bumping package versions, tagging versions, running gh release create, version bump, publish @bloc-ui/core, @bloc-ui/theme, @bloc-ui/modal, @bloc-ui/table, @bloc-ui/toast, @bloc-ui/date-picker, or @bloc-ui/kit'
 tools: [execute, read, edit, search]
 ---
 
@@ -9,21 +9,24 @@ Use the **Workspace Variables** section from `copilot-instructions.md` for repo 
 
 ## Workspace Layout
 
-| Package | Path                                  | npm name                 |
-| ------- | ------------------------------------- | ------------------------ |
-| Core    | `projects/bloc-ui-core/package.json`  | `@bloc-ui/core`          |
-| Modal   | `projects/bloc-ui-modal/package.json` | `@bloc-ui/modal`         |
-| Kit     | `projects/bloc-ui/package.json`       | `@bloc-ui/kit`           |
-| Theme   | `projects/bloc-ui-theme/package.json` | `@bloc-ui/theme`         |
-| Root    | `package.json`                        | (private, not published) |
+| Package     | Path                                        | npm name                 |
+| ----------- | ------------------------------------------- | ------------------------ |
+| Core        | `projects/bloc-ui-core/package.json`        | `@bloc-ui/core`          |
+| Modal       | `projects/bloc-ui-modal/package.json`       | `@bloc-ui/modal`         |
+| Table       | `projects/bloc-ui-table/package.json`       | `@bloc-ui/table`         |
+| Toast       | `projects/bloc-ui-toast/package.json`       | `@bloc-ui/toast`         |
+| Date Picker | `projects/bloc-ui-date-picker/package.json` | `@bloc-ui/date-picker`   |
+| Kit         | `projects/bloc-ui/package.json`             | `@bloc-ui/kit`           |
+| Theme       | `projects/bloc-ui-theme/package.json`       | `@bloc-ui/theme`         |
+| Root        | `package.json`                              | (private, not published) |
 
 ## Project Name (mandatory — always required)
 
-The user MUST specify which package to release: `core`, `modal`, `kit`, `theme`, or `all`.
+The user MUST specify which package to release: `core`, `modal`, `table`, `toast`, `date-picker`, `kit`, `theme`, or `all`.
 
-- If the user does NOT provide a project name, **stop immediately** and ask: _"Which package do you want to release? (`core`, `modal`, `kit`, `theme`, or `all`)"_
+- If the user does NOT provide a project name, **stop immediately** and ask: _"Which package do you want to release? (`core`, `modal`, `table`, `toast`, `date-picker`, `kit`, `theme`, or `all`)"_
 - DO NOT guess, assume, or default to any package. Wait for an explicit answer before proceeding.
-- When releasing `kit`, also bump the `@bloc-ui/core` and `@bloc-ui/modal` dependency versions in `projects/bloc-ui/package.json` to match their latest versions.
+- When releasing `kit`, also bump the `@bloc-ui/core`, `@bloc-ui/modal`, `@bloc-ui/table`, `@bloc-ui/toast`, and `@bloc-ui/date-picker` dependency versions in `projects/bloc-ui/package.json` to match their latest versions.
 
 ## Pre-flight Checks (mandatory, run every time)
 
@@ -54,18 +57,21 @@ The user MUST specify which package to release: `core`, `modal`, `kit`, `theme`,
 
 Tags are prefixed by package to trigger the correct CI workflow:
 
-| Package | Tag format             | Example        |
-| ------- | ---------------------- | -------------- |
-| Core    | `core-v<new_version>`  | `core-v1.2.0`  |
-| Modal   | `modal-v<new_version>` | `modal-v0.0.2` |
-| Kit     | `kit-v<new_version>`   | `kit-v0.0.2`   |
-| Theme   | `theme-v<new_version>` | `theme-v1.0.1` |
+| Package     | Tag format                   | Example              |
+| ----------- | ---------------------------- | -------------------- |
+| Core        | `core-v<new_version>`        | `core-v1.2.0`        |
+| Modal       | `modal-v<new_version>`       | `modal-v0.0.2`       |
+| Table       | `table-v<new_version>`       | `table-v0.0.1`       |
+| Toast       | `toast-v<new_version>`       | `toast-v0.0.1`       |
+| Date Picker | `date-picker-v<new_version>` | `date-picker-v0.0.1` |
+| Kit         | `kit-v<new_version>`         | `kit-v0.0.2`         |
+| Theme       | `theme-v<new_version>`       | `theme-v1.0.1`       |
 
 1. Create a git tag and GitHub release in one step:
    ```
    gh release create <prefix>-v<new_version> --title "<prefix>-v<new_version>" --notes "Release <npm-name> v<new_version>"
    ```
-   where `<prefix>` is `core`, `modal`, `kit`, or `theme` depending on the package being released.
+   where `<prefix>` is `core`, `modal`, `table`, `toast`, `date-picker`, `kit`, or `theme` depending on the package being released.
 2. Confirm the release was created by running `gh release view <prefix>-v<new_version>`.
 3. When releasing **all** packages, create separate releases — one per package with its own tag prefix.
 

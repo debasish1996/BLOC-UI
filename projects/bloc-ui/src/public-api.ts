@@ -7,3 +7,6 @@
 
 export * from '@bloc-ui/core';
 export * from '@bloc-ui/modal';
+export * from '@bloc-ui/table';
+export * from '@bloc-ui/toast';
+export * from '@bloc-ui/date-picker';

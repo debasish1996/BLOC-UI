@@ -14,10 +14,10 @@
       "@bloc-ui/core/radio": ["./projects/bloc-ui-core/radio/src/public-api.ts"],
       "@bloc-ui/core/spinner": ["./projects/bloc-ui-core/spinner/src/public-api.ts"],
       "@bloc-ui/core/tab": ["./projects/bloc-ui-core/tab/src/public-api.ts"],
-      "@bloc-ui/core/table": ["./projects/bloc-ui-core/table/src/public-api.ts"],
-      "@bloc-ui/core/toast": ["./projects/bloc-ui-core/toast/src/public-api.ts"],
       "@bloc-ui/core/toggle": ["./projects/bloc-ui-core/toggle/src/public-api.ts"],
-      "@bloc-ui/core/date-picker": ["./projects/bloc-ui-core/date-picker/src/public-api.ts"]
+      "@bloc-ui/table": ["./projects/bloc-ui-table/src/public-api.ts"],
+      "@bloc-ui/toast": ["./projects/bloc-ui-toast/src/public-api.ts"],
+      "@bloc-ui/date-picker": ["./projects/bloc-ui-date-picker/src/public-api.ts"]
     },
     "strict": true,
     "noImplicitOverride": true,
@@ -47,6 +47,15 @@
     },
     {
       "path": "./projects/bloc-ui-modal/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/bloc-ui-table/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/bloc-ui-toast/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/bloc-ui-date-picker/tsconfig.lib.json"
     },
     {
       "path": "./projects/bloc-ui/tsconfig.lib.json"

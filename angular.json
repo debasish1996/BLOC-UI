@@ -46,6 +46,66 @@
         }
       }
     },
+    "bloc-ui-table": {
+      "projectType": "library",
+      "root": "projects/bloc-ui-table",
+      "sourceRoot": "projects/bloc-ui-table/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/bloc-ui-table/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/bloc-ui-table/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
+    "bloc-ui-toast": {
+      "projectType": "library",
+      "root": "projects/bloc-ui-toast",
+      "sourceRoot": "projects/bloc-ui-toast/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/bloc-ui-toast/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/bloc-ui-toast/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
+    "bloc-ui-date-picker": {
+      "projectType": "library",
+      "root": "projects/bloc-ui-date-picker",
+      "sourceRoot": "projects/bloc-ui-date-picker/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/bloc-ui-date-picker/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/bloc-ui-date-picker/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
     "bloc-ui": {
       "projectType": "library",
       "root": "projects/bloc-ui",

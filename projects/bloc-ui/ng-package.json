@@ -6,6 +6,9 @@
   },
   "allowedNonPeerDependencies": [
     "@bloc-ui/core",
-    "@bloc-ui/modal"
+    "@bloc-ui/modal",
+    "@bloc-ui/table",
+    "@bloc-ui/toast",
+    "@bloc-ui/date-picker"
   ]
 }

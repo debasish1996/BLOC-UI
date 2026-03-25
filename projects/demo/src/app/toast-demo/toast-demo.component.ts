@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { BlocToastService } from 'bloc-ui-core';
+import { BlocToastService } from '@bloc-ui/toast';
 import { BlocButtonComponent } from 'bloc-ui-core';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
 

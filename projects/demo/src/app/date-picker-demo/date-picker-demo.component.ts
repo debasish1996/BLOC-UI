@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { BlocDatePickerComponent, BlocButtonComponent } from 'bloc-ui-core';
+import { BlocDatePickerComponent } from '@bloc-ui/date-picker';
+import { BlocButtonComponent } from 'bloc-ui-core';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
 
 @Component({

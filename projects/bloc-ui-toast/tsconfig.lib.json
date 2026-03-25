@@ -6,14 +6,7 @@
     "outDir": "../../out-tsc/lib",
     "declaration": true,
     "declarationMap": true,
-    "types": [],
-    "paths": {
-      "@bloc-ui/core": ["../../dist/bloc-ui-core"],
-      "@bloc-ui/modal": ["../../dist/bloc-ui-modal"],
-      "@bloc-ui/table": ["../../dist/bloc-ui-table"],
-      "@bloc-ui/toast": ["../../dist/bloc-ui-toast"],
-      "@bloc-ui/date-picker": ["../../dist/bloc-ui-date-picker"]
-    }
+    "types": []
   },
   "include": ["src/**/*.ts"],
   "exclude": ["**/*.spec.ts"]
