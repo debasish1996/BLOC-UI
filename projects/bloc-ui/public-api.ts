@@ -8,9 +8,13 @@
 
 export * from '@bloc-ui/core/button';
 export * from '@bloc-ui/core/checkbox';
+export * from '@bloc-ui/core/date-picker';
 export * from '@bloc-ui/core/input';
 export * from '@bloc-ui/core/modal';
 export * from '@bloc-ui/core/radio';
 export * from '@bloc-ui/core/spinner';
+export * from '@bloc-ui/core/tab';
+export * from '@bloc-ui/core/table';
+export * from '@bloc-ui/core/toast';
 export * from '@bloc-ui/core/toggle';
 

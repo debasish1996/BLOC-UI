@@ -38,7 +38,7 @@ export class RadioDemoComponent {
     labelAfter: `<bloc-radio-group>\n  <bloc-radio value="a">Option A</bloc-radio>\n  <bloc-radio value="b">Option B</bloc-radio>\n</bloc-radio-group>`,
     labelBefore: `<bloc-radio-group labelPosition="before">\n  <bloc-radio value="a">Option A</bloc-radio>\n  <bloc-radio value="b">Option B</bloc-radio>\n</bloc-radio-group>`,
     perItem: `<bloc-radio-group>\n  <bloc-radio value="a" labelPosition="before">\n    Before\n  </bloc-radio>\n  <bloc-radio value="b">After</bloc-radio>\n</bloc-radio-group>`,
-    horizontal: `<bloc-radio-group class="!flex-row flex-wrap"\n  style="--bloc-radio-group-gap: 16px">\n  <bloc-radio value="xs">XS</bloc-radio>\n  <bloc-radio value="sm">SM</bloc-radio>\n  <bloc-radio value="md">MD</bloc-radio>\n</bloc-radio-group>`,
+    horizontal: `<bloc-radio-group class="flex-row! flex-wrap"\n  style="--bloc-radio-group-gap: 16px">\n  <bloc-radio value="xs">XS</bloc-radio>\n  <bloc-radio value="sm">SM</bloc-radio>\n  <bloc-radio value="md">MD</bloc-radio>\n</bloc-radio-group>`,
     ngModel: `<bloc-radio-group [(ngModel)]="selected">\n  <bloc-radio value="apple">Apple</bloc-radio>\n  <bloc-radio value="banana">Banana</bloc-radio>\n  <bloc-radio value="cherry">Cherry</bloc-radio>\n</bloc-radio-group>`,
     formControl: `<bloc-radio-group [formControl]="sizeCtrl">\n  <bloc-radio value="xs">Extra small</bloc-radio>\n  <bloc-radio value="sm">Small</bloc-radio>\n  <bloc-radio value="md">Medium</bloc-radio>\n</bloc-radio-group>`,
     setDisabled: `<!-- disable from code -->\nctrl = new FormControl('b');\nctrl.disable();`,

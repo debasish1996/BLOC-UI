@@ -12,7 +12,11 @@
       "@bloc-ui/core/modal": ["./dist/bloc-ui/modal"],
       "@bloc-ui/core/radio": ["./dist/bloc-ui/radio"],
       "@bloc-ui/core/spinner": ["./dist/bloc-ui/spinner"],
-      "@bloc-ui/core/toggle": ["./dist/bloc-ui/toggle"]
+      "@bloc-ui/core/tab": ["./dist/bloc-ui/tab"],
+      "@bloc-ui/core/table": ["./dist/bloc-ui/table"],
+      "@bloc-ui/core/toast": ["./dist/bloc-ui/toast"],
+      "@bloc-ui/core/toggle": ["./dist/bloc-ui/toggle"],
+      "@bloc-ui/core/date-picker": ["./dist/bloc-ui/date-picker"]
     },
     "strict": true,
     "noImplicitOverride": true,
