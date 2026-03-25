@@ -39,7 +39,6 @@ You can also import everything from the primary entry point (`@bloc-ui/core`) fo
 | `BlocSuffixDirective`     | `bloc-suffix`, `[blocSuffix]`          | `@bloc-ui/core/input`    | Directive |
 | `BlocInputErrorDirective` | `[blocInputError]`, `bloc-input-error` | `@bloc-ui/core/input`    | Directive |
 | `BlocModalService`        | —                                      | `@bloc-ui/core/modal`    | Service   |
-| `BlocGenericModalService` | —                                      | `@bloc-ui/core/modal`    | Service   |
 | `BlocRadioGroupComponent` | `bloc-radio-group`                     | `@bloc-ui/core/radio`    | Component |
 | `BlocRadioComponent`      | `bloc-radio`                           | `@bloc-ui/core/radio`    | Component |
 | `BlocSpinnerDirective`    | `bloc-spinner`, `[blocSpinner]`        | `@bloc-ui/core/spinner`  | Directive |
@@ -201,7 +200,7 @@ import {
 
 ### Modal
 
-The modal system is **service-driven** — there is no template component. Open modals programmatically via `BlocModalService` or use the built-in alert/confirm dialogs via `BlocGenericModalService`.
+The modal system is **service-driven** — there is no template component. Open modals programmatically via `BlocModalService`.
 
 ```ts
 import {
@@ -261,31 +260,6 @@ export class MyModalComponent extends BlocModal<{ userId: number }, boolean> {
     this.modalRef.close(true);
   }
 }
-```
-
-#### `BlocGenericModalService`
-
-Built-in alert and confirm dialogs — no custom component needed:
-
-```ts
-import { BlocGenericModalService } from '@bloc-ui/core/modal';
-
-// Alert
-this.genericModal.alert({ title: 'Notice', message: 'Something happened.' });
-
-// Confirm
-const ref = this.genericModal.confirm({
-  title: 'Delete?',
-  message: 'This action cannot be undone.',
-  confirmText: 'Delete',
-  cancelText: 'Keep',
-});
-
-ref.afterClosed$.subscribe((confirmed) => {
-  if (confirmed) {
-    /* ... */
-  }
-});
 ```
 
 #### CSS tokens

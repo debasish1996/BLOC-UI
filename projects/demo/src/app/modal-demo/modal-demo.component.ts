@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { BlocButtonComponent } from '@bloc-ui/core/button';
-import { BlocGenericModalService, BlocModalService } from '@bloc-ui/modal';
+import { BlocModalService } from '@bloc-ui/modal';
 import { ConfirmModalComponent } from './confirm-modal.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
 
@@ -12,7 +12,6 @@ import { SampleCodeComponent } from '../sample-code/sample-code.component';
 })
 export class ModalDemoComponent {
   private readonly modal = inject(BlocModalService);
-  private readonly genericModal = inject(BlocGenericModalService);
 
   openModal(size: 'sm' | 'md' | 'lg'): void {
     const ref = this.modal.open(ConfirmModalComponent, {
@@ -63,38 +62,6 @@ export class ModalDemoComponent {
     });
   }
 
-  // --- BlocGenericModalService demos ---
-
-  openGenericAlert(): void {
-    this.genericModal.alert({
-      title: 'Notice',
-      message: 'Your session will expire in 5 minutes.',
-    });
-  }
-
-  openGenericConfirm(): void {
-    const ref = this.genericModal.confirm({
-      title: 'Delete item?',
-      message: 'This action is permanent and cannot be undone.',
-    });
-    ref.afterClosed$.subscribe(confirmed =>
-      console.log('Generic confirm result:', confirmed),
-    );
-  }
-
-  openGenericCustomTexts(): void {
-    const ref = this.genericModal.confirm({
-      title: 'Leave page?',
-      message: 'You have unsaved changes. Are you sure you want to leave?',
-      confirmText: 'Leave',
-      cancelText: 'Stay',
-      size: 'sm',
-    });
-    ref.afterClosed$.subscribe(confirmed =>
-      console.log('Leave page:', confirmed),
-    );
-  }
-
   readonly snippets = {
     defaultMd: `const ref = this.modal.open(MyComponent, {\n  title: 'Modal — md',\n  size: 'md',\n  data: { ... },\n});\nref.afterClosed$.subscribe(result => { });`,
     small: `this.modal.open(MyComponent, {\n  title: 'Small Modal',\n  size: 'sm',\n  data: { ... },\n});`,
@@ -104,8 +71,5 @@ export class ModalDemoComponent {
     noCloseButton: `this.modal.open(MyComponent, {\n  title: 'No Close Button',\n  showCloseButton: false,\n});`,
     panelClass: `this.modal.open(MyComponent, {\n  title: 'Custom Panel',\n  panelClass: 'my-panel',\n});`,
     backdropClass: `this.modal.open(MyComponent, {\n  title: 'Custom Backdrop',\n  backdropClass: 'my-backdrop',\n});`,
-    alert: `this.genericModal.alert({\n  title: 'Notice',\n  message: 'Your session will expire.',\n});`,
-    confirm: `const ref = this.genericModal.confirm({\n  title: 'Delete item?',\n  message: 'This action cannot be undone.',\n});\nref.afterClosed$.subscribe(confirmed => { });`,
-    customLabels: `this.genericModal.confirm({\n  title: 'Leave page?',\n  message: 'You have unsaved changes.',\n  confirmText: 'Leave',\n  cancelText: 'Stay',\n  size: 'sm',\n});`,
   };
 }

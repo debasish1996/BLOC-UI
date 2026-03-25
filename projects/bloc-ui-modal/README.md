@@ -5,4 +5,3 @@ Modal dialog service for Angular — part of the [Bloc UI](https://github.com/de
 ## Peer Dependencies
 
 - `@angular/core` ^21.2.0
-- `@bloc-ui/core` ^0.0.9 (uses `BlocButtonComponent` for generic modals)
