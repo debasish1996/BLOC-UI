@@ -1,6 +1,6 @@
 # @bloc-ui/theme
 
-> **Latest:** v0.0.3
+> **Latest:** v0.0.4
 
 Optional theme layer for [**@bloc-ui/core**](https://www.npmjs.com/package/@bloc-ui/core) — provides CSS custom properties, colour tokens, and dark-mode support.
 
