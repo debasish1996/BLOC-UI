@@ -86,6 +86,26 @@
         }
       }
     },
+    "bloc-ui-tab": {
+      "projectType": "library",
+      "root": "projects/bloc-ui-tab",
+      "sourceRoot": "projects/bloc-ui-tab/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular/build:ng-packagr",
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/bloc-ui-tab/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/bloc-ui-tab/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        }
+      }
+    },
     "bloc-ui-date-picker": {
       "projectType": "library",
       "root": "projects/bloc-ui-date-picker",

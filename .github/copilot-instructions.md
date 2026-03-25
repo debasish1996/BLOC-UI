@@ -23,6 +23,7 @@ Shared constants available to all agents and conversations in this workspace.
 | `table`       | `@bloc-ui/table`       | `projects/bloc-ui-table/package.json`       | _(read from file at runtime)_ |
 | `toast`       | `@bloc-ui/toast`       | `projects/bloc-ui-toast/package.json`       | _(read from file at runtime)_ |
 | `date-picker` | `@bloc-ui/date-picker` | `projects/bloc-ui-date-picker/package.json` | _(read from file at runtime)_ |
+| `tab`         | `@bloc-ui/tab`         | `projects/bloc-ui-tab/package.json`         | _(read from file at runtime)_ |
 | `theme`       | `@bloc-ui/theme`       | `projects/bloc-ui-theme/package.json`       | _(read from file at runtime)_ |
 
 ---

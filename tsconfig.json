@@ -13,8 +13,8 @@
       "@bloc-ui/kit": ["./projects/bloc-ui/src/public-api.ts"],
       "@bloc-ui/core/radio": ["./projects/bloc-ui-core/radio/src/public-api.ts"],
       "@bloc-ui/core/spinner": ["./projects/bloc-ui-core/spinner/src/public-api.ts"],
-      "@bloc-ui/core/tab": ["./projects/bloc-ui-core/tab/src/public-api.ts"],
       "@bloc-ui/core/toggle": ["./projects/bloc-ui-core/toggle/src/public-api.ts"],
+      "@bloc-ui/tab": ["./projects/bloc-ui-tab/src/public-api.ts"],
       "@bloc-ui/table": ["./projects/bloc-ui-table/src/public-api.ts"],
       "@bloc-ui/toast": ["./projects/bloc-ui-toast/src/public-api.ts"],
       "@bloc-ui/date-picker": ["./projects/bloc-ui-date-picker/src/public-api.ts"]
@@ -56,6 +56,9 @@
     },
     {
       "path": "./projects/bloc-ui-date-picker/tsconfig.lib.json"
+    },
+    {
+      "path": "./projects/bloc-ui-tab/tsconfig.lib.json"
     },
     {
       "path": "./projects/bloc-ui/tsconfig.lib.json"
