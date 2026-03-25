@@ -1,5 +1,5 @@
 import { Component, input, output } from '@angular/core';
-import { BlocSpinnerDirective } from '../spinner/spinner.directive';
+import { BlocSpinnerDirective } from '@bloc-ui/core/spinner';
 
 @Component({
   selector: 'button[blocButton]',

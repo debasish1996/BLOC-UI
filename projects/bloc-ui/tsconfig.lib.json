@@ -8,6 +8,6 @@
     "declarationMap": true,
     "types": []
   },
-  "include": ["src/**/*.ts"],
+  "include": ["src/**/*.ts", "button/src/**/*.ts", "checkbox/src/**/*.ts", "input/src/**/*.ts", "modal/src/**/*.ts", "radio/src/**/*.ts", "spinner/src/**/*.ts", "toggle/src/**/*.ts", "public-api.ts"],
   "exclude": ["**/*.spec.ts"]
 }

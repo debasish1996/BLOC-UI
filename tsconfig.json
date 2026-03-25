@@ -4,7 +4,15 @@
   "compileOnSave": false,
   "compilerOptions": {
     "paths": {
-      "bloc-ui": ["./dist/bloc-ui"]
+      "bloc-ui": ["./dist/bloc-ui"],
+      "@bloc-ui/core": ["./dist/bloc-ui"],
+      "@bloc-ui/core/button": ["./dist/bloc-ui/button"],
+      "@bloc-ui/core/checkbox": ["./dist/bloc-ui/checkbox"],
+      "@bloc-ui/core/input": ["./dist/bloc-ui/input"],
+      "@bloc-ui/core/modal": ["./dist/bloc-ui/modal"],
+      "@bloc-ui/core/radio": ["./dist/bloc-ui/radio"],
+      "@bloc-ui/core/spinner": ["./dist/bloc-ui/spinner"],
+      "@bloc-ui/core/toggle": ["./dist/bloc-ui/toggle"]
     },
     "strict": true,
     "noImplicitOverride": true,

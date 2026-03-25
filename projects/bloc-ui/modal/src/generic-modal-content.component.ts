@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { BlocButtonComponent } from '../button/button.component';
+import { BlocButtonComponent } from '@bloc-ui/core/button';
 import { BlocModal } from './modal.config';
 
 /** @internal Data shape consumed by BlocGenericModalContentComponent. */
