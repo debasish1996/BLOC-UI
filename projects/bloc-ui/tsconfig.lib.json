@@ -8,7 +8,7 @@
     "declarationMap": true,
     "types": [],
     "paths": {
-      "@bloc-ui/core": ["../../dist/bloc-ui-core"],
+      "@bloc-ui/core/*": ["../../dist/bloc-ui-core/*"],
       "@bloc-ui/modal": ["../../dist/bloc-ui-modal"],
       "@bloc-ui/table": ["../../dist/bloc-ui-table"],
       "@bloc-ui/toast": ["../../dist/bloc-ui-toast"],
