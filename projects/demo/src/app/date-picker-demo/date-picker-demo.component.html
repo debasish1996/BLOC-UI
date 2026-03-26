@@ -1,110 +1,94 @@
 <header class="mb-8 pb-4 border-b border-slate-200">
-    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Date Picker</h1>
-    <p class="m-0 text-slate-400 text-[0.95rem]">
-        Calendar date picker with dropdown. Works with <code>ngModel</code>, <code>formControl</code>, and
-        <code>formControlName</code>.
-    </p>
+  <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Date Picker</h1>
+  <p class="m-0 text-slate-400 text-[0.95rem]">
+    Calendar date picker with dropdown. Works with <code>ngModel</code>, <code>formControl</code>, and
+    <code>formControlName</code>.
+  </p>
 </header>
 
 <!-- Basic -->
 <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Basic usage</h2>
 <div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Default</h3>
-        <bloc-date-picker></bloc-date-picker>
-        <app-sample-code [code]="snippets.basic" />
-    </div>
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Default</h3>
+    <bloc-date-picker></bloc-date-picker>
+    <app-sample-code [code]="snippets.basic" />
+  </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Custom placeholder</h3>
-        <bloc-date-picker placeholder="Pick a date"></bloc-date-picker>
-        <app-sample-code [code]="snippets.placeholder" />
-    </div>
-</div>
-
-<!-- Sizes -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Sizes</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Small</h3>
-        <bloc-date-picker size="sm"></bloc-date-picker>
-        <app-sample-code [code]="snippets.sizeSmall" />
-    </div>
-
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Large</h3>
-        <bloc-date-picker size="lg"></bloc-date-picker>
-        <app-sample-code [code]="snippets.sizeLarge" />
-    </div>
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Custom placeholder</h3>
+    <bloc-date-picker placeholder="Pick a date"></bloc-date-picker>
+    <app-sample-code [code]="snippets.placeholder" />
+  </div>
 </div>
 
 <!-- ngModel -->
 <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Template-driven (ngModel)</h2>
 <div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Two-way binding</h3>
-        <bloc-date-picker [(ngModel)]="ngModelDate"></bloc-date-picker>
-        <p class="m-0 text-xs text-slate-400">
-            ngModel value: <strong>{{ ngModelDate ? ngModelDate.toLocaleDateString() : 'null' }}</strong>
-        </p>
-        <app-sample-code [code]="snippets.ngModel" />
-    </div>
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Two-way binding</h3>
+    <bloc-date-picker [(ngModel)]="ngModelDate"></bloc-date-picker>
+    <p class="m-0 text-xs text-slate-400">
+      ngModel value: <strong>{{ ngModelDate ? ngModelDate.toLocaleDateString() : 'null' }}</strong>
+    </p>
+    <app-sample-code [code]="snippets.ngModel" />
+  </div>
 </div>
 
 <!-- Reactive forms -->
 <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Reactive forms</h2>
 <div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">FormControl</h3>
-        <bloc-date-picker [formControl]="dateCtrl"></bloc-date-picker>
-        <p class="m-0 text-xs text-slate-400">
-            value: <strong>{{ dateCtrl.value ? dateCtrl.value.toLocaleDateString() : 'null' }}</strong>
-        </p>
-        <app-sample-code [code]="snippets.formControl" />
-    </div>
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">FormControl</h3>
+    <bloc-date-picker [formControl]="dateCtrl"></bloc-date-picker>
+    <p class="m-0 text-xs text-slate-400">
+      value: <strong>{{ dateCtrl.value ? dateCtrl.value.toLocaleDateString() : 'null' }}</strong>
+    </p>
+    <app-sample-code [code]="snippets.formControl" />
+  </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Disabled</h3>
-        <bloc-date-picker [formControl]="disabledCtrl"></bloc-date-picker>
-        <div>
-            <button blocButton variant="outline" (clicked)="toggleDisabled()">
-                {{ disabledCtrl.disabled ? 'Enable' : 'Disable' }} control
-            </button>
-        </div>
-        <app-sample-code [code]="snippets.disabled" />
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Disabled</h3>
+    <bloc-date-picker [formControl]="disabledCtrl"></bloc-date-picker>
+    <div>
+      <button blocButton variant="outline" (clicked)="toggleDisabled()">
+        {{ disabledCtrl.disabled ? 'Enable' : 'Disable' }} control
+      </button>
     </div>
+    <app-sample-code [code]="snippets.disabled" />
+  </div>
 </div>
 
 <!-- Min/Max -->
 <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Min / Max date</h2>
 <div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Date range constraint</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Only dates between Jan 2024 and Dec 2026 are selectable.</p>
-        <bloc-date-picker [minDate]="minDate" [maxDate]="maxDate"></bloc-date-picker>
-        <app-sample-code [code]="snippets.minMax" />
-    </div>
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Date range constraint</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Only dates between Jan 2024 and Dec 2026 are selectable.</p>
+    <bloc-date-picker [minDate]="minDate" [maxDate]="maxDate"></bloc-date-picker>
+    <app-sample-code [code]="snippets.minMax" />
+  </div>
 </div>
 
 <!-- Format -->
 <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Custom format</h2>
 <div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">dd/MM/yyyy</h3>
-        <bloc-date-picker format="dd/MM/yyyy"></bloc-date-picker>
-        <app-sample-code [code]="snippets.format" />
-    </div>
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">dd/MM/yyyy</h3>
+    <bloc-date-picker format="dd/MM/yyyy"></bloc-date-picker>
+    <app-sample-code [code]="snippets.format" />
+  </div>
 </div>
 
 <!-- Custom tokens -->
 <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Custom token</h2>
 <div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Green accent</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Override colours via CSS custom properties.</p>
-        <bloc-date-picker
-            style="--bloc-date-picker-focus-border: #16a34a; --bloc-date-picker-selected-bg: #16a34a; --bloc-date-picker-today-border: #16a34a">
-        </bloc-date-picker>
-        <app-sample-code [code]="snippets.customToken" />
-    </div>
+  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+    <h3 class="m-0 text-base font-semibold text-slate-900">Green accent</h3>
+    <p class="m-0 text-[0.82rem] text-slate-400">Override colours via CSS custom properties.</p>
+    <bloc-date-picker
+      style="--bloc-date-picker-focus-border: #16a34a; --bloc-date-picker-selected-bg: #16a34a; --bloc-date-picker-today-border: #16a34a">
+    </bloc-date-picker>
+    <app-sample-code [code]="snippets.customToken" />
+  </div>
 </div>

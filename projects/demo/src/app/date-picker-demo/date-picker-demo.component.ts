@@ -33,8 +33,6 @@ export class DatePickerDemoComponent {
   readonly snippets = {
     basic: `<bloc-date-picker />`,
     placeholder: `<bloc-date-picker placeholder="Pick a date" />`,
-    sizeSmall: `<bloc-date-picker size="sm" />`,
-    sizeLarge: `<bloc-date-picker size="lg" />`,
     ngModel: `<bloc-date-picker [(ngModel)]="selectedDate" />`,
     formControl: `<bloc-date-picker [formControl]="dateCtrl" />`,
     disabled: `<bloc-date-picker [formControl]="disabledCtrl" />\n<!-- disabledCtrl.disable(); -->`,

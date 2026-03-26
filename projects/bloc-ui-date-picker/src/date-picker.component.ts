@@ -1,24 +1,24 @@
 import {
-    Component,
-    computed,
-    ElementRef,
-    forwardRef,
-    HostListener,
-    inject,
-    input,
-    signal,
+  Component,
+  computed,
+  ElementRef,
+  forwardRef,
+  HostListener,
+  inject,
+  input,
+  signal,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 const DAYS_OF_WEEK = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
 
 interface CalendarDay {
-    date: Date;
-    day: number;
-    isCurrentMonth: boolean;
-    isToday: boolean;
-    isSelected: boolean;
-    isDisabled: boolean;
+  date: Date;
+  day: number;
+  isCurrentMonth: boolean;
+  isToday: boolean;
+  isSelected: boolean;
+  isDisabled: boolean;
 }
 
 /**
@@ -30,9 +30,9 @@ interface CalendarDay {
  * ```
  */
 @Component({
-    selector: 'bloc-date-picker',
-    standalone: true,
-    template: `
+  selector: 'bloc-date-picker',
+  standalone: true,
+  template: `
     <div class="bloc-date-picker__input-wrapper" (click)="toggleCalendar()">
       <input
         class="bloc-date-picker__input"
@@ -102,221 +102,216 @@ interface CalendarDay {
       </div>
     }
   `,
-    styleUrl: './date-picker.component.scss',
-    providers: [
-        {
-            provide: NG_VALUE_ACCESSOR,
-            useExisting: forwardRef(() => BlocDatePickerComponent),
-            multi: true,
-        },
-    ],
-    host: {
-        '[class.bloc-date-picker]': 'true',
-        '[class.bloc-date-picker--sm]': 'size() === "sm"',
-        '[class.bloc-date-picker--lg]': 'size() === "lg"',
-        '[class.bloc-date-picker--disabled]': 'isDisabled()',
-        '[class.bloc-date-picker--open]': 'isOpen()',
+  styleUrl: './date-picker.component.scss',
+  providers: [
+    {
+      provide: NG_VALUE_ACCESSOR,
+      useExisting: forwardRef(() => BlocDatePickerComponent),
+      multi: true,
     },
+  ],
+  host: {
+    '[class.bloc-date-picker]': 'true',
+    '[class.bloc-date-picker--disabled]': 'isDisabled()',
+    '[class.bloc-date-picker--open]': 'isOpen()',
+  },
 })
 export class BlocDatePickerComponent implements ControlValueAccessor {
-    private readonly _el = inject(ElementRef<HTMLElement>);
+  private readonly _el = inject(ElementRef<HTMLElement>);
 
-    /** Preset size. Defaults to `'md'`. */
-    readonly size = input<'sm' | 'md' | 'lg'>('md');
+  /** Placeholder text for the input. */
+  readonly placeholder = input<string>('Select date');
 
-    /** Placeholder text for the input. */
-    readonly placeholder = input<string>('Select date');
+  /** Date format for display. Defaults to `'yyyy-MM-dd'`. */
+  readonly format = input<string>('yyyy-MM-dd');
 
-    /** Date format for display. Defaults to `'yyyy-MM-dd'`. */
-    readonly format = input<string>('yyyy-MM-dd');
+  /** Disable the date picker via template binding. */
+  readonly disabled = input<boolean>(false);
 
-    /** Disable the date picker via template binding. */
-    readonly disabled = input<boolean>(false);
+  /** Minimum selectable date. */
+  readonly minDate = input<Date | null>(null);
 
-    /** Minimum selectable date. */
-    readonly minDate = input<Date | null>(null);
+  /** Maximum selectable date. */
+  readonly maxDate = input<Date | null>(null);
 
-    /** Maximum selectable date. */
-    readonly maxDate = input<Date | null>(null);
+  readonly weekdays = DAYS_OF_WEEK;
 
-    readonly weekdays = DAYS_OF_WEEK;
+  /** Currently selected date. */
+  readonly _selectedDate = signal<Date | null>(null);
 
-    /** Currently selected date. */
-    readonly _selectedDate = signal<Date | null>(null);
+  /** Whether the calendar dropdown is open. */
+  readonly isOpen = signal<boolean>(false);
 
-    /** Whether the calendar dropdown is open. */
-    readonly isOpen = signal<boolean>(false);
+  /** The month being viewed (year + month). */
+  readonly _viewDate = signal<Date>(new Date());
 
-    /** The month being viewed (year + month). */
-    readonly _viewDate = signal<Date>(new Date());
+  private readonly _formDisabled = signal<boolean>(false);
+  readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
 
-    private readonly _formDisabled = signal<boolean>(false);
-    readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
+  private _onChange: (val: Date | null) => void = () => { };
+  _onTouched: () => void = () => { };
 
-    private _onChange: (val: Date | null) => void = () => { };
-    _onTouched: () => void = () => { };
+  readonly displayValue = computed(() => {
+    const d = this._selectedDate();
+    if (!d) return '';
+    return this._formatDate(d);
+  });
 
-    readonly displayValue = computed(() => {
-        const d = this._selectedDate();
-        if (!d) return '';
-        return this._formatDate(d);
-    });
+  readonly monthYearLabel = computed(() => {
+    const d = this._viewDate();
+    return d.toLocaleString('default', { month: 'long', year: 'numeric' });
+  });
 
-    readonly monthYearLabel = computed(() => {
-        const d = this._viewDate();
-        return d.toLocaleString('default', { month: 'long', year: 'numeric' });
-    });
+  readonly calendarDays = computed<CalendarDay[]>(() => {
+    const viewDate = this._viewDate();
+    const selected = this._selectedDate();
+    const today = new Date();
+    const min = this.minDate();
+    const max = this.maxDate();
 
-    readonly calendarDays = computed<CalendarDay[]>(() => {
-        const viewDate = this._viewDate();
-        const selected = this._selectedDate();
-        const today = new Date();
-        const min = this.minDate();
-        const max = this.maxDate();
+    const year = viewDate.getFullYear();
+    const month = viewDate.getMonth();
 
-        const year = viewDate.getFullYear();
-        const month = viewDate.getMonth();
+    const firstOfMonth = new Date(year, month, 1);
+    const startDay = firstOfMonth.getDay();
+    const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-        const firstOfMonth = new Date(year, month, 1);
-        const startDay = firstOfMonth.getDay();
-        const daysInMonth = new Date(year, month + 1, 0).getDate();
+    // Fill from previous month
+    const prevMonthDays = new Date(year, month, 0).getDate();
+    const days: CalendarDay[] = [];
 
-        // Fill from previous month
-        const prevMonthDays = new Date(year, month, 0).getDate();
-        const days: CalendarDay[] = [];
-
-        for (let i = startDay - 1; i >= 0; i--) {
-            const date = new Date(year, month - 1, prevMonthDays - i);
-            days.push(this._buildDay(date, false, today, selected, min, max));
-        }
-
-        for (let d = 1; d <= daysInMonth; d++) {
-            const date = new Date(year, month, d);
-            days.push(this._buildDay(date, true, today, selected, min, max));
-        }
-
-        // Fill remaining to complete 6 rows (42 cells)
-        const remaining = 42 - days.length;
-        for (let d = 1; d <= remaining; d++) {
-            const date = new Date(year, month + 1, d);
-            days.push(this._buildDay(date, false, today, selected, min, max));
-        }
-
-        return days;
-    });
-
-    toggleCalendar(): void {
-        if (this.isDisabled()) return;
-        this.isOpen.update((v) => !v);
-        if (this.isOpen()) {
-            const selected = this._selectedDate();
-            if (selected) {
-                this._viewDate.set(new Date(selected.getFullYear(), selected.getMonth(), 1));
-            }
-        }
+    for (let i = startDay - 1; i >= 0; i--) {
+      const date = new Date(year, month - 1, prevMonthDays - i);
+      days.push(this._buildDay(date, false, today, selected, min, max));
     }
 
-    selectDay(day: CalendarDay): void {
-        if (day.isDisabled) return;
-        this._selectedDate.set(day.date);
-        this._onChange(day.date);
-        this.isOpen.set(false);
+    for (let d = 1; d <= daysInMonth; d++) {
+      const date = new Date(year, month, d);
+      days.push(this._buildDay(date, true, today, selected, min, max));
     }
 
-    prevMonth(): void {
-        const d = this._viewDate();
-        this._viewDate.set(new Date(d.getFullYear(), d.getMonth() - 1, 1));
+    // Fill remaining to complete 6 rows (42 cells)
+    const remaining = 42 - days.length;
+    for (let d = 1; d <= remaining; d++) {
+      const date = new Date(year, month + 1, d);
+      days.push(this._buildDay(date, false, today, selected, min, max));
     }
 
-    nextMonth(): void {
-        const d = this._viewDate();
-        this._viewDate.set(new Date(d.getFullYear(), d.getMonth() + 1, 1));
+    return days;
+  });
+
+  toggleCalendar(): void {
+    if (this.isDisabled()) return;
+    this.isOpen.update((v) => !v);
+    if (this.isOpen()) {
+      const selected = this._selectedDate();
+      if (selected) {
+        this._viewDate.set(new Date(selected.getFullYear(), selected.getMonth(), 1));
+      }
+    }
+  }
+
+  selectDay(day: CalendarDay): void {
+    if (day.isDisabled) return;
+    this._selectedDate.set(day.date);
+    this._onChange(day.date);
+    this.isOpen.set(false);
+  }
+
+  prevMonth(): void {
+    const d = this._viewDate();
+    this._viewDate.set(new Date(d.getFullYear(), d.getMonth() - 1, 1));
+  }
+
+  nextMonth(): void {
+    const d = this._viewDate();
+    this._viewDate.set(new Date(d.getFullYear(), d.getMonth() + 1, 1));
+  }
+
+  goToToday(): void {
+    const today = new Date();
+    this._selectedDate.set(today);
+    this._viewDate.set(new Date(today.getFullYear(), today.getMonth(), 1));
+    this._onChange(today);
+    this.isOpen.set(false);
+  }
+
+  clear(): void {
+    this._selectedDate.set(null);
+    this._onChange(null);
+  }
+
+  @HostListener('document:click', ['$event'])
+  _onDocClick(event: MouseEvent): void {
+    if (!this._el.nativeElement.contains(event.target as Node)) {
+      this.isOpen.set(false);
+    }
+  }
+
+  @HostListener('keydown.escape')
+  _onEsc(): void {
+    this.isOpen.set(false);
+  }
+
+  // — ControlValueAccessor —
+
+  writeValue(val: unknown): void {
+    this._selectedDate.set(val instanceof Date ? val : val ? new Date(val as string) : null);
+  }
+
+  registerOnChange(fn: (val: Date | null) => void): void {
+    this._onChange = fn;
+  }
+
+  registerOnTouched(fn: () => void): void {
+    this._onTouched = fn;
+  }
+
+  setDisabledState(isDisabled: boolean): void {
+    this._formDisabled.set(isDisabled);
+  }
+
+  // — Private helpers —
+
+  private _buildDay(
+    date: Date,
+    isCurrentMonth: boolean,
+    today: Date,
+    selected: Date | null,
+    min: Date | null,
+    max: Date | null,
+  ): CalendarDay {
+    const isToday =
+      date.getDate() === today.getDate() &&
+      date.getMonth() === today.getMonth() &&
+      date.getFullYear() === today.getFullYear();
+    const isSelected = selected
+      ? date.getDate() === selected.getDate() &&
+      date.getMonth() === selected.getMonth() &&
+      date.getFullYear() === selected.getFullYear()
+      : false;
+
+    let isDisabled = false;
+    if (min) {
+      const minDay = new Date(min.getFullYear(), min.getMonth(), min.getDate());
+      isDisabled = date < minDay;
+    }
+    if (max && !isDisabled) {
+      const maxDay = new Date(max.getFullYear(), max.getMonth(), max.getDate());
+      isDisabled = date > maxDay;
     }
 
-    goToToday(): void {
-        const today = new Date();
-        this._selectedDate.set(today);
-        this._viewDate.set(new Date(today.getFullYear(), today.getMonth(), 1));
-        this._onChange(today);
-        this.isOpen.set(false);
-    }
+    return { date, day: date.getDate(), isCurrentMonth, isToday, isSelected, isDisabled };
+  }
 
-    clear(): void {
-        this._selectedDate.set(null);
-        this._onChange(null);
-    }
+  private _formatDate(d: Date): string {
+    const yyyy = d.getFullYear();
+    const mm = String(d.getMonth() + 1).padStart(2, '0');
+    const dd = String(d.getDate()).padStart(2, '0');
 
-    @HostListener('document:click', ['$event'])
-    _onDocClick(event: MouseEvent): void {
-        if (!this._el.nativeElement.contains(event.target as Node)) {
-            this.isOpen.set(false);
-        }
-    }
-
-    @HostListener('keydown.escape')
-    _onEsc(): void {
-        this.isOpen.set(false);
-    }
-
-    // — ControlValueAccessor —
-
-    writeValue(val: unknown): void {
-        this._selectedDate.set(val instanceof Date ? val : val ? new Date(val as string) : null);
-    }
-
-    registerOnChange(fn: (val: Date | null) => void): void {
-        this._onChange = fn;
-    }
-
-    registerOnTouched(fn: () => void): void {
-        this._onTouched = fn;
-    }
-
-    setDisabledState(isDisabled: boolean): void {
-        this._formDisabled.set(isDisabled);
-    }
-
-    // — Private helpers —
-
-    private _buildDay(
-        date: Date,
-        isCurrentMonth: boolean,
-        today: Date,
-        selected: Date | null,
-        min: Date | null,
-        max: Date | null,
-    ): CalendarDay {
-        const isToday =
-            date.getDate() === today.getDate() &&
-            date.getMonth() === today.getMonth() &&
-            date.getFullYear() === today.getFullYear();
-        const isSelected = selected
-            ? date.getDate() === selected.getDate() &&
-            date.getMonth() === selected.getMonth() &&
-            date.getFullYear() === selected.getFullYear()
-            : false;
-
-        let isDisabled = false;
-        if (min) {
-            const minDay = new Date(min.getFullYear(), min.getMonth(), min.getDate());
-            isDisabled = date < minDay;
-        }
-        if (max && !isDisabled) {
-            const maxDay = new Date(max.getFullYear(), max.getMonth(), max.getDate());
-            isDisabled = date > maxDay;
-        }
-
-        return { date, day: date.getDate(), isCurrentMonth, isToday, isSelected, isDisabled };
-    }
-
-    private _formatDate(d: Date): string {
-        const yyyy = d.getFullYear();
-        const mm = String(d.getMonth() + 1).padStart(2, '0');
-        const dd = String(d.getDate()).padStart(2, '0');
-
-        return this.format()
-            .replace('yyyy', String(yyyy))
-            .replace('MM', mm)
-            .replace('dd', dd);
-    }
+    return this.format()
+      .replace('yyyy', String(yyyy))
+      .replace('MM', mm)
+      .replace('dd', dd);
+  }
 }
