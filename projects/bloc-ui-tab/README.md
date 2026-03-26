@@ -1,6 +1,6 @@
 # @bloc-ui/tab
 
-> **Latest:** v0.0.1
+> **Latest:** v0.0.2
 
 Tab group component for Angular — part of the [Bloc UI](https://github.com/debasish1996/BLOC-UI) component library. Supports size presets, disabled tabs, animated active indicator, and selection change events.
 

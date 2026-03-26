@@ -1,6 +1,6 @@
 # @bloc-ui/date-picker
 
-> **Latest:** v0.0.1
+> **Latest:** v0.0.2
 
 Date picker component with calendar dropdown for Angular — part of the [Bloc UI](https://github.com/debasish1996/BLOC-UI) component library. Supports template-driven and reactive forms, min/max date enforcement, and customisable display format.
 
