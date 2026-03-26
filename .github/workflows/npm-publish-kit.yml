@@ -26,6 +26,15 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
+      - name: Build dependencies
+        run: |
+          npx ng build bloc-ui-core --configuration production
+          npx ng build bloc-ui-modal --configuration production
+          npx ng build bloc-ui-table --configuration production
+          npx ng build bloc-ui-toast --configuration production
+          npx ng build bloc-ui-date-picker --configuration production
+          npx ng build bloc-ui-tab --configuration production
+
       - name: Build bloc-ui
         run: npx ng build bloc-ui --configuration production
 
