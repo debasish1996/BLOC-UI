@@ -139,7 +139,7 @@ npm install
 ng serve
 
 # Build all libraries
-npm run build:bloc-ui
+npm run build
 
 # Build individual libraries
 ng build bloc-ui-core
