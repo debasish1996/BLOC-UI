@@ -52,6 +52,97 @@ export class HomeComponent {
       description: 'Loading indicators with configurable size, speed, and colour tokens.',
       icon: '⏳',
     },
+    {
+      name: 'Table',
+      path: '/table',
+      description: 'Declarative data tables with sortable columns and custom cell templates.',
+      icon: '📊',
+    },
+    {
+      name: 'Tab',
+      path: '/tab',
+      description: 'Accessible tab groups with keyboard navigation and lazy content rendering.',
+      icon: '🗂️',
+    },
+    {
+      name: 'Toast',
+      path: '/toast',
+      description: 'Stackable notification toasts with auto-dismiss, actions, and positioning.',
+      icon: '🔔',
+    },
+    {
+      name: 'Date Picker',
+      path: '/date-picker',
+      description: 'Calendar-based date selection with keyboard navigation and format control.',
+      icon: '📅',
+    },
+  ];
+
+  readonly packages = [
+    {
+      name: '@bloc-ui/kit',
+      npm: 'npm i @bloc-ui/kit',
+      badge: 'K',
+      badgeBg: 'bg-slate-200',
+      badgeText: 'text-slate-700',
+      description: 'All-in-one umbrella package — installs core, theme, and every component package in a single dependency. Ideal when you want the full Bloc UI suite.',
+    },
+    {
+      name: '@bloc-ui/core',
+      npm: 'npm i @bloc-ui/core',
+      badge: 'C',
+      badgeBg: 'bg-blue-100',
+      badgeText: 'text-blue-600',
+      description: 'Structure, behaviour, and accessibility. Barebone components with zero visual opinion — every colour goes through CSS custom properties with neutral-grey fallbacks.',
+    },
+    {
+      name: '@bloc-ui/theme',
+      npm: 'npm i @bloc-ui/theme',
+      badge: 'T',
+      badgeBg: 'bg-purple-100',
+      badgeText: 'text-purple-600',
+      description: 'Optional design layer. CSS custom properties for colours, typography, border radii, and full dark mode — drop it in and every core component lights up.',
+    },
+    {
+      name: '@bloc-ui/modal',
+      npm: 'npm i @bloc-ui/modal',
+      badge: 'M',
+      badgeBg: 'bg-amber-100',
+      badgeText: 'text-amber-600',
+      description: 'Declarative modal dialogs with backdrop dismiss, focus trapping, stacking, and service-based programmatic opening.',
+    },
+    {
+      name: '@bloc-ui/table',
+      npm: 'npm i @bloc-ui/table',
+      badge: 'Tb',
+      badgeBg: 'bg-emerald-100',
+      badgeText: 'text-emerald-600',
+      description: 'Data table with declarative column definitions, sortable headers, and custom cell templates.',
+    },
+    {
+      name: '@bloc-ui/toast',
+      npm: 'npm i @bloc-ui/toast',
+      badge: 'To',
+      badgeBg: 'bg-rose-100',
+      badgeText: 'text-rose-600',
+      description: 'Stackable notification toasts with auto-dismiss timers, action buttons, and configurable positioning.',
+    },
+    {
+      name: '@bloc-ui/date-picker',
+      npm: 'npm i @bloc-ui/date-picker',
+      badge: 'D',
+      badgeBg: 'bg-cyan-100',
+      badgeText: 'text-cyan-600',
+      description: 'Calendar-based date picker with keyboard navigation, min/max constraints, and locale-aware formatting.',
+    },
+    {
+      name: '@bloc-ui/tab',
+      npm: 'npm i @bloc-ui/tab',
+      badge: 'Ta',
+      badgeBg: 'bg-indigo-100',
+      badgeText: 'text-indigo-600',
+      description: 'Accessible tab group component with keyboard navigation, ARIA roles, and lazy content projection.',
+    },
   ];
 
   readonly features = [
@@ -86,6 +177,14 @@ export class HomeComponent {
       icon: '🌊',
     },
   ];
+
+  copiedIndex: number | null = null;
+
+  copyToClipboard(text: string, index: number): void {
+    navigator.clipboard.writeText(text);
+    this.copiedIndex = index;
+    setTimeout(() => (this.copiedIndex = null), 1500);
+  }
 
   constructor(private title: Title, private meta: Meta) {
     this.title.setTitle('Bloc UI — Lightweight Angular Component Library');
