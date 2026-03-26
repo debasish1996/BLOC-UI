@@ -1,13 +1,13 @@
 name: Publish Tab to npm
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - 'tab-v*'
   workflow_dispatch:
 
 jobs:
   publish:
-    if: github.event_name == 'workflow_dispatch' || startsWith(github.event.release.tag_name, 'tab-v')
     runs-on: ubuntu-latest
     permissions:
       contents: read

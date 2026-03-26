@@ -1,13 +1,13 @@
 name: Publish to npm
 
 on:
-  release:
-    types: [published]
+  push:
+    tags:
+      - 'core-v*'
   workflow_dispatch:
 
 jobs:
   publish:
-    if: github.event_name == 'workflow_dispatch' || startsWith(github.event.release.tag_name, 'core-v')
     runs-on: ubuntu-latest
     permissions:
       contents: read
