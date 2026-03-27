@@ -7,3 +7,11 @@
     background-color: #2563eb !important;
   }
 }
+
+/* Chevron rotation for collapsible group */
+.nav-chevron {
+  transform: rotate(-90deg);
+}
+.nav-chevron--open {
+  transform: rotate(0deg);
+}
