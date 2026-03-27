@@ -22,6 +22,9 @@ export class RadioDemoComponent {
     // Template-driven
     ngModelValue: string = '';
 
+    // Pre-selected value for disabled group demo
+    disabledSelectedValue: string = 'b';
+
     // Reactive — enabled
     readonly reactiveCtrl = new FormControl<string>('');
 
@@ -42,6 +45,7 @@ export class RadioDemoComponent {
         sizeLarge: `<bloc-radio-group>\n  <bloc-radio value="a" size="lg">Option A</bloc-radio>\n  <bloc-radio value="b" size="lg">Option B</bloc-radio>\n</bloc-radio-group>`,
         groupDisabled: `<bloc-radio-group [disabled]="true">\n  <bloc-radio value="a">Option A</bloc-radio>\n  <bloc-radio value="b">Option B</bloc-radio>\n</bloc-radio-group>`,
         itemDisabled: `<bloc-radio-group>\n  <bloc-radio value="a">Option A</bloc-radio>\n  <bloc-radio value="b" [disabled]="true">\n    Option B (disabled)\n  </bloc-radio>\n  <bloc-radio value="c">Option C</bloc-radio>\n</bloc-radio-group>`,
+        disabledSelected: `<bloc-radio-group\n  [(ngModel)]="selectedValue"\n  [disabled]="true">\n  <bloc-radio value="a">Option A</bloc-radio>\n  <bloc-radio value="b">Option B</bloc-radio>\n  <bloc-radio value="c">Option C</bloc-radio>\n</bloc-radio-group>`,
         labelAfter: `<bloc-radio-group>\n  <bloc-radio value="a">Option A</bloc-radio>\n  <bloc-radio value="b">Option B</bloc-radio>\n</bloc-radio-group>`,
         labelBefore: `<bloc-radio-group labelPosition="before">\n  <bloc-radio value="a">Option A</bloc-radio>\n  <bloc-radio value="b">Option B</bloc-radio>\n</bloc-radio-group>`,
         perItem: `<bloc-radio-group>\n  <bloc-radio value="a" labelPosition="before">\n    Before\n  </bloc-radio>\n  <bloc-radio value="b">After</bloc-radio>\n</bloc-radio-group>`,

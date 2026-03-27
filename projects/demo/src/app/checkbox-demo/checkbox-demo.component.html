@@ -4,6 +4,10 @@
         Boolean checkbox component. Works with <code>ngModel</code>, <code>formControl</code>, and
         <code>formControlName</code>.
     </p>
+    <p class="m-0 text-xs text-slate-400 mt-1">
+        Keyboard: Space to toggle. ARIA: <code>role="checkbox"</code>, <code>aria-checked</code>,
+        <code>aria-disabled</code>.
+    </p>
     <app-install-command package="@bloc-ui/core" />
 </header>
 
@@ -12,18 +16,27 @@
 <div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-5 mb-10">
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
         <h3 class="m-0 text-base font-semibold text-slate-900">Small</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Tight layouts, table cells, or dense form rows.
+        </p>
         <bloc-checkbox size="sm" class="text-sm text-slate-700">Accept terms</bloc-checkbox>
         <app-sample-code [code]="snippets.sizeSmall" />
     </div>
 
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
         <h3 class="m-0 text-base font-semibold text-slate-900">Medium (default)</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Standard form controls and most UI contexts.
+        </p>
         <bloc-checkbox class="text-sm text-slate-700">Accept terms</bloc-checkbox>
         <app-sample-code [code]="snippets.sizeMedium" />
     </div>
 
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
         <h3 class="m-0 text-base font-semibold text-slate-900">Large</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Touch targets, prominent CTAs, or accessibility-first interfaces.
+        </p>
         <bloc-checkbox size="lg" class="text-slate-700">Accept terms</bloc-checkbox>
         <app-sample-code [code]="snippets.sizeLarge" />
     </div>
@@ -37,6 +50,17 @@
         <p class="m-0 text-[0.82rem] text-slate-400">Uncontrolled — click to toggle.</p>
         <div><bloc-checkbox class="text-sm text-slate-700">Remember me</bloc-checkbox></div>
         <app-sample-code [code]="snippets.default" />
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Default (checked)</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">Starts checked — uncontrolled.</p>
+        <div>
+            <bloc-checkbox [ngModel]="true" class="text-sm text-slate-700"
+                >Pre-checked</bloc-checkbox
+            >
+        </div>
+        <app-sample-code [code]="snippets.defaultChecked" />
     </div>
 
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">

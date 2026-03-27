@@ -1,10 +1,9 @@
 <header class="mb-8 pb-4 border-b border-slate-200">
     <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Date Range Picker</h1>
     <p class="m-0 text-slate-400 text-[0.95rem]">
-        Attach <code>[blocDateRangePickerTrigger]</code> to any element to select a date range.
-        Click twice to pick <code>from</code> and <code>to</code> — order doesn't matter,
-        auto-sorted. Works with <code>ngModel</code>, <code>formControl</code>, and
-        <code>FormGroup</code>.
+        Range date picker with auto-sorting — click any two dates in any order, the range is always
+        correct. Trigger-based: attach to any element. Works with <code>ngModel</code>,
+        <code>formControl</code>, and <code>FormGroup</code>.
     </p>
     <app-install-command package="@bloc-ui/date-picker" />
 </header>
@@ -142,7 +141,7 @@
 <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
     Min / Max date
 </h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5">
+<div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5 mb-10">
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
         <h3 class="m-0 text-base font-semibold text-slate-900">Constrained range</h3>
         <p class="m-0 text-[0.82rem] text-slate-400">
@@ -164,5 +163,36 @@
             </button>
         </div>
         <app-sample-code [code]="snippets.rangeMinMax" />
+    </div>
+</div>
+
+<!-- Custom token -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+    Custom token
+</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5">
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Custom colour</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Override range picker colours via CSS custom properties on the trigger.
+        </p>
+        <div>
+            <button
+                blocDateRangePickerTrigger
+                #rangeCustomToken="blocDateRangePickerTrigger"
+                style="
+                    --bloc-date-picker-selected-bg: #7c3aed;
+                    --bloc-date-picker-today-border: #7c3aed;
+                "
+                class="inline-flex items-center gap-2 px-3 py-2 text-sm text-slate-700 border border-slate-300 rounded-md bg-white cursor-pointer hover:bg-slate-50 transition-colors"
+            >
+                <app-icon name="calendar" [size]="14"></app-icon>
+                {{
+                    formatRange(rangeCustomToken.rangeStart(), rangeCustomToken.rangeEnd()) ||
+                        'Purple accent'
+                }}
+            </button>
+        </div>
+        <app-sample-code [code]="snippets.rangeCustomToken" />
     </div>
 </div>

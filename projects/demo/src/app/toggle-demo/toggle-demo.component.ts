@@ -40,6 +40,7 @@ export class ToggleDemoComponent {
         sizeMedium: `<bloc-toggle></bloc-toggle>`,
         sizeLarge: `<bloc-toggle size="lg"></bloc-toggle>`,
         default: `<bloc-toggle></bloc-toggle>`,
+        defaultOn: `<bloc-toggle [ngModel]="true"></bloc-toggle>`,
         disabledOff: `<bloc-toggle [disabled]="true"></bloc-toggle>`,
         disabledOn: `<bloc-toggle [formControl]="ctrl"></bloc-toggle>\n<!-- ctrl = new FormControl(true); ctrl.disable(); -->`,
         labelAfter: `<bloc-toggle>Enable notifications</bloc-toggle>`,

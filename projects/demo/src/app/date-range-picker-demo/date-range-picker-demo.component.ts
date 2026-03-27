@@ -43,5 +43,6 @@ export class DateRangePickerDemoComponent {
         rangeFormControl: `<button blocDateRangePickerTrigger\n  [formControl]="rangeCtrl"\n  #range="blocDateRangePickerTrigger">\n  {{ formatRange(range.rangeStart(), range.rangeEnd()) || 'Select range' }}\n</button>`,
         rangeFormGroup: `<button blocDateRangePickerTrigger\n  [rangeFormGroup]="rangeFormGroup"\n  #range="blocDateRangePickerTrigger">\n  {{ formatRange(range.rangeStart(), range.rangeEnd()) || 'Select range' }}\n</button>\n\nrangeFormGroup = new FormGroup({\n  from: new FormControl<Date | null>(null),\n  to: new FormControl<Date | null>(null),\n});`,
         rangeMinMax: `<button blocDateRangePickerTrigger\n  [(ngModel)]="rangeValue"\n  [minDate]="minDate"\n  [maxDate]="maxDate"\n  #range="blocDateRangePickerTrigger">\n  {{ formatRange(range.rangeStart(), range.rangeEnd()) || 'Pick a range' }}\n</button>`,
+        rangeCustomToken: `<button blocDateRangePickerTrigger\n  style="--bloc-date-picker-selected-bg: #7c3aed;\n         --bloc-date-picker-today-border: #7c3aed"\n  #range="blocDateRangePickerTrigger">\n  {{ formatRange(range.rangeStart(), range.rangeEnd()) || 'Purple accent' }}\n</button>`,
     };
 }

@@ -1,7 +1,8 @@
-import { Component, inject } from '@angular/core';
+import { Component, inject, signal } from '@angular/core';
 import { BlocButtonComponent } from '@bloc-ui/core/button';
 import { BlocModalService } from '@bloc-ui/modal';
 import { ConfirmModalComponent } from './confirm-modal.component';
+import { DataModalComponent } from './data-modal.component';
 import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
 
@@ -13,6 +14,8 @@ import { SampleCodeComponent } from '../sample-code/sample-code.component';
 })
 export class ModalDemoComponent {
     private readonly modal = inject(BlocModalService);
+
+    readonly lastResult = signal<string | null>(null);
 
     openModal(size: 'sm' | 'md' | 'lg'): void {
         const ref = this.modal.open(ConfirmModalComponent, {
@@ -63,6 +66,26 @@ export class ModalDemoComponent {
         });
     }
 
+    openWithData(): void {
+        this.modal.open(DataModalComponent, {
+            title: 'Edit User',
+            data: { name: 'Alice', role: 'Admin' },
+        });
+    }
+
+    openWithResult(): void {
+        const ref = this.modal.open(ConfirmModalComponent, {
+            title: 'Confirm Action',
+            size: 'sm',
+            data: { size: 'sm', test: 'Return value demo.' },
+        });
+        ref.afterClosed$.subscribe((result) => {
+            this.lastResult.set(
+                result === true ? 'Confirmed ✓' : result === false ? 'Cancelled ✗' : 'Dismissed',
+            );
+        });
+    }
+
     readonly snippets = {
         defaultMd: `const ref = this.modal.open(MyComponent, {\n  title: 'Modal — md',\n  size: 'md',\n  data: { ... },\n});\nref.afterClosed$.subscribe(result => { });`,
         small: `this.modal.open(MyComponent, {\n  title: 'Small Modal',\n  size: 'sm',\n  data: { ... },\n});`,
@@ -72,5 +95,7 @@ export class ModalDemoComponent {
         noCloseButton: `this.modal.open(MyComponent, {\n  title: 'No Close Button',\n  showCloseButton: false,\n});`,
         panelClass: `this.modal.open(MyComponent, {\n  title: 'Custom Panel',\n  panelClass: 'my-panel',\n});`,
         backdropClass: `this.modal.open(MyComponent, {\n  title: 'Custom Backdrop',\n  backdropClass: 'bg-white/30',\n});`,
+        dataPass: `const ref = this.modal.open(DataModalComponent, {\n  title: 'Edit User',\n  data: { name: 'Alice', role: 'Admin' },\n});\n\n// Inside DataModalComponent:\n// readonly data = inject<UserData>(BLOC_MODAL_DATA);`,
+        returnValue: `const ref = this.modal.open(ConfirmComponent, {\n  title: 'Confirm Action',\n  size: 'sm',\n});\nref.afterClosed$.subscribe(result => {\n  console.log(result); // true | false | undefined\n});`,
     };
 }

@@ -59,5 +59,12 @@ export class ToastDemoComponent {
         persistent: `toastService.show({\n  message: 'This toast will not auto-dismiss.',\n  type: 'info',\n  title: 'Persistent',\n  duration: 0,\n});`,
         nonDismissible: `toastService.show({\n  message: 'Cannot be closed manually.',\n  type: 'warning',\n  dismissible: false,\n  duration: 5000,\n});`,
         inject: `private readonly toast = inject(BlocToastService);`,
+        container: `<!-- in app.component.html -->
+<bloc-toast-container />`,
+        customToken: `<!-- Override colours on the container -->
+<bloc-toast-container
+  style="--bloc-toast-success-color: #7c3aed;
+         --bloc-toast-bg: #faf5ff;
+         --bloc-toast-border: #e9d5ff" />`,
     };
 }

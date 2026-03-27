@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlocDatePickerTriggerDirective } from '@bloc-ui/date-picker';
 import { BlocButtonComponent } from 'bloc-ui-core';
 import { InstallCommandComponent } from '../install-command/install-command.component';
@@ -28,6 +28,11 @@ export class DatePickerDemoComponent {
     readonly dateCtrl = new FormControl<Date | null>(null);
     readonly disabledCtrl = new FormControl<Date | null>(new Date());
 
+    // FormGroup for formControlName demo
+    readonly birthdateGroup = new FormGroup({
+        birthdate: new FormControl<Date | null>(null),
+    });
+
     // Min/max demo
     readonly minDate = new Date(2024, 0, 1);
     readonly maxDate = new Date(2026, 11, 31);
@@ -48,5 +53,6 @@ export class DatePickerDemoComponent {
         minMax: `<button blocDatePickerTrigger\n  [(ngModel)]="selectedDate"\n  [minDate]="minDate"\n  [maxDate]="maxDate"\n  #picker="blocDatePickerTrigger">\n  {{ picker.selectedDate()?.toLocaleDateString() || 'Pick a date' }}\n</button>`,
         customElement: `<div blocDatePickerTrigger\n  [(ngModel)]="selectedDate"\n  #picker="blocDatePickerTrigger"\n  class="my-trigger">\n  <my-icon name="calendar" />\n  {{ picker.selectedDate()?.toLocaleDateString() || 'Choose date' }}\n</div>`,
         customToken: `<button blocDatePickerTrigger\n  style="--bloc-date-picker-selected-bg: #16a34a;\n         --bloc-date-picker-today-border: #16a34a"\n  #picker="blocDatePickerTrigger">\n  {{ picker.selectedDate()?.toLocaleDateString() || 'Green accent' }}\n</button>`,
+        formControlName: `<form [formGroup]="birthdateGroup">\n  <button blocDatePickerTrigger\n    formControlName="birthdate"\n    #picker="blocDatePickerTrigger">\n    {{ picker.selectedDate()?.toLocaleDateString() || 'Pick birthdate' }}\n  </button>\n</form>\n\nbirthdateGroup = new FormGroup({\n  birthdate: new FormControl<Date | null>(null),\n});`,
     };
 }

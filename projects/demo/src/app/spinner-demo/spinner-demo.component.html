@@ -6,7 +6,11 @@
     <app-install-command package="@bloc-ui/core" />
 </header>
 
-<div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5">
+<!-- Preset sizes -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+    Preset sizes
+</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5 mb-10">
     <!-- Preset sizes -->
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
         <h3 class="m-0 text-base font-semibold text-slate-900">Preset Sizes</h3>
@@ -33,6 +37,25 @@
         <app-sample-code [code]="snippets.default" />
     </div>
 
+    <!-- Inline with text -->
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Inline with text</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Inline next to text for inline loading states.
+        </p>
+        <div class="flex items-center gap-2 text-sm text-slate-600">
+            <span blocSpinner size="sm"></span>
+            Loading data...
+        </div>
+        <app-sample-code [code]="snippets.inlineText" />
+    </div>
+</div>
+
+<!-- Custom sizing -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+    Custom sizing
+</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5 mb-10">
     <!-- Custom width/height inputs -->
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
         <h3 class="m-0 text-base font-semibold text-slate-900">Custom Size via Inputs</h3>
@@ -57,7 +80,11 @@
         </div>
         <app-sample-code [code]="snippets.customClass" />
     </div>
+</div>
 
+<!-- Theming -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Theming</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5">
     <!-- Themed via Tailwind text colour -->
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
         <h3 class="m-0 text-base font-semibold text-slate-900">Custom Colour via Tailwind</h3>
@@ -71,5 +98,21 @@
             <span blocSpinner size="lg" class="text-red-500"></span>
         </div>
         <app-sample-code [code]="snippets.customColour" />
+    </div>
+
+    <!-- Custom token -->
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Custom token</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Override colour via CSS custom properties — works without Tailwind.
+        </p>
+        <div>
+            <span
+                blocSpinner
+                size="lg"
+                style="--bloc-spinner-color: #10b981; --bloc-spinner-track: #d1fae5"
+            ></span>
+        </div>
+        <app-sample-code [code]="snippets.customToken" />
     </div>
 </div>

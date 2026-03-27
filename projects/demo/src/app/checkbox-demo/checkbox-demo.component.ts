@@ -32,6 +32,7 @@ export class CheckboxDemoComponent {
         sizeMedium: `<bloc-checkbox>Accept terms</bloc-checkbox>`,
         sizeLarge: `<bloc-checkbox size="lg">Accept terms</bloc-checkbox>`,
         default: `<bloc-checkbox>Remember me</bloc-checkbox>`,
+        defaultChecked: `<bloc-checkbox [ngModel]="true">Pre-checked</bloc-checkbox>`,
         disabled: `<bloc-checkbox [disabled]="true">Unavailable</bloc-checkbox>`,
         disabledChecked: `<bloc-checkbox [formControl]="ctrl">\n  Locked on\n</bloc-checkbox>`,
         labelAfter: `<bloc-checkbox>Enable notifications</bloc-checkbox>`,

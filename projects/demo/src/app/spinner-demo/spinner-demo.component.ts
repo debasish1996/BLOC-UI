@@ -16,5 +16,7 @@ export class SpinnerDemoComponent {
         customInputs: `<span blocSpinner width="56px" height="56px"></span>\n<span blocSpinner width="4rem" height="4rem"></span>`,
         customClass: `<span blocSpinner class="w-16 h-16"></span>`,
         customColour: `<span blocSpinner size="lg"\n  class="text-emerald-500"></span>\n<span blocSpinner size="lg"\n  class="text-amber-500"></span>`,
+        customToken: `<span blocSpinner size="lg"\n  style="--bloc-spinner-color: #10b981;\n         --bloc-spinner-track: #d1fae5"></span>`,
+        inlineText: `<div class="flex items-center gap-2 text-sm">\n  <span blocSpinner size="sm"></span>\n  Loading data...\n</div>`,
     };
 }

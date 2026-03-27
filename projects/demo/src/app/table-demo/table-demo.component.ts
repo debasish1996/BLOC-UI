@@ -32,5 +32,7 @@ export class TableDemoComponent {
         sizeSmall: `<bloc-table [data]="users" size="sm">\n  …\n</bloc-table>`,
         sizeLarge: `<bloc-table [data]="users" size="lg">\n  …\n</bloc-table>`,
         customCell: `<bloc-table [data]="users">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="status" header="Status">\n    <ng-template blocCellDef let-value>\n      <span [class]="value === 'Active'\n        ? 'text-green-600' : 'text-red-500'">{{ value }}</span>\n    </ng-template>\n  </bloc-column>\n</bloc-table>`,
+        emptyData: `<bloc-table [data]="[]">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="email" header="Email" />\n  <bloc-column field="role" header="Role" />\n</bloc-table>`,
+        customToken: `<bloc-table [data]="users"\n  style="--bloc-table-th-bg: #f0fdf4;\n         --bloc-table-border: #86efac;\n         --bloc-table-th-color: #15803d">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="email" header="Email" />\n</bloc-table>`,
     };
 }

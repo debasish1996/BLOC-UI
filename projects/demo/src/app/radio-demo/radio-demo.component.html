@@ -4,6 +4,10 @@
         Group of mutually exclusive options. Use <code>bloc-radio-group</code> with
         <code>ngModel</code>, <code>formControl</code>, or <code>formControlName</code>.
     </p>
+    <p class="m-0 text-xs text-slate-400 mt-1">
+        Keyboard: Arrow keys to navigate, Space to select. ARIA: <code>role="radiogroup"</code>,
+        <code>role="radio"</code>, <code>aria-checked</code>.
+    </p>
     <app-install-command package="@bloc-ui/core" />
 </header>
 
@@ -12,6 +16,9 @@
 <div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-5 mb-10">
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
         <h3 class="m-0 text-base font-semibold text-slate-900">Small</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Tight layouts, table cells, or dense form rows.
+        </p>
         <bloc-radio-group>
             <bloc-radio value="a" size="sm" class="text-sm text-slate-700">Option A</bloc-radio>
             <bloc-radio value="b" size="sm" class="text-sm text-slate-700">Option B</bloc-radio>
@@ -21,6 +28,9 @@
 
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
         <h3 class="m-0 text-base font-semibold text-slate-900">Medium (default)</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Standard form controls and most UI contexts.
+        </p>
         <bloc-radio-group>
             <bloc-radio value="a" class="text-sm text-slate-700">Option A</bloc-radio>
             <bloc-radio value="b" class="text-sm text-slate-700">Option B</bloc-radio>
@@ -30,6 +40,9 @@
 
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
         <h3 class="m-0 text-base font-semibold text-slate-900">Large</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Touch targets, prominent CTAs, or accessibility-first interfaces.
+        </p>
         <bloc-radio-group>
             <bloc-radio value="a" size="lg" class="text-slate-700">Option A</bloc-radio>
             <bloc-radio value="b" size="lg" class="text-slate-700">Option B</bloc-radio>
@@ -64,6 +77,19 @@
             <bloc-radio value="c" class="text-sm text-slate-700">Option C</bloc-radio>
         </bloc-radio-group>
         <app-sample-code [code]="snippets.itemDisabled" />
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Disabled (selected)</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Group disabled with a pre-selected value — e.g. read-only setting.
+        </p>
+        <bloc-radio-group [(ngModel)]="disabledSelectedValue" [disabled]="true">
+            <bloc-radio value="a" class="text-sm text-slate-700">Option A</bloc-radio>
+            <bloc-radio value="b" class="text-sm text-slate-700">Option B</bloc-radio>
+            <bloc-radio value="c" class="text-sm text-slate-700">Option C</bloc-radio>
+        </bloc-radio-group>
+        <app-sample-code [code]="snippets.disabledSelected" />
     </div>
 </div>
 
