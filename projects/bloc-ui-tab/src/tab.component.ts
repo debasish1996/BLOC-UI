@@ -12,12 +12,12 @@ import { BLOC_TAB_GROUP } from './tab.token';
     selector: 'bloc-tab',
     standalone: true,
     template: `
-    @if (isActive()) {
-      <div class="bloc-tab__panel" role="tabpanel">
-        <ng-content />
-      </div>
-    }
-  `,
+        @if (isActive()) {
+            <div class="bloc-tab__panel" role="tabpanel">
+                <ng-content />
+            </div>
+        }
+    `,
     host: {
         '[class.bloc-tab]': 'true',
         '[class.bloc-tab--active]': 'isActive()',

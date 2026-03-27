@@ -1,79 +1,85 @@
 /* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
 /* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
-  "compileOnSave": false,
-  "compilerOptions": {
-    "paths": {
-      "bloc-ui-core": ["./projects/bloc-ui-core/public-api.ts"],
-      "@bloc-ui/core": ["./projects/bloc-ui-core/public-api.ts"],
-      "@bloc-ui/core/button": ["./projects/bloc-ui-core/button/src/public-api.ts"],
-      "@bloc-ui/core/checkbox": ["./projects/bloc-ui-core/checkbox/src/public-api.ts"],
-      "@bloc-ui/core/input": ["./projects/bloc-ui-core/input/src/public-api.ts"],
-      "@bloc-ui/modal": ["./projects/bloc-ui-modal/src/public-api.ts"],
-      "@bloc-ui/kit": ["./projects/bloc-ui/src/public-api.ts"],
-      "@bloc-ui/core/radio": ["./projects/bloc-ui-core/radio/src/public-api.ts"],
-      "@bloc-ui/core/spinner": ["./projects/bloc-ui-core/spinner/src/public-api.ts"],
-      "@bloc-ui/core/toggle": ["./projects/bloc-ui-core/toggle/src/public-api.ts"],
-      "@bloc-ui/tab": ["./projects/bloc-ui-tab/src/public-api.ts"],
-      "@bloc-ui/table": ["./projects/bloc-ui-table/src/public-api.ts"],
-      "@bloc-ui/toast": ["./projects/bloc-ui-toast/src/public-api.ts"],
-      "@bloc-ui/date-picker": ["./projects/bloc-ui-date-picker/public-api.ts"],
-      "@bloc-ui/date-picker/calendar-panel": ["./projects/bloc-ui-date-picker/calendar-panel/src/public-api.ts"],
-      "@bloc-ui/date-picker/date-picker": ["./projects/bloc-ui-date-picker/date-picker/src/public-api.ts"],
-      "@bloc-ui/date-picker/range-date-picker": ["./projects/bloc-ui-date-picker/range-date-picker/src/public-api.ts"]
+    "compileOnSave": false,
+    "compilerOptions": {
+        "paths": {
+            "bloc-ui-core": ["./projects/bloc-ui-core/public-api.ts"],
+            "@bloc-ui/core": ["./projects/bloc-ui-core/public-api.ts"],
+            "@bloc-ui/core/button": ["./projects/bloc-ui-core/button/src/public-api.ts"],
+            "@bloc-ui/core/checkbox": ["./projects/bloc-ui-core/checkbox/src/public-api.ts"],
+            "@bloc-ui/core/input": ["./projects/bloc-ui-core/input/src/public-api.ts"],
+            "@bloc-ui/modal": ["./projects/bloc-ui-modal/src/public-api.ts"],
+            "@bloc-ui/kit": ["./projects/bloc-ui/src/public-api.ts"],
+            "@bloc-ui/core/radio": ["./projects/bloc-ui-core/radio/src/public-api.ts"],
+            "@bloc-ui/core/spinner": ["./projects/bloc-ui-core/spinner/src/public-api.ts"],
+            "@bloc-ui/core/toggle": ["./projects/bloc-ui-core/toggle/src/public-api.ts"],
+            "@bloc-ui/tab": ["./projects/bloc-ui-tab/src/public-api.ts"],
+            "@bloc-ui/table": ["./projects/bloc-ui-table/src/public-api.ts"],
+            "@bloc-ui/toast": ["./projects/bloc-ui-toast/src/public-api.ts"],
+            "@bloc-ui/date-picker": ["./projects/bloc-ui-date-picker/public-api.ts"],
+            "@bloc-ui/date-picker/calendar-panel": [
+                "./projects/bloc-ui-date-picker/calendar-panel/src/public-api.ts"
+            ],
+            "@bloc-ui/date-picker/date-picker": [
+                "./projects/bloc-ui-date-picker/date-picker/src/public-api.ts"
+            ],
+            "@bloc-ui/date-picker/range-date-picker": [
+                "./projects/bloc-ui-date-picker/range-date-picker/src/public-api.ts"
+            ]
+        },
+        "strict": true,
+        "noImplicitOverride": true,
+        "noPropertyAccessFromIndexSignature": true,
+        "noImplicitReturns": true,
+        "noFallthroughCasesInSwitch": true,
+        "skipLibCheck": true,
+        "isolatedModules": true,
+        "experimentalDecorators": true,
+        "importHelpers": true,
+        "target": "ES2022",
+        "module": "preserve"
     },
-    "strict": true,
-    "noImplicitOverride": true,
-    "noPropertyAccessFromIndexSignature": true,
-    "noImplicitReturns": true,
-    "noFallthroughCasesInSwitch": true,
-    "skipLibCheck": true,
-    "isolatedModules": true,
-    "experimentalDecorators": true,
-    "importHelpers": true,
-    "target": "ES2022",
-    "module": "preserve"
-  },
-  "angularCompilerOptions": {
-    "enableI18nLegacyMessageIdFormat": false,
-    "strictInjectionParameters": true,
-    "strictInputAccessModifiers": true,
-    "strictTemplates": true
-  },
-  "files": [],
-  "references": [
-    {
-      "path": "./projects/bloc-ui-core/tsconfig.lib.json"
+    "angularCompilerOptions": {
+        "enableI18nLegacyMessageIdFormat": false,
+        "strictInjectionParameters": true,
+        "strictInputAccessModifiers": true,
+        "strictTemplates": true
     },
-    {
-      "path": "./projects/bloc-ui-core/tsconfig.spec.json"
-    },
-    {
-      "path": "./projects/bloc-ui-modal/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/bloc-ui-table/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/bloc-ui-toast/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/bloc-ui-date-picker/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/bloc-ui-tab/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/bloc-ui/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/bloc-ui-theme/tsconfig.lib.json"
-    },
-    {
-      "path": "./projects/demo/tsconfig.app.json"
-    },
-    {
-      "path": "./projects/demo/tsconfig.spec.json"
-    }
-  ]
+    "files": [],
+    "references": [
+        {
+            "path": "./projects/bloc-ui-core/tsconfig.lib.json"
+        },
+        {
+            "path": "./projects/bloc-ui-core/tsconfig.spec.json"
+        },
+        {
+            "path": "./projects/bloc-ui-modal/tsconfig.lib.json"
+        },
+        {
+            "path": "./projects/bloc-ui-table/tsconfig.lib.json"
+        },
+        {
+            "path": "./projects/bloc-ui-toast/tsconfig.lib.json"
+        },
+        {
+            "path": "./projects/bloc-ui-date-picker/tsconfig.lib.json"
+        },
+        {
+            "path": "./projects/bloc-ui-tab/tsconfig.lib.json"
+        },
+        {
+            "path": "./projects/bloc-ui/tsconfig.lib.json"
+        },
+        {
+            "path": "./projects/bloc-ui-theme/tsconfig.lib.json"
+        },
+        {
+            "path": "./projects/demo/tsconfig.app.json"
+        },
+        {
+            "path": "./projects/demo/tsconfig.spec.json"
+        }
+    ]
 }

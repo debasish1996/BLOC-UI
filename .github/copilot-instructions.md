@@ -51,28 +51,28 @@ This is a two-package Angular component library workspace:
 - Never write a colour literal (e.g. `#3b82f6`, `blue`, `rgb(...)`) directly in component styles.
 - All colour in component styles must go through `var()` tokens.
 
-  ```scss
-  // ✅ correct
-  color: var(--bloc-spinner-color, #6b7280);
+    ```scss
+    // ✅ correct
+    color: var(--bloc-spinner-color, #6b7280);
 
-  // ❌ wrong
-  color: #3b82f6;
-  ```
+    // ❌ wrong
+    color: #3b82f6;
+    ```
 
 ### Fallback values must be neutral
 
 - When a `var()` fallback is required (so the component works without the theme), use **neutral greys / whites only**.
-  - Acceptable fallbacks: `#ffffff`, `#f3f4f6`, `#d1d5db`, `#9ca3af`, `#6b7280`, `#374151`, `transparent`, `currentColor`
-  - Never use brand colours (blues, greens, reds, etc.) as fallbacks.
+    - Acceptable fallbacks: `#ffffff`, `#f3f4f6`, `#d1d5db`, `#9ca3af`, `#6b7280`, `#374151`, `transparent`, `currentColor`
+    - Never use brand colours (blues, greens, reds, etc.) as fallbacks.
 
 ### CSS custom property naming
 
 - Component-specific tokens: `--bloc-<component>-<property>` (e.g. `--bloc-spinner-color`)
 - Shared design tokens are defined in `bloc-ui-theme` (e.g. `--bloc-primary`, `--bloc-border`)
 - Components may **reference** shared tokens as fallback chain:
-  ```scss
-  border-color: var(--bloc-spinner-track, var(--bloc-border, #d1d5db));
-  ```
+    ```scss
+    border-color: var(--bloc-spinner-track, var(--bloc-border, #d1d5db));
+    ```
 
 ### CSS cascade hierarchy — mandatory for every component
 
@@ -89,26 +89,26 @@ All styles **must** follow this priority order, highest to lowest:
 - Wrap all barebone (structural / reset) declarations in `:where()` so they carry **zero specificity**.
   Any single class on the element will then override them without `!important`.
 
-  ```css
-  /* ✅ correct — zero specificity, user classes always win */
-  :where(input.bloc-input) {
-    color: var(--bloc-input-color, #374151);
-  }
+    ```css
+    /* ✅ correct — zero specificity, user classes always win */
+    :where(input.bloc-input) {
+        color: var(--bloc-input-color, #374151);
+    }
 
-  /* ❌ wrong — specificity (0,1,1) beats Tailwind utilities (0,1,0) */
-  input.bloc-input {
-    color: var(--bloc-input-color, #374151);
-  }
-  ```
+    /* ❌ wrong — specificity (0,1,1) beats Tailwind utilities (0,1,0) */
+    input.bloc-input {
+        color: var(--bloc-input-color, #374151);
+    }
+    ```
 
 - Structural rules that **must not** be overridden by accident (e.g. `box-sizing`, `outline:none`)
   may stay in the bare `element.class {}` block since they are intentionally authoritative.
 
 - For injected `<style>` tags (directive pattern, e.g. `BlocInputDirective`, `BlocSpinnerDirective`):
-  - Wrap overridable visual rules in `@layer bloc-<component>` so that Tailwind's later-declared layers (`utilities`, etc.) always win — **layer order determines priority, later = higher**.
-  - Inject the `<style>` tag via **`head.appendChild(style)`** (append to end of `<head>`). This ensures the browser has already processed Tailwind's layer ordering statement (which registers `bloc-input` between `base` and `utilities`) before our `<style>` is seen. If we insert before Tailwind, our layer gets position 0 (lowest priority) and Tailwind preflight overrides it.
-  - Keep intentionally authoritative structural rules (e.g. `box-sizing`, `outline:none`, `appearance`) **unlayered** (`input.class { }`) — unlayered rules always beat any layer.
-  - Use `:where(selector)` inside the layer for extra safety, so intra-layer specificity stays zero.
+    - Wrap overridable visual rules in `@layer bloc-<component>` so that Tailwind's later-declared layers (`utilities`, etc.) always win — **layer order determines priority, later = higher**.
+    - Inject the `<style>` tag via **`head.appendChild(style)`** (append to end of `<head>`). This ensures the browser has already processed Tailwind's layer ordering statement (which registers `bloc-input` between `base` and `utilities`) before our `<style>` is seen. If we insert before Tailwind, our layer gets position 0 (lowest priority) and Tailwind preflight overrides it.
+    - Keep intentionally authoritative structural rules (e.g. `box-sizing`, `outline:none`, `appearance`) **unlayered** (`input.class { }`) — unlayered rules always beat any layer.
+    - Use `:where(selector)` inside the layer for extra safety, so intra-layer specificity stays zero.
 
 > **Consumer setup requirement (Tailwind users):** Tailwind's `@import "tailwindcss"` declares
 > `@layer theme, base, components, utilities`. The `bloc-*` layers must be registered **between
@@ -123,7 +123,7 @@ All styles **must** follow this priority order, highest to lowest:
 > Add a matching entry for each bloc-ui-core directive you use (e.g. `bloc-spinner`, `bloc-input`).
 
 - For SCSS component files (`:host`-based components):
-  - Keep specificity low. Prefer class selectors inside `:where()` for overridable properties.
+    - Keep specificity low. Prefer class selectors inside `:where()` for overridable properties.
 
 ---
 

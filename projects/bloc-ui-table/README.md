@@ -24,10 +24,10 @@ npm install @bloc-ui/table
 
 ```ts
 import {
-  BlocTableComponent,
-  BlocColumnComponent,
-  BlocCellDefDirective,
-  BlocTableModule,
+    BlocTableComponent,
+    BlocColumnComponent,
+    BlocCellDefDirective,
+    BlocTableModule,
 } from '@bloc-ui/table';
 ```
 
@@ -35,9 +35,9 @@ import {
 
 ```html
 <bloc-table [data]="users">
-  <bloc-column field="name" header="Name" />
-  <bloc-column field="email" header="Email" />
-  <bloc-column field="role" header="Role" />
+    <bloc-column field="name" header="Name" />
+    <bloc-column field="email" header="Email" />
+    <bloc-column field="role" header="Role" />
 </bloc-table>
 ```
 
@@ -61,11 +61,13 @@ import {
 
 ```html
 <bloc-table [data]="users">
-  <bloc-column field="status" header="Status">
-    <ng-template blocCellDef let-value let-row="row">
-      <span [class]="value === 'Active' ? 'text-green-600' : 'text-red-500'"> {{ value }} </span>
-    </ng-template>
-  </bloc-column>
+    <bloc-column field="status" header="Status">
+        <ng-template blocCellDef let-value let-row="row">
+            <span [class]="value === 'Active' ? 'text-green-600' : 'text-red-500'">
+                {{ value }}
+            </span>
+        </ng-template>
+    </bloc-column>
 </bloc-table>
 ```
 

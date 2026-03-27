@@ -30,11 +30,21 @@ export class ToastDemoComponent {
     }
 
     showPersistent(): void {
-        this.toast.show({ message: 'This toast will not auto-dismiss.', type: 'info', title: 'Persistent', duration: 0 });
+        this.toast.show({
+            message: 'This toast will not auto-dismiss.',
+            type: 'info',
+            title: 'Persistent',
+            duration: 0,
+        });
     }
 
     showNonDismissible(): void {
-        this.toast.show({ message: 'Cannot be closed manually.', type: 'warning', dismissible: false, duration: 5000 });
+        this.toast.show({
+            message: 'Cannot be closed manually.',
+            type: 'warning',
+            dismissible: false,
+            duration: 5000,
+        });
     }
 
     dismissAll(): void {

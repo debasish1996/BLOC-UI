@@ -35,66 +35,64 @@
 //
 @layer theme, base, bloc-spinner, bloc-input, components, utilities;
 
-
 // ── Light theme (default) ────────────────────────────────────────────────────
 :root {
-  // Brand
-  --bloc-primary:   #3b82f6;
-  --bloc-secondary: #64748b;
+    // Brand
+    --bloc-primary: #3b82f6;
+    --bloc-secondary: #64748b;
 
-  // Typography
-  --bloc-font-family:    'Inter', system-ui, sans-serif;
-  --bloc-font-size-base: 14px;
+    // Typography
+    --bloc-font-family: 'Inter', system-ui, sans-serif;
+    --bloc-font-size-base: 14px;
 
-  // Neutrals
-  --bloc-text:    #1e293b;
-  --bloc-muted:   #94a3b8;
-  --bloc-border:  #e2e8f0;
-  --bloc-surface: #ffffff;
+    // Neutrals
+    --bloc-text: #1e293b;
+    --bloc-muted: #94a3b8;
+    --bloc-border: #e2e8f0;
+    --bloc-surface: #ffffff;
 
-  // Shape & spacing
-  --bloc-radius:     8px;
-  --bloc-radius-sm:  4px;
-  --bloc-spacing-sm: 8px;
+    // Shape & spacing
+    --bloc-radius: 8px;
+    --bloc-radius-sm: 4px;
+    --bloc-spacing-sm: 8px;
 
-  // Modal
-  --bloc-modal-backdrop:       rgba(0, 0, 0, 0.45);
-  --bloc-modal-shadow:         0 8px 32px rgba(0, 0, 0, 0.15);
-  --bloc-modal-z-index:        1000;
-  --bloc-modal-title-size:     1rem;
-  --bloc-modal-title-weight:   600;
-  --bloc-modal-close-size:     1rem;
-  --bloc-modal-header-padding: 16px 20px;
-  --bloc-modal-body-padding:   20px;
-  --bloc-modal-footer-padding: 12px 20px;
-  --bloc-modal-sm:             360px;
-  --bloc-modal-md:             560px;
-  --bloc-modal-lg:             800px;
+    // Modal
+    --bloc-modal-backdrop: rgba(0, 0, 0, 0.45);
+    --bloc-modal-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    --bloc-modal-z-index: 1000;
+    --bloc-modal-title-size: 1rem;
+    --bloc-modal-title-weight: 600;
+    --bloc-modal-close-size: 1rem;
+    --bloc-modal-header-padding: 16px 20px;
+    --bloc-modal-body-padding: 20px;
+    --bloc-modal-footer-padding: 12px 20px;
+    --bloc-modal-sm: 360px;
+    --bloc-modal-md: 560px;
+    --bloc-modal-lg: 800px;
 }
-
 
 // ── Dark token overrides ──────────────────────────────────────────────────────
 @mixin _bloc-dark-tokens {
-  --bloc-primary:   #60a5fa;
-  --bloc-secondary: #94a3b8;
+    --bloc-primary: #60a5fa;
+    --bloc-secondary: #94a3b8;
 
-  --bloc-text:    #f1f5f9;
-  --bloc-muted:   #475569;
-  --bloc-border:  #334155;
-  --bloc-surface: #1e293b;
+    --bloc-text: #f1f5f9;
+    --bloc-muted: #475569;
+    --bloc-border: #334155;
+    --bloc-surface: #1e293b;
 
-  --bloc-modal-backdrop: rgba(0, 0, 0, 0.65);
-  --bloc-modal-shadow:   0 8px 32px rgba(0, 0, 0, 0.4);
+    --bloc-modal-backdrop: rgba(0, 0, 0, 0.65);
+    --bloc-modal-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
 }
 
 // Automatic: follows OS preference, suppressible with data-theme="light"
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
-    @include _bloc-dark-tokens;
-  }
+    :root:not([data-theme='light']) {
+        @include _bloc-dark-tokens;
+    }
 }
 
 // Programmatic: pin dark regardless of OS preference
 :root[data-theme='dark'] {
-  @include _bloc-dark-tokens;
+    @include _bloc-dark-tokens;
 }

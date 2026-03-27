@@ -1,10 +1,4 @@
-import {
-    Component,
-    ContentChild,
-    Directive,
-    input,
-    TemplateRef,
-} from '@angular/core';
+import { Component, ContentChild, Directive, input, TemplateRef } from '@angular/core';
 
 /**
  * Defines a single column in a `<bloc-table>`.
@@ -29,7 +23,7 @@ import {
     standalone: true,
 })
 export class BlocCellDefDirective {
-    constructor(public readonly templateRef: TemplateRef<unknown>) { }
+    constructor(public readonly templateRef: TemplateRef<unknown>) {}
 }
 
 @Component({

@@ -25,26 +25,27 @@ import { BlocTabComponent } from './tab.component';
     selector: 'bloc-tab-group',
     standalone: true,
     template: `
-    <div class="bloc-tab-group__header" role="tablist">
-      @for (tab of tabs(); track tab.index) {
-        <button
-          class="bloc-tab-group__tab"
-          role="tab"
-          type="button"
-          [class.bloc-tab-group__tab--active]="tab.isActive()"
-          [class.bloc-tab-group__tab--disabled]="tab.disabled()"
-          [attr.aria-selected]="tab.isActive()"
-          [attr.aria-disabled]="tab.disabled() || null"
-          [attr.tabindex]="tab.disabled() ? -1 : 0"
-          (click)="_onTabClick(tab)">
-          {{ tab.label() }}
-        </button>
-      }
-    </div>
-    <div class="bloc-tab-group__body">
-      <ng-content />
-    </div>
-  `,
+        <div class="bloc-tab-group__header" role="tablist">
+            @for (tab of tabs(); track tab.index) {
+                <button
+                    class="bloc-tab-group__tab"
+                    role="tab"
+                    type="button"
+                    [class.bloc-tab-group__tab--active]="tab.isActive()"
+                    [class.bloc-tab-group__tab--disabled]="tab.disabled()"
+                    [attr.aria-selected]="tab.isActive()"
+                    [attr.aria-disabled]="tab.disabled() || null"
+                    [attr.tabindex]="tab.disabled() ? -1 : 0"
+                    (click)="_onTabClick(tab)"
+                >
+                    {{ tab.label() }}
+                </button>
+            }
+        </div>
+        <div class="bloc-tab-group__body">
+            <ng-content />
+        </div>
+    `,
     styleUrl: './tab.component.scss',
     providers: [
         {

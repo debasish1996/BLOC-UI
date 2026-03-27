@@ -1,67 +1,102 @@
 <div class="flex min-h-screen bg-slate-50">
-  <!-- Sidebar -->
-  <aside class="fixed top-0 left-0 w-55 h-screen bg-slate-800 text-slate-200 flex flex-col overflow-y-auto">
-    <a routerLink="/"
-      class="px-5 pt-6 pb-4 flex items-center gap-2.5 border-b border-slate-700 no-underline cursor-pointer hover:opacity-90 transition-opacity">
-      <img src="logo.svg" alt="Bloc UI" class="h-7 w-7" />
-      <span class="text-[1.1rem] font-bold tracking-[0.04em] text-white">Bloc UI</span>
-    </a>
-    <nav class="flex flex-col py-3">
-      <!-- Core Components group -->
-      <button
-        class="nav-group-toggle cursor-pointer px-5 py-[0.65rem] text-[0.9rem] text-slate-400 hover:bg-[#273549] hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left flex items-center justify-between"
-        (click)="toggleCore()">
-        <span>{{ coreGroup.label }}</span>
-        <svg class="nav-chevron transition-transform duration-200" [class.nav-chevron--open]="coreExpanded()"
-          xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9" />
-        </svg>
-      </button>
-      @if (coreExpanded()) {
-      @for (item of coreGroup.children; track item.path) {
-      <button
-        class="cursor-pointer pl-8 pr-5 py-[0.55rem] text-[0.85rem] text-slate-400 hover:bg-[#273549] hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left"
-        [routerLink]="item.path" routerLinkActive="nav-active" [routerLinkActiveOptions]="{ exact: false }">
-        {{ item.label }}
-      </button>
-      }
-      }
+    <!-- Sidebar -->
+    <aside
+        class="fixed top-0 left-0 w-55 h-screen bg-slate-800 text-slate-200 flex flex-col overflow-y-auto"
+    >
+        <a
+            routerLink="/"
+            class="px-5 pt-6 pb-4 flex items-center gap-2.5 border-b border-slate-700 no-underline cursor-pointer hover:opacity-90 transition-opacity"
+        >
+            <img src="logo.svg" alt="Bloc UI" class="h-7 w-7" />
+            <span class="text-[1.1rem] font-bold tracking-[0.04em] text-white">Bloc UI</span>
+        </a>
+        <nav class="flex flex-col py-3">
+            <!-- Core Components group -->
+            <button
+                class="nav-group-toggle cursor-pointer px-5 py-[0.65rem] text-[0.9rem] text-slate-400 hover:bg-[#273549] hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left flex items-center justify-between"
+                (click)="toggleCore()"
+            >
+                <span>{{ coreGroup.label }}</span>
+                <svg
+                    class="nav-chevron transition-transform duration-200"
+                    [class.nav-chevron--open]="coreExpanded()"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <polyline points="6 9 12 15 18 9" />
+                </svg>
+            </button>
+            @if (coreExpanded()) {
+                @for (item of coreGroup.children; track item.path) {
+                    <button
+                        class="cursor-pointer pl-8 pr-5 py-[0.55rem] text-[0.85rem] text-slate-400 hover:bg-[#273549] hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left"
+                        [routerLink]="item.path"
+                        routerLinkActive="nav-active"
+                        [routerLinkActiveOptions]="{ exact: false }"
+                    >
+                        {{ item.label }}
+                    </button>
+                }
+            }
 
-      <!-- Date Picker Components group -->
-      <button
-        class="nav-group-toggle cursor-pointer px-5 py-[0.65rem] text-[0.9rem] text-slate-400 hover:bg-[#273549] hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left flex items-center justify-between"
-        (click)="toggleDatePicker()">
-        <span>{{ datePickerGroup.label }}</span>
-        <svg class="nav-chevron transition-transform duration-200" [class.nav-chevron--open]="datePickerExpanded()"
-          xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <polyline points="6 9 12 15 18 9" />
-        </svg>
-      </button>
-      @if (datePickerExpanded()) {
-      @for (item of datePickerGroup.children; track item.path) {
-      <button
-        class="cursor-pointer pl-8 pr-5 py-[0.55rem] text-[0.85rem] text-slate-400 hover:bg-[#273549] hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left"
-        [routerLink]="item.path" routerLinkActive="nav-active" [routerLinkActiveOptions]="{ exact: false }">
-        {{ item.label }}
-      </button>
-      }
-      }
+            <!-- Date Picker Components group -->
+            <button
+                class="nav-group-toggle cursor-pointer px-5 py-[0.65rem] text-[0.9rem] text-slate-400 hover:bg-[#273549] hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left flex items-center justify-between"
+                (click)="toggleDatePicker()"
+            >
+                <span>{{ datePickerGroup.label }}</span>
+                <svg
+                    class="nav-chevron transition-transform duration-200"
+                    [class.nav-chevron--open]="datePickerExpanded()"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <polyline points="6 9 12 15 18 9" />
+                </svg>
+            </button>
+            @if (datePickerExpanded()) {
+                @for (item of datePickerGroup.children; track item.path) {
+                    <button
+                        class="cursor-pointer pl-8 pr-5 py-[0.55rem] text-[0.85rem] text-slate-400 hover:bg-[#273549] hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left"
+                        [routerLink]="item.path"
+                        routerLinkActive="nav-active"
+                        [routerLinkActiveOptions]="{ exact: false }"
+                    >
+                        {{ item.label }}
+                    </button>
+                }
+            }
 
-      <!-- Standalone items -->
-      @for (item of standaloneItems; track item.path) {
-      <button
-        class="cursor-pointer px-5 py-[0.65rem] text-[0.9rem] text-slate-400 hover:bg-[#273549] hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left"
-        [routerLink]="item.path" routerLinkActive="nav-active" [routerLinkActiveOptions]="{ exact: false }">
-        {{ item.label }}
-      </button>
-      }
-    </nav>
-  </aside>
+            <!-- Standalone items -->
+            @for (item of standaloneItems; track item.path) {
+                <button
+                    class="cursor-pointer px-5 py-[0.65rem] text-[0.9rem] text-slate-400 hover:bg-[#273549] hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left"
+                    [routerLink]="item.path"
+                    routerLinkActive="nav-active"
+                    [routerLinkActiveOptions]="{ exact: false }"
+                >
+                    {{ item.label }}
+                </button>
+            }
+        </nav>
+    </aside>
 
-  <!-- Main content -->
-  <main class="flex-1 ml-55 py-8 px-10 overflow-y-auto">
-    <router-outlet />
-  </main>
+    <!-- Main content -->
+    <main class="flex-1 ml-55 py-8 px-10 overflow-y-auto">
+        <router-outlet />
+    </main>
 </div>

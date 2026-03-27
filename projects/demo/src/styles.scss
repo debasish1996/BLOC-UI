@@ -1,23 +1,24 @@
-html, body {
-  height: 100%;
-  font-family: var(--bloc-font-family);
-  font-size: var(--bloc-font-size-base);
-  color: var(--bloc-text);
+html,
+body {
+    height: 100%;
+    font-family: var(--bloc-font-family);
+    font-size: var(--bloc-font-size-base);
+    color: var(--bloc-text);
 }
 
 .demo-card__preview {
-  margin-top: 0.75rem;
-  display: flex;
-  flex-direction: column;
-  gap: 0.5rem;
+    margin-top: 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 }
 
 .demo-card__hint {
-  font-size: 0.8rem;
-  color: var(--bloc-primary, #3b82f6);
+    font-size: 0.8rem;
+    color: var(--bloc-primary, #3b82f6);
 }
 
 /* Card expands to full grid width when code sample is open */
 .grid > div:has(.code-wrapper.is-open) {
-  grid-column: 1 / -1;
+    grid-column: 1 / -1;
 }

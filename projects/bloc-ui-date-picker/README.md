@@ -29,9 +29,9 @@ npm install @bloc-ui/date-picker
 
 ```ts
 import {
-  BlocDatePickerTriggerDirective,
-  BlocDateRangePickerTriggerDirective,
-  BlocDatePickerModule,
+    BlocDatePickerTriggerDirective,
+    BlocDateRangePickerTriggerDirective,
+    BlocDatePickerModule,
 } from '@bloc-ui/date-picker';
 ```
 
@@ -45,11 +45,11 @@ Apply `blocDatePickerTrigger` to any element. Access the selected `Date` object 
 
 ```html
 <input
-  blocDatePickerTrigger
-  #dp="blocDatePickerTrigger"
-  [value]="dp.selectedDate()?.toLocaleDateString() ?? ''"
-  readonly
-  placeholder="Select date"
+    blocDatePickerTrigger
+    #dp="blocDatePickerTrigger"
+    [value]="dp.selectedDate()?.toLocaleDateString() ?? ''"
+    readonly
+    placeholder="Select date"
 />
 ```
 
@@ -57,11 +57,11 @@ Apply `blocDatePickerTrigger` to any element. Access the selected `Date` object 
 
 ```html
 <input
-  blocDatePickerTrigger
-  #dp="blocDatePickerTrigger"
-  [(ngModel)]="selectedDate"
-  [value]="dp.selectedDate()?.toLocaleDateString() ?? ''"
-  readonly
+    blocDatePickerTrigger
+    #dp="blocDatePickerTrigger"
+    [(ngModel)]="selectedDate"
+    [value]="dp.selectedDate()?.toLocaleDateString() ?? ''"
+    readonly
 />
 ```
 
@@ -69,11 +69,11 @@ Apply `blocDatePickerTrigger` to any element. Access the selected `Date` object 
 
 ```html
 <input
-  blocDatePickerTrigger
-  #dp="blocDatePickerTrigger"
-  [formControl]="dateCtrl"
-  [value]="dp.selectedDate()?.toLocaleDateString() ?? ''"
-  readonly
+    blocDatePickerTrigger
+    #dp="blocDatePickerTrigger"
+    [formControl]="dateCtrl"
+    [value]="dp.selectedDate()?.toLocaleDateString() ?? ''"
+    readonly
 />
 ```
 
@@ -81,12 +81,12 @@ Apply `blocDatePickerTrigger` to any element. Access the selected `Date` object 
 
 ```html
 <input
-  blocDatePickerTrigger
-  #dp="blocDatePickerTrigger"
-  [minDate]="minDate"
-  [maxDate]="maxDate"
-  [value]="dp.selectedDate()?.toLocaleDateString() ?? ''"
-  readonly
+    blocDatePickerTrigger
+    #dp="blocDatePickerTrigger"
+    [minDate]="minDate"
+    [maxDate]="maxDate"
+    [value]="dp.selectedDate()?.toLocaleDateString() ?? ''"
+    readonly
 />
 ```
 
@@ -117,8 +117,8 @@ The control value and `ngModel` type is `DateRange`:
 
 ```ts
 interface DateRange {
-  from: Date | null;
-  to: Date | null;
+    from: Date | null;
+    to: Date | null;
 }
 ```
 
@@ -126,12 +126,12 @@ interface DateRange {
 
 ```html
 <input
-  blocDateRangePickerTrigger
-  #rp="blocDateRangePickerTrigger"
-  [(ngModel)]="dateRange"
-  [value]="(rp.rangeStart() && rp.rangeEnd()) ? rp.rangeStart()!.toLocaleDateString() + ' \u2192 ' + rp.rangeEnd()!.toLocaleDateString() : rp.rangeStart()?.toLocaleDateString() ?? ''"
-  readonly
-  placeholder="Select range"
+    blocDateRangePickerTrigger
+    #rp="blocDateRangePickerTrigger"
+    [(ngModel)]="dateRange"
+    [value]="(rp.rangeStart() && rp.rangeEnd()) ? rp.rangeStart()!.toLocaleDateString() + ' \u2192 ' + rp.rangeEnd()!.toLocaleDateString() : rp.rangeStart()?.toLocaleDateString() ?? ''"
+    readonly
+    placeholder="Select range"
 />
 ```
 
@@ -139,11 +139,11 @@ interface DateRange {
 
 ```html
 <input
-  blocDateRangePickerTrigger
-  #rp="blocDateRangePickerTrigger"
-  [formControl]="rangeCtrl"
-  [value]="(rp.rangeStart() && rp.rangeEnd()) ? rp.rangeStart()!.toLocaleDateString() + ' \u2192 ' + rp.rangeEnd()!.toLocaleDateString() : rp.rangeStart()?.toLocaleDateString() ?? ''"
-  readonly
+    blocDateRangePickerTrigger
+    #rp="blocDateRangePickerTrigger"
+    [formControl]="rangeCtrl"
+    [value]="(rp.rangeStart() && rp.rangeEnd()) ? rp.rangeStart()!.toLocaleDateString() + ' \u2192 ' + rp.rangeEnd()!.toLocaleDateString() : rp.rangeStart()?.toLocaleDateString() ?? ''"
+    readonly
 />
 ```
 
@@ -153,12 +153,12 @@ Access `rangeStart()` and `rangeEnd()` signals to populate two separate fields. 
 
 ```html
 <input
-  blocDateRangePickerTrigger
-  #rp="blocDateRangePickerTrigger"
-  [rangeFormGroup]="rangeFg"
-  [value]="rp.rangeStart()?.toLocaleDateString() ?? ''"
-  placeholder="From"
-  readonly
+    blocDateRangePickerTrigger
+    #rp="blocDateRangePickerTrigger"
+    [rangeFormGroup]="rangeFg"
+    [value]="rp.rangeStart()?.toLocaleDateString() ?? ''"
+    placeholder="From"
+    readonly
 />
 
 <input [value]="rp.rangeEnd()?.toLocaleDateString() ?? ''" placeholder="To" readonly />

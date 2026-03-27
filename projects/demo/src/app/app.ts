@@ -3,82 +3,86 @@ import { Router, NavigationEnd, RouterOutlet, RouterLink, RouterLinkActive } fro
 import { filter } from 'rxjs';
 
 interface MenuItem {
-  path: string;
-  label: string;
+    path: string;
+    label: string;
 }
 
 interface MenuGroup {
-  label: string;
-  children: MenuItem[];
+    label: string;
+    children: MenuItem[];
 }
 
 @Component({
-  selector: 'app-root',
-  imports: [RouterOutlet, RouterLink, RouterLinkActive],
-  templateUrl: './app.html',
-  styleUrl: './app.scss',
+    selector: 'app-root',
+    imports: [RouterOutlet, RouterLink, RouterLinkActive],
+    templateUrl: './app.html',
+    styleUrl: './app.scss',
 })
 export class App {
-  private readonly router = inject(Router);
+    private readonly router = inject(Router);
 
-  readonly coreGroup: MenuGroup = {
-    label: 'Core Components',
-    children: [
-      { path: 'button', label: 'Button' },
-      { path: 'input', label: 'Input' },
-      { path: 'checkbox', label: 'Checkbox' },
-      { path: 'radio', label: 'Radio' },
-      { path: 'spinner', label: 'Spinner' },
-      { path: 'toggle', label: 'Toggle' },
-    ],
-  };
+    readonly coreGroup: MenuGroup = {
+        label: 'Core Components',
+        children: [
+            { path: 'button', label: 'Button' },
+            { path: 'input', label: 'Input' },
+            { path: 'checkbox', label: 'Checkbox' },
+            { path: 'radio', label: 'Radio' },
+            { path: 'spinner', label: 'Spinner' },
+            { path: 'toggle', label: 'Toggle' },
+        ],
+    };
 
-  readonly datePickerGroup: MenuGroup = {
-    label: 'Date Pickers',
-    children: [
-      { path: 'date-picker', label: 'Date Picker' },
-      { path: 'date-range-picker', label: 'Date Range Picker' },
-    ],
-  };
+    readonly datePickerGroup: MenuGroup = {
+        label: 'Date Pickers',
+        children: [
+            { path: 'date-picker', label: 'Date Picker' },
+            { path: 'date-range-picker', label: 'Date Range Picker' },
+        ],
+    };
 
-  readonly standaloneItems: MenuItem[] = [
-    { path: 'modal', label: 'Modal' },
-    { path: 'table', label: 'Table' },
-    { path: 'tab', label: 'Tab' },
-    { path: 'toast', label: 'Toast' },
-  ];
+    readonly standaloneItems: MenuItem[] = [
+        { path: 'modal', label: 'Modal' },
+        { path: 'table', label: 'Table' },
+        { path: 'tab', label: 'Tab' },
+        { path: 'toast', label: 'Toast' },
+    ];
 
-  readonly coreExpanded = signal(this._isCoreRoute(this.router.url));
-  readonly datePickerExpanded = signal(this._isDatePickerRoute(this.router.url));
+    readonly coreExpanded = signal(this._isCoreRoute(this.router.url));
+    readonly datePickerExpanded = signal(this._isDatePickerRoute(this.router.url));
 
-  constructor() {
-    this.router.events
-      .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
-      .subscribe((e) => {
-        if (this._isCoreRoute(e.urlAfterRedirects)) {
-          this.coreExpanded.set(true);
-        }
-        if (this._isDatePickerRoute(e.urlAfterRedirects)) {
-          this.datePickerExpanded.set(true);
-        }
-      });
-  }
+    constructor() {
+        this.router.events
+            .pipe(filter((e): e is NavigationEnd => e instanceof NavigationEnd))
+            .subscribe((e) => {
+                if (this._isCoreRoute(e.urlAfterRedirects)) {
+                    this.coreExpanded.set(true);
+                }
+                if (this._isDatePickerRoute(e.urlAfterRedirects)) {
+                    this.datePickerExpanded.set(true);
+                }
+            });
+    }
 
-  toggleCore(): void {
-    this.coreExpanded.update((v) => !v);
-  }
+    toggleCore(): void {
+        this.coreExpanded.update((v) => !v);
+    }
 
-  toggleDatePicker(): void {
-    this.datePickerExpanded.update((v) => !v);
-  }
+    toggleDatePicker(): void {
+        this.datePickerExpanded.update((v) => !v);
+    }
 
-  private _isCoreRoute(url: string): boolean {
-    const path = url.split('?')[0].replace(/^\//, '');
-    return this.coreGroup.children.some((c) => path === c.path || path.startsWith(c.path + '/'));
-  }
+    private _isCoreRoute(url: string): boolean {
+        const path = url.split('?')[0].replace(/^\//, '');
+        return this.coreGroup.children.some(
+            (c) => path === c.path || path.startsWith(c.path + '/'),
+        );
+    }
 
-  private _isDatePickerRoute(url: string): boolean {
-    const path = url.split('?')[0].replace(/^\//, '');
-    return this.datePickerGroup.children.some((c) => path === c.path || path.startsWith(c.path + '/'));
-  }
+    private _isDatePickerRoute(url: string): boolean {
+        const path = url.split('?')[0].replace(/^\//, '');
+        return this.datePickerGroup.children.some(
+            (c) => path === c.path || path.startsWith(c.path + '/'),
+        );
+    }
 }

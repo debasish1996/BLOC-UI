@@ -44,13 +44,13 @@ The user MUST specify which package to release: `core`, `modal`, `table`, `toast
 3. Use `patch` as the bump type unless the user explicitly specified `minor` or `major`. Do NOT ask the user for the bump type.
 4. Compute the next version by incrementing the appropriate semver segment.
 5. Update the `version` field in:
-   - The target package's `package.json` (e.g. `projects/bloc-ui-core/package.json`).
-   - The root `package.json` **only when releasing `core`** (keep root in sync with core).
+    - The target package's `package.json` (e.g. `projects/bloc-ui-core/package.json`).
+    - The root `package.json` **only when releasing `core`** (keep root in sync with core).
 6. **Update the project README** (mandatory — do NOT skip):
-   - Read the project's `README.md` (e.g. `projects/bloc-ui-core/README.md` for core).
-   - Update any version badges, install commands, or version references to reflect the new version.
-   - If a changelog / "What's new" section exists, add a brief entry for this release.
-   - If nothing version-specific exists in the README, add or update a small version badge or note near the top (e.g. `> **Latest:** v<new_version>`).
+    - Read the project's `README.md` (e.g. `projects/bloc-ui-core/README.md` for core).
+    - Update any version badges, install commands, or version references to reflect the new version.
+    - If a changelog / "What's new" section exists, add a brief entry for this release.
+    - If nothing version-specific exists in the README, add or update a small version badge or note near the top (e.g. `> **Latest:** v<new_version>`).
 7. Commit all changes together: `git add -A && git commit -m "chore: release <npm-name> v<new_version>"`.
 8. Push the commit: `git push`.
 
@@ -68,10 +68,10 @@ Tags are prefixed by package to trigger the correct CI workflow:
 | Theme       | `theme-v<new_version>`       | `theme-v1.0.1`       |
 
 1. Create a git tag and GitHub release in one step:
-   ```
-   gh release create <prefix>-v<new_version> --title "<prefix>-v<new_version>" --notes "Release <npm-name> v<new_version>"
-   ```
-   where `<prefix>` is `core`, `modal`, `table`, `toast`, `date-picker`, `tab`, `kit`, or `theme` depending on the package being released.
+    ```
+    gh release create <prefix>-v<new_version> --title "<prefix>-v<new_version>" --notes "Release <npm-name> v<new_version>"
+    ```
+    where `<prefix>` is `core`, `modal`, `table`, `toast`, `date-picker`, `tab`, `kit`, or `theme` depending on the package being released.
 2. Confirm the release was created by running `gh release view <prefix>-v<new_version>`.
 3. When releasing **all** packages, create separate releases — one per package with its own tag prefix.
 

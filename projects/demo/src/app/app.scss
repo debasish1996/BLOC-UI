@@ -1,17 +1,17 @@
 /* Active nav item driven by routerLinkActive */
 .nav-active {
-  background-color: #3b82f6 !important;
-  color: #fff !important;
+    background-color: #3b82f6 !important;
+    color: #fff !important;
 
-  &:hover {
-    background-color: #2563eb !important;
-  }
+    &:hover {
+        background-color: #2563eb !important;
+    }
 }
 
 /* Chevron rotation for collapsible group */
 .nav-chevron {
-  transform: rotate(-90deg);
+    transform: rotate(-90deg);
 }
 .nav-chevron--open {
-  transform: rotate(0deg);
+    transform: rotate(0deg);
 }

@@ -5,11 +5,11 @@ import { provideHighlightOptions } from 'ngx-highlightjs';
 import { routes } from './app.routes';
 
 export const appConfig: ApplicationConfig = {
-  providers: [
-    provideBrowserGlobalErrorListeners(),
-    provideRouter(routes),
-    provideHighlightOptions({
-      fullLibraryLoader: () => import('highlight.js'),
-    }),
-  ],
+    providers: [
+        provideBrowserGlobalErrorListeners(),
+        provideRouter(routes),
+        provideHighlightOptions({
+            fullLibraryLoader: () => import('highlight.js'),
+        }),
+    ],
 };

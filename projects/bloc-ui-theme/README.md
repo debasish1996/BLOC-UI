@@ -101,8 +101,8 @@ Dark mode follows the operating system by default via `prefers-color-scheme: dar
 ```html
 <!-- Always dark -->
 <html data-theme="dark">
-  <!-- Always light (overrides OS dark preference) -->
-  <html data-theme="light"></html>
+    <!-- Always light (overrides OS dark preference) -->
+    <html data-theme="light"></html>
 </html>
 ```
 
@@ -116,8 +116,8 @@ Redefine any token in your own `:root` rule **after** importing the theme:
 
 ```css
 :root {
-  --bloc-primary: #6366f1;
-  --bloc-radius: 12px;
+    --bloc-primary: #6366f1;
+    --bloc-radius: 12px;
 }
 ```
 

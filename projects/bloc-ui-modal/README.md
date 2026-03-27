@@ -26,11 +26,11 @@ The modal system is **service-driven** — there is no template component. Open 
 
 ```ts
 import {
-  BlocModalService,
-  BlocModalRef,
-  BlocModal,
-  BlocModalConfig,
-  BLOC_MODAL_DATA,
+    BlocModalService,
+    BlocModalRef,
+    BlocModal,
+    BlocModalConfig,
+    BLOC_MODAL_DATA,
 } from '@bloc-ui/modal';
 ```
 
@@ -38,13 +38,13 @@ import {
 
 ```ts
 const ref = this.modalService.open(MyModalComponent, {
-  title: 'Confirm action',
-  size: 'md',
-  data: { userId: 42 },
+    title: 'Confirm action',
+    size: 'md',
+    data: { userId: 42 },
 });
 
 ref.afterClosed$.subscribe((result) => {
-  console.log('Modal closed with:', result);
+    console.log('Modal closed with:', result);
 });
 ```
 

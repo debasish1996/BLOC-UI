@@ -1,39 +1,39 @@
 {
-  "name": "bloc-ui-workspace",
-  "version": "0.0.11",
-  "scripts": {
-    "ng": "ng",
-    "start": "ng serve",
-    "build": "bash ./build.sh",
-    "watch": "ng build --watch --configuration development",
-    "test": "ng test"
-  },
-  "private": true,
-  "packageManager": "npm@11.9.0",
-  "dependencies": {
-    "@angular/common": "^21.2.0",
-    "@angular/compiler": "^21.2.0",
-    "@angular/core": "^21.2.0",
-    "@angular/forms": "^21.2.0",
-    "@angular/platform-browser": "^21.2.0",
-    "@angular/router": "^21.2.0",
-    "feather-icons": "^4.29.2",
-    "ngx-highlightjs": "^14.0.1",
-    "rxjs": "~7.8.0",
-    "tslib": "^2.3.0"
-  },
-  "devDependencies": {
-    "@angular/build": "^21.2.3",
-    "@angular/cli": "^21.2.3",
-    "@angular/compiler-cli": "^21.2.0",
-    "@tailwindcss/postcss": "^4.2.2",
-    "@types/feather-icons": "^4.29.4",
-    "angular-cli-ghpages": "^3.0.2",
-    "jsdom": "^28.0.0",
-    "ng-packagr": "^21.2.0",
-    "prettier": "^3.8.1",
-    "tailwindcss": "^4.2.2",
-    "typescript": "~5.9.2",
-    "vitest": "^4.0.8"
-  }
+    "name": "bloc-ui-workspace",
+    "version": "0.0.11",
+    "scripts": {
+        "ng": "ng",
+        "start": "ng serve",
+        "build": "bash ./build.sh",
+        "watch": "ng build --watch --configuration development",
+        "test": "ng test"
+    },
+    "private": true,
+    "packageManager": "npm@11.9.0",
+    "dependencies": {
+        "@angular/common": "^21.2.0",
+        "@angular/compiler": "^21.2.0",
+        "@angular/core": "^21.2.0",
+        "@angular/forms": "^21.2.0",
+        "@angular/platform-browser": "^21.2.0",
+        "@angular/router": "^21.2.0",
+        "feather-icons": "^4.29.2",
+        "ngx-highlightjs": "^14.0.1",
+        "rxjs": "~7.8.0",
+        "tslib": "^2.3.0"
+    },
+    "devDependencies": {
+        "@angular/build": "^21.2.3",
+        "@angular/cli": "^21.2.3",
+        "@angular/compiler-cli": "^21.2.0",
+        "@tailwindcss/postcss": "^4.2.2",
+        "@types/feather-icons": "^4.29.4",
+        "angular-cli-ghpages": "^3.0.2",
+        "jsdom": "^28.0.0",
+        "ng-packagr": "^21.2.0",
+        "prettier": "^3.8.1",
+        "tailwindcss": "^4.2.2",
+        "typescript": "~5.9.2",
+        "vitest": "^4.0.8"
+    }
 }

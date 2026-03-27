@@ -7,22 +7,27 @@
 </header>
 
 <!-- Basic -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Basic usage</h2>
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+    Basic usage
+</h2>
 <div class="grid grid-cols-1 gap-5 mb-10">
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
         <h3 class="m-0 text-base font-semibold text-slate-900">Default</h3>
         <bloc-tab-group>
             <bloc-tab label="Profile">
-                <p class="text-sm text-slate-600 m-0">Profile content goes here. Manage your personal information and
-                    preferences.</p>
+                <p class="text-sm text-slate-600 m-0">
+                    Profile content goes here. Manage your personal information and preferences.
+                </p>
             </bloc-tab>
             <bloc-tab label="Settings">
-                <p class="text-sm text-slate-600 m-0">Settings content goes here. Configure your application behaviour.
+                <p class="text-sm text-slate-600 m-0">
+                    Settings content goes here. Configure your application behaviour.
                 </p>
             </bloc-tab>
             <bloc-tab label="Billing">
-                <p class="text-sm text-slate-600 m-0">Billing content goes here. View invoices and manage payment
-                    methods.</p>
+                <p class="text-sm text-slate-600 m-0">
+                    Billing content goes here. View invoices and manage payment methods.
+                </p>
             </bloc-tab>
         </bloc-tab-group>
         <app-sample-code [code]="snippets.basic" />
@@ -60,11 +65,15 @@
 </div>
 
 <!-- Disabled tab -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Disabled tab</h2>
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+    Disabled tab
+</h2>
 <div class="grid grid-cols-1 gap-5 mb-10">
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
         <h3 class="m-0 text-base font-semibold text-slate-900">One disabled tab</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">The middle tab is disabled and cannot be selected.</p>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            The middle tab is disabled and cannot be selected.
+        </p>
         <bloc-tab-group>
             <bloc-tab label="Active">
                 <p class="text-sm text-slate-600 m-0">This tab is active.</p>
@@ -81,12 +90,19 @@
 </div>
 
 <!-- Programmatic selection -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Programmatic selection</h2>
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+    Programmatic selection
+</h2>
 <div class="grid grid-cols-1 gap-5 mb-10">
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
         <h3 class="m-0 text-base font-semibold text-slate-900">selectedIndex binding</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Control the active tab via <code>[selectedIndex]</code>.</p>
-        <bloc-tab-group [selectedIndex]="selectedIndex" (selectedIndexChange)="selectedIndex = $event">
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Control the active tab via <code>[selectedIndex]</code>.
+        </p>
+        <bloc-tab-group
+            [selectedIndex]="selectedIndex"
+            (selectedIndexChange)="selectedIndex = $event"
+        >
             <bloc-tab label="First">
                 <p class="text-sm text-slate-600 m-0">First tab panel.</p>
             </bloc-tab>
@@ -97,13 +113,17 @@
                 <p class="text-sm text-slate-600 m-0">Third tab panel.</p>
             </bloc-tab>
         </bloc-tab-group>
-        <p class="m-0 text-xs text-slate-400">Current index: <strong>{{ selectedIndex }}</strong></p>
+        <p class="m-0 text-xs text-slate-400">
+            Current index: <strong>{{ selectedIndex }}</strong>
+        </p>
         <app-sample-code [code]="snippets.selectedIndex" />
     </div>
 </div>
 
 <!-- Custom tokens -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Custom token</h2>
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+    Custom token
+</h2>
 <div class="grid grid-cols-[repeat(auto-fill,minmax(340px,1fr))] gap-5">
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
         <h3 class="m-0 text-base font-semibold text-slate-900">Green indicator</h3>

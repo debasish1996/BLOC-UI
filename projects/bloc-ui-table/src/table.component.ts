@@ -17,33 +17,37 @@ import { BlocColumnComponent, BlocCellDefDirective } from './column.component';
     standalone: true,
     imports: [NgTemplateOutlet],
     template: `
-    <table class="bloc-table__el">
-      <thead>
-        <tr>
-          @for (col of columns(); track col.field()) {
-            <th class="bloc-table__th">{{ col.header() || col.field() }}</th>
-          }
-        </tr>
-      </thead>
-      <tbody>
-        @for (row of data(); track $index) {
-          <tr class="bloc-table__row">
-            @for (col of columns(); track col.field()) {
-              <td class="bloc-table__td">
-                @if (col.cellDef) {
-                  <ng-container
-                    [ngTemplateOutlet]="col.cellDef.templateRef"
-                    [ngTemplateOutletContext]="{ $implicit: row[col.field()], row: row }" />
-                } @else {
-                  {{ row[col.field()] }}
+        <table class="bloc-table__el">
+            <thead>
+                <tr>
+                    @for (col of columns(); track col.field()) {
+                        <th class="bloc-table__th">{{ col.header() || col.field() }}</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @for (row of data(); track $index) {
+                    <tr class="bloc-table__row">
+                        @for (col of columns(); track col.field()) {
+                            <td class="bloc-table__td">
+                                @if (col.cellDef) {
+                                    <ng-container
+                                        [ngTemplateOutlet]="col.cellDef.templateRef"
+                                        [ngTemplateOutletContext]="{
+                                            $implicit: row[col.field()],
+                                            row: row,
+                                        }"
+                                    />
+                                } @else {
+                                    {{ row[col.field()] }}
+                                }
+                            </td>
+                        }
+                    </tr>
                 }
-              </td>
-            }
-          </tr>
-        }
-      </tbody>
-    </table>
-  `,
+            </tbody>
+        </table>
+    `,
     styleUrl: './table.component.scss',
     host: {
         '[class.bloc-table]': 'true',

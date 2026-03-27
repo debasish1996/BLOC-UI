@@ -2,6 +2,6 @@
    If you are NOT using bloc-ui-theme, uncomment the line below:
    @layer theme, base, bloc-spinner, bloc-input, components, utilities; */
 
-@import "tailwindcss";
+@import 'tailwindcss';
 @source "./app/**/*.html";
 @source "./app/**/*.ts";

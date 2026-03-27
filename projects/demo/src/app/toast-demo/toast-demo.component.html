@@ -1,8 +1,8 @@
 <header class="mb-8 pb-4 border-b border-slate-200">
     <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Toast</h1>
     <p class="m-0 text-slate-400 text-[0.95rem]">
-        Service-driven toast notifications. Inject <code>BlocToastService</code> and call its methods to
-        show notifications.
+        Service-driven toast notifications. Inject <code>BlocToastService</code> and call its
+        methods to show notifications.
     </p>
     <app-install-command package="@bloc-ui/toast" />
 </header>
@@ -56,16 +56,21 @@
 <div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5 mb-10">
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
         <h3 class="m-0 text-base font-semibold text-slate-900">Persistent (no auto-dismiss)</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Set <code>duration: 0</code> to keep the toast until manually
-            dismissed.</p>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Set <code>duration: 0</code> to keep the toast until manually dismissed.
+        </p>
         <button blocButton variant="outline" (clicked)="showPersistent()">Show Persistent</button>
         <app-sample-code [code]="snippets.persistent" language="typescript" />
     </div>
 
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
         <h3 class="m-0 text-base font-semibold text-slate-900">Non-dismissible</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Set <code>dismissible: false</code> to hide the close button.</p>
-        <button blocButton variant="outline" (clicked)="showNonDismissible()">Show Non-Dismissible</button>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Set <code>dismissible: false</code> to hide the close button.
+        </p>
+        <button blocButton variant="outline" (clicked)="showNonDismissible()">
+            Show Non-Dismissible
+        </button>
         <app-sample-code [code]="snippets.nonDismissible" language="typescript" />
     </div>
 

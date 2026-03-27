@@ -1,111 +1,111 @@
 // Host — authoritative structural rules
 :host {
-  display: block;
+    display: block;
 }
 
 // Header — authoritative structural
 .bloc-tab-group__header {
-  display: flex;
-  gap: var(--bloc-tab-header-gap, 0);
-  border-bottom-width: 2px;
-  border-bottom-style: solid;
-  overflow-x: auto;
+    display: flex;
+    gap: var(--bloc-tab-header-gap, 0);
+    border-bottom-width: 2px;
+    border-bottom-style: solid;
+    overflow-x: auto;
 }
 
 // Header — overridable visual (zero-specificity via :where)
 :where(.bloc-tab-group__header) {
-  border-bottom-color: var(--bloc-tab-border, var(--bloc-border, #d1d5db));
+    border-bottom-color: var(--bloc-tab-border, var(--bloc-border, #d1d5db));
 }
 
 // Tab button — authoritative structural
 .bloc-tab-group__tab {
-  appearance: none;
-  background: transparent;
-  border: none;
-  cursor: pointer;
-  white-space: nowrap;
-  font-family: inherit;
-  font-weight: 500;
-  position: relative;
-  transition: color 0.15s ease;
-  outline: none;
+    appearance: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    white-space: nowrap;
+    font-family: inherit;
+    font-weight: 500;
+    position: relative;
+    transition: color 0.15s ease;
+    outline: none;
 
-  // Default size (md)
-  padding: var(--bloc-tab-padding, 10px 16px);
-  font-size: var(--bloc-tab-font-size, 0.875rem);
+    // Default size (md)
+    padding: var(--bloc-tab-padding, 10px 16px);
+    font-size: var(--bloc-tab-font-size, 0.875rem);
 
-  // Bottom indicator
-  &::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: -2px;
-    height: 2px;
-    transform: scaleX(0);
-    transition: transform 0.2s ease;
-  }
+    // Bottom indicator
+    &::after {
+        content: '';
+        position: absolute;
+        left: 0;
+        right: 0;
+        bottom: -2px;
+        height: 2px;
+        transform: scaleX(0);
+        transition: transform 0.2s ease;
+    }
 }
 
 // Tab button — overridable visual (zero-specificity via :where)
 :where(.bloc-tab-group__tab) {
-  color: var(--bloc-tab-color, #6b7280);
+    color: var(--bloc-tab-color, #6b7280);
 
-  &:hover {
-    color: var(--bloc-tab-hover-color, #374151);
-  }
+    &:hover {
+        color: var(--bloc-tab-hover-color, #374151);
+    }
 
-  &::after {
-    background-color: var(--bloc-tab-indicator, var(--bloc-primary, #6b7280));
-  }
+    &::after {
+        background-color: var(--bloc-tab-indicator, var(--bloc-primary, #6b7280));
+    }
 }
 
 // Active tab — visual
 .bloc-tab-group__tab--active {
-  color: var(--bloc-tab-active-color, var(--bloc-primary, #374151));
+    color: var(--bloc-tab-active-color, var(--bloc-primary, #374151));
 
-  &::after {
-    transform: scaleX(1);
-  }
+    &::after {
+        transform: scaleX(1);
+    }
 }
 
 // Disabled tab
 .bloc-tab-group__tab--disabled {
-  cursor: not-allowed;
-  opacity: 0.5;
+    cursor: not-allowed;
+    opacity: 0.5;
 }
 
 // Tab focus
 .bloc-tab-group__tab:focus-visible {
-  outline: 2px solid var(--bloc-tab-focus-ring, var(--bloc-primary, #6b7280));
-  outline-offset: -2px;
-  border-radius: 2px;
+    outline: 2px solid var(--bloc-tab-focus-ring, var(--bloc-primary, #6b7280));
+    outline-offset: -2px;
+    border-radius: 2px;
 }
 
 // Body — authoritative structural
 .bloc-tab-group__body {
-  padding: var(--bloc-tab-body-padding, 16px 0);
+    padding: var(--bloc-tab-body-padding, 16px 0);
 }
 
 // Size variants
 :host.bloc-tab-group--sm {
-  .bloc-tab-group__tab {
-    padding: var(--bloc-tab-padding, 6px 12px);
-    font-size: var(--bloc-tab-font-size, 0.8125rem);
-  }
+    .bloc-tab-group__tab {
+        padding: var(--bloc-tab-padding, 6px 12px);
+        font-size: var(--bloc-tab-font-size, 0.8125rem);
+    }
 
-  .bloc-tab-group__body {
-    padding: var(--bloc-tab-body-padding, 12px 0);
-  }
+    .bloc-tab-group__body {
+        padding: var(--bloc-tab-body-padding, 12px 0);
+    }
 }
 
 :host.bloc-tab-group--lg {
-  .bloc-tab-group__tab {
-    padding: var(--bloc-tab-padding, 14px 20px);
-    font-size: var(--bloc-tab-font-size, 1rem);
-  }
+    .bloc-tab-group__tab {
+        padding: var(--bloc-tab-padding, 14px 20px);
+        font-size: var(--bloc-tab-font-size, 1rem);
+    }
 
-  .bloc-tab-group__body {
-    padding: var(--bloc-tab-body-padding, 20px 0);
-  }
+    .bloc-tab-group__body {
+        padding: var(--bloc-tab-body-padding, 20px 0);
+    }
 }

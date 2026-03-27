@@ -132,11 +132,11 @@ Keyboard: <kbd>Space</kbd> to toggle. ARIA: `role="checkbox"`, `aria-checked`, `
 
 ```ts
 import {
-  BlocInputDirective,
-  BlocInputGroupDirective,
-  BlocPrefixDirective,
-  BlocSuffixDirective,
-  BlocInputErrorDirective,
+    BlocInputDirective,
+    BlocInputGroupDirective,
+    BlocPrefixDirective,
+    BlocSuffixDirective,
+    BlocInputErrorDirective,
 } from '@bloc-ui/core/input';
 ```
 
@@ -156,9 +156,9 @@ import {
 
 ```html
 <bloc-input-group>
-  <span blocPrefix>@</span>
-  <input blocInput type="text" placeholder="username" />
-  <span blocSuffix>.com</span>
+    <span blocPrefix>@</span>
+    <input blocInput type="text" placeholder="username" />
+    <span blocSuffix>.com</span>
 </bloc-input-group>
 ```
 
@@ -207,15 +207,15 @@ import { BlocRadioGroupComponent, BlocRadioComponent } from '@bloc-ui/core/radio
 
 ```html
 <bloc-radio-group [(ngModel)]="colour">
-  <bloc-radio value="red">Red</bloc-radio>
-  <bloc-radio value="green">Green</bloc-radio>
-  <bloc-radio value="blue">Blue</bloc-radio>
+    <bloc-radio value="red">Red</bloc-radio>
+    <bloc-radio value="green">Green</bloc-radio>
+    <bloc-radio value="blue">Blue</bloc-radio>
 </bloc-radio-group>
 
 <bloc-radio-group [formControl]="sizeCtrl" labelPosition="before">
-  <bloc-radio value="sm" size="sm">Small</bloc-radio>
-  <bloc-radio value="md">Medium</bloc-radio>
-  <bloc-radio value="lg" size="lg">Large</bloc-radio>
+    <bloc-radio value="sm" size="sm">Small</bloc-radio>
+    <bloc-radio value="md">Medium</bloc-radio>
+    <bloc-radio value="lg" size="lg">Large</bloc-radio>
 </bloc-radio-group>
 ```
 

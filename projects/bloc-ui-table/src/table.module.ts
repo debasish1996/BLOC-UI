@@ -6,4 +6,4 @@ import { BlocColumnComponent, BlocCellDefDirective } from './column.component';
     imports: [BlocTableComponent, BlocColumnComponent, BlocCellDefDirective],
     exports: [BlocTableComponent, BlocColumnComponent, BlocCellDefDirective],
 })
-export class BlocTableModule { }
+export class BlocTableModule {}

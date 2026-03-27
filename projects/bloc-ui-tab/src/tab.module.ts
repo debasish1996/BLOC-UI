@@ -6,4 +6,4 @@ import { BlocTabComponent } from './tab.component';
     imports: [BlocTabGroupComponent, BlocTabComponent],
     exports: [BlocTabGroupComponent, BlocTabComponent],
 })
-export class BlocTabModule { }
+export class BlocTabModule {}

@@ -26,13 +26,13 @@ The toast system is **service-driven**. Show notifications programmatically via 
 
 ```ts
 import {
-  BlocToastService,
-  BlocToastConfig,
-  BlocToastType,
-  BlocToastPosition,
-  BlocToastComponent,
-  BlocToastContainerComponent,
-  BlocToastModule,
+    BlocToastService,
+    BlocToastConfig,
+    BlocToastType,
+    BlocToastPosition,
+    BlocToastComponent,
+    BlocToastContainerComponent,
+    BlocToastModule,
 } from '@bloc-ui/toast';
 ```
 

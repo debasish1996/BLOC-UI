@@ -1,21 +1,21 @@
 /* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
 /* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "outDir": "../../out-tsc/lib",
-    "declaration": true,
-    "declarationMap": true,
-    "types": [],
-    "paths": {
-      "@bloc-ui/core/*": ["../../dist/bloc-ui-core/*"],
-      "@bloc-ui/modal": ["../../dist/bloc-ui-modal"],
-      "@bloc-ui/table": ["../../dist/bloc-ui-table"],
-      "@bloc-ui/toast": ["../../dist/bloc-ui-toast"],
-      "@bloc-ui/date-picker": ["../../dist/bloc-ui-date-picker"],
-      "@bloc-ui/tab": ["../../dist/bloc-ui-tab"]
-    }
-  },
-  "include": ["src/**/*.ts"],
-  "exclude": ["**/*.spec.ts"]
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "../../out-tsc/lib",
+        "declaration": true,
+        "declarationMap": true,
+        "types": [],
+        "paths": {
+            "@bloc-ui/core/*": ["../../dist/bloc-ui-core/*"],
+            "@bloc-ui/modal": ["../../dist/bloc-ui-modal"],
+            "@bloc-ui/table": ["../../dist/bloc-ui-table"],
+            "@bloc-ui/toast": ["../../dist/bloc-ui-toast"],
+            "@bloc-ui/date-picker": ["../../dist/bloc-ui-date-picker"],
+            "@bloc-ui/tab": ["../../dist/bloc-ui-tab"]
+        }
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["**/*.spec.ts"]
 }

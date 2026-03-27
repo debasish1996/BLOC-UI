@@ -1,23 +1,23 @@
 {
-  "name": "@bloc-ui/kit",
-  "version": "1.0.2",
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/debasish1996/BLOC-UI.git",
-    "directory": "projects/bloc-ui"
-  },
-  "peerDependencies": {
-    "@angular/common": "^21.2.0",
-    "@angular/core": "^21.2.0"
-  },
-  "dependencies": {
-    "@bloc-ui/core": "^0.0.11",
-    "@bloc-ui/modal": "^0.0.3",
-    "@bloc-ui/table": "^0.0.3",
-    "@bloc-ui/toast": "^0.0.3",
-    "@bloc-ui/date-picker": "^0.0.3",
-    "@bloc-ui/tab": "^0.0.3",
-    "tslib": "^2.3.0"
-  },
-  "sideEffects": false
+    "name": "@bloc-ui/kit",
+    "version": "1.0.2",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/debasish1996/BLOC-UI.git",
+        "directory": "projects/bloc-ui"
+    },
+    "peerDependencies": {
+        "@angular/common": "^21.2.0",
+        "@angular/core": "^21.2.0"
+    },
+    "dependencies": {
+        "@bloc-ui/core": "^0.0.11",
+        "@bloc-ui/modal": "^0.0.3",
+        "@bloc-ui/table": "^0.0.3",
+        "@bloc-ui/toast": "^0.0.3",
+        "@bloc-ui/date-picker": "^0.0.3",
+        "@bloc-ui/tab": "^0.0.3",
+        "tslib": "^2.3.0"
+    },
+    "sideEffects": false
 }

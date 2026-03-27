@@ -6,4 +6,4 @@ import { BlocToastContainerComponent } from './toast-container.component';
     imports: [BlocToastComponent, BlocToastContainerComponent],
     exports: [BlocToastComponent, BlocToastContainerComponent],
 })
-export class BlocToastModule { }
+export class BlocToastModule {}

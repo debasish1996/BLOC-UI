@@ -15,75 +15,77 @@ import { BLOC_RADIO_GROUP, BlocRadioGroupRef } from './radio.token';
  * ```
  */
 @Component({
-  selector: 'bloc-radio-group',
-  standalone: true,
-  template: `<ng-content />`,
-  // Minimal structural style — inline to avoid an extra file
-  styles: [
-    `:host {
-      display: flex;
-      flex-direction: column;
-      gap: var(--bloc-radio-group-gap, 8px);
-    }`,
-  ],
-  providers: [
-    {
-      provide: NG_VALUE_ACCESSOR,
-      useExisting: forwardRef(() => BlocRadioGroupComponent),
-      multi: true,
+    selector: 'bloc-radio-group',
+    standalone: true,
+    template: `<ng-content />`,
+    // Minimal structural style — inline to avoid an extra file
+    styles: [
+        `
+            :host {
+                display: flex;
+                flex-direction: column;
+                gap: var(--bloc-radio-group-gap, 8px);
+            }
+        `,
+    ],
+    providers: [
+        {
+            provide: NG_VALUE_ACCESSOR,
+            useExisting: forwardRef(() => BlocRadioGroupComponent),
+            multi: true,
+        },
+        {
+            provide: BLOC_RADIO_GROUP,
+            useExisting: forwardRef(() => BlocRadioGroupComponent),
+        },
+    ],
+    host: {
+        role: 'radiogroup',
+        '[class.bloc-radio-group]': 'true',
+        '[class.bloc-radio-group--disabled]': 'isGroupDisabled()',
     },
-    {
-      provide: BLOC_RADIO_GROUP,
-      useExisting: forwardRef(() => BlocRadioGroupComponent),
-    },
-  ],
-  host: {
-    role: 'radiogroup',
-    '[class.bloc-radio-group]': 'true',
-    '[class.bloc-radio-group--disabled]': 'isGroupDisabled()',
-  },
 })
 export class BlocRadioGroupComponent implements ControlValueAccessor, BlocRadioGroupRef {
-  /** Disables every radio item in the group. */
-  readonly disabled = input<boolean>(false);
+    /** Disables every radio item in the group. */
+    readonly disabled = input<boolean>(false);
 
-  /** Default label position inherited by child radios. Defaults to `'after'`. */
-  readonly labelPosition = input<'before' | 'after'>('after');
+    /** Default label position inherited by child radios. Defaults to `'after'`. */
+    readonly labelPosition = input<'before' | 'after'>('after');
 
-  /** @internal Currently selected value — readable by child radio items. */
-  readonly value = signal<unknown>(null);
+    /** @internal Currently selected value — readable by child radio items. */
+    readonly value = signal<unknown>(null);
 
-  private readonly _formDisabled = signal<boolean>(false);
+    private readonly _formDisabled = signal<boolean>(false);
 
-  /** Merged disabled state: either the `disabled` input or the form control. */
-  readonly isGroupDisabled = computed(() => this.disabled() || this._formDisabled());
+    /** Merged disabled state: either the `disabled` input or the form control. */
+    readonly isGroupDisabled = computed(() => this.disabled() || this._formDisabled());
 
-  private _onChange: (val: unknown) => void = () => { };
+    private _onChange: (val: unknown) => void = () => {};
 
-  /** @internal Touch callback — called from each child radio's blur event. */
-  markTouched: () => void = () => { };
+    /** @internal Touch callback — called from each child radio's blur event. */
+    markTouched: () => void = () => {};
 
-  // — ControlValueAccessor —
+    // — ControlValueAccessor —
 
-  writeValue(val: unknown): void {
-    this.value.set(val);
-  }
+    writeValue(val: unknown): void {
+        this.value.set(val);
+    }
 
-  registerOnChange(fn: (val: unknown) => void): void {
-    this._onChange = fn;
-  }
+    registerOnChange(fn: (val: unknown) => void): void {
+        this._onChange = fn;
+    }
 
-  registerOnTouched(fn: () => void): void {
-    this.markTouched = fn;
-  }
+    registerOnTouched(fn: () => void): void {
+        this.markTouched = fn;
+    }
 
-  setDisabledState(isDisabled: boolean): void {
-    this._formDisabled.set(isDisabled);
-  }
+    setDisabledState(isDisabled: boolean): void {
+        this._formDisabled.set(isDisabled);
+    }
 
-  /** @internal Called by child radio items on selection. */
-  select(val: unknown): void {
-    this.value.set(val);
-    this._onChange(val);
-  }
+    /** @internal Called by child radio items on selection. */
+    select(val: unknown): void {
+        this.value.set(val);
+        this._onChange(val);
+    }
 }

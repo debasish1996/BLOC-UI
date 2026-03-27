@@ -11,12 +11,10 @@ import { BlocToastComponent } from './toast.component';
     standalone: true,
     imports: [BlocToastComponent],
     template: `
-    @for (toast of toastService.toasts(); track toast.id) {
-      <bloc-toast
-        [toast]="toast"
-        (dismissed)="toastService.dismiss(toast.id)" />
-    }
-  `,
+        @for (toast of toastService.toasts(); track toast.id) {
+            <bloc-toast [toast]="toast" (dismissed)="toastService.dismiss(toast.id)" />
+        }
+    `,
     styleUrl: './toast-container.component.scss',
     host: {
         '[class.bloc-toast-container]': 'true',

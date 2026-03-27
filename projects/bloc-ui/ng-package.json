@@ -1,15 +1,15 @@
 {
-  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/bloc-ui",
-  "lib": {
-    "entryFile": "src/public-api.ts"
-  },
-  "allowedNonPeerDependencies": [
-    "@bloc-ui/core",
-    "@bloc-ui/modal",
-    "@bloc-ui/table",
-    "@bloc-ui/toast",
-    "@bloc-ui/date-picker",
-    "@bloc-ui/tab"
-  ]
+    "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+    "dest": "../../dist/bloc-ui",
+    "lib": {
+        "entryFile": "src/public-api.ts"
+    },
+    "allowedNonPeerDependencies": [
+        "@bloc-ui/core",
+        "@bloc-ui/modal",
+        "@bloc-ui/table",
+        "@bloc-ui/toast",
+        "@bloc-ui/date-picker",
+        "@bloc-ui/tab"
+    ]
 }

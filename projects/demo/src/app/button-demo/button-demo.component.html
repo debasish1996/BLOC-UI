@@ -1,85 +1,103 @@
 <header class="mb-8 pb-4 border-b border-slate-200">
-  <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Button</h1>
-  <p class="m-0 text-slate-400 text-[0.95rem]">Explore button variants and states.</p>
-  <app-install-command package="@bloc-ui/core" />
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Button</h1>
+    <p class="m-0 text-slate-400 text-[0.95rem]">Explore button variants and states.</p>
+    <app-install-command package="@bloc-ui/core" />
 </header>
 
 <div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5">
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Primary</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Default action button.</p>
-    <div>
-      <button blocButton variant="primary" (clicked)="onButtonClick()">Primary Button</button>
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Primary</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">Default action button.</p>
+        <div>
+            <button blocButton variant="primary" (clicked)="onButtonClick()">Primary Button</button>
+        </div>
+        <app-sample-code [code]="snippets.primary" />
     </div>
-    <app-sample-code [code]="snippets.primary" />
-  </div>
 
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Secondary</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Less prominent action.</p>
-    <div>
-      <button blocButton variant="secondary" class="flex gap-2">
-        <app-icon name="check" />
-        Secondary Button
-      </button>
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Secondary</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">Less prominent action.</p>
+        <div>
+            <button blocButton variant="secondary" class="flex gap-2">
+                <app-icon name="check" />
+                Secondary Button
+            </button>
+        </div>
+        <app-sample-code [code]="snippets.secondary" />
     </div>
-    <app-sample-code [code]="snippets.secondary" />
-  </div>
 
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Outline</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Subtle bordered style.</p>
-    <div>
-      <button blocButton variant="outline">Outline Button</button>
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Outline</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">Subtle bordered style.</p>
+        <div>
+            <button blocButton variant="outline">Outline Button</button>
+        </div>
+        <app-sample-code [code]="snippets.outline" />
     </div>
-    <app-sample-code [code]="snippets.outline" />
-  </div>
 
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Disabled</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Non-interactive state.</p>
-    <div>
-      <button blocButton variant="primary" [disabled]="true">Disabled Button</button>
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Disabled</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">Non-interactive state.</p>
+        <div>
+            <button blocButton variant="primary" [disabled]="true">Disabled Button</button>
+        </div>
+        <app-sample-code [code]="snippets.disabled" />
     </div>
-    <app-sample-code [code]="snippets.disabled" />
-  </div>
 
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Disabled Outline</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Outline in disabled state.</p>
-    <div>
-      <button blocButton variant="outline" [disabled]="true">Disabled Outline</button>
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Disabled Outline</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">Outline in disabled state.</p>
+        <div>
+            <button blocButton variant="outline" [disabled]="true">Disabled Outline</button>
+        </div>
+        <app-sample-code [code]="snippets.disabledOutline" />
     </div>
-    <app-sample-code [code]="snippets.disabledOutline" />
-  </div>
 
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Loading — Primary</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Click to simulate a 2.5 s async operation.</p>
-    <div>
-      <button blocButton variant="primary" [loading]="loadingPrimary()"
-        (clicked)="simulateLoad(loadingPrimary)">Submit</button>
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Loading — Primary</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">Click to simulate a 2.5 s async operation.</p>
+        <div>
+            <button
+                blocButton
+                variant="primary"
+                [loading]="loadingPrimary()"
+                (clicked)="simulateLoad(loadingPrimary)"
+            >
+                Submit
+            </button>
+        </div>
+        <app-sample-code [code]="snippets.loadingPrimary" />
     </div>
-    <app-sample-code [code]="snippets.loadingPrimary" />
-  </div>
 
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Loading — Secondary</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Secondary variant in loading state.</p>
-    <div>
-      <button blocButton variant="secondary" [loading]="loadingSecondary()"
-        (clicked)="simulateLoad(loadingSecondary)">Save Draft</button>
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Loading — Secondary</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">Secondary variant in loading state.</p>
+        <div>
+            <button
+                blocButton
+                variant="secondary"
+                [loading]="loadingSecondary()"
+                (clicked)="simulateLoad(loadingSecondary)"
+            >
+                Save Draft
+            </button>
+        </div>
+        <app-sample-code [code]="snippets.loadingSecondary" />
     </div>
-    <app-sample-code [code]="snippets.loadingSecondary" />
-  </div>
 
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Loading — Outline</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Outline variant in loading state.</p>
-    <div>
-      <button blocButton variant="outline" [loading]="loadingOutline()"
-        (clicked)="simulateLoad(loadingOutline)">Export</button>
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Loading — Outline</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">Outline variant in loading state.</p>
+        <div>
+            <button
+                blocButton
+                variant="outline"
+                [loading]="loadingOutline()"
+                (clicked)="simulateLoad(loadingOutline)"
+            >
+                Export
+            </button>
+        </div>
+        <app-sample-code [code]="snippets.loadingOutline" />
     </div>
-    <app-sample-code [code]="snippets.loadingOutline" />
-  </div>
 </div>

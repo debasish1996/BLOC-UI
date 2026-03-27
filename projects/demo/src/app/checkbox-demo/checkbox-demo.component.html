@@ -1,141 +1,172 @@
 <header class="mb-8 pb-4 border-b border-slate-200">
-  <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Checkbox</h1>
-  <p class="m-0 text-slate-400 text-[0.95rem]">
-    Boolean checkbox component. Works with <code>ngModel</code>, <code>formControl</code>, and
-    <code>formControlName</code>.
-  </p>
-  <app-install-command package="@bloc-ui/core" />
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Checkbox</h1>
+    <p class="m-0 text-slate-400 text-[0.95rem]">
+        Boolean checkbox component. Works with <code>ngModel</code>, <code>formControl</code>, and
+        <code>formControlName</code>.
+    </p>
+    <app-install-command package="@bloc-ui/core" />
 </header>
 
 <!-- Sizes -->
 <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Sizes</h2>
 <div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-5 mb-10">
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Small</h3>
-    <bloc-checkbox size="sm" class="text-sm text-slate-700">Accept terms</bloc-checkbox>
-    <app-sample-code [code]="snippets.sizeSmall" />
-  </div>
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Small</h3>
+        <bloc-checkbox size="sm" class="text-sm text-slate-700">Accept terms</bloc-checkbox>
+        <app-sample-code [code]="snippets.sizeSmall" />
+    </div>
 
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Medium (default)</h3>
-    <bloc-checkbox class="text-sm text-slate-700">Accept terms</bloc-checkbox>
-    <app-sample-code [code]="snippets.sizeMedium" />
-  </div>
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Medium (default)</h3>
+        <bloc-checkbox class="text-sm text-slate-700">Accept terms</bloc-checkbox>
+        <app-sample-code [code]="snippets.sizeMedium" />
+    </div>
 
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Large</h3>
-    <bloc-checkbox size="lg" class="text-slate-700">Accept terms</bloc-checkbox>
-    <app-sample-code [code]="snippets.sizeLarge" />
-  </div>
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Large</h3>
+        <bloc-checkbox size="lg" class="text-slate-700">Accept terms</bloc-checkbox>
+        <app-sample-code [code]="snippets.sizeLarge" />
+    </div>
 </div>
 
 <!-- States -->
 <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">States</h2>
 <div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-5 mb-10">
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Default (unchecked)</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Uncontrolled — click to toggle.</p>
-    <div><bloc-checkbox class="text-sm text-slate-700">Remember me</bloc-checkbox></div>
-    <app-sample-code [code]="snippets.default" />
-  </div>
-
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Disabled (unchecked)</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Non-interactive via <code>[disabled]</code>.</p>
-    <div><bloc-checkbox [disabled]="true" class="text-sm text-slate-700">Unavailable</bloc-checkbox></div>
-    <app-sample-code [code]="snippets.disabled" />
-  </div>
-
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Disabled (checked)</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Checked + disabled via <code>FormControl.disable()</code>.</p>
-    <div>
-      <bloc-checkbox [formControl]="disabledCtrl" class="text-sm text-slate-700">Locked on</bloc-checkbox>
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Default (unchecked)</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">Uncontrolled — click to toggle.</p>
+        <div><bloc-checkbox class="text-sm text-slate-700">Remember me</bloc-checkbox></div>
+        <app-sample-code [code]="snippets.default" />
     </div>
-    <app-sample-code [code]="snippets.disabledChecked" />
-  </div>
+
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Disabled (unchecked)</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Non-interactive via <code>[disabled]</code>.
+        </p>
+        <div>
+            <bloc-checkbox [disabled]="true" class="text-sm text-slate-700"
+                >Unavailable</bloc-checkbox
+            >
+        </div>
+        <app-sample-code [code]="snippets.disabled" />
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Disabled (checked)</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Checked + disabled via <code>FormControl.disable()</code>.
+        </p>
+        <div>
+            <bloc-checkbox [formControl]="disabledCtrl" class="text-sm text-slate-700"
+                >Locked on</bloc-checkbox
+            >
+        </div>
+        <app-sample-code [code]="snippets.disabledChecked" />
+    </div>
 </div>
 
 <!-- Inline label -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Inline label</h2>
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+    Inline label
+</h2>
 <div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-5 mb-10">
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Label after (default)</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Label appears after the checkbox (<code>labelPosition="after"</code>).
-    </p>
-    <div class="flex flex-col gap-2">
-      <bloc-checkbox class="text-sm text-slate-700">Enable notifications</bloc-checkbox>
-      <bloc-checkbox size="sm" class="text-sm text-slate-700">Subscribe to newsletter</bloc-checkbox>
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Label after (default)</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Label appears after the checkbox (<code>labelPosition="after"</code>).
+        </p>
+        <div class="flex flex-col gap-2">
+            <bloc-checkbox class="text-sm text-slate-700">Enable notifications</bloc-checkbox>
+            <bloc-checkbox size="sm" class="text-sm text-slate-700"
+                >Subscribe to newsletter</bloc-checkbox
+            >
+        </div>
+        <app-sample-code [code]="snippets.labelAfter" />
     </div>
-    <app-sample-code [code]="snippets.labelAfter" />
-  </div>
 
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Label before</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Label appears before the checkbox
-      (<code>labelPosition="before"</code>).</p>
-    <div class="flex flex-col gap-2">
-      <bloc-checkbox labelPosition="before" class="text-sm text-slate-700">Enable notifications</bloc-checkbox>
-      <bloc-checkbox labelPosition="before" size="sm" class="text-sm text-slate-700">Subscribe to
-        newsletter</bloc-checkbox>
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Label before</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Label appears before the checkbox (<code>labelPosition="before"</code>).
+        </p>
+        <div class="flex flex-col gap-2">
+            <bloc-checkbox labelPosition="before" class="text-sm text-slate-700"
+                >Enable notifications</bloc-checkbox
+            >
+            <bloc-checkbox labelPosition="before" size="sm" class="text-sm text-slate-700"
+                >Subscribe to newsletter</bloc-checkbox
+            >
+        </div>
+        <app-sample-code [code]="snippets.labelBefore" />
     </div>
-    <app-sample-code [code]="snippets.labelBefore" />
-  </div>
 </div>
 
 <!-- ngModel -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Template-driven (ngModel)</h2>
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+    Template-driven (ngModel)
+</h2>
 <div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-5 mb-10">
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Two-way binding</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Bound via <code>[(ngModel)]</code>.</p>
-    <bloc-checkbox [(ngModel)]="ngModelValue" class="text-sm text-slate-700">
-      {{ ngModelValue ? 'Checked' : 'Unchecked' }}
-    </bloc-checkbox>
-    <p class="m-0 text-xs text-slate-400">ngModel value: <strong>{{ ngModelValue }}</strong></p>
-    <app-sample-code [code]="snippets.ngModel" />
-  </div>
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Two-way binding</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">Bound via <code>[(ngModel)]</code>.</p>
+        <bloc-checkbox [(ngModel)]="ngModelValue" class="text-sm text-slate-700">
+            {{ ngModelValue ? 'Checked' : 'Unchecked' }}
+        </bloc-checkbox>
+        <p class="m-0 text-xs text-slate-400">
+            ngModel value: <strong>{{ ngModelValue }}</strong>
+        </p>
+        <app-sample-code [code]="snippets.ngModel" />
+    </div>
 </div>
 
 <!-- Reactive forms -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Reactive forms</h2>
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+    Reactive forms
+</h2>
 <div class="grid grid-cols-[repeat(auto-fill,minmax(220px,1fr))] gap-5">
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-    <h3 class="m-0 text-base font-semibold text-slate-900">FormControl</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Bound via <code>[formControl]</code>.</p>
-    <bloc-checkbox [formControl]="reactiveCtrl" class="text-sm text-slate-700">
-      {{ reactiveCtrl.value ? 'Agreed' : 'Not agreed' }}
-    </bloc-checkbox>
-    <p class="m-0 text-xs text-slate-400">
-      value: <strong>{{ reactiveCtrl.value }}</strong> &nbsp;|&nbsp;
-      touched: <strong>{{ reactiveCtrl.touched }}</strong>
-    </p>
-    <app-sample-code [code]="snippets.formControl" />
-  </div>
-
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-    <h3 class="m-0 text-base font-semibold text-slate-900">setDisabledState</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Enable/disable the control from code.</p>
-    <bloc-checkbox [formControl]="disabledCtrl" class="text-sm text-slate-700">
-      {{ disabledCtrl.disabled ? 'Form-disabled' : 'Form-enabled' }}
-    </bloc-checkbox>
-    <div>
-      <button blocButton variant="outline" (clicked)="toggleDisabled()">
-        {{ disabledCtrl.disabled ? 'Enable' : 'Disable' }} control
-      </button>
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+        <h3 class="m-0 text-base font-semibold text-slate-900">FormControl</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">Bound via <code>[formControl]</code>.</p>
+        <bloc-checkbox [formControl]="reactiveCtrl" class="text-sm text-slate-700">
+            {{ reactiveCtrl.value ? 'Agreed' : 'Not agreed' }}
+        </bloc-checkbox>
+        <p class="m-0 text-xs text-slate-400">
+            value: <strong>{{ reactiveCtrl.value }}</strong> &nbsp;|&nbsp; touched:
+            <strong>{{ reactiveCtrl.touched }}</strong>
+        </p>
+        <app-sample-code [code]="snippets.formControl" />
     </div>
-    <app-sample-code [code]="snippets.setDisabled" language="typescript" />
-  </div>
 
-  <!-- Custom token override -->
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Custom token</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Override colours via CSS custom properties.</p>
-    <bloc-checkbox
-      style="--bloc-checkbox-checked-bg: #3b82f6; --bloc-checkbox-checked-border: #3b82f6; --bloc-checkbox-focus-ring: #3b82f6"
-      [formControl]="reactiveCtrl" class="text-sm text-slate-700">
-      Blue checkbox
-    </bloc-checkbox>
-    <app-sample-code [code]="snippets.customToken" />
-  </div>
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+        <h3 class="m-0 text-base font-semibold text-slate-900">setDisabledState</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">Enable/disable the control from code.</p>
+        <bloc-checkbox [formControl]="disabledCtrl" class="text-sm text-slate-700">
+            {{ disabledCtrl.disabled ? 'Form-disabled' : 'Form-enabled' }}
+        </bloc-checkbox>
+        <div>
+            <button blocButton variant="outline" (clicked)="toggleDisabled()">
+                {{ disabledCtrl.disabled ? 'Enable' : 'Disable' }} control
+            </button>
+        </div>
+        <app-sample-code [code]="snippets.setDisabled" language="typescript" />
+    </div>
+
+    <!-- Custom token override -->
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Custom token</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">Override colours via CSS custom properties.</p>
+        <bloc-checkbox
+            style="
+                --bloc-checkbox-checked-bg: #3b82f6;
+                --bloc-checkbox-checked-border: #3b82f6;
+                --bloc-checkbox-focus-ring: #3b82f6;
+            "
+            [formControl]="reactiveCtrl"
+            class="text-sm text-slate-700"
+        >
+            Blue checkbox
+        </bloc-checkbox>
+        <app-sample-code [code]="snippets.customToken" />
+    </div>
 </div>

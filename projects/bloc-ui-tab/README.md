@@ -30,9 +30,9 @@ import { BlocTabGroupComponent, BlocTabComponent, BlocTabModule } from '@bloc-ui
 
 ```html
 <bloc-tab-group>
-  <bloc-tab label="Profile">Profile content</bloc-tab>
-  <bloc-tab label="Settings">Settings content</bloc-tab>
-  <bloc-tab label="Billing">Billing content</bloc-tab>
+    <bloc-tab label="Profile">Profile content</bloc-tab>
+    <bloc-tab label="Settings">Settings content</bloc-tab>
+    <bloc-tab label="Billing">Billing content</bloc-tab>
 </bloc-tab-group>
 ```
 
@@ -46,8 +46,8 @@ import { BlocTabGroupComponent, BlocTabComponent, BlocTabModule } from '@bloc-ui
 
 ```html
 <bloc-tab-group>
-  <bloc-tab label="Active">…</bloc-tab>
-  <bloc-tab label="Disabled" [disabled]="true">…</bloc-tab>
+    <bloc-tab label="Active">…</bloc-tab>
+    <bloc-tab label="Disabled" [disabled]="true">…</bloc-tab>
 </bloc-tab-group>
 ```
 
@@ -55,8 +55,8 @@ import { BlocTabGroupComponent, BlocTabComponent, BlocTabModule } from '@bloc-ui
 
 ```html
 <bloc-tab-group [selectedIndex]="1" (selectedIndexChange)="onTabChange($event)">
-  <bloc-tab label="First">…</bloc-tab>
-  <bloc-tab label="Second">…</bloc-tab>
+    <bloc-tab label="First">…</bloc-tab>
+    <bloc-tab label="Second">…</bloc-tab>
 </bloc-tab-group>
 ```
 

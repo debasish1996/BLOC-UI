@@ -1,10 +1,8 @@
 {
-  "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
-  "dest": "../../dist/bloc-ui-theme",
-  "lib": {
-    "entryFile": "src/public-api.ts"
-  },
-  "assets": [
-    "./styles/**/*.scss"
-  ]
+    "$schema": "../../node_modules/ng-packagr/ng-package.schema.json",
+    "dest": "../../dist/bloc-ui-theme",
+    "lib": {
+        "entryFile": "src/public-api.ts"
+    },
+    "assets": ["./styles/**/*.scss"]
 }
