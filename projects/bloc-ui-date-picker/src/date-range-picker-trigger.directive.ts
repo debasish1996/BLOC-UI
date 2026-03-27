@@ -192,6 +192,15 @@ export class BlocDateRangePickerTriggerDirective implements ControlValueAccessor
     this._wrapper.className = 'bloc-dp-trigger-dropdown';
     this._wrapper.setAttribute('role', 'dialog');
     this._wrapper.setAttribute('aria-label', 'Date range picker');
+
+    // Forward CSS custom properties from the trigger so tokens cascade into the panel
+    const triggerStyle = this._el.nativeElement.style as CSSStyleDeclaration;
+    Array.from(triggerStyle).forEach(prop => {
+      if (prop.startsWith('--')) {
+        this._wrapper!.style.setProperty(prop, triggerStyle.getPropertyValue(prop));
+      }
+    });
+
     this._wrapper.appendChild(this._panelRef.location.nativeElement);
     this._doc.body.appendChild(this._wrapper);
 
