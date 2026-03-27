@@ -126,6 +126,37 @@
     </div>
 </div>
 
+<!-- Custom Loading Icon -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+    Custom Loading Icon
+</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5 mb-10">
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Custom Icon Template</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Pass a <code>#template</code> reference via <code>[loadingTemplate]</code> to replace
+            the default spinner with your own icon.
+        </p>
+        <div>
+            <ng-template #customLoader>
+                <span
+                    class="inline-block w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"
+                ></span>
+            </ng-template>
+            <button
+                blocButton
+                variant="primary"
+                [loading]="loadingCustomIcon()"
+                [loadingTemplate]="customLoader"
+                (clicked)="simulateLoad(loadingCustomIcon)"
+            >
+                Submit
+            </button>
+        </div>
+        <app-sample-code [code]="snippets.customLoader" />
+    </div>
+</div>
+
 <!-- Composition -->
 <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
     Composition

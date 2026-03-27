@@ -1,13 +1,18 @@
-import { Component, input, output } from '@angular/core';
+import { Component, TemplateRef, input, output } from '@angular/core';
+import { NgTemplateOutlet } from '@angular/common';
 import { BlocSpinnerDirective } from '@bloc-ui/core/spinner';
 
 @Component({
     selector: 'button[blocButton]',
     standalone: true,
-    imports: [BlocSpinnerDirective],
+    imports: [BlocSpinnerDirective, NgTemplateOutlet],
     template: `
         @if (loading()) {
-            <span blocSpinner size="sm"></span>
+            @if (loadingTemplate()) {
+                <ng-container [ngTemplateOutlet]="loadingTemplate()!" />
+            } @else {
+                <span blocSpinner size="sm"></span>
+            }
         }
         <ng-content />
     `,
@@ -29,6 +34,9 @@ export class BlocButtonComponent {
 
     /** Shows a spinner and prevents interaction while true. */
     readonly loading = input<boolean>(false);
+
+    /** Custom loading icon template. When provided, replaces the default spinner. */
+    readonly loadingTemplate = input<TemplateRef<unknown> | null>(null);
 
     /** Emits when the button is clicked. */
     readonly clicked = output<MouseEvent>();

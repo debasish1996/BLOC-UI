@@ -14,6 +14,7 @@ export class ButtonDemoComponent {
     loadingPrimary = signal(false);
     loadingSecondary = signal(false);
     loadingOutline = signal(false);
+    loadingCustomIcon = signal(false);
 
     readonly snippets = {
         primary: `<button blocButton variant="primary">\n  Primary Button\n</button>`,
@@ -28,6 +29,7 @@ export class ButtonDemoComponent {
         trailingIcon: `<button blocButton variant="outline">\n  Continue\n  <app-icon name="arrow-right" />\n</button>`,
         fullWidth: `<button blocButton variant="primary" class="w-full">\n  Full Width\n</button>`,
         customToken: `<div style="--bloc-primary: #7c3aed; --bloc-secondary: #0ea5e9">\n  <button blocButton variant="primary">Custom Primary</button>\n  <button blocButton variant="secondary">Custom Secondary</button>\n</div>`,
+        customLoader: `<ng-template #myLoader>\n  <!-- your own icon/SVG -->\n  <span class="..."></span>\n</ng-template>\n\n<button blocButton variant="primary"\n  [loading]="isLoading()"\n  [loadingTemplate]="myLoader">\n  Submit\n</button>`,
     };
 
     onButtonClick(): void {

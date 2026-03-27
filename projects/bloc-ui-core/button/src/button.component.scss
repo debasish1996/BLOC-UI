@@ -15,7 +15,7 @@
     }
 
     &.bloc-button--loading {
-        cursor: wait;
+        --bloc-spinner-color: currentColor;
     }
 
     &.bloc-button--primary {
