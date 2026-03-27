@@ -10,6 +10,9 @@ export interface CalendarDay {
   isToday: boolean;
   isSelected: boolean;
   isDisabled: boolean;
+  isRangeStart: boolean;
+  isRangeEnd: boolean;
+  isInRange: boolean;
 }
 
 @Component({
@@ -50,8 +53,12 @@ export interface CalendarDay {
             [class.bloc-date-picker__day--today]="day.isToday"
             [class.bloc-date-picker__day--selected]="day.isSelected"
             [class.bloc-date-picker__day--disabled]="day.isDisabled"
+            [class.bloc-date-picker__day--range-start]="day.isRangeStart"
+            [class.bloc-date-picker__day--range-end]="day.isRangeEnd"
+            [class.bloc-date-picker__day--in-range]="day.isInRange"
             [disabled]="day.isDisabled"
-            (click)="selectDay(day)">
+            (click)="selectDay(day)"
+            (mouseenter)="onDayHover(day)">
             {{ day.day }}
           </button>
         }
@@ -93,7 +100,7 @@ export interface CalendarDay {
         <button type="button" class="bloc-date-picker__today-btn" (click)="goToToday()">
           Today
         </button>
-        @if (selectedDate()) {
+        @if (selectedDate() || rangeStart()) {
           <button type="button" class="bloc-date-picker__clear-btn" (click)="clear()">
             Clear
           </button>
@@ -114,11 +121,26 @@ export class BlocCalendarPanelComponent {
   /** Maximum selectable date. */
   readonly maxDate = input<Date | null>(null);
 
+  /** Panel mode: 'single' for single date, 'range' for date range. */
+  readonly mode = input<'single' | 'range'>('single');
+
+  /** Range start date (range mode). */
+  readonly rangeStart = input<Date | null>(null);
+
+  /** Range end date (range mode). */
+  readonly rangeEnd = input<Date | null>(null);
+
+  /** Hover date for range preview (range mode). */
+  readonly hoverDate = input<Date | null>(null);
+
   /** Emitted when a day is picked or "Today" is clicked. */
   readonly dateSelect = output<Date>();
 
   /** Emitted when "Clear" is clicked. */
   readonly cleared = output<void>();
+
+  /** Emitted when a day is hovered (range mode). */
+  readonly dateHover = output<Date>();
 
   readonly weekdays = DAYS_OF_WEEK;
   readonly months = MONTHS_SHORT;
@@ -148,6 +170,10 @@ export class BlocCalendarPanelComponent {
     const today = new Date();
     const min = this.minDate();
     const max = this.maxDate();
+    const rStart = this.rangeStart();
+    const rEnd = this.rangeEnd();
+    const hover = this.hoverDate();
+    const isRange = this.mode() === 'range';
 
     const year = viewDate.getFullYear();
     const month = viewDate.getMonth();
@@ -161,18 +187,18 @@ export class BlocCalendarPanelComponent {
 
     for (let i = startDay - 1; i >= 0; i--) {
       const date = new Date(year, month - 1, prevMonthDays - i);
-      days.push(this._buildDay(date, false, today, selected, min, max));
+      days.push(this._buildDay(date, false, today, selected, min, max, isRange, rStart, rEnd, hover));
     }
 
     for (let d = 1; d <= daysInMonth; d++) {
       const date = new Date(year, month, d);
-      days.push(this._buildDay(date, true, today, selected, min, max));
+      days.push(this._buildDay(date, true, today, selected, min, max, isRange, rStart, rEnd, hover));
     }
 
     const remaining = 42 - days.length;
     for (let d = 1; d <= remaining; d++) {
       const date = new Date(year, month + 1, d);
-      days.push(this._buildDay(date, false, today, selected, min, max));
+      days.push(this._buildDay(date, false, today, selected, min, max, isRange, rStart, rEnd, hover));
     }
 
     return days;
@@ -243,6 +269,12 @@ export class BlocCalendarPanelComponent {
     this.dateSelect.emit(day.date);
   }
 
+  onDayHover(day: CalendarDay): void {
+    if (this.mode() === 'range' && !day.isDisabled) {
+      this.dateHover.emit(day.date);
+    }
+  }
+
   goToToday(): void {
     const today = new Date();
     this._viewDate.set(new Date(today.getFullYear(), today.getMonth(), 1));
@@ -262,6 +294,10 @@ export class BlocCalendarPanelComponent {
     selected: Date | null,
     min: Date | null,
     max: Date | null,
+    isRange = false,
+    rangeStart: Date | null = null,
+    rangeEnd: Date | null = null,
+    hoverDate: Date | null = null,
   ): CalendarDay {
     const isToday =
       date.getDate() === today.getDate() &&
@@ -283,6 +319,37 @@ export class BlocCalendarPanelComponent {
       isDisabled = date > maxDay;
     }
 
-    return { date, day: date.getDate(), isCurrentMonth, isToday, isSelected, isDisabled };
+    let isRangeStart = false;
+    let isRangeEnd = false;
+    let isInRange = false;
+
+    if (isRange) {
+      const dt = this._stripTime(date).getTime();
+      const s = rangeStart ? this._stripTime(rangeStart).getTime() : null;
+      const e = rangeEnd ? this._stripTime(rangeEnd).getTime() : null;
+      const h = hoverDate ? this._stripTime(hoverDate).getTime() : null;
+
+      if (s !== null && e !== null) {
+        // Complete range
+        isRangeStart = dt === s;
+        isRangeEnd = dt === e;
+        isInRange = dt > s && dt < e;
+      } else if (s !== null && h !== null) {
+        // Preview range (one click done, hovering)
+        const lo = Math.min(s, h);
+        const hi = Math.max(s, h);
+        isRangeStart = dt === lo;
+        isRangeEnd = dt === hi;
+        isInRange = dt > lo && dt < hi;
+      } else if (s !== null) {
+        isRangeStart = dt === s;
+      }
+    }
+
+    return { date, day: date.getDate(), isCurrentMonth, isToday, isSelected, isDisabled, isRangeStart, isRangeEnd, isInRange };
+  }
+
+  private _stripTime(d: Date): Date {
+    return new Date(d.getFullYear(), d.getMonth(), d.getDate());
   }
 }
