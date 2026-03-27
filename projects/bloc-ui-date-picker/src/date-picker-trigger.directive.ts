@@ -50,6 +50,8 @@ const TRIGGER_CSS = [
   'border-top-color:var(--bloc-date-picker-dropdown-bg,#ffffff)}',
   '@keyframes bloc-dp-trigger-in{from{opacity:0;transform:translateY(-4px)}to{opacity:1;transform:translateY(0)}}',
   '@keyframes bloc-dp-trigger-in-up{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:translateY(0)}}',
+  // Disabled state
+  '.bloc-date-picker-trigger--disabled{opacity:0.5;cursor:not-allowed;pointer-events:none}',
 ].join('');
 
 function ensureStyles(doc: Document): void {
@@ -79,6 +81,7 @@ function ensureStyles(doc: Document): void {
     '[attr.aria-expanded]': 'isOpen()',
     '[class.bloc-date-picker-trigger--open]': 'isOpen()',
     '[class.bloc-date-picker-trigger--disabled]': 'isDisabled()',
+    '[attr.disabled]': 'isDisabled() || null',
   },
 })
 export class BlocDatePickerTriggerDirective implements ControlValueAccessor, OnInit {
@@ -241,12 +244,12 @@ export class BlocDatePickerTriggerDirective implements ControlValueAccessor, OnI
     if (openUpward) {
       this._wrapper.classList.add('bloc-dp-trigger-dropdown--upward');
       this._wrapper.style.left = `${rect.left}px`;
-      this._wrapper.style.bottom = `${window.innerHeight - rect.top + 4}px`;
+      this._wrapper.style.bottom = `${window.innerHeight - rect.top + 10}px`;
       this._wrapper.style.top = 'auto';
     } else {
       this._wrapper.classList.remove('bloc-dp-trigger-dropdown--upward');
       this._wrapper.style.left = `${rect.left}px`;
-      this._wrapper.style.top = `${rect.bottom + 4}px`;
+      this._wrapper.style.top = `${rect.bottom + 10}px`;
       this._wrapper.style.bottom = 'auto';
     }
   }
