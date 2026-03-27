@@ -33,7 +33,7 @@ jobs:
         run: npx ng build bloc-ui-core --configuration production
 
       - name: Build demo
-        run: npx ng build demo --configuration production --base-href /BLOC-UI/
+        run: npx ng build demo --configuration production --base-href /
 
       - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
