@@ -6,7 +6,9 @@
         "start": "ng serve",
         "build": "bash ./build.sh",
         "watch": "ng build --watch --configuration development",
-        "test": "ng test"
+        "test": "ng test",
+        "e2e": "playwright test",
+        "e2e:report": "playwright show-report"
     },
     "private": true,
     "packageManager": "npm@11.9.0",
@@ -26,8 +28,10 @@
         "@angular/build": "^21.2.3",
         "@angular/cli": "^21.2.3",
         "@angular/compiler-cli": "^21.2.0",
+        "@playwright/test": "^1.58.2",
         "@tailwindcss/postcss": "^4.2.2",
         "@types/feather-icons": "^4.29.4",
+        "@types/node": "^25.5.0",
         "@vitest/coverage-v8": "^4.1.2",
         "angular-cli-ghpages": "^3.0.2",
         "jsdom": "^28.0.0",

@@ -28,6 +28,7 @@
                 "./projects/bloc-ui-date-picker/range-date-picker/src/public-api.ts"
             ]
         },
+        "types": ["node"],
         "strict": true,
         "noImplicitOverride": true,
         "noPropertyAccessFromIndexSignature": true,
