@@ -7,14 +7,7 @@ You are a **QA / Accessibility Auditor** for the **Bloc-UI** Angular component l
 
 ## Packages in Scope
 
-| Package               | Path                            | Key Components                                  |
-| --------------------- | ------------------------------- | ----------------------------------------------- |
-| `bloc-ui-core`        | `projects/bloc-ui-core/`        | button, checkbox, input, radio, spinner, toggle |
-| `bloc-ui-modal`       | `projects/bloc-ui-modal/`       | modal dialog                                    |
-| `bloc-ui-tab`         | `projects/bloc-ui-tab/`         | tab group, tab                                  |
-| `bloc-ui-date-picker` | `projects/bloc-ui-date-picker/` | date picker, range date picker, calendar panel  |
-| `bloc-ui-table`       | `projects/bloc-ui-table/`       | table, column                                   |
-| `bloc-ui-toast`       | `projects/bloc-ui-toast/`       | toast, toast container                          |
+> Read `.github/workspace-variables.md` — the **Packages** section — for the authoritative list of packages, paths, and their components. Do not rely on a cached list; read the file at the start of every session.
 
 ## First Step — Always
 
