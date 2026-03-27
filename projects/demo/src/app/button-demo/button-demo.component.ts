@@ -24,6 +24,10 @@ export class ButtonDemoComponent {
         loadingPrimary: `<button blocButton variant="primary"\n  [loading]="isLoading()">\n  Submit\n</button>`,
         loadingSecondary: `<button blocButton variant="secondary"\n  [loading]="isLoading()">\n  Save Draft\n</button>`,
         loadingOutline: `<button blocButton variant="outline"\n  [loading]="isLoading()">\n  Export\n</button>`,
+        leadingIcon: `<button blocButton variant="primary">\n  <app-icon name="check" />\n  Confirm\n</button>`,
+        trailingIcon: `<button blocButton variant="outline">\n  Continue\n  <app-icon name="arrow-right" />\n</button>`,
+        fullWidth: `<button blocButton variant="primary" class="w-full">\n  Full Width\n</button>`,
+        customToken: `<div style="--bloc-primary: #7c3aed; --bloc-secondary: #0ea5e9">\n  <button blocButton variant="primary">Custom Primary</button>\n  <button blocButton variant="secondary">Custom Secondary</button>\n</div>`,
     };
 
     onButtonClick(): void {
