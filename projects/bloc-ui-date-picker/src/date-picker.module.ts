@@ -6,4 +6,4 @@ import { BlocDateRangePickerTriggerDirective } from './date-range-picker-trigger
   imports: [BlocDatePickerTriggerDirective, BlocDateRangePickerTriggerDirective],
   exports: [BlocDatePickerTriggerDirective, BlocDateRangePickerTriggerDirective],
 })
-export class BlocDatePickerModule { }
+export class BlocDatePickerModule {}

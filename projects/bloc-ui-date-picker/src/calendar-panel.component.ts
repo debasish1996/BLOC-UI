@@ -1,113 +1,32 @@
 import { Component, computed, input, output, signal } from '@angular/core';
 
 const DAYS_OF_WEEK = ['Su', 'Mo', 'Tu', 'We', 'Th', 'Fr', 'Sa'];
-const MONTHS_SHORT = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+const MONTHS_SHORT = [
+  'Jan',
+  'Feb',
+  'Mar',
+  'Apr',
+  'May',
+  'Jun',
+  'Jul',
+  'Aug',
+  'Sep',
+  'Oct',
+  'Nov',
+  'Dec',
+];
 
 export interface CalendarDay {
   date: Date;
   day: number;
-  isCurrentMonth: boolean;
-  isToday: boolean;
-  isSelected: boolean;
-  isDisabled: boolean;
-  isRangeStart: boolean;
-  isRangeEnd: boolean;
-  isInRange: boolean;
+  cls: string;
+  dis: boolean;
 }
 
 @Component({
   selector: 'bloc-calendar-panel',
   standalone: true,
-  template: `
-    <div class="bloc-date-picker__header">
-      @if (_view() === 'day') {
-        <button type="button" class="bloc-date-picker__nav" (click)="prevMonth()" aria-label="Previous month">&#8249;</button>
-        <button type="button" class="bloc-date-picker__month-year-btn" (click)="openMonthView()">{{ monthYearLabel() }}</button>
-        <button type="button" class="bloc-date-picker__nav" (click)="nextMonth()" aria-label="Next month">&#8250;</button>
-      }
-      @if (_view() === 'month') {
-        <button type="button" class="bloc-date-picker__nav" (click)="prevYear()" aria-label="Previous year">&#8249;</button>
-        <button type="button" class="bloc-date-picker__month-year-btn" (click)="openYearView()">{{ viewYear() }}</button>
-        <button type="button" class="bloc-date-picker__nav" (click)="nextYear()" aria-label="Next year">&#8250;</button>
-      }
-      @if (_view() === 'year') {
-        <button type="button" class="bloc-date-picker__nav" (click)="prevYearRange()" aria-label="Previous years">&#8249;</button>
-        <span class="bloc-date-picker__month-year-label">{{ yearRange()[0] }} – {{ yearRange()[11] }}</span>
-        <button type="button" class="bloc-date-picker__nav" (click)="nextYearRange()" aria-label="Next years">&#8250;</button>
-      }
-    </div>
-
-    @if (_view() === 'day') {
-      <div class="bloc-date-picker__weekdays">
-        @for (day of weekdays; track day) {
-          <span class="bloc-date-picker__weekday">{{ day }}</span>
-        }
-      </div>
-
-      <div class="bloc-date-picker__days">
-        @for (day of calendarDays(); track day.date.getTime()) {
-          <button
-            type="button"
-            class="bloc-date-picker__day"
-            [class.bloc-date-picker__day--other]="!day.isCurrentMonth"
-            [class.bloc-date-picker__day--today]="day.isToday"
-            [class.bloc-date-picker__day--selected]="day.isSelected"
-            [class.bloc-date-picker__day--disabled]="day.isDisabled"
-            [class.bloc-date-picker__day--range-start]="day.isRangeStart"
-            [class.bloc-date-picker__day--range-end]="day.isRangeEnd"
-            [class.bloc-date-picker__day--in-range]="day.isInRange"
-            [disabled]="day.isDisabled"
-            (click)="selectDay(day)"
-            (mouseenter)="onDayHover(day)">
-            {{ day.day }}
-          </button>
-        }
-      </div>
-    }
-
-    @if (_view() === 'month') {
-      <div class="bloc-date-picker__month-grid">
-        @for (m of months; track $index) {
-          <button
-            type="button"
-            class="bloc-date-picker__month-cell"
-            [class.bloc-date-picker__month-cell--selected]="selectedDate() && viewYear() === selectedDate()!.getFullYear() && $index === selectedDate()!.getMonth()"
-            [class.bloc-date-picker__month-cell--current]="viewYear() === currentYear && $index === currentMonth"
-            (click)="selectMonth($index)">
-            {{ m }}
-          </button>
-        }
-      </div>
-    }
-
-    @if (_view() === 'year') {
-      <div class="bloc-date-picker__year-grid">
-        @for (y of yearRange(); track y) {
-          <button
-            type="button"
-            class="bloc-date-picker__year-cell"
-            [class.bloc-date-picker__year-cell--selected]="selectedDate() && y === selectedDate()!.getFullYear()"
-            [class.bloc-date-picker__year-cell--current]="y === currentYear"
-            (click)="selectYear(y)">
-            {{ y }}
-          </button>
-        }
-      </div>
-    }
-
-    @if (_view() === 'day') {
-      <div class="bloc-date-picker__footer">
-        <button type="button" class="bloc-date-picker__today-btn" (click)="goToToday()">
-          Today
-        </button>
-        @if (selectedDate() || rangeStart()) {
-          <button type="button" class="bloc-date-picker__clear-btn" (click)="clear()">
-            Clear
-          </button>
-        }
-      </div>
-    }
-  `,
+  templateUrl: './calendar-panel.component.html',
   styleUrl: './calendar-panel.component.scss',
   host: { class: 'bloc-calendar-panel' },
 })
@@ -150,7 +69,7 @@ export class BlocCalendarPanelComponent {
   readonly _yearRangeStart = signal<number>(new Date().getFullYear() - 4);
 
   readonly yearRange = computed(() =>
-    Array.from({ length: 12 }, (_, i) => this._yearRangeStart() + i)
+    Array.from({ length: 12 }, (_, i) => this._yearRangeStart() + i),
   );
 
   readonly viewYear = computed(() => this._viewDate().getFullYear());
@@ -175,30 +94,70 @@ export class BlocCalendarPanelComponent {
     const hover = this.hoverDate();
     const isRange = this.mode() === 'range';
 
+    const todayKey = this._dk(today);
+    const selKey = selected ? this._dk(selected) : 0;
+    const minKey = min ? this._dk(min) : 0;
+    const maxKey = max ? this._dk(max) : 0;
+    const sKey = rStart ? this._dk(rStart) : 0;
+    const eKey = rEnd ? this._dk(rEnd) : 0;
+    const hKey = hover ? this._dk(hover) : 0;
+
     const year = viewDate.getFullYear();
     const month = viewDate.getMonth();
 
-    const firstOfMonth = new Date(year, month, 1);
-    const startDay = firstOfMonth.getDay();
+    const startDay = new Date(year, month, 1).getDay();
     const daysInMonth = new Date(year, month + 1, 0).getDate();
-
     const prevMonthDays = new Date(year, month, 0).getDate();
     const days: CalendarDay[] = [];
 
     for (let i = startDay - 1; i >= 0; i--) {
-      const date = new Date(year, month - 1, prevMonthDays - i);
-      days.push(this._buildDay(date, false, today, selected, min, max, isRange, rStart, rEnd, hover));
+      days.push(
+        this._buildDay(
+          new Date(year, month - 1, prevMonthDays - i),
+          false,
+          todayKey,
+          selKey,
+          minKey,
+          maxKey,
+          isRange,
+          sKey,
+          eKey,
+          hKey,
+        ),
+      );
     }
-
     for (let d = 1; d <= daysInMonth; d++) {
-      const date = new Date(year, month, d);
-      days.push(this._buildDay(date, true, today, selected, min, max, isRange, rStart, rEnd, hover));
+      days.push(
+        this._buildDay(
+          new Date(year, month, d),
+          true,
+          todayKey,
+          selKey,
+          minKey,
+          maxKey,
+          isRange,
+          sKey,
+          eKey,
+          hKey,
+        ),
+      );
     }
-
     const remaining = 42 - days.length;
     for (let d = 1; d <= remaining; d++) {
-      const date = new Date(year, month + 1, d);
-      days.push(this._buildDay(date, false, today, selected, min, max, isRange, rStart, rEnd, hover));
+      days.push(
+        this._buildDay(
+          new Date(year, month + 1, d),
+          false,
+          todayKey,
+          selKey,
+          minKey,
+          maxKey,
+          isRange,
+          sKey,
+          eKey,
+          hKey,
+        ),
+      );
     }
 
     return days;
@@ -214,14 +173,9 @@ export class BlocCalendarPanelComponent {
 
   // — Navigation —
 
-  prevMonth(): void {
+  navMonth(delta: number): void {
     const d = this._viewDate();
-    this._viewDate.set(new Date(d.getFullYear(), d.getMonth() - 1, 1));
-  }
-
-  nextMonth(): void {
-    const d = this._viewDate();
-    this._viewDate.set(new Date(d.getFullYear(), d.getMonth() + 1, 1));
+    this._viewDate.set(new Date(d.getFullYear(), d.getMonth() + delta, 1));
   }
 
   openMonthView(): void {
@@ -229,48 +183,38 @@ export class BlocCalendarPanelComponent {
   }
 
   openYearView(): void {
-    const viewYear = this._viewDate().getFullYear();
-    this._yearRangeStart.set(viewYear - 4);
+    this._yearRangeStart.set(this._viewDate().getFullYear() - 4);
     this._view.set('year');
   }
 
-  selectMonth(monthIndex: number): void {
+  selectMonth(m: number): void {
     const d = this._viewDate();
-    this._viewDate.set(new Date(d.getFullYear(), monthIndex, 1));
+    this._viewDate.set(new Date(d.getFullYear(), m, 1));
     this._view.set('day');
   }
 
-  selectYear(year: number): void {
+  selectYear(y: number): void {
     const d = this._viewDate();
-    this._viewDate.set(new Date(year, d.getMonth(), 1));
+    this._viewDate.set(new Date(y, d.getMonth(), 1));
     this._view.set('month');
   }
 
-  prevYear(): void {
+  navYear(delta: number): void {
     const d = this._viewDate();
-    this._viewDate.set(new Date(d.getFullYear() - 1, d.getMonth(), 1));
+    this._viewDate.set(new Date(d.getFullYear() + delta, d.getMonth(), 1));
   }
 
-  nextYear(): void {
-    const d = this._viewDate();
-    this._viewDate.set(new Date(d.getFullYear() + 1, d.getMonth(), 1));
-  }
-
-  prevYearRange(): void {
-    this._yearRangeStart.update((v) => v - 12);
-  }
-
-  nextYearRange(): void {
-    this._yearRangeStart.update((v) => v + 12);
+  navYearRange(delta: number): void {
+    this._yearRangeStart.update((v) => v + delta);
   }
 
   selectDay(day: CalendarDay): void {
-    if (day.isDisabled) return;
+    if (day.dis) return;
     this.dateSelect.emit(day.date);
   }
 
   onDayHover(day: CalendarDay): void {
-    if (this.mode() === 'range' && !day.isDisabled) {
+    if (this.mode() === 'range' && !day.dis) {
       this.dateHover.emit(day.date);
     }
   }
@@ -290,66 +234,51 @@ export class BlocCalendarPanelComponent {
   private _buildDay(
     date: Date,
     isCurrentMonth: boolean,
-    today: Date,
-    selected: Date | null,
-    min: Date | null,
-    max: Date | null,
-    isRange = false,
-    rangeStart: Date | null = null,
-    rangeEnd: Date | null = null,
-    hoverDate: Date | null = null,
+    todayKey: number,
+    selectedKey: number,
+    minKey: number,
+    maxKey: number,
+    isRange: boolean,
+    sKey: number,
+    eKey: number,
+    hKey: number,
   ): CalendarDay {
-    const isToday =
-      date.getDate() === today.getDate() &&
-      date.getMonth() === today.getMonth() &&
-      date.getFullYear() === today.getFullYear();
-    const isSelected = selected
-      ? date.getDate() === selected.getDate() &&
-      date.getMonth() === selected.getMonth() &&
-      date.getFullYear() === selected.getFullYear()
-      : false;
+    const dk = this._dk(date);
+    const dis = (minKey > 0 && dk < minKey) || (maxKey > 0 && dk > maxKey);
 
-    let isDisabled = false;
-    if (min) {
-      const minDay = new Date(min.getFullYear(), min.getMonth(), min.getDate());
-      isDisabled = date < minDay;
-    }
-    if (max && !isDisabled) {
-      const maxDay = new Date(max.getFullYear(), max.getMonth(), max.getDate());
-      isDisabled = date > maxDay;
-    }
-
-    let isRangeStart = false;
-    let isRangeEnd = false;
-    let isInRange = false;
-
-    if (isRange) {
-      const dt = this._stripTime(date).getTime();
-      const s = rangeStart ? this._stripTime(rangeStart).getTime() : null;
-      const e = rangeEnd ? this._stripTime(rangeEnd).getTime() : null;
-      const h = hoverDate ? this._stripTime(hoverDate).getTime() : null;
-
-      if (s !== null && e !== null) {
-        // Complete range
-        isRangeStart = dt === s;
-        isRangeEnd = dt === e;
-        isInRange = dt > s && dt < e;
-      } else if (s !== null && h !== null) {
-        // Preview range (one click done, hovering)
-        const lo = Math.min(s, h);
-        const hi = Math.max(s, h);
-        isRangeStart = dt === lo;
-        isRangeEnd = dt === hi;
-        isInRange = dt > lo && dt < hi;
-      } else if (s !== null) {
-        isRangeStart = dt === s;
+    let rs = false,
+      re = false,
+      ir = false;
+    if (isRange && sKey) {
+      if (eKey) {
+        rs = dk === sKey;
+        re = dk === eKey;
+        ir = dk > sKey && dk < eKey;
+      } else if (hKey) {
+        const lo = Math.min(sKey, hKey),
+          hi = Math.max(sKey, hKey);
+        rs = dk === lo;
+        re = dk === hi;
+        ir = dk > lo && dk < hi;
+      } else {
+        rs = dk === sKey;
       }
     }
 
-    return { date, day: date.getDate(), isCurrentMonth, isToday, isSelected, isDisabled, isRangeStart, isRangeEnd, isInRange };
+    let cls = 'bloc-dp-d';
+    if (!isCurrentMonth) cls += ' bloc-dp-d--oth';
+    if (dk === todayKey) cls += ' bloc-dp-d--tod';
+    if (dk === selectedKey) cls += ' bloc-dp-d--sel';
+    if (dis) cls += ' bloc-dp-d--dis';
+    if (rs) cls += ' bloc-dp-d--rs';
+    if (re) cls += ' bloc-dp-d--re';
+    if (ir) cls += ' bloc-dp-d--ir';
+
+    return { date, day: date.getDate(), cls, dis };
   }
 
-  private _stripTime(d: Date): Date {
-    return new Date(d.getFullYear(), d.getMonth(), d.getDate());
+  /** Date → numeric key yyyymmdd for fast comparison */
+  private _dk(d: Date): number {
+    return d.getFullYear() * 10000 + d.getMonth() * 100 + d.getDate();
   }
 }
