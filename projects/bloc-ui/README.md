@@ -1,6 +1,6 @@
 # @bloc-ui/kit
 
-> **Latest:** v1.0.1
+> **Latest:** v1.0.2
 
 All-in-one umbrella package for the [Bloc UI](https://github.com/debasish1996/BLOC-UI) component library. Install this single package to get every Bloc UI component and service.
 
