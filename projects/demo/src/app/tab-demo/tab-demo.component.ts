@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { BlocTabGroupComponent, BlocTabComponent } from '@bloc-ui/tab';
+import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
 
 @Component({
   selector: 'app-tab-demo',
   standalone: true,
-  imports: [BlocTabGroupComponent, BlocTabComponent, SampleCodeComponent],
+  imports: [BlocTabGroupComponent, BlocTabComponent, SampleCodeComponent, InstallCommandComponent],
   templateUrl: './tab-demo.component.html',
 })
 export class TabDemoComponent {

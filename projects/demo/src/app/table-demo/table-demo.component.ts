@@ -4,12 +4,13 @@ import {
   BlocColumnComponent,
   BlocCellDefDirective,
 } from '@bloc-ui/table';
+import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
 
 @Component({
   selector: 'app-table-demo',
   standalone: true,
-  imports: [BlocTableComponent, BlocColumnComponent, BlocCellDefDirective, SampleCodeComponent],
+  imports: [BlocTableComponent, BlocColumnComponent, BlocCellDefDirective, SampleCodeComponent, InstallCommandComponent],
   templateUrl: './table-demo.component.html',
 })
 export class TableDemoComponent {

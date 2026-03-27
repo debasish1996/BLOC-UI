@@ -1,12 +1,13 @@
 import { Component, signal } from '@angular/core';
 import { BlocButtonComponent } from 'bloc-ui-core';
 import { IconComponent } from '../icon/icon.component';
+import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
 
 @Component({
   selector: 'app-button-demo',
   standalone: true,
-  imports: [BlocButtonComponent, IconComponent, SampleCodeComponent],
+  imports: [BlocButtonComponent, IconComponent, SampleCodeComponent, InstallCommandComponent],
   templateUrl: './button-demo.component.html',
 })
 export class ButtonDemoComponent {

@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { BlocSpinnerDirective } from 'bloc-ui-core';
+import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
 
 @Component({
   selector: 'app-spinner-demo',
   standalone: true,
-  imports: [BlocSpinnerDirective, SampleCodeComponent],
+  imports: [BlocSpinnerDirective, SampleCodeComponent, InstallCommandComponent],
   templateUrl: './spinner-demo.component.html',
 })
 export class SpinnerDemoComponent {

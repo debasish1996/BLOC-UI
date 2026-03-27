@@ -1,12 +1,13 @@
 import { Component, inject } from '@angular/core';
 import { BlocToastService } from '@bloc-ui/toast';
 import { BlocButtonComponent } from 'bloc-ui-core';
+import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
 
 @Component({
     selector: 'app-toast-demo',
     standalone: true,
-    imports: [BlocButtonComponent, SampleCodeComponent],
+    imports: [BlocButtonComponent, SampleCodeComponent, InstallCommandComponent],
     templateUrl: './toast-demo.component.html',
 })
 export class ToastDemoComponent {

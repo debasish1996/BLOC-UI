@@ -2,12 +2,13 @@ import { Component, inject } from '@angular/core';
 import { BlocButtonComponent } from '@bloc-ui/core/button';
 import { BlocModalService } from '@bloc-ui/modal';
 import { ConfirmModalComponent } from './confirm-modal.component';
+import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
 
 @Component({
   selector: 'app-modal-demo',
   standalone: true,
-  imports: [BlocButtonComponent, SampleCodeComponent],
+  imports: [BlocButtonComponent, SampleCodeComponent, InstallCommandComponent],
   templateUrl: './modal-demo.component.html',
 })
 export class ModalDemoComponent {

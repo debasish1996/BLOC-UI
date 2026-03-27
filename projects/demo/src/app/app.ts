@@ -33,15 +33,23 @@ export class App {
     ],
   };
 
+  readonly datePickerGroup: MenuGroup = {
+    label: 'Date Pickers',
+    children: [
+      { path: 'date-picker', label: 'Date Picker' },
+      { path: 'date-range-picker', label: 'Date Range Picker' },
+    ],
+  };
+
   readonly standaloneItems: MenuItem[] = [
     { path: 'modal', label: 'Modal' },
-    { path: 'date-picker', label: 'Date Picker' },
     { path: 'table', label: 'Table' },
     { path: 'tab', label: 'Tab' },
     { path: 'toast', label: 'Toast' },
   ];
 
   readonly coreExpanded = signal(this._isCoreRoute(this.router.url));
+  readonly datePickerExpanded = signal(this._isDatePickerRoute(this.router.url));
 
   constructor() {
     this.router.events
@@ -50,6 +58,9 @@ export class App {
         if (this._isCoreRoute(e.urlAfterRedirects)) {
           this.coreExpanded.set(true);
         }
+        if (this._isDatePickerRoute(e.urlAfterRedirects)) {
+          this.datePickerExpanded.set(true);
+        }
       });
   }
 
@@ -57,8 +68,17 @@ export class App {
     this.coreExpanded.update((v) => !v);
   }
 
+  toggleDatePicker(): void {
+    this.datePickerExpanded.update((v) => !v);
+  }
+
   private _isCoreRoute(url: string): boolean {
     const path = url.split('?')[0].replace(/^\//, '');
     return this.coreGroup.children.some((c) => path === c.path || path.startsWith(c.path + '/'));
+  }
+
+  private _isDatePickerRoute(url: string): boolean {
+    const path = url.split('?')[0].replace(/^\//, '');
+    return this.datePickerGroup.children.some((c) => path === c.path || path.startsWith(c.path + '/'));
   }
 }

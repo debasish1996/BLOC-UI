@@ -3,6 +3,7 @@ import { HomeComponent } from './home/home.component';
 import { ButtonDemoComponent } from './button-demo/button-demo.component';
 import { CheckboxDemoComponent } from './checkbox-demo/checkbox-demo.component';
 import { DatePickerDemoComponent } from './date-picker-demo/date-picker-demo.component';
+import { DateRangePickerDemoComponent } from './date-range-picker-demo/date-range-picker-demo.component';
 import { InputDemoComponent } from './input-demo/input-demo.component';
 import { ModalDemoComponent } from './modal-demo/modal-demo.component';
 import { RadioDemoComponent } from './radio-demo/radio-demo.component';
@@ -17,6 +18,7 @@ export const routes: Routes = [
   { path: 'button', component: ButtonDemoComponent },
   { path: 'checkbox', component: CheckboxDemoComponent },
   { path: 'date-picker', component: DatePickerDemoComponent },
+  { path: 'date-range-picker', component: DateRangePickerDemoComponent },
   { path: 'input', component: InputDemoComponent },
   { path: 'modal', component: ModalDemoComponent },
   { path: 'radio', component: RadioDemoComponent },

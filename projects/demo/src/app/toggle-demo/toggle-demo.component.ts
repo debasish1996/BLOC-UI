@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlocButtonComponent, BlocToggleComponent } from 'bloc-ui-core';
+import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
 
 @Component({
   selector: 'app-toggle-demo',
   standalone: true,
-  imports: [BlocToggleComponent, BlocButtonComponent, FormsModule, ReactiveFormsModule, SampleCodeComponent],
+  imports: [BlocToggleComponent, BlocButtonComponent, FormsModule, ReactiveFormsModule, SampleCodeComponent, InstallCommandComponent],
   templateUrl: './toggle-demo.component.html',
 })
 export class ToggleDemoComponent {

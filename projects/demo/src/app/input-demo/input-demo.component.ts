@@ -2,12 +2,13 @@ import { Component, signal } from '@angular/core';
 import { ReactiveFormsModule, FormControl, Validators } from '@angular/forms';
 import { BlocInputDirective, BlocInputGroupDirective, BlocPrefixDirective, BlocSuffixDirective, BlocInputErrorDirective } from 'bloc-ui-core';
 import { IconComponent } from '../icon/icon.component';
+import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
 
 @Component({
   selector: 'app-input-demo',
   standalone: true,
-  imports: [BlocInputDirective, BlocInputGroupDirective, BlocPrefixDirective, BlocSuffixDirective, BlocInputErrorDirective, IconComponent, ReactiveFormsModule, SampleCodeComponent],
+  imports: [BlocInputDirective, BlocInputGroupDirective, BlocPrefixDirective, BlocSuffixDirective, BlocInputErrorDirective, IconComponent, ReactiveFormsModule, SampleCodeComponent, InstallCommandComponent],
   templateUrl: './input-demo.component.html',
 })
 export class InputDemoComponent {

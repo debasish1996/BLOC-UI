@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlocButtonComponent, BlocCheckboxComponent } from 'bloc-ui-core';
+import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
 
 @Component({
   selector: 'app-checkbox-demo',
   standalone: true,
-  imports: [BlocCheckboxComponent, BlocButtonComponent, FormsModule, ReactiveFormsModule, SampleCodeComponent],
+  imports: [BlocCheckboxComponent, BlocButtonComponent, FormsModule, ReactiveFormsModule, SampleCodeComponent, InstallCommandComponent],
   templateUrl: './checkbox-demo.component.html',
 })
 export class CheckboxDemoComponent {

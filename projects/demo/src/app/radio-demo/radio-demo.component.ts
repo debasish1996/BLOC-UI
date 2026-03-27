@@ -1,12 +1,13 @@
 import { Component } from '@angular/core';
 import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlocButtonComponent, BlocRadioComponent, BlocRadioGroupComponent } from 'bloc-ui-core';
+import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
 
 @Component({
   selector: 'app-radio-demo',
   standalone: true,
-  imports: [BlocRadioGroupComponent, BlocRadioComponent, BlocButtonComponent, FormsModule, ReactiveFormsModule, SampleCodeComponent],
+  imports: [BlocRadioGroupComponent, BlocRadioComponent, BlocButtonComponent, FormsModule, ReactiveFormsModule, SampleCodeComponent, InstallCommandComponent],
   templateUrl: './radio-demo.component.html',
 })
 export class RadioDemoComponent {
