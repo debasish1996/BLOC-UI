@@ -335,11 +335,11 @@ If you use Tailwind CSS, declare the `bloc-*` cascade layers **before** `@import
 
 ```css
 /* tailwind.css */
-@layer theme, base, bloc-input, bloc-spinner, components, utilities;
+@layer theme, base, bloc-input, bloc-input-group, bloc-input-error, bloc-spinner, components, utilities;
 @import 'tailwindcss';
 ```
 
-Add one entry per bloc-ui directive you use (`bloc-input`, `bloc-spinner`, etc.).
+Add one entry per bloc-ui directive you use (`bloc-input`, `bloc-input-group`, `bloc-input-error`, `bloc-spinner`, etc.).
 
 ---
 

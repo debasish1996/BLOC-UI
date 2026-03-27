@@ -64,14 +64,14 @@ toast.dismissAll();
 
 ### `BlocToastConfig`
 
-| Property      | Type                | Default       | Description                                   |
-| ------------- | ------------------- | ------------- | --------------------------------------------- |
-| `message`     | `string`            | —             | Toast message text (required)                 |
-| `title`       | `string`            | `''`          | Optional title                                |
-| `type`        | `BlocToastType`     | `'info'`      | `'info' \| 'success' \| 'warning' \| 'error'` |
-| `duration`    | `number`            | `4000`        | Auto-dismiss ms (`0` = no auto-dismiss)       |
-| `dismissible` | `boolean`           | `true`        | Show close button                             |
-| `position`    | `BlocToastPosition` | `'top-right'` | Screen position                               |
+| Property      | Type                                                                                              | Default       | Description                                   |
+| ------------- | ------------------------------------------------------------------------------------------------- | ------------- | --------------------------------------------- |
+| `message`     | `string`                                                                                          | —             | Toast message text (required)                 |
+| `title`       | `string`                                                                                          | `''`          | Optional title                                |
+| `type`        | `BlocToastType`                                                                                   | `'info'`      | `'info' \| 'success' \| 'warning' \| 'error'` |
+| `duration`    | `number`                                                                                          | `4000`        | Auto-dismiss ms (`0` = no auto-dismiss)       |
+| `dismissible` | `boolean`                                                                                         | `true`        | Show close button                             |
+| `position`    | `'top-right' \| 'top-left' \| 'bottom-right' \| 'bottom-left' \| 'top-center' \| 'bottom-center'` | `'top-right'` | Screen position of the toast container        |
 
 ---
 

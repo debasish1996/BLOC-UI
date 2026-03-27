@@ -134,7 +134,7 @@ theme < base < bloc-spinner < bloc-input < components < utilities
 Import the theme **before** Tailwind for correct layer precedence:
 
 ```css
-@layer theme, base, bloc-spinner, bloc-input, components, utilities;
+@layer theme, base, bloc-spinner, bloc-input, bloc-input-group, bloc-input-error, components, utilities;
 @import 'tailwindcss';
 ```
 

@@ -14,7 +14,7 @@ All-in-one umbrella package for the [Bloc UI](https://github.com/debasish1996/BL
 npm install @bloc-ui/kit
 ```
 
-**Peer dependencies:** `@angular/common` and `@angular/core` ≥ 21.
+**Peer dependencies:** `@angular/common`, `@angular/core`, and `@angular/forms` ≥ 21. (`@angular/forms` is required by `@bloc-ui/date-picker`.)
 
 ---
 
@@ -40,7 +40,7 @@ import { BlocButtonComponent } from '@bloc-ui/kit';
 import { BlocModalService } from '@bloc-ui/kit';
 import { BlocTableComponent } from '@bloc-ui/kit';
 import { BlocToastService } from '@bloc-ui/kit';
-import { BlocDatePickerComponent } from '@bloc-ui/kit';
+import { BlocDatePickerTriggerDirective } from '@bloc-ui/kit';
 import { BlocTabGroupComponent } from '@bloc-ui/kit';
 ```
 

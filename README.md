@@ -17,16 +17,16 @@ Lightweight, accessible Angular component library — barebone structure and beh
 
 ## Packages
 
-| Package                                                                      | Description                                                            | Version |
-| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------- | ------- |
-| [`@bloc-ui/kit`](https://www.npmjs.com/package/@bloc-ui/kit)                 | All-in-one umbrella — re-exports every package below                   | `0.0.1` |
-| [`@bloc-ui/core`](https://www.npmjs.com/package/@bloc-ui/core)               | Component library — button, checkbox, input, radio, spinner, toggle    | `0.0.9` |
-| [`@bloc-ui/theme`](https://www.npmjs.com/package/@bloc-ui/theme)             | Optional theme layer — CSS custom properties, colour tokens, dark mode | `0.0.4` |
-| [`@bloc-ui/modal`](https://www.npmjs.com/package/@bloc-ui/modal)             | Service-driven modal dialogs with typed data & results                 | `0.0.1` |
-| [`@bloc-ui/table`](https://www.npmjs.com/package/@bloc-ui/table)             | Declarative data table with custom cell templates                      | `0.0.1` |
-| [`@bloc-ui/toast`](https://www.npmjs.com/package/@bloc-ui/toast)             | Toast notification service with severity helpers                       | `0.0.1` |
-| [`@bloc-ui/date-picker`](https://www.npmjs.com/package/@bloc-ui/date-picker) | Calendar date picker with forms integration                            | `0.0.1` |
-| [`@bloc-ui/tab`](https://www.npmjs.com/package/@bloc-ui/tab)                 | Tab group with animated indicator and disabled tabs                    | `0.0.1` |
+| Package                                                                      | Description                                                            | Version  |
+| ---------------------------------------------------------------------------- | ---------------------------------------------------------------------- | -------- |
+| [`@bloc-ui/kit`](https://www.npmjs.com/package/@bloc-ui/kit)                 | All-in-one umbrella — re-exports every package below                   | `1.0.2`  |
+| [`@bloc-ui/core`](https://www.npmjs.com/package/@bloc-ui/core)               | Component library — button, checkbox, input, radio, spinner, toggle    | `0.0.11` |
+| [`@bloc-ui/theme`](https://www.npmjs.com/package/@bloc-ui/theme)             | Optional theme layer — CSS custom properties, colour tokens, dark mode | `0.0.6`  |
+| [`@bloc-ui/modal`](https://www.npmjs.com/package/@bloc-ui/modal)             | Service-driven modal dialogs with typed data & results                 | `0.0.3`  |
+| [`@bloc-ui/table`](https://www.npmjs.com/package/@bloc-ui/table)             | Declarative data table with custom cell templates                      | `0.0.3`  |
+| [`@bloc-ui/toast`](https://www.npmjs.com/package/@bloc-ui/toast)             | Toast notification service with severity helpers                       | `0.0.3`  |
+| [`@bloc-ui/date-picker`](https://www.npmjs.com/package/@bloc-ui/date-picker) | Calendar date picker with forms integration                            | `0.0.5`  |
+| [`@bloc-ui/tab`](https://www.npmjs.com/package/@bloc-ui/tab)                 | Tab group with animated indicator and disabled tabs                    | `0.0.3`  |
 
 ## Components
 
@@ -97,7 +97,7 @@ This gives you light/dark mode (auto-follows OS), brand colour tokens, and consi
 Register bloc-ui cascade layers before importing Tailwind so utilities always win:
 
 ```css
-@layer theme, base, bloc-spinner, bloc-input, components, utilities;
+@layer theme, base, bloc-spinner, bloc-input, bloc-input-group, bloc-input-error, components, utilities;
 @import 'tailwindcss';
 ```
 
