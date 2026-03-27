@@ -2,7 +2,7 @@
 
 > **Latest:** v0.0.4
 
-Directive-based date picker for Angular — part of the [Bloc UI](https://github.com/debasish1996/BLOC-UI) component library. Apply the trigger directive to any element (input, button, etc.) to attach a calendar dropdown. Supports **single date** and **date range** selection, template-driven and reactive forms, min/max constraints, month/year drill-down navigation, and a customisable display format.
+Directive-based date picker for Angular — part of the [Bloc UI](https://github.com/debasish1996/BLOC-UI) component library. Apply the trigger directive to any element (input, button, etc.) to attach a calendar dropdown. Supports **single date** and **date range** selection, template-driven and reactive forms, min/max constraints, and month/year drill-down navigation. The directive works with `Date` objects — display formatting is handled by the consumer.
 
 **[Live Documentation & Demos](https://bloc-verse.com/date-picker)**
 
@@ -39,7 +39,7 @@ import {
 
 ## Single date picker
 
-Apply `blocDatePickerTrigger` to any element. Use the `displayValue` signal via a template reference to render the formatted date.
+Apply `blocDatePickerTrigger` to any element. Access the selected `Date` object via the `selectedDate` signal on the template reference.
 
 ### Basic
 
@@ -47,7 +47,7 @@ Apply `blocDatePickerTrigger` to any element. Use the `displayValue` signal via 
 <input
   blocDatePickerTrigger
   #dp="blocDatePickerTrigger"
-  [value]="dp.displayValue()"
+  [value]="dp.selectedDate()?.toLocaleDateString() ?? ''"
   readonly
   placeholder="Select date"
 />
@@ -60,7 +60,7 @@ Apply `blocDatePickerTrigger` to any element. Use the `displayValue` signal via 
   blocDatePickerTrigger
   #dp="blocDatePickerTrigger"
   [(ngModel)]="selectedDate"
-  [value]="dp.displayValue()"
+  [value]="dp.selectedDate()?.toLocaleDateString() ?? ''"
   readonly
 />
 ```
@@ -72,7 +72,7 @@ Apply `blocDatePickerTrigger` to any element. Use the `displayValue` signal via 
   blocDatePickerTrigger
   #dp="blocDatePickerTrigger"
   [formControl]="dateCtrl"
-  [value]="dp.displayValue()"
+  [value]="dp.selectedDate()?.toLocaleDateString() ?? ''"
   readonly
 />
 ```
@@ -85,19 +85,7 @@ Apply `blocDatePickerTrigger` to any element. Use the `displayValue` signal via 
   #dp="blocDatePickerTrigger"
   [minDate]="minDate"
   [maxDate]="maxDate"
-  [value]="dp.displayValue()"
-  readonly
-/>
-```
-
-### Custom format
-
-```html
-<input
-  blocDatePickerTrigger
-  #dp="blocDatePickerTrigger"
-  format="dd/MM/yyyy"
-  [value]="dp.displayValue()"
+  [value]="dp.selectedDate()?.toLocaleDateString() ?? ''"
   readonly
 />
 ```
@@ -106,19 +94,18 @@ Apply `blocDatePickerTrigger` to any element. Use the `displayValue` signal via 
 
 ## `BlocDatePickerTriggerDirective` inputs
 
-| Input      | Type           | Default        | Description             |
-| ---------- | -------------- | -------------- | ----------------------- |
-| `minDate`  | `Date \| null` | `null`         | Minimum selectable date |
-| `maxDate`  | `Date \| null` | `null`         | Maximum selectable date |
-| `format`   | `string`       | `'yyyy-MM-dd'` | Display format          |
-| `disabled` | `boolean`      | `false`        | Disable the picker      |
+| Input      | Type           | Default | Description             |
+| ---------- | -------------- | ------- | ----------------------- |
+| `minDate`  | `Date \| null` | `null`  | Minimum selectable date |
+| `maxDate`  | `Date \| null` | `null`  | Maximum selectable date |
+| `disabled` | `boolean`      | `false` | Disable the picker      |
 
 ## `BlocDatePickerTriggerDirective` exported state
 
-| Signal           | Type      | Description                         |
-| ---------------- | --------- | ----------------------------------- |
-| `displayValue()` | `string`  | Formatted selected date for display |
-| `isOpen()`       | `boolean` | Whether the calendar panel is open  |
+| Signal           | Type           | Description                        |
+| ---------------- | -------------- | ---------------------------------- |
+| `selectedDate()` | `Date \| null` | Currently selected date            |
+| `isOpen()`       | `boolean`      | Whether the calendar panel is open |
 
 ---
 
@@ -142,7 +129,7 @@ interface DateRange {
   blocDateRangePickerTrigger
   #rp="blocDateRangePickerTrigger"
   [(ngModel)]="dateRange"
-  [value]="rp.displayValue()"
+  [value]="(rp.rangeStart() && rp.rangeEnd()) ? rp.rangeStart()!.toLocaleDateString() + ' \u2192 ' + rp.rangeEnd()!.toLocaleDateString() : rp.rangeStart()?.toLocaleDateString() ?? ''"
   readonly
   placeholder="Select range"
 />
@@ -155,48 +142,46 @@ interface DateRange {
   blocDateRangePickerTrigger
   #rp="blocDateRangePickerTrigger"
   [formControl]="rangeCtrl"
-  [value]="rp.displayValue()"
+  [value]="(rp.rangeStart() && rp.rangeEnd()) ? rp.rangeStart()!.toLocaleDateString() + ' \u2192 ' + rp.rangeEnd()!.toLocaleDateString() : rp.rangeStart()?.toLocaleDateString() ?? ''"
   readonly
 />
 ```
 
 ### With separate from / to inputs
 
-Use `displayValueFrom` and `displayValueTo` to populate two separate fields. Supply a `FormGroup` via `rangeFormGroup` to have `from` and `to` controls patched automatically:
+Access `rangeStart()` and `rangeEnd()` signals to populate two separate fields. Supply a `FormGroup` via `rangeFormGroup` to have `from` and `to` controls patched automatically:
 
 ```html
 <input
   blocDateRangePickerTrigger
   #rp="blocDateRangePickerTrigger"
   [rangeFormGroup]="rangeFg"
-  [value]="rp.displayValueFrom()"
+  [value]="rp.rangeStart()?.toLocaleDateString() ?? ''"
   placeholder="From"
   readonly
 />
 
-<input [value]="rp.displayValueTo()" placeholder="To" readonly />
+<input [value]="rp.rangeEnd()?.toLocaleDateString() ?? ''" placeholder="To" readonly />
 ```
 
 ---
 
 ## `BlocDateRangePickerTriggerDirective` inputs
 
-| Input            | Type                | Default        | Description                                                             |
-| ---------------- | ------------------- | -------------- | ----------------------------------------------------------------------- |
-| `minDate`        | `Date \| null`      | `null`         | Minimum selectable date                                                 |
-| `maxDate`        | `Date \| null`      | `null`         | Maximum selectable date                                                 |
-| `format`         | `string`            | `'yyyy-MM-dd'` | Display format                                                          |
-| `disabled`       | `boolean`           | `false`        | Disable the picker                                                      |
-| `rangeFormGroup` | `FormGroup \| null` | `null`         | FormGroup with `from` / `to` controls to patch directly on range commit |
+| Input            | Type                | Default | Description                                                             |
+| ---------------- | ------------------- | ------- | ----------------------------------------------------------------------- |
+| `minDate`        | `Date \| null`      | `null`  | Minimum selectable date                                                 |
+| `maxDate`        | `Date \| null`      | `null`  | Maximum selectable date                                                 |
+| `disabled`       | `boolean`           | `false` | Disable the picker                                                      |
+| `rangeFormGroup` | `FormGroup \| null` | `null`  | FormGroup with `from` / `to` controls to patch directly on range commit |
 
 ## `BlocDateRangePickerTriggerDirective` exported state
 
-| Signal               | Type      | Description                        |
-| -------------------- | --------- | ---------------------------------- |
-| `displayValue()`     | `string`  | `"from → to"` or partial           |
-| `displayValueFrom()` | `string`  | Formatted start date               |
-| `displayValueTo()`   | `string`  | Formatted end date                 |
-| `isOpen()`           | `boolean` | Whether the calendar panel is open |
+| Signal         | Type           | Description                        |
+| -------------- | -------------- | ---------------------------------- |
+| `rangeStart()` | `Date \| null` | Selected start date                |
+| `rangeEnd()`   | `Date \| null` | Selected end date                  |
+| `isOpen()`     | `boolean`      | Whether the calendar panel is open |
 
 ---
 

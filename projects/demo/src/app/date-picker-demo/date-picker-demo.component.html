@@ -17,7 +17,7 @@
       <button blocDatePickerTrigger #pickerBasic="blocDatePickerTrigger"
         class="inline-flex items-center gap-2 px-3 py-2 text-sm text-slate-700 border border-slate-300 rounded-md bg-white cursor-pointer hover:bg-slate-50 transition-colors">
         <app-icon name="calendar" [size]="14"></app-icon>
-        {{ pickerBasic.displayValue() || 'Pick a date' }}
+        {{ pickerBasic.selectedDate()?.toLocaleDateString() || 'Pick a date' }}
       </button>
     </div>
     <app-sample-code [code]="snippets.basic" />
@@ -31,7 +31,7 @@
       <div blocDatePickerTrigger [(ngModel)]="ngModelDate" #pickerDiv="blocDatePickerTrigger"
         class="inline-flex items-center gap-2 px-3 py-2 text-sm text-slate-700 border border-slate-300 rounded-md bg-white cursor-pointer hover:bg-slate-50 transition-colors">
         <app-icon name="calendar" [size]="14"></app-icon>
-        {{ pickerDiv.displayValue() || 'Choose date' }}
+        {{ pickerDiv.selectedDate()?.toLocaleDateString() || 'Choose date' }}
       </div>
     </div>
     <app-sample-code [code]="snippets.customElement" />
@@ -47,7 +47,7 @@
       <button blocDatePickerTrigger [(ngModel)]="ngModelDate" #pickerNgModel="blocDatePickerTrigger"
         class="inline-flex items-center gap-2 px-3 py-2 text-sm text-slate-700 border border-slate-300 rounded-md bg-white cursor-pointer hover:bg-slate-50 transition-colors">
         <app-icon name="calendar" [size]="14"></app-icon>
-        {{ pickerNgModel.displayValue() || 'Pick a date' }}
+        {{ pickerNgModel.selectedDate()?.toLocaleDateString() || 'Pick a date' }}
       </button>
     </div>
     <p class="m-0 text-xs text-slate-400">
@@ -66,7 +66,7 @@
       <button blocDatePickerTrigger [formControl]="dateCtrl" #pickerCtrl="blocDatePickerTrigger"
         class="inline-flex items-center gap-2 px-3 py-2 text-sm text-slate-700 border border-slate-300 rounded-md bg-white cursor-pointer hover:bg-slate-50 transition-colors">
         <app-icon name="calendar" [size]="14"></app-icon>
-        {{ pickerCtrl.displayValue() || 'Select date' }}
+        {{ pickerCtrl.selectedDate()?.toLocaleDateString() || 'Select date' }}
       </button>
     </div>
     <p class="m-0 text-xs text-slate-400">
@@ -81,7 +81,7 @@
       <button blocDatePickerTrigger [formControl]="disabledCtrl" #pickerDisabled="blocDatePickerTrigger"
         class="inline-flex items-center gap-2 px-3 py-2 text-sm text-slate-700 border border-slate-300 rounded-md bg-white cursor-pointer hover:bg-slate-50 transition-colors">
         <app-icon name="calendar" [size]="14"></app-icon>
-        {{ pickerDisabled.displayValue() || 'Disabled' }}
+        {{ pickerDisabled.selectedDate()?.toLocaleDateString() || 'Disabled' }}
       </button>
     </div>
     <div>
@@ -104,26 +104,10 @@
         #pickerMinMax="blocDatePickerTrigger"
         class="inline-flex items-center gap-2 px-3 py-2 text-sm text-slate-700 border border-slate-300 rounded-md bg-white cursor-pointer hover:bg-slate-50 transition-colors">
         <app-icon name="calendar" [size]="14"></app-icon>
-        {{ pickerMinMax.displayValue() || 'Pick a date' }}
+        {{ pickerMinMax.selectedDate()?.toLocaleDateString() || 'Pick a date' }}
       </button>
     </div>
     <app-sample-code [code]="snippets.minMax" />
-  </div>
-</div>
-
-<!-- Format -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Custom format</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(300px,1fr))] gap-5 mb-10">
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-    <h3 class="m-0 text-base font-semibold text-slate-900">dd/MM/yyyy</h3>
-    <div>
-      <button blocDatePickerTrigger format="dd/MM/yyyy" #pickerFmt="blocDatePickerTrigger"
-        class="inline-flex items-center gap-2 px-3 py-2 text-sm text-slate-700 border border-slate-300 rounded-md bg-white cursor-pointer hover:bg-slate-50 transition-colors">
-        <app-icon name="calendar" [size]="14"></app-icon>
-        {{ pickerFmt.displayValue() || 'Pick a date' }}
-      </button>
-    </div>
-    <app-sample-code [code]="snippets.format" />
   </div>
 </div>
 
@@ -138,7 +122,7 @@
         style="--bloc-date-picker-selected-bg: #16a34a; --bloc-date-picker-today-border: #16a34a"
         class="inline-flex items-center gap-2 px-3 py-2 text-sm text-slate-700 border border-slate-300 rounded-md bg-white cursor-pointer hover:bg-slate-50 transition-colors">
         <app-icon name="calendar" [size]="14"></app-icon>
-        {{ pickerGreen.displayValue() || 'Green accent' }}
+        {{ pickerGreen.selectedDate()?.toLocaleDateString() || 'Green accent' }}
       </button>
     </div>
     <app-sample-code [code]="snippets.customToken" />

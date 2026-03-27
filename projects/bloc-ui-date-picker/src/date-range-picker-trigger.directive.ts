@@ -98,9 +98,6 @@ export class BlocDateRangePickerTriggerDirective implements ControlValueAccessor
   /** Maximum selectable date. */
   readonly maxDate = input<Date | null>(null);
 
-  /** Date format string. Defaults to `'yyyy-MM-dd'`. */
-  readonly format = input<string>('yyyy-MM-dd');
-
   /** Disable the trigger via template binding. */
   readonly disabled = input<boolean>(false);
 
@@ -109,8 +106,8 @@ export class BlocDateRangePickerTriggerDirective implements ControlValueAccessor
 
   // ── Internal state ──────────────────────────────────────────────────────
 
-  readonly _rangeStart = signal<Date | null>(null);
-  readonly _rangeEnd = signal<Date | null>(null);
+  readonly rangeStart = signal<Date | null>(null);
+  readonly rangeEnd = signal<Date | null>(null);
   readonly _hoverDate = signal<Date | null>(null);
   readonly _pickState = signal<'idle' | 'picking'>('idle');
 
@@ -118,27 +115,6 @@ export class BlocDateRangePickerTriggerDirective implements ControlValueAccessor
 
   private readonly _formDisabled = signal<boolean>(false);
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
-
-  /** Formatted display value: "from → to" or partial. */
-  readonly displayValue = computed(() => {
-    const from = this._rangeStart();
-    const to = this._rangeEnd();
-    if (from && to) return `${this._formatDate(from)} → ${this._formatDate(to)}`;
-    if (from) return this._formatDate(from);
-    return '';
-  });
-
-  /** Formatted from date. */
-  readonly displayValueFrom = computed(() => {
-    const d = this._rangeStart();
-    return d ? this._formatDate(d) : '';
-  });
-
-  /** Formatted to date. */
-  readonly displayValueTo = computed(() => {
-    const d = this._rangeEnd();
-    return d ? this._formatDate(d) : '';
-  });
 
   private _onChange: (val: DateRange) => void = () => { };
   private _onTouched: () => void = () => { };
@@ -166,11 +142,11 @@ export class BlocDateRangePickerTriggerDirective implements ControlValueAccessor
   writeValue(val: unknown): void {
     if (val && typeof val === 'object' && ('from' in val || 'to' in val)) {
       const v = val as Partial<DateRange>;
-      this._rangeStart.set(this._toDate(v.from));
-      this._rangeEnd.set(this._toDate(v.to));
+      this.rangeStart.set(this._toDate(v.from));
+      this.rangeEnd.set(this._toDate(v.to));
     } else {
-      this._rangeStart.set(null);
-      this._rangeEnd.set(null);
+      this.rangeStart.set(null);
+      this.rangeEnd.set(null);
     }
     this._pickState.set('idle');
   }
@@ -197,8 +173,8 @@ export class BlocDateRangePickerTriggerDirective implements ControlValueAccessor
 
     // Set inputs — range mode
     this._panelRef.setInput('mode', 'range');
-    this._panelRef.setInput('rangeStart', this._rangeStart());
-    this._panelRef.setInput('rangeEnd', this._rangeEnd());
+    this._panelRef.setInput('rangeStart', this.rangeStart());
+    this._panelRef.setInput('rangeEnd', this.rangeEnd());
     this._panelRef.setInput('hoverDate', null);
     this._panelRef.setInput('minDate', this.minDate());
     this._panelRef.setInput('maxDate', this.maxDate());
@@ -209,7 +185,7 @@ export class BlocDateRangePickerTriggerDirective implements ControlValueAccessor
     panel.cleared.subscribe(() => this._handleClear());
 
     // Reset view to show the range start month, or current month
-    panel.resetView(this._rangeStart());
+    panel.resetView(this.rangeStart());
 
     // Create wrapper
     this._wrapper = this._doc.createElement('div');
@@ -243,8 +219,8 @@ export class BlocDateRangePickerTriggerDirective implements ControlValueAccessor
   private _handleDateSelect(date: Date): void {
     if (this._pickState() === 'idle') {
       // First click — set anchor
-      this._rangeStart.set(date);
-      this._rangeEnd.set(null);
+      this.rangeStart.set(date);
+      this.rangeEnd.set(null);
       this._hoverDate.set(null);
       this._pickState.set('picking');
 
@@ -254,11 +230,11 @@ export class BlocDateRangePickerTriggerDirective implements ControlValueAccessor
       this._panelRef?.setInput('hoverDate', null);
     } else {
       // Second click — complete range
-      const anchor = this._rangeStart()!;
+      const anchor = this.rangeStart()!;
       const [from, to] = anchor <= date ? [anchor, date] : [date, anchor];
 
-      this._rangeStart.set(from);
-      this._rangeEnd.set(to);
+      this.rangeStart.set(from);
+      this.rangeEnd.set(to);
       this._hoverDate.set(null);
       this._pickState.set('idle');
 
@@ -275,8 +251,8 @@ export class BlocDateRangePickerTriggerDirective implements ControlValueAccessor
   }
 
   private _handleClear(): void {
-    this._rangeStart.set(null);
-    this._rangeEnd.set(null);
+    this.rangeStart.set(null);
+    this.rangeEnd.set(null);
     this._hoverDate.set(null);
     this._pickState.set('idle');
 
@@ -317,8 +293,8 @@ export class BlocDateRangePickerTriggerDirective implements ControlValueAccessor
     if (this._pickState() === 'picking') {
       this._pickState.set('idle');
       // If no completed range, clear anchor
-      if (!this._rangeEnd()) {
-        this._rangeStart.set(null);
+      if (!this.rangeEnd()) {
+        this.rangeStart.set(null);
       }
     }
 
@@ -342,17 +318,6 @@ export class BlocDateRangePickerTriggerDirective implements ControlValueAccessor
       this._wrapper.style.top = `${rect.bottom + 10}px`;
       this._wrapper.style.bottom = 'auto';
     }
-  }
-
-  private _formatDate(d: Date): string {
-    const yyyy = d.getFullYear();
-    const mm = String(d.getMonth() + 1).padStart(2, '0');
-    const dd = String(d.getDate()).padStart(2, '0');
-
-    return this.format()
-      .replace('yyyy', String(yyyy))
-      .replace('MM', mm)
-      .replace('dd', dd);
   }
 
   private _toDate(val: unknown): Date | null {

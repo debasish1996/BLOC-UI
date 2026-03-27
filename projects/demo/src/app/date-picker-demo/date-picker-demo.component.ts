@@ -33,13 +33,12 @@ export class DatePickerDemoComponent {
   }
 
   readonly snippets = {
-    basic: `<button blocDatePickerTrigger\n  #picker="blocDatePickerTrigger">\n  <my-icon name="calendar" />\n  {{ picker.displayValue() || 'Pick a date' }}\n</button>`,
-    ngModel: `<button blocDatePickerTrigger\n  [(ngModel)]="selectedDate"\n  #picker="blocDatePickerTrigger">\n  {{ picker.displayValue() || 'Pick a date' }}\n</button>`,
-    formControl: `<button blocDatePickerTrigger\n  [formControl]="dateCtrl"\n  #picker="blocDatePickerTrigger">\n  {{ picker.displayValue() || 'Select date' }}\n</button>`,
-    disabled: `<button blocDatePickerTrigger\n  [formControl]="disabledCtrl"\n  #picker="blocDatePickerTrigger">\n  {{ picker.displayValue() || 'Disabled' }}\n</button>\n<!-- disabledCtrl.disable(); -->`,
-    minMax: `<button blocDatePickerTrigger\n  [(ngModel)]="selectedDate"\n  [minDate]="minDate"\n  [maxDate]="maxDate"\n  #picker="blocDatePickerTrigger">\n  {{ picker.displayValue() || 'Pick a date' }}\n</button>`,
-    format: `<button blocDatePickerTrigger\n  format="dd/MM/yyyy"\n  #picker="blocDatePickerTrigger">\n  {{ picker.displayValue() || 'Pick a date' }}\n</button>`,
-    customElement: `<div blocDatePickerTrigger\n  [(ngModel)]="selectedDate"\n  #picker="blocDatePickerTrigger"\n  class="my-trigger">\n  <my-icon name="calendar" />\n  {{ picker.displayValue() || 'Choose date' }}\n</div>`,
-    customToken: `<button blocDatePickerTrigger\n  style="--bloc-date-picker-selected-bg: #16a34a;\n         --bloc-date-picker-today-border: #16a34a"\n  #picker="blocDatePickerTrigger">\n  {{ picker.displayValue() || 'Green accent' }}\n</button>`,
+    basic: `<button blocDatePickerTrigger\n  #picker="blocDatePickerTrigger">\n  <my-icon name="calendar" />\n  {{ picker.selectedDate()?.toLocaleDateString() || 'Pick a date' }}\n</button>`,
+    ngModel: `<button blocDatePickerTrigger\n  [(ngModel)]="selectedDate"\n  #picker="blocDatePickerTrigger">\n  {{ picker.selectedDate()?.toLocaleDateString() || 'Pick a date' }}\n</button>`,
+    formControl: `<button blocDatePickerTrigger\n  [formControl]="dateCtrl"\n  #picker="blocDatePickerTrigger">\n  {{ picker.selectedDate()?.toLocaleDateString() || 'Select date' }}\n</button>`,
+    disabled: `<button blocDatePickerTrigger\n  [formControl]="disabledCtrl"\n  #picker="blocDatePickerTrigger">\n  {{ picker.selectedDate()?.toLocaleDateString() || 'Disabled' }}\n</button>\n<!-- disabledCtrl.disable(); -->`,
+    minMax: `<button blocDatePickerTrigger\n  [(ngModel)]="selectedDate"\n  [minDate]="minDate"\n  [maxDate]="maxDate"\n  #picker="blocDatePickerTrigger">\n  {{ picker.selectedDate()?.toLocaleDateString() || 'Pick a date' }}\n</button>`,
+    customElement: `<div blocDatePickerTrigger\n  [(ngModel)]="selectedDate"\n  #picker="blocDatePickerTrigger"\n  class="my-trigger">\n  <my-icon name="calendar" />\n  {{ picker.selectedDate()?.toLocaleDateString() || 'Choose date' }}\n</div>`,
+    customToken: `<button blocDatePickerTrigger\n  style="--bloc-date-picker-selected-bg: #16a34a;\n         --bloc-date-picker-today-border: #16a34a"\n  #picker="blocDatePickerTrigger">\n  {{ picker.selectedDate()?.toLocaleDateString() || 'Green accent' }}\n</button>`,
   };
 }

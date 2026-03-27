@@ -97,27 +97,17 @@ export class BlocDatePickerTriggerDirective implements ControlValueAccessor, OnI
   /** Maximum selectable date. */
   readonly maxDate = input<Date | null>(null);
 
-  /** Date format string for `displayValue`. Defaults to `'yyyy-MM-dd'`. */
-  readonly format = input<string>('yyyy-MM-dd');
-
   /** Disable the trigger via template binding. */
   readonly disabled = input<boolean>(false);
 
   /** Currently selected date. */
-  readonly _selectedDate = signal<Date | null>(null);
+  readonly selectedDate = signal<Date | null>(null);
 
   /** Whether the calendar panel is open. */
   readonly isOpen = signal<boolean>(false);
 
   private readonly _formDisabled = signal<boolean>(false);
   readonly isDisabled = computed(() => this.disabled() || this._formDisabled());
-
-  /** Formatted display value consumers can bind in their trigger template. */
-  readonly displayValue = computed(() => {
-    const d = this._selectedDate();
-    if (!d) return '';
-    return this._formatDate(d);
-  });
 
   private _onChange: (val: Date | null) => void = () => { };
   private _onTouched: () => void = () => { };
@@ -143,7 +133,7 @@ export class BlocDatePickerTriggerDirective implements ControlValueAccessor, OnI
   // ── ControlValueAccessor ────────────────────────────────────────────────
 
   writeValue(val: unknown): void {
-    this._selectedDate.set(val instanceof Date ? val : val ? new Date(val as string) : null);
+    this.selectedDate.set(val instanceof Date ? val : val ? new Date(val as string) : null);
   }
 
   registerOnChange(fn: (val: Date | null) => void): void {
@@ -168,22 +158,22 @@ export class BlocDatePickerTriggerDirective implements ControlValueAccessor, OnI
     const panel = this._panelRef.instance;
 
     // Set inputs
-    this._panelRef.setInput('selectedDate', this._selectedDate());
+    this._panelRef.setInput('selectedDate', this.selectedDate());
     this._panelRef.setInput('minDate', this.minDate());
     this._panelRef.setInput('maxDate', this.maxDate());
 
     // Listen to outputs
     panel.dateSelect.subscribe((date: Date) => {
-      this._selectedDate.set(date);
+      this.selectedDate.set(date);
       this._onChange(date);
       this._close();
     });
     panel.cleared.subscribe(() => {
-      this._selectedDate.set(null);
+      this.selectedDate.set(null);
       this._onChange(null);
     });
 
-    panel.resetView(this._selectedDate());
+    panel.resetView(this.selectedDate());
 
     // Create wrapper div and append component's host element into it
     this._wrapper = this._doc.createElement('div');
@@ -254,14 +244,4 @@ export class BlocDatePickerTriggerDirective implements ControlValueAccessor, OnI
     }
   }
 
-  private _formatDate(d: Date): string {
-    const yyyy = d.getFullYear();
-    const mm = String(d.getMonth() + 1).padStart(2, '0');
-    const dd = String(d.getDate()).padStart(2, '0');
-
-    return this.format()
-      .replace('yyyy', String(yyyy))
-      .replace('MM', mm)
-      .replace('dd', dd);
-  }
 }
