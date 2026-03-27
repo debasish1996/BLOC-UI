@@ -1,6 +1,6 @@
 # @bloc-ui/core
 
-> **Latest:** v0.0.10
+> **Latest:** v0.0.11
 
 Lightweight, accessible Angular component library. Barebone structure and behaviour — no hard-coded colours, no design opinions. Pair with [`@bloc-ui/theme`](https://www.npmjs.com/package/@bloc-ui/theme) to add a visual layer, or bring your own styles via CSS custom properties.
 

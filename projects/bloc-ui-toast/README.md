@@ -1,6 +1,6 @@
 # @bloc-ui/toast
 
-> **Latest:** v0.0.2
+> **Latest:** v0.0.3
 
 Toast notification service for Angular — part of the [Bloc UI](https://github.com/debasish1996/BLOC-UI) component library. Show info, success, warning, and error notifications programmatically with auto-dismiss and close button support.
 
