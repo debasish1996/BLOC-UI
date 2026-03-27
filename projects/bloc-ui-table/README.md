@@ -4,7 +4,7 @@
 
 Lightweight, declarative data table component for Angular — part of the [Bloc UI](https://github.com/debasish1996/BLOC-UI) component library. Supports striped rows, bordered cells, hover highlighting, size presets, and custom cell templates.
 
-**[Live Documentation & Demos](https://debasish1996.github.io/BLOC-UI/)**
+**[Live Documentation & Demos](https://bloc-verse.com/table)**
 
 > **Tip:** You can also install [`@bloc-ui/kit`](https://www.npmjs.com/package/@bloc-ui/kit) to get this package along with every other Bloc UI component in a single import.
 

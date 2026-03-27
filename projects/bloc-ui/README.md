@@ -4,7 +4,7 @@
 
 All-in-one umbrella package for the [Bloc UI](https://github.com/debasish1996/BLOC-UI) component library. Install this single package to get every Bloc UI component and service.
 
-**[Live Documentation & Demos](https://debasish1996.github.io/BLOC-UI/)**
+**[Live Documentation & Demos](https://bloc-verse.com/)**
 
 ---
 

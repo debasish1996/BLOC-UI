@@ -11,7 +11,7 @@ Lightweight, accessible Angular component library — barebone structure and beh
 [![npm @bloc-ui/tab](https://img.shields.io/npm/v/@bloc-ui/tab?label=%40bloc-ui%2Ftab)](https://www.npmjs.com/package/@bloc-ui/tab)
 [![npm @bloc-ui/kit](https://img.shields.io/npm/v/@bloc-ui/kit?label=%40bloc-ui%2Fkit)](https://www.npmjs.com/package/@bloc-ui/kit)
 
-**[Live Documentation & Demos](https://debasish1996.github.io/BLOC-UI/)**
+**[Live Documentation & Demos](https://bloc-verse.com/)**
 
 ---
 

@@ -8,7 +8,7 @@
     // GitHub Pages SPA support: store the current URL and redirect to index.html
     // so Angular's router can handle the route client-side.
     sessionStorage.redirect = location.href;
-    var pathSegmentsToKeep = 1; // keep '/BLOC-UI' prefix
+    var pathSegmentsToKeep = 0; // root domain — no path prefix to keep
     var l = location;
     l.replace(
       l.protocol + '//' + l.hostname + (l.port ? ':' + l.port : '') +

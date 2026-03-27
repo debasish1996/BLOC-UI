@@ -4,7 +4,7 @@
 
 Toast notification service for Angular — part of the [Bloc UI](https://github.com/debasish1996/BLOC-UI) component library. Show info, success, warning, and error notifications programmatically with auto-dismiss and close button support.
 
-**[Live Documentation & Demos](https://debasish1996.github.io/BLOC-UI/)**
+**[Live Documentation & Demos](https://bloc-verse.com/toast)**
 
 > **Tip:** You can also install [`@bloc-ui/kit`](https://www.npmjs.com/package/@bloc-ui/kit) to get this package along with every other Bloc UI component in a single import.
 

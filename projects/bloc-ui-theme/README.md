@@ -4,7 +4,7 @@
 
 Optional theme layer for the [Bloc UI](https://github.com/debasish1996/BLOC-UI) component library — provides CSS custom properties, colour tokens, light/dark mode, and consistent design tokens. Components in `@bloc-ui/core` work without this package (neutral fallbacks are applied automatically), but installing it gives you the full design system.
 
-**[Live Documentation & Demos](https://debasish1996.github.io/BLOC-UI/)**
+**[Live Documentation & Demos](https://bloc-verse.com/)**
 
 ---
 
