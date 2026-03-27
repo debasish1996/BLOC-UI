@@ -13,14 +13,14 @@ import {
 } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { BlocCalendarPanelComponent } from './calendar-panel.component';
 import {
+  BlocCalendarPanelComponent,
   createDropdownWrapper,
   ensureStyles,
   listenOutside,
   positionDropdown,
   teardownDropdown,
-} from './dropdown-utils';
+} from '@bloc-ui/date-picker/calendar-panel';
 
 @Directive({
   selector: '[blocDatePickerTrigger]',

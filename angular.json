@@ -109,7 +109,7 @@
     "bloc-ui-date-picker": {
       "projectType": "library",
       "root": "projects/bloc-ui-date-picker",
-      "sourceRoot": "projects/bloc-ui-date-picker/src",
+      "sourceRoot": "projects/bloc-ui-date-picker",
       "prefix": "lib",
       "architect": {
         "build": {

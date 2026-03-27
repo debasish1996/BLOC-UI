@@ -9,7 +9,15 @@ import { IconComponent } from '../icon/icon.component';
 @Component({
   selector: 'app-date-picker-demo',
   standalone: true,
-  imports: [BlocDatePickerTriggerDirective, BlocButtonComponent, FormsModule, ReactiveFormsModule, SampleCodeComponent, IconComponent, InstallCommandComponent],
+  imports: [
+    BlocDatePickerTriggerDirective,
+    BlocButtonComponent,
+    FormsModule,
+    ReactiveFormsModule,
+    SampleCodeComponent,
+    IconComponent,
+    InstallCommandComponent,
+  ],
   templateUrl: './date-picker-demo.component.html',
 })
 export class DatePickerDemoComponent {

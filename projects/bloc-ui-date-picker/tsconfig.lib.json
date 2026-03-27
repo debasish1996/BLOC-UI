@@ -8,6 +8,6 @@
     "declarationMap": true,
     "types": []
   },
-  "include": ["src/**/*.ts"],
+  "include": ["calendar-panel/src/**/*.ts", "date-picker/src/**/*.ts", "range-date-picker/src/**/*.ts", "public-api.ts"],
   "exclude": ["**/*.spec.ts"]
 }

@@ -17,7 +17,10 @@
       "@bloc-ui/tab": ["./projects/bloc-ui-tab/src/public-api.ts"],
       "@bloc-ui/table": ["./projects/bloc-ui-table/src/public-api.ts"],
       "@bloc-ui/toast": ["./projects/bloc-ui-toast/src/public-api.ts"],
-      "@bloc-ui/date-picker": ["./projects/bloc-ui-date-picker/src/public-api.ts"]
+      "@bloc-ui/date-picker": ["./projects/bloc-ui-date-picker/public-api.ts"],
+      "@bloc-ui/date-picker/calendar-panel": ["./projects/bloc-ui-date-picker/calendar-panel/src/public-api.ts"],
+      "@bloc-ui/date-picker/date-picker": ["./projects/bloc-ui-date-picker/date-picker/src/public-api.ts"],
+      "@bloc-ui/date-picker/range-date-picker": ["./projects/bloc-ui-date-picker/range-date-picker/src/public-api.ts"]
     },
     "strict": true,
     "noImplicitOverride": true,
