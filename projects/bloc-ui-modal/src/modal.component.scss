@@ -1,19 +1,24 @@
 .bloc-modal-backdrop {
     position: fixed;
     inset: 0;
-    background-color: var(--bloc-modal-backdrop, rgba(0, 0, 0, 0.5));
     display: flex;
     align-items: center;
     justify-content: center;
     z-index: var(--bloc-modal-z-index, 1000);
 
     &--hidden {
-        background-color: transparent;
+        background-color: transparent !important;
         pointer-events: none;
 
         .bloc-modal {
             pointer-events: auto;
         }
+    }
+}
+
+@layer bloc-modal {
+    :where(.bloc-modal-backdrop) {
+        background-color: var(--bloc-modal-backdrop, rgba(0, 0, 0, 0.5));
     }
 }
 

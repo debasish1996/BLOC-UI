@@ -1,6 +1,6 @@
 /* NOTE: layer ordering is already handled by bloc-theme.scss (loaded before this file).
    If you are NOT using bloc-ui-theme, uncomment the line below:
-   @layer theme, base, bloc-spinner, bloc-input, components, utilities; */
+   @layer theme, base, bloc-spinner, bloc-input, bloc-modal, components, utilities; */
 
 @import 'tailwindcss';
 @source "./app/**/*.html";

@@ -22,3 +22,8 @@ body {
 .grid > div:has(.code-wrapper.is-open) {
     grid-column: 1 / -1;
 }
+
+.demo-panel {
+    outline: 2px dashed #3b82f6;
+    outline-offset: 4px;
+}

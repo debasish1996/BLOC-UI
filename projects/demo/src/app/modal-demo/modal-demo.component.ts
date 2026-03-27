@@ -58,7 +58,7 @@ export class ModalDemoComponent {
     openBackdropClass(): void {
         this.modal.open(ConfirmModalComponent, {
             title: 'Custom backdropClass',
-            backdropClass: 'demo-backdrop',
+            backdropClass: 'bg-white/30',
             data: { size: 'md', test: 'Extra class on the backdrop.' },
         });
     }
@@ -71,6 +71,6 @@ export class ModalDemoComponent {
         noDismiss: `this.modal.open(MyComponent, {\n  title: 'No Dismiss',\n  closeOnBackdropClick: false,\n});`,
         noCloseButton: `this.modal.open(MyComponent, {\n  title: 'No Close Button',\n  showCloseButton: false,\n});`,
         panelClass: `this.modal.open(MyComponent, {\n  title: 'Custom Panel',\n  panelClass: 'my-panel',\n});`,
-        backdropClass: `this.modal.open(MyComponent, {\n  title: 'Custom Backdrop',\n  backdropClass: 'my-backdrop',\n});`,
+        backdropClass: `this.modal.open(MyComponent, {\n  title: 'Custom Backdrop',\n  backdropClass: 'bg-white/30',\n});`,
     };
 }
