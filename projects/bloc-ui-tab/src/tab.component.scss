@@ -9,7 +9,6 @@
     gap: var(--bloc-tab-header-gap, 0);
     border-bottom-width: 2px;
     border-bottom-style: solid;
-    overflow-x: auto;
 }
 
 // Header — overridable visual (zero-specificity via :where)
