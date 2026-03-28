@@ -2,7 +2,7 @@
 
 > **Latest:** v0.0.3
 
-Tab group component for Angular — part of the [Bloc UI](https://github.com/debasish1996/BLOC-UI) component library. Supports size presets, disabled tabs, animated active indicator, and selection change events.
+Tab group component for Angular — part of the [Bloc UI](https://github.com/debasish1996/BLOC-UI) component library. Supports disabled tabs, animated active indicator, manual CSS-token sizing, and selection change events.
 
 **[Live Documentation & Demos](https://bloc-verse.com/tab)**
 
@@ -36,10 +36,21 @@ import { BlocTabGroupComponent, BlocTabComponent, BlocTabModule } from '@bloc-ui
 </bloc-tab-group>
 ```
 
-### Sizes
+### Manual sizing
 
 ```html
-<bloc-tab-group size="sm">…</bloc-tab-group> <bloc-tab-group size="lg">…</bloc-tab-group>
+<bloc-tab-group class="account-tabs">
+    <bloc-tab label="Profile">…</bloc-tab>
+    <bloc-tab label="Security">…</bloc-tab>
+</bloc-tab-group>
+```
+
+```css
+.account-tabs {
+    --bloc-tab-padding: 6px 12px;
+    --bloc-tab-font-size: 0.8125rem;
+    --bloc-tab-body-padding: 12px 0;
+}
 ```
 
 ### Disabled tab
@@ -64,10 +75,9 @@ import { BlocTabGroupComponent, BlocTabComponent, BlocTabModule } from '@bloc-ui
 
 ## `BlocTabGroupComponent` inputs
 
-| Input           | Type                   | Default | Description                       |
-| --------------- | ---------------------- | ------- | --------------------------------- |
-| `size`          | `'sm' \| 'md' \| 'lg'` | `'md'`  | Tab density preset                |
-| `selectedIndex` | `number`               | `0`     | Index of the initially active tab |
+| Input           | Type     | Default | Description                       |
+| --------------- | -------- | ------- | --------------------------------- |
+| `selectedIndex` | `number` | `0`     | Index of the initially active tab |
 
 ### Outputs
 

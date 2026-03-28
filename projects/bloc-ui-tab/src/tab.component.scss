@@ -85,26 +85,3 @@
 .bloc-tab-group__body {
     padding: var(--bloc-tab-body-padding, 16px 0);
 }
-
-// Size variants
-:host.bloc-tab-group--sm {
-    .bloc-tab-group__tab {
-        padding: var(--bloc-tab-padding, 6px 12px);
-        font-size: var(--bloc-tab-font-size, 0.8125rem);
-    }
-
-    .bloc-tab-group__body {
-        padding: var(--bloc-tab-body-padding, 12px 0);
-    }
-}
-
-:host.bloc-tab-group--lg {
-    .bloc-tab-group__tab {
-        padding: var(--bloc-tab-padding, 14px 20px);
-        font-size: var(--bloc-tab-font-size, 1rem);
-    }
-
-    .bloc-tab-group__body {
-        padding: var(--bloc-tab-body-padding, 20px 0);
-    }
-}

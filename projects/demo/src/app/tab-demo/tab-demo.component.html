@@ -38,33 +38,32 @@
     </div>
 </div>
 
-<!-- Sizes -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Sizes</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(340px,1fr))] gap-5 mb-10">
+<!-- Manual sizing -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+    Manual sizing
+</h2>
+<div class="grid grid-cols-1 gap-5 mb-10">
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Small</h3>
-        <bloc-tab-group size="sm">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Dense spacing</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Adjust tab density by setting the existing size tokens on
+            <code>bloc-tab-group</code>.
+        </p>
+        <bloc-tab-group
+            style="
+                --bloc-tab-padding: 6px 12px;
+                --bloc-tab-font-size: 0.8125rem;
+                --bloc-tab-body-padding: 12px 0;
+            "
+        >
             <bloc-tab label="Tab 1">
-                <p class="text-sm text-slate-600 m-0">Small tab content</p>
+                <p class="text-sm text-slate-600 m-0">Compact tab content</p>
             </bloc-tab>
             <bloc-tab label="Tab 2">
-                <p class="text-sm text-slate-600 m-0">Small tab content</p>
+                <p class="text-sm text-slate-600 m-0">Compact tab content</p>
             </bloc-tab>
         </bloc-tab-group>
-        <app-sample-code [code]="snippets.sizeSmall" />
-    </div>
-
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Large</h3>
-        <bloc-tab-group size="lg">
-            <bloc-tab label="Tab 1">
-                <p class="text-sm text-slate-600 m-0">Large tab content</p>
-            </bloc-tab>
-            <bloc-tab label="Tab 2">
-                <p class="text-sm text-slate-600 m-0">Large tab content</p>
-            </bloc-tab>
-        </bloc-tab-group>
-        <app-sample-code [code]="snippets.sizeLarge" />
+        <app-sample-code [code]="snippets.manualSizing" />
     </div>
 </div>
 

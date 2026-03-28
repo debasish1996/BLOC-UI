@@ -55,14 +55,9 @@ import { BlocTabComponent } from './tab.component';
     ],
     host: {
         '[class.bloc-tab-group]': 'true',
-        '[class.bloc-tab-group--sm]': 'size() === "sm"',
-        '[class.bloc-tab-group--lg]': 'size() === "lg"',
     },
 })
 export class BlocTabGroupComponent implements BlocTabGroupRef, AfterContentInit {
-    /** Preset size. Defaults to `'md'`. */
-    readonly size = input<'sm' | 'md' | 'lg'>('md');
-
     /** Index of the initially active tab. Defaults to `0`. */
     readonly selectedIndex = input<number>(0);
 

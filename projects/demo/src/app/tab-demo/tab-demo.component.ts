@@ -19,8 +19,7 @@ export class TabDemoComponent {
 
     readonly snippets = {
         basic: `<bloc-tab-group>\n  <bloc-tab label="Profile">Profile content</bloc-tab>\n  <bloc-tab label="Settings">Settings content</bloc-tab>\n  <bloc-tab label="Billing">Billing content</bloc-tab>\n</bloc-tab-group>`,
-        sizeSmall: `<bloc-tab-group size="sm">\n  <bloc-tab label="Tab 1">…</bloc-tab>\n  <bloc-tab label="Tab 2">…</bloc-tab>\n</bloc-tab-group>`,
-        sizeLarge: `<bloc-tab-group size="lg">\n  <bloc-tab label="Tab 1">…</bloc-tab>\n  <bloc-tab label="Tab 2">…</bloc-tab>\n</bloc-tab-group>`,
+        manualSizing: `<bloc-tab-group\n  style="--bloc-tab-padding: 6px 12px;\n         --bloc-tab-font-size: 0.8125rem;\n         --bloc-tab-body-padding: 12px 0">\n  <bloc-tab label="Tab 1">…</bloc-tab>\n  <bloc-tab label="Tab 2">…</bloc-tab>\n</bloc-tab-group>`,
         disabled: `<bloc-tab-group>\n  <bloc-tab label="Active">…</bloc-tab>\n  <bloc-tab label="Disabled" [disabled]="true">…</bloc-tab>\n  <bloc-tab label="Another">…</bloc-tab>\n</bloc-tab-group>`,
         selectedIndex: `<bloc-tab-group [selectedIndex]="1"\n  (selectedIndexChange)="onTabChange($event)">\n  <bloc-tab label="First">…</bloc-tab>\n  <bloc-tab label="Second">…</bloc-tab>\n</bloc-tab-group>`,
         customToken: `<bloc-tab-group\n  style="--bloc-tab-indicator: #16a34a;\n         --bloc-tab-active-color: #16a34a">\n  <bloc-tab label="Tab 1">…</bloc-tab>\n  <bloc-tab label="Tab 2">…</bloc-tab>\n</bloc-tab-group>`,
