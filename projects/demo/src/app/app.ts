@@ -24,8 +24,12 @@ export class App {
     readonly coreGroup: MenuGroup = {
         label: 'Core Components',
         children: [
+            { path: 'badge', label: 'Badge' },
             { path: 'button', label: 'Button' },
             { path: 'input', label: 'Input' },
+            { path: 'progress', label: 'Progress' },
+            { path: 'select', label: 'Select' },
+            { path: 'skeleton', label: 'Skeleton' },
             { path: 'textarea', label: 'Textarea' },
             { path: 'checkbox', label: 'Checkbox' },
             { path: 'radio', label: 'Radio' },
@@ -43,7 +47,13 @@ export class App {
     };
 
     readonly standaloneItems: MenuItem[] = [
+        { path: 'accordion', label: 'Accordion' },
+        { path: 'alert', label: 'Alert' },
+        { path: 'autocomplete', label: 'Autocomplete' },
+        { path: 'layout', label: 'Layout Sidebar' },
         { path: 'modal', label: 'Modal' },
+        { path: 'pagination', label: 'Pagination' },
+        { path: 'slider', label: 'Slider' },
         { path: 'table', label: 'Table' },
         { path: 'tab', label: 'Tab' },
         { path: 'toast', label: 'Toast' },

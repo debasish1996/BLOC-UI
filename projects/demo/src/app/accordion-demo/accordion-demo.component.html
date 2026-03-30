@@ -1,0 +1,47 @@
+<header class="mb-8 pb-4 border-b border-slate-200">
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Accordion</h1>
+    <p class="m-0 text-slate-400 text-[0.95rem]">
+        Compact disclosure UI for FAQs, settings sections, and staged documentation.
+    </p>
+    <app-install-command package="@bloc-ui/accordion" />
+</header>
+
+<div class="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-5 mb-10">
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Single Open Item</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Default behaviour keeps focus on one section at a time.
+        </p>
+        <bloc-accordion>
+            <bloc-accordion-item title="Overview" [expanded]="true">
+                Summary content goes here.
+            </bloc-accordion-item>
+            <bloc-accordion-item title="Details">
+                More detail goes here when the user wants to drill in.
+            </bloc-accordion-item>
+            <bloc-accordion-item title="Disabled Item" [disabled]="true">
+                This content is intentionally unavailable.
+            </bloc-accordion-item>
+        </bloc-accordion>
+        <app-sample-code [code]="snippets.basic" />
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Multi Expand</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Enable multiple expanded sections when users need quick comparison.
+        </p>
+        <bloc-accordion [multi]="true">
+            <bloc-accordion-item title="Design tokens" [expanded]="true">
+                Keep spacing and typography in sync across the system.
+            </bloc-accordion-item>
+            <bloc-accordion-item title="Accessibility" [expanded]="true">
+                Preserve semantic structure and keyboard affordances.
+            </bloc-accordion-item>
+            <bloc-accordion-item title="Release checklist">
+                Capture validation steps before shipping a new component package.
+            </bloc-accordion-item>
+        </bloc-accordion>
+        <app-sample-code [code]="snippets.multi" />
+    </div>
+</div>

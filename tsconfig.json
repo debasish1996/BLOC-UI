@@ -6,18 +6,28 @@
         "paths": {
             "bloc-ui-core": ["./projects/bloc-ui-core/public-api.ts"],
             "@bloc-ui/core": ["./projects/bloc-ui-core/public-api.ts"],
+            "@bloc-ui/core/badge": ["./projects/bloc-ui-core/badge/src/public-api.ts"],
             "@bloc-ui/core/button": ["./projects/bloc-ui-core/button/src/public-api.ts"],
             "@bloc-ui/core/checkbox": ["./projects/bloc-ui-core/checkbox/src/public-api.ts"],
             "@bloc-ui/core/input": ["./projects/bloc-ui-core/input/src/public-api.ts"],
+            "@bloc-ui/core/progress": ["./projects/bloc-ui-core/progress/src/public-api.ts"],
             "@bloc-ui/core/textarea": ["./projects/bloc-ui-core/textarea/src/public-api.ts"],
             "@bloc-ui/modal": ["./projects/bloc-ui-modal/src/public-api.ts"],
             "@bloc-ui/kit": ["./projects/bloc-ui/src/public-api.ts"],
             "@bloc-ui/core/radio": ["./projects/bloc-ui-core/radio/src/public-api.ts"],
+            "@bloc-ui/core/skeleton": ["./projects/bloc-ui-core/skeleton/src/public-api.ts"],
             "@bloc-ui/core/spinner": ["./projects/bloc-ui-core/spinner/src/public-api.ts"],
             "@bloc-ui/core/toggle": ["./projects/bloc-ui-core/toggle/src/public-api.ts"],
+            "@bloc-ui/accordion": ["./projects/bloc-ui-accordion/src/public-api.ts"],
+            "@bloc-ui/alert": ["./projects/bloc-ui-alert/src/public-api.ts"],
+            "@bloc-ui/autocomplete": ["./projects/bloc-ui-autocomplete/src/public-api.ts"],
             "@bloc-ui/tab": ["./projects/bloc-ui-tab/src/public-api.ts"],
+            "@bloc-ui/layout": ["./projects/bloc-ui-layout/src/public-api.ts"],
+            "@bloc-ui/pagination": ["./projects/bloc-ui-pagination/src/public-api.ts"],
             "@bloc-ui/table": ["./projects/bloc-ui-table/src/public-api.ts"],
             "@bloc-ui/toast": ["./projects/bloc-ui-toast/src/public-api.ts"],
+            "@bloc-ui/slider": ["./projects/bloc-ui-slider/src/public-api.ts"],
+            "@bloc-ui/select": ["./projects/bloc-ui-select/src/public-api.ts"],
             "@bloc-ui/date-picker": ["./projects/bloc-ui-date-picker/public-api.ts"],
             "@bloc-ui/date-picker/calendar-panel": [
                 "./projects/bloc-ui-date-picker/calendar-panel/src/public-api.ts"
@@ -61,6 +71,24 @@
             "path": "./projects/bloc-ui-modal/tsconfig.lib.json"
         },
         {
+            "path": "./projects/bloc-ui-accordion/tsconfig.lib.json"
+        },
+        {
+            "path": "./projects/bloc-ui-alert/tsconfig.lib.json"
+        },
+        {
+            "path": "./projects/bloc-ui-autocomplete/tsconfig.lib.json"
+        },
+        {
+            "path": "./projects/bloc-ui-layout/tsconfig.lib.json"
+        },
+        {
+            "path": "./projects/bloc-ui-pagination/tsconfig.lib.json"
+        },
+        {
+            "path": "./projects/bloc-ui-slider/tsconfig.lib.json"
+        },
+        {
             "path": "./projects/bloc-ui-table/tsconfig.lib.json"
         },
         {
@@ -89,6 +117,12 @@
         },
         {
             "path": "./projects/bloc-ui-overlay/tsconfig.spec.json"
+        },
+        {
+            "path": "./projects/bloc-ui-select/tsconfig.lib.json"
+        },
+        {
+            "path": "./projects/bloc-ui-select/tsconfig.spec.json"
         }
     ]
 }

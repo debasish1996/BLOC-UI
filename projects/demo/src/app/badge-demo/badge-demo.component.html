@@ -1,0 +1,62 @@
+<header class="mb-8 pb-4 border-b border-slate-200">
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Badge</h1>
+    <p class="m-0 text-slate-400 text-[0.95rem]">
+        Compact labels for status, counts, and metadata.
+    </p>
+    <app-install-command package="@bloc-ui/core" />
+</header>
+
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Variants</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5 mb-10">
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Intent badges</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">Use colour to communicate context quickly.</p>
+        <div class="flex flex-wrap gap-3">
+            <bloc-badge>Neutral</bloc-badge>
+            <bloc-badge variant="primary">Primary</bloc-badge>
+            <bloc-badge variant="success">Success</bloc-badge>
+            <bloc-badge variant="warning">Warning</bloc-badge>
+            <bloc-badge variant="danger">Danger</bloc-badge>
+        </div>
+        <app-sample-code [code]="snippets.variants" />
+    </div>
+</div>
+
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Sizing</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5 mb-10">
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Small to large</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">Choose a density that matches the surrounding UI.</p>
+        <div class="flex items-center flex-wrap gap-3">
+            <bloc-badge size="sm">Small</bloc-badge>
+            <bloc-badge size="md">Medium</bloc-badge>
+            <bloc-badge size="lg">Large</bloc-badge>
+        </div>
+        <app-sample-code [code]="snippets.sizes" />
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Pill count</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">Useful for compact counters and chips.</p>
+        <div class="flex items-center gap-3">
+            <bloc-badge variant="primary" [pill]="true">99+</bloc-badge>
+        </div>
+        <app-sample-code [code]="snippets.pill" />
+    </div>
+</div>
+
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Theming</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5">
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Custom tokens</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Override background, text, and border tokens directly.
+        </p>
+        <div class="flex items-center gap-3">
+            <bloc-badge style="--bloc-badge-bg: #111827; --bloc-badge-color: #f8fafc">
+                Custom
+            </bloc-badge>
+        </div>
+        <app-sample-code [code]="snippets.customToken" />
+    </div>
+</div>

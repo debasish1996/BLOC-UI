@@ -1,0 +1,43 @@
+<header class="mb-8 pb-4 border-b border-slate-200">
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Pagination</h1>
+    <p class="m-0 text-slate-400 text-[0.95rem]">
+        Page navigation with boundary pages, sibling ranges, and built-in ellipsis handling.
+    </p>
+    <app-install-command package="@bloc-ui/pagination" />
+</header>
+
+<div class="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-5 mb-10">
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Default Pagination</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Handy for moderate page counts where users benefit from quick direct jumps.
+        </p>
+        <bloc-pagination
+            [page]="currentPage()"
+            [totalPages]="8"
+            (pageChange)="currentPage.set($event)"
+        />
+        <p class="m-0 text-xs text-slate-400">
+            Current page: <strong>{{ currentPage() }}</strong>
+        </p>
+        <app-sample-code [code]="snippets.basic" />
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Wider Ranges</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Increase sibling visibility when list exploration matters more than density.
+        </p>
+        <bloc-pagination
+            [page]="densePage()"
+            [totalPages]="24"
+            [siblingCount]="2"
+            [boundaryCount]="1"
+            (pageChange)="densePage.set($event)"
+        />
+        <p class="m-0 text-xs text-slate-400">
+            Current page: <strong>{{ densePage() }}</strong>
+        </p>
+        <app-sample-code [code]="snippets.dense" />
+    </div>
+</div>

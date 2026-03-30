@@ -1,6 +1,6 @@
+import { Meta, Title } from '@angular/platform-browser';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
-import { Meta, Title } from '@angular/platform-browser';
 
 @Component({
     selector: 'app-home',
@@ -11,17 +11,59 @@ import { Meta, Title } from '@angular/platform-browser';
 export class HomeComponent {
     readonly components = [
         {
+            name: 'Accordion',
+            path: '/accordion',
+            description: 'Collapsible disclosure sections with single-open and multi-expand modes.',
+            icon: 'A',
+        },
+        {
+            name: 'Alert',
+            path: '/alert',
+            description: 'Inline feedback banners with semantic variants and optional dismissal.',
+            icon: 'Al',
+        },
+        {
+            name: 'Autocomplete',
+            path: '/autocomplete',
+            description: 'Searchable option picker with keyboard navigation and Angular forms support.',
+            icon: 'Au',
+        },
+        {
+            name: 'Badge',
+            path: '/badge',
+            description: 'Compact status labels and counters with size and variant presets.',
+            icon: 'B',
+        },
+        {
             name: 'Button',
             path: '/button',
-            description:
-                'Versatile action buttons with variants, loading states, and icon support.',
-            icon: '👆',
+            description: 'Versatile action buttons with variants, loading states, and icon support.',
+            icon: 'Bt',
         },
         {
             name: 'Input',
             path: '/input',
             description: 'Styled text inputs with validation, error messages, and floating labels.',
-            icon: '✏️',
+            icon: 'In',
+        },
+        {
+            name: 'Progress',
+            path: '/progress',
+            description: 'Accessible progress bars with labels, value display, and intent colours.',
+            icon: 'P',
+        },
+        {
+            name: 'Select',
+            path: '/select',
+            description:
+                'Overlay-backed single select with keyboard navigation, filtering, and Angular forms support.',
+            icon: 'S',
+        },
+        {
+            name: 'Skeleton',
+            path: '/skeleton',
+            description: 'Shimmering placeholders for loading text, cards, avatars, and layouts.',
+            icon: 'Sk',
         },
         {
             name: 'Textarea',
@@ -33,58 +75,76 @@ export class HomeComponent {
             name: 'Checkbox',
             path: '/checkbox',
             description: 'Accessible checkboxes with indeterminate state and custom styling.',
-            icon: '☑️',
+            icon: 'C',
         },
         {
             name: 'Radio',
             path: '/radio',
             description: 'Radio groups with keyboard navigation and reactive form support.',
-            icon: '🔘',
+            icon: 'R',
         },
         {
             name: 'Toggle',
             path: '/toggle',
             description: 'On/off toggle switches with smooth animations and ARIA labels.',
-            icon: '🔀',
+            icon: 'Tg',
         },
         {
             name: 'Modal',
             path: '/modal',
             description: 'Declarative modals with backdrop dismiss, focus trapping, and stacking.',
-            icon: '🪟',
+            icon: 'M',
+        },
+        {
+            name: 'Layout Sidebar',
+            path: '/layout',
+            description: 'Sidebar and content shell primitives for dashboards and app workspaces.',
+            icon: 'L',
+        },
+        {
+            name: 'Pagination',
+            path: '/pagination',
+            description: 'Page navigation with boundary pages, sibling ranges, and ellipsis handling.',
+            icon: 'Pg',
+        },
+        {
+            name: 'Slider',
+            path: '/slider',
+            description: 'Range control with CVA support, labels, and a styled progress track.',
+            icon: 'Sl',
         },
         {
             name: 'Spinner',
             path: '/spinner',
             description: 'Loading indicators with configurable size, speed, and colour tokens.',
-            icon: '⏳',
+            icon: 'Sp',
         },
         {
             name: 'Table',
             path: '/table',
             description: 'Declarative data tables with sortable columns and custom cell templates.',
-            icon: '📊',
+            icon: 'Tb',
         },
         {
             name: 'Tab',
             path: '/tab',
             description:
                 'Accessible tab groups with keyboard navigation and lazy content rendering.',
-            icon: '🗂️',
+            icon: 'Ta',
         },
         {
             name: 'Toast',
             path: '/toast',
             description:
                 'Stackable notification toasts with auto-dismiss, actions, and positioning.',
-            icon: '🔔',
+            icon: 'To',
         },
         {
             name: 'Date Picker',
             path: '/date-picker',
             description:
                 'Calendar-based date selection with keyboard navigation and format control.',
-            icon: '📅',
+            icon: 'D',
         },
     ];
 
@@ -96,7 +156,7 @@ export class HomeComponent {
             badgeBg: 'bg-slate-200',
             badgeText: 'text-slate-700',
             description:
-                'All-in-one umbrella package — installs core, theme, and every component package in a single dependency. Ideal when you want the full Bloc UI suite.',
+                'All-in-one umbrella package installs core, theme, and every component package in one dependency.',
         },
         {
             name: '@bloc-ui/core',
@@ -105,7 +165,7 @@ export class HomeComponent {
             badgeBg: 'bg-blue-100',
             badgeText: 'text-blue-600',
             description:
-                'Structure, behaviour, and accessibility. Barebone components with zero visual opinion — every colour goes through CSS custom properties with neutral-grey fallbacks.',
+                'Structure, behaviour, and accessibility with minimal styling and CSS custom-property driven theming.',
         },
         {
             name: '@bloc-ui/theme',
@@ -114,7 +174,7 @@ export class HomeComponent {
             badgeBg: 'bg-purple-100',
             badgeText: 'text-purple-600',
             description:
-                'Optional design layer. CSS custom properties for colours, typography, border radii, and full dark mode — drop it in and every core component lights up.',
+                'Optional design layer for colours, typography, border radii, and light or dark tokens.',
         },
         {
             name: '@bloc-ui/modal',
@@ -123,7 +183,7 @@ export class HomeComponent {
             badgeBg: 'bg-amber-100',
             badgeText: 'text-amber-600',
             description:
-                'Declarative modal dialogs with backdrop dismiss, focus trapping, stacking, and service-based programmatic opening.',
+                'Declarative modal dialogs with backdrop dismiss, focus trapping, stacking, and service-based opening.',
         },
         {
             name: '@bloc-ui/table',
@@ -166,34 +226,33 @@ export class HomeComponent {
     readonly features = [
         {
             title: 'Lightweight',
-            description: 'Minimal footprint — no heavy dependencies, just lean Angular code.',
-            icon: '🪶',
+            description: 'Minimal footprint with lean Angular code and focused package boundaries.',
+            icon: 'LT',
         },
         {
             title: 'Themeable',
-            description: 'CSS custom properties for full colour and typography control.',
-            icon: '🎨',
+            description: 'CSS custom properties give you full colour and typography control.',
+            icon: 'TH',
         },
         {
             title: 'Accessible',
-            description:
-                'ARIA attributes, keyboard navigation, and screen reader support built in.',
-            icon: '♿',
+            description: 'ARIA attributes, keyboard navigation, and screen reader support are built in.',
+            icon: 'AX',
         },
         {
             title: 'Standalone',
-            description: 'Every component works with standalone imports or NgModule.',
-            icon: '📦',
+            description: 'Every component works with standalone imports or NgModule wrappers.',
+            icon: 'ST',
         },
         {
             title: 'Dark Mode Ready',
-            description: 'Optional @bloc-ui/theme ships light and dark tokens out of the box.',
-            icon: '🌙',
+            description: 'Optional `@bloc-ui/theme` ships light and dark tokens out of the box.',
+            icon: 'DM',
         },
         {
             title: 'Tailwind Friendly',
-            description: 'Zero-specificity base styles — Tailwind utilities always win.',
-            icon: '🌊',
+            description: 'Zero-specificity base styles keep utility classes in control.',
+            icon: 'TW',
         },
     ];
 
@@ -209,11 +268,11 @@ export class HomeComponent {
         private title: Title,
         private meta: Meta,
     ) {
-        this.title.setTitle('Bloc UI — Lightweight Angular Component Library');
+        this.title.setTitle('Bloc UI - Lightweight Angular Component Library');
         this.meta.updateTag({
             name: 'description',
             content:
-                'Bloc UI is a lightweight, themeable, and accessible Angular component library. Build modern UIs with buttons, inputs, modals, toggles, and more — all with zero-specificity base styles and full CSS custom property theming.',
+                'Bloc UI is a lightweight, themeable, and accessible Angular component library. Build modern UIs with buttons, inputs, modals, toggles, and more.',
         });
         this.meta.updateTag({
             name: 'keywords',
@@ -222,7 +281,7 @@ export class HomeComponent {
         });
         this.meta.updateTag({
             property: 'og:title',
-            content: 'Bloc UI — Lightweight Angular Component Library',
+            content: 'Bloc UI - Lightweight Angular Component Library',
         });
         this.meta.updateTag({
             property: 'og:description',
@@ -233,7 +292,7 @@ export class HomeComponent {
         this.meta.updateTag({ name: 'twitter:card', content: 'summary' });
         this.meta.updateTag({
             name: 'twitter:title',
-            content: 'Bloc UI — Lightweight Angular Component Library',
+            content: 'Bloc UI - Lightweight Angular Component Library',
         });
         this.meta.updateTag({
             name: 'twitter:description',

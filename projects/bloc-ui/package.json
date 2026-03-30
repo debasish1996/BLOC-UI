@@ -11,9 +11,16 @@
         "@angular/core": "^21.2.0"
     },
     "dependencies": {
+        "@bloc-ui/accordion": "^0.0.1",
+        "@bloc-ui/alert": "^0.0.1",
+        "@bloc-ui/autocomplete": "^0.0.1",
         "@bloc-ui/core": "^0.0.11",
+        "@bloc-ui/layout": "^0.0.1",
         "@bloc-ui/modal": "^0.0.3",
         "@bloc-ui/overlay": "^0.0.1",
+        "@bloc-ui/pagination": "^0.0.1",
+        "@bloc-ui/select": "^0.0.1",
+        "@bloc-ui/slider": "^0.0.1",
         "@bloc-ui/table": "^0.0.3",
         "@bloc-ui/toast": "^0.0.3",
         "@bloc-ui/date-picker": "^0.0.3",

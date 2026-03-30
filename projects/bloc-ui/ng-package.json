@@ -5,8 +5,16 @@
         "entryFile": "src/public-api.ts"
     },
     "allowedNonPeerDependencies": [
+        "@bloc-ui/accordion",
+        "@bloc-ui/alert",
+        "@bloc-ui/autocomplete",
         "@bloc-ui/core",
+        "@bloc-ui/layout",
         "@bloc-ui/modal",
+        "@bloc-ui/overlay",
+        "@bloc-ui/pagination",
+        "@bloc-ui/select",
+        "@bloc-ui/slider",
         "@bloc-ui/table",
         "@bloc-ui/toast",
         "@bloc-ui/date-picker",

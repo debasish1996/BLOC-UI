@@ -1,0 +1,74 @@
+<header class="mb-8 pb-4 border-b border-slate-200">
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Layout Sidebar</h1>
+    <p class="m-0 text-slate-400 text-[0.95rem]">
+        Structural layout primitives for dashboard shells with a sidebar and main content column.
+    </p>
+    <app-install-command package="@bloc-ui/layout" />
+</header>
+
+<div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4 mb-10">
+    <div class="flex items-center justify-between gap-3 flex-wrap">
+        <div>
+            <h3 class="m-0 text-base font-semibold text-slate-900">Sidebar Shell</h3>
+            <p class="m-0 text-[0.82rem] text-slate-400 mt-1">
+                Collapse the rail on larger screens without changing the content container.
+            </p>
+        </div>
+        <button
+            type="button"
+            class="px-3 py-2 rounded-md border border-slate-200 bg-slate-50 text-sm text-slate-700 cursor-pointer hover:bg-slate-100"
+            (click)="toggleCollapsed()"
+        >
+            Toggle Sidebar
+        </button>
+    </div>
+
+    <div class="p-3 rounded-xl bg-slate-50 border border-slate-200 overflow-auto">
+        <bloc-sidebar-layout [collapsed]="collapsed()" sidebarWidth="16rem">
+            <bloc-sidebar>
+                <div class="flex items-center justify-between gap-3 mb-6">
+                    <strong class="text-sm tracking-wide uppercase">Bloc UI</strong>
+                    <span class="text-xs text-slate-400">{{ collapsed() ? 'Mini' : 'Full' }}</span>
+                </div>
+                <nav class="grid gap-2">
+                    <a class="px-3 py-2 rounded-lg bg-white/10 text-inherit no-underline">Overview</a>
+                    <a class="px-3 py-2 rounded-lg text-inherit no-underline">Components</a>
+                    <a class="px-3 py-2 rounded-lg text-inherit no-underline">Billing</a>
+                    <a class="px-3 py-2 rounded-lg text-inherit no-underline">Settings</a>
+                </nav>
+            </bloc-sidebar>
+
+            <bloc-sidebar-content>
+                <div class="flex items-center justify-between gap-3 mb-5 flex-wrap">
+                    <div>
+                        <p class="m-0 text-xs uppercase tracking-[0.2em] text-slate-400">
+                            Workspace
+                        </p>
+                        <h4 class="m-0 mt-1 text-xl font-semibold text-slate-900">Team overview</h4>
+                    </div>
+                    <span
+                        class="px-3 py-1 rounded-full bg-emerald-100 text-emerald-700 text-xs font-medium"
+                    >
+                        12 active projects
+                    </span>
+                </div>
+                <div class="grid grid-cols-[repeat(auto-fill,minmax(180px,1fr))] gap-4">
+                    <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                        <p class="m-0 text-xs uppercase tracking-[0.18em] text-slate-400">Velocity</p>
+                        <p class="m-0 mt-2 text-2xl font-semibold text-slate-900">42 pts</p>
+                    </div>
+                    <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                        <p class="m-0 text-xs uppercase tracking-[0.18em] text-slate-400">Incidents</p>
+                        <p class="m-0 mt-2 text-2xl font-semibold text-slate-900">3 open</p>
+                    </div>
+                    <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
+                        <p class="m-0 text-xs uppercase tracking-[0.18em] text-slate-400">Satisfaction</p>
+                        <p class="m-0 mt-2 text-2xl font-semibold text-slate-900">94%</p>
+                    </div>
+                </div>
+            </bloc-sidebar-content>
+        </bloc-sidebar-layout>
+    </div>
+
+    <app-sample-code [code]="snippets.basic" />
+</div>

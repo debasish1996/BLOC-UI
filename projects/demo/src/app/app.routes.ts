@@ -1,12 +1,22 @@
 import { Routes } from '@angular/router';
+import { AccordionDemoComponent } from './accordion-demo/accordion-demo.component';
+import { AlertDemoComponent } from './alert-demo/alert-demo.component';
+import { AutocompleteDemoComponent } from './autocomplete-demo/autocomplete-demo.component';
 import { HomeComponent } from './home/home.component';
+import { BadgeDemoComponent } from './badge-demo/badge-demo.component';
 import { ButtonDemoComponent } from './button-demo/button-demo.component';
 import { CheckboxDemoComponent } from './checkbox-demo/checkbox-demo.component';
 import { DatePickerDemoComponent } from './date-picker-demo/date-picker-demo.component';
 import { DateRangePickerDemoComponent } from './date-range-picker-demo/date-range-picker-demo.component';
 import { InputDemoComponent } from './input-demo/input-demo.component';
+import { LayoutDemoComponent } from './layout-demo/layout-demo.component';
 import { ModalDemoComponent } from './modal-demo/modal-demo.component';
+import { PaginationDemoComponent } from './pagination-demo/pagination-demo.component';
+import { ProgressDemoComponent } from './progress-demo/progress-demo.component';
 import { RadioDemoComponent } from './radio-demo/radio-demo.component';
+import { SelectDemoComponent } from './select-demo/select-demo.component';
+import { SkeletonDemoComponent } from './skeleton-demo/skeleton-demo.component';
+import { SliderDemoComponent } from './slider-demo/slider-demo.component';
 import { SpinnerDemoComponent } from './spinner-demo/spinner-demo.component';
 import { TabDemoComponent } from './tab-demo/tab-demo.component';
 import { TableDemoComponent } from './table-demo/table-demo.component';
@@ -16,13 +26,23 @@ import { ToggleDemoComponent } from './toggle-demo/toggle-demo.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
+    { path: 'accordion', component: AccordionDemoComponent },
+    { path: 'alert', component: AlertDemoComponent },
+    { path: 'autocomplete', component: AutocompleteDemoComponent },
+    { path: 'badge', component: BadgeDemoComponent },
     { path: 'button', component: ButtonDemoComponent },
     { path: 'checkbox', component: CheckboxDemoComponent },
     { path: 'date-picker', component: DatePickerDemoComponent },
     { path: 'date-range-picker', component: DateRangePickerDemoComponent },
     { path: 'input', component: InputDemoComponent },
+    { path: 'layout', component: LayoutDemoComponent },
     { path: 'modal', component: ModalDemoComponent },
+    { path: 'pagination', component: PaginationDemoComponent },
+    { path: 'progress', component: ProgressDemoComponent },
     { path: 'radio', component: RadioDemoComponent },
+    { path: 'select', component: SelectDemoComponent },
+    { path: 'skeleton', component: SkeletonDemoComponent },
+    { path: 'slider', component: SliderDemoComponent },
     { path: 'spinner', component: SpinnerDemoComponent },
     { path: 'tab', component: TabDemoComponent },
     { path: 'table', component: TableDemoComponent },
