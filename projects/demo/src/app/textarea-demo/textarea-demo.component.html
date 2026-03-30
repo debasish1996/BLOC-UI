@@ -1,0 +1,140 @@
+<header class="mb-8 pb-4 border-b border-slate-200">
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Textarea</h1>
+    <p class="m-0 text-slate-400 text-[0.95rem]">
+        Native <code>textarea</code> styled with the <code>blocTextarea</code> directive.
+    </p>
+    <p class="m-0 text-xs text-slate-400 mt-1">
+        Keyboard: native browser. ARIA: <code>aria-invalid</code> set automatically on error state.
+    </p>
+    <app-install-command package="@bloc-ui/core" />
+</header>
+
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Basics</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-5 mb-10">
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Basic</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">Multi-line text entry with native resize.</p>
+        <div class="flex flex-col gap-1">
+            <label class="text-xs font-medium text-slate-700" for="textarea-bio">Project brief</label>
+            <textarea
+                blocTextarea
+                id="textarea-bio"
+                rows="4"
+                placeholder="Tell us about your project"
+                [value]="bio()"
+                (input)="bio.set($any($event.target).value)"
+            ></textarea>
+            <span class="text-xs text-slate-400">{{ bio().length }} characters</span>
+        </div>
+        <app-sample-code [code]="snippets.basic" />
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Disabled</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">Non-interactive state for read-only flows.</p>
+        <textarea
+            blocTextarea
+            rows="4"
+            placeholder="Cannot edit"
+            disabled
+        ></textarea>
+        <app-sample-code [code]="snippets.disabled" />
+    </div>
+</div>
+
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Validation</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-5 mb-10">
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Error, manual</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">Force the error style with <code>[error]</code>.</p>
+        <div class="flex flex-col gap-1">
+            <textarea
+                blocTextarea
+                [error]="true"
+                rows="4"
+                placeholder="Project summary"
+            ></textarea>
+            <bloc-input-error>A summary is required.</bloc-input-error>
+        </div>
+        <app-sample-code [code]="snippets.manualError" />
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Error, FormControl</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Driven by <code>invalid &amp;&amp; touched</code>. Enter fewer than 20 characters and blur.
+        </p>
+        <div class="flex flex-col gap-1">
+            <textarea
+                blocTextarea
+                rows="4"
+                [formControl]="descriptionCtrl"
+                placeholder="Write at least 20 characters"
+            ></textarea>
+            @if (descriptionCtrl.invalid && descriptionCtrl.touched) {
+                <bloc-input-error>Please add at least 20 characters.</bloc-input-error>
+            }
+        </div>
+        <app-sample-code [code]="snippets.formControl" />
+    </div>
+</div>
+
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+    Angular Forms
+</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-5 mb-10">
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Two-way binding</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">Bound with <code>[(ngModel)]</code>.</p>
+        <textarea
+            blocTextarea
+            rows="4"
+            [(ngModel)]="ngModelValue"
+            placeholder="Start typing"
+        ></textarea>
+        <p class="m-0 text-xs text-slate-400">Characters: <strong>{{ ngModelValue.length }}</strong></p>
+        <app-sample-code [code]="snippets.ngModel" />
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+        <h3 class="m-0 text-base font-semibold text-slate-900">formControlName</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Works inside a <code>FormGroup</code> the same way inputs do.
+        </p>
+        <form [formGroup]="feedbackFormGroup" class="flex flex-col gap-1">
+            <textarea
+                blocTextarea
+                rows="5"
+                formControlName="notes"
+                placeholder="Share your feedback"
+            ></textarea>
+            @if (
+                feedbackFormGroup.get('notes')?.invalid && feedbackFormGroup.get('notes')?.touched
+            ) {
+                <bloc-input-error>Feedback is required.</bloc-input-error>
+            }
+        </form>
+        <p class="m-0 text-xs text-slate-400">
+            Remaining:
+            <strong>{{ 180 - (feedbackFormGroup.get('notes')?.value?.length || 0) }}</strong>
+        </p>
+        <app-sample-code [code]="snippets.formControlName" />
+    </div>
+</div>
+
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Theming</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-5">
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Custom tokens</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Override size and shape with CSS custom properties.
+        </p>
+        <textarea
+            blocTextarea
+            rows="5"
+            placeholder="Resizable notes"
+            style="--bloc-textarea-min-height: 140px; --bloc-textarea-radius: 16px"
+        ></textarea>
+        <app-sample-code [code]="snippets.customToken" />
+    </div>
+</div>

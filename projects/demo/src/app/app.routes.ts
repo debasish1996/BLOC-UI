@@ -10,6 +10,7 @@ import { RadioDemoComponent } from './radio-demo/radio-demo.component';
 import { SpinnerDemoComponent } from './spinner-demo/spinner-demo.component';
 import { TabDemoComponent } from './tab-demo/tab-demo.component';
 import { TableDemoComponent } from './table-demo/table-demo.component';
+import { TextareaDemoComponent } from './textarea-demo/textarea-demo.component';
 import { ToastDemoComponent } from './toast-demo/toast-demo.component';
 import { ToggleDemoComponent } from './toggle-demo/toggle-demo.component';
 
@@ -25,6 +26,7 @@ export const routes: Routes = [
     { path: 'spinner', component: SpinnerDemoComponent },
     { path: 'tab', component: TabDemoComponent },
     { path: 'table', component: TableDemoComponent },
+    { path: 'textarea', component: TextareaDemoComponent },
     { path: 'toast', component: ToastDemoComponent },
     { path: 'toggle', component: ToggleDemoComponent },
 ];

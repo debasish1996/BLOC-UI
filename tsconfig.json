@@ -9,6 +9,7 @@
             "@bloc-ui/core/button": ["./projects/bloc-ui-core/button/src/public-api.ts"],
             "@bloc-ui/core/checkbox": ["./projects/bloc-ui-core/checkbox/src/public-api.ts"],
             "@bloc-ui/core/input": ["./projects/bloc-ui-core/input/src/public-api.ts"],
+            "@bloc-ui/core/textarea": ["./projects/bloc-ui-core/textarea/src/public-api.ts"],
             "@bloc-ui/modal": ["./projects/bloc-ui-modal/src/public-api.ts"],
             "@bloc-ui/kit": ["./projects/bloc-ui/src/public-api.ts"],
             "@bloc-ui/core/radio": ["./projects/bloc-ui-core/radio/src/public-api.ts"],

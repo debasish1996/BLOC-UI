@@ -24,6 +24,12 @@ export class HomeComponent {
             icon: '✏️',
         },
         {
+            name: 'Textarea',
+            path: '/textarea',
+            description: 'Auto-themed multi-line text areas with validation and Angular forms support.',
+            icon: 'T',
+        },
+        {
             name: 'Checkbox',
             path: '/checkbox',
             description: 'Accessible checkboxes with indeterminate state and custom styling.',

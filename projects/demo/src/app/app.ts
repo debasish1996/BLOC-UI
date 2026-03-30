@@ -26,6 +26,7 @@ export class App {
         children: [
             { path: 'button', label: 'Button' },
             { path: 'input', label: 'Input' },
+            { path: 'textarea', label: 'Textarea' },
             { path: 'checkbox', label: 'Checkbox' },
             { path: 'radio', label: 'Radio' },
             { path: 'spinner', label: 'Spinner' },

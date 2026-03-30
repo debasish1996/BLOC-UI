@@ -29,6 +29,9 @@ npx ng build bloc-ui-date-picker $CONFIG
 echo "Building bloc-ui-tab..."
 npx ng build bloc-ui-tab $CONFIG
 
+echo "Building bloc-ui-overlay..."
+npx ng build bloc-ui-overlay $CONFIG
+
 echo "Building bloc-ui..."
 npx ng build bloc-ui $CONFIG
 
