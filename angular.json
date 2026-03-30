@@ -243,6 +243,32 @@
                     "builder": "@angular/build:unit-test"
                 }
             }
+        },
+        "bloc-ui-overlay": {
+            "projectType": "library",
+            "root": "projects/bloc-ui-overlay",
+            "sourceRoot": "projects/bloc-ui-overlay/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/bloc-ui-overlay/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/bloc-ui-overlay/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-overlay/tsconfig.spec.json"
+                    }
+                }
+            }
         }
     }
 }

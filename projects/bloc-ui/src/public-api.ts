@@ -12,6 +12,7 @@ export * from '@bloc-ui/core/radio';
 export * from '@bloc-ui/core/toggle';
 export * from '@bloc-ui/core/spinner';
 export * from '@bloc-ui/modal';
+export * from '@bloc-ui/overlay';
 export * from '@bloc-ui/table';
 export * from '@bloc-ui/toast';
 export * from '@bloc-ui/date-picker';

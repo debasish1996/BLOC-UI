@@ -26,7 +26,8 @@
             ],
             "@bloc-ui/date-picker/range-date-picker": [
                 "./projects/bloc-ui-date-picker/range-date-picker/src/public-api.ts"
-            ]
+            ],
+            "@bloc-ui/overlay": ["./projects/bloc-ui-overlay/src/public-api.ts"]
         },
         "types": ["node"],
         "strict": true,
@@ -81,6 +82,12 @@
         },
         {
             "path": "./projects/demo/tsconfig.spec.json"
+        },
+        {
+            "path": "./projects/bloc-ui-overlay/tsconfig.lib.json"
+        },
+        {
+            "path": "./projects/bloc-ui-overlay/tsconfig.spec.json"
         }
     ]
 }
