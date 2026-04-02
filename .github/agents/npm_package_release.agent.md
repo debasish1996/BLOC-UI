@@ -1,5 +1,5 @@
 ---
-description: 'Use when: releasing npm packages, publishing to npm, creating GitHub releases, bumping package versions, tagging versions, running gh release create, version bump, publish @bloc-ui/core, @bloc-ui/theme, @bloc-ui/modal, @bloc-ui/table, @bloc-ui/toast, @bloc-ui/date-picker, @bloc-ui/tab, or @bloc-ui/kit'
+description: 'Use when: releasing npm packages, publishing to npm, creating GitHub releases, bumping package versions, tagging versions, running gh release create, version bump, publish @bloc-ui/core, @bloc-ui/theme, @bloc-ui/modal, @bloc-ui/table, @bloc-ui/toast, @bloc-ui/date-picker, @bloc-ui/tab, @bloc-ui/kit, @bloc-ui/accordion, @bloc-ui/alert, @bloc-ui/autocomplete, @bloc-ui/layout, @bloc-ui/overlay, @bloc-ui/pagination, @bloc-ui/select, or @bloc-ui/slider'
 tools: [execute, read, edit, search]
 ---
 
@@ -9,23 +9,31 @@ Use the **Workspace Variables** section from `copilot-instructions.md` for repo 
 
 ## Workspace Layout
 
-| Package     | Path                                        | npm name                 |
-| ----------- | ------------------------------------------- | ------------------------ |
-| Core        | `projects/bloc-ui-core/package.json`        | `@bloc-ui/core`          |
-| Modal       | `projects/bloc-ui-modal/package.json`       | `@bloc-ui/modal`         |
-| Table       | `projects/bloc-ui-table/package.json`       | `@bloc-ui/table`         |
-| Toast       | `projects/bloc-ui-toast/package.json`       | `@bloc-ui/toast`         |
-| Date Picker | `projects/bloc-ui-date-picker/package.json` | `@bloc-ui/date-picker`   |
-| Tab         | `projects/bloc-ui-tab/package.json`         | `@bloc-ui/tab`           |
-| Kit         | `projects/bloc-ui/package.json`             | `@bloc-ui/kit`           |
-| Theme       | `projects/bloc-ui-theme/package.json`       | `@bloc-ui/theme`         |
-| Root        | `package.json`                              | (private, not published) |
+| Package      | Path                                         | npm name                 |
+| ------------ | -------------------------------------------- | ------------------------ |
+| Core         | `projects/bloc-ui-core/package.json`         | `@bloc-ui/core`          |
+| Modal        | `projects/bloc-ui-modal/package.json`        | `@bloc-ui/modal`         |
+| Table        | `projects/bloc-ui-table/package.json`        | `@bloc-ui/table`         |
+| Toast        | `projects/bloc-ui-toast/package.json`        | `@bloc-ui/toast`         |
+| Date Picker  | `projects/bloc-ui-date-picker/package.json`  | `@bloc-ui/date-picker`   |
+| Tab          | `projects/bloc-ui-tab/package.json`          | `@bloc-ui/tab`           |
+| Kit          | `projects/bloc-ui/package.json`              | `@bloc-ui/kit`           |
+| Theme        | `projects/bloc-ui-theme/package.json`        | `@bloc-ui/theme`         |
+| Accordion    | `projects/bloc-ui-accordion/package.json`    | `@bloc-ui/accordion`     |
+| Alert        | `projects/bloc-ui-alert/package.json`        | `@bloc-ui/alert`         |
+| Autocomplete | `projects/bloc-ui-autocomplete/package.json` | `@bloc-ui/autocomplete`  |
+| Layout       | `projects/bloc-ui-layout/package.json`       | `@bloc-ui/layout`        |
+| Overlay      | `projects/bloc-ui-overlay/package.json`      | `@bloc-ui/overlay`       |
+| Pagination   | `projects/bloc-ui-pagination/package.json`   | `@bloc-ui/pagination`    |
+| Select       | `projects/bloc-ui-select/package.json`       | `@bloc-ui/select`        |
+| Slider       | `projects/bloc-ui-slider/package.json`       | `@bloc-ui/slider`        |
+| Root         | `package.json`                               | (private, not published) |
 
 ## Project Name (mandatory — always required)
 
-The user MUST specify which package to release: `core`, `modal`, `table`, `toast`, `date-picker`, `tab`, `kit`, `theme`, or `all`.
+The user MUST specify which package to release: `core`, `modal`, `table`, `toast`, `date-picker`, `tab`, `kit`, `theme`, `accordion`, `alert`, `autocomplete`, `layout`, `overlay`, `pagination`, `select`, `slider`, or `all`.
 
-- If the user does NOT provide a project name, **stop immediately** and ask: _"Which package do you want to release? (`core`, `modal`, `table`, `toast`, `date-picker`, `tab`, `kit`, `theme`, or `all`)"_
+- If the user does NOT provide a project name, **stop immediately** and ask: _"Which package do you want to release? (`core`, `modal`, `table`, `toast`, `date-picker`, `tab`, `kit`, `theme`, `accordion`, `alert`, `autocomplete`, `layout`, `overlay`, `pagination`, `select`, `slider`, or `all`)"_
 - DO NOT guess, assume, or default to any package. Wait for an explicit answer before proceeding.
 - When releasing `kit`, also bump the `@bloc-ui/core`, `@bloc-ui/modal`, `@bloc-ui/table`, `@bloc-ui/toast`, `@bloc-ui/date-picker`, and `@bloc-ui/tab` dependency versions in `projects/bloc-ui/package.json` to match their latest versions.
 
@@ -58,20 +66,30 @@ The user MUST specify which package to release: `core`, `modal`, `table`, `toast
 
 Tags are prefixed by package to trigger the correct CI workflow:
 
-| Package     | Tag format                   | Example              |
-| ----------- | ---------------------------- | -------------------- | --- | --- | -------------------- | ------------ | --- | --- | -------------------- | ------------ |
-| Core        | `core-v<new_version>`        | `core-v1.2.0`        |
-| Modal       | `modal-v<new_version>`       | `modal-v0.0.2`       |
-| Table       | `table-v<new_version>`       | `table-v0.0.1`       |
-| Toast       | `toast-v<new_version>`       | `toast-v0.0.1`       |
-| Date Picker | `date-picker-v<new_version>` | `date-picker-v0.0.1` |     | Tab | `tab-v<new_version>` | `tab-v0.0.1` |     | Kit | `kit-v<new_version>` | `kit-v0.0.2` |
-| Theme       | `theme-v<new_version>`       | `theme-v1.0.1`       |
+| Package      | Tag format                    | Example               |
+| ------------ | ----------------------------- | --------------------- |
+| Core         | `core-v<new_version>`         | `core-v1.2.0`         |
+| Modal        | `modal-v<new_version>`        | `modal-v0.0.2`        |
+| Table        | `table-v<new_version>`        | `table-v0.0.1`        |
+| Toast        | `toast-v<new_version>`        | `toast-v0.0.1`        |
+| Date Picker  | `date-picker-v<new_version>`  | `date-picker-v0.0.1`  |
+| Tab          | `tab-v<new_version>`          | `tab-v0.0.1`          |
+| Kit          | `kit-v<new_version>`          | `kit-v0.0.2`          |
+| Theme        | `theme-v<new_version>`        | `theme-v1.0.1`        |
+| Accordion    | `accordion-v<new_version>`    | `accordion-v0.0.1`    |
+| Alert        | `alert-v<new_version>`        | `alert-v0.0.1`        |
+| Autocomplete | `autocomplete-v<new_version>` | `autocomplete-v0.0.1` |
+| Layout       | `layout-v<new_version>`       | `layout-v0.0.1`       |
+| Overlay      | `overlay-v<new_version>`      | `overlay-v0.0.1`      |
+| Pagination   | `pagination-v<new_version>`   | `pagination-v0.0.1`   |
+| Select       | `select-v<new_version>`       | `select-v0.0.1`       |
+| Slider       | `slider-v<new_version>`       | `slider-v0.0.1`       |
 
 1. Create a git tag and GitHub release in one step:
     ```
     gh release create <prefix>-v<new_version> --title "<prefix>-v<new_version>" --notes "Release <npm-name> v<new_version>"
     ```
-    where `<prefix>` is `core`, `modal`, `table`, `toast`, `date-picker`, `tab`, `kit`, or `theme` depending on the package being released.
+    where `<prefix>` is `core`, `modal`, `table`, `toast`, `date-picker`, `tab`, `kit`, `theme`, `accordion`, `alert`, `autocomplete`, `layout`, `overlay`, `pagination`, `select`, or `slider` depending on the package being released.
 2. Confirm the release was created by running `gh release view <prefix>-v<new_version>`.
 3. When releasing **all** packages, create separate releases — one per package with its own tag prefix.
 
