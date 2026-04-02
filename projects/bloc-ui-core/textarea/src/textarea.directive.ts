@@ -17,7 +17,7 @@ const TEXTAREA_CSS = [
     'textarea.bloc-textarea{outline:none;box-sizing:border-box;appearance:none;resize:vertical}',
     '@layer bloc-textarea{',
     ':where(textarea.bloc-textarea){',
-    'border:1px solid var(--bloc-textarea-border,var(--bloc-input-border,var(--bloc-border,#cbd5e1)));',
+    'border:1px solid var(--bloc-textarea-border,var(--bloc-input-border,var(--bloc-border,#d1d5db)));',
     'border-radius:var(--bloc-textarea-radius,var(--bloc-input-radius,4px));',
     'padding:var(--bloc-textarea-padding,var(--bloc-input-padding,8px 12px));',
     'font-size:var(--bloc-textarea-font-size,var(--bloc-input-font-size,14px));',
@@ -28,8 +28,8 @@ const TEXTAREA_CSS = [
     'color:var(--bloc-textarea-color,var(--bloc-input-color,#374151))}',
     ':where(textarea.bloc-textarea:focus){border-color:var(--bloc-textarea-focus-border,var(--bloc-input-focus-border,var(--bloc-primary,#6b7280)))}',
     ':where(textarea.bloc-textarea:disabled){opacity:0.5;cursor:not-allowed}',
-    ':where(textarea.bloc-textarea.bloc-textarea--error){border-color:var(--bloc-textarea-error-border,var(--bloc-input-error-border,var(--bloc-error,#f87171)))}',
-    ':where(textarea.bloc-textarea.bloc-textarea--error:focus){border-color:var(--bloc-textarea-error-border,var(--bloc-input-error-border,var(--bloc-error,#f87171)))}',
+    ':where(textarea.bloc-textarea.bloc-textarea--error){border-color:var(--bloc-textarea-error-border,var(--bloc-input-error-border,var(--bloc-error,#9ca3af)))}',
+    ':where(textarea.bloc-textarea.bloc-textarea--error:focus){border-color:var(--bloc-textarea-error-border,var(--bloc-input-error-border,var(--bloc-error,#9ca3af)))}',
     '}',
 ].join('');
 

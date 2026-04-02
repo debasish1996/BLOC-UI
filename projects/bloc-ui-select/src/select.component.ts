@@ -33,13 +33,18 @@ const OVERLAY_STYLE_VARS = [
     '--bloc-select-option-hover',
     '--bloc-select-option-active',
     '--bloc-select-option-selected',
+    '--bloc-select-radius',
+    '--bloc-select-panel-radius',
 ] as const;
 
 @Component({
     selector: 'bloc-select',
     standalone: true,
     template: `
-        <span class="bloc-select__label" [class.bloc-select__label--placeholder]="!selectedOption()">
+        <span
+            class="bloc-select__label"
+            [class.bloc-select__label--placeholder]="!selectedOption()"
+        >
             {{ displayLabel() }}
         </span>
 
@@ -94,10 +99,13 @@ const OVERLAY_STYLE_VARS = [
                 <div
                     class="bloc-select__options"
                     role="listbox"
+                    aria-label="Options"
                     [attr.aria-busy]="loading() ? 'true' : null"
                 >
                     @if (loading()) {
-                        <div class="bloc-select__state">Loading options...</div>
+                        <div class="bloc-select__state" aria-live="polite" role="status">
+                            Loading options...
+                        </div>
                     } @else {
                         <ng-content />
 
@@ -190,8 +198,7 @@ export class BlocSelectComponent implements ControlValueAccessor, BlocSelectRef 
             const options = this.options();
             const value = this.selectedValue();
             const compareWith = this.compareWith();
-            const selected =
-                options.find((option) => compareWith(option.value(), value)) ?? null;
+            const selected = options.find((option) => compareWith(option.value(), value)) ?? null;
 
             this.selectedOption.set(selected);
         });
@@ -218,10 +225,7 @@ export class BlocSelectComponent implements ControlValueAccessor, BlocSelectRef 
             }
 
             const selected = this.selectedOption();
-            const fallback =
-                selected && options.includes(selected)
-                    ? selected
-                    : options[0];
+            const fallback = selected && options.includes(selected) ? selected : options[0];
 
             this.activeOptionId.set(fallback.optionId);
 
@@ -349,10 +353,7 @@ export class BlocSelectComponent implements ControlValueAccessor, BlocSelectRef 
         const onDocumentClick = (event: MouseEvent) => {
             const target = event.target as Node | null;
             if (!target) return;
-            if (
-                this._overlayPanel?.contains(target) ||
-                this._host.nativeElement.contains(target)
-            ) {
+            if (this._overlayPanel?.contains(target) || this._host.nativeElement.contains(target)) {
                 return;
             }
             this.close(false);
@@ -462,7 +463,9 @@ export class BlocSelectComponent implements ControlValueAccessor, BlocSelectRef 
         const options = this.enabledVisibleOptions();
         if (options.length === 0) return;
 
-        const currentIndex = options.findIndex((option) => option.optionId === this.activeOptionId());
+        const currentIndex = options.findIndex(
+            (option) => option.optionId === this.activeOptionId(),
+        );
         const nextIndex =
             currentIndex === -1
                 ? direction === 1

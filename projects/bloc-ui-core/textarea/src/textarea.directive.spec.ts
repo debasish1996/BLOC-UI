@@ -3,6 +3,7 @@ import { Component, signal } from '@angular/core';
 import { TestBed } from '@angular/core/testing';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BlocTextareaDirective } from './textarea.directive';
+import { BlocTextareaModule } from './textarea.module';
 
 @Component({
     standalone: true,
@@ -56,5 +57,32 @@ describe('BlocTextareaDirective', () => {
 
     beforeEach(async () => {
         await TestBed.configureTestingModule({}).compileComponents();
+    });
+});
+
+describe('BlocTextareaModule', () => {
+    it('should be defined', () => {
+        expect(BlocTextareaModule).toBeDefined();
+    });
+
+    it('should allow using BlocTextareaDirective via the module', async () => {
+        @Component({
+            template: `<textarea blocTextarea></textarea>`,
+            standalone: true,
+            imports: [BlocTextareaModule],
+        })
+        class ModuleHostComponent {}
+
+        await TestBed.configureTestingModule({
+            imports: [ModuleHostComponent],
+        }).compileComponents();
+
+        const fixture = TestBed.createComponent(ModuleHostComponent);
+        fixture.detectChanges();
+        expect(
+            (fixture.nativeElement as HTMLElement)
+                .querySelector('textarea')
+                ?.classList.contains('bloc-textarea'),
+        ).toBe(true);
     });
 });

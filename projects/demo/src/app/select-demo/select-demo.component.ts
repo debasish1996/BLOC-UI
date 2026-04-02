@@ -42,6 +42,7 @@ export class SelectDemoComponent {
         disabled: `<bloc-select [disabled]="true" placeholder="Unavailable">\n  <div bloc-option value="apple">Apple</div>\n  <div bloc-option value="banana">Banana</div>\n</bloc-select>`,
         loading: `<bloc-select [loading]="true" [searchable]="true" placeholder="Loading fruits">\n  <div bloc-option value="apple">Apple</div>\n</bloc-select>`,
         formControlName: `<form [formGroup]="profileForm">\n  <bloc-select formControlName="fruit" placeholder="Favorite fruit">\n    <div bloc-option value="apple">Apple</div>\n    <div bloc-option value="banana">Banana</div>\n    <div bloc-option value="orange">Orange</div>\n  </bloc-select>\n</form>`,
+        customToken: `<bloc-select\n  style="\n    --bloc-select-border-hover: #10b981;\n    --bloc-select-option-selected: rgba(16, 185, 129, 0.12);\n    --bloc-select-option-hover: rgba(16, 185, 129, 0.06);\n  "\n  [formControl]="fruitControl"\n  placeholder="Green themed"\n>\n  <div bloc-option value="apple">Apple</div>\n  <div bloc-option value="banana">Banana</div>\n</bloc-select>`,
     };
 
     toggleLoading(): void {

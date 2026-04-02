@@ -4,14 +4,17 @@ import { DOCUMENT } from '@angular/common';
 export type SkeletonShape = 'line' | 'rect' | 'circle';
 
 const SKELETON_CSS = [
+    // Unlayered — authoritative structural rules
+    '.bloc-skeleton{display:block;position:relative;overflow:hidden;box-sizing:border-box}',
+    // @layer bloc-skeleton — overridable visual rules with :where() for zero specificity
     '@layer bloc-skeleton{',
-    '.bloc-skeleton{display:block;position:relative;overflow:hidden;box-sizing:border-box;',
-    'background:var(--bloc-skeleton-bg,#e2e8f0);border-radius:var(--bloc-skeleton-radius,8px)}',
-    '.bloc-skeleton--line{width:100%;height:var(--bloc-skeleton-line-height,1rem)}',
-    '.bloc-skeleton--rect{width:100%;height:var(--bloc-skeleton-rect-height,96px)}',
-    '.bloc-skeleton--circle{width:var(--bloc-skeleton-circle-size,48px);height:var(--bloc-skeleton-circle-size,48px);border-radius:9999px}',
-    '.bloc-skeleton--animated::after{content:"";position:absolute;inset:0;',
-    'background:linear-gradient(90deg,transparent,rgba(255,255,255,0.55),transparent);',
+    ':where(.bloc-skeleton){',
+    'background:var(--bloc-skeleton-bg,#d1d5db);border-radius:var(--bloc-skeleton-radius,8px)}',
+    ':where(.bloc-skeleton--line){width:100%;height:var(--bloc-skeleton-line-height,1rem)}',
+    ':where(.bloc-skeleton--rect){width:100%;height:var(--bloc-skeleton-rect-height,96px)}',
+    ':where(.bloc-skeleton--circle){width:var(--bloc-skeleton-circle-size,48px);height:var(--bloc-skeleton-circle-size,48px);border-radius:9999px}',
+    ':where(.bloc-skeleton--animated)::after{content:"";position:absolute;inset:0;',
+    'background:linear-gradient(90deg,transparent,var(--bloc-skeleton-shimmer,rgba(255,255,255,0.55)),transparent);',
     'transform:translateX(-100%);animation:bloc-skeleton-shimmer 1.4s ease-in-out infinite}',
     '@keyframes bloc-skeleton-shimmer{100%{transform:translateX(100%)}}',
     '}',
