@@ -17,34 +17,50 @@ Bloc UI is an Angular monorepo workspace containing a family of standalone UI co
 
 ## Project Map
 
-The workspace contains **9 Angular projects** registered in `angular.json`:
+The workspace contains **17 Angular projects** registered in `angular.json`:
 
-| Angular project       | Type        | npm package            |
-| --------------------- | ----------- | ---------------------- |
-| `bloc-ui-core`        | library     | `@bloc-ui/core`        |
-| `bloc-ui-theme`       | library     | `@bloc-ui/theme`       |
-| `bloc-ui-modal`       | library     | `@bloc-ui/modal`       |
-| `bloc-ui-table`       | library     | `@bloc-ui/table`       |
-| `bloc-ui-toast`       | library     | `@bloc-ui/toast`       |
-| `bloc-ui-tab`         | library     | `@bloc-ui/tab`         |
-| `bloc-ui-date-picker` | library     | `@bloc-ui/date-picker` |
-| `bloc-ui`             | library     | `@bloc-ui/kit`         |
-| `demo`                | application | _(internal)_           |
+| Angular project        | Type        | npm package             |
+| ---------------------- | ----------- | ----------------------- |
+| `bloc-ui-core`         | library     | `@bloc-ui/core`         |
+| `bloc-ui-theme`        | library     | `@bloc-ui/theme`        |
+| `bloc-ui-modal`        | library     | `@bloc-ui/modal`        |
+| `bloc-ui-accordion`    | library     | `@bloc-ui/accordion`    |
+| `bloc-ui-alert`        | library     | `@bloc-ui/alert`        |
+| `bloc-ui-autocomplete` | library     | `@bloc-ui/autocomplete` |
+| `bloc-ui-layout`       | library     | `@bloc-ui/layout`       |
+| `bloc-ui-overlay`      | library     | `@bloc-ui/overlay`      |
+| `bloc-ui-pagination`   | library     | `@bloc-ui/pagination`   |
+| `bloc-ui-select`       | library     | `@bloc-ui/select`       |
+| `bloc-ui-slider`       | library     | `@bloc-ui/slider`       |
+| `bloc-ui-table`        | library     | `@bloc-ui/table`        |
+| `bloc-ui-toast`        | library     | `@bloc-ui/toast`        |
+| `bloc-ui-tab`          | library     | `@bloc-ui/tab`          |
+| `bloc-ui-date-picker`  | library     | `@bloc-ui/date-picker`  |
+| `bloc-ui`              | library     | `@bloc-ui/kit`          |
+| `demo`                 | application | _(internal)_            |
 
 ---
 
 ## Package inventory
 
-| Package                | Version  | Purpose                                                                                                  | Extra peer deps  |
-| ---------------------- | -------- | -------------------------------------------------------------------------------------------------------- | ---------------- |
-| `@bloc-ui/core`        | `0.0.11` | Structural barebone components & directives. Zero design opinions; all colour via CSS custom properties. | —                |
-| `@bloc-ui/theme`       | `0.0.6`  | CSS-only optional token layer — `--bloc-*` custom properties, light/dark modes, Tailwind layer ordering. | —                |
-| `@bloc-ui/modal`       | `0.0.3`  | Programmatic modal/dialog service (`ModalService`, `ModalRef`, `ModalConfig`).                           | —                |
-| `@bloc-ui/table`       | `0.0.3`  | Data table components (`BlocTableComponent`, `BlocColumnComponent`).                                     | —                |
-| `@bloc-ui/toast`       | `0.0.3`  | Toast notifications (`ToastService`, `ToastComponent`, `ToastContainerComponent`).                       | —                |
-| `@bloc-ui/tab`         | `0.0.3`  | Tab group components (`BlocTabGroupComponent`, `BlocTabComponent`).                                      | —                |
-| `@bloc-ui/date-picker` | `0.0.5`  | Date picker and date-range picker (trigger-directive pattern, implements `ControlValueAccessor`).        | `@angular/forms` |
-| `@bloc-ui/kit`         | `1.0.2`  | Umbrella re-export — installs and re-exports all other `@bloc-ui/*` packages from a single entry point.  | —                |
+| Package                 | Version  | Purpose                                                                                                     | Extra peer deps  |
+| ----------------------- | -------- | ----------------------------------------------------------------------------------------------------------- | ---------------- |
+| `@bloc-ui/core`         | `0.0.12` | Structural barebone components & directives. Zero design opinions; all colour via CSS custom properties.    | —                |
+| `@bloc-ui/theme`        | `0.0.7`  | CSS-only optional token layer — `--bloc-*` custom properties, light/dark modes, Tailwind layer ordering.    | —                |
+| `@bloc-ui/modal`        | `0.0.4`  | Programmatic modal/dialog service (`ModalService`, `ModalRef`, `ModalConfig`).                              | —                |
+| `@bloc-ui/accordion`    | `0.0.2`  | Accessible accordion/collapsible sections (`BlocAccordionComponent`, trigger/content/chevron directives).   | —                |
+| `@bloc-ui/alert`        | `0.0.2`  | Alert/banner component — informational, success, warning, and error variants.                               | —                |
+| `@bloc-ui/autocomplete` | `0.0.2`  | Combo-box with filtered suggestions; implements `ControlValueAccessor`.                                     | `@angular/forms` |
+| `@bloc-ui/layout`       | `0.0.2`  | Sidebar layout shell (`BlocSidebarLayoutComponent`, `BlocSidebarComponent`, `BlocSidebarContentComponent`). | —                |
+| `@bloc-ui/overlay`      | `0.0.2`  | Low-level positioning service for floating panels (`OverlayService`, `OverlayRef`, `OverlayDirective`).     | —                |
+| `@bloc-ui/pagination`   | `0.0.2`  | Page-navigation control (`BlocPaginationComponent`).                                                        | —                |
+| `@bloc-ui/select`       | `0.0.2`  | Custom select with keyboard navigation; depends on `@bloc-ui/overlay`.                                      | `@angular/forms` |
+| `@bloc-ui/slider`       | `0.0.2`  | Range slider control; implements `ControlValueAccessor`.                                                    | `@angular/forms` |
+| `@bloc-ui/table`        | `0.0.4`  | Data table components (`BlocTableComponent`, `BlocColumnComponent`).                                        | —                |
+| `@bloc-ui/toast`        | `0.0.4`  | Toast notifications (`ToastService`, `ToastComponent`, `ToastContainerComponent`).                          | —                |
+| `@bloc-ui/tab`          | `0.0.4`  | Tab group components (`BlocTabGroupComponent`, `BlocTabComponent`).                                         | —                |
+| `@bloc-ui/date-picker`  | `0.0.6`  | Date picker and date-range picker (trigger-directive pattern, implements `ControlValueAccessor`).           | `@angular/forms` |
+| `@bloc-ui/kit`          | `1.0.3`  | Umbrella re-export — installs and re-exports all other `@bloc-ui/*` packages from a single entry point.     | —                |
 
 All packages declare `sideEffects: false` except `@bloc-ui/theme` (`sideEffects: ["**/*.css", "**/*.scss"]`).
 
@@ -52,18 +68,22 @@ All packages declare `sideEffects: false` except `@bloc-ui/theme` (`sideEffects:
 
 ## Secondary entry points
 
-### `@bloc-ui/core` — 6 secondary entry points
+### `@bloc-ui/core` — 10 secondary entry points
 
 The primary entry `@bloc-ui/core` re-exports all secondary entry points for backward compatibility.
 Consumers are encouraged to import from specific entry points for smaller bundles.
 
 | Import path              | Source folder                         | Exported symbols                                                   | Pattern   |
 | ------------------------ | ------------------------------------- | ------------------------------------------------------------------ | --------- |
+| `@bloc-ui/core/badge`    | `projects/bloc-ui-core/badge/src/`    | `BlocBadgeComponent`, `BlocBadgeModule`                            | Component |
 | `@bloc-ui/core/button`   | `projects/bloc-ui-core/button/src/`   | `BlocButtonComponent`, `BlocButtonModule`                          | Component |
 | `@bloc-ui/core/checkbox` | `projects/bloc-ui-core/checkbox/src/` | `BlocCheckboxComponent`, `BlocCheckboxModule`                      | Component |
 | `@bloc-ui/core/input`    | `projects/bloc-ui-core/input/src/`    | `BlocInputDirective`, `BlocInputErrorDirective`, `BlocInputModule` | Directive |
+| `@bloc-ui/core/progress` | `projects/bloc-ui-core/progress/src/` | `BlocProgressComponent`, `BlocProgressModule`                      | Component |
 | `@bloc-ui/core/radio`    | `projects/bloc-ui-core/radio/src/`    | `BlocRadioGroupComponent`, `BlocRadioComponent`, `BlocRadioModule` | Component |
+| `@bloc-ui/core/skeleton` | `projects/bloc-ui-core/skeleton/src/` | `BlocSkeletonDirective`, `BlocSkeletonModule`                      | Directive |
 | `@bloc-ui/core/spinner`  | `projects/bloc-ui-core/spinner/src/`  | `BlocSpinnerDirective`, `BlocSpinnerModule`                        | Directive |
+| `@bloc-ui/core/textarea` | `projects/bloc-ui-core/textarea/src/` | `BlocTextareaDirective`, `BlocTextareaModule`                      | Directive |
 | `@bloc-ui/core/toggle`   | `projects/bloc-ui-core/toggle/src/`   | `BlocToggleComponent`, `BlocToggleModule`                          | Component |
 
 ### `@bloc-ui/date-picker` — 3 secondary entry points
@@ -84,18 +104,34 @@ The primary entry `@bloc-ui/date-picker` re-exports `date-picker` and `range-dat
 @bloc-ui/kit
   ├── @bloc-ui/core
   ├── @bloc-ui/modal
+  ├── @bloc-ui/accordion
+  ├── @bloc-ui/alert
+  ├── @bloc-ui/autocomplete
+  ├── @bloc-ui/layout
+  ├── @bloc-ui/overlay
+  ├── @bloc-ui/pagination
+  ├── @bloc-ui/select        → depends on @bloc-ui/overlay
+  ├── @bloc-ui/slider
   ├── @bloc-ui/table
   ├── @bloc-ui/toast
   ├── @bloc-ui/date-picker
   └── @bloc-ui/tab
 
-@bloc-ui/core        — no @bloc-ui/* deps
-@bloc-ui/modal       — no @bloc-ui/* deps
-@bloc-ui/table       — no @bloc-ui/* deps
-@bloc-ui/toast       — no @bloc-ui/* deps
-@bloc-ui/tab         — no @bloc-ui/* deps
-@bloc-ui/date-picker — no @bloc-ui/* deps  (requires @angular/forms)
-@bloc-ui/theme       — no deps at all  (CSS/SCSS only)
+@bloc-ui/core          — no @bloc-ui/* deps
+@bloc-ui/modal         — no @bloc-ui/* deps
+@bloc-ui/accordion     — no @bloc-ui/* deps
+@bloc-ui/alert         — no @bloc-ui/* deps
+@bloc-ui/autocomplete  — no @bloc-ui/* deps  (requires @angular/forms)
+@bloc-ui/layout        — no @bloc-ui/* deps
+@bloc-ui/overlay       — no @bloc-ui/* deps
+@bloc-ui/pagination    — no @bloc-ui/* deps
+@bloc-ui/select        — depends on @bloc-ui/overlay  (requires @angular/forms)
+@bloc-ui/slider        — no @bloc-ui/* deps  (requires @angular/forms)
+@bloc-ui/table         — no @bloc-ui/* deps
+@bloc-ui/toast         — no @bloc-ui/* deps
+@bloc-ui/tab           — no @bloc-ui/* deps
+@bloc-ui/date-picker   — no @bloc-ui/* deps  (requires @angular/forms)
+@bloc-ui/theme         — no deps at all  (CSS/SCSS only)
 ```
 
 ---
@@ -137,16 +173,27 @@ An Angular SPA (`projects/demo/`) that showcases every component. It is deployed
 | Path                 | Component                      |
 | -------------------- | ------------------------------ |
 | `/`                  | `HomeComponent`                |
+| `/accordion`         | `AccordionDemoComponent`       |
+| `/alert`             | `AlertDemoComponent`           |
+| `/autocomplete`      | `AutocompleteDemoComponent`    |
+| `/badge`             | `BadgeDemoComponent`           |
 | `/button`            | `ButtonDemoComponent`          |
 | `/checkbox`          | `CheckboxDemoComponent`        |
 | `/date-picker`       | `DatePickerDemoComponent`      |
 | `/date-range-picker` | `DateRangePickerDemoComponent` |
 | `/input`             | `InputDemoComponent`           |
+| `/layout`            | `LayoutDemoComponent`          |
 | `/modal`             | `ModalDemoComponent`           |
+| `/pagination`        | `PaginationDemoComponent`      |
+| `/progress`          | `ProgressDemoComponent`        |
 | `/radio`             | `RadioDemoComponent`           |
+| `/select`            | `SelectDemoComponent`          |
+| `/skeleton`          | `SkeletonDemoComponent`        |
+| `/slider`            | `SliderDemoComponent`          |
 | `/spinner`           | `SpinnerDemoComponent`         |
 | `/tab`               | `TabDemoComponent`             |
 | `/table`             | `TableDemoComponent`           |
+| `/textarea`          | `TextareaDemoComponent`        |
 | `/toast`             | `ToastDemoComponent`           |
 | `/toggle`            | `ToggleDemoComponent`          |
 
@@ -171,8 +218,12 @@ Shared demo-only utilities: `icon/`, `install-command/`, `sample-code/`.
 **Build order** (defined in `build.sh`):
 
 ```
-bloc-ui-core → bloc-ui-theme → bloc-ui-modal → bloc-ui-table →
-bloc-ui-toast → bloc-ui-date-picker → bloc-ui-tab → bloc-ui (kit) → demo
+bloc-ui-core → bloc-ui-theme → bloc-ui-modal →
+bloc-ui-accordion → bloc-ui-alert → bloc-ui-autocomplete →
+bloc-ui-layout → bloc-ui-pagination → bloc-ui-slider →
+bloc-ui-table → bloc-ui-toast → bloc-ui-date-picker → bloc-ui-tab →
+bloc-ui-overlay → bloc-ui-select →
+bloc-ui (kit) → demo
 ```
 
 Output: `dist/<project-name>/` for each library.
@@ -208,7 +259,7 @@ Path aliases in root `tsconfig.json` resolve `@bloc-ui/*` imports directly to so
 
 ```
 bloc-ui-workspace/
-├── angular.json                       # Workspace config — all 9 projects
+├── angular.json                       # Workspace config — all 17 projects
 ├── tsconfig.json                      # Root TS config with path aliases
 ├── package.json                       # Workspace scripts & shared devDeps
 ├── build.sh                           # Ordered full-workspace build
@@ -218,11 +269,15 @@ bloc-ui-workspace/
 ├── projects/
 │   ├── bloc-ui-core/                  # @bloc-ui/core
 │   │   ├── public-api.ts              # Primary entry (re-exports all sub-libs)
+│   │   ├── badge/src/                 # @bloc-ui/core/badge
 │   │   ├── button/src/                # @bloc-ui/core/button
 │   │   ├── checkbox/src/              # @bloc-ui/core/checkbox
 │   │   ├── input/src/                 # @bloc-ui/core/input
+│   │   ├── progress/src/              # @bloc-ui/core/progress
 │   │   ├── radio/src/                 # @bloc-ui/core/radio
+│   │   ├── skeleton/src/              # @bloc-ui/core/skeleton
 │   │   ├── spinner/src/               # @bloc-ui/core/spinner
+│   │   ├── textarea/src/              # @bloc-ui/core/textarea
 │   │   ├── toggle/src/                # @bloc-ui/core/toggle
 │   │   └── tsconfig.spec.json         # Vitest config
 │   │
@@ -231,6 +286,14 @@ bloc-ui-workspace/
 │   │   └── styles/bloc-theme.scss     # CSS custom properties, light/dark mode
 │   │
 │   ├── bloc-ui-modal/src/             # @bloc-ui/modal
+│   ├── bloc-ui-accordion/src/         # @bloc-ui/accordion
+│   ├── bloc-ui-alert/src/             # @bloc-ui/alert
+│   ├── bloc-ui-autocomplete/src/      # @bloc-ui/autocomplete
+│   ├── bloc-ui-layout/src/            # @bloc-ui/layout
+│   ├── bloc-ui-overlay/src/           # @bloc-ui/overlay
+│   ├── bloc-ui-pagination/src/        # @bloc-ui/pagination
+│   ├── bloc-ui-select/src/            # @bloc-ui/select
+│   ├── bloc-ui-slider/src/            # @bloc-ui/slider
 │   ├── bloc-ui-table/src/             # @bloc-ui/table
 │   ├── bloc-ui-toast/src/             # @bloc-ui/toast
 │   ├── bloc-ui-tab/src/               # @bloc-ui/tab
@@ -244,7 +307,7 @@ bloc-ui-workspace/
 │   ├── bloc-ui/src/public-api.ts      # @bloc-ui/kit — umbrella re-export
 │   │
 │   └── demo/src/                      # Angular demo application
-│       └── app/                       # 13 route components + shared helpers
+│       └── app/                       # 24 route components + shared helpers
 │
 ├── e2e/                               # Playwright E2E specs
 ├── coverage/bloc-ui-core/             # Vitest V8 coverage output
@@ -258,14 +321,24 @@ bloc-ui-workspace/
 
 Each publishable package has its own GitHub Actions workflow triggered by a version-specific git tag. Packages are versioned and released independently.
 
-| Workflow                      | Trigger tag                   |
-| ----------------------------- | ----------------------------- |
-| `npm-publish-core.yml`        | `core-v*`                     |
-| `npm-publish-theme.yml`       | `theme-v*`                    |
-| `npm-publish-table.yml`       | `table-v*`                    |
-| `npm-publish-toast.yml`       | `toast-v*`                    |
-| `npm-publish-tab.yml`         | `tab-v*`                      |
-| `npm-publish-date-picker.yml` | `date-picker-v*`              |
-| `deploy-demo.yml`             | push to `main` → GitHub Pages |
+| Workflow                       | Trigger tag                   |
+| ------------------------------ | ----------------------------- |
+| `npm-publish-core.yml`         | `core-v*`                     |
+| `npm-publish-theme.yml`        | `theme-v*`                    |
+| `npm-publish-modal.yml`        | `modal-v*`                    |
+| `npm-publish-accordion.yml`    | `accordion-v*`                |
+| `npm-publish-alert.yml`        | `alert-v*`                    |
+| `npm-publish-autocomplete.yml` | `autocomplete-v*`             |
+| `npm-publish-layout.yml`       | `layout-v*`                   |
+| `npm-publish-overlay.yml`      | `overlay-v*`                  |
+| `npm-publish-pagination.yml`   | `pagination-v*`               |
+| `npm-publish-select.yml`       | `select-v*`                   |
+| `npm-publish-slider.yml`       | `slider-v*`                   |
+| `npm-publish-table.yml`        | `table-v*`                    |
+| `npm-publish-toast.yml`        | `toast-v*`                    |
+| `npm-publish-tab.yml`          | `tab-v*`                      |
+| `npm-publish-date-picker.yml`  | `date-picker-v*`              |
+| `npm-publish-kit.yml`          | `kit-v*`                      |
+| `deploy-demo.yml`              | push to `main` → GitHub Pages |
 
 `@bloc-ui/kit` is re-released whenever a constituent package ships a breaking change, since it pins range versions (`^x.y.z`) for each dependency.
