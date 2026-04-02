@@ -18,7 +18,6 @@ export class ProgressDemoComponent {
     readonly uploadProgress = signal(42);
 
     readonly snippets = {
-        variants: `<bloc-progress [value]="18"></bloc-progress>\n<bloc-progress variant="success" [value]="63"></bloc-progress>\n<bloc-progress variant="warning" [value]="78"></bloc-progress>\n<bloc-progress variant="danger" [value]="92"></bloc-progress>`,
         sizes: `<bloc-progress size="sm" [value]="30"></bloc-progress>\n<bloc-progress size="md" [value]="52"></bloc-progress>\n<bloc-progress size="lg" [value]="74"></bloc-progress>`,
         labelled: `<bloc-progress label="Upload progress"\n  [showValue]="true"\n  [value]="uploadProgress()"></bloc-progress>`,
         customToken: `<bloc-progress\n  [value]="64"\n  style="--bloc-progress-track-bg: #dbeafe; --bloc-progress-fill: #2563eb"></bloc-progress>`,

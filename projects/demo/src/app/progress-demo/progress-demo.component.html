@@ -6,26 +6,13 @@
     <app-install-command package="@bloc-ui/core" />
 </header>
 
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Variants</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Status colours</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Use intent colours to reinforce the task state.</p>
-        <div class="flex flex-col gap-4">
-            <bloc-progress [value]="18"></bloc-progress>
-            <bloc-progress variant="success" [value]="63"></bloc-progress>
-            <bloc-progress variant="warning" [value]="78"></bloc-progress>
-            <bloc-progress variant="danger" [value]="92"></bloc-progress>
-        </div>
-        <app-sample-code [code]="snippets.variants" />
-    </div>
-</div>
-
 <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Sizing</h2>
 <div class="grid grid-cols-[repeat(auto-fill,minmax(280px,1fr))] gap-5 mb-10">
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
         <h3 class="m-0 text-base font-semibold text-slate-900">Track density</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Choose the right visual weight for the layout.</p>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Choose the right visual weight for the layout.
+        </p>
         <div class="flex flex-col gap-4">
             <bloc-progress size="sm" [value]="30"></bloc-progress>
             <bloc-progress size="md" [value]="52"></bloc-progress>

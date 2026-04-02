@@ -5,59 +5,43 @@
     width: 100%;
 }
 
-.bloc-progress__meta {
+:where(.bloc-progress__meta) {
     display: flex;
     align-items: center;
     justify-content: space-between;
     gap: 0.75rem;
     font-size: 0.8125rem;
-    color: var(--bloc-progress-meta-color, #475569);
+    color: var(--bloc-progress-meta-color, #374151);
 }
 
-.bloc-progress__label,
-.bloc-progress__value {
+:where(.bloc-progress__label),
+:where(.bloc-progress__value) {
     line-height: 1.2;
 }
 
-.bloc-progress__track {
+:where(.bloc-progress__track) {
     overflow: hidden;
     width: 100%;
-    background: var(--bloc-progress-track-bg, #e2e8f0);
+    background: var(--bloc-progress-track-bg, #d1d5db);
     border-radius: var(--bloc-progress-radius, 999px);
 }
 
-.bloc-progress__fill {
+:where(.bloc-progress__fill) {
     height: 100%;
     width: 0;
     border-radius: inherit;
-    background: var(--bloc-progress-fill, #3b82f6);
+    background: var(--bloc-progress-fill, var(--bloc-primary, #7b7b7b));
     transition: width 180ms ease;
 }
 
-:host(.bloc-progress--sm) .bloc-progress__track {
+:where(:host(.bloc-progress--sm)) .bloc-progress__track {
     height: var(--bloc-progress-height-sm, 0.375rem);
 }
 
-:host(.bloc-progress--md) .bloc-progress__track {
+:where(:host(.bloc-progress--md)) .bloc-progress__track {
     height: var(--bloc-progress-height-md, 0.625rem);
 }
 
-:host(.bloc-progress--lg) .bloc-progress__track {
+:where(:host(.bloc-progress--lg)) .bloc-progress__track {
     height: var(--bloc-progress-height-lg, 0.875rem);
-}
-
-:host(.bloc-progress--primary) .bloc-progress__fill {
-    background: var(--bloc-progress-primary-fill, #3b82f6);
-}
-
-:host(.bloc-progress--success) .bloc-progress__fill {
-    background: var(--bloc-progress-success-fill, #16a34a);
-}
-
-:host(.bloc-progress--warning) .bloc-progress__fill {
-    background: var(--bloc-progress-warning-fill, #f59e0b);
-}
-
-:host(.bloc-progress--danger) .bloc-progress__fill {
-    background: var(--bloc-progress-danger-fill, #ef4444);
 }

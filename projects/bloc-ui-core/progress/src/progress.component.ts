@@ -1,6 +1,5 @@
 import { Component, computed, input } from '@angular/core';
 
-export type ProgressVariant = 'primary' | 'success' | 'warning' | 'danger';
 export type ProgressSize = 'sm' | 'md' | 'lg';
 
 @Component({
@@ -23,7 +22,7 @@ export type ProgressSize = 'sm' | 'md' | 'lg';
     `,
     styleUrl: './progress.component.scss',
     host: {
-        '[class]': '"bloc-progress bloc-progress--" + variant() + " bloc-progress--" + size()',
+        '[class]': '"bloc-progress bloc-progress--" + size()',
         role: 'progressbar',
         '[attr.aria-valuemin]': '0',
         '[attr.aria-valuemax]': 'normalizedMax()',
@@ -37,9 +36,6 @@ export class BlocProgressComponent {
 
     /** Maximum progress value. */
     readonly max = input<number>(100);
-
-    /** Visual variant for the filled portion. */
-    readonly variant = input<ProgressVariant>('primary');
 
     /** Preset track height. */
     readonly size = input<ProgressSize>('md');
