@@ -84,12 +84,18 @@
             <!-- Standalone items -->
             @for (item of standaloneItems; track item.path) {
                 <button
-                    class="cursor-pointer px-5 py-[0.65rem] text-[0.9rem] text-slate-400 hover:bg-[#273549] hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left"
+                    class="cursor-pointer px-5 py-[0.65rem] text-[0.9rem] text-slate-400 hover:bg-[#273549] hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left flex items-center gap-2"
                     [routerLink]="item.path"
                     routerLinkActive="nav-active"
                     [routerLinkActiveOptions]="{ exact: false }"
                 >
                     {{ item.label }}
+                    @if (item.beta) {
+                        <span
+                            class="text-[0.6rem] font-semibold uppercase tracking-wide bg-amber-500/20 text-amber-400 px-1.5 py-0.5 rounded"
+                            >beta</span
+                        >
+                    }
                 </button>
             }
         </nav>
