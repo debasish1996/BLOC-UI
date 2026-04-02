@@ -1,63 +1,39 @@
 # @bloc-ui/overlay
 
-> **Latest:** v0.0.2
+> **Status: Internal / WIP — Not for direct consumer use**
 
-This project was generated using [Angular CLI](https://github.com/angular/angular-cli) version 21.2.0.
+> ⚠️ This package is an **internal platform primitive**. It is consumed by `@bloc-ui/select` and `@bloc-ui/autocomplete` internally and is **not intended for direct import** by application code. Its API is unstable and subject to change without notice.
 
-## Code scaffolding
+---
 
-Angular CLI includes powerful code scaffolding tools. To generate a new component, run:
+## Purpose
 
-```bash
-ng generate component component-name
-```
+`@bloc-ui/overlay` provides the shared overlay infrastructure used by Bloc UI components that render floating panels — such as dropdowns, selects, and autocomplete lists. It manages:
 
-For a complete list of available schematics (such as `components`, `directives`, or `pipes`), run:
+- A single global overlay container appended to `<body>` (shared across all consumer components to avoid z-index stacking issues).
+- Panel element creation with correct `position: absolute` coordinates, computed via `OverlayPositioningService`.
+- Backdrop support for modal-style overlays.
+- `OverlayRef` for programmatic open/close and cleanup of individual panels.
+- `BlocOverlayDirective` for template-driven overlay attachment.
 
-```bash
-ng generate --help
-```
+---
 
-## Building
+## Consumers
 
-To build the library, run:
+The following Bloc UI packages depend on `@bloc-ui/overlay` as a direct dependency:
 
-```bash
-ng build bloc-ui-overlay
-```
+| Package                 | Use                         |
+| ----------------------- | --------------------------- |
+| `@bloc-ui/select`       | Dropdown panel positioning  |
+| `@bloc-ui/autocomplete` | Suggestion list positioning |
 
-This command will compile your project, and the build artifacts will be placed in the `dist/` directory.
+---
 
-### Publishing the Library
+## Why Not for Direct Consumer Import
 
-Once the project is built, you can publish your library by following these steps:
+This package does not expose a ready-to-use consumer API. It is a lower-level building block with no stability guarantees. Consumer-facing overlay-driven patterns (tooltip, popover) are planned for Phase 3 of the Bloc UI roadmap and will be exposed through their own packages with documented APIs.
 
-1. Navigate to the `dist` directory:
-
-    ```bash
-    cd dist/bloc-ui-overlay
-    ```
-
-2. Run the `npm publish` command to publish your library to the npm registry:
-    ```bash
-    npm publish
-    ```
-
-## Running unit tests
-
-To execute unit tests with the [Karma](https://karma-runner.github.io) test runner, use the following command:
-
-```bash
-ng test
-```
-
-## Running end-to-end tests
-
-For end-to-end (e2e) testing, run:
-
-```bash
-ng e2e
-```
+`@bloc-ui/overlay` is **excluded from `@bloc-ui/kit`** exports deliberately. Do not import it directly in application code.
 
 Angular CLI does not come with an end-to-end testing framework by default. You can choose one that suits your needs.
 

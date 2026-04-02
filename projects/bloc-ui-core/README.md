@@ -31,21 +31,36 @@ You can also import everything from the primary entry point (`@bloc-ui/core`) fo
 
 ## Components & Directives
 
-| Export                    | Selector                               | Entry Point              | Type      |
-| ------------------------- | -------------------------------------- | ------------------------ | --------- |
-| `BlocButtonComponent`     | `button[blocButton]`                   | `@bloc-ui/core/button`   | Component |
-| `BlocCheckboxComponent`   | `bloc-checkbox`                        | `@bloc-ui/core/checkbox` | Component |
-| `BlocInputDirective`      | `input[blocInput]`                     | `@bloc-ui/core/input`    | Directive |
-| `BlocInputGroupDirective` | `bloc-input-group`, `[blocInputGroup]` | `@bloc-ui/core/input`    | Directive |
-| `BlocPrefixDirective`     | `bloc-prefix`, `[blocPrefix]`          | `@bloc-ui/core/input`    | Directive |
-| `BlocSuffixDirective`     | `bloc-suffix`, `[blocSuffix]`          | `@bloc-ui/core/input`    | Directive |
-| `BlocInputErrorDirective` | `[blocInputError]`, `bloc-input-error` | `@bloc-ui/core/input`    | Directive |
-| `BlocRadioGroupComponent` | `bloc-radio-group`                     | `@bloc-ui/core/radio`    | Component |
-| `BlocRadioComponent`      | `bloc-radio`                           | `@bloc-ui/core/radio`    | Component |
-| `BlocSpinnerDirective`    | `bloc-spinner`, `[blocSpinner]`        | `@bloc-ui/core/spinner`  | Directive |
-| `BlocToggleComponent`     | `bloc-toggle`                          | `@bloc-ui/core/toggle`   | Component |
+| Export                                    | Selector                               | Entry Point              | Type      |
+| ----------------------------------------- | -------------------------------------- | ------------------------ | --------- |
+| `BlocButtonComponent`                     | `button[blocButton]`                   | `@bloc-ui/core/button`   | Component |
+| `BlocCheckboxComponent`                   | `bloc-checkbox`                        | `@bloc-ui/core/checkbox` | Component |
+| `BlocInputDirective`                      | `input[blocInput]`                     | `@bloc-ui/core/input`    | Directive |
+| `BlocInputGroupDirective`                 | `bloc-input-group`, `[blocInputGroup]` | `@bloc-ui/core/input`    | Directive |
+| `BlocPrefixDirective`                     | `bloc-prefix`, `[blocPrefix]`          | `@bloc-ui/core/input`    | Directive |
+| `BlocSuffixDirective`                     | `bloc-suffix`, `[blocSuffix]`          | `@bloc-ui/core/input`    | Directive |
+| `BlocInputErrorDirective`                 | `[blocInputError]`, `bloc-input-error` | `@bloc-ui/core/input`    | Directive |
+| `BlocRadioGroupComponent`                 | `bloc-radio-group`                     | `@bloc-ui/core/radio`    | Component |
+| `BlocRadioComponent`                      | `bloc-radio`                           | `@bloc-ui/core/radio`    | Component |
+| `BlocSpinnerDirective`                    | `bloc-spinner`, `[blocSpinner]`        | `@bloc-ui/core/spinner`  | Directive |
+| `BlocToggleComponent`                     | `bloc-toggle`                          | `@bloc-ui/core/toggle`   | Component |
+| `BlocBadgeComponent` ⚠️ [EXPERIMENTAL]    | `bloc-badge`                           | `@bloc-ui/core/badge`    | Component |
+| `BlocProgressComponent` ⚠️ [EXPERIMENTAL] | `bloc-progress`                        | `@bloc-ui/core/progress` | Component |
+| `BlocSkeletonDirective` ⚠️ [EXPERIMENTAL] | `bloc-skeleton`, `[blocSkeleton]`      | `@bloc-ui/core/skeleton` | Directive |
+| `BlocTextareaDirective` ⚠️ [EXPERIMENTAL] | `textarea[blocTextarea]`               | `@bloc-ui/core/textarea` | Directive |
 
-NgModule wrappers (`BlocButtonModule`, `BlocCheckboxModule`, `BlocInputModule`, `BlocRadioModule`, `BlocSpinnerModule`, `BlocToggleModule`) are also exported for NgModule-based applications.
+NgModule wrappers (`BlocButtonModule`, `BlocCheckboxModule`, `BlocInputModule`, `BlocRadioModule`, `BlocSpinnerModule`, `BlocToggleModule`, `BlocBadgeModule`, `BlocProgressModule`, `BlocSkeletonModule`, `BlocTextareaModule`) are also exported for NgModule-based applications.
+
+> ⚠️ Entries marked `[EXPERIMENTAL]` are available and functional but their API may change before reaching stable status. Use them with that expectation.
+
+Import experimental entry points directly from their secondary entry path:
+
+```ts
+import { BlocBadgeComponent } from '@bloc-ui/core/badge';
+import { BlocProgressComponent } from '@bloc-ui/core/progress';
+import { BlocSkeletonDirective } from '@bloc-ui/core/skeleton';
+import { BlocTextareaDirective } from '@bloc-ui/core/textarea';
+```
 
 ---
 

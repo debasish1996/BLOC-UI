@@ -20,7 +20,6 @@ export * from '@bloc-ui/alert';
 export * from '@bloc-ui/autocomplete';
 export * from '@bloc-ui/layout';
 export * from '@bloc-ui/modal';
-export * from '@bloc-ui/overlay';
 export * from '@bloc-ui/pagination';
 export * from '@bloc-ui/select';
 export * from '@bloc-ui/slider';
