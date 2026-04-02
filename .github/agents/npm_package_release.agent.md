@@ -45,6 +45,80 @@ The user MUST specify which package to release: `core`, `modal`, `table`, `toast
 4. **Clean working tree** — Run `git status --porcelain`. If there are uncommitted changes, stop and ask the user to commit or stash first.
 5. **On expected branch** — Run `git branch --show-current`. Warn the user if they are not on `main` (but allow override if they confirm).
 
+## Security Check (mandatory, run before versioning)
+
+Run all checks below and **stop immediately** if any check fails. Report exactly what was found and do not proceed until the user resolves the issue.
+
+### 1. Secrets / credential scan
+
+Search the entire repo for common secret patterns and fail if any matches are found outside of test fixtures or intentionally-fake example values:
+
+```
+git grep -n -E "(API_KEY|SECRET|PASSWORD|TOKEN|PRIVATE_KEY|AWS_|AUTH_TOKEN|BEARER|CLIENT_SECRET|DATABASE_URL|DB_PASSWORD|MONGODB_URI|REDIS_URL)\s*[:=]\s*['\"]?[A-Za-z0-9+/=]{8,}" -- ":(exclude)*.spec.ts" ":(exclude)*.spec.js" ":(exclude)*.md"
+```
+
+If matches are found, **stop** and tell the user:  
+_"Potential secret or credential found in tracked files. Remove or rotate the value before releasing."_
+
+### 2. Private key / certificate leak
+
+```
+git grep -rn "BEGIN (RSA|EC|OPENSSH|PGP|CERTIFICATE)" --
+```
+
+If any match is found (other than intentionally-fake test fixtures), **stop** with:  
+_"Private key or certificate material detected in source. Do not release until removed."_
+
+### 3. `.env` and config files accidentally staged
+
+```
+git ls-files | grep -E "(\.env$|\.env\.|secrets\.|\.pem$|\.key$|\.p12$|\.pfx$|id_rsa|id_ed25519)"
+```
+
+If any such file is tracked, **stop** and tell the user to untrack and `.gitignore` it.
+
+### 4. Dependency vulnerability audit
+
+```
+npm audit --audit-level=high
+```
+
+- If **high** or **critical** vulnerabilities are reported, **stop** and show the audit summary.
+- Warn (but do not block) on **moderate** vulnerabilities.
+
+### 5. Published-package file scope check
+
+Read the `files` field (or check for a `.npmignore`) in the target `package.json`:
+
+- Confirm that no test files (`*.spec.ts`, `*.spec.js`), internal tooling (`scripts/`, `tools/`), development configs (`.env*`, `tsconfig.spec.*`), or raw source `.ts` files outside the declared public API are included in the published artifact.
+- If the `files` field is missing entirely, warn the user that all non-`.gitignore`d files will be published.
+
+### 6. Hardcoded internal URLs / IPs
+
+```
+git grep -n -E "(https?://(localhost|127\.0\.0\.1|192\.168\.|10\.|172\.(1[6-9]|2[0-9]|3[01])\.)|jdbc:|mongodb\+srv://|amqp://)" -- ":(exclude)*.spec.ts" ":(exclude)*.md" ":(exclude)*.test.ts"
+```
+
+If internal/staging endpoints are found in non-test source files, **stop** and ask the user to confirm or remove them.
+
+### Security check summary
+
+After all six checks pass, print a short confirmation block, e.g.:
+
+```
+✅ Security checks passed
+  • No secrets/credentials detected
+  • No private keys or certificates found
+  • No .env or key files tracked
+  • npm audit: 0 high/critical vulnerabilities
+  • Published file scope looks clean
+  • No internal URLs in source files
+```
+
+Then continue to the **Versioning** step.
+
+---
+
 ## Versioning
 
 1. The project name must already be known from the step above. If not, stop and ask.
