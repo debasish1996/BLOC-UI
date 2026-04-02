@@ -1,6 +1,6 @@
 {
     "name": "@bloc-ui/kit",
-    "version": "1.0.2",
+    "version": "1.0.3",
     "repository": {
         "type": "git",
         "url": "https://github.com/debasish1996/BLOC-UI.git",
@@ -11,20 +11,20 @@
         "@angular/core": "^21.2.0"
     },
     "dependencies": {
-        "@bloc-ui/accordion": "^0.0.1",
-        "@bloc-ui/alert": "^0.0.1",
-        "@bloc-ui/autocomplete": "^0.0.1",
-        "@bloc-ui/core": "^0.0.11",
-        "@bloc-ui/layout": "^0.0.1",
-        "@bloc-ui/modal": "^0.0.3",
-        "@bloc-ui/overlay": "^0.0.1",
-        "@bloc-ui/pagination": "^0.0.1",
-        "@bloc-ui/select": "^0.0.1",
-        "@bloc-ui/slider": "^0.0.1",
-        "@bloc-ui/table": "^0.0.3",
-        "@bloc-ui/toast": "^0.0.3",
-        "@bloc-ui/date-picker": "^0.0.3",
-        "@bloc-ui/tab": "^0.0.3",
+        "@bloc-ui/accordion": "^0.0.2",
+        "@bloc-ui/alert": "^0.0.2",
+        "@bloc-ui/autocomplete": "^0.0.2",
+        "@bloc-ui/core": "^0.0.12",
+        "@bloc-ui/layout": "^0.0.2",
+        "@bloc-ui/modal": "^0.0.4",
+        "@bloc-ui/overlay": "^0.0.2",
+        "@bloc-ui/pagination": "^0.0.2",
+        "@bloc-ui/select": "^0.0.2",
+        "@bloc-ui/slider": "^0.0.2",
+        "@bloc-ui/table": "^0.0.4",
+        "@bloc-ui/toast": "^0.0.4",
+        "@bloc-ui/date-picker": "^0.0.6",
+        "@bloc-ui/tab": "^0.0.4",
         "tslib": "^2.3.0"
     },
     "sideEffects": false
