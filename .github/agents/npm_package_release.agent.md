@@ -80,10 +80,12 @@ If any such file is tracked, **stop** and tell the user to untrack and `.gitigno
 ### 4. Dependency vulnerability audit
 
 ```
-npm audit --audit-level=high
+npm audit --audit-level=high --omit=dev
 ```
 
-- If **high** or **critical** vulnerabilities are reported, **stop** and show the audit summary.
+Only direct (production) dependencies are audited. Run the command above, which excludes `devDependencies` from the report.
+
+- If **high** or **critical** vulnerabilities are reported in direct dependencies, **stop** and show the audit summary.
 - Warn (but do not block) on **moderate** vulnerabilities.
 
 ### 5. Published-package file scope check
