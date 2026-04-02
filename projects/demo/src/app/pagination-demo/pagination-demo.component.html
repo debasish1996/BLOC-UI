@@ -3,41 +3,164 @@
     <p class="m-0 text-slate-400 text-[0.95rem]">
         Page navigation with boundary pages, sibling ranges, and built-in ellipsis handling.
     </p>
+    <p class="m-0 text-xs text-slate-400 mt-1">
+        Keyboard: Tab / Enter / Space on each button. ARIA:
+        <code>nav</code> with <code>aria-label</code>, <code>aria-current="page"</code> on the
+        active page.
+    </p>
     <app-install-command package="@bloc-ui/pagination" />
 </header>
 
+<!-- Default -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Default</h2>
 <div class="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-5 mb-10">
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Default Pagination</h3>
+        <h3 class="m-0 text-base font-semibold text-slate-900">Basic</h3>
         <p class="m-0 text-[0.82rem] text-slate-400">
             Handy for moderate page counts where users benefit from quick direct jumps.
         </p>
-        <bloc-pagination
-            [page]="currentPage()"
-            [totalPages]="8"
-            (pageChange)="currentPage.set($event)"
-        />
+        <bloc-pagination [(page)]="currentPage" [totalPages]="10" />
         <p class="m-0 text-xs text-slate-400">
             Current page: <strong>{{ currentPage() }}</strong>
         </p>
         <app-sample-code [code]="snippets.basic" />
     </div>
+</div>
 
+<!-- Configurations -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+    Configurations
+</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-5 mb-10">
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
         <h3 class="m-0 text-base font-semibold text-slate-900">Wider Ranges</h3>
         <p class="m-0 text-[0.82rem] text-slate-400">
             Increase sibling visibility when list exploration matters more than density.
         </p>
         <bloc-pagination
-            [page]="densePage()"
+            [(page)]="densePage"
             [totalPages]="24"
             [siblingCount]="2"
             [boundaryCount]="1"
-            (pageChange)="densePage.set($event)"
         />
-        <p class="m-0 text-xs text-slate-400">
-            Current page: <strong>{{ densePage() }}</strong>
-        </p>
         <app-sample-code [code]="snippets.dense" />
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Compact Boundaries</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Minimal chrome — show only the current page and direct neighbours.
+        </p>
+        <bloc-pagination
+            [(page)]="compactPage"
+            [totalPages]="15"
+            [siblingCount]="1"
+            [boundaryCount]="1"
+        />
+        <app-sample-code [code]="snippets.compact" />
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Large Page Count</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Ellipsis grouping keeps the control readable for hundreds of pages.
+        </p>
+        <bloc-pagination
+            [(page)]="largePage"
+            [totalPages]="100"
+            [siblingCount]="1"
+            [boundaryCount]="1"
+        />
+        <app-sample-code [code]="snippets.large" />
+    </div>
+</div>
+
+<!-- States -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">States</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-5 mb-10">
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+        <h3 class="m-0 text-base font-semibold text-slate-900">First Page</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">Prev is disabled — only Next is active.</p>
+        <bloc-pagination [(page)]="firstPage" [totalPages]="8" />
+        <app-sample-code [code]="snippets.stateFirst" />
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Last Page</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">Next is disabled — only Prev is active.</p>
+        <bloc-pagination [(page)]="lastPage" [totalPages]="8" />
+        <app-sample-code [code]="snippets.stateLast" />
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Single Page</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            When there is only one page, both controls are disabled.
+        </p>
+        <bloc-pagination [(page)]="singlePage" [totalPages]="1" />
+        <app-sample-code [code]="snippets.stateSingle" />
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Globally Disabled</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Use <code>[disabled]="true"</code> to block all interaction — e.g. during data loading.
+        </p>
+        <bloc-pagination [(page)]="currentPage" [totalPages]="8" [disabled]="true" />
+        <app-sample-code [code]="snippets.disabled" />
+    </div>
+</div>
+
+<!-- First & Last buttons -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+    First &amp; Last Buttons
+</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-5 mb-10">
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Show First &amp; Last</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Add <code>[showFirstLast]="true"</code> to expose quick-jump buttons to page 1 and the
+            final page.
+        </p>
+        <bloc-pagination [(page)]="firstLastPage" [totalPages]="20" [showFirstLast]="true" />
+        <app-sample-code [code]="snippets.firstLast" />
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4 col-span-full">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Text Labels</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Pass text labels alongside the default icons, or use them for full localization.
+        </p>
+        <bloc-pagination
+            [(page)]="textLabelsPage"
+            [totalPages]="20"
+            [showFirstLast]="true"
+            prevLabel="Prev"
+            nextLabel="Next"
+            firstLabel="First"
+            lastLabel="Last"
+        />
+        <app-sample-code [code]="snippets.customLabels" />
+    </div>
+</div>
+
+<!-- Theming -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Theming</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-5">
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Custom tokens</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Override active colour, border, and radius without touching component logic.
+        </p>
+        <bloc-pagination
+            [(page)]="currentPage"
+            [totalPages]="8"
+            style="
+                --bloc-pagination-active-bg: #059669;
+                --bloc-pagination-radius: 9999px;
+                --bloc-pagination-border: #d1fae5;
+            "
+        />
+        <app-sample-code [code]="snippets.theming" />
     </div>
 </div>

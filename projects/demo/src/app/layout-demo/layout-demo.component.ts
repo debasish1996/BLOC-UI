@@ -24,7 +24,58 @@ export class LayoutDemoComponent {
     readonly collapsed = signal(false);
 
     readonly snippets = {
-        basic: `<bloc-sidebar-layout [collapsed]="collapsed">\n  <bloc-sidebar>\n    <div class="sidebar-brand">Bloc UI</div>\n    <nav>\n      <a>Overview</a>\n      <a>Components</a>\n      <a>Settings</a>\n    </nav>\n  </bloc-sidebar>\n\n  <bloc-sidebar-content>\n    <h2>Workspace</h2>\n    <p>Main content goes here.</p>\n  </bloc-sidebar-content>\n</bloc-sidebar-layout>`,
+        basic: `<bloc-sidebar-layout [collapsed]="collapsed" sidebarWidth="14rem">
+  <bloc-sidebar>
+    <nav>
+      <a>Overview</a>
+      <a>Components</a>
+      <a>Settings</a>
+    </nav>
+  </bloc-sidebar>
+
+  <bloc-sidebar-content>
+    <h4>Dashboard</h4>
+  </bloc-sidebar-content>
+</bloc-sidebar-layout>`,
+
+        collapsed: `<bloc-sidebar-layout [collapsed]="true" sidebarWidth="14rem">
+  <bloc-sidebar><!-- content clips to collapsedWidth --></bloc-sidebar>
+  <bloc-sidebar-content>...</bloc-sidebar-content>
+</bloc-sidebar-layout>`,
+
+        themingDark: `<!-- Override tokens inline or via a theme class -->
+<bloc-sidebar
+  style="
+    --bloc-sidebar-bg: #0f172a;
+    --bloc-sidebar-color: #e2e8f0;
+    --bloc-sidebar-border: #1e293b;
+    --bloc-sidebar-radius: 0.75rem;
+  "
+>
+  ...
+</bloc-sidebar>`,
+
+        themingRadius: `<!-- Adjust shape and density per panel -->
+<bloc-sidebar
+  style="
+    --bloc-sidebar-radius: 0;
+    --bloc-sidebar-padding: 0.5rem;
+  "
+>...</bloc-sidebar>
+
+<bloc-sidebar-content
+  style="
+    --bloc-sidebar-content-radius: 0;
+    --bloc-sidebar-content-padding: 0.75rem;
+  "
+>...</bloc-sidebar-content>`,
+
+        responsive: `/* Built-in — switches to stacked single column at ≤900 px */
+@media (max-width: 900px) {
+  bloc-sidebar-layout {
+    grid-template-columns: 1fr;
+  }
+}`,
     };
 
     toggleCollapsed(): void {
