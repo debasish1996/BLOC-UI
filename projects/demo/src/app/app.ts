@@ -58,6 +58,7 @@ export class App {
         { path: 'table', label: 'Table' },
         { path: 'tab', label: 'Tab' },
         { path: 'toast', label: 'Toast' },
+        { path: 'tooltip', label: 'Tooltip', beta: true },
     ];
 
     readonly coreExpanded = signal(this._isCoreRoute(this.router.url));

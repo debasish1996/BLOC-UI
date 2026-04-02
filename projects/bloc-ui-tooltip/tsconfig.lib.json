@@ -3,10 +3,15 @@
 {
     "extends": "../../tsconfig.json",
     "compilerOptions": {
-        "outDir": "../../out-tsc/app",
-        "rootDir": "../../",
-        "types": ["feather-icons"]
+        "outDir": "../../out-tsc/lib",
+        "rootDir": ".",
+        "declaration": true,
+        "declarationMap": true,
+        "types": [],
+        "paths": {
+            "@bloc-ui/overlay": ["../../dist/bloc-ui-overlay"]
+        }
     },
     "include": ["src/**/*.ts"],
-    "exclude": ["src/**/*.spec.ts"]
+    "exclude": ["**/*.spec.ts"]
 }

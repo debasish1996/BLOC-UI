@@ -23,6 +23,7 @@ import { TableDemoComponent } from './table-demo/table-demo.component';
 import { TextareaDemoComponent } from './textarea-demo/textarea-demo.component';
 import { ToastDemoComponent } from './toast-demo/toast-demo.component';
 import { ToggleDemoComponent } from './toggle-demo/toggle-demo.component';
+import { TooltipDemoComponent } from './tooltip-demo/tooltip-demo.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -49,4 +50,5 @@ export const routes: Routes = [
     { path: 'textarea', component: TextareaDemoComponent },
     { path: 'toast', component: ToastDemoComponent },
     { path: 'toggle', component: ToggleDemoComponent },
+    { path: 'tooltip', component: TooltipDemoComponent },
 ];

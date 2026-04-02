@@ -25,6 +25,7 @@
         "@bloc-ui/toast": "^0.0.4",
         "@bloc-ui/date-picker": "^0.0.6",
         "@bloc-ui/tab": "^0.0.4",
+        "@bloc-ui/tooltip": "^0.0.1",
         "tslib": "^2.3.0"
     },
     "sideEffects": false

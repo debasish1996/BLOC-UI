@@ -18,6 +18,7 @@
         "@bloc-ui/table",
         "@bloc-ui/toast",
         "@bloc-ui/date-picker",
-        "@bloc-ui/tab"
+        "@bloc-ui/tab",
+        "@bloc-ui/tooltip"
     ]
 }

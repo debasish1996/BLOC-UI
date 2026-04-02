@@ -53,6 +53,9 @@ npx ng build bloc-ui-overlay $CONFIG
 echo "Building bloc-ui-select..."
 npx ng build bloc-ui-select $CONFIG
 
+echo "Building bloc-ui-tooltip..."
+npx ng build bloc-ui-tooltip $CONFIG
+
 echo "Building bloc-ui..."
 npx ng build bloc-ui $CONFIG
 

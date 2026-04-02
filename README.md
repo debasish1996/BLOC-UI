@@ -47,6 +47,7 @@ Available and functional, but the API may change. Not yet at the full stable bar
 | `@bloc-ui/pagination`   | Page navigation with configurable sibling/boundary counts and custom labels  |
 | `@bloc-ui/select`       | Single-select dropdown with overlay, keyboard nav, search, and loading state |
 | `@bloc-ui/slider`       | Range slider with Angular forms integration                                  |
+| `@bloc-ui/tooltip`      | Hover/focus tooltip with intelligent repositioning and delay control         |
 
 ## Components
 
@@ -68,19 +69,20 @@ Available and functional, but the API may change. Not yet at the full stable bar
 
 ### Experimental components
 
-| Component                | Package                 | Entry Point              | Selector / API                                                  | Description                                                      |
-| ------------------------ | ----------------------- | ------------------------ | --------------------------------------------------------------- | ---------------------------------------------------------------- |
-| **Badge** `[EXP]`        | `@bloc-ui/core`         | `@bloc-ui/core/badge`    | `bloc-badge`                                                    | Labelling pill with variant and size presets                     |
-| **Progress** `[EXP]`     | `@bloc-ui/core`         | `@bloc-ui/core/progress` | `bloc-progress`                                                 | Horizontal progress bar with label and value display             |
-| **Skeleton** `[EXP]`     | `@bloc-ui/core`         | `@bloc-ui/core/skeleton` | `bloc-skeleton` / `[blocSkeleton]`                              | Loading placeholder directive with line, rect, and circle shapes |
-| **Textarea** `[EXP]`     | `@bloc-ui/core`         | `@bloc-ui/core/textarea` | `textarea[blocTextarea]`                                        | Textarea directive with error state and forms integration        |
-| **Accordion** `[EXP]`    | `@bloc-ui/accordion`    | `@bloc-ui/accordion`     | `bloc-accordion` / `[blocAccordionItem]`                        | Collapsible panels with single/multi mode                        |
-| **Alert** `[EXP]`        | `@bloc-ui/alert`        | `@bloc-ui/alert`         | `bloc-alert`                                                    | Inline alert banner with severity variants                       |
-| **Autocomplete** `[EXP]` | `@bloc-ui/autocomplete` | `@bloc-ui/autocomplete`  | `bloc-autocomplete`                                             | Searchable single-select with keyboard nav and forms support     |
-| **Layout** `[EXP]`       | `@bloc-ui/layout`       | `@bloc-ui/layout`        | `bloc-sidebar-layout` / `bloc-sidebar` / `bloc-sidebar-content` | Sidebar layout with collapsible panel                            |
-| **Pagination** `[EXP]`   | `@bloc-ui/pagination`   | `@bloc-ui/pagination`    | `bloc-pagination`                                               | Page navigation with sibling/boundary config                     |
-| **Select** `[EXP]`       | `@bloc-ui/select`       | `@bloc-ui/select`        | `bloc-select` / `[bloc-option]`                                 | Single-select dropdown with overlay and keyboard navigation      |
-| **Slider** `[EXP]`       | `@bloc-ui/slider`       | `@bloc-ui/slider`        | `bloc-slider`                                                   | Range slider with Angular forms integration                      |
+| Component                | Package                 | Entry Point              | Selector / API                                                  | Description                                                          |
+| ------------------------ | ----------------------- | ------------------------ | --------------------------------------------------------------- | -------------------------------------------------------------------- |
+| **Badge** `[EXP]`        | `@bloc-ui/core`         | `@bloc-ui/core/badge`    | `bloc-badge`                                                    | Labelling pill with variant and size presets                         |
+| **Progress** `[EXP]`     | `@bloc-ui/core`         | `@bloc-ui/core/progress` | `bloc-progress`                                                 | Horizontal progress bar with label and value display                 |
+| **Skeleton** `[EXP]`     | `@bloc-ui/core`         | `@bloc-ui/core/skeleton` | `bloc-skeleton` / `[blocSkeleton]`                              | Loading placeholder directive with line, rect, and circle shapes     |
+| **Textarea** `[EXP]`     | `@bloc-ui/core`         | `@bloc-ui/core/textarea` | `textarea[blocTextarea]`                                        | Textarea directive with error state and forms integration            |
+| **Accordion** `[EXP]`    | `@bloc-ui/accordion`    | `@bloc-ui/accordion`     | `bloc-accordion` / `[blocAccordionItem]`                        | Collapsible panels with single/multi mode                            |
+| **Alert** `[EXP]`        | `@bloc-ui/alert`        | `@bloc-ui/alert`         | `bloc-alert`                                                    | Inline alert banner with severity variants                           |
+| **Autocomplete** `[EXP]` | `@bloc-ui/autocomplete` | `@bloc-ui/autocomplete`  | `bloc-autocomplete`                                             | Searchable single-select with keyboard nav and forms support         |
+| **Layout** `[EXP]`       | `@bloc-ui/layout`       | `@bloc-ui/layout`        | `bloc-sidebar-layout` / `bloc-sidebar` / `bloc-sidebar-content` | Sidebar layout with collapsible panel                                |
+| **Pagination** `[EXP]`   | `@bloc-ui/pagination`   | `@bloc-ui/pagination`    | `bloc-pagination`                                               | Page navigation with sibling/boundary config                         |
+| **Select** `[EXP]`       | `@bloc-ui/select`       | `@bloc-ui/select`        | `bloc-select` / `[bloc-option]`                                 | Single-select dropdown with overlay and keyboard navigation          |
+| **Slider** `[EXP]`       | `@bloc-ui/slider`       | `@bloc-ui/slider`        | `bloc-slider`                                                   | Range slider with Angular forms integration                          |
+| **Tooltip** `[EXP]`      | `@bloc-ui/tooltip`      | `@bloc-ui/tooltip`       | `[blocTooltip]`                                                 | Hover/focus tooltip with intelligent repositioning and delay control |
 
 `[EXP]` = Experimental — API may change before reaching stable.
 

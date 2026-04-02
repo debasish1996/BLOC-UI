@@ -415,6 +415,26 @@
                     }
                 }
             }
+        },
+        "bloc-ui-tooltip": {
+            "projectType": "library",
+            "root": "projects/bloc-ui-tooltip",
+            "sourceRoot": "projects/bloc-ui-tooltip/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/bloc-ui-tooltip/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/bloc-ui-tooltip/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                }
+            }
         }
     }
 }

@@ -21,7 +21,8 @@
             "@bloc-ui/tab": ["../../dist/bloc-ui-tab"],
             "@bloc-ui/overlay": ["../../dist/bloc-ui-overlay"],
             "@bloc-ui/select": ["../../dist/bloc-ui-select"],
-            "@bloc-ui/slider": ["../../dist/bloc-ui-slider"]
+            "@bloc-ui/slider": ["../../dist/bloc-ui-slider"],
+            "@bloc-ui/tooltip": ["../../dist/bloc-ui-tooltip"]
         }
     },
     "include": ["src/**/*.ts"],
