@@ -1,6 +1,6 @@
 import { AfterContentInit, Component, contentChildren, input } from '@angular/core';
 
-import { BlocAccordionItemComponent } from './accordion-item.component';
+import { BlocAccordionItemDirective } from './accordion-item.directive';
 
 @Component({
     selector: 'bloc-accordion',
@@ -14,13 +14,13 @@ import { BlocAccordionItemComponent } from './accordion-item.component';
 export class BlocAccordionComponent implements AfterContentInit {
     readonly multi = input(false);
 
-    readonly items = contentChildren(BlocAccordionItemComponent);
+    readonly items = contentChildren(BlocAccordionItemDirective, { descendants: true });
 
     ngAfterContentInit(): void {
         this._normalizeExpandedState();
     }
 
-    toggleItem(item: BlocAccordionItemComponent): void {
+    toggleItem(item: BlocAccordionItemDirective): void {
         if (item.disabled()) return;
 
         if (this.multi()) {
