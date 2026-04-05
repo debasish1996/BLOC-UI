@@ -101,6 +101,12 @@
 
 // Sticky header
 :host.bloc-table--sticky {
+    // Fixed layout prevents column-width jitter when the visible data
+    // slice changes (virtual scroll projection mode).
+    .bloc-table__el {
+        table-layout: fixed;
+    }
+
     .bloc-table__th {
         position: sticky;
         top: 0;
@@ -110,5 +116,3 @@
         box-shadow: inset 0 -2px 0 var(--bloc-table-border, var(--bloc-border, #d1d5db));
     }
 }
-
-
