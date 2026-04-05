@@ -43,6 +43,12 @@
                         }
                     },
                     "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-modal/tsconfig.spec.json"
+                    }
                 }
             }
         },
@@ -123,6 +129,12 @@
                         }
                     },
                     "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-table/tsconfig.spec.json"
+                    }
                 }
             }
         },
@@ -203,6 +215,12 @@
                         }
                     },
                     "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-toast/tsconfig.spec.json"
+                    }
                 }
             }
         },
@@ -223,6 +241,12 @@
                         }
                     },
                     "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-tab/tsconfig.spec.json"
+                    }
                 }
             }
         },
@@ -243,6 +267,12 @@
                         }
                     },
                     "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-date-picker/tsconfig.spec.json"
+                    }
                 }
             }
         },
