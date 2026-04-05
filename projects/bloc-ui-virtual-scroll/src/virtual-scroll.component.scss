@@ -1,0 +1,37 @@
+// Authoritative structural — never overridden by accident
+:host {
+    display: block;
+    position: relative;
+}
+
+.bloc-vs__viewport {
+    overflow-y: auto;
+    overflow-x: hidden;
+    height: 100%;
+    -webkit-overflow-scrolling: touch;
+    // Prevent browser scroll-anchoring from fighting spacer-height changes
+    // in projection mode — without this, each spacer resize triggers a
+    // compensating scrollTop adjustment → feedback loop → runaway scroll.
+    overflow-anchor: none;
+}
+
+// Template-mode internals
+.bloc-vs__sentinel {
+    position: relative;
+    width: 100%;
+}
+
+.bloc-vs__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    will-change: transform;
+}
+
+// Projection-mode spacers
+.bloc-vs__spacer {
+    flex-shrink: 0;
+    width: 100%;
+    pointer-events: none;
+}

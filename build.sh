@@ -56,6 +56,9 @@ npx ng build bloc-ui-select $CONFIG
 echo "Building bloc-ui-tooltip..."
 npx ng build bloc-ui-tooltip $CONFIG
 
+echo "Building bloc-ui-virtual-scroll..."
+npx ng build bloc-ui-virtual-scroll $CONFIG
+
 echo "Building bloc-ui..."
 npx ng build bloc-ui $CONFIG
 

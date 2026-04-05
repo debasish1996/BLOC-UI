@@ -465,6 +465,32 @@
                     "defaultConfiguration": "production"
                 }
             }
+        },
+        "bloc-ui-virtual-scroll": {
+            "projectType": "library",
+            "root": "projects/bloc-ui-virtual-scroll",
+            "sourceRoot": "projects/bloc-ui-virtual-scroll/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/bloc-ui-virtual-scroll/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/bloc-ui-virtual-scroll/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-virtual-scroll/tsconfig.spec.json"
+                    }
+                }
+            }
         }
     }
 }

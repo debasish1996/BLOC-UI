@@ -24,6 +24,7 @@ import { TextareaDemoComponent } from './textarea-demo/textarea-demo.component';
 import { ToastDemoComponent } from './toast-demo/toast-demo.component';
 import { ToggleDemoComponent } from './toggle-demo/toggle-demo.component';
 import { TooltipDemoComponent } from './tooltip-demo/tooltip-demo.component';
+import { VirtualScrollDemoComponent } from './virtual-scroll-demo/virtual-scroll-demo.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -51,4 +52,5 @@ export const routes: Routes = [
     { path: 'toast', component: ToastDemoComponent },
     { path: 'toggle', component: ToggleDemoComponent },
     { path: 'tooltip', component: TooltipDemoComponent },
+    { path: 'virtual-scroll', component: VirtualScrollDemoComponent },
 ];

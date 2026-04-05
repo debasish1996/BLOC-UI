@@ -39,7 +39,8 @@
                 "./projects/bloc-ui-date-picker/range-date-picker/src/public-api.ts"
             ],
             "@bloc-ui/overlay": ["./projects/bloc-ui-overlay/src/public-api.ts"],
-            "@bloc-ui/tooltip": ["./projects/bloc-ui-tooltip/src/public-api.ts"]
+            "@bloc-ui/tooltip": ["./projects/bloc-ui-tooltip/src/public-api.ts"],
+            "@bloc-ui/virtual-scroll": ["./projects/bloc-ui-virtual-scroll/src/public-api.ts"]
         },
         "types": ["node"],
         "strict": true,
@@ -127,6 +128,9 @@
         },
         {
             "path": "./projects/bloc-ui-tooltip/tsconfig.lib.json"
+        },
+        {
+            "path": "./projects/bloc-ui-virtual-scroll/tsconfig.lib.json"
         }
     ]
 }
