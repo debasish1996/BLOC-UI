@@ -22,6 +22,33 @@ export class TableDemoComponent {
         { name: 'Carol White', email: 'carol@example.com', role: 'Viewer', status: 'Inactive' },
         { name: 'Dave Brown', email: 'dave@example.com', role: 'Editor', status: 'Active' },
         { name: 'Eve Davis', email: 'eve@example.com', role: 'Admin', status: 'Inactive' },
+        { name: 'Frank Miller', email: 'frank@example.com', role: 'Viewer', status: 'Active' },
+        { name: 'Grace Lee', email: 'grace@example.com', role: 'Editor', status: 'Active' },
+        { name: 'Henry Wilson', email: 'henry@example.com', role: 'Viewer', status: 'Active' },
+        { name: 'Iris Chen', email: 'iris@example.com', role: 'Admin', status: 'Active' },
+    ];
+
+    readonly users2 = [
+        { name: 'Alice Johnson', email: 'alice@example.com', role: 'Admin', status: 'Active' },
+        { name: 'Bob Smith', email: 'bob@example.com', role: 'Editor', status: 'Active' },
+        { name: 'Carol White', email: 'carol@example.com', role: 'Viewer', status: 'Inactive' },
+        { name: 'Dave Brown', email: 'dave@example.com', role: 'Editor', status: 'Active' },
+        { name: 'Eve Davis', email: 'eve@example.com', role: 'Admin', status: 'Inactive' },
+        { name: 'Frank Miller', email: 'frank@example.com', role: 'Viewer', status: 'Active' },
+        { name: 'Grace Lee', email: 'grace@example.com', role: 'Editor', status: 'Active' },
+        { name: 'Henry Wilson', email: 'henry@example.com', role: 'Viewer', status: 'Active' },
+        { name: 'Iris Chen', email: 'iris@example.com', role: 'Admin', status: 'Active' },
+        { name: 'Jack Taylor', email: 'jack@example.com', role: 'Editor', status: 'Inactive' },
+        { name: 'Karen Anderson', email: 'karen@example.com', role: 'Viewer', status: 'Active' },
+        { name: 'Leo Martinez', email: 'leo@example.com', role: 'Admin', status: 'Active' },
+        { name: 'Maria Garcia', email: 'maria@example.com', role: 'Editor', status: 'Active' },
+        {
+            name: 'Nathan Rodriguez',
+            email: 'nathan@example.com',
+            role: 'Viewer',
+            status: 'Inactive',
+        },
+        { name: 'Olivia Thomas', email: 'olivia@example.com', role: 'Editor', status: 'Active' },
     ];
 
     readonly snippets = {
@@ -29,6 +56,7 @@ export class TableDemoComponent {
         striped: `<bloc-table [data]="users" [striped]="true">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="email" header="Email" />\n</bloc-table>`,
         bordered: `<bloc-table [data]="users" [bordered]="true">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="email" header="Email" />\n</bloc-table>`,
         hoverable: `<bloc-table [data]="users" [hoverable]="true">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="email" header="Email" />\n</bloc-table>`,
+        sticky: `<bloc-table [data]="users" [sticky]="true">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="email" header="Email" />\n  <bloc-column field="role" header="Role" />\n</bloc-table>`,
         sizeSmall: `<bloc-table [data]="users" size="sm">\n  …\n</bloc-table>`,
         sizeLarge: `<bloc-table [data]="users" size="lg">\n  …\n</bloc-table>`,
         customCell: `<bloc-table [data]="users">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="status" header="Status">\n    <ng-template blocCellDef let-value>\n      <span [class]="value === 'Active'\n        ? 'text-green-600' : 'text-red-500'">{{ value }}</span>\n    </ng-template>\n  </bloc-column>\n</bloc-table>`,

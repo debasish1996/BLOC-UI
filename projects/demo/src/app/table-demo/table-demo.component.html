@@ -80,7 +80,22 @@
         </bloc-table>
         <app-sample-code [code]="snippets.hoverable" />
     </div>
-</div>
+
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Sticky header</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Keep header fixed while scrolling via <code>[sticky]</code>. Scroll down to see the header stay in place.
+        </p>
+        <div style="height: 400px;" class="overflow-auto">
+            <bloc-table [data]="users2" [sticky]="true" [striped]="true">
+                <bloc-column field="name" header="Name" />
+                <bloc-column field="email" header="Email" />
+                <bloc-column field="role" header="Role" />
+                <bloc-column field="status" header="Status" />
+            </bloc-table>
+        </div>
+        <app-sample-code [code]="snippets.sticky" />
+    </div></div>
 
 <!-- Sizes -->
 <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Sizes</h2>

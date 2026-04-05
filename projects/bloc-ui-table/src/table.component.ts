@@ -16,44 +16,14 @@ import { BlocColumnComponent, BlocCellDefDirective } from './column.component';
     selector: 'bloc-table',
     standalone: true,
     imports: [NgTemplateOutlet],
-    template: `
-        <table class="bloc-table__el">
-            <thead>
-                <tr>
-                    @for (col of columns(); track col.field()) {
-                        <th class="bloc-table__th">{{ col.header() || col.field() }}</th>
-                    }
-                </tr>
-            </thead>
-            <tbody>
-                @for (row of data(); track $index) {
-                    <tr class="bloc-table__row">
-                        @for (col of columns(); track col.field()) {
-                            <td class="bloc-table__td">
-                                @if (col.cellDef) {
-                                    <ng-container
-                                        [ngTemplateOutlet]="col.cellDef.templateRef"
-                                        [ngTemplateOutletContext]="{
-                                            $implicit: row[col.field()],
-                                            row: row,
-                                        }"
-                                    />
-                                } @else {
-                                    {{ row[col.field()] }}
-                                }
-                            </td>
-                        }
-                    </tr>
-                }
-            </tbody>
-        </table>
-    `,
+    templateUrl: './table.component.html',
     styleUrl: './table.component.scss',
     host: {
         '[class.bloc-table]': 'true',
         '[class.bloc-table--striped]': 'striped()',
         '[class.bloc-table--bordered]': 'bordered()',
         '[class.bloc-table--hoverable]': 'hoverable()',
+        '[class.bloc-table--sticky]': 'sticky()',
         '[class.bloc-table--sm]': 'size() === "sm"',
         '[class.bloc-table--lg]': 'size() === "lg"',
     },
@@ -70,6 +40,9 @@ export class BlocTableComponent {
 
     /** Whether rows highlight on hover. */
     readonly hoverable = input<boolean>(false);
+
+    /** Whether the header is sticky. */
+    readonly sticky = input<boolean>(false);
 
     /** Preset size. Defaults to `'md'`. */
     readonly size = input<'sm' | 'md' | 'lg'>('md');
