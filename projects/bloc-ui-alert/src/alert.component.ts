@@ -13,8 +13,8 @@ const VARIANT_BADGES: Record<BlocAlertVariant, string> = {
     selector: 'bloc-alert',
     standalone: true,
     template: `
-        @if (visible()) {
-            <div class="bloc-alert__icon" [attr.aria-label]="variantLabel()">
+        @if (isShown()) {
+            <div class="bloc-alert__icon" aria-hidden="true">
                 {{ badge() }}
             </div>
             <div class="bloc-alert__body">
@@ -39,12 +39,13 @@ const VARIANT_BADGES: Record<BlocAlertVariant, string> = {
     `,
     styleUrl: './alert.component.scss',
     host: {
-        '[class.bloc-alert]': 'visible()',
+        '[class.bloc-alert]': 'isShown()',
         '[class.bloc-alert--info]': "variant() === 'info'",
         '[class.bloc-alert--success]': "variant() === 'success'",
         '[class.bloc-alert--warning]': "variant() === 'warning'",
         '[class.bloc-alert--danger]': "variant() === 'danger'",
-        '[attr.role]': "'alert'",
+        '[attr.role]': 'role()',
+        '[attr.aria-label]': 'variant()',
     },
 })
 export class BlocAlertComponent {
@@ -52,15 +53,26 @@ export class BlocAlertComponent {
     readonly title = input('');
     readonly dismissible = input(false);
     readonly closeLabel = input('Dismiss alert');
+    readonly live = input<'assertive' | 'polite' | undefined>();
+    readonly visible = input<boolean>(true);
     readonly dismissed = output<void>();
-    readonly visible = signal(true);
+
+    readonly _selfVisible = signal(true);
 
     readonly badge = computed(() => VARIANT_BADGES[this.variant()]);
     readonly variantLabel = computed(() => `${this.variant()} alert`);
+    readonly isShown = computed(() => this.visible() && this._selfVisible());
+    readonly role = computed(() => {
+        const live = this.live();
+        if (live === 'assertive') return 'alert';
+        if (live === 'polite') return 'status';
+        const variant = this.variant();
+        return variant === 'warning' || variant === 'danger' ? 'alert' : 'status';
+    });
 
     close(): void {
         if (!this.dismissible()) return;
-        this.visible.set(false);
+        this._selfVisible.set(false);
         this.dismissed.emit();
     }
 }

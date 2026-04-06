@@ -69,6 +69,27 @@
     --bloc-modal-sm: 360px;
     --bloc-modal-md: 560px;
     --bloc-modal-lg: 800px;
+
+    // Alert severity tokens
+    --bloc-alert-info-border: #bfdbfe;
+    --bloc-alert-info-bg: #eff6ff;
+    --bloc-alert-info-accent: #dbeafe;
+    --bloc-alert-info-accent-color: #1d4ed8;
+
+    --bloc-alert-success-border: #bbf7d0;
+    --bloc-alert-success-bg: #f0fdf4;
+    --bloc-alert-success-accent: #dcfce7;
+    --bloc-alert-success-accent-color: #15803d;
+
+    --bloc-alert-warning-border: #fde68a;
+    --bloc-alert-warning-bg: #fffbeb;
+    --bloc-alert-warning-accent: #fef3c7;
+    --bloc-alert-warning-accent-color: #b45309;
+
+    --bloc-alert-danger-border: #fecaca;
+    --bloc-alert-danger-bg: #fef2f2;
+    --bloc-alert-danger-accent: #fee2e2;
+    --bloc-alert-danger-accent-color: #b91c1c;
 }
 
 // ── Dark token overrides ──────────────────────────────────────────────────────

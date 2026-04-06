@@ -76,7 +76,7 @@ Available and functional, but the API may change. Not yet at the full stable bar
 | **Skeleton** `[EXP]`     | `@bloc-ui/core`         | `@bloc-ui/core/skeleton` | `bloc-skeleton` / `[blocSkeleton]`                              | Loading placeholder directive with line, rect, and circle shapes     |
 | **Textarea** `[EXP]`     | `@bloc-ui/core`         | `@bloc-ui/core/textarea` | `textarea[blocTextarea]`                                        | Textarea directive with error state and forms integration            |
 | **Accordion** `[EXP]`    | `@bloc-ui/accordion`    | `@bloc-ui/accordion`     | `bloc-accordion` / `[blocAccordionItem]`                        | Collapsible panels with single/multi mode                            |
-| **Alert** `[EXP]`        | `@bloc-ui/alert`        | `@bloc-ui/alert`         | `bloc-alert`                                                    | Inline alert banner with severity variants                           |
+| **Alert**                | `@bloc-ui/alert`        | `@bloc-ui/alert`         | `bloc-alert`                                                    | Inline alert banner with severity variants                           |
 | **Autocomplete** `[EXP]` | `@bloc-ui/autocomplete` | `@bloc-ui/autocomplete`  | `bloc-autocomplete`                                             | Searchable single-select with keyboard nav and forms support         |
 | **Layout** `[EXP]`       | `@bloc-ui/layout`       | `@bloc-ui/layout`        | `bloc-sidebar-layout` / `bloc-sidebar` / `bloc-sidebar-content` | Sidebar layout with collapsible panel                                |
 | **Pagination** `[EXP]`   | `@bloc-ui/pagination`   | `@bloc-ui/pagination`    | `bloc-pagination`                                               | Page navigation with sibling/boundary config                         |
@@ -171,7 +171,7 @@ bloc-ui-workspace/
 │   ├── bloc-ui-date-picker/    # @bloc-ui/date-picker — calendar date picker
 │   ├── bloc-ui-tab/            # @bloc-ui/tab         — tab group
 │   ├── bloc-ui-accordion/      # @bloc-ui/accordion   — accordion [EXPERIMENTAL]
-│   ├── bloc-ui-alert/          # @bloc-ui/alert       — alert banners [EXPERIMENTAL]
+│   ├── bloc-ui-alert/          # @bloc-ui/alert       — alert banners
 │   ├── bloc-ui-autocomplete/   # @bloc-ui/autocomplete — autocomplete [EXPERIMENTAL]
 │   ├── bloc-ui-layout/         # @bloc-ui/layout      — sidebar layout [EXPERIMENTAL]
 │   ├── bloc-ui-pagination/     # @bloc-ui/pagination  — pagination [EXPERIMENTAL]

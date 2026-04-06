@@ -49,7 +49,7 @@ export class App {
 
     readonly standaloneItems: MenuItem[] = [
         { path: 'accordion', label: 'Accordion' },
-        { path: 'alert', label: 'Alert', beta: true },
+        { path: 'alert', label: 'Alert' },
         { path: 'autocomplete', label: 'Autocomplete', beta: true },
         { path: 'layout', label: 'Layout Sidebar', beta: true },
         { path: 'modal', label: 'Modal' },
