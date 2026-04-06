@@ -436,7 +436,10 @@ test.describe('DatePickerComponent', () => {
 
         test('Previous years button goes back in the year range', async ({ page }) => {
             const dialog = page.getByRole('dialog');
+            const firstYear = await dialog.locator('.bloc-dp-yc').first().textContent();
             await dialog.getByRole('button', { name: 'Next years' }).click();
+            // Wait for the year cells to update after advancing.
+            await expect(dialog.locator('.bloc-dp-yc').first()).not.toHaveText(firstYear!);
             const firstYearAfterNext = await dialog.locator('.bloc-dp-yc').first().textContent();
             await dialog.getByRole('button', { name: 'Previous years' }).click();
             await expect(dialog.locator('.bloc-dp-yc').first()).not.toHaveText(firstYearAfterNext!);

@@ -67,6 +67,8 @@ test.describe('ProgressDemoComponent', () => {
             const bar = interactiveCard.getByRole('progressbar');
             const before = Number(await bar.getAttribute('aria-valuenow'));
             await interactiveCard.getByRole('button', { name: '+12%' }).click();
+            // Wait for Angular change detection to flush the updated attribute before reading it.
+            await expect(bar).not.toHaveAttribute('aria-valuenow', String(before));
             const after = Number(await bar.getAttribute('aria-valuenow'));
             expect(after).toBeGreaterThan(before);
         });
@@ -76,6 +78,8 @@ test.describe('ProgressDemoComponent', () => {
             const bar = interactiveCard.getByRole('progressbar');
             const before = Number(await bar.getAttribute('aria-valuenow'));
             await interactiveCard.getByRole('button', { name: '-12%' }).click();
+            // Wait for Angular change detection to flush the updated attribute before reading it.
+            await expect(bar).not.toHaveAttribute('aria-valuenow', String(before));
             const after = Number(await bar.getAttribute('aria-valuenow'));
             expect(after).toBeLessThan(before);
         });
