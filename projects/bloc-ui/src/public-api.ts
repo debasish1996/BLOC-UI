@@ -28,3 +28,4 @@ export * from '@bloc-ui/toast';
 export * from '@bloc-ui/date-picker';
 export * from '@bloc-ui/tab';
 export * from '@bloc-ui/tooltip';
+export * from '@bloc-ui/virtual-scroll';

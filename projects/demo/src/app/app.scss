@@ -15,3 +15,24 @@
 .nav-chevron--open {
     transform: rotate(0deg);
 }
+
+/* Custom scrollbar for sidebar nav — Chrome, Edge, Safari */
+nav.flex-col::-webkit-scrollbar {
+    width: 4px;
+}
+nav.flex-col::-webkit-scrollbar-track {
+    background: transparent;
+}
+nav.flex-col::-webkit-scrollbar-thumb {
+    background-color: #475569; /* slate-600 */
+    border-radius: 999px;
+}
+nav.flex-col::-webkit-scrollbar-thumb:hover {
+    background-color: #64748b; /* slate-500 */
+}
+
+/* Firefox */
+nav.flex-col {
+    scrollbar-width: thin;
+    scrollbar-color: #475569 transparent;
+}

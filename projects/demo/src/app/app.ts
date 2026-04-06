@@ -47,6 +47,8 @@ export class App {
         ],
     };
 
+    readonly aboutItem: MenuItem = { path: 'about', label: 'About' };
+
     readonly standaloneItems: MenuItem[] = [
         { path: 'accordion', label: 'Accordion' },
         { path: 'alert', label: 'Alert' },
@@ -59,7 +61,7 @@ export class App {
         { path: 'tab', label: 'Tab' },
         { path: 'toast', label: 'Toast' },
         { path: 'tooltip', label: 'Tooltip' },
-        { path: 'virtual-scroll', label: 'Virtual Scroll', beta: true },
+        { path: 'virtual-scroll', label: 'Virtual Scroll' },
     ];
 
     readonly coreExpanded = signal(this._isCoreRoute(this.router.url));

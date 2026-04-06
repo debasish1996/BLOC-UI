@@ -1,4 +1,5 @@
 import { Routes } from '@angular/router';
+import { AboutComponent } from './about/about.component';
 import { AccordionDemoComponent } from './accordion-demo/accordion-demo.component';
 import { AlertDemoComponent } from './alert-demo/alert-demo.component';
 import { AutocompleteDemoComponent } from './autocomplete-demo/autocomplete-demo.component';
@@ -53,4 +54,5 @@ export const routes: Routes = [
     { path: 'toggle', component: ToggleDemoComponent },
     { path: 'tooltip', component: TooltipDemoComponent },
     { path: 'virtual-scroll', component: VirtualScrollDemoComponent },
+    { path: 'about', component: AboutComponent },
 ];
