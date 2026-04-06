@@ -26,6 +26,9 @@ jobs:
             - name: Install dependencies
               run: npm ci
 
+            - name: Build bloc-ui-overlay
+              run: npx ng build bloc-ui-overlay --configuration production
+
             - name: Build bloc-ui-tooltip
               run: npx ng build bloc-ui-tooltip --configuration production
 
