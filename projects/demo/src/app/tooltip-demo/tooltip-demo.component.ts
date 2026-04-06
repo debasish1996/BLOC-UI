@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { BlocButtonComponent } from 'bloc-ui-core';
 import { BlocTooltipDirective } from '@bloc-ui/tooltip';
 import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
@@ -6,7 +7,12 @@ import { SampleCodeComponent } from '../sample-code/sample-code.component';
 @Component({
     selector: 'app-tooltip-demo',
     standalone: true,
-    imports: [BlocTooltipDirective, SampleCodeComponent, InstallCommandComponent],
+    imports: [
+        BlocButtonComponent,
+        BlocTooltipDirective,
+        SampleCodeComponent,
+        InstallCommandComponent,
+    ],
     templateUrl: './tooltip-demo.component.html',
 })
 export class TooltipDemoComponent {

@@ -469,6 +469,12 @@
                         }
                     },
                     "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-tooltip/tsconfig.spec.json"
+                    }
                 }
             }
         },

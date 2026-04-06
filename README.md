@@ -82,7 +82,7 @@ Available and functional, but the API may change. Not yet at the full stable bar
 | **Pagination** `[EXP]`   | `@bloc-ui/pagination`   | `@bloc-ui/pagination`    | `bloc-pagination`                                               | Page navigation with sibling/boundary config                         |
 | **Select** `[EXP]`       | `@bloc-ui/select`       | `@bloc-ui/select`        | `bloc-select` / `[bloc-option]`                                 | Single-select dropdown with overlay and keyboard navigation          |
 | **Slider** `[EXP]`       | `@bloc-ui/slider`       | `@bloc-ui/slider`        | `bloc-slider`                                                   | Range slider with Angular forms integration                          |
-| **Tooltip** `[EXP]`      | `@bloc-ui/tooltip`      | `@bloc-ui/tooltip`       | `[blocTooltip]`                                                 | Hover/focus tooltip with intelligent repositioning and delay control |
+| **Tooltip**              | `@bloc-ui/tooltip`      | `@bloc-ui/tooltip`       | `[blocTooltip]`                                                 | Hover/focus tooltip with intelligent repositioning and delay control |
 
 `[EXP]` = Experimental — API may change before reaching stable.
 

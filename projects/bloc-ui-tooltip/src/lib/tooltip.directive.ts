@@ -10,14 +10,28 @@ const TOOLTIP_CSS = [
     ':where(.bloc-tooltip-panel){',
     'background:var(--bloc-tooltip-bg,#374151);',
     'color:var(--bloc-tooltip-color,#f9fafb);',
-    'padding:var(--bloc-tooltip-padding,4px 8px);',
+    'padding:var(--bloc-tooltip-padding,6px 10px);',
     'border-radius:var(--bloc-tooltip-radius,4px);',
     'font-size:var(--bloc-tooltip-font-size,12px);',
     'line-height:var(--bloc-tooltip-line-height,1.4);',
     'max-width:var(--bloc-tooltip-max-width,240px);',
     'word-wrap:break-word;',
-    'pointer-events:none;',
-    'white-space:pre-wrap}}',
+    'cursor:default;',
+    'user-select:none;',
+    'white-space:pre-wrap;}',
+    ':where(.bloc-tooltip-arrow){',
+    'position:absolute;width:8px;height:8px;',
+    'background:var(--bloc-tooltip-bg,#374151);',
+    'pointer-events:none;}',
+    ':where(.bloc-tooltip-panel[data-placement^="top"] .bloc-tooltip-arrow){',
+    'bottom:-3px;left:50%;transform:translateX(-50%) rotate(45deg) translateZ(0);}',
+    ':where(.bloc-tooltip-panel[data-placement^="bottom"] .bloc-tooltip-arrow){',
+    'top:-3px;left:50%;transform:translateX(-50%) rotate(45deg) translateZ(0);}',
+    ':where(.bloc-tooltip-panel[data-placement^="left"] .bloc-tooltip-arrow){',
+    'right:-3px;top:50%;transform:translateY(-50%) rotate(45deg) translateZ(0);}',
+    ':where(.bloc-tooltip-panel[data-placement^="right"] .bloc-tooltip-arrow){',
+    'left:-3px;top:50%;transform:translateY(-50%) rotate(45deg) translateZ(0);}',
+    '}',
 ].join('');
 
 function ensureTooltipStyles(doc: Document): void {
@@ -72,6 +86,17 @@ export class BlocTooltipDirective implements OnInit, OnDestroy {
     private readonly _onLeave = (): void => this._scheduleHide();
     private readonly _onFocus = (): void => this._scheduleShow();
     private readonly _onBlur = (): void => this._scheduleHide();
+    private readonly _onPanelEnter = (): void => this._clearHideTimer();
+    private readonly _onDocKeydown = (event: KeyboardEvent): void => {
+        if (event.key === 'Escape') {
+            this._clearShowTimer();
+            this._hide();
+        }
+    };
+    private readonly _onScroll = (): void => {
+        this._clearShowTimer();
+        this._hide();
+    };
 
     ngOnInit(): void {
         ensureTooltipStyles(this._doc);
@@ -88,6 +113,8 @@ export class BlocTooltipDirective implements OnInit, OnDestroy {
         host.removeEventListener('mouseleave', this._onLeave);
         host.removeEventListener('focus', this._onFocus);
         host.removeEventListener('blur', this._onBlur);
+        this._doc.removeEventListener('keydown', this._onDocKeydown);
+        window.removeEventListener('scroll', this._onScroll, { capture: true });
         this._clearTimers();
         this._removePanel();
     }
@@ -111,10 +138,26 @@ export class BlocTooltipDirective implements OnInit, OnDestroy {
             this._panel = this._overlay.createPanel('bloc-tooltip-panel');
             this._panel.id = this._tooltipId;
             this._panel.setAttribute('role', 'tooltip');
+
+            const label = this._doc.createElement('span');
+            label.className = 'bloc-tooltip-label';
+            this._panel.appendChild(label);
+
+            const arrow = this._doc.createElement('span');
+            arrow.className = 'bloc-tooltip-arrow';
+            arrow.setAttribute('aria-hidden', 'true');
+            this._panel.appendChild(arrow);
+
+            this._panel.addEventListener('mouseenter', this._onPanelEnter);
+            this._panel.addEventListener('mouseleave', this._onLeave);
             this._el.nativeElement.setAttribute('aria-describedby', this._tooltipId);
+            this._doc.addEventListener('keydown', this._onDocKeydown);
+            window.addEventListener('scroll', this._onScroll, { passive: true, capture: true });
         }
 
-        this._panel.textContent = text;
+        const label = this._panel.querySelector<HTMLElement>('.bloc-tooltip-label');
+        if (label) label.textContent = text;
+        this._panel.setAttribute('data-placement', this.tooltipPosition());
         // Hide while positioning to prevent flash at top:0, left:0
         this._panel.style.visibility = 'hidden';
 
@@ -126,6 +169,8 @@ export class BlocTooltipDirective implements OnInit, OnDestroy {
     }
 
     private _hide(): void {
+        this._doc.removeEventListener('keydown', this._onDocKeydown);
+        window.removeEventListener('scroll', this._onScroll, { capture: true });
         this._removePanel();
         this._el.nativeElement.removeAttribute('aria-describedby');
     }
@@ -148,6 +193,8 @@ export class BlocTooltipDirective implements OnInit, OnDestroy {
 
     private _removePanel(): void {
         if (this._panel) {
+            this._panel.removeEventListener('mouseenter', this._onPanelEnter);
+            this._panel.removeEventListener('mouseleave', this._onLeave);
             this._panel.remove();
             this._panel = null;
         }
