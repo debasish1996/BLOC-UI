@@ -1,5 +1,7 @@
 # @bloc-ui/alert
 
+> **Latest:** v1.0.0
+
 Inline alert banner component for Angular with severity variants (`info`, `success`, `warning`, `danger`), an optional title, optional dismissal, and controlled external visibility.
 
 ---
