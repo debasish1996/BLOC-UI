@@ -97,24 +97,23 @@ export function listenOutside(
     closeFn: () => void,
 ): { unlisten: () => void } {
     let onClick: ((e: MouseEvent) => void) | null = null;
-    let onEsc: ((e: KeyboardEvent) => void) | null = null;
+    const onEsc = (e: KeyboardEvent) => {
+        if (e.key === 'Escape') closeFn();
+    };
+    document.addEventListener('keydown', onEsc);
 
     requestAnimationFrame(() => {
         onClick = (e: MouseEvent) => {
             const t = e.target as Node;
             if (!triggerEl.contains(t) && !wrapper.contains(t)) closeFn();
         };
-        onEsc = (e: KeyboardEvent) => {
-            if (e.key === 'Escape') closeFn();
-        };
         document.addEventListener('click', onClick);
-        document.addEventListener('keydown', onEsc);
     });
 
     return {
         unlisten() {
             if (onClick) document.removeEventListener('click', onClick);
-            if (onEsc) document.removeEventListener('keydown', onEsc);
+            document.removeEventListener('keydown', onEsc);
         },
     };
 }
