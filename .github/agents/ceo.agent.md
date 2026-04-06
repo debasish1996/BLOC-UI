@@ -100,26 +100,7 @@ If execution is needed, recommend that the **Chief of Staff** or **Product Manag
 
 ## Output Format
 
-### Conversational Q&A (default)
-
-For questions, quick opinions, clarifications, or short strategic advice — **reply directly in the chat**. Be concise and direct. No file needed.
-
-Examples of Q&A interactions (respond in chat):
-
-- "What should we build next?"
-- "Is Bloc-UI ready for production?"
-- "What's the competitive moat?"
-- "Should we add a tooltip component?"
-- "How does Bloc-UI compare to PrimeNG?"
-
-### Report mode (only when explicitly requested)
-
-Only write a file when the user **explicitly asks** for a report, document, roadmap, or written analysis. Trigger phrases include:
-
-- "generate a report", "write a report", "create a report"
-- "document this", "write this up", "save this"
-- "create a roadmap", "write the roadmap"
-- "produce a strategic analysis"
+**Always create a report file for every invocation.** There is no chat-only mode. Every strategic response — whether a quick opinion, an audit, a roadmap, or an answer to a single question — must be saved to a file.
 
 When writing a report, use the `create_file` tool.
 
