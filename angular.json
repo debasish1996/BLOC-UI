@@ -181,6 +181,12 @@
                         }
                     },
                     "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-pagination/tsconfig.spec.json"
+                    }
                 }
             }
         },
@@ -201,6 +207,12 @@
                         }
                     },
                     "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-slider/tsconfig.spec.json"
+                    }
                 }
             }
         },

@@ -11,7 +11,7 @@ import { SampleCodeComponent } from '../sample-code/sample-code.component';
     templateUrl: './pagination-demo.component.html',
 })
 export class PaginationDemoComponent {
-    readonly currentPage = signal(5);
+    readonly currentPage = signal(1);
     readonly densePage = signal(12);
     readonly compactPage = signal(8);
     readonly largePage = signal(55);
