@@ -1,5 +1,7 @@
 # @bloc-ui/layout
 
+> **Latest:** v1.0.0
+
 > ⚠️ **Experimental** — API may change before reaching stable status.
 
 Sidebar layout package for Angular. Provides a responsive two-column grid layout with a collapsible sidebar panel and a scrollable content area. Responsive stacking at ≤ 900 px is built in.

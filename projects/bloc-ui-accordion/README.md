@@ -1,5 +1,7 @@
 # @bloc-ui/accordion
 
+> **Latest:** v1.0.0
+
 > ⚠️ **Experimental** — API may change before reaching stable status.
 
 Collapsible accordion component for Angular with single-open and multi-open modes, keyboard navigation, optional chevron icon, and disabled item support.

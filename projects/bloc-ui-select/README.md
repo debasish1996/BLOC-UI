@@ -1,6 +1,6 @@
 # @bloc-ui/select
 
-> **Latest:** v0.0.2
+> **Latest:** v1.0.0
 
 > ⚠️ **Experimental** — API may change before reaching stable status.
 

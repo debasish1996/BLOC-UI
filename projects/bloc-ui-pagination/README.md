@@ -1,5 +1,7 @@
 # @bloc-ui/pagination
 
+> **Latest:** v1.0.0
+
 Page navigation component for Angular. Renders a row of page buttons with configurable sibling and boundary counts, first/last jump buttons, custom labels, and disabled state. Integrates with Angular reactive forms via two-way binding.
 
 ---

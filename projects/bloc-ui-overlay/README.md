@@ -1,5 +1,7 @@
 # @bloc-ui/overlay
 
+> **Latest:** v1.0.0
+
 > **Status: Internal / WIP — Not for direct consumer use**
 
 > ⚠️ This package is an **internal platform primitive**. It is consumed by `@bloc-ui/select` and `@bloc-ui/autocomplete` internally and is **not intended for direct import** by application code. Its API is unstable and subject to change without notice.

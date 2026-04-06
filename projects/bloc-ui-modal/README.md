@@ -1,6 +1,6 @@
 # @bloc-ui/modal
 
-> **Latest:** v0.0.4
+> **Latest:** v1.0.0
 
 Modal dialog service for Angular — part of the [Bloc UI](https://github.com/debasish1996/BLOC-UI) component library.
 
