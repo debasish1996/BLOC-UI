@@ -51,6 +51,17 @@ export class VirtualScrollDemoComponent {
         role: ['Engineer', 'Designer', 'Manager', 'Analyst'][i % 4],
     }));
 
+    /* ── 500 mixed-height items (stress test) ── */
+    readonly mixedItems = Array.from({ length: 500 }, (_, i) => ({
+        id: i + 1,
+        label: `Item #${i + 1}`,
+        tall: i % 7 === 0, // every 7th row is oversized
+        description:
+            i % 7 === 0
+                ? 'This row has a LOT more content than itemHeight allows. '.repeat(300)
+                : 'Normal row.',
+    }));
+
     readonly snippets = {
         basic: `<bloc-virtual-scroll [items]="items" [itemHeight]="40"
                      style="height: 400px">

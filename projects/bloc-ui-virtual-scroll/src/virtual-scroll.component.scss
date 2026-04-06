@@ -30,6 +30,15 @@
     left: 0;
     right: 0;
     will-change: transform;
+    backface-visibility: hidden;
+    // Keep the content slab on its own compositing layer so
+    // transform updates only trigger composite — no layout/paint.
+    contain: layout style;
+}
+
+// Each rendered item wrapper — renders at natural height for measurement.
+.bloc-vs__item {
+    box-sizing: border-box;
 }
 
 // Projection-mode spacers
