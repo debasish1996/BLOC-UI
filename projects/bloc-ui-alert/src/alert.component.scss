@@ -86,3 +86,7 @@
     --bloc-alert-accent: var(--bloc-alert-danger-accent, #f3f4f6);
     --bloc-alert-accent-color: var(--bloc-alert-danger-accent-color, #374151);
 }
+
+:host(.bloc-alert--no-icon) {
+    grid-template-columns: 1fr auto;
+}

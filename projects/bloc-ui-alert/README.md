@@ -90,6 +90,7 @@ showAlert = true;
 | `dismissible` | `boolean`                                      | `false`           | Shows a close (×) button to hide the alert                                                       |
 | `closeLabel`  | `string`                                       | `'Dismiss alert'` | `aria-label` on the dismiss button                                                               |
 | `visible`     | `boolean`                                      | `true`            | External visibility gate. Set to `false` to hide without waiting for a user dismissal            |
+| `hideIcon`    | `boolean`                                      | `false`           | Removes the icon column entirely. Useful for compact or text-only alerts                         |
 | `live`        | `'assertive' \| 'polite' \| undefined`         | `undefined`       | Overrides the computed ARIA `role`. `'assertive'` → `role="alert"`, `'polite'` → `role="status"` |
 
 ---
@@ -99,6 +100,39 @@ showAlert = true;
 | Output      | Payload | Description                                                          |
 | ----------- | ------- | -------------------------------------------------------------------- |
 | `dismissed` | `void`  | Emitted when the user clicks the dismiss button and the alert closes |
+
+---
+
+## Content Slots
+
+| Attribute       | Description                                                                                     |
+| --------------- | ----------------------------------------------------------------------------------------------- |
+| `blocAlertIcon` | Projected into the icon column in place of the default letter badge. Add to any element or SVG. |
+
+### Custom icon example
+
+```html
+<bloc-alert variant="success" title="Deployed">
+    <svg
+        blocAlertIcon
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        aria-hidden="true"
+    >
+        <polyline points="20 6 9 17 4 12" />
+    </svg>
+    Your build passed all checks and is live in production.
+</bloc-alert>
+```
+
+When `blocAlertIcon` content is present the letter badge is suppressed automatically. When the slot is empty, the badge renders as normal.
 
 ---
 

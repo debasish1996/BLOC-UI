@@ -1,4 +1,7 @@
-import { Component, computed, input, output, signal } from '@angular/core';
+import { Component, Directive, computed, contentChild, input, output, signal } from '@angular/core';
+
+@Directive({ selector: '[blocAlertIcon]', standalone: true })
+export class BlocAlertIconDirective {}
 
 export type BlocAlertVariant = 'info' | 'success' | 'warning' | 'danger';
 
@@ -14,9 +17,14 @@ const VARIANT_BADGES: Record<BlocAlertVariant, string> = {
     standalone: true,
     template: `
         @if (isShown()) {
-            <div class="bloc-alert__icon" aria-hidden="true">
-                {{ badge() }}
-            </div>
+            @if (!hideIcon()) {
+                <div class="bloc-alert__icon" aria-hidden="true">
+                    <ng-content select="[blocAlertIcon]" />
+                    @if (!hasCustomIcon()) {
+                        {{ badge() }}
+                    }
+                </div>
+            }
             <div class="bloc-alert__body">
                 @if (title()) {
                     <p class="bloc-alert__title">{{ title() }}</p>
@@ -44,6 +52,7 @@ const VARIANT_BADGES: Record<BlocAlertVariant, string> = {
         '[class.bloc-alert--success]': "variant() === 'success'",
         '[class.bloc-alert--warning]': "variant() === 'warning'",
         '[class.bloc-alert--danger]': "variant() === 'danger'",
+        '[class.bloc-alert--no-icon]': 'hideIcon()',
         '[attr.role]': 'role()',
         '[attr.aria-label]': 'variant()',
     },
@@ -55,12 +64,15 @@ export class BlocAlertComponent {
     readonly closeLabel = input('Dismiss alert');
     readonly live = input<'assertive' | 'polite' | undefined>();
     readonly visible = input<boolean>(true);
+    readonly hideIcon = input(false);
     readonly dismissed = output<void>();
 
     readonly _selfVisible = signal(true);
+    readonly _customIcon = contentChild(BlocAlertIconDirective);
 
     readonly badge = computed(() => VARIANT_BADGES[this.variant()]);
     readonly variantLabel = computed(() => `${this.variant()} alert`);
+    readonly hasCustomIcon = computed(() => !!this._customIcon());
     readonly isShown = computed(() => this.visible() && this._selfVisible());
     readonly role = computed(() => {
         const live = this.live();

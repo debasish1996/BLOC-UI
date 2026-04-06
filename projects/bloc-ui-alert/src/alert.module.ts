@@ -1,9 +1,9 @@
 import { NgModule } from '@angular/core';
 
-import { BlocAlertComponent } from './alert.component';
+import { BlocAlertComponent, BlocAlertIconDirective } from './alert.component';
 
 @NgModule({
-    imports: [BlocAlertComponent],
-    exports: [BlocAlertComponent],
+    imports: [BlocAlertComponent, BlocAlertIconDirective],
+    exports: [BlocAlertComponent, BlocAlertIconDirective],
 })
 export class BlocAlertModule {}

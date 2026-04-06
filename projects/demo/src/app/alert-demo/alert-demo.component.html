@@ -30,6 +30,40 @@
     </div>
 
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Custom Icon</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Project any element into the icon slot using the <code>blocAlertIcon</code> attribute.
+        </p>
+        <div class="flex flex-col gap-3">
+            <bloc-alert variant="success" title="Deployed">
+                <app-icon blocAlertIcon name="check" />
+                Your build passed all checks and is live in production.
+            </bloc-alert>
+            <bloc-alert variant="danger" title="Failed">
+                <app-icon blocAlertIcon name="alert-circle" />
+                The deployment pipeline encountered an unrecoverable error.
+            </bloc-alert>
+        </div>
+        <app-sample-code [code]="snippets.customIcon" />
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+        <h3 class="m-0 text-base font-semibold text-slate-900">No Icon</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Set <code>[hideIcon]="true"</code> to remove the icon column entirely.
+        </p>
+        <div class="flex flex-col gap-3">
+            <bloc-alert variant="info" title="Scheduled maintenance" [hideIcon]="true">
+                The system will be unavailable on Sunday between 02:00 and 04:00 UTC.
+            </bloc-alert>
+            <bloc-alert variant="warning" [hideIcon]="true">
+                Your trial expires in 3 days.
+            </bloc-alert>
+        </div>
+        <app-sample-code [code]="snippets.noIcon" />
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
         <h3 class="m-0 text-base font-semibold text-slate-900">Dismissible</h3>
         <p class="m-0 text-[0.82rem] text-slate-400">
             Dismissal is useful for non-blocking notices that should stay close to the content.
