@@ -13,6 +13,9 @@
     // in projection mode — without this, each spacer resize triggers a
     // compensating scrollTop adjustment → feedback loop → runaway scroll.
     overflow-anchor: none;
+    // Scope layout/paint invalidation to this subtree so spacer-height
+    // changes don't trigger full-page reflow.
+    contain: content;
 }
 
 // Template-mode internals

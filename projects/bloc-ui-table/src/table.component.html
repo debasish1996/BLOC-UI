@@ -7,7 +7,7 @@
         </tr>
     </thead>
     <tbody>
-        @for (row of data(); track $index) {
+        @for (row of data(); track rowTrack($index, row)) {
             <tr class="bloc-table__row">
                 @for (col of columns(); track col.field()) {
                     <td class="bloc-table__td">

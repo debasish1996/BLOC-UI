@@ -47,5 +47,14 @@ export class BlocTableComponent {
     /** Preset size. Defaults to `'md'`. */
     readonly size = input<'sm' | 'md' | 'lg'>('md');
 
+    /** Row field used for `@for` track expression. Falls back to `$index`. */
+    readonly trackBy = input<string>('');
+
     readonly columns = contentChildren(BlocColumnComponent);
+
+    /** Identity function for row tracking. */
+    rowTrack(index: number, row: Record<string, unknown>): unknown {
+        const field = this.trackBy();
+        return field ? row[field] : index;
+    }
 }
