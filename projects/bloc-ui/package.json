@@ -1,6 +1,6 @@
 {
     "name": "@bloc-ui/kit",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "repository": {
         "type": "git",
         "url": "https://github.com/debasish1996/BLOC-UI.git",
@@ -13,7 +13,7 @@
     "dependencies": {
         "@bloc-ui/accordion": "^1.0.1",
         "@bloc-ui/alert": "^1.0.3",
-        "@bloc-ui/autocomplete": "^1.0.1",
+        "@bloc-ui/autocomplete": "^1.0.2",
         "@bloc-ui/core": "^1.0.1",
         "@bloc-ui/layout": "^1.0.1",
         "@bloc-ui/modal": "^1.0.1",
@@ -26,7 +26,7 @@
         "@bloc-ui/date-picker": "^1.0.1",
         "@bloc-ui/tab": "^1.0.1",
         "@bloc-ui/tooltip": "^1.0.2",
-        "@bloc-ui/virtual-scroll": "^1.0.0",
+        "@bloc-ui/virtual-scroll": "^1.0.1",
         "tslib": "^2.3.0"
     },
     "sideEffects": false
