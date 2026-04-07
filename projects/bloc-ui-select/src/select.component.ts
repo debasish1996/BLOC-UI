@@ -1,4 +1,5 @@
 import { DOCUMENT } from '@angular/common';
+import { NgTemplateOutlet } from '@angular/common';
 import {
     Component,
     DestroyRef,
@@ -6,6 +7,7 @@ import {
     ViewEncapsulation,
     booleanAttribute,
     computed,
+    contentChild,
     contentChildren,
     effect,
     forwardRef,
@@ -18,6 +20,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { computePosition, OverlayPosition, OverlayService } from '@bloc-ui/overlay';
 
 import { BlocOptionDirective } from './option.directive';
+import { BlocSelectEmptyDirective, BlocSelectIconDirective, BlocSelectLoadingDirective } from './select-templates.directive';
 import { BLOC_SELECT, BlocSelectRef } from './select.token';
 
 let nextPanelId = 0;
@@ -40,85 +43,8 @@ const OVERLAY_STYLE_VARS = [
 @Component({
     selector: 'bloc-select',
     standalone: true,
-    template: `
-        <span
-            class="bloc-select__label"
-            [class.bloc-select__label--placeholder]="!selectedOption()"
-        >
-            {{ displayLabel() }}
-        </span>
-
-        <span class="bloc-select__actions">
-            @if (clearable() && selectedOption()) {
-                <button
-                    type="button"
-                    class="bloc-select__clear"
-                    aria-label="Clear selection"
-                    (click)="clearSelection($event)"
-                >
-                    <svg viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                        <path
-                            d="M4 4L12 12M12 4L4 12"
-                            stroke="currentColor"
-                            stroke-width="1.6"
-                            stroke-linecap="round"
-                        />
-                    </svg>
-                </button>
-            }
-
-            <svg class="bloc-select__chevron" viewBox="0 0 16 16" fill="none" aria-hidden="true">
-                <path
-                    d="M4.5 6.5L8 10L11.5 6.5"
-                    stroke="currentColor"
-                    stroke-width="1.6"
-                    stroke-linecap="round"
-                    stroke-linejoin="round"
-                />
-            </svg>
-        </span>
-
-        <div #panelHost class="bloc-select__portal-host" aria-hidden="true">
-            <div #panelContent class="bloc-select__panel" [attr.id]="panelId">
-                @if (searchable()) {
-                    <div class="bloc-select__search">
-                        <input
-                            #searchInput
-                            type="text"
-                            class="bloc-select__search-input"
-                            [value]="filterQuery()"
-                            placeholder="Search..."
-                            [disabled]="loading()"
-                            (input)="onSearchInput($event)"
-                            (keydown)="onSearchKeydown($event)"
-                            (click)="$event.stopPropagation()"
-                        />
-                    </div>
-                }
-
-                <div
-                    class="bloc-select__options"
-                    role="listbox"
-                    aria-label="Options"
-                    [attr.aria-busy]="loading() ? 'true' : null"
-                >
-                    @if (loading()) {
-                        <div class="bloc-select__state" aria-live="polite" role="status">
-                            Loading options...
-                        </div>
-                    } @else {
-                        <ng-content />
-
-                        @if (!hasVisibleOptions()) {
-                            <div class="bloc-select__state">
-                                {{ filterQuery() ? 'No matching options' : 'No options available' }}
-                            </div>
-                        }
-                    }
-                </div>
-            </div>
-        </div>
-    `,
+    imports: [NgTemplateOutlet],
+    templateUrl: './select.component.html',
     styleUrl: './select.component.scss',
     encapsulation: ViewEncapsulation.None,
     providers: [
@@ -155,6 +81,10 @@ export class BlocSelectComponent implements ControlValueAccessor, BlocSelectRef 
     readonly loading = input(false, { transform: booleanAttribute });
     readonly position = input<OverlayPosition>('bottom-start');
     readonly compareWith = input<(left: unknown, right: unknown) => boolean>(Object.is);
+
+    readonly loadingTpl = contentChild(BlocSelectLoadingDirective);
+    readonly emptyTpl = contentChild(BlocSelectEmptyDirective);
+    readonly iconTpl = contentChild(BlocSelectIconDirective);
 
     readonly panelId = `bloc-select-panel-${++nextPanelId}`;
     readonly isOpen = signal(false);
