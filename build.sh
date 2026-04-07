@@ -11,6 +11,9 @@ echo "Building all projects..."
 echo "Building bloc-ui-core..."
 npx ng build bloc-ui-core $CONFIG
 
+echo "Building bloc-ui-overlay..."
+npx ng build bloc-ui-overlay $CONFIG
+
 echo "Building bloc-ui-theme..."
 npx ng build bloc-ui-theme $CONFIG
 
@@ -46,9 +49,6 @@ npx ng build bloc-ui-date-picker $CONFIG
 
 echo "Building bloc-ui-tab..."
 npx ng build bloc-ui-tab $CONFIG
-
-echo "Building bloc-ui-overlay..."
-npx ng build bloc-ui-overlay $CONFIG
 
 echo "Building bloc-ui-select..."
 npx ng build bloc-ui-select $CONFIG
