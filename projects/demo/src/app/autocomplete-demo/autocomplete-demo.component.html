@@ -3,14 +3,23 @@
     <p class="m-0 text-slate-400 text-[0.95rem]">
         Searchable option picker with keyboard navigation, optional clear action, and CVA support.
     </p>
+    <p class="m-0 text-xs text-slate-400 mt-1">
+        Keyboard: <code>ArrowUp</code>, <code>ArrowDown</code>, <code>Enter</code>,
+        <code>Escape</code>. Closes on outside click and supports disabled, clearable, and loading
+        states.
+    </p>
     <app-install-command package="@bloc-ui/autocomplete" />
 </header>
 
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+    Basic Usage
+</h2>
 <div class="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-5 mb-10">
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
         <h3 class="m-0 text-base font-semibold text-slate-900">Quick Pick</h3>
         <p class="m-0 text-[0.82rem] text-slate-400">
-            Great for command menus, owner pickers, or lightweight search-and-select flows.
+            Great for command menus, owner pickers, or lightweight search-and-select flows. Includes
+            option descriptions and a clearable control.
         </p>
         <bloc-autocomplete
             [options]="teamOptions"
@@ -27,7 +36,8 @@
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
         <h3 class="m-0 text-base font-semibold text-slate-900">Reactive FormControl</h3>
         <p class="m-0 text-[0.82rem] text-slate-400">
-            Works cleanly inside Angular forms while preserving option metadata in the dropdown.
+            Full CVA support — set an initial value via <code>FormControl</code> and read back the
+            selected value programmatically.
         </p>
         <bloc-autocomplete
             [options]="teamOptions"
@@ -38,5 +48,65 @@
             Form value: <strong>{{ teamControl.value || '(none)' }}</strong>
         </p>
         <app-sample-code [code]="snippets.reactive" />
+    </div>
+</div>
+
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">States</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-5 mb-10">
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Disabled</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Disables click, keyboard interaction, and form participation. Works via
+            <code>[disabled]="true"</code> or a <code>FormControl</code> with
+            <code>disabled: true</code>.
+        </p>
+        <bloc-autocomplete
+            [options]="teamOptions"
+            [formControl]="disabledControl"
+            placeholder="Unavailable"
+        />
+        <app-sample-code [code]="snippets.disabled" />
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Loading</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            <code>[loading]="true"</code> replaces the option list with a status message — ideal
+            while fetching async data. An empty query also demonstrates the no-results state.
+        </p>
+        <bloc-autocomplete
+            [options]="teamOptions"
+            [loading]="isLoading()"
+            placeholder="Search teams"
+        />
+        <button
+            type="button"
+            class="self-start px-3 py-2 rounded-md border border-slate-200 bg-slate-50 text-sm text-slate-700 cursor-pointer hover:bg-slate-100"
+            (click)="toggleLoading()"
+        >
+            Toggle Loading
+        </button>
+        <app-sample-code [code]="snippets.loading" />
+    </div>
+</div>
+
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Theming</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-5">
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Custom Token</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Override colours via CSS custom properties — works without a theme package.
+        </p>
+        <bloc-autocomplete
+            style="
+                --bloc-autocomplete-border-focus: #10b981;
+                --bloc-autocomplete-option-selected: rgba(16, 185, 129, 0.12);
+                --bloc-autocomplete-option-active: rgba(16, 185, 129, 0.06);
+            "
+            [options]="teamOptions"
+            [clearable]="true"
+            placeholder="Green themed"
+        />
+        <app-sample-code [code]="snippets.theming" />
     </div>
 </div>

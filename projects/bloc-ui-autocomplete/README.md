@@ -79,12 +79,15 @@ readonly teamOptions: readonly BlocAutocompleteOption<string>[] = [
 
 ## Inputs — `BlocAutocompleteComponent`
 
-| Input         | Type                          | Default | Description                                     |
-| ------------- | ----------------------------- | ------- | ----------------------------------------------- |
-| `options`     | `BlocAutocompleteOption<T>[]` | `[]`    | List of options to display and filter           |
-| `placeholder` | `string`                      | `''`    | Placeholder text in the search input            |
-| `clearable`   | `boolean`                     | `false` | Shows a clear (×) button to reset the selection |
-| `disabled`    | `boolean`                     | `false` | Disables the control                            |
+| Input         | Type                          | Default                | Description                                     |
+| ------------- | ----------------------------- | ---------------------- | ----------------------------------------------- |
+| `options`     | `BlocAutocompleteOption<T>[]` | `[]`                   | List of options to display and filter           |
+| `placeholder` | `string`                      | `'Search options'`     | Placeholder text in the search input            |
+| `clearable`   | `boolean`                     | `false`                | Shows a clear (×) button to reset the selection |
+| `disabled`    | `boolean`                     | `false`                | Disables the control                            |
+| `loading`     | `boolean`                     | `false`                | Replaces the option list with `loadingText`     |
+| `loadingText` | `string`                      | `'Loading options...'` | Message shown while `loading` is true           |
+| `emptyText`   | `string`                      | `'No results found'`   | Message shown when the filtered list is empty   |
 
 ## Outputs
 
@@ -102,3 +105,23 @@ interface BlocAutocompleteOption<T> {
     disabled?: boolean;
 }
 ```
+
+---
+
+## CSS Custom Properties
+
+All visual properties are token-driven. Override any token on the `bloc-autocomplete` element.
+
+| Token                                 | Default                        | Description                                     |
+| ------------------------------------- | ------------------------------ | ----------------------------------------------- |
+| `--bloc-autocomplete-bg`              | `var(--bloc-surface, #ffffff)` | Input and panel background                      |
+| `--bloc-autocomplete-border`          | `var(--bloc-border, #d1d5db)`  | Default border colour                           |
+| `--bloc-autocomplete-border-focus`    | `var(--bloc-primary, #6b7280)` | Border colour when input is focused             |
+| `--bloc-autocomplete-color`           | `var(--bloc-text, #374151)`    | Text colour                                     |
+| `--bloc-autocomplete-muted`           | `var(--bloc-muted, #9ca3af)`   | Muted text (descriptions, empty state, clear ×) |
+| `--bloc-autocomplete-radius`          | `4px`                          | Border radius for input, panel, and options     |
+| `--bloc-autocomplete-panel-radius`    | inherits `radius`              | Override panel border radius independently      |
+| `--bloc-autocomplete-panel-shadow`    | `0 4px 16px rgba(0,0,0,0.08)`  | Drop shadow on the floating panel               |
+| `--bloc-autocomplete-option-hover`    | `rgba(0, 0, 0, 0.04)`          | Option background on hover                      |
+| `--bloc-autocomplete-option-active`   | `rgba(0, 0, 0, 0.06)`          | Option background when keyboard-active          |
+| `--bloc-autocomplete-option-selected` | `rgba(0, 0, 0, 0.08)`          | Option background when selected                 |

@@ -115,6 +115,12 @@
                         }
                     },
                     "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-autocomplete/tsconfig.spec.json"
+                    }
                 }
             }
         },

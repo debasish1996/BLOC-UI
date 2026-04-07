@@ -1,150 +1,161 @@
 import { Meta, Title } from '@angular/platform-browser';
 import { Component } from '@angular/core';
 import { RouterLink } from '@angular/router';
+import type { FeatherIconNames } from 'feather-icons';
+import { IconComponent } from '../icon/icon.component';
 
 @Component({
     selector: 'app-home',
     standalone: true,
-    imports: [RouterLink],
+    imports: [RouterLink, IconComponent],
     templateUrl: './home.component.html',
 })
 export class HomeComponent {
-    readonly components = [
+    readonly components: ReadonlyArray<{
+        name: string;
+        path: string;
+        description: string;
+        icon: FeatherIconNames;
+    }> = [
         {
             name: 'Accordion',
             path: '/accordion',
             description: 'Collapsible disclosure sections with single-open and multi-expand modes.',
-            icon: 'A',
+            icon: 'chevrons-down',
         },
         {
             name: 'Alert',
             path: '/alert',
             description: 'Inline feedback banners with semantic variants and optional dismissal.',
-            icon: 'Al',
+            icon: 'alert-circle',
         },
         {
             name: 'Autocomplete',
             path: '/autocomplete',
-            description: 'Searchable option picker with keyboard navigation and Angular forms support.',
-            icon: 'Au',
+            description:
+                'Searchable option picker with keyboard navigation and Angular forms support.',
+            icon: 'search',
         },
         {
             name: 'Badge',
             path: '/badge',
             description: 'Compact status labels and counters with size and variant presets.',
-            icon: 'B',
+            icon: 'award',
         },
         {
             name: 'Button',
             path: '/button',
-            description: 'Versatile action buttons with variants, loading states, and icon support.',
-            icon: 'Bt',
+            description:
+                'Versatile action buttons with variants, loading states, and icon support.',
+            icon: 'mouse-pointer',
         },
         {
             name: 'Input',
             path: '/input',
             description: 'Styled text inputs with validation, error messages, and floating labels.',
-            icon: 'In',
+            icon: 'type',
         },
         {
             name: 'Progress',
             path: '/progress',
             description: 'Accessible progress bars with labels, value display, and intent colours.',
-            icon: 'P',
+            icon: 'activity',
         },
         {
             name: 'Select',
             path: '/select',
             description:
                 'Overlay-backed single select with keyboard navigation, filtering, and Angular forms support.',
-            icon: 'S',
+            icon: 'list',
         },
         {
             name: 'Skeleton',
             path: '/skeleton',
             description: 'Shimmering placeholders for loading text, cards, avatars, and layouts.',
-            icon: 'Sk',
+            icon: 'grid',
         },
         {
             name: 'Textarea',
             path: '/textarea',
-            description: 'Auto-themed multi-line text areas with validation and Angular forms support.',
-            icon: 'T',
+            description:
+                'Auto-themed multi-line text areas with validation and Angular forms support.',
+            icon: 'align-left',
         },
         {
             name: 'Checkbox',
             path: '/checkbox',
             description: 'Accessible checkboxes with indeterminate state and custom styling.',
-            icon: 'C',
+            icon: 'check-square',
         },
         {
             name: 'Radio',
             path: '/radio',
             description: 'Radio groups with keyboard navigation and reactive form support.',
-            icon: 'R',
+            icon: 'disc',
         },
         {
             name: 'Toggle',
             path: '/toggle',
             description: 'On/off toggle switches with smooth animations and ARIA labels.',
-            icon: 'Tg',
+            icon: 'toggle-left',
         },
         {
             name: 'Modal',
             path: '/modal',
             description: 'Declarative modals with backdrop dismiss, focus trapping, and stacking.',
-            icon: 'M',
+            icon: 'square',
         },
         {
             name: 'Layout Sidebar',
             path: '/layout',
             description: 'Sidebar and content shell primitives for dashboards and app workspaces.',
-            icon: 'L',
+            icon: 'columns',
         },
         {
             name: 'Pagination',
             path: '/pagination',
-            description: 'Page navigation with boundary pages, sibling ranges, and ellipsis handling.',
-            icon: 'Pg',
+            description:
+                'Page navigation with boundary pages, sibling ranges, and ellipsis handling.',
+            icon: 'more-horizontal',
         },
         {
             name: 'Slider',
             path: '/slider',
             description: 'Range control with CVA support, labels, and a styled progress track.',
-            icon: 'Sl',
+            icon: 'sliders',
         },
         {
             name: 'Spinner',
             path: '/spinner',
             description: 'Loading indicators with configurable size, speed, and colour tokens.',
-            icon: 'Sp',
+            icon: 'loader',
         },
         {
             name: 'Table',
             path: '/table',
             description: 'Declarative data tables with sortable columns and custom cell templates.',
-            icon: 'Tb',
+            icon: 'grid',
         },
         {
             name: 'Tab',
             path: '/tab',
             description:
                 'Accessible tab groups with keyboard navigation and lazy content rendering.',
-            icon: 'Ta',
+            icon: 'folder',
         },
         {
             name: 'Toast',
             path: '/toast',
             description:
                 'Stackable notification toasts with auto-dismiss, actions, and positioning.',
-            icon: 'To',
+            icon: 'bell',
         },
         {
             name: 'Date Picker',
             path: '/date-picker',
             description:
                 'Calendar-based date selection with keyboard navigation and format control.',
-            icon: 'D',
+            icon: 'calendar',
         },
     ];
 
@@ -236,7 +247,8 @@ export class HomeComponent {
         },
         {
             title: 'Accessible',
-            description: 'ARIA attributes, keyboard navigation, and screen reader support are built in.',
+            description:
+                'ARIA attributes, keyboard navigation, and screen reader support are built in.',
             icon: 'AX',
         },
         {
