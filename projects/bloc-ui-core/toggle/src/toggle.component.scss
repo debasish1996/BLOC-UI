@@ -1,5 +1,9 @@
-// Host — authoritative structural rules
-:host {
+// ─────────────────────────────────────────────────────────────────────────────
+// Unlayered — authoritative structural rules (intentionally not overridable)
+// ViewEncapsulation.None means :host won't be rewritten, so we use the element
+// selector directly.
+// ─────────────────────────────────────────────────────────────────────────────
+bloc-toggle {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -24,25 +28,8 @@
         --_thumb-size: 24px;
         --_thumb-gap: 4px;
     }
-
-    &.bloc-toggle--disabled {
-        cursor: not-allowed;
-        opacity: 0.5;
-    }
-
-    // When label is before the track, push the track to the end via flex order
-    &.bloc-toggle--label-before .bloc-toggle__track {
-        order: 1;
-    }
-
-    &:focus-visible {
-        outline: 2px solid var(--bloc-toggle-focus-ring, var(--bloc-primary, #6b7280));
-        outline-offset: 2px;
-        border-radius: 4px;
-    }
 }
 
-// Track — authoritative structural
 .bloc-toggle__track {
     position: relative;
     display: inline-block;
@@ -50,19 +37,8 @@
     border-radius: 999px;
     width: var(--_track-w);
     height: var(--_track-h);
-    transition: background-color 0.2s ease;
 }
 
-// Track — overridable visual (zero-specificity via :where)
-:where(.bloc-toggle__track) {
-    background-color: var(--bloc-toggle-track-bg, #d1d5db);
-}
-
-:host.bloc-toggle--checked .bloc-toggle__track {
-    background-color: var(--bloc-toggle-track-checked-bg, var(--bloc-primary, #6b7280));
-}
-
-// Thumb — authoritative structural
 .bloc-toggle__thumb {
     position: absolute;
     border-radius: 50%;
@@ -70,17 +46,47 @@
     left: var(--_thumb-gap);
     width: var(--_thumb-size);
     height: var(--_thumb-size);
-    transition: transform 0.2s ease;
 }
 
-// Thumb — overridable visual (zero-specificity via :where)
-:where(.bloc-toggle__thumb) {
-    background-color: var(--bloc-toggle-thumb-bg, #ffffff);
-    box-shadow: 0 1px 3px var(--bloc-toggle-thumb-shadow, rgba(0, 0, 0, 0.2));
-}
+// ─────────────────────────────────────────────────────────────────────────────
+// @layer bloc-toggle — overridable visual rules
+// The layer order (base < bloc-toggle < utilities) is declared at runtime by
+// the component, so Tailwind utilities and consumer classes always win.
+// ─────────────────────────────────────────────────────────────────────────────
+@layer bloc-toggle {
+    :where(bloc-toggle.bloc-toggle--disabled) {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
 
-// Checked: slide thumb to the right
-// translate = track-width − thumb-size − 2 × gap
-:host.bloc-toggle--checked .bloc-toggle__thumb {
-    transform: translateX(calc(var(--_track-w) - var(--_thumb-size) - 2 * var(--_thumb-gap)));
+    // When label is before the track, push the track to the end via flex order
+    :where(bloc-toggle.bloc-toggle--label-before) .bloc-toggle__track {
+        order: 1;
+    }
+
+    :where(bloc-toggle:focus-visible) {
+        outline: 2px solid var(--bloc-toggle-focus-ring, var(--bloc-primary, #6b7280));
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+
+    :where(.bloc-toggle__track) {
+        background-color: var(--bloc-toggle-track-bg, #d1d5db);
+        transition: background-color 0.2s ease;
+    }
+
+    :where(bloc-toggle.bloc-toggle--checked) .bloc-toggle__track {
+        background-color: var(--bloc-toggle-track-checked-bg, var(--bloc-primary, #6b7280));
+    }
+
+    :where(.bloc-toggle__thumb) {
+        background-color: var(--bloc-toggle-thumb-bg, #ffffff);
+        box-shadow: 0 1px 3px var(--bloc-toggle-thumb-shadow, rgba(0, 0, 0, 0.2));
+        transition: transform 0.2s ease;
+    }
+
+    // translate = track-width − thumb-size − 2 × gap
+    :where(bloc-toggle.bloc-toggle--checked) .bloc-toggle__thumb {
+        transform: translateX(calc(var(--_track-w) - var(--_thumb-size) - 2 * var(--_thumb-gap)));
+    }
 }

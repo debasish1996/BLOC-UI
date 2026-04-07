@@ -1,5 +1,16 @@
-import { Component, computed, forwardRef, input, signal } from '@angular/core';
+import { Component, ViewEncapsulation, computed, forwardRef, inject, input, signal } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+const LAYER_ORDER = '@layer theme, base, bloc-checkbox, components, utilities;';
+
+function ensureLayerOrder(doc: Document): void {
+    if (!doc?.head || doc.getElementById('bloc-checkbox-layers')) return;
+    const style = doc.createElement('style');
+    style.id = 'bloc-checkbox-layers';
+    style.textContent = LAYER_ORDER;
+    doc.head.insertBefore(style, doc.head.firstChild);
+}
 
 @Component({
     selector: 'bloc-checkbox',
@@ -24,6 +35,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
         <ng-content />
     `,
     styleUrl: './checkbox.component.scss',
+    encapsulation: ViewEncapsulation.None,
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
@@ -69,6 +81,10 @@ export class BlocCheckboxComponent implements ControlValueAccessor {
     private _onChange: (val: boolean) => void = () => {};
 
     _onTouched: () => void = () => {};
+
+    constructor() {
+        ensureLayerOrder(inject(DOCUMENT));
+    }
 
     // — ControlValueAccessor —
 

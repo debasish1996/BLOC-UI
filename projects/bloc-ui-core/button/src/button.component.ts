@@ -1,6 +1,16 @@
-import { Component, TemplateRef, input, output } from '@angular/core';
-import { NgTemplateOutlet } from '@angular/common';
+import { Component, TemplateRef, ViewEncapsulation, inject, input, output } from '@angular/core';
+import { DOCUMENT, NgTemplateOutlet } from '@angular/common';
 import { BlocSpinnerDirective } from '@bloc-ui/core/spinner';
+
+const LAYER_ORDER = '@layer theme, base, bloc-button, components, utilities;';
+
+function ensureLayerOrder(doc: Document): void {
+    if (!doc?.head || doc.getElementById('bloc-button-layers')) return;
+    const style = doc.createElement('style');
+    style.id = 'bloc-button-layers';
+    style.textContent = LAYER_ORDER;
+    doc.head.insertBefore(style, doc.head.firstChild);
+}
 
 @Component({
     selector: 'button[blocButton]',
@@ -17,6 +27,7 @@ import { BlocSpinnerDirective } from '@bloc-ui/core/spinner';
         <ng-content />
     `,
     styleUrl: './button.component.scss',
+    encapsulation: ViewEncapsulation.None,
     host: {
         '[class]':
             '"bloc-button bloc-button--" + variant() + (loading() ? " bloc-button--loading" : "")',
@@ -40,6 +51,10 @@ export class BlocButtonComponent {
 
     /** Emits when the button is clicked. */
     readonly clicked = output<MouseEvent>();
+
+    constructor() {
+        ensureLayerOrder(inject(DOCUMENT));
+    }
 
     handleClick(event: MouseEvent): void {
         if (!this.disabled() && !this.loading()) {

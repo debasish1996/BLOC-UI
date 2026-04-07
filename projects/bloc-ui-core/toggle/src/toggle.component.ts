@@ -1,5 +1,16 @@
-import { Component, computed, forwardRef, input, signal } from '@angular/core';
+import { Component, ViewEncapsulation, computed, forwardRef, inject, input, signal } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+
+const LAYER_ORDER = '@layer theme, base, bloc-toggle, components, utilities;';
+
+function ensureLayerOrder(doc: Document): void {
+    if (!doc?.head || doc.getElementById('bloc-toggle-layers')) return;
+    const style = doc.createElement('style');
+    style.id = 'bloc-toggle-layers';
+    style.textContent = LAYER_ORDER;
+    doc.head.insertBefore(style, doc.head.firstChild);
+}
 
 @Component({
     selector: 'bloc-toggle',
@@ -11,6 +22,7 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
         <ng-content />
     `,
     styleUrl: './toggle.component.scss',
+    encapsulation: ViewEncapsulation.None,
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,
@@ -60,6 +72,10 @@ export class BlocToggleComponent implements ControlValueAccessor {
      * Exposed without `private` so the host `(blur)` binding can invoke it directly.
      */
     _onTouched: () => void = () => {};
+
+    constructor() {
+        ensureLayerOrder(inject(DOCUMENT));
+    }
 
     // — ControlValueAccessor —
 

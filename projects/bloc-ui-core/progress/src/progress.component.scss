@@ -1,47 +1,65 @@
-:host {
+// ─────────────────────────────────────────────────────────────────────────────
+// Unlayered — authoritative structural rules (intentionally not overridable)
+// ViewEncapsulation.None means :host won't be rewritten, so we use the element
+// selector directly.
+// ─────────────────────────────────────────────────────────────────────────────
+bloc-progress {
     display: flex;
     flex-direction: column;
     gap: 0.5rem;
     width: 100%;
 }
 
-:where(.bloc-progress__meta) {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 0.75rem;
-    font-size: 0.8125rem;
-    color: var(--bloc-progress-meta-color, #374151);
-}
-
-:where(.bloc-progress__label),
-:where(.bloc-progress__value) {
-    line-height: 1.2;
-}
-
-:where(.bloc-progress__track) {
+.bloc-progress__track {
     overflow: hidden;
     width: 100%;
-    background: var(--bloc-progress-track-bg, #d1d5db);
     border-radius: var(--bloc-progress-radius, 999px);
 }
 
-:where(.bloc-progress__fill) {
+.bloc-progress__fill {
     height: 100%;
     width: 0;
     border-radius: inherit;
-    background: var(--bloc-progress-fill, var(--bloc-primary, #7b7b7b));
-    transition: width 180ms ease;
 }
 
-:where(:host(.bloc-progress--sm)) .bloc-progress__track {
-    height: var(--bloc-progress-height-sm, 0.375rem);
-}
+// ─────────────────────────────────────────────────────────────────────────────
+// @layer bloc-progress — overridable visual rules
+// The layer order (base < bloc-progress < utilities) is declared at runtime by
+// the component, so Tailwind utilities and consumer classes always win.
+// ─────────────────────────────────────────────────────────────────────────────
+@layer bloc-progress {
+    :where(.bloc-progress__meta) {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 0.75rem;
+        font-size: 0.8125rem;
+        color: var(--bloc-progress-meta-color, #374151);
+    }
 
-:where(:host(.bloc-progress--md)) .bloc-progress__track {
-    height: var(--bloc-progress-height-md, 0.625rem);
-}
+    :where(.bloc-progress__label),
+    :where(.bloc-progress__value) {
+        line-height: 1.2;
+    }
 
-:where(:host(.bloc-progress--lg)) .bloc-progress__track {
-    height: var(--bloc-progress-height-lg, 0.875rem);
+    :where(.bloc-progress__track) {
+        background: var(--bloc-progress-track-bg, #d1d5db);
+    }
+
+    :where(.bloc-progress__fill) {
+        background: var(--bloc-progress-fill, var(--bloc-primary, #7b7b7b));
+        transition: width 180ms ease;
+    }
+
+    :where(bloc-progress.bloc-progress--sm) .bloc-progress__track {
+        height: var(--bloc-progress-height-sm, 0.375rem);
+    }
+
+    :where(bloc-progress.bloc-progress--md) .bloc-progress__track {
+        height: var(--bloc-progress-height-md, 0.625rem);
+    }
+
+    :where(bloc-progress.bloc-progress--lg) .bloc-progress__track {
+        height: var(--bloc-progress-height-lg, 0.875rem);
+    }
 }

@@ -1,6 +1,17 @@
-import { Component, computed, input } from '@angular/core';
+import { Component, ViewEncapsulation, computed, inject, input } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 export type ProgressSize = 'sm' | 'md' | 'lg';
+
+const LAYER_ORDER = '@layer theme, base, bloc-progress, components, utilities;';
+
+function ensureLayerOrder(doc: Document): void {
+    if (!doc?.head || doc.getElementById('bloc-progress-layers')) return;
+    const style = doc.createElement('style');
+    style.id = 'bloc-progress-layers';
+    style.textContent = LAYER_ORDER;
+    doc.head.insertBefore(style, doc.head.firstChild);
+}
 
 @Component({
     selector: 'bloc-progress',
@@ -21,6 +32,7 @@ export type ProgressSize = 'sm' | 'md' | 'lg';
         </div>
     `,
     styleUrl: './progress.component.scss',
+    encapsulation: ViewEncapsulation.None,
     host: {
         '[class]': '"bloc-progress bloc-progress--" + size()',
         role: 'progressbar',
@@ -60,4 +72,8 @@ export class BlocProgressComponent {
     readonly percentage = computed(() => (this.clampedValue() / this.normalizedMax()) * 100);
 
     readonly percentLabel = computed(() => `${Math.round(this.percentage())}%`);
+
+    constructor() {
+        ensureLayerOrder(inject(DOCUMENT));
+    }
 }

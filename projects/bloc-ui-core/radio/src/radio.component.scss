@@ -1,5 +1,9 @@
-// Host — authoritative structural rules
-:host {
+// ─────────────────────────────────────────────────────────────────────────────
+// Unlayered — authoritative structural rules (intentionally not overridable)
+// ViewEncapsulation.None means :host won't be rewritten, so we use the element
+// selector directly.
+// ─────────────────────────────────────────────────────────────────────────────
+bloc-radio {
     display: inline-flex;
     align-items: center;
     gap: 8px;
@@ -20,25 +24,8 @@
         --_inner-size: 10px;
         gap: 10px;
     }
-
-    &.bloc-radio--disabled {
-        cursor: not-allowed;
-        opacity: 0.5;
-    }
-
-    // When label is before the dot, push the dot to the end via flex order
-    &.bloc-radio--label-before .bloc-radio__dot {
-        order: 1;
-    }
-
-    &:focus-visible {
-        outline: 2px solid var(--bloc-radio-focus-ring, var(--bloc-primary, #6b7280));
-        outline-offset: 2px;
-        border-radius: 4px;
-    }
 }
 
-// Dot ring — authoritative structural
 .bloc-radio__dot {
     flex-shrink: 0;
     border-radius: 50%;
@@ -48,7 +35,6 @@
     border-style: solid;
     box-sizing: border-box;
     position: relative;
-    transition: border-color 0.15s ease;
 
     &::after {
         content: '';
@@ -58,26 +44,48 @@
         width: var(--_inner-size);
         height: var(--_inner-size);
         border-radius: 50%;
-        transform: translate(-50%, -50%) scale(0);
-        transition: transform 0.15s ease;
     }
 }
 
-// Dot ring — overridable visual (zero-specificity via :where)
-:where(.bloc-radio__dot) {
-    border-color: var(--bloc-radio-border, #aaafb7);
-    background-color: var(--bloc-radio-bg, #ffffff);
-
-    &::after {
-        background-color: var(--bloc-radio-dot-color, var(--bloc-primary, #6b7280));
+// ─────────────────────────────────────────────────────────────────────────────
+// @layer bloc-radio — overridable visual rules
+// The layer order (base < bloc-radio < utilities) is declared at runtime by the
+// component, so Tailwind utilities and consumer classes always win.
+// ─────────────────────────────────────────────────────────────────────────────
+@layer bloc-radio {
+    :where(bloc-radio.bloc-radio--disabled) {
+        cursor: not-allowed;
+        opacity: 0.5;
     }
-}
 
-// Checked: change border colour and reveal inner dot
-:host.bloc-radio--checked .bloc-radio__dot {
-    border-color: var(--bloc-radio-checked-border, var(--bloc-primary, #6b7280));
-}
+    // When label is before the dot, push the dot to the end via flex order
+    :where(bloc-radio.bloc-radio--label-before) .bloc-radio__dot {
+        order: 1;
+    }
 
-:host.bloc-radio--checked .bloc-radio__dot::after {
-    transform: translate(-50%, -50%) scale(1);
+    :where(bloc-radio:focus-visible) {
+        outline: 2px solid var(--bloc-radio-focus-ring, var(--bloc-primary, #6b7280));
+        outline-offset: 2px;
+        border-radius: 4px;
+    }
+
+    :where(.bloc-radio__dot) {
+        border-color: var(--bloc-radio-border, #aaafb7);
+        background-color: var(--bloc-radio-bg, #ffffff);
+        transition: border-color 0.15s ease;
+
+        &::after {
+            background-color: var(--bloc-radio-dot-color, var(--bloc-primary, #6b7280));
+            transform: translate(-50%, -50%) scale(0);
+            transition: transform 0.15s ease;
+        }
+    }
+
+    :where(bloc-radio.bloc-radio--checked) .bloc-radio__dot {
+        border-color: var(--bloc-radio-checked-border, var(--bloc-primary, #6b7280));
+    }
+
+    :where(bloc-radio.bloc-radio--checked) .bloc-radio__dot::after {
+        transform: translate(-50%, -50%) scale(1);
+    }
 }

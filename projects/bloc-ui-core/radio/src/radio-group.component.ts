@@ -1,4 +1,4 @@
-import { Component, computed, forwardRef, input, signal } from '@angular/core';
+import { Component, ViewEncapsulation, computed, forwardRef, input, signal } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { BLOC_RADIO_GROUP, BlocRadioGroupRef } from './radio.token';
 
@@ -18,16 +18,16 @@ import { BLOC_RADIO_GROUP, BlocRadioGroupRef } from './radio.token';
     selector: 'bloc-radio-group',
     standalone: true,
     template: `<ng-content />`,
-    // Minimal structural style — inline to avoid an extra file
     styles: [
         `
-            :host {
+            bloc-radio-group {
                 display: flex;
                 flex-direction: column;
                 gap: var(--bloc-radio-group-gap, 8px);
             }
         `,
     ],
+    encapsulation: ViewEncapsulation.None,
     providers: [
         {
             provide: NG_VALUE_ACCESSOR,

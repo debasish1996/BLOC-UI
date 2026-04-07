@@ -1,5 +1,16 @@
-import { Component, computed, ElementRef, inject, input } from '@angular/core';
+import { Component, ViewEncapsulation, computed, ElementRef, inject, input } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 import { BLOC_RADIO_GROUP } from './radio.token';
+
+const LAYER_ORDER = '@layer theme, base, bloc-radio, components, utilities;';
+
+function ensureLayerOrder(doc: Document): void {
+    if (!doc?.head || doc.getElementById('bloc-radio-layers')) return;
+    const style = doc.createElement('style');
+    style.id = 'bloc-radio-layers';
+    style.textContent = LAYER_ORDER;
+    doc.head.insertBefore(style, doc.head.firstChild);
+}
 
 /**
  * Individual radio option. Must be placed inside a `<bloc-radio-group>`.
@@ -20,6 +31,7 @@ import { BLOC_RADIO_GROUP } from './radio.token';
         <ng-content />
     `,
     styleUrl: './radio.component.scss',
+    encapsulation: ViewEncapsulation.None,
     host: {
         role: 'radio',
         '[attr.aria-checked]': 'isChecked().toString()',
@@ -65,6 +77,10 @@ export class BlocRadioComponent {
     readonly _effectiveLabelPosition = computed(
         () => this.labelPosition() ?? this._group.labelPosition(),
     );
+
+    constructor() {
+        ensureLayerOrder(inject(DOCUMENT));
+    }
 
     _onClick(): void {
         if (this.isDisabled() || this.isChecked()) return;
