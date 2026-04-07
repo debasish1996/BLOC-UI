@@ -6,6 +6,8 @@
 
 > ⚠️ This package is an **internal platform primitive**. It is consumed by `@bloc-ui/select` and `@bloc-ui/autocomplete` internally and is **not intended for direct import** by application code. Its API is unstable and subject to change without notice.
 
+**[Live Documentation & Demos](https://ui.bloc-verse.com/)**
+
 ---
 
 ## Purpose

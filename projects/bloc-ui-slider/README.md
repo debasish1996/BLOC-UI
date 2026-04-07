@@ -4,6 +4,8 @@
 
 Range slider component for Angular with configurable min, max, and step values, optional label, and full Angular reactive forms integration via `ControlValueAccessor`.
 
+**[Live Documentation & Demos](https://ui.bloc-verse.com/slider)**
+
 ---
 
 ## Installation

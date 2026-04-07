@@ -6,6 +6,8 @@
 
 Collapsible accordion component for Angular with single-open and multi-open modes, keyboard navigation, optional chevron icon, and disabled item support.
 
+**[Live Documentation & Demos](https://ui.bloc-verse.com/accordion)**
+
 ---
 
 ## Installation

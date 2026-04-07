@@ -4,6 +4,8 @@
 
 Hover/focus tooltip with intelligent repositioning and delay control, built on the `@bloc-ui/overlay` platform layer.
 
+**[Live Documentation & Demos](https://ui.bloc-verse.com/tooltip)**
+
 ## Installation
 
 ```bash

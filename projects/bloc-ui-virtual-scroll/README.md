@@ -4,6 +4,8 @@
 
 Lightweight virtual scrolling for Angular — renders only visible items, positions via `transform` (no reflow), signal-driven calculations.
 
+**[Live Documentation & Demos](https://ui.bloc-verse.com/virtual-scroll)**
+
 ## Install
 
 ```bash

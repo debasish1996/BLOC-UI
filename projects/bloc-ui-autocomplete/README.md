@@ -6,6 +6,8 @@
 
 Searchable single-select autocomplete for Angular forms. Renders a text input that filters a provided option list, supports keyboard navigation, disabled options, reactive forms integration, and a clearable mode.
 
+**[Live Documentation & Demos](https://ui.bloc-verse.com/autocomplete)**
+
 ---
 
 ## Installation
