@@ -79,51 +79,110 @@ This is a two-package Angular component library workspace:
 All styles **must** follow this priority order, highest to lowest:
 
 ```
-1. User's own classes / inline styles   (consumer, always wins)
-2. Theme tokens                         (bloc-ui-theme, CSS custom properties)
-3. Barebone structural styles           (bloc-ui-core, must never override the above)
+1. User's own classes / inline styles   (consumer, always wins — unlayered)
+2. Tailwind utilities                   (@layer utilities — declared last)
+3. Theme tokens                         (bloc-ui-theme, CSS custom properties)
+4. Component visual styles              (@layer bloc-<component>)
+5. Tailwind base / preflight            (@layer base)
 ```
 
-**How to implement this:**
+#### Self-layering pattern (standard for all components)
 
-- Wrap all barebone (structural / reset) declarations in `:where()` so they carry **zero specificity**.
-  Any single class on the element will then override them without `!important`.
+Every component **must be self-layering** — it must work out of the box with zero consumer
+CSS configuration. The consumer should only need `npm install` and an import; no `@layer`
+registration, no theme file, no Tailwind config changes.
 
-    ```css
-    /* ✅ correct — zero specificity, user classes always win */
-    :where(input.bloc-input) {
-        color: var(--bloc-input-color, #374151);
-    }
+**Two-part approach:**
 
-    /* ❌ wrong — specificity (0,1,1) beats Tailwind utilities (0,1,0) */
-    input.bloc-input {
-        color: var(--bloc-input-color, #374151);
+1. **Runtime layer-order injection** (in the `.ts` file):
+   The component injects a `<style>` tag as the **first child of `<head>`** containing only
+   a layer-order declaration. This positions `bloc-<component>` between `base` and `utilities`:
+
+    ```ts
+    const LAYER_ORDER = '@layer theme, base, bloc-<component>, components, utilities;';
+
+    function ensureLayerOrder(doc: Document): void {
+        if (!doc?.head || doc.getElementById('bloc-<component>-layers')) return;
+        const style = doc.createElement('style');
+        style.id = 'bloc-<component>-layers';
+        style.textContent = LAYER_ORDER;
+        doc.head.insertBefore(style, doc.head.firstChild);
     }
     ```
 
-- Structural rules that **must not** be overridden by accident (e.g. `box-sizing`, `outline:none`)
-  may stay in the bare `element.class {}` block since they are intentionally authoritative.
+    Call `ensureLayerOrder(inject(DOCUMENT))` in the component constructor.
 
-- For injected `<style>` tags (directive pattern, e.g. `BlocInputDirective`, `BlocSpinnerDirective`):
-    - Wrap overridable visual rules in `@layer bloc-<component>` so that Tailwind's later-declared layers (`utilities`, etc.) always win — **layer order determines priority, later = higher**.
-    - Inject the `<style>` tag via **`head.appendChild(style)`** (append to end of `<head>`). This ensures the browser has already processed Tailwind's layer ordering statement (which registers `bloc-input` between `base` and `utilities`) before our `<style>` is seen. If we insert before Tailwind, our layer gets position 0 (lowest priority) and Tailwind preflight overrides it.
-    - Keep intentionally authoritative structural rules (e.g. `box-sizing`, `outline:none`, `appearance`) **unlayered** (`input.class { }`) — unlayered rules always beat any layer.
-    - Use `:where(selector)` inside the layer for extra safety, so intra-layer specificity stays zero.
+    **Why `insertBefore(style, head.firstChild)`?** The first `@layer` order declaration the
+    browser encounters locks the layer positions. Later `@layer` statements (from Tailwind,
+    theme, or the consumer) can add content to existing layers but **cannot reorder** them.
 
-> **Consumer setup requirement (Tailwind users):** Tailwind's `@import "tailwindcss"` declares
-> `@layer theme, base, components, utilities`. The `bloc-*` layers must be registered **between
-> `base` and `utilities`** before that import, otherwise Tailwind's `base` (preflight) resets
-> will override bloc-ui-core defaults. Add this line to the top of your `tailwind.css`:
->
-> ```css
-> @layer theme, base, bloc-input, components, utilities;
-> @import 'tailwindcss';
-> ```
->
-> Add a matching entry for each bloc-ui-core directive you use (e.g. `bloc-spinner`, `bloc-input`).
+2. **Styles in the SCSS file** (loaded via `styleUrl`):
+   Use `ViewEncapsulation.None` so Angular doesn't scope selectors. This means:
+    - **No `:host`** — use the element selector directly (e.g. `bloc-badge`, not `:host`)
+    - Structural rules go **unlayered** (intentionally authoritative, can't be overridden)
+    - Visual rules go inside `@layer bloc-<component>` with `:where()` for zero specificity
 
-- For SCSS component files (`:host`-based components):
-    - Keep specificity low. Prefer class selectors inside `:where()` for overridable properties.
+    ```scss
+    // Unlayered — authoritative structural rules
+    bloc-badge {
+        display: inline-flex;
+        box-sizing: border-box;
+    }
+
+    // Layered — overridable visual rules
+    @layer bloc-badge {
+        :where(bloc-badge) {
+            background: var(--bloc-badge-bg, #e2e8f0);
+            color: var(--bloc-badge-color, #334155);
+        }
+
+        :where(bloc-badge.bloc-badge--primary) {
+            background: var(--bloc-badge-primary-bg, #dbeafe);
+        }
+    }
+    ```
+
+**Why this works without consumer config:**
+
+- The runtime `<style>` is the first node in `<head>`, so it declares layer order before
+  Tailwind loads → `base < bloc-<component> < utilities` is locked.
+- Tailwind fills content into `base` and `utilities` at their already-registered positions.
+- `:where()` inside the layer gives zero specificity, so even a single Tailwind utility
+  class (specificity 0,1,0) overrides component defaults.
+- Unlayered CSS (consumer's own classes, inline styles) always beats every `@layer` by spec.
+- For non-Tailwind apps, the empty layer names are harmless; normal CSS specificity applies.
+
+#### For directive-pattern components (injected `<style>` tags)
+
+Directives that don't use `styleUrl` (e.g. `BlocInputDirective`, `BlocSpinnerDirective`)
+combine both the layer-order declaration and the actual CSS rules into a single runtime-
+injected `<style>` tag:
+
+```ts
+const CSS = [
+    '@layer theme, base, bloc-input, components, utilities;',
+    // Unlayered structural rules
+    'input.bloc-input{outline:none;box-sizing:border-box}',
+    // Layered visual rules
+    '@layer bloc-input{',
+    ':where(input.bloc-input){border:1px solid var(--bloc-input-border,#cbd5e1)}',
+    '}',
+].join('');
+```
+
+Inject via `doc.head.insertBefore(style, doc.head.firstChild)`.
+
+#### Rules summary
+
+| Rule                                       | Detail                                                                                     |
+| ------------------------------------------ | ------------------------------------------------------------------------------------------ |
+| **Self-layering**                          | Every component declares its own layer order at runtime. No consumer config needed.        |
+| **`ViewEncapsulation.None`**               | Required for `styleUrl` components so `@layer` is preserved and `:host` isn't needed.      |
+| **No `:host`**                             | Use the element selector directly (`bloc-badge`, not `:host`).                             |
+| **Unlayered = authoritative**              | `box-sizing`, `display`, `outline:none` — things that must not be accidentally overridden. |
+| **`@layer bloc-<name>` = overridable**     | All visual properties (color, background, border, padding, font-size, etc.).               |
+| **`:where()` inside layer**                | Zero specificity so any consumer class wins without `!important`.                          |
+| **`insertBefore(style, head.firstChild)`** | First declaration locks layer order.                                                       |
 
 ---
 
@@ -154,8 +213,8 @@ All styles **must** follow this priority order, highest to lowest:
 
 ```
 lib/<name>/
-  <name>.component.ts      # standalone component
-  <name>.component.scss    # barebone structural styles only
+  <name>.component.ts      # standalone component (ViewEncapsulation.None + runtime layer-order injection)
+  <name>.component.scss    # styles: unlayered structural + @layer bloc-<name> visual (no :host)
   <name>.module.ts         # NgModule wrapper
 ```
 
