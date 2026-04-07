@@ -33,7 +33,7 @@
 // so that: preflight resets < bloc defaults < Tailwind utilities < inline styles.
 // This file must be imported BEFORE tailwindcss for this to take effect.
 //
-@layer theme, base, bloc-spinner, bloc-input, bloc-select, bloc-modal, components, utilities;
+@layer theme, base, bloc-spinner, bloc-input, bloc-select, bloc-modal, bloc-badge, components, utilities;
 
 // ── Light theme (default) ────────────────────────────────────────────────────
 :root {
