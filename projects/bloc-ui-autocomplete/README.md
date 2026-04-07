@@ -1,6 +1,6 @@
 # @bloc-ui/autocomplete
 
-> **Latest:** v1.0.0
+> **Latest:** v1.0.1
 
 > ⚠️ **Experimental** — API may change before reaching stable status.
 
