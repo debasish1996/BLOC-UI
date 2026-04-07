@@ -26,6 +26,7 @@
         "@bloc-ui/date-picker": "^1.0.1",
         "@bloc-ui/tab": "^1.0.1",
         "@bloc-ui/tooltip": "^1.0.2",
+        "@bloc-ui/virtual-scroll": "^1.0.0",
         "tslib": "^2.3.0"
     },
     "sideEffects": false
