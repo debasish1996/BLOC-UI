@@ -4,7 +4,7 @@
 
 Lightweight, accessible Angular component library. Barebone structure and behaviour — no hard-coded colours, no design opinions. Pair with [`@bloc-ui/theme`](https://www.npmjs.com/package/@bloc-ui/theme) to add a visual layer, or bring your own styles via CSS custom properties.
 
-**[Live Documentation & Demos](https://bloc-verse.com/)**
+**[Live Documentation & Demos](https://ui.bloc-verse.com/)**
 
 > **Tip:** Need modal, table, toast, date-picker, or tab components too? Install [`@bloc-ui/kit`](https://www.npmjs.com/package/@bloc-ui/kit) for a single all-in-one import, or install each standalone package individually.
 

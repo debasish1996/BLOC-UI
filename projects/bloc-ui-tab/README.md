@@ -4,7 +4,7 @@
 
 Tab group component for Angular — part of the [Bloc UI](https://github.com/debasish1996/BLOC-UI) component library. Supports disabled tabs, animated active indicator, manual CSS-token sizing, and selection change events.
 
-**[Live Documentation & Demos](https://bloc-verse.com/tab)**
+**[Live Documentation & Demos](https://ui.bloc-verse.com/tab)**
 
 > **Tip:** You can also install [`@bloc-ui/kit`](https://www.npmjs.com/package/@bloc-ui/kit) to get this package along with every other Bloc UI component in a single import.
 

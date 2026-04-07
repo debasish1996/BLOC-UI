@@ -16,7 +16,7 @@ Lightweight, accessible Angular component library — barebone structure and beh
 
 If this saves you time, consider supporting 🙌 — [☕ Ko-fi](https://ko-fi.com/blocverse) · [⭐ Star on GitHub](https://github.com/debasish1996/BLOC-UI)
 
-**[Live Documentation & Demos](https://bloc-verse.com/)**
+**[Live Documentation & Demos](https://ui.bloc-verse.com/)**
 
 ---
 
