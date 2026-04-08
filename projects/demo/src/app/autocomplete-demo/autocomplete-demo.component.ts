@@ -1,6 +1,10 @@
 import { Component, signal } from '@angular/core';
 import { FormControl, ReactiveFormsModule } from '@angular/forms';
-import { BlocAutocompleteComponent, BlocAutocompleteOption } from '@bloc-ui/autocomplete';
+import {
+    BlocAutocompleteComponent,
+    BlocAutocompleteHighlightComponent,
+    BlocAutocompleteOption,
+} from '@bloc-ui/autocomplete';
 
 import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
@@ -11,6 +15,7 @@ import { SampleCodeComponent } from '../sample-code/sample-code.component';
     imports: [
         ReactiveFormsModule,
         BlocAutocompleteComponent,
+        BlocAutocompleteHighlightComponent,
         InstallCommandComponent,
         SampleCodeComponent,
     ],

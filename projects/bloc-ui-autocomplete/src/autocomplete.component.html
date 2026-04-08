@@ -48,18 +48,14 @@
                     (mousedown)="$event.preventDefault()"
                     (click)="selectOption(option)"
                 >
-                    @if (highlight()) {
-                        <span [blocTextHighlight]="option.label" [query]="query()"></span>
+                    @if (optionDef(); as def) {
+                        <ng-container
+                            [ngTemplateOutlet]="def.templateRef"
+                            [ngTemplateOutletContext]="{ $implicit: option, query: query() }"
+                        />
                     } @else {
                         <span>{{ option.label }}</span>
-                    }
-                    @if (option.description) {
-                        @if (highlight()) {
-                            <small
-                                [blocTextHighlight]="option.description"
-                                [query]="query()"
-                            ></small>
-                        } @else {
+                        @if (option.description) {
                             <small>{{ option.description }}</small>
                         }
                     }

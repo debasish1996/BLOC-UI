@@ -4,5 +4,5 @@
     "lib": {
         "entryFile": "src/public-api.ts"
     },
-    "allowedNonPeerDependencies": ["@bloc-ui/overlay", "@bloc-ui/text-highlight"]
+    "allowedNonPeerDependencies": ["@bloc-ui/overlay"]
 }

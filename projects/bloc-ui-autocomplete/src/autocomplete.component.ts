@@ -1,10 +1,11 @@
-import { DOCUMENT } from '@angular/common';
+import { DOCUMENT, NgTemplateOutlet } from '@angular/common';
 import {
     Component,
     DestroyRef,
     ElementRef,
     ViewEncapsulation,
     computed,
+    contentChild,
     forwardRef,
     inject,
     input,
@@ -12,10 +13,9 @@ import {
     signal,
     viewChild,
 } from '@angular/core';
+import { BlocAutocompleteOptionDef } from './autocomplete-option-def.directive';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { computePosition, OverlayService } from '@bloc-ui/overlay';
-import { BlocTextHighlightDirective } from '@bloc-ui/text-highlight';
-
 export interface BlocAutocompleteOption<T = string> {
     label: string;
     value: T;
@@ -42,7 +42,7 @@ const OVERLAY_STYLE_VARS = [
 @Component({
     selector: 'bloc-autocomplete',
     standalone: true,
-    imports: [BlocTextHighlightDirective],
+    imports: [NgTemplateOutlet],
     encapsulation: ViewEncapsulation.None,
     host: {
         '[class.bloc-autocomplete--open]': 'isOpen()',
@@ -65,9 +65,11 @@ export class BlocAutocompleteComponent<T = string> implements ControlValueAccess
     readonly loadingText = input('Loading options...');
     readonly clearable = input(false);
     readonly loading = input(false);
-    readonly highlight = input(false);
     readonly disabled = input(false);
     readonly selectionChange = output<T | null>();
+
+    // — content children —
+    readonly optionDef = contentChild(BlocAutocompleteOptionDef);
 
     // — public state —
     readonly selectedOption = signal<BlocAutocompleteOption<T> | null>(null);
@@ -103,6 +105,7 @@ export class BlocAutocompleteComponent<T = string> implements ControlValueAccess
     // — internal state —
     private readonly _formsDisabled = signal(false);
     private _overlayPanel: HTMLElement | null = null;
+    private _resolvedPlacement: 'top' | 'bottom' | null = null;
     private _cleanup: Array<() => void> = [];
     private onChange: (value: T | null) => void = () => undefined;
     private onTouched: () => void = () => undefined;
@@ -261,6 +264,7 @@ export class BlocAutocompleteComponent<T = string> implements ControlValueAccess
         panelHost.appendChild(panelContent);
         this._overlayPanel?.remove();
         this._overlayPanel = null;
+        this._resolvedPlacement = null;
 
         this.isOpen.set(false);
         this.activeIndex.set(-1);
@@ -274,18 +278,42 @@ export class BlocAutocompleteComponent<T = string> implements ControlValueAccess
         if (!this._overlayPanel) return;
 
         const rect = this._host.nativeElement.getBoundingClientRect();
-        const { top, left } = computePosition(
+        const overlaySize = {
+            width: this._overlayPanel.offsetWidth,
+            height: this._overlayPanel.offsetHeight,
+        };
+
+        // On the first call after opening, let computePosition auto-flip and
+        // lock the resolved placement for the lifetime of this open session.
+        // Subsequent repositions reuse the locked placement so the panel never
+        // jumps between top/bottom while the user is typing.
+        const autoFlip = this._resolvedPlacement === null;
+        const preferred = this._resolvedPlacement
+            ? (`${this._resolvedPlacement}-start` as const)
+            : 'bottom-start';
+
+        const { top, left, resolvedPlacement } = computePosition(
             rect,
-            {
-                width: this._overlayPanel.offsetWidth,
-                height: this._overlayPanel.offsetHeight,
-            },
-            'bottom-start',
+            overlaySize,
+            preferred,
             4,
-            true,
+            autoFlip,
         );
 
-        this._overlayPanel.style.top = `${top}px`;
+        if (autoFlip) {
+            this._resolvedPlacement = resolvedPlacement as 'top' | 'bottom';
+        }
+
+        if (this._resolvedPlacement === 'top') {
+            // Anchor by bottom edge so the panel stays connected to the input
+            // even when the content shrinks (e.g. filtering narrows the list).
+            const bottom = window.innerHeight - rect.top + 4;
+            this._overlayPanel.style.top = 'auto';
+            this._overlayPanel.style.bottom = `${bottom}px`;
+        } else {
+            this._overlayPanel.style.bottom = 'auto';
+            this._overlayPanel.style.top = `${top}px`;
+        }
         this._overlayPanel.style.left = `${left}px`;
     }
 

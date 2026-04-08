@@ -9,11 +9,11 @@
     "peerDependencies": {
         "@angular/common": "^21.2.0",
         "@angular/core": "^21.2.0",
-        "@angular/forms": "^21.2.0"
+        "@angular/forms": "^21.2.0",
+        "@bloc-ui/text-highlight": "^1.0.0"
     },
     "dependencies": {
         "@bloc-ui/overlay": "^1.0.0",
-        "@bloc-ui/text-highlight": "^1.0.0",
         "tslib": "^2.3.0"
     },
     "sideEffects": false

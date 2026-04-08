@@ -61,12 +61,8 @@
             Enable <code>[highlight]="true"</code> to bold the matching portion of each option label
             as the user types.
         </p>
-        <bloc-autocomplete
-            [options]="teamOptions"
-            [clearable]="true"
-            [highlight]="true"
-            placeholder="Type to highlight"
-        />
+        <bloc-autocomplete-highlight [options]="teamOptions" />
+
         <app-sample-code [code]="snippets.highlight" />
     </div>
 </div>
