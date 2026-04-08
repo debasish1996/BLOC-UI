@@ -41,7 +41,8 @@
             "@bloc-ui/overlay": ["./projects/bloc-ui-overlay/src/public-api.ts"],
             "@bloc-ui/tooltip": ["./projects/bloc-ui-tooltip/src/public-api.ts"],
             "@bloc-ui/text-highlight": ["./projects/bloc-ui-text-highlight/src/public-api.ts"],
-            "@bloc-ui/virtual-scroll": ["./projects/bloc-ui-virtual-scroll/src/public-api.ts"]
+            "@bloc-ui/virtual-scroll": ["./projects/bloc-ui-virtual-scroll/src/public-api.ts"],
+            "@bloc-ui/video-player": ["./projects/bloc-ui-video-player/src/public-api.ts"]
         },
         "types": ["node"],
         "strict": true,
@@ -135,6 +136,12 @@
         },
         {
             "path": "./projects/bloc-ui-virtual-scroll/tsconfig.lib.json"
+        },
+        {
+            "path": "./projects/bloc-ui-video-player/tsconfig.lib.json"
+        },
+        {
+            "path": "./projects/bloc-ui-video-player/tsconfig.spec.json"
         }
     ]
 }

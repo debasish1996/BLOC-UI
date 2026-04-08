@@ -27,6 +27,7 @@ import { ToggleDemoComponent } from './toggle-demo/toggle-demo.component';
 import { TooltipDemoComponent } from './tooltip-demo/tooltip-demo.component';
 import { TextHighlightDemoComponent } from './text-highlight-demo/text-highlight-demo.component';
 import { VirtualScrollDemoComponent } from './virtual-scroll-demo/virtual-scroll-demo.component';
+import { VideoPlayerDemoComponent } from './video-player-demo/video-player-demo.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
@@ -56,5 +57,6 @@ export const routes: Routes = [
     { path: 'toggle', component: ToggleDemoComponent },
     { path: 'tooltip', component: TooltipDemoComponent },
     { path: 'virtual-scroll', component: VirtualScrollDemoComponent },
+    { path: 'video-player', component: VideoPlayerDemoComponent },
     { path: 'about', component: AboutComponent },
 ];

@@ -96,6 +96,47 @@
                     }
                 </button>
             }
+
+            <!-- Experimental group -->
+            <button
+                class="nav-group-toggle cursor-pointer px-5 py-[0.65rem] text-[0.9rem] text-slate-400 hover:bg-[#273549] hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left flex items-center justify-between"
+                (click)="toggleExperimental()"
+            >
+                <span class="flex items-center gap-2">
+                    {{ experimentalGroup.label }}
+                    <span
+                        class="text-[0.6rem] font-semibold uppercase tracking-wide bg-red-500/20 text-red-400 px-1.5 py-0.5 rounded"
+                        >alpha</span
+                    >
+                </span>
+                <svg
+                    class="nav-chevron transition-transform duration-200"
+                    [class.nav-chevron--open]="experimentalExpanded()"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <polyline points="6 9 12 15 18 9" />
+                </svg>
+            </button>
+            @if (experimentalExpanded()) {
+                @for (item of experimentalGroup.children; track item.path) {
+                    <button
+                        class="cursor-pointer pl-8 pr-5 py-[0.55rem] text-[0.85rem] text-slate-400 hover:bg-[#273549] hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left"
+                        [routerLink]="item.path"
+                        routerLinkActive="nav-active"
+                        [routerLinkActiveOptions]="{ exact: false }"
+                    >
+                        {{ item.label }}
+                    </button>
+                }
+            }
         </nav>
 
         <!-- Sidebar footer CTAs (always visible) -->

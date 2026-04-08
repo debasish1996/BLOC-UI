@@ -1,0 +1,77 @@
+<header class="mb-8 pb-4 border-b border-slate-200">
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Video Player</h1>
+    <p class="m-0 text-slate-400 text-[0.95rem]">
+        Feature-rich HTML5 video player with custom controls, progress seeking, volume, playback
+        rate, fullscreen, and CSS custom property theming.
+    </p>
+    <app-install-command package="@bloc-ui/video-player" />
+</header>
+
+<!-- Basic usage -->
+<div class="grid grid-cols-1 gap-8 mb-10">
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Basic Usage</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Pass a video URL and optional poster image. All controls are built in.
+        </p>
+        <div class="max-w-[640px]">
+            <bloc-video-player [src]="sampleVideoSrc" [poster]="samplePoster"></bloc-video-player>
+        </div>
+        <app-sample-code [code]="snippets.basic" />
+    </div>
+
+    <!-- Autoplay + Loop -->
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Autoplay + Loop (Muted)</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Autoplaying videos must be muted to comply with browser policies. Loop keeps them
+            repeating.
+        </p>
+        <div class="max-w-[640px]">
+            <bloc-video-player
+                [src]="sintelSrc"
+                [poster]="samplePoster"
+                [autoplay]="true"
+                [loop]="true"
+                [muted]="true"
+            ></bloc-video-player>
+        </div>
+        <app-sample-code [code]="snippets.autoplay" />
+    </div>
+
+    <!-- Events -->
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Events</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Listen to play, pause, ended, and timeUpdate events to react to playback state changes.
+        </p>
+        <div class="max-w-[640px]">
+            <bloc-video-player
+                [src]="sampleVideoSrc"
+                [poster]="samplePoster"
+                (play)="onPlay()"
+                (pause)="onPause()"
+                (ended)="onEnded()"
+                (timeUpdate)="onTimeUpdate($event)"
+            ></bloc-video-player>
+        </div>
+        <div class="flex gap-6 text-xs text-slate-500 mt-1">
+            <span
+                >⏱ Time: <strong>{{ currentTime() }}</strong></span
+            >
+            <span
+                >📊 Progress: <strong>{{ percent() }}%</strong></span
+            >
+        </div>
+        @if (eventLog().length > 0) {
+            <div
+                class="bg-slate-50 border border-slate-200 rounded-md p-3 text-xs text-slate-600 font-mono max-h-32 overflow-y-auto"
+            >
+                @for (entry of eventLog(); track $index) {
+                    <div>{{ entry }}</div>
+                }
+            </div>
+        }
+        <app-sample-code [code]="snippets.events" />
+    </div>
+</div>

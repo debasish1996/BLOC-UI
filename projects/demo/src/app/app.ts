@@ -49,6 +49,11 @@ export class App {
 
     readonly aboutItem: MenuItem = { path: 'about', label: 'About' };
 
+    readonly experimentalGroup: MenuGroup = {
+        label: 'Experimental',
+        children: [{ path: 'video-player', label: 'Video Player' }],
+    };
+
     readonly standaloneItems: MenuItem[] = [
         { path: 'accordion', label: 'Accordion' },
         { path: 'alert', label: 'Alert' },
@@ -67,6 +72,7 @@ export class App {
 
     readonly coreExpanded = signal(this._isCoreRoute(this.router.url));
     readonly datePickerExpanded = signal(this._isDatePickerRoute(this.router.url));
+    readonly experimentalExpanded = signal(this._isExperimentalRoute(this.router.url));
 
     constructor() {
         this.router.events
@@ -77,6 +83,9 @@ export class App {
                 }
                 if (this._isDatePickerRoute(e.urlAfterRedirects)) {
                     this.datePickerExpanded.set(true);
+                }
+                if (this._isExperimentalRoute(e.urlAfterRedirects)) {
+                    this.experimentalExpanded.set(true);
                 }
             });
     }
@@ -89,6 +98,10 @@ export class App {
         this.datePickerExpanded.update((v) => !v);
     }
 
+    toggleExperimental(): void {
+        this.experimentalExpanded.update((v) => !v);
+    }
+
     private _isCoreRoute(url: string): boolean {
         const path = url.split('?')[0].replace(/^\//, '');
         return this.coreGroup.children.some(
@@ -99,6 +112,13 @@ export class App {
     private _isDatePickerRoute(url: string): boolean {
         const path = url.split('?')[0].replace(/^\//, '');
         return this.datePickerGroup.children.some(
+            (c) => path === c.path || path.startsWith(c.path + '/'),
+        );
+    }
+
+    private _isExperimentalRoute(url: string): boolean {
+        const path = url.split('?')[0].replace(/^\//, '');
+        return this.experimentalGroup.children.some(
             (c) => path === c.path || path.startsWith(c.path + '/'),
         );
     }
