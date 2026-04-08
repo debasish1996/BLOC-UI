@@ -59,6 +59,7 @@ export class App {
         { path: 'slider', label: 'Slider' },
         { path: 'table', label: 'Table' },
         { path: 'tab', label: 'Tab' },
+        { path: 'text-highlight', label: 'Text Highlight', beta: true },
         { path: 'toast', label: 'Toast' },
         { path: 'tooltip', label: 'Tooltip' },
         { path: 'virtual-scroll', label: 'Virtual Scroll' },

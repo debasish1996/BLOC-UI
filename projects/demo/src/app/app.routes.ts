@@ -25,6 +25,7 @@ import { TextareaDemoComponent } from './textarea-demo/textarea-demo.component';
 import { ToastDemoComponent } from './toast-demo/toast-demo.component';
 import { ToggleDemoComponent } from './toggle-demo/toggle-demo.component';
 import { TooltipDemoComponent } from './tooltip-demo/tooltip-demo.component';
+import { TextHighlightDemoComponent } from './text-highlight-demo/text-highlight-demo.component';
 import { VirtualScrollDemoComponent } from './virtual-scroll-demo/virtual-scroll-demo.component';
 
 export const routes: Routes = [
@@ -49,6 +50,7 @@ export const routes: Routes = [
     { path: 'spinner', component: SpinnerDemoComponent },
     { path: 'tab', component: TabDemoComponent },
     { path: 'table', component: TableDemoComponent },
+    { path: 'text-highlight', component: TextHighlightDemoComponent },
     { path: 'textarea', component: TextareaDemoComponent },
     { path: 'toast', component: ToastDemoComponent },
     { path: 'toggle', component: ToggleDemoComponent },
