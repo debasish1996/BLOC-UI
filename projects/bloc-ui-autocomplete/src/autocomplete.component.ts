@@ -14,6 +14,7 @@ import {
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 import { computePosition, OverlayService } from '@bloc-ui/overlay';
+import { BlocTextHighlightDirective } from '@bloc-ui/text-highlight';
 
 export interface BlocAutocompleteOption<T = string> {
     label: string;
@@ -41,71 +42,12 @@ const OVERLAY_STYLE_VARS = [
 @Component({
     selector: 'bloc-autocomplete',
     standalone: true,
+    imports: [BlocTextHighlightDirective],
     encapsulation: ViewEncapsulation.None,
     host: {
         '[class.bloc-autocomplete--open]': 'isOpen()',
     },
-    template: `
-        <div class="bloc-autocomplete__field">
-            <input
-                class="bloc-autocomplete__input"
-                type="text"
-                role="combobox"
-                autocomplete="off"
-                [placeholder]="placeholder()"
-                [disabled]="isDisabled()"
-                [value]="query()"
-                [attr.aria-expanded]="isOpen()"
-                [attr.aria-controls]="panelId"
-                [attr.aria-activedescendant]="activeDescendant()"
-                (focus)="openPanel()"
-                (input)="onInput($event)"
-                (keydown)="onKeydown($event)"
-                (blur)="handleBlur()"
-            />
-            @if (clearable() && selectedOption()) {
-                <button
-                    class="bloc-autocomplete__clear"
-                    type="button"
-                    aria-label="Clear selection"
-                    (mousedown)="$event.preventDefault()"
-                    (click)="clear()"
-                >
-                    ×
-                </button>
-            }
-        </div>
-
-        <div #panelHost class="bloc-autocomplete__portal-host" aria-hidden="true">
-            <div #panelContent class="bloc-autocomplete__panel" [attr.id]="panelId" role="listbox">
-                @if (loading()) {
-                    <div class="bloc-autocomplete__state">{{ loadingText() }}</div>
-                } @else if (!filteredOptions().length) {
-                    <div class="bloc-autocomplete__state">{{ emptyText() }}</div>
-                } @else {
-                    @for (option of filteredOptions(); track $index; let index = $index) {
-                        <button
-                            class="bloc-autocomplete__option"
-                            type="button"
-                            role="option"
-                            [attr.id]="optionId(index)"
-                            [disabled]="option.disabled"
-                            [class.is-active]="index === activeIndex()"
-                            [class.is-selected]="selectedOption()?.value === option.value"
-                            [attr.aria-selected]="selectedOption()?.value === option.value"
-                            (mousedown)="$event.preventDefault()"
-                            (click)="selectOption(option)"
-                        >
-                            <span>{{ option.label }}</span>
-                            @if (option.description) {
-                                <small>{{ option.description }}</small>
-                            }
-                        </button>
-                    }
-                }
-            </div>
-        </div>
-    `,
+    templateUrl: './autocomplete.component.html',
     styleUrl: './autocomplete.component.scss',
     providers: [
         {
@@ -123,6 +65,7 @@ export class BlocAutocompleteComponent<T = string> implements ControlValueAccess
     readonly loadingText = input('Loading options...');
     readonly clearable = input(false);
     readonly loading = input(false);
+    readonly highlight = input(false);
     readonly disabled = input(false);
     readonly selectionChange = output<T | null>();
 

@@ -64,20 +64,12 @@
         right: 0.5rem;
         transform: translateY(-50%);
         display: inline-flex;
-        align-items: center;
         justify-content: center;
         width: 24px;
         height: 24px;
-        border: none;
-        border-radius: 999px;
-        background: transparent;
         font-size: 1rem;
         cursor: pointer;
         color: var(--bloc-autocomplete-muted);
-    }
-
-    :where(.bloc-autocomplete__clear:hover) {
-        background: rgba(0, 0, 0, 0.06);
     }
 
     :where(.bloc-autocomplete__panel) {

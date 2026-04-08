@@ -44,6 +44,7 @@ export class AutocompleteDemoComponent {
         reactive: `<bloc-autocomplete\n  [options]="teamOptions"\n  [formControl]="teamControl"\n  placeholder="Assign owner"\n></bloc-autocomplete>`,
         disabled: `<bloc-autocomplete\n  [options]="teamOptions"\n  [formControl]="disabledControl"\n  placeholder="Unavailable"\n></bloc-autocomplete>`,
         loading: `<bloc-autocomplete\n  [options]="teamOptions"\n  [loading]="isLoading()"\n  placeholder="Search teams"\n></bloc-autocomplete>`,
+        highlight: `<bloc-autocomplete\n  [options]="teamOptions"\n  [clearable]="true"\n  [highlight]="true"\n  placeholder="Type to highlight"\n></bloc-autocomplete>`,
         theming: `<bloc-autocomplete\n  style="\n    --bloc-autocomplete-border-focus: #10b981;\n    --bloc-autocomplete-option-selected: rgba(16, 185, 129, 0.12);\n    --bloc-autocomplete-option-active: rgba(16, 185, 129, 0.06);\n  "\n  [options]="teamOptions"\n  [clearable]="true"\n  placeholder="Green themed"\n></bloc-autocomplete>`,
     };
 }
