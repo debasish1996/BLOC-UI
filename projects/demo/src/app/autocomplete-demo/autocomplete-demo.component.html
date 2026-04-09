@@ -81,6 +81,44 @@
     </div>
 </div>
 
+<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+    Fuzzy Search
+</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-5 mb-10">
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Basic Fuzzy Search</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Use <code>[blocAutocompleteFuzzySearch]</code> to enable fuzzy matching.
+            Try typing abbreviations like 'usa', 'uk', or 'euro' — they'll match even if not exact.
+        </p>
+        <bloc-autocomplete
+            [options]="countryOptions"
+            [blocAutocompleteFuzzySearch]="{ keys: ['label', 'description'], threshold: 0.6 }"
+            placeholder="Try typing 'usa' or 'euro'"
+        />
+        <app-sample-code [code]="snippets.fuzzyBasic" />
+    </div>
+
+    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+        <h3 class="m-0 text-base font-semibold text-slate-900">Advanced Fuzzy Config</h3>
+        <p class="m-0 text-[0.82rem] text-slate-400">
+            Configure threshold (0=perfect match, 1=match anything), case sensitivity,
+            and minimum match length for fine-tuned control.
+        </p>
+        <bloc-autocomplete
+            [options]="countryOptions"
+            [blocAutocompleteFuzzySearch]="{
+                keys: ['label', 'description'],
+                threshold: 0.5,
+                isCaseSensitive: false,
+                minMatchCharLength: 2
+            }"
+            placeholder="Type to fuzzy search..."
+        />
+        <app-sample-code [code]="snippets.fuzzyAdvanced" />
+    </div>
+</div>
+
 <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">States</h2>
 <div class="grid grid-cols-[repeat(auto-fill,minmax(320px,1fr))] gap-5 mb-10">
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">

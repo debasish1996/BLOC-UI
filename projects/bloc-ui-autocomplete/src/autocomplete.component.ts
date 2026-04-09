@@ -14,8 +14,10 @@ import {
     output,
     signal,
     viewChild,
+    Optional,
 } from '@angular/core';
 import { BlocAutocompleteOptionDef } from './autocomplete-option-def.directive';
+import { BlocAutocompleteFuzzySearch } from './autocomplete-fuzzy-search.directive';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 import { computePosition, OverlayService } from '@bloc-ui/overlay';
 export interface BlocAutocompleteOption<T = string> {
@@ -70,6 +72,7 @@ export class BlocAutocompleteComponent<T = string> implements ControlValueAccess
     readonly loading = input(false);
     readonly disabled = input(false);
     readonly error = input(false);
+    readonly filterFn = input<((options: readonly BlocAutocompleteOption<T>[], query: string) => BlocAutocompleteOption<T>[]) | null>(null);
     readonly selectionChange = output<T | null>();
 
     // — content children —
@@ -85,11 +88,18 @@ export class BlocAutocompleteComponent<T = string> implements ControlValueAccess
     // — computed —
     readonly isDisabled = computed(() => this.disabled() || this._formsDisabled());
     readonly filteredOptions = computed(() => {
-        const term = this.query().trim().toLowerCase();
+        const term = this.query().trim();
         if (!term) return this.options();
+
+        // Use fuzzy search if directive is present
+        if (this._fuzzySearch) {
+            return this._fuzzySearch.filter(this.options(), term);
+        }
+
+        // Fall back to default substring matching
         return this.options().filter((option) => {
             const haystack = `${option.label} ${option.description ?? ''}`.toLowerCase();
-            return haystack.includes(term);
+            return haystack.includes(term.toLowerCase());
         });
     });
     readonly activeDescendant = computed(() =>
@@ -102,6 +112,7 @@ export class BlocAutocompleteComponent<T = string> implements ControlValueAccess
     private readonly _doc = inject(DOCUMENT);
     private readonly _destroyRef = inject(DestroyRef);
     private readonly _injector = inject(Injector);
+    private readonly _fuzzySearch = inject(BlocAutocompleteFuzzySearch<T>, { optional: true });
 
     // — view references —
     private readonly _panelHost = viewChild.required<ElementRef<HTMLElement>>('panelHost');
