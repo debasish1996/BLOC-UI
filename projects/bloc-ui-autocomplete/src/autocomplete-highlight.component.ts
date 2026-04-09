@@ -17,25 +17,7 @@ import { BlocAutocompleteOptionDef } from './autocomplete-option-def.directive';
     standalone: true,
     imports: [BlocAutocompleteComponent, BlocAutocompleteOptionDef, BlocTextHighlightDirective],
     encapsulation: ViewEncapsulation.None,
-    template: `
-        <bloc-autocomplete
-            [options]="options()"
-            [placeholder]="placeholder()"
-            [emptyText]="emptyText()"
-            [loadingText]="loadingText()"
-            [clearable]="clearable()"
-            [loading]="loading()"
-            [disabled]="disabled()"
-            (selectionChange)="selectionChange.emit($event)"
-        >
-            <ng-template blocAutocompleteOptionDef let-option let-query="query">
-                <span [blocTextHighlight]="option.label" [query]="query"></span>
-                @if (option.description) {
-                    <small [blocTextHighlight]="option.description" [query]="query"></small>
-                }
-            </ng-template>
-        </bloc-autocomplete>
-    `,
+    templateUrl: './autocomplete-highlight.component.html',
 })
 export class BlocAutocompleteHighlightComponent<T = string> {
     readonly options = input<readonly BlocAutocompleteOption<T>[]>([]);

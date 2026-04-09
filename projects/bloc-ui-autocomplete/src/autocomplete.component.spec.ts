@@ -1,6 +1,7 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { Component } from '@angular/core';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BlocAutocompleteComponent, BlocAutocompleteOption } from './autocomplete.component';
 import { BlocAutocompleteModule } from './autocomplete.module';
 
@@ -393,5 +394,63 @@ describe('BlocAutocompleteModule', () => {
         const f = TestBed.createComponent(ModuleHostComponent);
         f.detectChanges();
         expect((f.nativeElement as HTMLElement).querySelector('bloc-autocomplete')).not.toBeNull();
+    });
+});
+
+describe('BlocAutocompleteComponent form integration', () => {
+    @Component({
+        standalone: true,
+        imports: [ReactiveFormsModule, BlocAutocompleteComponent],
+        template: `
+            <section class="required">
+                <bloc-autocomplete [options]="options" [formControl]="requiredControl" />
+            </section>
+            <section class="disabled">
+                <bloc-autocomplete
+                    [options]="options"
+                    [formControl]="disabledControl"
+                    [clearable]="true"
+                />
+            </section>
+        `,
+    })
+    class ReactiveHostComponent {
+        readonly options = teamOptions;
+        readonly requiredControl = new FormControl<string | null>(null, {
+            validators: [Validators.required],
+        });
+        readonly disabledControl = new FormControl<string | null>({
+            value: 'design',
+            disabled: true,
+        });
+    }
+
+    it('should reflect the disabled FormControl state on the input', () => {
+        const fixture = TestBed.createComponent(ReactiveHostComponent);
+        fixture.detectChanges();
+
+        const host = fixture.nativeElement as HTMLElement;
+        const disabledInput = host.querySelector(
+            '.disabled .bloc-autocomplete__input',
+        ) as HTMLInputElement;
+
+        expect(disabledInput.disabled).toBe(true);
+        expect(host.querySelector('.disabled .bloc-autocomplete__clear')).toBeNull();
+    });
+
+    it('should set the error class when the bound FormControl is touched and invalid', () => {
+        const fixture = TestBed.createComponent(ReactiveHostComponent);
+        fixture.detectChanges();
+
+        const hostComponent = fixture.componentInstance;
+        hostComponent.requiredControl.markAsTouched();
+        fixture.detectChanges();
+
+        const host = fixture.nativeElement as HTMLElement;
+        const autocomplete = host.querySelector('.required bloc-autocomplete') as HTMLElement;
+        const input = host.querySelector('.required .bloc-autocomplete__input') as HTMLInputElement;
+
+        expect(autocomplete.classList.contains('is-error')).toBe(true);
+        expect(input.getAttribute('aria-invalid')).toBe('true');
     });
 });

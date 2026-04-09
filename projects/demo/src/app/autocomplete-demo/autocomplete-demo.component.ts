@@ -1,5 +1,5 @@
 import { Component, signal } from '@angular/core';
-import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import {
     BlocAutocompleteComponent,
     BlocAutocompleteHighlightComponent,
@@ -25,6 +25,9 @@ export class AutocompleteDemoComponent {
     readonly quickPick = signal<string | null>(null);
     readonly teamControl = new FormControl<string | null>('design');
     readonly disabledControl = new FormControl<string | null>({ value: 'design', disabled: true });
+    readonly requiredControl = new FormControl<string | null>(null, {
+        validators: [Validators.required],
+    });
     readonly isLoading = signal(false);
 
     readonly teamOptions: readonly BlocAutocompleteOption<string>[] = [
@@ -47,6 +50,7 @@ export class AutocompleteDemoComponent {
     readonly snippets = {
         basic: `<bloc-autocomplete\n  [options]="teamOptions"\n  [clearable]="true"\n  placeholder="Search teams"\n  (selectionChange)="selectedTeam = $event"\n></bloc-autocomplete>`,
         reactive: `<bloc-autocomplete\n  [options]="teamOptions"\n  [formControl]="teamControl"\n  placeholder="Assign owner"\n></bloc-autocomplete>`,
+        required: `<bloc-autocomplete\n  [options]="teamOptions"\n  [formControl]="requiredControl"\n   [clearable]="true"\n  placeholder="Required field"\n></bloc-autocomplete>`,
         disabled: `<bloc-autocomplete\n  [options]="teamOptions"\n  [formControl]="disabledControl"\n  placeholder="Unavailable"\n></bloc-autocomplete>`,
         loading: `<bloc-autocomplete\n  [options]="teamOptions"\n  [loading]="isLoading()"\n  placeholder="Search teams"\n></bloc-autocomplete>`,
         highlight: `<bloc-autocomplete\n  [options]="teamOptions"\n  [clearable]="true"\n  [highlight]="true"\n  placeholder="Type to highlight"\n></bloc-autocomplete>`,

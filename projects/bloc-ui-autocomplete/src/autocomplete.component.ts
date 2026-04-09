@@ -3,6 +3,8 @@ import {
     Component,
     DestroyRef,
     ElementRef,
+    Injector,
+    OnInit,
     ViewEncapsulation,
     computed,
     contentChild,
@@ -14,7 +16,7 @@ import {
     viewChild,
 } from '@angular/core';
 import { BlocAutocompleteOptionDef } from './autocomplete-option-def.directive';
-import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
+import { ControlValueAccessor, NG_VALUE_ACCESSOR, NgControl } from '@angular/forms';
 import { computePosition, OverlayService } from '@bloc-ui/overlay';
 export interface BlocAutocompleteOption<T = string> {
     label: string;
@@ -46,6 +48,7 @@ const OVERLAY_STYLE_VARS = [
     encapsulation: ViewEncapsulation.None,
     host: {
         '[class.bloc-autocomplete--open]': 'isOpen()',
+        '[class.is-error]': 'hasError()',
     },
     templateUrl: './autocomplete.component.html',
     styleUrl: './autocomplete.component.scss',
@@ -57,7 +60,7 @@ const OVERLAY_STYLE_VARS = [
         },
     ],
 })
-export class BlocAutocompleteComponent<T = string> implements ControlValueAccessor {
+export class BlocAutocompleteComponent<T = string> implements ControlValueAccessor, OnInit {
     // — inputs —
     readonly options = input<readonly BlocAutocompleteOption<T>[]>([]);
     readonly placeholder = input('Search options');
@@ -66,6 +69,7 @@ export class BlocAutocompleteComponent<T = string> implements ControlValueAccess
     readonly clearable = input(false);
     readonly loading = input(false);
     readonly disabled = input(false);
+    readonly error = input(false);
     readonly selectionChange = output<T | null>();
 
     // — content children —
@@ -97,6 +101,7 @@ export class BlocAutocompleteComponent<T = string> implements ControlValueAccess
     private readonly _overlay = inject(OverlayService);
     private readonly _doc = inject(DOCUMENT);
     private readonly _destroyRef = inject(DestroyRef);
+    private readonly _injector = inject(Injector);
 
     // — view references —
     private readonly _panelHost = viewChild.required<ElementRef<HTMLElement>>('panelHost');
@@ -107,11 +112,16 @@ export class BlocAutocompleteComponent<T = string> implements ControlValueAccess
     private _overlayPanel: HTMLElement | null = null;
     private _resolvedPlacement: 'top' | 'bottom' | null = null;
     private _cleanup: Array<() => void> = [];
+    private _ngControl: NgControl | null = null;
     private onChange: (value: T | null) => void = () => undefined;
     private onTouched: () => void = () => undefined;
 
     constructor() {
         this._destroyRef.onDestroy(() => this._closePanel(false));
+    }
+
+    ngOnInit(): void {
+        this._ngControl = this._injector.get(NgControl, null, { optional: true, self: true });
     }
 
     // ── ControlValueAccessor ────────────────────────────────────────────────
@@ -132,6 +142,9 @@ export class BlocAutocompleteComponent<T = string> implements ControlValueAccess
 
     setDisabledState(isDisabled: boolean): void {
         this._formsDisabled.set(isDisabled);
+        if (isDisabled) {
+            this._closePanel(true);
+        }
     }
 
     // ── Opening / closing ───────────────────────────────────────────────────
@@ -229,7 +242,7 @@ export class BlocAutocompleteComponent<T = string> implements ControlValueAccess
     // ── Selection ───────────────────────────────────────────────────────────
 
     selectOption(option: BlocAutocompleteOption<T>): void {
-        if (option.disabled) return;
+        if (this.isDisabled() || option.disabled) return;
 
         this.selectedOption.set(option);
         this.query.set(option.label);
@@ -239,6 +252,7 @@ export class BlocAutocompleteComponent<T = string> implements ControlValueAccess
     }
 
     clear(): void {
+        if (this.isDisabled()) return;
         this.selectedOption.set(null);
         this.query.set('');
         this._closePanel(false);
@@ -248,6 +262,11 @@ export class BlocAutocompleteComponent<T = string> implements ControlValueAccess
 
     optionId(index: number): string {
         return `${this.panelId}-option-${index}`;
+    }
+
+    hasError(): boolean {
+        const control = this._ngControl?.control;
+        return this.error() || !!(control && control.invalid && control.touched);
     }
 
     // ── Private helpers ─────────────────────────────────────────────────────

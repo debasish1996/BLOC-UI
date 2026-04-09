@@ -1,5 +1,6 @@
 <div class="bloc-autocomplete__field">
     <input
+        #input
         class="bloc-autocomplete__input"
         type="text"
         role="combobox"
@@ -10,20 +11,21 @@
         [attr.aria-expanded]="isOpen()"
         [attr.aria-controls]="panelId"
         [attr.aria-activedescendant]="activeDescendant()"
+        [attr.aria-invalid]="hasError() || null"
         (focus)="openPanel()"
         (input)="onInput($event)"
         (keydown)="onKeydown($event)"
         (blur)="handleBlur()"
     />
-    @if (clearable() && selectedOption()) {
+    @if (clearable() && selectedOption() && !isDisabled()) {
         <button
             class="bloc-autocomplete__clear"
             type="button"
             aria-label="Clear selection"
             (mousedown)="$event.preventDefault()"
-            (click)="clear()"
+            (click)="input.blur(); clear()"
         >
-            ×
+            &#10005;
         </button>
     }
 </div>
