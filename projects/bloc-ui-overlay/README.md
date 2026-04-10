@@ -1,6 +1,6 @@
 # @bloc-ui/overlay
 
-> **Latest:** v1.0.2
+> **Latest:** v1.0.3
 
 > **Status: Internal / WIP — Not for direct consumer use**
 

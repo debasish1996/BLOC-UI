@@ -1,6 +1,6 @@
 # @bloc-ui/autocomplete
 
-> **Latest:** v1.0.2
+> **Latest:** v1.0.3
 
 Searchable single-select autocomplete for Angular forms. Renders a text input that filters a provided option list, supports keyboard navigation, disabled options, reactive forms integration, and a clearable mode.
 

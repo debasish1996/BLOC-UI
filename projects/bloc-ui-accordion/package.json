@@ -1,17 +1,17 @@
 {
-    "name": "@bloc-ui/accordion",
-    "version": "1.0.1",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/debasish1996/BLOC-UI.git",
-        "directory": "projects/bloc-ui-accordion"
-    },
-    "peerDependencies": {
-        "@angular/common": "^21.2.0",
-        "@angular/core": "^21.2.0"
-    },
-    "dependencies": {
-        "tslib": "^2.3.0"
-    },
-    "sideEffects": false
+  "name": "@bloc-ui/accordion",
+  "version": "1.0.2",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/debasish1996/BLOC-UI.git",
+    "directory": "projects/bloc-ui-accordion"
+  },
+  "peerDependencies": {
+    "@angular/common": "^21.2.0",
+    "@angular/core": "^21.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
 }

@@ -1,6 +1,6 @@
 # @bloc-ui/accordion
 
-> **Latest:** v1.0.1
+> **Latest:** v1.0.2
 
 > ⚠️ **Experimental** — API may change before reaching stable status.
 

@@ -1,33 +1,33 @@
 {
-    "name": "@bloc-ui/kit",
-    "version": "1.0.7",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/debasish1996/BLOC-UI.git",
-        "directory": "projects/bloc-ui"
-    },
-    "peerDependencies": {
-        "@angular/common": "^21.2.0",
-        "@angular/core": "^21.2.0"
-    },
-    "dependencies": {
-        "@bloc-ui/accordion": "^1.0.1",
-        "@bloc-ui/alert": "^1.0.3",
-        "@bloc-ui/autocomplete": "^1.0.2",
-        "@bloc-ui/core": "^1.0.1",
-        "@bloc-ui/layout": "^1.0.1",
-        "@bloc-ui/modal": "^1.0.1",
-        "@bloc-ui/overlay": "^1.0.2",
-        "@bloc-ui/pagination": "^1.0.1",
-        "@bloc-ui/select": "^1.0.1",
-        "@bloc-ui/slider": "^1.0.1",
-        "@bloc-ui/table": "^1.0.1",
-        "@bloc-ui/toast": "^1.0.1",
-        "@bloc-ui/date-picker": "^1.0.1",
-        "@bloc-ui/tab": "^1.0.1",
-        "@bloc-ui/tooltip": "^1.0.2",
-        "@bloc-ui/virtual-scroll": "^1.0.1",
-        "tslib": "^2.3.0"
-    },
-    "sideEffects": false
+  "name": "@bloc-ui/kit",
+  "version": "1.0.8",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/debasish1996/BLOC-UI.git",
+    "directory": "projects/bloc-ui"
+  },
+  "peerDependencies": {
+    "@angular/common": "^21.2.0",
+    "@angular/core": "^21.2.0"
+  },
+  "dependencies": {
+    "@bloc-ui/accordion": "^1.0.1",
+    "@bloc-ui/alert": "^1.0.3",
+    "@bloc-ui/autocomplete": "^1.0.2",
+    "@bloc-ui/core": "1.0.3",
+    "@bloc-ui/layout": "^1.0.1",
+    "@bloc-ui/modal": "1.0.2",
+    "@bloc-ui/overlay": "^1.0.2",
+    "@bloc-ui/pagination": "^1.0.1",
+    "@bloc-ui/select": "^1.0.1",
+    "@bloc-ui/slider": "^1.0.1",
+    "@bloc-ui/table": "1.0.2",
+    "@bloc-ui/toast": "1.0.2",
+    "@bloc-ui/date-picker": "1.0.2",
+    "@bloc-ui/tab": "1.0.2",
+    "@bloc-ui/tooltip": "^1.0.2",
+    "@bloc-ui/virtual-scroll": "^1.0.1",
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
 }

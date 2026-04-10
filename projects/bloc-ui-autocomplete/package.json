@@ -1,20 +1,20 @@
 {
-    "name": "@bloc-ui/autocomplete",
-    "version": "1.0.2",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/debasish1996/BLOC-UI.git",
-        "directory": "projects/bloc-ui-autocomplete"
-    },
-    "peerDependencies": {
-        "@angular/common": "^21.2.0",
-        "@angular/core": "^21.2.0",
-        "@angular/forms": "^21.2.0"
-    },
-    "dependencies": {
-        "@bloc-ui/text-highlight": "^1.0.0",
-        "@bloc-ui/overlay": "^1.0.0",
-        "tslib": "^2.3.0"
-    },
-    "sideEffects": false
+  "name": "@bloc-ui/autocomplete",
+  "version": "1.0.3",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/debasish1996/BLOC-UI.git",
+    "directory": "projects/bloc-ui-autocomplete"
+  },
+  "peerDependencies": {
+    "@angular/common": "^21.2.0",
+    "@angular/core": "^21.2.0",
+    "@angular/forms": "^21.2.0"
+  },
+  "dependencies": {
+    "@bloc-ui/text-highlight": "^1.0.0",
+    "@bloc-ui/overlay": "^1.0.0",
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
 }
