@@ -161,6 +161,23 @@ test.describe('AutocompleteDemoComponent', () => {
             const c = card(page, 'Quick Pick');
             await expect(c.locator('strong')).toContainText('engineering');
         });
+
+        test('input has correct placeholder text', async ({ page }) => {
+            await expect(autocompleteInput(page, 'Quick Pick')).toHaveAttribute(
+                'placeholder',
+                'Search teams',
+            );
+        });
+
+        test('disabled option is not selectable', async ({ page }) => {
+            const c = card(page, 'Quick Pick');
+            await autocompleteInput(page, 'Quick Pick').click();
+            const panel = await panelForCard(page, 'Quick Pick');
+            const opsOption = panel.locator('.bloc-autocomplete__option', { hasText: 'Operations' });
+            await expect(opsOption).toBeDisabled();
+            await opsOption.click({ force: true });
+            await expect(c.locator('strong')).toContainText('(none)');
+        });
     });
 
     // ── Reactive FormControl ──────────────────────────────────────────────
@@ -227,6 +244,112 @@ test.describe('AutocompleteDemoComponent', () => {
             await autocompleteInput(page, 'Loading').click();
             const panel = await panelForCard(page, 'Loading');
             await expect(panel.locator('.bloc-autocomplete__option').first()).toBeVisible();
+        });
+    });
+
+    // ── Required Field ────────────────────────────────────────────────────
+
+    test.describe('Required Field', () => {
+        test('input is empty on load', async ({ page }) => {
+            await expect(autocompleteInput(page, 'Required Field')).toHaveValue('');
+        });
+
+        test('shows error state after focusing and blurring without selecting', async ({
+            page,
+        }) => {
+            const inp = autocompleteInput(page, 'Required Field');
+            await inp.click();
+            await inp.press('Escape');
+            // Tab away to trigger blur → onTouched → error state
+            await inp.press('Tab');
+            await expect(card(page, 'Required Field').locator('bloc-autocomplete')).toHaveClass(
+                /is-error/,
+            );
+        });
+
+        test('removes error state after a valid selection', async ({ page }) => {
+            const inp = autocompleteInput(page, 'Required Field');
+            await inp.click();
+            await inp.press('Escape');
+            await inp.press('Tab');
+            // Re-open and select
+            await inp.click();
+            const panel = await panelForCard(page, 'Required Field');
+            await panel.locator('.bloc-autocomplete__option', { hasText: 'Design' }).click();
+            await expect(card(page, 'Required Field').locator('bloc-autocomplete')).not.toHaveClass(
+                /is-error/,
+            );
+        });
+    });
+
+    // ── Highlighted Matches ───────────────────────────────────────────────
+
+    test.describe('Highlighted Matches', () => {
+        test('renders the autocomplete input', async ({ page }) => {
+            await expect(autocompleteInput(page, 'Highlighted Matches')).toBeVisible();
+        });
+
+        test('renders mark elements for matching text when typing', async ({ page }) => {
+            const inp = autocompleteInput(page, 'Highlighted Matches');
+            await inp.click();
+            await inp.fill('Des');
+            const panel = await panelForCard(page, 'Highlighted Matches');
+            await expect(panel.locator('mark').first()).toBeVisible();
+        });
+
+        test('matching mark contains the typed query text', async ({ page }) => {
+            const inp = autocompleteInput(page, 'Highlighted Matches');
+            await inp.click();
+            await inp.fill('Eng');
+            const panel = await panelForCard(page, 'Highlighted Matches');
+            await expect(panel.locator('mark').first()).toContainText('Eng');
+        });
+    });
+
+    // ── Fuzzy Search ──────────────────────────────────────────────────────
+
+    test.describe('Fuzzy Search', () => {
+        test('renders the Basic Fuzzy Search input', async ({ page }) => {
+            await expect(autocompleteInput(page, 'Basic Fuzzy Search')).toBeVisible();
+        });
+
+        test('matches United States when typing "usa"', async ({ page }) => {
+            const inp = autocompleteInput(page, 'Basic Fuzzy Search');
+            await inp.click();
+            await inp.fill('usa');
+            const panel = await panelForCard(page, 'Basic Fuzzy Search');
+            await expect(
+                panel.locator('.bloc-autocomplete__option', { hasText: 'United States' }),
+            ).toBeVisible();
+        });
+
+        test('matches European countries when typing "euro" via description', async ({ page }) => {
+            const inp = autocompleteInput(page, 'Basic Fuzzy Search');
+            await inp.click();
+            await inp.fill('euro');
+            const panel = await panelForCard(page, 'Basic Fuzzy Search');
+            // At least one European country should be visible (UK, Germany, or France)
+            const options = panel.locator('.bloc-autocomplete__option');
+            await expect(options.first()).toBeVisible();
+        });
+
+        test('shows no-results state for an unmatched query', async ({ page }) => {
+            const inp = autocompleteInput(page, 'Basic Fuzzy Search');
+            await inp.click();
+            await inp.fill('zzzzzzzzz');
+            const panel = await panelForCard(page, 'Basic Fuzzy Search');
+            await expect(panel.locator('.bloc-autocomplete__state')).toContainText(
+                'No results found',
+            );
+        });
+
+        test('selects an option from fuzzy results', async ({ page }) => {
+            const inp = autocompleteInput(page, 'Advanced Fuzzy Config');
+            await inp.click();
+            await inp.fill('jap');
+            const panel = await panelForCard(page, 'Advanced Fuzzy Config');
+            await panel.locator('.bloc-autocomplete__option', { hasText: 'Japan' }).click();
+            await expect(inp).toHaveValue('Japan');
         });
     });
 });

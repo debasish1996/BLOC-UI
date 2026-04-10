@@ -1,9 +1,12 @@
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import { TestBed, ComponentFixture } from '@angular/core/testing';
 import { Component } from '@angular/core';
+import { By } from '@angular/platform-browser';
 import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
 import { BlocAutocompleteComponent, BlocAutocompleteOption } from './autocomplete.component';
 import { BlocAutocompleteModule } from './autocomplete.module';
+import { BlocAutocompleteFuzzySearch } from './autocomplete-fuzzy-search.directive';
+import { BlocAutocompleteHighlightComponent } from './autocomplete-highlight.component';
 
 const teamOptions: BlocAutocompleteOption<string>[] = [
     { label: 'Design', value: 'design', description: 'Brand, motion' },
@@ -371,6 +374,93 @@ describe('BlocAutocompleteComponent', () => {
         await flush();
         expect(panelOptions()[0].getAttribute('aria-selected')).toBe('true');
     });
+
+    // — placeholder —
+
+    it('should reflect placeholder input on the HTML input element', () => {
+        fixture.componentRef.setInput('placeholder', 'Search teams');
+        fixture.detectChanges();
+        expect(input().placeholder).toBe('Search teams');
+    });
+
+    // — error input —
+
+    it('should return true from hasError() when error input is true', () => {
+        fixture.componentRef.setInput('error', true);
+        fixture.detectChanges();
+        expect(component.hasError()).toBe(true);
+    });
+
+    it('should add is-error host class when error input is true', () => {
+        fixture.componentRef.setInput('error', true);
+        fixture.detectChanges();
+        expect((host() as HTMLElement).classList.contains('is-error')).toBe(true);
+    });
+
+    // — onInput —
+
+    it('should open panel and set query when onInput is called while closed', async () => {
+        const event = new Event('input');
+        Object.defineProperty(event, 'target', { value: { value: 'des' } });
+        component.onInput(event);
+        await flush();
+        expect(component.query()).toBe('des');
+        expect(component.isOpen()).toBe(true);
+    });
+
+    it('should reset activeIndex to first enabled when typing while panel is open', async () => {
+        openPanel();
+        component.activeIndex.set(2);
+        const event = new Event('input');
+        Object.defineProperty(event, 'target', { value: { value: 'des' } });
+        component.onInput(event);
+        await flush();
+        // 'Design' matches 'des' → first enabled index is 0
+        expect(component.activeIndex()).toBe(0);
+    });
+
+    // — handleBlur —
+
+    it('should close the panel after blur', async () => {
+        openPanel();
+        component.handleBlur();
+        await new Promise((resolve) => setTimeout(resolve, 150));
+        fixture.detectChanges();
+        expect(component.isOpen()).toBe(false);
+    });
+
+    it('should restore selected label in query after blur', async () => {
+        component.selectOption(teamOptions[0]);
+        openPanel();
+        component.query.set('partial');
+        component.handleBlur();
+        await new Promise((resolve) => setTimeout(resolve, 150));
+        fixture.detectChanges();
+        expect(component.query()).toBe('Design');
+    });
+
+    // — filterFn —
+
+    it('should use filterFn when provided instead of default filter', async () => {
+        const customFilter = vi.fn().mockReturnValue([teamOptions[0]]);
+        fixture.componentRef.setInput('filterFn', customFilter);
+        openPanel();
+        component.query.set('anything');
+        await flush();
+        expect(customFilter).toHaveBeenCalledWith(teamOptions, 'anything');
+        expect(panelOptions().length).toBe(1);
+        expect(panelOptions()[0].textContent).toContain('Design');
+    });
+
+    it('should not call filterFn for empty query', async () => {
+        const customFilter = vi.fn().mockReturnValue([]);
+        fixture.componentRef.setInput('filterFn', customFilter);
+        openPanel();
+        component.query.set('');
+        await flush();
+        expect(customFilter).not.toHaveBeenCalled();
+        expect(panelOptions().length).toBe(4);
+    });
 });
 
 // ── BlocAutocompleteModule ────────────────────────────────────────────────────
@@ -397,6 +487,152 @@ describe('BlocAutocompleteModule', () => {
     });
 });
 
+// ── BlocAutocompleteFuzzySearch ───────────────────────────────────────────────
+describe('BlocAutocompleteFuzzySearch', () => {
+    const countries: BlocAutocompleteOption<string>[] = [
+        { label: 'United States', value: 'us', description: 'North America' },
+        { label: 'United Kingdom', value: 'uk', description: 'Europe' },
+        { label: 'Germany', value: 'de', description: 'Europe' },
+        { label: 'France', value: 'fr', description: 'Europe' },
+    ];
+
+    @Component({
+        template: `
+            <bloc-autocomplete
+                [options]="options"
+                [blocAutocompleteFuzzySearch]="config"
+            />
+        `,
+        standalone: true,
+        imports: [BlocAutocompleteComponent, BlocAutocompleteFuzzySearch],
+    })
+    class FuzzyHostComponent {
+        options = countries;
+        config = { keys: ['label', 'description'], threshold: 0.6 };
+    }
+
+    let hostFixture: ComponentFixture<FuzzyHostComponent>;
+    let autocomplete: BlocAutocompleteComponent<string>;
+    let fuzzyDir: BlocAutocompleteFuzzySearch<string>;
+
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [FuzzyHostComponent],
+        }).compileComponents();
+
+        hostFixture = TestBed.createComponent(FuzzyHostComponent);
+        hostFixture.detectChanges();
+
+        const acEl = hostFixture.debugElement.query(By.directive(BlocAutocompleteComponent));
+        autocomplete = acEl.componentInstance as BlocAutocompleteComponent<string>;
+        fuzzyDir = acEl.injector.get(BlocAutocompleteFuzzySearch) as BlocAutocompleteFuzzySearch<string>;
+    });
+
+    afterEach(() => {
+        hostFixture.destroy();
+        document.body.querySelectorAll('.bloc-overlay-container').forEach((n) => n.remove());
+    });
+
+    it('returns all options when query is empty', () => {
+        autocomplete.query.set('');
+        hostFixture.detectChanges();
+        expect(autocomplete.filteredOptions().length).toBe(countries.length);
+    });
+
+    it('uses fuzzy matching to find options', () => {
+        autocomplete.query.set('ger');
+        hostFixture.detectChanges();
+        expect(autocomplete.filteredOptions().some((o) => o.value === 'de')).toBe(true);
+    });
+
+    it('is case-insensitive by default', () => {
+        autocomplete.query.set('FRANCE');
+        hostFixture.detectChanges();
+        expect(autocomplete.filteredOptions().some((o) => o.value === 'fr')).toBe(true);
+    });
+
+    it('searches description field by default', () => {
+        autocomplete.query.set('north');
+        hostFixture.detectChanges();
+        expect(autocomplete.filteredOptions().some((o) => o.value === 'us')).toBe(true);
+    });
+
+    it('highlight() wraps matched ranges in <mark> tags', () => {
+        const html = fuzzyDir.highlight('Design', [[0, 2]]);
+        expect(html).toContain('<mark>Des</mark>');
+    });
+
+    it('highlight() escapes HTML special characters outside match', () => {
+        const html = fuzzyDir.highlight('<bold>', []);
+        expect(html).not.toContain('<bold>');
+        expect(html).toContain('&lt;bold&gt;');
+    });
+
+    it('highlight() merges overlapping match ranges', () => {
+        const html = fuzzyDir.highlight('Design', [[0, 2], [1, 4]]);
+        expect(html).toContain('<mark>Desig</mark>');
+    });
+
+    it('search() returns scored results sorted best-first', () => {
+        const results = fuzzyDir.search(countries, 'france');
+        expect(results.length).toBeGreaterThan(0);
+        expect(results[0].option.value).toBe('fr');
+        expect(results[0].score).toBeLessThanOrEqual(results[results.length - 1].score);
+    });
+});
+
+// ── BlocAutocompleteHighlightComponent ────────────────────────────────────────
+describe('BlocAutocompleteHighlightComponent', () => {
+    beforeEach(async () => {
+        await TestBed.configureTestingModule({
+            imports: [BlocAutocompleteHighlightComponent],
+        }).compileComponents();
+    });
+
+    afterEach(() => {
+        document.body.querySelectorAll('.bloc-overlay-container').forEach((n) => n.remove());
+    });
+
+    it('should create', () => {
+        const f = TestBed.createComponent(BlocAutocompleteHighlightComponent);
+        f.detectChanges();
+        expect(f.componentInstance).toBeTruthy();
+    });
+
+    it('renders a bloc-autocomplete inside', () => {
+        const f = TestBed.createComponent(BlocAutocompleteHighlightComponent);
+        f.detectChanges();
+        expect((f.nativeElement as HTMLElement).querySelector('bloc-autocomplete')).not.toBeNull();
+    });
+
+    it('passes options to the inner autocomplete', () => {
+        const f = TestBed.createComponent(BlocAutocompleteHighlightComponent);
+        f.componentRef.setInput('options', teamOptions);
+        f.detectChanges();
+        const inner = f.debugElement.query(By.directive(BlocAutocompleteComponent));
+        expect((inner.componentInstance as BlocAutocompleteComponent<string>).options()).toEqual(
+            teamOptions,
+        );
+    });
+
+    it('proxies selectionChange output', () => {
+        const f = TestBed.createComponent(BlocAutocompleteHighlightComponent);
+        f.componentRef.setInput('options', teamOptions);
+        f.detectChanges();
+
+        const spy = vi.fn();
+        f.componentInstance.selectionChange.subscribe(spy);
+
+        const inner = f.debugElement
+            .query(By.directive(BlocAutocompleteComponent))
+            .componentInstance as BlocAutocompleteComponent<string>;
+        inner.selectOption(teamOptions[0]);
+
+        expect(spy).toHaveBeenCalledWith('design');
+    });
+});
+
+// ── BlocAutocompleteComponent form integration ────────────────────────────────
 describe('BlocAutocompleteComponent form integration', () => {
     @Component({
         standalone: true,

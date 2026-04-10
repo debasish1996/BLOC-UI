@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(npx tsc:*)"
+      "Bash(npx tsc:*)",
+      "Bash(grep -r \"Experimental\\\\|Beta\\\\|beta\\\\|beta:\" /f/BLOC-UI/projects/bloc-ui-*/README.md)",
+      "Bash(xargs grep:*)",
+      "Bash(grep -r \"export.*Status\\\\|export.*Beta\\\\|enum.*Status\" /f/BLOC-UI/projects/bloc-ui*/src --include=\"*.ts\")"
     ]
   }
 }

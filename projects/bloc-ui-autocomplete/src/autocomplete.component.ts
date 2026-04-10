@@ -14,7 +14,6 @@ import {
     output,
     signal,
     viewChild,
-    Optional,
 } from '@angular/core';
 import { BlocAutocompleteOptionDef } from './autocomplete-option-def.directive';
 import { BlocAutocompleteFuzzySearch } from './autocomplete-fuzzy-search.directive';
@@ -90,6 +89,12 @@ export class BlocAutocompleteComponent<T = string> implements ControlValueAccess
     readonly filteredOptions = computed(() => {
         const term = this.query().trim();
         if (!term) return this.options();
+
+        // Use custom filterFn if provided
+        const customFilter = this.filterFn();
+        if (customFilter) {
+            return customFilter(this.options(), term);
+        }
 
         // Use fuzzy search if directive is present
         if (this._fuzzySearch) {

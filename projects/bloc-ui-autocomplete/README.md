@@ -2,8 +2,6 @@
 
 > **Latest:** v1.0.2
 
-> ⚠️ **Experimental** — API may change before reaching stable status.
-
 Searchable single-select autocomplete for Angular forms. Renders a text input that filters a provided option list, supports keyboard navigation, disabled options, reactive forms integration, and a clearable mode.
 
 **[Live Documentation & Demos](https://ui.bloc-verse.com/autocomplete)**
@@ -90,6 +88,8 @@ readonly teamOptions: readonly BlocAutocompleteOption<string>[] = [
 | `loading`     | `boolean`                     | `false`                | Replaces the option list with `loadingText`     |
 | `loadingText` | `string`                      | `'Loading options...'` | Message shown while `loading` is true           |
 | `emptyText`   | `string`                      | `'No results found'`   | Message shown when the filtered list is empty   |
+| `filterFn`    | `((options, query) => BlocAutocompleteOption<T>[]) \| null` | `null` | Custom filter function; overrides built-in substring and fuzzy matching |
+| `error`       | `boolean`                     | `false`                | Forces the error state regardless of form control validity              |
 
 ## Outputs
 
