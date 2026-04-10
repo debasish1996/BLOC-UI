@@ -1,6 +1,6 @@
 {
   "name": "@bloc-ui/tooltip",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "repository": {
     "type": "git",
     "url": "https://github.com/debasish1996/BLOC-UI.git",
@@ -11,7 +11,7 @@
     "@angular/core": ">=17.0.0"
   },
   "dependencies": {
-    "@bloc-ui/overlay": "^0.0.2"
+    "@bloc-ui/overlay": "^1.0.4"
   },
   "sideEffects": false
 }

@@ -1,6 +1,6 @@
 # @bloc-ui/date-picker
 
-> **Latest:** v1.0.2
+> **Latest:** v1.0.3
 
 Directive-based date picker for Angular — part of the [Bloc UI](https://github.com/debasish1996/BLOC-UI) component library. Apply the trigger directive to any element (input, button, etc.) to attach a calendar dropdown. Supports **single date** and **date range** selection, template-driven and reactive forms, min/max constraints, and month/year drill-down navigation. The directive works with `Date` objects — display formatting is handled by the consumer.
 

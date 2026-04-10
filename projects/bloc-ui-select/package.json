@@ -1,6 +1,6 @@
 {
   "name": "@bloc-ui/select",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "repository": {
     "type": "git",
     "url": "https://github.com/debasish1996/BLOC-UI.git",
@@ -12,7 +12,7 @@
     "@angular/forms": "^21.2.0"
   },
   "dependencies": {
-    "@bloc-ui/overlay": "^0.0.2",
+    "@bloc-ui/overlay": "^1.0.4",
     "tslib": "^2.3.0"
   },
   "sideEffects": false
