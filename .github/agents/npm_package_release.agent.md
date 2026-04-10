@@ -1,5 +1,5 @@
 ---
-description: 'Use when: releasing npm packages, publishing to npm, creating GitHub releases, bumping package versions, tagging versions, running gh release create, version bump, publish @bloc-ui/core, @bloc-ui/theme, @bloc-ui/modal, @bloc-ui/table, @bloc-ui/toast, @bloc-ui/date-picker, @bloc-ui/tab, @bloc-ui/kit, @bloc-ui/accordion, @bloc-ui/alert, @bloc-ui/autocomplete, @bloc-ui/layout, @bloc-ui/overlay, @bloc-ui/pagination, @bloc-ui/select, @bloc-ui/slider, @bloc-ui/tooltip, or @bloc-ui/virtual-scroll'
+description: 'Use when: releasing npm packages, publishing to npm, creating GitHub releases, bumping package versions, tagging versions, running gh release create, version bump, publish @bloc-ui/core, @bloc-ui/theme, @bloc-ui/modal, @bloc-ui/table, @bloc-ui/toast, @bloc-ui/date-picker, @bloc-ui/tab, @bloc-ui/kit, @bloc-ui/accordion, @bloc-ui/alert, @bloc-ui/autocomplete, @bloc-ui/layout, @bloc-ui/overlay, @bloc-ui/pagination, @bloc-ui/select, @bloc-ui/slider, @bloc-ui/tooltip, @bloc-ui/virtual-scroll, @bloc-ui/text-highlight, or @bloc-ui/video-player'
 tools: [execute, read, edit, search]
 ---
 
@@ -29,15 +29,16 @@ Use the **Workspace Variables** section from `copilot-instructions.md` for repo 
 | Slider         | `projects/bloc-ui-slider/package.json`         | `@bloc-ui/slider`         |
 | Tooltip        | `projects/bloc-ui-tooltip/package.json`        | `@bloc-ui/tooltip`        |
 | Virtual Scroll | `projects/bloc-ui-virtual-scroll/package.json` | `@bloc-ui/virtual-scroll` |
+| Text Highlight | `projects/bloc-ui-text-highlight/package.json` | `@bloc-ui/text-highlight` |
+| Video Player   | `projects/bloc-ui-video-player/package.json`   | `@bloc-ui/video-player`   |
 | Root           | `package.json`                                 | (private, not published)  |
 
 ## Project Name (mandatory — always required)
 
 The user MUST specify which package to release: `core`, `modal`, `table`, `toast`, `date-picker`, `tab`, `kit`, `theme`, `accordion`, `alert`, `autocomplete`, `layout`, `overlay`, `pagination`, `select`, `slider`, or `all`.
 
-- If the user does NOT provide a project name, **stop immediately** and ask: _"Which package do you want to release? (`core`, `modal`, `table`, `toast`, `date-picker`, `tab`, `kit`, `theme`, `accordion`, `alert`, `autocomplete`, `layout`, `overlay`, `pagination`, `select`, `slider`, `tooltip`, `virtual-scroll`, or `all`)"_
+- If the user does NOT provide a project name, **stop immediately** and ask: _"Which package do you want to release? (`core`, `modal`, `table`, `toast`, `date-picker`, `tab`, `kit`, `theme`, `accordion`, `alert`, `autocomplete`, `layout`, `overlay`, `pagination`, `select`, `slider`, `tooltip`, `virtual-scroll`, `text-highlight`, `video-player`, or `all`)"_
 - DO NOT guess, assume, or default to any package. Wait for an explicit answer before proceeding.
-- When releasing `kit`, also bump the `@bloc-ui/core`, `@bloc-ui/modal`, `@bloc-ui/table`, `@bloc-ui/toast`, `@bloc-ui/date-picker`, and `@bloc-ui/tab` dependency versions in `projects/bloc-ui/package.json` to match their latest versions.
 
 ## Pre-flight Checks (mandatory, run every time)
 
@@ -132,6 +133,34 @@ Then continue to the **Versioning** step.
 5. Update the `version` field in:
     - The target package's `package.json` (e.g. `projects/bloc-ui-core/package.json`).
     - The root `package.json` **only when releasing `core`** (keep root in sync with core).
+    - **All packages that list the released package as a dependency** — update the version reference to `^<new_version>` in their `package.json` (under `dependencies` or `peerDependencies`). Use the inter-package dependency map below:
+
+### Inter-package dependency map
+
+When you release a package, also update its version reference in every dependent listed here:
+
+| Released package          | Update version reference in these packages                                                                                                                     |
+| ------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `@bloc-ui/overlay`        | `projects/bloc-ui-autocomplete/package.json`, `projects/bloc-ui-select/package.json`, `projects/bloc-ui-tooltip/package.json`, `projects/bloc-ui/package.json` |
+| `@bloc-ui/text-highlight` | `projects/bloc-ui-autocomplete/package.json`                                                                                                                   |
+| `@bloc-ui/core`           | `projects/bloc-ui/package.json`                                                                                                                                |
+| `@bloc-ui/modal`          | `projects/bloc-ui/package.json`                                                                                                                                |
+| `@bloc-ui/table`          | `projects/bloc-ui/package.json`                                                                                                                                |
+| `@bloc-ui/toast`          | `projects/bloc-ui/package.json`                                                                                                                                |
+| `@bloc-ui/date-picker`    | `projects/bloc-ui/package.json`                                                                                                                                |
+| `@bloc-ui/tab`            | `projects/bloc-ui/package.json`                                                                                                                                |
+| `@bloc-ui/accordion`      | `projects/bloc-ui/package.json`                                                                                                                                |
+| `@bloc-ui/alert`          | `projects/bloc-ui/package.json`                                                                                                                                |
+| `@bloc-ui/autocomplete`   | `projects/bloc-ui/package.json`                                                                                                                                |
+| `@bloc-ui/layout`         | `projects/bloc-ui/package.json`                                                                                                                                |
+| `@bloc-ui/pagination`     | `projects/bloc-ui/package.json`                                                                                                                                |
+| `@bloc-ui/select`         | `projects/bloc-ui/package.json`                                                                                                                                |
+| `@bloc-ui/slider`         | `projects/bloc-ui/package.json`                                                                                                                                |
+| `@bloc-ui/tooltip`        | `projects/bloc-ui/package.json`                                                                                                                                |
+| `@bloc-ui/virtual-scroll` | `projects/bloc-ui/package.json`                                                                                                                                |
+
+    If a package is not in this table, no other packages depend on it — no propagation needed.
+
 6. **Update the project README** (mandatory — do NOT skip):
     - Read the project's `README.md` (e.g. `projects/bloc-ui-core/README.md` for core).
     - Update any version badges, install commands, or version references to reflect the new version.
@@ -164,12 +193,14 @@ Tags are prefixed by package to trigger the correct CI workflow:
 | Slider         | `slider-v<new_version>`         | `slider-v0.0.1`         |
 | Tooltip        | `tooltip-v<new_version>`        | `tooltip-v0.0.1`        |
 | Virtual Scroll | `virtual-scroll-v<new_version>` | `virtual-scroll-v0.0.1` |
+| Text Highlight | `text-highlight-v<new_version>` | `text-highlight-v1.0.0` |
+| Video Player   | `video-player-v<new_version>`   | `video-player-v1.0.1`   |
 
 1. Create a git tag and GitHub release in one step:
     ```
     gh release create <prefix>-v<new_version> --title "<prefix>-v<new_version>" --notes "Release <npm-name> v<new_version>"
     ```
-    where `<prefix>` is `core`, `modal`, `table`, `toast`, `date-picker`, `tab`, `kit`, `theme`, `accordion`, `alert`, `autocomplete`, `layout`, `overlay`, `pagination`, `select`, `slider`, `tooltip`, or `virtual-scroll` depending on the package being released.
+    where `<prefix>` is `core`, `modal`, `table`, `toast`, `date-picker`, `tab`, `kit`, `theme`, `accordion`, `alert`, `autocomplete`, `layout`, `overlay`, `pagination`, `select`, `slider`, `tooltip`, `virtual-scroll`, `text-highlight`, or `video-player` depending on the package being released.
 2. Confirm the release was created by running `gh release view <prefix>-v<new_version>`.
 3. When releasing **all** packages, create separate releases — one per package with its own tag prefix.
 

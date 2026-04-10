@@ -26,6 +26,9 @@ npx ng build bloc-ui-accordion $CONFIG
 echo "Building bloc-ui-alert..."
 npx ng build bloc-ui-alert $CONFIG
 
+echo "Building bloc-ui-text-highlight..."
+npx ng build bloc-ui-text-highlight $CONFIG
+
 echo "Building bloc-ui-autocomplete..."
 npx ng build bloc-ui-autocomplete $CONFIG
 
