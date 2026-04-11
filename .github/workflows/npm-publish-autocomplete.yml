@@ -29,6 +29,9 @@ jobs:
             - name: Build bloc-ui-overlay
               run: npx ng build bloc-ui-overlay --configuration production
 
+            - name: Build bloc-ui-text-highlight
+              run: npx ng build bloc-ui-text-highlight --configuration production
+
             - name: Build bloc-ui-autocomplete
               run: npx ng build bloc-ui-autocomplete --configuration production
 
