@@ -1,4 +1,4 @@
-import { Component, inject, signal } from '@angular/core';
+import { Component, inject, signal, DOCUMENT } from '@angular/core';
 import { Router, NavigationEnd, RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { filter } from 'rxjs';
 
@@ -21,6 +21,10 @@ interface MenuGroup {
 })
 export class App {
     private readonly router = inject(Router);
+    private readonly doc = inject(DOCUMENT);
+
+    /** Mobile drawer state */
+    readonly sidebarOpen = signal(false);
 
     readonly coreGroup: MenuGroup = {
         label: 'Core Components',
@@ -87,7 +91,23 @@ export class App {
                 if (this._isExperimentalRoute(e.urlAfterRedirects)) {
                     this.experimentalExpanded.set(true);
                 }
+                // Auto-close mobile drawer on navigation
+                this.closeSidebar();
             });
+    }
+
+    openSidebar(): void {
+        this.sidebarOpen.set(true);
+        this.doc.body.classList.add('sidebar-open');
+    }
+
+    closeSidebar(): void {
+        this.sidebarOpen.set(false);
+        this.doc.body.classList.remove('sidebar-open');
+    }
+
+    toggleSidebar(): void {
+        this.sidebarOpen() ? this.closeSidebar() : this.openSidebar();
     }
 
     toggleCore(): void {

@@ -6,6 +6,18 @@ body {
     color: var(--bloc-text);
 }
 
+/* Prevent horizontal page overflow on mobile */
+html {
+    overflow-x: hidden;
+}
+
+/* Tables inside demo cards: allow horizontal scroll on narrow viewports */
+bloc-table {
+    display: block;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+}
+
 .demo-card__preview {
     margin-top: 0.75rem;
     display: flex;
