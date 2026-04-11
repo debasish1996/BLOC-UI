@@ -5,6 +5,7 @@
         "entryFile": "src/public-api.ts"
     },
     "allowedNonPeerDependencies": [
-        "@bloc-ui/overlay, @bloc-ui/text-highlight"
+        "@bloc-ui/overlay",
+        "@bloc-ui/text-highlight"
     ]
 }

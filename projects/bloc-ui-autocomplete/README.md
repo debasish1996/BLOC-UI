@@ -79,17 +79,17 @@ readonly teamOptions: readonly BlocAutocompleteOption<string>[] = [
 
 ## Inputs — `BlocAutocompleteComponent`
 
-| Input         | Type                          | Default                | Description                                     |
-| ------------- | ----------------------------- | ---------------------- | ----------------------------------------------- |
-| `options`     | `BlocAutocompleteOption<T>[]` | `[]`                   | List of options to display and filter           |
-| `placeholder` | `string`                      | `'Search options'`     | Placeholder text in the search input            |
-| `clearable`   | `boolean`                     | `false`                | Shows a clear (×) button to reset the selection |
-| `disabled`    | `boolean`                     | `false`                | Disables the control                            |
-| `loading`     | `boolean`                     | `false`                | Replaces the option list with `loadingText`     |
-| `loadingText` | `string`                      | `'Loading options...'` | Message shown while `loading` is true           |
-| `emptyText`   | `string`                      | `'No results found'`   | Message shown when the filtered list is empty   |
-| `filterFn`    | `((options, query) => BlocAutocompleteOption<T>[]) \| null` | `null` | Custom filter function; overrides built-in substring and fuzzy matching |
-| `error`       | `boolean`                     | `false`                | Forces the error state regardless of form control validity              |
+| Input         | Type                                                        | Default                | Description                                                             |
+| ------------- | ----------------------------------------------------------- | ---------------------- | ----------------------------------------------------------------------- |
+| `options`     | `BlocAutocompleteOption<T>[]`                               | `[]`                   | List of options to display and filter                                   |
+| `placeholder` | `string`                                                    | `'Search options'`     | Placeholder text in the search input                                    |
+| `clearable`   | `boolean`                                                   | `false`                | Shows a clear (×) button to reset the selection                         |
+| `disabled`    | `boolean`                                                   | `false`                | Disables the control                                                    |
+| `loading`     | `boolean`                                                   | `false`                | Replaces the option list with `loadingText`                             |
+| `loadingText` | `string`                                                    | `'Loading options...'` | Message shown while `loading` is true                                   |
+| `emptyText`   | `string`                                                    | `'No results found'`   | Message shown when the filtered list is empty                           |
+| `filterFn`    | `((options, query) => BlocAutocompleteOption<T>[]) \| null` | `null`                 | Custom filter function; overrides built-in substring and fuzzy matching |
+| `error`       | `boolean`                                                   | `false`                | Forces the error state regardless of form control validity              |
 
 ## Outputs
 
