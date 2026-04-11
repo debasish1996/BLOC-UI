@@ -1,6 +1,24 @@
 {
   "name": "@bloc-ui/slider",
-  "version": "1.0.3",
+  "version": "1.0.4",
+  "description": "Range slider for Angular with forms integration and keyboard support.",
+  "keywords": [
+    "angular",
+    "angular-components",
+    "component-library",
+    "slider",
+    "range",
+    "forms",
+    "accessible",
+    "standalone-components",
+    "bloc-ui"
+  ],
+  "license": "MIT",
+  "author": "Bloc Verse",
+  "homepage": "https://ui.bloc-verse.com",
+  "bugs": {
+    "url": "https://github.com/debasish1996/BLOC-UI/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/debasish1996/BLOC-UI.git",

@@ -2,7 +2,7 @@
  * Public API Surface of @bloc-ui/kit
  *
  * All-in-one re-export: installing this package gives you
- * every component from @bloc-ui/core and @bloc-ui/modal.
+ * every stable and experimental Bloc UI component.
  */
 
 export * from '@bloc-ui/core/button';
@@ -24,6 +24,7 @@ export * from '@bloc-ui/pagination';
 export * from '@bloc-ui/select';
 export * from '@bloc-ui/slider';
 export * from '@bloc-ui/table';
+export * from '@bloc-ui/text-highlight';
 export * from '@bloc-ui/toast';
 export * from '@bloc-ui/date-picker';
 export * from '@bloc-ui/tab';

@@ -1,6 +1,26 @@
 {
   "name": "@bloc-ui/core",
-  "version": "1.0.4",
+  "version": "1.0.5",
+  "description": "Lightweight Angular component library — button, checkbox, input, radio, spinner, toggle, and more with secondary entry points for tree-shaking.",
+  "keywords": [
+    "angular",
+    "angular-components",
+    "component-library",
+    "ui-library",
+    "tailwind",
+    "accessible",
+    "standalone-components",
+    "typescript",
+    "lightweight",
+    "themeable",
+    "bloc-ui"
+  ],
+  "license": "MIT",
+  "author": "Bloc Verse",
+  "homepage": "https://ui.bloc-verse.com",
+  "bugs": {
+    "url": "https://github.com/debasish1996/BLOC-UI/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/debasish1996/BLOC-UI.git",

@@ -1,17 +1,35 @@
 {
-    "name": "@bloc-ui/video-player",
-    "version": "1.0.2",
-    "repository": {
-        "type": "git",
-        "url": "https://github.com/debasish1996/BLOC-UI.git",
-        "directory": "projects/bloc-ui-video-player"
-    },
-    "peerDependencies": {
-        "@angular/common": "^21.2.0",
-        "@angular/core": "^21.2.0"
-    },
-    "dependencies": {
-        "tslib": "^2.3.0"
-    },
-    "sideEffects": false
+  "name": "@bloc-ui/video-player",
+  "version": "1.0.3",
+  "description": "Lightweight HTML5 video player component for Angular with native controls and lifecycle events.",
+  "keywords": [
+    "angular",
+    "angular-components",
+    "component-library",
+    "video",
+    "video-player",
+    "html5",
+    "media",
+    "standalone-components",
+    "bloc-ui"
+  ],
+  "license": "MIT",
+  "author": "Bloc Verse",
+  "homepage": "https://ui.bloc-verse.com",
+  "bugs": {
+    "url": "https://github.com/debasish1996/BLOC-UI/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/debasish1996/BLOC-UI.git",
+    "directory": "projects/bloc-ui-video-player"
+  },
+  "peerDependencies": {
+    "@angular/common": "^21.2.0",
+    "@angular/core": "^21.2.0"
+  },
+  "dependencies": {
+    "tslib": "^2.3.0"
+  },
+  "sideEffects": false
 }

@@ -71,7 +71,13 @@ export class BlocAutocompleteComponent<T = string> implements ControlValueAccess
     readonly loading = input(false);
     readonly disabled = input(false);
     readonly error = input(false);
-    readonly filterFn = input<((options: readonly BlocAutocompleteOption<T>[], query: string) => BlocAutocompleteOption<T>[]) | null>(null);
+    readonly filterFn = input<
+        | ((
+              options: readonly BlocAutocompleteOption<T>[],
+              query: string,
+          ) => BlocAutocompleteOption<T>[])
+        | null
+    >(null);
     readonly selectionChange = output<T | null>();
 
     // — content children —
@@ -212,8 +218,9 @@ export class BlocAutocompleteComponent<T = string> implements ControlValueAccess
 
     handleBlur(): void {
         setTimeout(() => {
-            if (!this.isOpen()) return;
-            this._closePanel(true);
+            if (this.isOpen()) {
+                this._closePanel(true);
+            }
             this.onTouched();
         }, 120);
     }

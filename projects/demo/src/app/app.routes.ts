@@ -29,10 +29,12 @@ import { TooltipDemoComponent } from './tooltip-demo/tooltip-demo.component';
 import { TextHighlightDemoComponent } from './text-highlight-demo/text-highlight-demo.component';
 import { VirtualScrollDemoComponent } from './virtual-scroll-demo/virtual-scroll-demo.component';
 import { VideoPlayerDemoComponent } from './video-player-demo/video-player-demo.component';
+import { WhyBlocUiComponent } from './why-bloc-ui/why-bloc-ui.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
     { path: 'getting-started', component: GettingStartedComponent },
+    { path: 'why-bloc-ui', component: WhyBlocUiComponent },
     { path: 'accordion', component: AccordionDemoComponent },
     { path: 'alert', component: AlertDemoComponent },
     { path: 'autocomplete', component: AutocompleteDemoComponent },

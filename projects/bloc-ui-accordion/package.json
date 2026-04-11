@@ -1,6 +1,23 @@
 {
   "name": "@bloc-ui/accordion",
-  "version": "1.0.3",
+  "version": "1.0.4",
+  "description": "Collapsible accordion for Angular with single/multi-open modes and keyboard navigation.",
+  "keywords": [
+    "angular",
+    "angular-components",
+    "component-library",
+    "accordion",
+    "collapse",
+    "accessible",
+    "standalone-components",
+    "bloc-ui"
+  ],
+  "license": "MIT",
+  "author": "Bloc Verse",
+  "homepage": "https://ui.bloc-verse.com",
+  "bugs": {
+    "url": "https://github.com/debasish1996/BLOC-UI/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/debasish1996/BLOC-UI.git",

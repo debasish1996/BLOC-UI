@@ -1,6 +1,23 @@
 {
   "name": "@bloc-ui/overlay",
-  "version": "1.0.4",
+  "version": "1.0.5",
+  "description": "Low-level overlay positioning primitive used internally by Bloc UI components (select, tooltip, autocomplete).",
+  "keywords": [
+    "angular",
+    "angular-components",
+    "overlay",
+    "positioning",
+    "popover",
+    "cdk",
+    "standalone-components",
+    "bloc-ui"
+  ],
+  "license": "MIT",
+  "author": "Bloc Verse",
+  "homepage": "https://ui.bloc-verse.com",
+  "bugs": {
+    "url": "https://github.com/debasish1996/BLOC-UI/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/debasish1996/BLOC-UI.git",

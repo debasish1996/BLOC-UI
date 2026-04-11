@@ -52,6 +52,7 @@ export class App {
     };
 
     readonly aboutItem: MenuItem = { path: 'about', label: 'About' };
+    readonly whyItem: MenuItem = { path: 'why-bloc-ui', label: 'Why Bloc UI?' };
 
     readonly experimentalGroup: MenuGroup = {
         label: 'Experimental',

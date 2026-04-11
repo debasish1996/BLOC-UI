@@ -23,6 +23,7 @@
             "@bloc-ui/overlay": ["../../dist/bloc-ui-overlay"],
             "@bloc-ui/select": ["../../dist/bloc-ui-select"],
             "@bloc-ui/slider": ["../../dist/bloc-ui-slider"],
+            "@bloc-ui/text-highlight": ["../../dist/bloc-ui-text-highlight"],
             "@bloc-ui/tooltip": ["../../dist/bloc-ui-tooltip"],
             "@bloc-ui/virtual-scroll": ["../../dist/bloc-ui-virtual-scroll"]
         }

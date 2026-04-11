@@ -19,6 +19,7 @@
         "@bloc-ui/toast",
         "@bloc-ui/date-picker",
         "@bloc-ui/tab",
+        "@bloc-ui/text-highlight",
         "@bloc-ui/tooltip",
         "@bloc-ui/virtual-scroll"
     ]

@@ -1,6 +1,25 @@
 {
   "name": "@bloc-ui/select",
-  "version": "1.0.4",
+  "version": "1.0.5",
+  "description": "Single-select dropdown for Angular with overlay positioning, keyboard navigation, search, and loading state.",
+  "keywords": [
+    "angular",
+    "angular-components",
+    "component-library",
+    "select",
+    "dropdown",
+    "combobox",
+    "forms",
+    "accessible",
+    "standalone-components",
+    "bloc-ui"
+  ],
+  "license": "MIT",
+  "author": "Bloc Verse",
+  "homepage": "https://ui.bloc-verse.com",
+  "bugs": {
+    "url": "https://github.com/debasish1996/BLOC-UI/issues"
+  },
   "repository": {
     "type": "git",
     "url": "https://github.com/debasish1996/BLOC-UI.git",
@@ -12,7 +31,7 @@
     "@angular/forms": "^21.2.0"
   },
   "dependencies": {
-    "@bloc-ui/overlay": "^1.0.4",
+    "@bloc-ui/overlay": "^1.0.5",
     "tslib": "^2.3.0"
   },
   "sideEffects": false
