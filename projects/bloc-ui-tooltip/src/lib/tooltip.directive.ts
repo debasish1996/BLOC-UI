@@ -114,7 +114,7 @@ export class BlocTooltipDirective implements OnInit, OnDestroy {
         host.removeEventListener('focus', this._onFocus);
         host.removeEventListener('blur', this._onBlur);
         this._doc.removeEventListener('keydown', this._onDocKeydown);
-        window.removeEventListener('scroll', this._onScroll, { capture: true });
+        this._doc.defaultView?.removeEventListener('scroll', this._onScroll, { capture: true });
         this._clearTimers();
         this._removePanel();
     }
