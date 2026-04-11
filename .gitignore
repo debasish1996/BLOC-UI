@@ -48,6 +48,9 @@ Thumbs.db
 # Personal notes
 todo.md
 
+# Claude Code
+.claude/
+
 # Manager reports
 Managers/
 playwright-report/
