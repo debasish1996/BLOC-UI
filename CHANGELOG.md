@@ -6,6 +6,19 @@ This file was seeded on 2026-04-11 from existing git history. Future entries are
 
 ## [Unreleased]
 
+### Fixed
+
+- `demo` unit tests — added missing `provideRouter` to `app.spec.ts` and fixed stale assertion (was checking for a non-existent `<h1>`).
+- `@bloc-ui/text-highlight` — added missing unit-test spec file; the `test` target in `angular.json` previously failed with "No tests found".
+
+### Changed
+
+- Consolidated CI workflows by merging `deploy-demo.yml` into `ci.yml`.
+
+## 2026-04-11 — Metadata & kit re-exports (patch bump all)
+
+**All packages:** core `1.0.6`, kit `1.1.1`, modal `1.0.5`, table `1.0.5`, toast `1.0.5`, date-picker `1.0.5`, tab `1.0.5`, theme `1.0.6`, accordion `1.0.5`, alert `1.0.7`, autocomplete `1.0.8`, layout `1.0.5`, overlay `1.0.6`, pagination `1.0.5`, select `1.0.6`, slider `1.0.5`, tooltip `1.0.6`, virtual-scroll `1.0.5`, text-highlight `1.0.4`, video-player `1.0.4`.
+
 ### Added
 
 - Root `LICENSE` file (MIT) — previously only mentioned in README.
