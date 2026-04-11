@@ -1,34 +1,34 @@
 {
-  "name": "@bloc-ui/accordion",
-  "version": "1.0.4",
-  "description": "Collapsible accordion for Angular with single/multi-open modes and keyboard navigation.",
-  "keywords": [
-    "angular",
-    "angular-components",
-    "component-library",
-    "accordion",
-    "collapse",
-    "accessible",
-    "standalone-components",
-    "bloc-ui"
-  ],
-  "license": "MIT",
-  "author": "Bloc Verse",
-  "homepage": "https://ui.bloc-verse.com",
-  "bugs": {
-    "url": "https://github.com/debasish1996/BLOC-UI/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/debasish1996/BLOC-UI.git",
-    "directory": "projects/bloc-ui-accordion"
-  },
-  "peerDependencies": {
-    "@angular/common": "^21.2.0",
-    "@angular/core": "^21.2.0"
-  },
-  "dependencies": {
-    "tslib": "^2.3.0"
-  },
-  "sideEffects": false
+    "name": "@bloc-ui/accordion",
+    "version": "1.0.5",
+    "description": "Collapsible accordion for Angular with single/multi-open modes and keyboard navigation.",
+    "keywords": [
+        "angular",
+        "angular-components",
+        "component-library",
+        "accordion",
+        "collapse",
+        "accessible",
+        "standalone-components",
+        "bloc-ui"
+    ],
+    "license": "MIT",
+    "author": "Bloc Verse",
+    "homepage": "https://ui.bloc-verse.com",
+    "bugs": {
+        "url": "https://github.com/debasish1996/BLOC-UI/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/debasish1996/BLOC-UI.git",
+        "directory": "projects/bloc-ui-accordion"
+    },
+    "peerDependencies": {
+        "@angular/common": "^21.2.0",
+        "@angular/core": "^21.2.0"
+    },
+    "dependencies": {
+        "tslib": "^2.3.0"
+    },
+    "sideEffects": false
 }

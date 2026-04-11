@@ -1,6 +1,6 @@
 # @bloc-ui/layout
 
-> **Latest:** v1.0.3
+> **Latest:** v1.0.5
 
 > ⚠️ **Experimental** — API may change before reaching stable status.
 

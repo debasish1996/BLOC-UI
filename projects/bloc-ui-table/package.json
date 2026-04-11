@@ -1,35 +1,35 @@
 {
-  "name": "@bloc-ui/table",
-  "version": "1.0.4",
-  "description": "Declarative data table for Angular with custom cell templates, striped/bordered/hover options.",
-  "keywords": [
-    "angular",
-    "angular-components",
-    "component-library",
-    "table",
-    "datatable",
-    "grid",
-    "accessible",
-    "standalone-components",
-    "bloc-ui"
-  ],
-  "license": "MIT",
-  "author": "Bloc Verse",
-  "homepage": "https://ui.bloc-verse.com",
-  "bugs": {
-    "url": "https://github.com/debasish1996/BLOC-UI/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/debasish1996/BLOC-UI.git",
-    "directory": "projects/bloc-ui-table"
-  },
-  "peerDependencies": {
-    "@angular/common": "^21.2.0",
-    "@angular/core": "^21.2.0"
-  },
-  "dependencies": {
-    "tslib": "^2.3.0"
-  },
-  "sideEffects": false
+    "name": "@bloc-ui/table",
+    "version": "1.0.5",
+    "description": "Declarative data table for Angular with custom cell templates, striped/bordered/hover options.",
+    "keywords": [
+        "angular",
+        "angular-components",
+        "component-library",
+        "table",
+        "datatable",
+        "grid",
+        "accessible",
+        "standalone-components",
+        "bloc-ui"
+    ],
+    "license": "MIT",
+    "author": "Bloc Verse",
+    "homepage": "https://ui.bloc-verse.com",
+    "bugs": {
+        "url": "https://github.com/debasish1996/BLOC-UI/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/debasish1996/BLOC-UI.git",
+        "directory": "projects/bloc-ui-table"
+    },
+    "peerDependencies": {
+        "@angular/common": "^21.2.0",
+        "@angular/core": "^21.2.0"
+    },
+    "dependencies": {
+        "tslib": "^2.3.0"
+    },
+    "sideEffects": false
 }

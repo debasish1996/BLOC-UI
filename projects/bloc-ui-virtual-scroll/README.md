@@ -1,6 +1,6 @@
 # @bloc-ui/virtual-scroll
 
-> **Latest:** v1.0.3
+> **Latest:** v1.0.5
 
 Lightweight virtual scrolling for Angular — renders only visible items, positions via `transform` (no reflow), signal-driven calculations.
 

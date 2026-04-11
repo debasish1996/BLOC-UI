@@ -1,35 +1,35 @@
 {
-  "name": "@bloc-ui/tab",
-  "version": "1.0.4",
-  "description": "Tab group for Angular with animated active indicator and disabled tabs.",
-  "keywords": [
-    "angular",
-    "angular-components",
-    "component-library",
-    "tabs",
-    "tab-group",
-    "navigation",
-    "accessible",
-    "standalone-components",
-    "bloc-ui"
-  ],
-  "license": "MIT",
-  "author": "Bloc Verse",
-  "homepage": "https://ui.bloc-verse.com",
-  "bugs": {
-    "url": "https://github.com/debasish1996/BLOC-UI/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/debasish1996/BLOC-UI.git",
-    "directory": "projects/bloc-ui-tab"
-  },
-  "peerDependencies": {
-    "@angular/common": "^21.2.0",
-    "@angular/core": "^21.2.0"
-  },
-  "dependencies": {
-    "tslib": "^2.3.0"
-  },
-  "sideEffects": false
+    "name": "@bloc-ui/tab",
+    "version": "1.0.5",
+    "description": "Tab group for Angular with animated active indicator and disabled tabs.",
+    "keywords": [
+        "angular",
+        "angular-components",
+        "component-library",
+        "tabs",
+        "tab-group",
+        "navigation",
+        "accessible",
+        "standalone-components",
+        "bloc-ui"
+    ],
+    "license": "MIT",
+    "author": "Bloc Verse",
+    "homepage": "https://ui.bloc-verse.com",
+    "bugs": {
+        "url": "https://github.com/debasish1996/BLOC-UI/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/debasish1996/BLOC-UI.git",
+        "directory": "projects/bloc-ui-tab"
+    },
+    "peerDependencies": {
+        "@angular/common": "^21.2.0",
+        "@angular/core": "^21.2.0"
+    },
+    "dependencies": {
+        "tslib": "^2.3.0"
+    },
+    "sideEffects": false
 }

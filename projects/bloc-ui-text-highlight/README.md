@@ -1,6 +1,6 @@
 # @bloc-ui/text-highlight
 
-> **Latest:** v1.0.2
+> **Latest:** v1.0.4
 
 Lightweight Angular text-highlighting utility component used to emphasize query matches inside rendered content.
 

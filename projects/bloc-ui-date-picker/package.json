@@ -1,36 +1,36 @@
 {
-  "name": "@bloc-ui/date-picker",
-  "version": "1.0.4",
-  "description": "Calendar date picker for Angular with forms integration and min/max date support.",
-  "keywords": [
-    "angular",
-    "angular-components",
-    "component-library",
-    "date-picker",
-    "calendar",
-    "forms",
-    "accessible",
-    "standalone-components",
-    "bloc-ui"
-  ],
-  "license": "MIT",
-  "author": "Bloc Verse",
-  "homepage": "https://ui.bloc-verse.com",
-  "bugs": {
-    "url": "https://github.com/debasish1996/BLOC-UI/issues"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/debasish1996/BLOC-UI.git",
-    "directory": "projects/bloc-ui-date-picker"
-  },
-  "peerDependencies": {
-    "@angular/common": "^21.2.0",
-    "@angular/core": "^21.2.0",
-    "@angular/forms": "^21.2.0"
-  },
-  "dependencies": {
-    "tslib": "^2.3.0"
-  },
-  "sideEffects": false
+    "name": "@bloc-ui/date-picker",
+    "version": "1.0.5",
+    "description": "Calendar date picker for Angular with forms integration and min/max date support.",
+    "keywords": [
+        "angular",
+        "angular-components",
+        "component-library",
+        "date-picker",
+        "calendar",
+        "forms",
+        "accessible",
+        "standalone-components",
+        "bloc-ui"
+    ],
+    "license": "MIT",
+    "author": "Bloc Verse",
+    "homepage": "https://ui.bloc-verse.com",
+    "bugs": {
+        "url": "https://github.com/debasish1996/BLOC-UI/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/debasish1996/BLOC-UI.git",
+        "directory": "projects/bloc-ui-date-picker"
+    },
+    "peerDependencies": {
+        "@angular/common": "^21.2.0",
+        "@angular/core": "^21.2.0",
+        "@angular/forms": "^21.2.0"
+    },
+    "dependencies": {
+        "tslib": "^2.3.0"
+    },
+    "sideEffects": false
 }
