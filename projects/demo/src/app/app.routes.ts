@@ -9,6 +9,7 @@ import { ButtonDemoComponent } from './button-demo/button-demo.component';
 import { CheckboxDemoComponent } from './checkbox-demo/checkbox-demo.component';
 import { DatePickerDemoComponent } from './date-picker-demo/date-picker-demo.component';
 import { DateRangePickerDemoComponent } from './date-range-picker-demo/date-range-picker-demo.component';
+import { GettingStartedComponent } from './getting-started/getting-started.component';
 import { InputDemoComponent } from './input-demo/input-demo.component';
 import { LayoutDemoComponent } from './layout-demo/layout-demo.component';
 import { ModalDemoComponent } from './modal-demo/modal-demo.component';
@@ -31,6 +32,7 @@ import { VideoPlayerDemoComponent } from './video-player-demo/video-player-demo.
 
 export const routes: Routes = [
     { path: '', component: HomeComponent, pathMatch: 'full' },
+    { path: 'getting-started', component: GettingStartedComponent },
     { path: 'accordion', component: AccordionDemoComponent },
     { path: 'alert', component: AlertDemoComponent },
     { path: 'autocomplete', component: AutocompleteDemoComponent },

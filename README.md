@@ -99,7 +99,11 @@ All components are `standalone: true` with companion NgModule wrappers.
 
 ## Quick Start
 
-### Option A — All-in-one
+Full guide: **[Getting Started](https://ui.bloc-verse.com/getting-started)**
+
+### 1. Choose installation strategy
+
+#### Option A — All-in-one
 
 ```bash
 npm install @bloc-ui/kit
@@ -110,7 +114,7 @@ import { BlocButtonComponent } from '@bloc-ui/kit';
 import { BlocModalService } from '@bloc-ui/kit';
 ```
 
-### Option B — Individual packages (smaller bundles)
+#### Option B — Individual packages (smaller bundles)
 
 ```bash
 npm install @bloc-ui/core @bloc-ui/modal @bloc-ui/table
@@ -128,7 +132,7 @@ import { BlocTableComponent } from '@bloc-ui/table';
 <input blocInput type="text" placeholder="Email" />
 ```
 
-### Add theming (optional)
+### 2. Add theming (optional)
 
 ```bash
 npm install @bloc-ui/theme
@@ -141,7 +145,7 @@ npm install @bloc-ui/theme
 
 This gives you light/dark mode (auto-follows OS), brand colour tokens, and consistent spacing/typography across all components.
 
-### Tailwind CSS users
+### 3. Tailwind CSS users
 
 Register bloc-ui cascade layers before importing Tailwind so utilities always win:
 
