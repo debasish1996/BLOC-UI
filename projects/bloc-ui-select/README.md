@@ -2,8 +2,6 @@
 
 > **Latest:** v1.0.6
 
-> ⚠️ **Experimental** — API may change before reaching stable status.
-
 Single-select dropdown for Angular forms with overlay positioning, keyboard navigation,
 optional search filtering, projected custom option markup, and disabled/loading states.
 

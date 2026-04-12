@@ -30,8 +30,8 @@ Packages that are production-ready: full README, demo route, unit tests, and doc
 
 | Package                                                                            | Description                                                               |
 | ---------------------------------------------------------------------------------- | ------------------------------------------------------------------------- |
-| [`@bloc-ui/kit`](https://www.npmjs.com/package/@bloc-ui/kit)                       | All-in-one umbrella — re-exports every stable and experimental package (except `video-player`) |
-| [`@bloc-ui/core`](https://www.npmjs.com/package/@bloc-ui/core)                     | Component library — button, checkbox, input, radio, spinner, toggle       |
+| [`@bloc-ui/kit`](https://www.npmjs.com/package/@bloc-ui/kit)                       | All-in-one umbrella — re-exports every stable package (except `video-player`) |
+| [`@bloc-ui/core`](https://www.npmjs.com/package/@bloc-ui/core)                     | Component library — button, checkbox, input, radio, spinner, toggle, badge, progress, skeleton, textarea |
 | [`@bloc-ui/theme`](https://www.npmjs.com/package/@bloc-ui/theme)                   | Optional theme layer — CSS custom properties, colour tokens, dark mode    |
 | [`@bloc-ui/modal`](https://www.npmjs.com/package/@bloc-ui/modal)                   | Service-driven modal dialogs with typed data & results                    |
 | [`@bloc-ui/table`](https://www.npmjs.com/package/@bloc-ui/table)                   | Declarative data table with custom cell templates                         |
@@ -42,6 +42,11 @@ Packages that are production-ready: full README, demo route, unit tests, and doc
 | [`@bloc-ui/alert`](https://www.npmjs.com/package/@bloc-ui/alert)                   | Inline alert banners with severity variants and optional dismiss          |
 | [`@bloc-ui/autocomplete`](https://www.npmjs.com/package/@bloc-ui/autocomplete)     | Searchable single-select with async-friendly option list and custom filter |
 | [`@bloc-ui/virtual-scroll`](https://www.npmjs.com/package/@bloc-ui/virtual-scroll) | Lightweight virtual scrolling — renders only visible items, signal-driven |
+| [`@bloc-ui/accordion`](https://www.npmjs.com/package/@bloc-ui/accordion)           | Collapsible accordion with single/multi-open modes and keyboard navigation |
+| [`@bloc-ui/pagination`](https://www.npmjs.com/package/@bloc-ui/pagination)         | Page navigation with configurable sibling/boundary counts and custom labels |
+| [`@bloc-ui/select`](https://www.npmjs.com/package/@bloc-ui/select)                 | Single-select dropdown with overlay, keyboard nav, search, and loading state |
+| [`@bloc-ui/slider`](https://www.npmjs.com/package/@bloc-ui/slider)                 | Range slider with Angular forms integration                               |
+| [`@bloc-ui/text-highlight`](https://www.npmjs.com/package/@bloc-ui/text-highlight) | Lightweight text highlighting directive for search/filter matches         |
 
 ### Experimental
 
@@ -49,15 +54,10 @@ Available and functional, but the API may change. Not yet at the full stable bar
 
 > ⚠️ Experimental packages are shipped in `@bloc-ui/kit` and can be imported directly. Use them with the understanding that breaking changes may occur before they reach stable status.
 
-| Package                  | Description                                                                  |
-| ------------------------ | ---------------------------------------------------------------------------- |
-| `@bloc-ui/accordion`     | Collapsible accordion with single/multi-open modes and keyboard navigation   |
-| `@bloc-ui/layout`        | Sidebar layout with collapsible panel and responsive stacking                |
-| `@bloc-ui/pagination`    | Page navigation with configurable sibling/boundary counts and custom labels  |
-| `@bloc-ui/select`        | Single-select dropdown with overlay, keyboard nav, search, and loading state |
-| `@bloc-ui/slider`        | Range slider with Angular forms integration                                  |
-| `@bloc-ui/text-highlight` | Lightweight text highlighting directive for search/filter matches            |
-| `@bloc-ui/video-player` ¹ | Lightweight HTML5 video player component with native controls and events   |
+| Package                   | Description                                                               |
+| ------------------------- | ------------------------------------------------------------------------- |
+| `@bloc-ui/layout`         | Sidebar layout with collapsible panel and responsive stacking             |
+| `@bloc-ui/video-player` ¹ | Lightweight HTML5 video player component with native controls and events  |
 
 ¹ `@bloc-ui/video-player` is **not** re-exported from `@bloc-ui/kit`. Install it directly: `npm install @bloc-ui/video-player`.
 
@@ -82,22 +82,22 @@ Available and functional, but the API may change. Not yet at the full stable bar
 | **Alert**          | `@bloc-ui/alert`          | `@bloc-ui/alert`          | `bloc-alert`                              | Inline alert banner with severity variants and optional dismiss      |
 | **Autocomplete**   | `@bloc-ui/autocomplete`   | `@bloc-ui/autocomplete`   | `bloc-autocomplete`                       | Searchable single-select with async-friendly option list              |
 | **Virtual Scroll** | `@bloc-ui/virtual-scroll` | `@bloc-ui/virtual-scroll` | `bloc-virtual-scroll` / `blocVirtualItem` | Lightweight virtual scrolling for large lists and tables             |
+| **Badge**          | `@bloc-ui/core`           | `@bloc-ui/core/badge`     | `bloc-badge`                              | Labelling pill with variant and size presets                         |
+| **Progress**       | `@bloc-ui/core`           | `@bloc-ui/core/progress`  | `bloc-progress`                           | Horizontal progress bar with label and value display                 |
+| **Skeleton**       | `@bloc-ui/core`           | `@bloc-ui/core/skeleton`  | `bloc-skeleton` / `[blocSkeleton]`        | Loading placeholder directive with line, rect, and circle shapes     |
+| **Textarea**       | `@bloc-ui/core`           | `@bloc-ui/core/textarea`  | `textarea[blocTextarea]`                  | Textarea directive with error state and forms integration            |
+| **Accordion**      | `@bloc-ui/accordion`      | `@bloc-ui/accordion`      | `bloc-accordion` / `[blocAccordionItem]`  | Collapsible panels with single/multi mode and keyboard navigation    |
+| **Pagination**     | `@bloc-ui/pagination`     | `@bloc-ui/pagination`     | `bloc-pagination`                         | Page navigation with sibling/boundary config                         |
+| **Select**         | `@bloc-ui/select`         | `@bloc-ui/select`         | `bloc-select` / `[bloc-option]`           | Single-select dropdown with overlay, keyboard nav, and search        |
+| **Slider**         | `@bloc-ui/slider`         | `@bloc-ui/slider`         | `bloc-slider`                             | Range slider with Angular forms integration                          |
+| **Text Highlight** | `@bloc-ui/text-highlight` | `@bloc-ui/text-highlight` | `[blocTextHighlight]`                     | Highlights matching substrings inside rendered text                  |
 
 ### Experimental components
 
-| Component                 | Package                  | Entry Point               | Selector / API                                                  | Description                                                      |
-| ------------------------- | ------------------------ | ------------------------- | --------------------------------------------------------------- | ---------------------------------------------------------------- |
-| **Badge** `[EXP]`         | `@bloc-ui/core`          | `@bloc-ui/core/badge`     | `bloc-badge`                                                    | Labelling pill with variant and size presets                     |
-| **Progress** `[EXP]`      | `@bloc-ui/core`          | `@bloc-ui/core/progress`  | `bloc-progress`                                                 | Horizontal progress bar with label and value display             |
-| **Skeleton** `[EXP]`      | `@bloc-ui/core`          | `@bloc-ui/core/skeleton`  | `bloc-skeleton` / `[blocSkeleton]`                              | Loading placeholder directive with line, rect, and circle shapes |
-| **Textarea** `[EXP]`      | `@bloc-ui/core`          | `@bloc-ui/core/textarea`  | `textarea[blocTextarea]`                                        | Textarea directive with error state and forms integration        |
-| **Accordion** `[EXP]`     | `@bloc-ui/accordion`     | `@bloc-ui/accordion`      | `bloc-accordion` / `[blocAccordionItem]`                        | Collapsible panels with single/multi mode                        |
-| **Layout** `[EXP]`        | `@bloc-ui/layout`        | `@bloc-ui/layout`         | `bloc-sidebar-layout` / `bloc-sidebar` / `bloc-sidebar-content` | Sidebar layout with collapsible panel                            |
-| **Pagination** `[EXP]`    | `@bloc-ui/pagination`    | `@bloc-ui/pagination`     | `bloc-pagination`                                               | Page navigation with sibling/boundary config                     |
-| **Select** `[EXP]`        | `@bloc-ui/select`        | `@bloc-ui/select`         | `bloc-select` / `[bloc-option]`                                 | Single-select dropdown with overlay and keyboard navigation      |
-| **Slider** `[EXP]`        | `@bloc-ui/slider`        | `@bloc-ui/slider`         | `bloc-slider`                                                   | Range slider with Angular forms integration                      |
-| **Text Highlight** `[EXP]` | `@bloc-ui/text-highlight` | `@bloc-ui/text-highlight` | `[blocTextHighlight]`                                           | Highlights matching substrings inside rendered text              |
-| **Video Player** `[EXP]`  | `@bloc-ui/video-player`  | `@bloc-ui/video-player`   | `bloc-video-player`                                             | Lightweight HTML5 video player with native controls and events   |
+| Component                | Package                 | Entry Point              | Selector / API                                                  | Description                                                    |
+| ------------------------ | ----------------------- | ------------------------ | --------------------------------------------------------------- | -------------------------------------------------------------- |
+| **Layout** `[EXP]`       | `@bloc-ui/layout`       | `@bloc-ui/layout`        | `bloc-sidebar-layout` / `bloc-sidebar` / `bloc-sidebar-content` | Sidebar layout with collapsible panel                          |
+| **Video Player** `[EXP]` | `@bloc-ui/video-player` | `@bloc-ui/video-player`  | `bloc-video-player`                                             | Lightweight HTML5 video player with native controls and events |
 
 `[EXP]` = Experimental — API may change before reaching stable.
 
@@ -179,25 +179,25 @@ bloc-ui-workspace/
 │   │   ├── radio/
 │   │   ├── spinner/
 │   │   ├── toggle/
-│   │   ├── badge/              [EXPERIMENTAL]
-│   │   ├── progress/           [EXPERIMENTAL]
-│   │   ├── skeleton/           [EXPERIMENTAL]
-│   │   └── textarea/           [EXPERIMENTAL]
+│   │   ├── badge/
+│   │   ├── progress/
+│   │   ├── skeleton/
+│   │   └── textarea/
 │   ├── bloc-ui-theme/          # @bloc-ui/theme       — optional theme layer
 │   ├── bloc-ui-modal/          # @bloc-ui/modal       — modal dialog service
 │   ├── bloc-ui-table/          # @bloc-ui/table       — data table
 │   ├── bloc-ui-toast/          # @bloc-ui/toast       — toast notifications
 │   ├── bloc-ui-date-picker/    # @bloc-ui/date-picker — calendar date picker
 │   ├── bloc-ui-tab/            # @bloc-ui/tab         — tab group
-│   ├── bloc-ui-accordion/      # @bloc-ui/accordion   — accordion [EXPERIMENTAL]
+│   ├── bloc-ui-accordion/      # @bloc-ui/accordion   — accordion
 │   ├── bloc-ui-alert/          # @bloc-ui/alert       — alert banners
-│   ├── bloc-ui-autocomplete/   # @bloc-ui/autocomplete — autocomplete [EXPERIMENTAL]
+│   ├── bloc-ui-autocomplete/   # @bloc-ui/autocomplete — autocomplete
 │   ├── bloc-ui-layout/         # @bloc-ui/layout      — sidebar layout [EXPERIMENTAL]
-│   ├── bloc-ui-pagination/     # @bloc-ui/pagination  — pagination [EXPERIMENTAL]
-│   ├── bloc-ui-select/         # @bloc-ui/select      — select dropdown [EXPERIMENTAL]
-│   ├── bloc-ui-slider/         # @bloc-ui/slider      — range slider [EXPERIMENTAL]
+│   ├── bloc-ui-pagination/     # @bloc-ui/pagination  — pagination
+│   ├── bloc-ui-select/         # @bloc-ui/select      — select dropdown
+│   ├── bloc-ui-slider/         # @bloc-ui/slider      — range slider
 │   ├── bloc-ui-overlay/        # @bloc-ui/overlay     — overlay positioning primitive (internal)
-│   ├── bloc-ui-text-highlight/ # @bloc-ui/text-highlight — text highlight [EXPERIMENTAL]
+│   ├── bloc-ui-text-highlight/ # @bloc-ui/text-highlight — text highlight
 │   ├── bloc-ui-tooltip/        # @bloc-ui/tooltip        — tooltip
 │   ├── bloc-ui-video-player/   # @bloc-ui/video-player   — video player [EXPERIMENTAL]
 │   ├── bloc-ui-virtual-scroll/ # @bloc-ui/virtual-scroll — virtual scrolling
