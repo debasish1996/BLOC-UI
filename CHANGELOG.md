@@ -6,14 +6,33 @@ This file was seeded on 2026-04-11 from existing git history. Future entries are
 
 ## [Unreleased]
 
+_Nothing unreleased._
+
+## 2026-04-13 — API tables, SSR, SEO & testing infrastructure
+
+### Added
+
+- **Demo app:** global search component and per-component API tables (848b6bf).
+- **SSR:** server-side rendering support via Angular SSR with updated routing configurations (9abba8f).
+- **SEO:** Google site verification, `robots.txt`, and `sitemap.xml` (72f7f1d); Open Graph and canonical `<meta>` tags (e7e0df7).
+- **Analytics:** GoatCounter tracking script added to the demo app (65aa77b).
+- **E2E testing:** sharding support (2 → 4 shards) for parallel Playwright runs (b35d45c, 6e56450); `collectConsoleErrors` utility for stricter console-error assertions (0443999).
+- **Dependencies:** Angular CDK `21.2.6` added (4136256).
+- **Docs:** Reddit launch post (e317a6a); accordion & select component documentation and tests (7b936a1).
+- **Tooling:** graphify knowledge-graph output committed (bb47cc9).
+
 ### Fixed
 
 - `demo` unit tests — added missing `provideRouter` to `app.spec.ts` and fixed stale assertion (was checking for a non-existent `<h1>`).
 - `@bloc-ui/text-highlight` — added missing unit-test spec file; the `test` target in `angular.json` previously failed with "No tests found".
+- Removed unnecessary `rootDir` property from `tsconfig.spec.json` files that caused build warnings (e1cc89f).
+- Added missing Open Graph and canonical meta tags for improved SEO (e7e0df7).
 
 ### Changed
 
 - Consolidated CI workflows by merging `deploy-demo.yml` into `ci.yml`.
+- Restructured CI workflow: separate build and test jobs, added Node and Playwright dependency caching (aa2b8f7).
+- Added `rootDir` option to `tsconfig` files for improved directory structure (5732483).
 
 ## 2026-04-11 — Metadata & kit re-exports (patch bump all)
 
