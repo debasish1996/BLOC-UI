@@ -7,124 +7,158 @@
     <app-install-command package="@bloc-ui/text-highlight" />
 </header>
 
-<!-- Basic usage -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Basic Usage
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Simple Highlight</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Pass <code>[blocTextHighlight]</code> and <code>query</code> to highlight matching segments.
-        </p>
-        <div class="flex flex-col gap-2 text-sm">
-            <span [blocTextHighlight]="'Apple'" query="App"></span>
-            <span [blocTextHighlight]="'Application'" query="App"></span>
-            <span [blocTextHighlight]="'Pineapple'" query="app"></span>
-        </div>
-        <app-sample-code [code]="snippets.basic" />
-    </div>
-
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">No Match</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            When query doesn't match, the full text renders without highlights.
-        </p>
-        <div class="flex flex-col gap-2 text-sm">
-            <span [blocTextHighlight]="'Banana'" query="xyz"></span>
-        </div>
-        <app-sample-code [code]="snippets.noMatch" />
-    </div>
-</div>
-
-<!-- Interactive demo -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Interactive Search
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Filter List</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Type to filter and highlight matches — typical autocomplete / select dropdown pattern.
-        </p>
-        <input
-            class="border border-slate-300 rounded px-3 py-1.5 text-sm outline-none focus:border-blue-500"
-            placeholder="Search fruits..."
-            (input)="searchTerm.set($any($event.target).value)"
-        />
-        <ul class="list-none m-0 p-0 flex flex-col border border-slate-200 rounded max-h-48 overflow-auto">
-            @for (fruit of filteredFruits(); track fruit) {
-                <li class="px-3 py-2 text-sm hover:bg-slate-50 cursor-pointer border-b border-slate-100 last:border-b-0"
-                    [blocTextHighlight]="fruit" [query]="searchTerm()">
-                </li>
-            }
-            @empty {
-                <li class="px-3 py-2 text-sm text-slate-400 italic">No matches</li>
-            }
-        </ul>
-        <app-sample-code [code]="snippets.interactive" />
-    </div>
-</div>
-
-<!-- Case sensitive -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Case Sensitivity
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Case-Sensitive Mode</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Set <code>[caseSensitive]="true"</code> for exact case matching.
-        </p>
-        <div class="flex flex-col gap-2 text-sm">
-            <div class="flex items-center gap-2">
-                <span class="text-slate-400 text-xs w-32">case-insensitive:</span>
-                <span [blocTextHighlight]="'Apple Application'" query="app"></span>
+<bloc-tab-group>
+    <bloc-tab label="Examples">
+        <!-- Basic usage -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Basic Usage
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Simple Highlight</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Pass <code>[blocTextHighlight]</code> and <code>query</code> to highlight
+                    matching segments.
+                </p>
+                <div class="flex flex-col gap-2 text-sm">
+                    <span [blocTextHighlight]="'Apple'" query="App"></span>
+                    <span [blocTextHighlight]="'Application'" query="App"></span>
+                    <span [blocTextHighlight]="'Pineapple'" query="app"></span>
+                </div>
+                <app-sample-code [code]="snippets.basic" />
             </div>
-            <div class="flex items-center gap-2">
-                <span class="text-slate-400 text-xs w-32">case-sensitive:</span>
-                <span [blocTextHighlight]="'Apple Application'" query="app" [caseSensitive]="true"></span>
+
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">No Match</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    When query doesn't match, the full text renders without highlights.
+                </p>
+                <div class="flex flex-col gap-2 text-sm">
+                    <span [blocTextHighlight]="'Banana'" query="xyz"></span>
+                </div>
+                <app-sample-code [code]="snippets.noMatch" />
             </div>
         </div>
-        <app-sample-code [code]="snippets.caseSensitive" />
-    </div>
-</div>
 
-<!-- Highlight color -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Highlight Color
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">With Color</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Use <code>[highlighted]="true"</code> to add a background color to matched text.
-        </p>
-        <div class="flex flex-col gap-3 text-sm">
-            <span [blocTextHighlight]="'Apple'" query="App" [highlighted]="true"></span>
-            <span [blocTextHighlight]="'Application'" query="App" [highlighted]="true"></span>
-            <span [blocTextHighlight]="'Pineapple'" query="app" [highlighted]="true"></span>
-        </div>
-        <app-sample-code [code]="snippets.withColor" />
-    </div>
-
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">CSS Token Override</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Override <code>--bloc-text-highlight-*</code> tokens to customize globally.
-        </p>
-        <div class="flex flex-col gap-3 text-sm">
-            <div
-                style="--bloc-text-highlight-bg: #dbeafe; --bloc-text-highlight-color: #1e40af"
-            >
-                <span [blocTextHighlight]="'Blue themed highlight'" query="Blue"></span>
-            </div>
-            <div
-                style="--bloc-text-highlight-bg: #dcfce7; --bloc-text-highlight-color: #166534"
-            >
-                <span [blocTextHighlight]="'Green themed highlight'" query="Green"></span>
+        <!-- Interactive demo -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Interactive Search
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Filter List</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Type to filter and highlight matches — typical autocomplete / select dropdown
+                    pattern.
+                </p>
+                <input
+                    class="border border-slate-300 rounded px-3 py-1.5 text-sm outline-none focus:border-blue-500"
+                    placeholder="Search fruits..."
+                    (input)="searchTerm.set($any($event.target).value)"
+                />
+                <ul
+                    class="list-none m-0 p-0 flex flex-col border border-slate-200 rounded max-h-48 overflow-auto"
+                >
+                    @for (fruit of filteredFruits(); track fruit) {
+                        <li
+                            class="px-3 py-2 text-sm hover:bg-slate-50 cursor-pointer border-b border-slate-100 last:border-b-0"
+                            [blocTextHighlight]="fruit"
+                            [query]="searchTerm()"
+                        ></li>
+                    } @empty {
+                        <li class="px-3 py-2 text-sm text-slate-400 italic">No matches</li>
+                    }
+                </ul>
+                <app-sample-code [code]="snippets.interactive" />
             </div>
         </div>
-        <app-sample-code [code]="snippets.customToken" />
-    </div>
-</div>
+
+        <!-- Case sensitive -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Case Sensitivity
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Case-Sensitive Mode</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Set <code>[caseSensitive]="true"</code> for exact case matching.
+                </p>
+                <div class="flex flex-col gap-2 text-sm">
+                    <div class="flex items-center gap-2">
+                        <span class="text-slate-400 text-xs w-32">case-insensitive:</span>
+                        <span [blocTextHighlight]="'Apple Application'" query="app"></span>
+                    </div>
+                    <div class="flex items-center gap-2">
+                        <span class="text-slate-400 text-xs w-32">case-sensitive:</span>
+                        <span
+                            [blocTextHighlight]="'Apple Application'"
+                            query="app"
+                            [caseSensitive]="true"
+                        ></span>
+                    </div>
+                </div>
+                <app-sample-code [code]="snippets.caseSensitive" />
+            </div>
+        </div>
+
+        <!-- Highlight color -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Highlight Color
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">With Color</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Use <code>[highlighted]="true"</code> to add a background color to matched text.
+                </p>
+                <div class="flex flex-col gap-3 text-sm">
+                    <span [blocTextHighlight]="'Apple'" query="App" [highlighted]="true"></span>
+                    <span
+                        [blocTextHighlight]="'Application'"
+                        query="App"
+                        [highlighted]="true"
+                    ></span>
+                    <span [blocTextHighlight]="'Pineapple'" query="app" [highlighted]="true"></span>
+                </div>
+                <app-sample-code [code]="snippets.withColor" />
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">CSS Token Override</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Override <code>--bloc-text-highlight-*</code> tokens to customize globally.
+                </p>
+                <div class="flex flex-col gap-3 text-sm">
+                    <div
+                        style="
+                            --bloc-text-highlight-bg: #dbeafe;
+                            --bloc-text-highlight-color: #1e40af;
+                        "
+                    >
+                        <span [blocTextHighlight]="'Blue themed highlight'" query="Blue"></span>
+                    </div>
+                    <div
+                        style="
+                            --bloc-text-highlight-bg: #dcfce7;
+                            --bloc-text-highlight-color: #166534;
+                        "
+                    >
+                        <span [blocTextHighlight]="'Green themed highlight'" query="Green"></span>
+                    </div>
+                </div>
+                <app-sample-code [code]="snippets.customToken" />
+            </div>
+        </div>
+    </bloc-tab>
+    <bloc-tab label="API">
+        <div class="api-card">
+            <app-api-table
+                title="Inputs"
+                selector="[blocTextHighlight]"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="inputs"
+            />
+            <app-api-table title="CSS Tokens" [columns]="TOKENS_COLUMNS" [rows]="tokens" />
+        </div>
+    </bloc-tab>
+</bloc-tab-group>

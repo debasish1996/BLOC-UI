@@ -3,6 +3,13 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlocButtonComponent, BlocRadioComponent, BlocRadioGroupComponent } from 'bloc-ui-core';
 import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
+import {
+    ApiTableComponent,
+    INPUTS_COLUMNS,
+    TOKENS_COLUMNS,
+} from '../api-table/api-table.component';
+
+import { BlocTabGroupComponent, BlocTabComponent } from '@bloc-ui/tab';
 
 @Component({
     selector: 'app-radio-demo',
@@ -15,10 +22,54 @@ import { SampleCodeComponent } from '../sample-code/sample-code.component';
         ReactiveFormsModule,
         SampleCodeComponent,
         InstallCommandComponent,
+        ApiTableComponent,
+        BlocTabGroupComponent,
+        BlocTabComponent,
     ],
     templateUrl: './radio-demo.component.html',
 })
 export class RadioDemoComponent {
+    readonly INPUTS_COLUMNS = INPUTS_COLUMNS;
+    readonly TOKENS_COLUMNS = TOKENS_COLUMNS;
+
+    readonly inputsGroup: string[][] = [
+        ['disabled', 'boolean', 'false', 'Disables every radio item in the group.'],
+        [
+            'labelPosition',
+            "'before' | 'after'",
+            "'after'",
+            'Default label position inherited by child radios.',
+    ],
+    ];
+
+    readonly inputsRadio: string[][] = [
+        ['value', 'unknown', 'required', 'The value this radio represents.'],
+        ['disabled', 'boolean', 'false', 'Disables this radio regardless of the group state.'],
+        ['size', "'sm' | 'md' | 'lg'", "'md'", 'Visual size of the radio control.'],
+        [
+            'labelPosition',
+            "'before' | 'after' | null",
+            'null',
+            'Per-item label position override; inherits from group when <code>null</code>.',
+    ],
+    ];
+
+    readonly tokens: string[][] = [
+        ['--bloc-radio-border', '#aaafb7', 'Border colour when unchecked.'],
+        ['--bloc-radio-bg', '#ffffff', 'Radio dot background colour.'],
+        [
+            '--bloc-radio-checked-border',
+            'var(--bloc-primary, #6b7280)',
+            'Border colour when checked.',
+    ],
+        [
+            '--bloc-radio-dot-color',
+            'var(--bloc-primary, #6b7280)',
+            'Inner dot fill colour when checked.',
+    ],
+        ['--bloc-radio-focus-ring', 'var(--bloc-primary, #6b7280)', 'Focus outline colour.'],
+        ['--bloc-radio-group-gap', '8px', 'Gap between radio items in the group.'],
+    ];
     // Template-driven
     ngModelValue: string = '';
 

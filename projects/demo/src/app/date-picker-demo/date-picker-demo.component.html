@@ -7,6 +7,10 @@
     <app-install-command package="@bloc-ui/date-picker" />
 </header>
 
+<bloc-tab-group>
+    <bloc-tab label="Examples">
+
+
 <!-- Basic -->
 <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
     Basic usage
@@ -209,3 +213,14 @@
         <app-sample-code [code]="snippets.customToken" />
     </div>
 </div>
+
+
+    </bloc-tab>
+    <bloc-tab label="API">
+        <div class="api-card">
+            <app-api-table title="Inputs" selector="[blocDatePickerTrigger]" [columns]="INPUTS_COLUMNS" [rows]="inputsTrigger" />
+            <app-api-table title="Exported signals" selector="#ref" [columns]="OUTPUTS_COLUMNS" [rows]="exportedSignals" />
+            <app-api-table title="CSS Tokens" [columns]="TOKENS_COLUMNS" [rows]="tokens" />
+        </div>
+    </bloc-tab>
+</bloc-tab-group>

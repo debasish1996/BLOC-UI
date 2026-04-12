@@ -11,6 +11,10 @@
     <app-install-command package="@bloc-ui/autocomplete" />
 </header>
 
+<bloc-tab-group>
+    <bloc-tab label="Examples">
+
+
 <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
     Basic Usage
 </h2>
@@ -159,7 +163,7 @@
 </div>
 
 <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Theming</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5">
+<div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
         <h3 class="m-0 text-base font-semibold text-slate-900">Custom Token</h3>
         <p class="m-0 text-[0.82rem] text-slate-400">
@@ -178,3 +182,16 @@
         <app-sample-code [code]="snippets.theming" />
     </div>
 </div>
+
+
+    </bloc-tab>
+    <bloc-tab label="API">
+        <div class="api-card">
+            <app-api-table title="Inputs" selector="bloc-autocomplete" [columns]="INPUTS_COLUMNS" [rows]="inputs" />
+            <app-api-table title="Outputs" selector="bloc-autocomplete" [columns]="OUTPUTS_COLUMNS" [rows]="outputs" />
+            <app-api-table title="Inputs" selector="bloc-autocomplete-highlight" [columns]="INPUTS_COLUMNS" [rows]="inputsHighlight" note="Drop-in replacement for &lt;code&gt;bloc-autocomplete&lt;/code&gt; that automatically bolds matching text." />
+            <app-api-table title="Config" selector="[blocAutocompleteFuzzySearch]" [columns]="INPUTS_COLUMNS" [rows]="fuzzyConfig" note="Applied directly to &lt;code&gt;bloc-autocomplete&lt;/code&gt;. Pass a config object as the binding value." />
+            <app-api-table title="CSS Tokens" [columns]="TOKENS_COLUMNS" [rows]="tokens" />
+        </div>
+    </bloc-tab>
+</bloc-tab-group>

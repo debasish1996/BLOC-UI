@@ -1,5 +1,6 @@
 import { Directive, input, inject, DOCUMENT } from '@angular/core';
 import { BlocAutocompleteOption } from './autocomplete.component';
+import { BlocFuzzySearch, BlocFuzzyMatch } from './fuzzy-search';
 
 export interface FuzzyMatchResult<T = string> {
     option: BlocAutocompleteOption<T>;
@@ -69,8 +70,12 @@ export class BlocAutocompleteFuzzySearch<T = string> {
             }));
         }
 
-        const fuse = this._getFuseInstance(options);
-        return fuse.search(term);
+        const engine = this._getFuseInstance(options);
+        return engine.search(term).map(r => ({
+            option: r.item,
+            score: r.score,
+            matches: r.matches,
+        }));
     }
 
     /**
@@ -115,9 +120,9 @@ export class BlocAutocompleteFuzzySearch<T = string> {
         return highlighted;
     }
 
-    private _getFuseInstance(options: readonly BlocAutocompleteOption<T>[]): FuseSearch<T> {
+    private _getFuseInstance(options: readonly BlocAutocompleteOption<T>[]): BlocFuzzySearch<BlocAutocompleteOption<T>> {
         const cfg = this.config();
-        return new FuseSearch(options, {
+        return new BlocFuzzySearch(options, {
             keys: cfg.keys ?? ['label', 'description'],
             isCaseSensitive: cfg.isCaseSensitive ?? false,
             threshold: cfg.threshold ?? 0.6,
@@ -125,7 +130,7 @@ export class BlocAutocompleteFuzzySearch<T = string> {
             includeScore: cfg.includeScore ?? true,
             minMatchCharLength: cfg.minMatchCharLength ?? 1,
             distance: cfg.distance ?? 100,
-            sortFn: cfg.sortFn,
+            sortFn: cfg.sortFn as ((a: BlocFuzzyMatch<BlocAutocompleteOption<T>>, b: BlocFuzzyMatch<BlocAutocompleteOption<T>>) => number) | undefined,
         });
     }
 
@@ -153,188 +158,4 @@ export class BlocAutocompleteFuzzySearch<T = string> {
         div.textContent = text;
         return div.innerHTML;
     }
-}
-
-/**
- * Lightweight Fuse.js-like fuzzy search implementation.
- * Provides fuzzy matching with configurable options.
- */
-class FuseSearch<T = string> {
-    private options: FuseSearchOptions<T>;
-    private documents: readonly BlocAutocompleteOption<T>[];
-
-    constructor(documents: readonly BlocAutocompleteOption<T>[], options: FuseSearchOptions<T>) {
-        this.documents = documents;
-        this.options = {
-            threshold: 0.6,
-            isCaseSensitive: false,
-            includeMatches: true,
-            includeScore: true,
-            minMatchCharLength: 1,
-            distance: 100,
-            ...options,
-        };
-    }
-
-    search(pattern: string): FuzzyMatchResult<T>[] {
-        if (!pattern) {
-            return this.documents.map(doc => ({
-                option: doc,
-                score: 0,
-                matches: [],
-            }));
-        }
-
-        const results: FuzzyMatchResult<T>[] = [];
-        const keys = this.options.keys ?? ['label'];
-        const patternLower = this.options.isCaseSensitive ? pattern : pattern.toLowerCase();
-
-        for (const doc of this.documents) {
-            const matches: FuzzyMatchResult<T>['matches'] = [];
-            let bestScore = Infinity;
-
-            for (const key of keys) {
-                const value = this._getValue(doc, key);
-                if (value == null) continue;
-
-                const text = String(value);
-                const textToSearch = this.options.isCaseSensitive ? text : text.toLowerCase();
-
-                const matchResult = this._fuzzyMatch(textToSearch, patternLower, text);
-
-                if (matchResult.isMatch && matchResult.score !== undefined) {
-                    if (matchResult.score < bestScore) {
-                        bestScore = matchResult.score;
-                    }
-
-                    if (this.options.includeMatches && matchResult.indices.length > 0) {
-                        matches.push({
-                            key,
-                            indices: matchResult.indices,
-                            value: text,
-                        });
-                    }
-                }
-            }
-
-            if (matches.length > 0 && bestScore <= (this.options.threshold ?? 0.6)) {
-                results.push({
-                    option: doc,
-                    score: bestScore,
-                    matches,
-                });
-            }
-        }
-
-        // Sort by score (lower is better)
-        if (this.options.sortFn) {
-            results.sort(this.options.sortFn);
-        } else {
-            results.sort((a, b) => a.score - b.score);
-        }
-
-        return results;
-    }
-
-    private _getValue(obj: BlocAutocompleteOption<T>, path: string): unknown {
-        return (obj as unknown as Record<string, unknown>)[path];
-    }
-
-    private _fuzzyMatch(
-        text: string,
-        pattern: string,
-        originalText: string,
-    ): { isMatch: boolean; score: number; indices: Array<[number, number]> } {
-        const m = pattern.length;
-        const n = text.length;
-
-        if (m === 0) {
-            return { isMatch: true, score: 0, indices: [] };
-        }
-
-        if (m > n) {
-            return { isMatch: false, score: 1, indices: [] };
-        }
-
-        // Fuzzy matching - pattern characters can appear anywhere in text
-        const matchIndices: number[] = [];
-        let patternIndex = 0;
-        let prevMatchIndex = -1;
-        let consecutiveCount = 0;
-        let firstMatchIndex = -1;
-
-        for (let textIndex = 0; textIndex < n && patternIndex < m; textIndex++) {
-            if (text[textIndex] === pattern[patternIndex]) {
-                matchIndices.push(textIndex);
-
-                if (firstMatchIndex === -1) {
-                    firstMatchIndex = textIndex;
-                }
-
-                // Count consecutive matches for bonus
-                if (prevMatchIndex !== -1 && textIndex === prevMatchIndex + 1) {
-                    consecutiveCount++;
-                }
-
-                prevMatchIndex = textIndex;
-                patternIndex++;
-            }
-        }
-
-        // Not all pattern characters were matched
-        if (patternIndex < m) {
-            return { isMatch: false, score: 1, indices: [] };
-        }
-
-        // Check minimum match character length
-        const minMatchLength = this.options.minMatchCharLength ?? 1;
-        if (matchIndices.length < minMatchLength) {
-            return { isMatch: false, score: 1, indices: [] };
-        }
-
-        // Convert individual indices to ranges
-        const indices: Array<[number, number]> = [];
-        let rangeStart = matchIndices[0];
-        let rangeEnd = matchIndices[0];
-
-        for (let i = 1; i < matchIndices.length; i++) {
-            if (matchIndices[i] === rangeEnd + 1) {
-                // Consecutive match
-                rangeEnd = matchIndices[i];
-            } else {
-                // Gap found, save current range and start new one
-                indices.push([rangeStart, rangeEnd]);
-                rangeStart = matchIndices[i];
-                rangeEnd = matchIndices[i];
-            }
-        }
-        // Don't forget the last range
-        indices.push([rangeStart, rangeEnd]);
-
-        // Calculate score (lower is better, 0 = perfect, 1 = worst)
-        // Based on match density (how tightly packed the matched chars are)
-        // and position (prefer matches near the start of the text).
-        const span = matchIndices[matchIndices.length - 1] - matchIndices[0] + 1;
-        const density = m / span; // 1.0 = all consecutive, lower = more spread out
-        const densityPenalty = 1 - density;
-        const positionPenalty = (firstMatchIndex / n) * 0.5;
-        const consecutiveRatio = m > 1 ? consecutiveCount / (m - 1) : 0;
-        const consecutiveBonus = consecutiveRatio * 0.3;
-
-        const score = densityPenalty * 0.7 + positionPenalty - consecutiveBonus;
-
-        return { isMatch: true, score: Math.max(0, Math.min(1, score)), indices };
-    }
-
-}
-
-interface FuseSearchOptions<T = string> {
-    keys?: string[];
-    threshold?: number;
-    isCaseSensitive?: boolean;
-    includeMatches?: boolean;
-    includeScore?: boolean;
-    minMatchCharLength?: number;
-    distance?: number;
-    sortFn?: (a: FuzzyMatchResult<T>, b: FuzzyMatchResult<T>) => number;
 }

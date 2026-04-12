@@ -3,14 +3,128 @@ import { BlocPaginationComponent } from '@bloc-ui/pagination';
 
 import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
+import {
+    ApiTableComponent,
+    INPUTS_COLUMNS,
+    TOKENS_COLUMNS,
+} from '../api-table/api-table.component';
+
+import { BlocTabGroupComponent, BlocTabComponent } from '@bloc-ui/tab';
 
 @Component({
     selector: 'app-pagination-demo',
     standalone: true,
-    imports: [BlocPaginationComponent, InstallCommandComponent, SampleCodeComponent],
+    imports: [
+        BlocPaginationComponent,
+        InstallCommandComponent,
+        SampleCodeComponent,
+        ApiTableComponent,
+        BlocTabGroupComponent,
+        BlocTabComponent,
+    ],
     templateUrl: './pagination-demo.component.html',
 })
 export class PaginationDemoComponent {
+    readonly INPUTS_COLUMNS = INPUTS_COLUMNS;
+    readonly TOKENS_COLUMNS = TOKENS_COLUMNS;
+
+    readonly inputs: string[][] = [
+        [
+            'page',
+            'number (model)',
+            '1',
+            'Two-way bindable current page number. Use <code>[(page)]</code> for two-way binding.',
+    ],
+        ['totalPages', 'number', 'required', 'Total number of pages.'],
+        [
+            'siblingCount',
+            'number',
+            '1',
+            'Number of page buttons shown on each side of the current page.',
+    ],
+        [
+            'boundaryCount',
+            'number',
+            '1',
+            'Number of pages always shown at the start and end of the range.',
+    ],
+        ['disabled', 'boolean', 'false', 'Disables all buttons — useful while data is loading.'],
+        [
+            'showFirstLast',
+            'boolean',
+            'false',
+            'Adds First and Last quick-jump buttons at the edges of the control.',
+    ],
+        ['prevLabel', 'string', "''", 'Text label rendered next to the Prev icon.'],
+        ['nextLabel', 'string', "''", 'Text label rendered next to the Next icon.'],
+        [
+            'firstLabel',
+            'string',
+            "''",
+            'Text label rendered next to the First icon (requires <code>showFirstLast</code>).',
+    ],
+        [
+            'lastLabel',
+            'string',
+            "''",
+            'Text label rendered next to the Last icon (requires <code>showFirstLast</code>).',
+    ],
+        [
+            'ariaLabel',
+            'string',
+            "'Pagination'",
+            '<code>aria-label</code> on the wrapping <code>&lt;nav&gt;</code> element.',
+    ],
+        [
+            'prevAriaLabel',
+            'string',
+            "'Previous page'",
+            '<code>aria-label</code> for the Prev button.',
+    ],
+        ['nextAriaLabel', 'string', "'Next page'", '<code>aria-label</code> for the Next button.'],
+        [
+            'firstAriaLabel',
+            'string',
+            "'First page'",
+            '<code>aria-label</code> for the First button (requires <code>showFirstLast</code>).',
+    ],
+        [
+            'lastAriaLabel',
+            'string',
+            "'Last page'",
+            '<code>aria-label</code> for the Last button (requires <code>showFirstLast</code>).',
+    ],
+    ];
+
+    readonly tokens: string[][] = [
+        ['--bloc-pagination-bg', '#ffffff', 'Prev / Next control button background.'],
+        ['--bloc-pagination-color', '#374151', 'Text and icon colour for all buttons.'],
+        ['--bloc-pagination-border', '#e2e8f0', 'Border colour for Prev / Next control buttons.'],
+        ['--bloc-pagination-radius', '0.5rem', 'Border radius applied to all buttons.'],
+        [
+            '--bloc-pagination-hover-bg',
+            '#f8fafc / #f1f5f9',
+            'Hover background for control buttons / page number buttons.',
+    ],
+        [
+            '--bloc-pagination-hover-border',
+            '#cbd5e1',
+            'Hover border colour for Prev / Next control buttons.',
+    ],
+        [
+            '--bloc-pagination-focus-ring',
+            '#374151',
+            'Focus outline colour for all focusable buttons.',
+    ],
+        [
+            '--bloc-pagination-active-bg',
+            '--bloc-primary / #606061',
+            'Active page button background.',
+    ],
+        ['--bloc-pagination-active-color', '#ffffff', 'Active page button text colour.'],
+        ['--bloc-pagination-muted', '#94a3b8', 'Ellipsis (\u2026) text colour.'],
+    ];
+
     readonly currentPage = signal(1);
     readonly densePage = signal(12);
     readonly compactPage = signal(8);

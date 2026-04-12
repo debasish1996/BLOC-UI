@@ -3,6 +3,13 @@ import { FormControl, FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BlocButtonComponent, BlocCheckboxComponent } from 'bloc-ui-core';
 import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
+import {
+    ApiTableComponent,
+    INPUTS_COLUMNS,
+    TOKENS_COLUMNS,
+} from '../api-table/api-table.component';
+
+import { BlocTabGroupComponent, BlocTabComponent } from '@bloc-ui/tab';
 
 @Component({
     selector: 'app-checkbox-demo',
@@ -14,10 +21,44 @@ import { SampleCodeComponent } from '../sample-code/sample-code.component';
         ReactiveFormsModule,
         SampleCodeComponent,
         InstallCommandComponent,
+        ApiTableComponent,
+        BlocTabGroupComponent,
+        BlocTabComponent,
     ],
     templateUrl: './checkbox-demo.component.html',
 })
 export class CheckboxDemoComponent {
+    readonly INPUTS_COLUMNS = INPUTS_COLUMNS;
+    readonly TOKENS_COLUMNS = TOKENS_COLUMNS;
+
+    readonly inputs: string[][] = [
+        ['size', "'sm' | 'md' | 'lg'", "'md'", 'Preset checkbox and check-mark size.'],
+        [
+            'labelPosition',
+            "'before' | 'after'",
+            "'after'",
+            'Position of projected label relative to the checkbox box.',
+    ],
+        [
+            'disabled',
+            'boolean',
+            'false',
+            'Disables interaction. Also disabled when the form control calls <code>setDisabledState</code>.',
+    ],
+    ];
+
+    readonly tokens: string[][] = [
+        ['--bloc-checkbox-border', '#aaafb7', 'Unchecked border colour.'],
+        ['--bloc-checkbox-bg', '#ffffff', 'Unchecked background.'],
+        [
+            '--bloc-checkbox-checked-border',
+            '--bloc-primary / #6b7280',
+            'Border colour when checked.',
+    ],
+        ['--bloc-checkbox-checked-bg', '--bloc-primary / #6b7280', 'Fill colour when checked.'],
+        ['--bloc-checkbox-check-color', '#ffffff', 'Check mark (SVG stroke) colour.'],
+        ['--bloc-checkbox-focus-ring', '--bloc-primary / #6b7280', 'Focus outline colour.'],
+    ];
     // Template-driven (ngModel)
     ngModelValue = false;
 

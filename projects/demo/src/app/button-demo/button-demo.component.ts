@@ -3,14 +3,67 @@ import { BlocButtonComponent } from 'bloc-ui-core';
 import { IconComponent } from '../icon/icon.component';
 import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
+import {
+    ApiTableComponent,
+    INPUTS_COLUMNS,
+    OUTPUTS_COLUMNS,
+    TOKENS_COLUMNS,
+} from '../api-table/api-table.component';
+
+import { BlocTabGroupComponent, BlocTabComponent } from '@bloc-ui/tab';
 
 @Component({
     selector: 'app-button-demo',
     standalone: true,
-    imports: [BlocButtonComponent, IconComponent, SampleCodeComponent, InstallCommandComponent],
+    imports: [
+        BlocButtonComponent,
+        IconComponent,
+        SampleCodeComponent,
+        InstallCommandComponent,
+        ApiTableComponent,
+        BlocTabGroupComponent,
+        BlocTabComponent,
+    ],
     templateUrl: './button-demo.component.html',
 })
 export class ButtonDemoComponent {
+    readonly INPUTS_COLUMNS = INPUTS_COLUMNS;
+    readonly OUTPUTS_COLUMNS = OUTPUTS_COLUMNS;
+    readonly TOKENS_COLUMNS = TOKENS_COLUMNS;
+
+    readonly inputs: string[][] = [
+        ['variant', "'primary' | 'secondary' | 'outline'", "'primary'", 'Visual style variant.'],
+        ['disabled', 'boolean', 'false', 'Disables interaction and applies muted styles.'],
+        [
+            'loading',
+            'boolean',
+            'false',
+            'Shows a spinner and blocks interaction. Sets <code>aria-busy</code>.',
+    ],
+        [
+            'loadingTemplate',
+            'TemplateRef | null',
+            'null',
+            'Custom loading icon template; replaces the default spinner.',
+    ],
+    ];
+
+    readonly outputs: string[][] = [
+        [
+            'clicked',
+            'MouseEvent',
+            'Emits on click. Suppressed when <code>disabled</code> or <code>loading</code>.',
+    ],
+    ];
+
+    readonly tokens: string[][] = [
+        [
+            '--bloc-primary',
+            '#3b82f6',
+            'Primary variant background; outline border and text colour.',
+    ],
+        ['--bloc-secondary', '#64748b', 'Secondary variant background colour.'],
+    ];
     loadingPrimary = signal(false);
     loadingSecondary = signal(false);
     loadingOutline = signal(false);

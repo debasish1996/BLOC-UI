@@ -4,6 +4,13 @@ import { BlocOptionDirective, BlocSelectComponent } from '@bloc-ui/select';
 
 import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
+import {
+    ApiTableComponent,
+    INPUTS_COLUMNS,
+    TOKENS_COLUMNS,
+} from '../api-table/api-table.component';
+
+import { BlocTabGroupComponent, BlocTabComponent } from '@bloc-ui/tab';
 
 @Component({
     selector: 'app-select-demo',
@@ -14,10 +21,77 @@ import { SampleCodeComponent } from '../sample-code/sample-code.component';
         BlocOptionDirective,
         SampleCodeComponent,
         InstallCommandComponent,
+        ApiTableComponent,
+        BlocTabGroupComponent,
+        BlocTabComponent,
     ],
     templateUrl: './select-demo.component.html',
 })
 export class SelectDemoComponent {
+    readonly INPUTS_COLUMNS = INPUTS_COLUMNS;
+    readonly TOKENS_COLUMNS = TOKENS_COLUMNS;
+
+    readonly inputs: string[][] = [
+        ['placeholder', 'string', "'Select an option'", 'Text shown when no value is selected.'],
+        ['disabled', 'boolean', 'false', 'Disables interaction and applies muted styles.'],
+        ['searchable', 'boolean', 'false', 'Shows a search input inside the dropdown panel.'],
+        ['clearable', 'boolean', 'false', 'Shows a clear button to reset the selection.'],
+        ['loading', 'boolean', 'false', 'Replaces the option list with a loading spinner.'],
+        [
+            'position',
+            'OverlayPosition',
+            "'bottom-start'",
+            'Preferred placement of the dropdown panel.',
+    ],
+        [
+            'compareWith',
+            '(a, b) =&gt; boolean',
+            'Object.is',
+            'Custom equality function for matching selected value to options.',
+    ],
+    ];
+
+    readonly inputsOption: string[][] = [
+        ['value', 'unknown', 'null', 'The value this option represents.'],
+        ['disabled', 'boolean', 'false', 'Prevents this option from being selected.'],
+        [
+            'filterText',
+            'string | null',
+            'null',
+            "Override text used for search filtering; defaults to the element's text content.",
+    ],
+    ];
+
+    readonly tokens: string[][] = [
+        ['--bloc-select-bg', '#ffffff', 'Background of the trigger and dropdown panel.'],
+        ['--bloc-select-border', '#d1d5db', 'Border colour of the trigger and panel.'],
+        [
+            '--bloc-select-border-hover',
+            '#6b7280',
+            'Border colour on hover, focus, and open states.',
+    ],
+        ['--bloc-select-muted', '#9ca3af', 'Placeholder and icon colour.'],
+        ['--bloc-select-text', '#374151', 'Selected label and option text colour.'],
+        [
+            '--bloc-select-panel-shadow',
+            '0 4px 16px rgba(0,0,0,0.08)',
+            'Drop shadow of the dropdown panel.',
+    ],
+        ['--bloc-select-option-hover', 'rgba(0,0,0,0.04)', 'Option background on mouse hover.'],
+        [
+            '--bloc-select-option-active',
+            'rgba(0,0,0,0.06)',
+            'Option background when keyboard-active.',
+    ],
+        [
+            '--bloc-select-option-selected',
+            'rgba(0,0,0,0.08)',
+            'Background of the currently selected option.',
+    ],
+        ['--bloc-select-radius', '4px', 'Border-radius of the trigger and individual options.'],
+        ['--bloc-select-panel-radius', '6px', 'Border-radius of the dropdown panel.'],
+    ];
+
     readonly fruitControl = new FormControl<string | null>('banana');
 
     readonly profileForm = new FormGroup({

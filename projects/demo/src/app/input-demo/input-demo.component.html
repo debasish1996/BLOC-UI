@@ -9,258 +9,312 @@
     <app-install-command package="@bloc-ui/core" />
 </header>
 
-<!-- Basic types -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Basic types
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Text</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Basic text field.</p>
-        <div class="flex flex-col gap-1">
-            <label class="text-xs font-medium text-slate-700" for="input-name">Full name</label>
-            <input
-                blocInput
-                id="input-name"
-                type="text"
-                placeholder="Enter your name"
-                autocomplete="off"
-                [value]="name()"
-                (input)="name.set($any($event.target).value)"
-            />
-            @if (name()) {
-                <span class="text-xs text-slate-400">Value: {{ name() }}</span>
-            }
-        </div>
-        <app-sample-code [code]="snippets.text" />
-    </div>
-
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Password</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Masked input for secrets.</p>
-        <div class="flex flex-col gap-1">
-            <label class="text-xs font-medium text-slate-700" for="input-password">Password</label>
-            <input blocInput id="input-password" type="password" placeholder="Enter password" />
-        </div>
-        <app-sample-code [code]="snippets.password" />
-    </div>
-
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">No label</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Standalone input, no label needed.</p>
-        <div>
-            <input blocInput type="search" placeholder="Search..." />
-        </div>
-        <app-sample-code [code]="snippets.noLabel" />
-    </div>
-
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Disabled</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Non-interactive state.</p>
-        <div class="flex flex-col gap-1">
-            <label class="text-xs font-medium text-slate-700" for="input-disabled"
-                >Read-only field</label
-            >
-            <input blocInput id="input-disabled" type="text" placeholder="Cannot edit" disabled />
-        </div>
-        <app-sample-code [code]="snippets.disabled" />
-    </div>
-</div>
-
-<!-- Prefix / Suffix -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Prefix / Suffix
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Prefix icon</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Search field with a leading icon.</p>
-        <bloc-input-group>
-            <bloc-prefix><app-icon name="search" /></bloc-prefix>
-            <input blocInput type="search" placeholder="Search..." />
-        </bloc-input-group>
-        <app-sample-code [code]="snippets.prefix" />
-    </div>
-
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Suffix icon</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Input with a trailing action icon.</p>
-        <bloc-input-group>
-            <input blocInput type="email" placeholder="Enter email" />
-            <bloc-suffix><app-icon name="mail" /></bloc-suffix>
-        </bloc-input-group>
-        <app-sample-code [code]="snippets.suffix" />
-    </div>
-
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Prefix &amp; suffix</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Both adornments combined.</p>
-        <bloc-input-group>
-            <bloc-prefix><app-icon name="search" /></bloc-prefix>
-            <input blocInput type="text" placeholder="Search..." />
-            <bloc-suffix><app-icon name="x" /></bloc-suffix>
-        </bloc-input-group>
-        <app-sample-code [code]="snippets.prefixSuffix" />
-    </div>
-
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Attribute selector</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Same group using attribute directives on divs.
-        </p>
-        <div blocInputGroup>
-            <span blocPrefix><app-icon name="lock" /></span>
-            <input blocInput type="password" placeholder="Enter password" />
-            <span blocSuffix><app-icon name="eye" /></span>
-        </div>
-        <app-sample-code [code]="snippets.attrSelector" />
-    </div>
-</div>
-
-<!-- Validation -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Validation</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Error — manual</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Explicit <code>[error]="true"</code> flag.</p>
-        <div class="flex flex-col gap-1">
-            <input
-                blocInput
-                type="text"
-                placeholder="This field has an error"
-                [error]="true"
-                aria-describedby="err-manual"
-            />
-            <bloc-input-error>This field is required.</bloc-input-error>
-        </div>
-        <app-sample-code [code]="snippets.errorManual" />
-    </div>
-
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Error — FormControl</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Driven by <code>invalid &amp;&amp; touched</code>. Click the field then blur.
-        </p>
-        <div class="flex flex-col gap-1">
-            <label class="text-xs font-medium text-slate-700" for="input-email">Email</label>
-            <bloc-input-group>
-                <bloc-prefix><app-icon name="mail" /></bloc-prefix>
-                <input
-                    blocInput
-                    type="email"
-                    placeholder="Enter a valid email"
-                    [formControl]="emailCtrl"
-                />
-            </bloc-input-group>
-            @if (emailCtrl.invalid && emailCtrl.touched) {
-                <bloc-input-error>Please enter a valid email address.</bloc-input-error>
-            }
-        </div>
-        <app-sample-code [code]="snippets.errorFormControl" />
-    </div>
-</div>
-
-<!-- Template-driven (ngModel) -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Template-driven (ngModel)
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Two-way binding</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Bound via <code>[(ngModel)]</code>.</p>
-        <div class="flex flex-col gap-1">
-            <input blocInput type="text" [(ngModel)]="ngModelValue" placeholder="Type something" />
-        </div>
-        <p class="m-0 text-xs text-slate-400">
-            value: <strong>{{ ngModelValue || '(empty)' }}</strong>
-        </p>
-        <app-sample-code [code]="snippets.ngModel" />
-    </div>
-</div>
-
-<!-- Reactive forms -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Reactive forms
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">FormControl</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Required field — shows error when touched and blank.
-        </p>
-        <div class="flex flex-col gap-1">
-            <input
-                blocInput
-                type="text"
-                [formControl]="requiredCtrl"
-                placeholder="Required field"
-            />
-            @if (requiredCtrl.invalid && requiredCtrl.touched) {
-                <bloc-input-error>This field is required.</bloc-input-error>
-            }
-        </div>
-        <p class="m-0 text-xs text-slate-400">
-            touched: <strong>{{ requiredCtrl.touched }}</strong> &nbsp;|&nbsp; valid:
-            <strong>{{ requiredCtrl.valid }}</strong>
-        </p>
-        <app-sample-code [code]="snippets.formControlRequired" />
-    </div>
-
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">formControlName</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Inside a <code>FormGroup</code> via <code>formControlName</code>.
-        </p>
-        <div class="flex flex-col gap-1">
-            <form [formGroup]="userFormGroup">
-                <input blocInput type="text" formControlName="username" placeholder="Username" />
-                @if (
-                    userFormGroup.get('username')?.invalid && userFormGroup.get('username')?.touched
-                ) {
-                    <bloc-input-error>Username is required.</bloc-input-error>
-                }
-            </form>
-        </div>
-        <p class="m-0 text-xs text-slate-400">
-            group value:
-            <strong>{{ userFormGroup.get('username')?.value || '(empty)' }}</strong>
-        </p>
-        <app-sample-code [code]="snippets.formControlName" />
-    </div>
-</div>
-
-<!-- Theming -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Theming</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Custom token</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Override via CSS custom properties — radius and focus ring.
-        </p>
-        <div class="flex flex-col gap-2">
-            <div>
-                <label class="text-xs font-medium text-slate-500 mb-1 block"
-                    >Pill radius (<code>--bloc-input-radius</code>)</label
-                >
-                <input
-                    blocInput
-                    type="text"
-                    placeholder="Custom border radius"
-                    style="--bloc-input-radius: 999px"
-                />
+<bloc-tab-group>
+    <bloc-tab label="Examples">
+        <!-- Basic types -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Basic types
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Text</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">Basic text field.</p>
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-medium text-slate-700" for="input-name"
+                        >Full name</label
+                    >
+                    <input
+                        blocInput
+                        id="input-name"
+                        type="text"
+                        placeholder="Enter your name"
+                        autocomplete="off"
+                        [value]="name()"
+                        (input)="name.set($any($event.target).value)"
+                    />
+                    @if (name()) {
+                        <span class="text-xs text-slate-400">Value: {{ name() }}</span>
+                    }
+                </div>
+                <app-sample-code [code]="snippets.text" />
             </div>
-            <div>
-                <label class="text-xs font-medium text-slate-500 mb-1 block"
-                    >Emerald focus ring (<code>--bloc-input-focus-ring</code>)</label
-                >
-                <input
-                    blocInput
-                    type="text"
-                    placeholder="Focus me"
-                    style="--bloc-input-focus-ring: #10b981"
-                />
+
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Password</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">Masked input for secrets.</p>
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-medium text-slate-700" for="input-password"
+                        >Password</label
+                    >
+                    <input
+                        blocInput
+                        id="input-password"
+                        type="password"
+                        placeholder="Enter password"
+                    />
+                </div>
+                <app-sample-code [code]="snippets.password" />
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">No label</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">Standalone input, no label needed.</p>
+                <div>
+                    <input blocInput type="search" placeholder="Search..." />
+                </div>
+                <app-sample-code [code]="snippets.noLabel" />
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Disabled</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">Non-interactive state.</p>
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-medium text-slate-700" for="input-disabled"
+                        >Read-only field</label
+                    >
+                    <input
+                        blocInput
+                        id="input-disabled"
+                        type="text"
+                        placeholder="Cannot edit"
+                        disabled
+                    />
+                </div>
+                <app-sample-code [code]="snippets.disabled" />
             </div>
         </div>
-        <app-sample-code [code]="snippets.customToken" />
-    </div>
-</div>
+
+        <!-- Prefix / Suffix -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Prefix / Suffix
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Prefix icon</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">Search field with a leading icon.</p>
+                <bloc-input-group>
+                    <bloc-prefix><app-icon name="search" /></bloc-prefix>
+                    <input blocInput type="search" placeholder="Search..." />
+                </bloc-input-group>
+                <app-sample-code [code]="snippets.prefix" />
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Suffix icon</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">Input with a trailing action icon.</p>
+                <bloc-input-group>
+                    <input blocInput type="email" placeholder="Enter email" />
+                    <bloc-suffix><app-icon name="mail" /></bloc-suffix>
+                </bloc-input-group>
+                <app-sample-code [code]="snippets.suffix" />
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Prefix &amp; suffix</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">Both adornments combined.</p>
+                <bloc-input-group>
+                    <bloc-prefix><app-icon name="search" /></bloc-prefix>
+                    <input blocInput type="text" placeholder="Search..." />
+                    <bloc-suffix><app-icon name="x" /></bloc-suffix>
+                </bloc-input-group>
+                <app-sample-code [code]="snippets.prefixSuffix" />
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Attribute selector</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Same group using attribute directives on divs.
+                </p>
+                <div blocInputGroup>
+                    <span blocPrefix><app-icon name="lock" /></span>
+                    <input blocInput type="password" placeholder="Enter password" />
+                    <span blocSuffix><app-icon name="eye" /></span>
+                </div>
+                <app-sample-code [code]="snippets.attrSelector" />
+            </div>
+        </div>
+
+        <!-- Validation -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Validation
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Error — manual</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Explicit <code>[error]="true"</code> flag.
+                </p>
+                <div class="flex flex-col gap-1">
+                    <input
+                        blocInput
+                        type="text"
+                        placeholder="This field has an error"
+                        [error]="true"
+                        aria-describedby="err-manual"
+                    />
+                    <bloc-input-error>This field is required.</bloc-input-error>
+                </div>
+                <app-sample-code [code]="snippets.errorManual" />
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Error — FormControl</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Driven by <code>invalid &amp;&amp; touched</code>. Click the field then blur.
+                </p>
+                <div class="flex flex-col gap-1">
+                    <label class="text-xs font-medium text-slate-700" for="input-email"
+                        >Email</label
+                    >
+                    <bloc-input-group>
+                        <bloc-prefix><app-icon name="mail" /></bloc-prefix>
+                        <input
+                            blocInput
+                            type="email"
+                            placeholder="Enter a valid email"
+                            [formControl]="emailCtrl"
+                        />
+                    </bloc-input-group>
+                    @if (emailCtrl.invalid && emailCtrl.touched) {
+                        <bloc-input-error>Please enter a valid email address.</bloc-input-error>
+                    }
+                </div>
+                <app-sample-code [code]="snippets.errorFormControl" />
+            </div>
+        </div>
+
+        <!-- Template-driven (ngModel) -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Template-driven (ngModel)
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Two-way binding</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">Bound via <code>[(ngModel)]</code>.</p>
+                <div class="flex flex-col gap-1">
+                    <input
+                        blocInput
+                        type="text"
+                        [(ngModel)]="ngModelValue"
+                        placeholder="Type something"
+                    />
+                </div>
+                <p class="m-0 text-xs text-slate-400">
+                    value: <strong>{{ ngModelValue || '(empty)' }}</strong>
+                </p>
+                <app-sample-code [code]="snippets.ngModel" />
+            </div>
+        </div>
+
+        <!-- Reactive forms -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Reactive forms
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">FormControl</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Required field — shows error when touched and blank.
+                </p>
+                <div class="flex flex-col gap-1">
+                    <input
+                        blocInput
+                        type="text"
+                        [formControl]="requiredCtrl"
+                        placeholder="Required field"
+                    />
+                    @if (requiredCtrl.invalid && requiredCtrl.touched) {
+                        <bloc-input-error>This field is required.</bloc-input-error>
+                    }
+                </div>
+                <p class="m-0 text-xs text-slate-400">
+                    touched: <strong>{{ requiredCtrl.touched }}</strong> &nbsp;|&nbsp; valid:
+                    <strong>{{ requiredCtrl.valid }}</strong>
+                </p>
+                <app-sample-code [code]="snippets.formControlRequired" />
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">formControlName</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Inside a <code>FormGroup</code> via <code>formControlName</code>.
+                </p>
+                <div class="flex flex-col gap-1">
+                    <form [formGroup]="userFormGroup">
+                        <input
+                            blocInput
+                            type="text"
+                            formControlName="username"
+                            placeholder="Username"
+                        />
+                        @if (
+                            userFormGroup.get('username')?.invalid &&
+                            userFormGroup.get('username')?.touched
+                        ) {
+                            <bloc-input-error>Username is required.</bloc-input-error>
+                        }
+                    </form>
+                </div>
+                <p class="m-0 text-xs text-slate-400">
+                    group value:
+                    <strong>{{ userFormGroup.get('username')?.value || '(empty)' }}</strong>
+                </p>
+                <app-sample-code [code]="snippets.formControlName" />
+            </div>
+        </div>
+
+        <!-- Theming -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Theming
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Custom token</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Override via CSS custom properties — radius and focus ring.
+                </p>
+                <div class="flex flex-col gap-2">
+                    <div>
+                        <label class="text-xs font-medium text-slate-500 mb-1 block"
+                            >Pill radius (<code>--bloc-input-radius</code>)</label
+                        >
+                        <input
+                            blocInput
+                            type="text"
+                            placeholder="Custom border radius"
+                            style="--bloc-input-radius: 999px"
+                        />
+                    </div>
+                    <div>
+                        <label class="text-xs font-medium text-slate-500 mb-1 block"
+                            >Emerald focus ring (<code>--bloc-input-focus-ring</code>)</label
+                        >
+                        <input
+                            blocInput
+                            type="text"
+                            placeholder="Focus me"
+                            style="--bloc-input-focus-ring: #10b981"
+                        />
+                    </div>
+                </div>
+                <app-sample-code [code]="snippets.customToken" />
+            </div>
+        </div>
+    </bloc-tab>
+    <bloc-tab label="API">
+        <div class="api-card">
+            <app-api-table
+                title="Inputs"
+                selector="input[blocInput]"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="inputs"
+            />
+            <app-api-table
+                title="Group directives"
+                [columns]="GROUP_DIRECTIVES_COLUMNS"
+                [rows]="groupDirectives"
+            />
+            <app-api-table title="CSS Tokens" [columns]="TOKENS_COLUMNS" [rows]="tokens" />
+        </div>
+    </bloc-tab>
+</bloc-tab-group>

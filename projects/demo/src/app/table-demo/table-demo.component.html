@@ -6,170 +6,205 @@
     <app-install-command package="@bloc-ui/table" />
 </header>
 
-<!-- Basic -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Basic usage
-</h2>
-<div class="grid grid-cols-1 gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Default</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Data-driven table using declarative column definitions. Pass any object array to
-            <code>[data]</code>.
-        </p>
-        <bloc-table [data]="users">
-            <bloc-column field="name" header="Name" />
-            <bloc-column field="email" header="Email" />
-            <bloc-column field="role" header="Role" />
-        </bloc-table>
-        <app-sample-code [code]="snippets.basic" />
-    </div>
-</div>
-
-<!-- States -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">States</h2>
-<div class="grid grid-cols-1 gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Empty data</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Rendered when <code>[data]</code> is an empty array.
-        </p>
-        <bloc-table [data]="[]">
-            <bloc-column field="name" header="Name" />
-            <bloc-column field="email" header="Email" />
-            <bloc-column field="role" header="Role" />
-        </bloc-table>
-        <app-sample-code [code]="snippets.emptyData" />
-    </div>
-</div>
-
-<!-- Variants -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Variants</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(420px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Striped</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Alternating row backgrounds via <code>[striped]</code>.
-        </p>
-        <bloc-table [data]="users" [striped]="true">
-            <bloc-column field="name" header="Name" />
-            <bloc-column field="email" header="Email" />
-        </bloc-table>
-        <app-sample-code [code]="snippets.striped" />
-    </div>
-
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Bordered</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Cell borders via <code>[bordered]</code>.</p>
-        <bloc-table [data]="users" [bordered]="true">
-            <bloc-column field="name" header="Name" />
-            <bloc-column field="email" header="Email" />
-        </bloc-table>
-        <app-sample-code [code]="snippets.bordered" />
-    </div>
-
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Hoverable</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Row highlight on hover via <code>[hoverable]</code>.
-        </p>
-        <bloc-table [data]="users" [hoverable]="true">
-            <bloc-column field="name" header="Name" />
-            <bloc-column field="email" header="Email" />
-            <bloc-column field="role" header="Role" />
-        </bloc-table>
-        <app-sample-code [code]="snippets.hoverable" />
-    </div>
-
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Sticky header</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Keep header fixed while scrolling via <code>[sticky]</code>. Scroll down to see the header stay in place.
-        </p>
-        <div style="height: 400px;" class="overflow-auto">
-            <bloc-table [data]="users2" [sticky]="true" [striped]="true">
-                <bloc-column field="name" header="Name" />
-                <bloc-column field="email" header="Email" />
-                <bloc-column field="role" header="Role" />
-                <bloc-column field="status" header="Status" />
-            </bloc-table>
+<bloc-tab-group>
+    <bloc-tab label="Examples">
+        <!-- Basic -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Basic usage
+        </h2>
+        <div class="grid grid-cols-1 gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Default</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Data-driven table using declarative column definitions. Pass any object array to
+                    <code>[data]</code>.
+                </p>
+                <bloc-table [data]="users">
+                    <bloc-column field="name" header="Name" />
+                    <bloc-column field="email" header="Email" />
+                    <bloc-column field="role" header="Role" />
+                </bloc-table>
+                <app-sample-code [code]="snippets.basic" />
+            </div>
         </div>
-        <app-sample-code [code]="snippets.sticky" />
-    </div></div>
 
-<!-- Sizes -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Sizes</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(420px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Small</h3>
-        <bloc-table [data]="users" size="sm">
-            <bloc-column field="name" header="Name" />
-            <bloc-column field="email" header="Email" />
-        </bloc-table>
-        <app-sample-code [code]="snippets.sizeSmall" />
-    </div>
+        <!-- States -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            States
+        </h2>
+        <div class="grid grid-cols-1 gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Empty data</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Rendered when <code>[data]</code> is an empty array.
+                </p>
+                <bloc-table [data]="[]">
+                    <bloc-column field="name" header="Name" />
+                    <bloc-column field="email" header="Email" />
+                    <bloc-column field="role" header="Role" />
+                </bloc-table>
+                <app-sample-code [code]="snippets.emptyData" />
+            </div>
+        </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Large</h3>
-        <bloc-table [data]="users" size="lg">
-            <bloc-column field="name" header="Name" />
-            <bloc-column field="email" header="Email" />
-        </bloc-table>
-        <app-sample-code [code]="snippets.sizeLarge" />
-    </div>
-</div>
+        <!-- Variants -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Variants
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(420px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Striped</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Alternating row backgrounds via <code>[striped]</code>.
+                </p>
+                <bloc-table [data]="users" [striped]="true">
+                    <bloc-column field="name" header="Name" />
+                    <bloc-column field="email" header="Email" />
+                </bloc-table>
+                <app-sample-code [code]="snippets.striped" />
+            </div>
 
-<!-- Custom cell template -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Custom cell template
-</h2>
-<div class="grid grid-cols-1 gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Status column with template</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Use <code>blocCellDef</code> for custom cell rendering.
-        </p>
-        <bloc-table [data]="users" [hoverable]="true" [striped]="true">
-            <bloc-column field="name" header="Name" />
-            <bloc-column field="email" header="Email" />
-            <bloc-column field="status" header="Status">
-                <ng-template blocCellDef let-value>
-                    <span
-                        [class]="
-                            value === 'Active'
-                                ? 'text-green-600 font-medium'
-                                : 'text-red-500 font-medium'
-                        "
-                    >
-                        {{ value }}
-                    </span>
-                </ng-template>
-            </bloc-column>
-        </bloc-table>
-        <app-sample-code [code]="snippets.customCell" />
-    </div>
-</div>
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Bordered</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Cell borders via <code>[bordered]</code>.
+                </p>
+                <bloc-table [data]="users" [bordered]="true">
+                    <bloc-column field="name" header="Name" />
+                    <bloc-column field="email" header="Email" />
+                </bloc-table>
+                <app-sample-code [code]="snippets.bordered" />
+            </div>
 
-<!-- Theming -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Theming</h2>
-<div class="grid grid-cols-1 gap-5">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Custom token</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Override table colours via CSS custom properties.
-        </p>
-        <bloc-table
-            [data]="users"
-            style="
-                --bloc-table-th-bg: #f0fdf4;
-                --bloc-table-border: #86efac;
-                --bloc-table-th-color: #15803d;
-            "
-        >
-            <bloc-column field="name" header="Name" />
-            <bloc-column field="email" header="Email" />
-            <bloc-column field="role" header="Role" />
-        </bloc-table>
-        <app-sample-code [code]="snippets.customToken" />
-    </div>
-</div>
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Hoverable</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Row highlight on hover via <code>[hoverable]</code>.
+                </p>
+                <bloc-table [data]="users" [hoverable]="true">
+                    <bloc-column field="name" header="Name" />
+                    <bloc-column field="email" header="Email" />
+                    <bloc-column field="role" header="Role" />
+                </bloc-table>
+                <app-sample-code [code]="snippets.hoverable" />
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Sticky header</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Keep header fixed while scrolling via <code>[sticky]</code>. Scroll down to see
+                    the header stay in place.
+                </p>
+                <div style="height: 400px" class="overflow-auto">
+                    <bloc-table [data]="users2" [sticky]="true" [striped]="true">
+                        <bloc-column field="name" header="Name" />
+                        <bloc-column field="email" header="Email" />
+                        <bloc-column field="role" header="Role" />
+                        <bloc-column field="status" header="Status" />
+                    </bloc-table>
+                </div>
+                <app-sample-code [code]="snippets.sticky" />
+            </div>
+        </div>
+
+        <!-- Sizes -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Sizes
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(420px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Small</h3>
+                <bloc-table [data]="users" size="sm">
+                    <bloc-column field="name" header="Name" />
+                    <bloc-column field="email" header="Email" />
+                </bloc-table>
+                <app-sample-code [code]="snippets.sizeSmall" />
+            </div>
+
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Large</h3>
+                <bloc-table [data]="users" size="lg">
+                    <bloc-column field="name" header="Name" />
+                    <bloc-column field="email" header="Email" />
+                </bloc-table>
+                <app-sample-code [code]="snippets.sizeLarge" />
+            </div>
+        </div>
+
+        <!-- Custom cell template -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Custom cell template
+        </h2>
+        <div class="grid grid-cols-1 gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">
+                    Status column with template
+                </h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Use <code>blocCellDef</code> for custom cell rendering.
+                </p>
+                <bloc-table [data]="users" [hoverable]="true" [striped]="true">
+                    <bloc-column field="name" header="Name" />
+                    <bloc-column field="email" header="Email" />
+                    <bloc-column field="status" header="Status">
+                        <ng-template blocCellDef let-value>
+                            <span
+                                [class]="
+                                    value === 'Active'
+                                        ? 'text-green-600 font-medium'
+                                        : 'text-red-500 font-medium'
+                                "
+                            >
+                                {{ value }}
+                            </span>
+                        </ng-template>
+                    </bloc-column>
+                </bloc-table>
+                <app-sample-code [code]="snippets.customCell" />
+            </div>
+        </div>
+
+        <!-- Theming -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Theming
+        </h2>
+        <div class="grid grid-cols-1 gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Custom token</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Override table colours via CSS custom properties.
+                </p>
+                <bloc-table
+                    [data]="users"
+                    style="
+                        --bloc-table-th-bg: #f0fdf4;
+                        --bloc-table-border: #86efac;
+                        --bloc-table-th-color: #15803d;
+                    "
+                >
+                    <bloc-column field="name" header="Name" />
+                    <bloc-column field="email" header="Email" />
+                    <bloc-column field="role" header="Role" />
+                </bloc-table>
+                <app-sample-code [code]="snippets.customToken" />
+            </div>
+        </div>
+    </bloc-tab>
+    <bloc-tab label="API">
+        <div class="api-card">
+            <app-api-table
+                title="Inputs"
+                selector="bloc-table"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="inputs"
+            />
+            <app-api-table
+                title="Inputs"
+                selector="bloc-column"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="inputsColumn"
+            />
+            <app-api-table title="CSS Tokens" [columns]="TOKENS_COLUMNS" [rows]="tokens" />
+        </div>
+    </bloc-tab>
+</bloc-tab-group>

@@ -10,6 +10,13 @@ import {
 import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
 import { IconComponent } from '../icon/icon.component';
+import {
+    ApiTableComponent,
+    INPUTS_COLUMNS,
+    TOKENS_COLUMNS,
+} from '../api-table/api-table.component';
+
+import { BlocTabGroupComponent, BlocTabComponent } from '@bloc-ui/tab';
 
 @Component({
     selector: 'app-accordion-demo',
@@ -23,10 +30,49 @@ import { IconComponent } from '../icon/icon.component';
         InstallCommandComponent,
         SampleCodeComponent,
         IconComponent,
+        ApiTableComponent,
+        BlocTabGroupComponent,
+        BlocTabComponent,
     ],
     templateUrl: './accordion-demo.component.html',
 })
 export class AccordionDemoComponent {
+    readonly INPUTS_COLUMNS = INPUTS_COLUMNS;
+    readonly TOKENS_COLUMNS = TOKENS_COLUMNS;
+
+    readonly inputsAccordion: string[][] = [
+        ['multi', 'boolean', 'false', 'Allows multiple items to be expanded simultaneously.'],
+    ];
+
+    readonly inputsItem: string[][] = [
+        ['expanded', 'boolean (model)', 'false', 'Two-way bindable expanded state of the item.'],
+        ['disabled', 'boolean', 'false', 'Prevents the item from being toggled.'],
+    ];
+
+    readonly inputsTrigger: string[][] = [
+        [
+            'chevron',
+            'boolean',
+            'true',
+            'Shows/hides the default chevron icon. Use <code>blocAccordionChevron</code> on a custom icon to replace it.',
+    ],
+    ];
+
+    readonly tokens: string[][] = [
+        ['--bloc-accordion-border', '#d1d5db', 'Item border and panel divider colour.'],
+        ['--bloc-accordion-radius', '0.375rem', 'Item border radius.'],
+        ['--bloc-accordion-bg', '#ffffff', 'Item background colour.'],
+        ['--bloc-accordion-header-bg', 'transparent', 'Trigger button background.'],
+        ['--bloc-accordion-header-hover-bg', '#f3f4f6', 'Trigger hover background.'],
+        [
+            '--bloc-accordion-focus-ring',
+            '--bloc-primary / #6b7280',
+            'Focus outline colour on the trigger.',
+    ],
+        ['--bloc-accordion-title-color', 'inherited', 'Trigger title text colour.'],
+        ['--bloc-accordion-color', '#374151', 'Panel content text colour.'],
+    ];
+
     readonly snippets = {
         basic: `<bloc-accordion class="gap-3">\n  <div blocAccordionItem [expanded]="true">\n    <button blocAccordionTrigger>Overview</button>\n    <div blocAccordionContent>\n      Summary content goes here.\n    </div>\n  </div>\n  <div blocAccordionItem>\n    <button blocAccordionTrigger>Details</button>\n    <div blocAccordionContent>\n      More detail goes here.\n    </div>\n  </div>\n</bloc-accordion>`,
         multi: `<bloc-accordion [multi]="true" class="gap-3">\n  <div blocAccordionItem [expanded]="true">\n    <button blocAccordionTrigger>Design tokens</button>\n    <div blocAccordionContent>\n      Keep spacing and typography in sync across the system.\n    </div>\n  </div>\n  <div blocAccordionItem [expanded]="true">\n    <button blocAccordionTrigger>Accessibility</button>\n    <div blocAccordionContent>\n      Preserve semantic structure and keyboard affordances.\n    </div>\n  </div>\n</bloc-accordion>`,

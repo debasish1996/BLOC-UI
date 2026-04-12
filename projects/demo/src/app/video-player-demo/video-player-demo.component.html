@@ -7,6 +7,10 @@
     <app-install-command package="@bloc-ui/video-player" />
 </header>
 
+<bloc-tab-group>
+    <bloc-tab label="Examples">
+
+
 <!-- Basic usage -->
 <div class="grid grid-cols-1 gap-8 mb-10">
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
@@ -75,3 +79,14 @@
         <app-sample-code [code]="snippets.events" />
     </div>
 </div>
+
+
+    </bloc-tab>
+    <bloc-tab label="API">
+        <div class="api-card">
+            <app-api-table title="Inputs" selector="bloc-video-player" [columns]="INPUTS_COLUMNS" [rows]="inputs" />
+            <app-api-table title="Outputs" selector="bloc-video-player" [columns]="OUTPUTS_COLUMNS" [rows]="outputs" />
+            <app-api-table title="CSS Tokens" [columns]="TOKENS_COLUMNS" [rows]="tokens" />
+        </div>
+    </bloc-tab>
+</bloc-tab-group>

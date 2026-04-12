@@ -6,40 +6,56 @@
     <app-install-command package="@bloc-ui/slider" />
 </header>
 
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Reactive Forms</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Use it anywhere you’d use a regular CVA-enabled form control.
-        </p>
-        <bloc-slider
-            label="Volume"
-            [min]="0"
-            [max]="100"
-            [step]="5"
-            [formControl]="volumeControl"
-        />
-        <p class="m-0 text-xs text-slate-400">
-            Current value: <strong>{{ volumeControl.value }}</strong>
-        </p>
-        <app-sample-code [code]="snippets.reactive" />
-    </div>
+<bloc-tab-group>
+    <bloc-tab label="Examples">
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Reactive Forms</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Use it anywhere you’d use a regular CVA-enabled form control.
+                </p>
+                <bloc-slider
+                    label="Volume"
+                    [min]="0"
+                    [max]="100"
+                    [step]="5"
+                    [formControl]="volumeControl"
+                />
+                <p class="m-0 text-xs text-slate-400">
+                    Current value: <strong>{{ volumeControl.value }}</strong>
+                </p>
+                <app-sample-code [code]="snippets.reactive" />
+            </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Custom Range</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Adjust min, max, and step to match your domain instead of a generic 0–100 range.
-        </p>
-        <bloc-slider
-            label="Budget allocation"
-            [min]="10"
-            [max]="120"
-            [step]="10"
-            [formControl]="budgetControl"
-        />
-        <p class="m-0 text-xs text-slate-400">
-            Current value: <strong>{{ budgetControl.value }}</strong>
-        </p>
-        <app-sample-code [code]="snippets.customRange" />
-    </div>
-</div>
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Custom Range</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Adjust min, max, and step to match your domain instead of a generic 0–100 range.
+                </p>
+                <bloc-slider
+                    label="Budget allocation"
+                    [min]="10"
+                    [max]="120"
+                    [step]="10"
+                    [formControl]="budgetControl"
+                />
+                <p class="m-0 text-xs text-slate-400">
+                    Current value: <strong>{{ budgetControl.value }}</strong>
+                </p>
+                <app-sample-code [code]="snippets.customRange" />
+            </div>
+        </div>
+    </bloc-tab>
+    <bloc-tab label="API">
+        <div class="api-card">
+            <app-api-table
+                title="Inputs"
+                selector="bloc-slider"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="inputs"
+            />
+            <app-api-table title="Outputs" [columns]="OUTPUTS_COLUMNS" [rows]="outputs" />
+            <app-api-table title="CSS Tokens" [columns]="TOKENS_COLUMNS" [rows]="tokens" />
+        </div>
+    </bloc-tab>
+</bloc-tab-group>

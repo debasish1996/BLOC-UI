@@ -6,86 +6,104 @@
     <app-install-command package="@bloc-ui/alert" />
 </header>
 
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Common Patterns
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Variants</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Use the semantic variants for neutral updates, success, warnings, and errors.
-        </p>
-        <div class="flex flex-col gap-3">
-            <bloc-alert variant="info" title="Heads up">
-                Alerts work well for inline guidance, success messaging, and warnings.
-            </bloc-alert>
-            <bloc-alert variant="success" title="Saved">
-                Your pricing rules were published successfully.
-            </bloc-alert>
-            <bloc-alert variant="danger" title="Action required">
-                A deployment check failed and needs review before shipping.
-            </bloc-alert>
-        </div>
-        <app-sample-code [code]="snippets.basic" />
-    </div>
+<bloc-tab-group>
+    <bloc-tab label="Examples">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Common Patterns
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Variants</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Use the semantic variants for neutral updates, success, warnings, and errors.
+                </p>
+                <div class="flex flex-col gap-3">
+                    <bloc-alert variant="info" title="Heads up">
+                        Alerts work well for inline guidance, success messaging, and warnings.
+                    </bloc-alert>
+                    <bloc-alert variant="success" title="Saved">
+                        Your pricing rules were published successfully.
+                    </bloc-alert>
+                    <bloc-alert variant="danger" title="Action required">
+                        A deployment check failed and needs review before shipping.
+                    </bloc-alert>
+                </div>
+                <app-sample-code [code]="snippets.basic" />
+            </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Custom Icon</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Project any element into the icon slot using the <code>blocAlertIcon</code> attribute.
-        </p>
-        <div class="flex flex-col gap-3">
-            <bloc-alert variant="success" title="Deployed">
-                <app-icon blocAlertIcon name="check" />
-                Your build passed all checks and is live in production.
-            </bloc-alert>
-            <bloc-alert variant="danger" title="Failed">
-                <app-icon blocAlertIcon name="alert-circle" />
-                The deployment pipeline encountered an unrecoverable error.
-            </bloc-alert>
-        </div>
-        <app-sample-code [code]="snippets.customIcon" />
-    </div>
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Custom Icon</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Project any element into the icon slot using the
+                    <code>blocAlertIcon</code> attribute.
+                </p>
+                <div class="flex flex-col gap-3">
+                    <bloc-alert variant="success" title="Deployed">
+                        <app-icon blocAlertIcon name="check" />
+                        Your build passed all checks and is live in production.
+                    </bloc-alert>
+                    <bloc-alert variant="danger" title="Failed">
+                        <app-icon blocAlertIcon name="alert-circle" />
+                        The deployment pipeline encountered an unrecoverable error.
+                    </bloc-alert>
+                </div>
+                <app-sample-code [code]="snippets.customIcon" />
+            </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">No Icon</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Set <code>[hideIcon]="true"</code> to remove the icon column entirely.
-        </p>
-        <div class="flex flex-col gap-3">
-            <bloc-alert variant="info" title="Scheduled maintenance" [hideIcon]="true">
-                The system will be unavailable on Sunday between 02:00 and 04:00 UTC.
-            </bloc-alert>
-            <bloc-alert variant="warning" [hideIcon]="true">
-                Your trial expires in 3 days.
-            </bloc-alert>
-        </div>
-        <app-sample-code [code]="snippets.noIcon" />
-    </div>
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-slate-900">No Icon</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Set <code>[hideIcon]="true"</code> to remove the icon column entirely.
+                </p>
+                <div class="flex flex-col gap-3">
+                    <bloc-alert variant="info" title="Scheduled maintenance" [hideIcon]="true">
+                        The system will be unavailable on Sunday between 02:00 and 04:00 UTC.
+                    </bloc-alert>
+                    <bloc-alert variant="warning" [hideIcon]="true">
+                        Your trial expires in 3 days.
+                    </bloc-alert>
+                </div>
+                <app-sample-code [code]="snippets.noIcon" />
+            </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Dismissible</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Dismissal is useful for non-blocking notices that should stay close to the content.
-        </p>
-        @if (!dismissed()) {
-            <bloc-alert
-                variant="warning"
-                title="Sync paused"
-                [dismissible]="true"
-                (dismissed)="dismissed.set(true)"
-            >
-                Reconnect to resume background sync.
-            </bloc-alert>
-        } @else {
-            <button
-                type="button"
-                class="self-start px-3 py-2 rounded-md border border-slate-200 bg-slate-50 text-sm text-slate-700 cursor-pointer hover:bg-slate-100"
-                (click)="restoreAlert()"
-            >
-                Restore Alert
-            </button>
-        }
-        <app-sample-code [code]="snippets.dismissible" />
-    </div>
-</div>
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Dismissible</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Dismissal is useful for non-blocking notices that should stay close to the
+                    content.
+                </p>
+                @if (!dismissed()) {
+                    <bloc-alert
+                        variant="warning"
+                        title="Sync paused"
+                        [dismissible]="true"
+                        (dismissed)="dismissed.set(true)"
+                    >
+                        Reconnect to resume background sync.
+                    </bloc-alert>
+                } @else {
+                    <button
+                        type="button"
+                        class="self-start px-3 py-2 rounded-md border border-slate-200 bg-slate-50 text-sm text-slate-700 cursor-pointer hover:bg-slate-100"
+                        (click)="restoreAlert()"
+                    >
+                        Restore Alert
+                    </button>
+                }
+                <app-sample-code [code]="snippets.dismissible" />
+            </div>
+        </div>
+    </bloc-tab>
+    <bloc-tab label="API">
+        <div class="api-card">
+            <app-api-table
+                title="Inputs"
+                selector="bloc-alert"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="inputs"
+            />
+            <app-api-table title="Outputs" [columns]="OUTPUTS_COLUMNS" [rows]="outputs" />
+            <app-api-table title="CSS Tokens" [columns]="TOKENS_COLUMNS" [rows]="tokens" />
+        </div>
+    </bloc-tab>
+</bloc-tab-group>

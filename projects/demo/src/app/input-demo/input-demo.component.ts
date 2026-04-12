@@ -16,6 +16,14 @@ import {
 import { IconComponent } from '../icon/icon.component';
 import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
+import {
+    ApiTableComponent,
+    ApiColumnDef,
+    INPUTS_COLUMNS,
+    TOKENS_COLUMNS,
+} from '../api-table/api-table.component';
+
+import { BlocTabGroupComponent, BlocTabComponent } from '@bloc-ui/tab';
 
 @Component({
     selector: 'app-input-demo',
@@ -31,10 +39,69 @@ import { SampleCodeComponent } from '../sample-code/sample-code.component';
         ReactiveFormsModule,
         SampleCodeComponent,
         InstallCommandComponent,
+        ApiTableComponent,
+        BlocTabGroupComponent,
+        BlocTabComponent,
     ],
     templateUrl: './input-demo.component.html',
 })
 export class InputDemoComponent {
+    readonly INPUTS_COLUMNS = INPUTS_COLUMNS;
+    readonly TOKENS_COLUMNS = TOKENS_COLUMNS;
+    readonly GROUP_DIRECTIVES_COLUMNS: ApiColumnDef[] = [
+        { header: 'Directive / element', cellType: 'name' },
+        { header: 'Selector', cellType: 'type' },
+        { header: 'Description', cellType: 'description' },
+    ];
+
+    readonly inputs: string[][] = [
+        [
+            'error',
+            'boolean',
+            'false',
+            'Forces the error border style. Auto-set when a bound form control is invalid and touched.',
+    ],
+        [
+            'autocomplete',
+            'string | null',
+            'null',
+            'Forwarded to the native <code>autocomplete</code> attribute. Pass <code>"off"</code> to suppress suggestions.',
+    ],
+    ];
+
+    readonly groupDirectives: string[][] = [
+        [
+            'BlocInputGroupDirective',
+            'bloc-input-group, [blocInputGroup]',
+            'Wraps an input with prefix/suffix adornments and handles combined focus border.',
+    ],
+        [
+            'BlocPrefixDirective',
+            'bloc-prefix, [blocPrefix]',
+            'Leading adornment slot inside a group.',
+    ],
+        [
+            'BlocSuffixDirective',
+            'bloc-suffix, [blocSuffix]',
+            'Trailing adornment slot inside a group.',
+    ],
+    ];
+
+    readonly tokens: string[][] = [
+        ['--bloc-input-border', '#cbd5e1', 'Default border colour.'],
+        ['--bloc-input-focus-border', '--bloc-primary / #6b7280', 'Border colour on focus.'],
+        ['--bloc-input-error-border', '--bloc-error / #f87171', 'Border colour in error state.'],
+        ['--bloc-input-bg', '#ffffff', 'Input background.'],
+        ['--bloc-input-color', '#374151', 'Input text colour.'],
+        ['--bloc-input-radius', '4px', 'Border radius.'],
+        ['--bloc-input-padding', '8px 12px', 'Inner padding.'],
+        ['--bloc-input-font-size', '14px', 'Input font size.'],
+        [
+            '--bloc-input-group-adornment-color',
+            '#9ca3af',
+            'Prefix/suffix icon colour inside a group.',
+    ],
+    ];
     readonly name = signal('');
 
     // Template-driven (ngModel)

@@ -8,6 +8,10 @@
     <app-install-command package="@bloc-ui/virtual-scroll" />
 </header>
 
+<bloc-tab-group>
+    <bloc-tab label="Examples">
+
+
 <!-- ── Basic List ── -->
 <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
     Basic List (10 000 items)
@@ -167,7 +171,7 @@
 
 <!-- ── Mixed Heights Stress Test ── -->
 <h2 class="mt-0 mb-4 text-base font-semibold text-red-500 uppercase tracking-wide">
-    ⚠ Stress Test — Mixed Row Heights (500 items)
+    &#x26A0; Stress Test — Mixed Row Heights (500 items)
 </h2>
 
 <div class="grid grid-cols-1 gap-5 mb-10">
@@ -224,3 +228,14 @@
         </bloc-virtual-scroll>
     </div>
 </div>
+
+
+    </bloc-tab>
+    <bloc-tab label="API">
+        <div class="api-card">
+            <app-api-table title="Inputs" selector="bloc-virtual-scroll" [columns]="INPUTS_COLUMNS" [rows]="inputs" />
+            <app-api-table title="Exported state" selector="#vs" [columns]="OUTPUTS_COLUMNS" [rows]="exportedState" note="Use exportAs via #vs to access the component instance from the template." />
+            <app-api-table title="Template context" selector="[blocVirtualItem]" [columns]="OUTPUTS_COLUMNS" [rows]="templateContext" note="Variables exposed inside an ng-template marked with the blocVirtualItem structural directive." />
+        </div>
+    </bloc-tab>
+</bloc-tab-group>

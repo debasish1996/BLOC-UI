@@ -4,6 +4,15 @@ import { BlocAlertComponent, BlocAlertIconDirective } from '@bloc-ui/alert';
 import { IconComponent } from '../icon/icon.component';
 import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
+import {
+    ApiTableComponent,
+    ApiColumnDef,
+    INPUTS_COLUMNS,
+    OUTPUTS_COLUMNS,
+    TOKENS_COLUMNS,
+} from '../api-table/api-table.component';
+
+import { BlocTabGroupComponent, BlocTabComponent } from '@bloc-ui/tab';
 
 @Component({
     selector: 'app-alert-demo',
@@ -14,10 +23,63 @@ import { SampleCodeComponent } from '../sample-code/sample-code.component';
         IconComponent,
         InstallCommandComponent,
         SampleCodeComponent,
+        ApiTableComponent,
+        BlocTabGroupComponent,
+        BlocTabComponent,
     ],
     templateUrl: './alert-demo.component.html',
 })
 export class AlertDemoComponent {
+    readonly INPUTS_COLUMNS = INPUTS_COLUMNS;
+    readonly OUTPUTS_COLUMNS = OUTPUTS_COLUMNS;
+    readonly TOKENS_COLUMNS = TOKENS_COLUMNS;
+
+    readonly inputs: string[][] = [
+        [
+            'variant',
+            "'info' | 'success' | 'warning' | 'danger'",
+            "'info'",
+            'Semantic colour and ARIA role variant.',
+    ],
+        ['title', 'string', "''", 'Optional bold title rendered above the content.'],
+        ['dismissible', 'boolean', 'false', 'Shows a close button that hides the alert.'],
+        [
+            'closeLabel',
+            'string',
+            "'Dismiss alert'",
+            '<code>aria-label</code> for the close button.',
+    ],
+        [
+            'live',
+            "'assertive' | 'polite' | undefined",
+            'undefined',
+            'Forces a specific ARIA live region role. Omit to use variant default.',
+    ],
+        [
+            'visible',
+            'boolean',
+            'true',
+            'Controls visibility externally. Both <code>visible</code> and the internal dismiss state must be true to show.',
+    ],
+        ['hideIcon', 'boolean', 'false', 'Removes the icon column from the layout.'],
+    ];
+
+    readonly outputs: string[][] = [
+        ['dismissed', 'void', 'Emits when the user clicks the close button.'],
+    ];
+
+    readonly tokens: string[][] = [
+        ['--bloc-alert-border', '#d1d5db', 'Outer border colour.'],
+        ['--bloc-alert-bg', '#f9fafb', 'Alert background.'],
+        ['--bloc-alert-color', '#374151', 'Body text colour.'],
+        ['--bloc-alert-accent', '#f3f4f6', 'Icon badge background.'],
+        ['--bloc-alert-accent-color', '#374151', 'Icon badge text colour.'],
+        [
+            '--bloc-alert-[variant]-bg / -border / -accent / -accent-color',
+            'variant defaults',
+            'Per-variant overrides (e.g. <code>--bloc-alert-success-bg</code>).',
+    ],
+    ];
     readonly dismissed = signal(false);
 
     readonly snippets = {

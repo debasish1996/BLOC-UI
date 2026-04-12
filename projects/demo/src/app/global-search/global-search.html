@@ -1,0 +1,141 @@
+<!-- Backdrop -->
+<div
+    class="fixed inset-0 bg-black/60 z-[100] flex items-start justify-center pt-[15vh] px-4"
+    (click)="closed.emit()"
+>
+    <!-- Dialog — stop click bubbling to backdrop -->
+    <div
+        class="search-dialog bg-white rounded-xl shadow-2xl w-full max-w-[560px] overflow-hidden"
+        role="dialog"
+        aria-label="Search components"
+        aria-modal="true"
+        (click)="$event.stopPropagation()"
+    >
+        <!-- Search input row -->
+        <div class="flex items-center gap-3 px-4 py-3 border-b border-slate-200">
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="18"
+                height="18"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="text-slate-400 shrink-0"
+            >
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <input
+                #searchInput
+                type="text"
+                placeholder="Search components..."
+                class="flex-1 outline-none text-slate-800 text-[0.95rem] placeholder:text-slate-400 bg-transparent"
+                [value]="query()"
+                (input)="onQuery($any($event.target).value)"
+                (keydown)="onKeyDown($event)"
+                autocomplete="off"
+                spellcheck="false"
+            />
+            <button
+                type="button"
+                class="text-slate-400 hover:text-slate-600 shrink-0 p-0.5 rounded transition-colors cursor-pointer"
+                aria-label="Close search"
+                (click)="closed.emit()"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="18"
+                    height="18"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                </svg>
+            </button>
+        </div>
+
+        <!-- Results list -->
+        <div class="max-h-72 overflow-y-auto overscroll-contain" role="listbox">
+            @if (filtered().length === 0) {
+                <p class="text-center text-slate-400 text-sm py-10">
+                    No results for "<span class="font-medium text-slate-600">{{ query() }}</span
+                    >"
+                </p>
+            } @else {
+                @for (item of filtered(); track item.path; let i = $index) {
+                    <button
+                        class="w-full text-left px-4 py-2.5 flex items-center gap-3 text-sm transition-colors cursor-pointer border-none outline-none"
+                        [class]="activeIndex() === i ? 'bg-blue-50' : 'bg-white hover:bg-slate-50'"
+                        role="option"
+                        [attr.aria-selected]="activeIndex() === i"
+                        (click)="navigate(item.path)"
+                        (mouseenter)="activeIndex.set(i)"
+                    >
+                        <span
+                            class="text-[0.7rem] font-medium text-slate-400 w-28 shrink-0 uppercase tracking-wide"
+                            >{{ item.group }}</span
+                        >
+                        <span
+                            [class]="
+                                activeIndex() === i ? 'text-blue-700 font-medium' : 'text-slate-700'
+                            "
+                            >{{ item.label }}</span
+                        >
+                        @if (activeIndex() === i) {
+                            <svg
+                                class="ml-auto text-blue-400 shrink-0"
+                                xmlns="http://www.w3.org/2000/svg"
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                stroke-width="2.5"
+                                stroke-linecap="round"
+                                stroke-linejoin="round"
+                            >
+                                <polyline points="9 10 4 15 9 20" />
+                                <path d="M20 4v7a4 4 0 0 1-4 4H4" />
+                            </svg>
+                        }
+                    </button>
+                }
+            }
+        </div>
+
+        <!-- Footer hints -->
+        <div
+            class="border-t border-slate-100 px-4 py-2 flex items-center gap-4 text-[0.72rem] text-slate-400 bg-slate-50/80"
+        >
+            <span class="flex items-center gap-1">
+                <kbd
+                    class="bg-white border border-slate-200 px-1 py-0.5 rounded text-[0.65rem] font-mono"
+                    >↑↓</kbd
+                >
+                navigate
+            </span>
+            <span class="flex items-center gap-1">
+                <kbd
+                    class="bg-white border border-slate-200 px-1 py-0.5 rounded text-[0.65rem] font-mono"
+                    >↵</kbd
+                >
+                select
+            </span>
+            <span class="flex items-center gap-1">
+                <kbd
+                    class="bg-white border border-slate-200 px-1 py-0.5 rounded text-[0.65rem] font-mono"
+                    >Esc</kbd
+                >
+                close
+            </span>
+        </div>
+    </div>
+</div>

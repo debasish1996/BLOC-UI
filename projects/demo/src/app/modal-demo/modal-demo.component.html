@@ -7,140 +7,186 @@
     <app-install-command package="@bloc-ui/modal" />
 </header>
 
-<!-- Sizes -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Sizes</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Default (md)</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Standard medium-sized modal.</p>
-        <div>
-            <button blocButton variant="primary" (clicked)="openModal('md')">Open Modal</button>
-        </div>
-        <app-sample-code [code]="snippets.defaultMd" language="typescript" />
-    </div>
+<bloc-tab-group>
+    <bloc-tab label="Examples">
+        <!-- Sizes -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Sizes
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Default (md)</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">Standard medium-sized modal.</p>
+                <div>
+                    <button blocButton variant="primary" (clicked)="openModal('md')">
+                        Open Modal
+                    </button>
+                </div>
+                <app-sample-code [code]="snippets.defaultMd" language="typescript" />
+            </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Small</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Compact modal for short messages.</p>
-        <div>
-            <button blocButton variant="secondary" (clicked)="openModal('sm')">
-                Open Small Modal
-            </button>
-        </div>
-        <app-sample-code [code]="snippets.small" language="typescript" />
-    </div>
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Small</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">Compact modal for short messages.</p>
+                <div>
+                    <button blocButton variant="secondary" (clicked)="openModal('sm')">
+                        Open Small Modal
+                    </button>
+                </div>
+                <app-sample-code [code]="snippets.small" language="typescript" />
+            </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Large</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Wide modal for detailed content.</p>
-        <div>
-            <button blocButton variant="outline" (clicked)="openModal('lg')">
-                Open Large Modal
-            </button>
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Large</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">Wide modal for detailed content.</p>
+                <div>
+                    <button blocButton variant="outline" (clicked)="openModal('lg')">
+                        Open Large Modal
+                    </button>
+                </div>
+                <app-sample-code [code]="snippets.large" language="typescript" />
+            </div>
         </div>
-        <app-sample-code [code]="snippets.large" language="typescript" />
-    </div>
-</div>
 
-<!-- Backdrop options -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Backdrop</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">No backdrop</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Backdrop overlay is hidden.</p>
-        <div>
-            <button blocButton variant="primary" (clicked)="openNoBackdrop()">Open Modal</button>
-        </div>
-        <app-sample-code [code]="snippets.noBackdrop" language="typescript" />
-    </div>
+        <!-- Backdrop options -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Backdrop
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">No backdrop</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">Backdrop overlay is hidden.</p>
+                <div>
+                    <button blocButton variant="primary" (clicked)="openNoBackdrop()">
+                        Open Modal
+                    </button>
+                </div>
+                <app-sample-code [code]="snippets.noBackdrop" language="typescript" />
+            </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Backdrop — no dismiss</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Clicking the backdrop does not close.</p>
-        <div>
-            <button blocButton variant="secondary" (clicked)="openNoDismiss()">Open Modal</button>
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Backdrop — no dismiss</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Clicking the backdrop does not close.
+                </p>
+                <div>
+                    <button blocButton variant="secondary" (clicked)="openNoDismiss()">
+                        Open Modal
+                    </button>
+                </div>
+                <app-sample-code [code]="snippets.noDismiss" language="typescript" />
+            </div>
         </div>
-        <app-sample-code [code]="snippets.noDismiss" language="typescript" />
-    </div>
-</div>
 
-<!-- Close button -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Close button
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Hidden close button</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">The ✕ header button is removed.</p>
-        <div>
-            <button blocButton variant="outline" (clicked)="openNoCloseButton()">Open Modal</button>
+        <!-- Close button -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Close button
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Hidden close button</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">The ✕ header button is removed.</p>
+                <div>
+                    <button blocButton variant="outline" (clicked)="openNoCloseButton()">
+                        Open Modal
+                    </button>
+                </div>
+                <app-sample-code [code]="snippets.noCloseButton" language="typescript" />
+            </div>
         </div>
-        <app-sample-code [code]="snippets.noCloseButton" language="typescript" />
-    </div>
-</div>
 
-<!-- Custom classes -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Custom classes
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">panelClass</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Extra class applied to the modal panel.</p>
-        <div>
-            <button blocButton variant="primary" (clicked)="openPanelClass()">Open Modal</button>
-        </div>
-        <app-sample-code [code]="snippets.panelClass" language="typescript" />
-    </div>
+        <!-- Custom classes -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Custom classes
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">panelClass</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Extra class applied to the modal panel.
+                </p>
+                <div>
+                    <button blocButton variant="primary" (clicked)="openPanelClass()">
+                        Open Modal
+                    </button>
+                </div>
+                <app-sample-code [code]="snippets.panelClass" language="typescript" />
+            </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">backdropClass</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Extra class applied to the backdrop.</p>
-        <div>
-            <button blocButton variant="secondary" (clicked)="openBackdropClass()">
-                Open Modal
-            </button>
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">backdropClass</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Extra class applied to the backdrop.
+                </p>
+                <div>
+                    <button blocButton variant="secondary" (clicked)="openBackdropClass()">
+                        Open Modal
+                    </button>
+                </div>
+                <app-sample-code [code]="snippets.backdropClass" language="typescript" />
+            </div>
         </div>
-        <app-sample-code [code]="snippets.backdropClass" language="typescript" />
-    </div>
-</div>
 
-<!-- Data passing -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Data passing
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Inject data</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Pass a <code>data</code> object to <code>open()</code>; read it inside the component via
-            <code>inject(BLOC_MODAL_DATA)</code>.
-        </p>
-        <div>
-            <button blocButton variant="primary" (clicked)="openWithData()">Open with Data</button>
+        <!-- Data passing -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Data passing
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Inject data</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Pass a <code>data</code> object to <code>open()</code>; read it inside the
+                    component via <code>inject(BLOC_MODAL_DATA)</code>.
+                </p>
+                <div>
+                    <button blocButton variant="primary" (clicked)="openWithData()">
+                        Open with Data
+                    </button>
+                </div>
+                <app-sample-code [code]="snippets.dataPass" language="typescript" />
+            </div>
         </div>
-        <app-sample-code [code]="snippets.dataPass" language="typescript" />
-    </div>
-</div>
 
-<!-- Return value -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Return value
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-        <h3 class="m-0 text-base font-semibold text-slate-900">afterClosed$</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Subscribe to <code>afterClosed$</code> to receive the result when the modal closes.
-        </p>
-        <div>
-            <button blocButton variant="primary" (clicked)="openWithResult()">Open Confirm</button>
+        <!-- Return value -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Return value
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-slate-900">afterClosed$</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Subscribe to <code>afterClosed$</code> to receive the result when the modal
+                    closes.
+                </p>
+                <div>
+                    <button blocButton variant="primary" (clicked)="openWithResult()">
+                        Open Confirm
+                    </button>
+                </div>
+                @if (lastResult()) {
+                    <p class="m-0 text-xs text-slate-400">
+                        Last result: <strong>{{ lastResult() }}</strong>
+                    </p>
+                }
+                <app-sample-code [code]="snippets.returnValue" language="typescript" />
+            </div>
         </div>
-        @if (lastResult()) {
-            <p class="m-0 text-xs text-slate-400">
-                Last result: <strong>{{ lastResult() }}</strong>
-            </p>
-        }
-        <app-sample-code [code]="snippets.returnValue" language="typescript" />
-    </div>
-</div>
+    </bloc-tab>
+    <bloc-tab label="API">
+        <div class="api-card">
+            <app-api-table
+                title="Config"
+                selector="BlocModalConfig"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="config"
+            />
+            <app-api-table
+                title="Reference"
+                selector="BlocModalRef"
+                [columns]="OUTPUTS_COLUMNS"
+                [rows]="ref"
+            />
+            <app-api-table title="CSS Tokens" [columns]="TOKENS_COLUMNS" [rows]="tokens" />
+        </div>
+    </bloc-tab>
+</bloc-tab-group>

@@ -10,212 +10,257 @@
     <app-install-command package="@bloc-ui/accordion" />
 </header>
 
-<!-- Common Patterns -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Common Patterns
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Single Open Item</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Default behaviour keeps focus on one section at a time.
-        </p>
-        <bloc-accordion class="gap-3">
-            <div blocAccordionItem [expanded]="true">
-                <button blocAccordionTrigger class="font-semibold">Overview</button>
-                <div blocAccordionContent class="px-4 py-2">Summary content goes here.</div>
+<bloc-tab-group>
+    <bloc-tab label="Examples">
+        <!-- Common Patterns -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Common Patterns
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Single Open Item</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Default behaviour keeps focus on one section at a time.
+                </p>
+                <bloc-accordion class="gap-3">
+                    <div blocAccordionItem [expanded]="true">
+                        <button blocAccordionTrigger class="font-semibold">Overview</button>
+                        <div blocAccordionContent class="px-4 py-2">Summary content goes here.</div>
+                    </div>
+                    <div blocAccordionItem>
+                        <button blocAccordionTrigger class="font-semibold">Details</button>
+                        <div blocAccordionContent class="px-4 py-2">
+                            More detail goes here when the user wants to drill in.
+                        </div>
+                    </div>
+                </bloc-accordion>
+                <app-sample-code [code]="snippets.basic" />
             </div>
-            <div blocAccordionItem>
-                <button blocAccordionTrigger class="font-semibold">Details</button>
-                <div blocAccordionContent class="px-4 py-2">
-                    More detail goes here when the user wants to drill in.
-                </div>
-            </div>
-        </bloc-accordion>
-        <app-sample-code [code]="snippets.basic" />
-    </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Multi Expand</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Enable multiple expanded sections when users need quick comparison.
-        </p>
-        <bloc-accordion [multi]="true" class="gap-3">
-            <div blocAccordionItem [expanded]="true">
-                <button blocAccordionTrigger class="font-semibold">Design tokens</button>
-                <div blocAccordionContent class="px-4 py-2">
-                    Keep spacing and typography in sync across the system.
-                </div>
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Multi Expand</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Enable multiple expanded sections when users need quick comparison.
+                </p>
+                <bloc-accordion [multi]="true" class="gap-3">
+                    <div blocAccordionItem [expanded]="true">
+                        <button blocAccordionTrigger class="font-semibold">Design tokens</button>
+                        <div blocAccordionContent class="px-4 py-2">
+                            Keep spacing and typography in sync across the system.
+                        </div>
+                    </div>
+                    <div blocAccordionItem [expanded]="true">
+                        <button blocAccordionTrigger class="font-semibold">Accessibility</button>
+                        <div blocAccordionContent class="px-4 py-2">
+                            Preserve semantic structure and keyboard affordances.
+                        </div>
+                    </div>
+                    <div blocAccordionItem>
+                        <button blocAccordionTrigger class="font-semibold">
+                            Release checklist
+                        </button>
+                        <div blocAccordionContent class="px-4 py-2">
+                            Capture validation steps before shipping a new component package.
+                        </div>
+                    </div>
+                </bloc-accordion>
+                <app-sample-code [code]="snippets.multi" />
             </div>
-            <div blocAccordionItem [expanded]="true">
-                <button blocAccordionTrigger class="font-semibold">Accessibility</button>
-                <div blocAccordionContent class="px-4 py-2">
-                    Preserve semantic structure and keyboard affordances.
-                </div>
-            </div>
-            <div blocAccordionItem>
-                <button blocAccordionTrigger class="font-semibold">Release checklist</button>
-                <div blocAccordionContent class="px-4 py-2">
-                    Capture validation steps before shipping a new component package.
-                </div>
-            </div>
-        </bloc-accordion>
-        <app-sample-code [code]="snippets.multi" />
-    </div>
-</div>
+        </div>
 
-<!-- States -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">States</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Disabled</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Visually muted and non-interactive. Clicks are suppressed.
-        </p>
-        <bloc-accordion class="gap-3">
-            <div blocAccordionItem [expanded]="true">
-                <button blocAccordionTrigger class="font-semibold">Enabled section</button>
-                <div blocAccordionContent class="px-4 py-2">This section works normally.</div>
+        <!-- States -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            States
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Disabled</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Visually muted and non-interactive. Clicks are suppressed.
+                </p>
+                <bloc-accordion class="gap-3">
+                    <div blocAccordionItem [expanded]="true">
+                        <button blocAccordionTrigger class="font-semibold">Enabled section</button>
+                        <div blocAccordionContent class="px-4 py-2">
+                            This section works normally.
+                        </div>
+                    </div>
+                    <div blocAccordionItem [disabled]="true">
+                        <button blocAccordionTrigger class="font-semibold">Disabled section</button>
+                        <div blocAccordionContent class="px-4 py-2">
+                            This content cannot be reached.
+                        </div>
+                    </div>
+                </bloc-accordion>
+                <app-sample-code [code]="snippets.disabled" />
             </div>
-            <div blocAccordionItem [disabled]="true">
-                <button blocAccordionTrigger class="font-semibold">Disabled section</button>
-                <div blocAccordionContent class="px-4 py-2">This content cannot be reached.</div>
-            </div>
-        </bloc-accordion>
-        <app-sample-code [code]="snippets.disabled" />
-    </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Rich Content</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Project any content — lists, links, or other components.
-        </p>
-        <bloc-accordion class="gap-3">
-            <div blocAccordionItem [expanded]="true">
-                <button blocAccordionTrigger class="font-semibold">Getting started</button>
-                <div blocAccordionContent class="px-4 py-2">
-                    <ol class="m-0 flex flex-col gap-1 text-sm text-slate-600">
-                        <li>Install the package</li>
-                        <li>Import the directives</li>
-                        <li>Add <code>&lt;bloc-accordion&gt;</code> to your template</li>
-                    </ol>
-                </div>
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Rich Content</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Project any content — lists, links, or other components.
+                </p>
+                <bloc-accordion class="gap-3">
+                    <div blocAccordionItem [expanded]="true">
+                        <button blocAccordionTrigger class="font-semibold">Getting started</button>
+                        <div blocAccordionContent class="px-4 py-2">
+                            <ol class="m-0 flex flex-col gap-1 text-sm text-slate-600">
+                                <li>Install the package</li>
+                                <li>Import the directives</li>
+                                <li>Add <code>&lt;bloc-accordion&gt;</code> to your template</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div blocAccordionItem>
+                        <button blocAccordionTrigger class="font-semibold">Useful links</button>
+                        <div blocAccordionContent class="px-4 py-2">
+                            <ul class="m-0 flex flex-col gap-1 text-sm">
+                                <li>
+                                    <a class="text-blue-600 underline" href="#">Documentation</a>
+                                </li>
+                                <li><a class="text-blue-600 underline" href="#">GitHub</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </bloc-accordion>
+                <app-sample-code [code]="snippets.richContent" />
             </div>
-            <div blocAccordionItem>
-                <button blocAccordionTrigger class="font-semibold">Useful links</button>
-                <div blocAccordionContent class="px-4 py-2">
-                    <ul class="m-0 flex flex-col gap-1 text-sm">
-                        <li><a class="text-blue-600 underline" href="#">Documentation</a></li>
-                        <li><a class="text-blue-600 underline" href="#">GitHub</a></li>
-                    </ul>
-                </div>
-            </div>
-        </bloc-accordion>
-        <app-sample-code [code]="snippets.richContent" />
-    </div>
-</div>
+        </div>
 
-<!-- Custom Icon -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Custom Icon
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Custom Chevron</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Add <code>blocAccordionChevron</code> to your own icon to replace the default chevron.
-            The <code>.is-open</code> rotation is applied automatically.
-        </p>
-        <bloc-accordion class="gap-3">
-            <div blocAccordionItem [expanded]="true">
-                <button blocAccordionTrigger class="font-semibold">
-                    Installation
-                    <app-icon blocAccordionChevron name="plus" />
-                </button>
-                <div blocAccordionContent class="px-4 py-2">
-                    Run <code>npm install @bloc-ui/accordion</code> to get started.
-                </div>
+        <!-- Custom Icon -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Custom Icon
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Custom Chevron</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Add <code>blocAccordionChevron</code> to your own icon to replace the default
+                    chevron. The <code>.is-open</code> rotation is applied automatically.
+                </p>
+                <bloc-accordion class="gap-3">
+                    <div blocAccordionItem [expanded]="true">
+                        <button blocAccordionTrigger class="font-semibold">
+                            Installation
+                            <app-icon blocAccordionChevron name="plus" />
+                        </button>
+                        <div blocAccordionContent class="px-4 py-2">
+                            Run <code>npm install @bloc-ui/accordion</code> to get started.
+                        </div>
+                    </div>
+                    <div blocAccordionItem>
+                        <button blocAccordionTrigger class="font-semibold">
+                            Configuration
+                            <app-icon blocAccordionChevron name="plus" />
+                        </button>
+                        <div blocAccordionContent class="px-4 py-2">
+                            Import the directives in your standalone component or module.
+                        </div>
+                    </div>
+                </bloc-accordion>
+                <app-sample-code [code]="snippets.customIcon" />
             </div>
-            <div blocAccordionItem>
-                <button blocAccordionTrigger class="font-semibold">
-                    Configuration
-                    <app-icon blocAccordionChevron name="plus" />
-                </button>
-                <div blocAccordionContent class="px-4 py-2">
-                    Import the directives in your standalone component or module.
-                </div>
-            </div>
-        </bloc-accordion>
-        <app-sample-code [code]="snippets.customIcon" />
-    </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">No Chevron</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Set <code>[chevron]="false"</code> to hide the icon entirely.
-        </p>
-        <bloc-accordion class="gap-3">
-            <div blocAccordionItem [expanded]="true">
-                <button blocAccordionTrigger class="font-semibold" [chevron]="false">Overview</button>
-                <div blocAccordionContent class="px-4 py-2">Summary content goes here.</div>
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-slate-900">No Chevron</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Set <code>[chevron]="false"</code> to hide the icon entirely.
+                </p>
+                <bloc-accordion class="gap-3">
+                    <div blocAccordionItem [expanded]="true">
+                        <button blocAccordionTrigger class="font-semibold" [chevron]="false">
+                            Overview
+                        </button>
+                        <div blocAccordionContent class="px-4 py-2">Summary content goes here.</div>
+                    </div>
+                    <div blocAccordionItem>
+                        <button blocAccordionTrigger class="font-semibold" [chevron]="false">
+                            Details
+                        </button>
+                        <div blocAccordionContent class="px-4 py-2">More detail goes here.</div>
+                    </div>
+                </bloc-accordion>
+                <app-sample-code [code]="snippets.noChevron" />
             </div>
-            <div blocAccordionItem>
-                <button blocAccordionTrigger class="font-semibold" [chevron]="false">Details</button>
-                <div blocAccordionContent class="px-4 py-2">More detail goes here.</div>
-            </div>
-        </bloc-accordion>
-        <app-sample-code [code]="snippets.noChevron" />
-    </div>
-</div>
+        </div>
 
-<!-- Theming -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Theming</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Custom Tokens</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Override colours via CSS custom properties — works without Tailwind.
-        </p>
-        <bloc-accordion
-            class="gap-3"
-            style="
-                --bloc-accordion-border: #e2e8f0;
-                --bloc-accordion-header-hover-bg: #f0fdf4;
-                --bloc-accordion-focus-ring: #16a34a;
-                --bloc-accordion-title-color: #166534;
-                --bloc-accordion-color: #15803d;
-            "
-        >
-            <div blocAccordionItem [expanded]="true">
-                <button blocAccordionTrigger class="font-semibold">Customised header</button>
-                <div blocAccordionContent class="px-4 py-2">
-                    All token values are driven by CSS custom properties.
-                </div>
+        <!-- Theming -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Theming
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Custom Tokens</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Override colours via CSS custom properties — works without Tailwind.
+                </p>
+                <bloc-accordion
+                    class="gap-3"
+                    style="
+                        --bloc-accordion-border: #e2e8f0;
+                        --bloc-accordion-header-hover-bg: #f0fdf4;
+                        --bloc-accordion-focus-ring: #16a34a;
+                        --bloc-accordion-title-color: #166534;
+                        --bloc-accordion-color: #15803d;
+                    "
+                >
+                    <div blocAccordionItem [expanded]="true">
+                        <button blocAccordionTrigger class="font-semibold">
+                            Customised header
+                        </button>
+                        <div blocAccordionContent class="px-4 py-2">
+                            All token values are driven by CSS custom properties.
+                        </div>
+                    </div>
+                    <div blocAccordionItem>
+                        <button blocAccordionTrigger class="font-semibold">Second section</button>
+                        <div blocAccordionContent class="px-4 py-2">
+                            Override any combination of tokens for your theme.
+                        </div>
+                    </div>
+                </bloc-accordion>
+                <app-sample-code [code]="snippets.theming" />
             </div>
-            <div blocAccordionItem>
-                <button blocAccordionTrigger class="font-semibold">Second section</button>
-                <div blocAccordionContent class="px-4 py-2">
-                    Override any combination of tokens for your theme.
-                </div>
-            </div>
-        </bloc-accordion>
-        <app-sample-code [code]="snippets.theming" />
-    </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Available Tokens</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            All CSS custom properties exposed by the accordion.
-        </p>
-        <ul class="m-0 pl-5 flex flex-col gap-1 text-xs text-slate-600 font-mono">
-            <li>--bloc-accordion-border</li>
-            <li>--bloc-accordion-radius</li>
-            <li>--bloc-accordion-bg</li>
-            <li>--bloc-accordion-header-bg</li>
-            <li>--bloc-accordion-header-hover-bg</li>
-            <li>--bloc-accordion-focus-ring</li>
-            <li>--bloc-accordion-title-color</li>
-            <li>--bloc-accordion-color</li>
-        </ul>
-    </div>
-</div>
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Available Tokens</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    All CSS custom properties exposed by the accordion.
+                </p>
+                <ul class="m-0 pl-5 flex flex-col gap-1 text-xs text-slate-600 font-mono">
+                    <li>--bloc-accordion-border</li>
+                    <li>--bloc-accordion-radius</li>
+                    <li>--bloc-accordion-bg</li>
+                    <li>--bloc-accordion-header-bg</li>
+                    <li>--bloc-accordion-header-hover-bg</li>
+                    <li>--bloc-accordion-focus-ring</li>
+                    <li>--bloc-accordion-title-color</li>
+                    <li>--bloc-accordion-color</li>
+                </ul>
+            </div>
+        </div>
+    </bloc-tab>
+    <bloc-tab label="API">
+        <div class="api-card">
+            <app-api-table
+                title="Inputs"
+                selector="bloc-accordion"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="inputsAccordion"
+            />
+            <app-api-table
+                title="Inputs"
+                selector="[blocAccordionItem]"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="inputsItem"
+            />
+            <app-api-table
+                title="Inputs"
+                selector="[blocAccordionTrigger]"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="inputsTrigger"
+            />
+            <app-api-table title="CSS Tokens" [columns]="TOKENS_COLUMNS" [rows]="tokens" />
+        </div>
+    </bloc-tab>
+</bloc-tab-group>

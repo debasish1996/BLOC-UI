@@ -1,6 +1,7 @@
-import { Component, inject, signal, DOCUMENT } from '@angular/core';
+import { Component, inject, signal, DOCUMENT, HostListener } from '@angular/core';
 import { Router, NavigationEnd, RouterOutlet, RouterLink, RouterLinkActive } from '@angular/router';
 import { filter } from 'rxjs';
+import { GlobalSearch } from './global-search/global-search';
 
 interface MenuItem {
     path: string;
@@ -15,7 +16,7 @@ interface MenuGroup {
 
 @Component({
     selector: 'app-root',
-    imports: [RouterOutlet, RouterLink, RouterLinkActive],
+    imports: [RouterOutlet, RouterLink, RouterLinkActive, GlobalSearch],
     templateUrl: './app.html',
     styleUrl: './app.scss',
 })
@@ -25,6 +26,9 @@ export class App {
 
     /** Mobile drawer state */
     readonly sidebarOpen = signal(false);
+
+    /** Global search modal state */
+    readonly searchOpen = signal(false);
 
     readonly coreGroup: MenuGroup = {
         label: 'Core Components',
@@ -95,6 +99,22 @@ export class App {
                 // Auto-close mobile drawer on navigation
                 this.closeSidebar();
             });
+    }
+
+    @HostListener('document:keydown', ['$event'])
+    onGlobalKeydown(event: KeyboardEvent): void {
+        if ((event.ctrlKey || event.metaKey) && event.key === 'k') {
+            event.preventDefault();
+            this.searchOpen.set(true);
+        }
+    }
+
+    openSearch(): void {
+        this.searchOpen.set(true);
+    }
+
+    closeSearch(): void {
+        this.searchOpen.set(false);
     }
 
     openSidebar(): void {

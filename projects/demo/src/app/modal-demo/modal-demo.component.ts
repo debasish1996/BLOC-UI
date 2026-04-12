@@ -5,14 +5,82 @@ import { ConfirmModalComponent } from './confirm-modal.component';
 import { DataModalComponent } from './data-modal.component';
 import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
+import {
+    ApiTableComponent,
+    INPUTS_COLUMNS,
+    OUTPUTS_COLUMNS,
+    TOKENS_COLUMNS,
+} from '../api-table/api-table.component';
+
+import { BlocTabGroupComponent, BlocTabComponent } from '@bloc-ui/tab';
 
 @Component({
     selector: 'app-modal-demo',
     standalone: true,
-    imports: [BlocButtonComponent, SampleCodeComponent, InstallCommandComponent],
+    imports: [
+        BlocButtonComponent,
+        SampleCodeComponent,
+        InstallCommandComponent,
+        ApiTableComponent,
+        BlocTabGroupComponent,
+        BlocTabComponent,
+    ],
     templateUrl: './modal-demo.component.html',
 })
 export class ModalDemoComponent {
+    readonly INPUTS_COLUMNS = INPUTS_COLUMNS;
+    readonly OUTPUTS_COLUMNS = OUTPUTS_COLUMNS;
+    readonly TOKENS_COLUMNS = TOKENS_COLUMNS;
+
+    readonly config: string[][] = [
+        ['title', 'string', '\u2014', 'Text shown in the modal header.'],
+        ['size', "'sm' | 'md' | 'lg'", "'md'", 'Dialog width variant.'],
+        ['showBackdrop', 'boolean', 'true', 'Show the semi-transparent backdrop behind the modal.'],
+        [
+            'closeOnBackdropClick',
+            'boolean',
+            'true',
+            'Close the modal when the backdrop is clicked.',
+        ],
+        ['showCloseButton', 'boolean', 'true', 'Show the \u2715 close button in the modal header.'],
+        ['panelClass', 'string', '\u2014', 'Extra CSS class(es) added to the modal panel element.'],
+        ['backdropClass', 'string', '\u2014', 'Extra CSS class(es) added to the backdrop element.'],
+        [
+            'data',
+            'D',
+            'null',
+            'Arbitrary data injected into the content component via <code>inject(BLOC_MODAL_DATA)</code>.',
+        ],
+    ];
+
+    readonly ref: string[][] = [
+        [
+            'afterClosed$',
+            'Observable&lt;R | undefined&gt;',
+            'Emits once with the result value when the modal closes, then completes.',
+        ],
+        ['componentInstance', 'Comp', 'Instance of the component rendered inside the modal body.'],
+        [
+            'close(result?)',
+            'void',
+            'Close the modal and optionally pass a result value back to the opener.',
+        ],
+    ];
+
+    readonly tokens: string[][] = [
+        ['--bloc-modal-backdrop', 'rgba(0,0,0,0.5)', 'Backdrop overlay background colour.'],
+        ['--bloc-modal-z-index', '1000', 'Stack order of the backdrop and panel.'],
+        ['--bloc-modal-shadow', '0 8px 32px rgba(0,0,0,0.18)', 'Modal panel box shadow.'],
+        ['--bloc-modal-sm', '360px', 'Max-width for <code>size="sm"</code>.'],
+        ['--bloc-modal-md', '560px', 'Max-width for <code>size="md"</code>.'],
+        ['--bloc-modal-lg', '800px', 'Max-width for <code>size="lg"</code>.'],
+        ['--bloc-modal-header-padding', '16px 20px', 'Header section padding.'],
+        ['--bloc-modal-body-padding', '20px', 'Body section padding.'],
+        ['--bloc-modal-footer-padding', '12px 20px', 'Footer section padding.'],
+        ['--bloc-surface', '#ffffff', 'Modal panel background colour.'],
+        ['--bloc-radius', '8px', 'Modal panel border radius.'],
+    ];
+
     private readonly modal = inject(BlocModalService);
 
     readonly lastResult = signal<string | null>(null);

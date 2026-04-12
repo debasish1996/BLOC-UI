@@ -10,135 +10,167 @@
     <app-install-command package="@bloc-ui/tab" />
 </header>
 
-<!-- Basic -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Basic usage
-</h2>
-<div class="grid grid-cols-1 gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Default</h3>
-        <bloc-tab-group>
-            <bloc-tab label="Profile">
-                <p class="text-sm text-slate-600 m-0">
-                    Profile content goes here. Manage your personal information and preferences.
+<bloc-tab-group>
+    <bloc-tab label="Examples">
+        <!-- Basic -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Basic usage
+        </h2>
+        <div class="grid grid-cols-1 gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Default</h3>
+                <bloc-tab-group>
+                    <bloc-tab label="Profile">
+                        <p class="text-sm text-slate-600 m-0">
+                            Profile content goes here. Manage your personal information and
+                            preferences.
+                        </p>
+                    </bloc-tab>
+                    <bloc-tab label="Settings">
+                        <p class="text-sm text-slate-600 m-0">
+                            Settings content goes here. Configure your application behaviour.
+                        </p>
+                    </bloc-tab>
+                    <bloc-tab label="Billing">
+                        <p class="text-sm text-slate-600 m-0">
+                            Billing content goes here. View invoices and manage payment methods.
+                        </p>
+                    </bloc-tab>
+                </bloc-tab-group>
+                <app-sample-code [code]="snippets.basic" />
+            </div>
+        </div>
+
+        <!-- Manual sizing -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Manual sizing
+        </h2>
+        <div class="grid grid-cols-1 gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Dense spacing</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Adjust tab density by setting the existing size tokens on
+                    <code>bloc-tab-group</code>.
                 </p>
-            </bloc-tab>
-            <bloc-tab label="Settings">
-                <p class="text-sm text-slate-600 m-0">
-                    Settings content goes here. Configure your application behaviour.
+                <bloc-tab-group
+                    style="
+                        --bloc-tab-padding: 6px 12px;
+                        --bloc-tab-font-size: 0.8125rem;
+                        --bloc-tab-body-padding: 12px 0;
+                    "
+                >
+                    <bloc-tab label="Tab 1">
+                        <p class="text-sm text-slate-600 m-0">Compact tab content</p>
+                    </bloc-tab>
+                    <bloc-tab label="Tab 2">
+                        <p class="text-sm text-slate-600 m-0">Compact tab content</p>
+                    </bloc-tab>
+                </bloc-tab-group>
+                <app-sample-code [code]="snippets.manualSizing" />
+            </div>
+        </div>
+
+        <!-- Disabled tab -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Disabled tab
+        </h2>
+        <div class="grid grid-cols-1 gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">One disabled tab</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    The middle tab is disabled and cannot be selected.
                 </p>
-            </bloc-tab>
-            <bloc-tab label="Billing">
-                <p class="text-sm text-slate-600 m-0">
-                    Billing content goes here. View invoices and manage payment methods.
+                <bloc-tab-group>
+                    <bloc-tab label="Active">
+                        <p class="text-sm text-slate-600 m-0">This tab is active.</p>
+                    </bloc-tab>
+                    <bloc-tab label="Disabled" [disabled]="true">
+                        <p class="text-sm text-slate-600 m-0">This should not be visible.</p>
+                    </bloc-tab>
+                    <bloc-tab label="Another">
+                        <p class="text-sm text-slate-600 m-0">Another tab content.</p>
+                    </bloc-tab>
+                </bloc-tab-group>
+                <app-sample-code [code]="snippets.disabled" />
+            </div>
+        </div>
+
+        <!-- Programmatic selection -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Programmatic selection
+        </h2>
+        <div class="grid grid-cols-1 gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">selectedIndex binding</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Control the active tab via <code>[selectedIndex]</code>.
                 </p>
-            </bloc-tab>
-        </bloc-tab-group>
-        <app-sample-code [code]="snippets.basic" />
-    </div>
-</div>
+                <bloc-tab-group
+                    [selectedIndex]="selectedIndex"
+                    (selectedIndexChange)="selectedIndex = $event"
+                >
+                    <bloc-tab label="First">
+                        <p class="text-sm text-slate-600 m-0">First tab panel.</p>
+                    </bloc-tab>
+                    <bloc-tab label="Second">
+                        <p class="text-sm text-slate-600 m-0">Second tab panel.</p>
+                    </bloc-tab>
+                    <bloc-tab label="Third">
+                        <p class="text-sm text-slate-600 m-0">Third tab panel.</p>
+                    </bloc-tab>
+                </bloc-tab-group>
+                <p class="m-0 text-xs text-slate-400">
+                    Current index: <strong>{{ selectedIndex }}</strong>
+                </p>
+                <app-sample-code [code]="snippets.selectedIndex" />
+            </div>
+        </div>
 
-<!-- Manual sizing -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Manual sizing
-</h2>
-<div class="grid grid-cols-1 gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Dense spacing</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Adjust tab density by setting the existing size tokens on
-            <code>bloc-tab-group</code>.
-        </p>
-        <bloc-tab-group
-            style="
-                --bloc-tab-padding: 6px 12px;
-                --bloc-tab-font-size: 0.8125rem;
-                --bloc-tab-body-padding: 12px 0;
-            "
-        >
-            <bloc-tab label="Tab 1">
-                <p class="text-sm text-slate-600 m-0">Compact tab content</p>
-            </bloc-tab>
-            <bloc-tab label="Tab 2">
-                <p class="text-sm text-slate-600 m-0">Compact tab content</p>
-            </bloc-tab>
-        </bloc-tab-group>
-        <app-sample-code [code]="snippets.manualSizing" />
-    </div>
-</div>
-
-<!-- Disabled tab -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Disabled tab
-</h2>
-<div class="grid grid-cols-1 gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">One disabled tab</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            The middle tab is disabled and cannot be selected.
-        </p>
-        <bloc-tab-group>
-            <bloc-tab label="Active">
-                <p class="text-sm text-slate-600 m-0">This tab is active.</p>
-            </bloc-tab>
-            <bloc-tab label="Disabled" [disabled]="true">
-                <p class="text-sm text-slate-600 m-0">This should not be visible.</p>
-            </bloc-tab>
-            <bloc-tab label="Another">
-                <p class="text-sm text-slate-600 m-0">Another tab content.</p>
-            </bloc-tab>
-        </bloc-tab-group>
-        <app-sample-code [code]="snippets.disabled" />
-    </div>
-</div>
-
-<!-- Programmatic selection -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Programmatic selection
-</h2>
-<div class="grid grid-cols-1 gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">selectedIndex binding</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Control the active tab via <code>[selectedIndex]</code>.
-        </p>
-        <bloc-tab-group
-            [selectedIndex]="selectedIndex"
-            (selectedIndexChange)="selectedIndex = $event"
-        >
-            <bloc-tab label="First">
-                <p class="text-sm text-slate-600 m-0">First tab panel.</p>
-            </bloc-tab>
-            <bloc-tab label="Second">
-                <p class="text-sm text-slate-600 m-0">Second tab panel.</p>
-            </bloc-tab>
-            <bloc-tab label="Third">
-                <p class="text-sm text-slate-600 m-0">Third tab panel.</p>
-            </bloc-tab>
-        </bloc-tab-group>
-        <p class="m-0 text-xs text-slate-400">
-            Current index: <strong>{{ selectedIndex }}</strong>
-        </p>
-        <app-sample-code [code]="snippets.selectedIndex" />
-    </div>
-</div>
-
-<!-- Custom tokens -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Custom token
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(340px,100%),1fr))] gap-5">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Green indicator</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Override colours via CSS custom properties.</p>
-        <bloc-tab-group style="--bloc-tab-indicator: #16a34a; --bloc-tab-active-color: #16a34a">
-            <bloc-tab label="Overview">
-                <p class="text-sm text-slate-600 m-0">Green themed tabs.</p>
-            </bloc-tab>
-            <bloc-tab label="Details">
-                <p class="text-sm text-slate-600 m-0">Details content.</p>
-            </bloc-tab>
-        </bloc-tab-group>
-        <app-sample-code [code]="snippets.customToken" />
-    </div>
-</div>
+        <!-- Custom tokens -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Custom token
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(340px,100%),1fr))] gap-5">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Green indicator</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Override colours via CSS custom properties.
+                </p>
+                <bloc-tab-group
+                    style="--bloc-tab-indicator: #16a34a; --bloc-tab-active-color: #16a34a"
+                >
+                    <bloc-tab label="Overview">
+                        <p class="text-sm text-slate-600 m-0">Green themed tabs.</p>
+                    </bloc-tab>
+                    <bloc-tab label="Details">
+                        <p class="text-sm text-slate-600 m-0">Details content.</p>
+                    </bloc-tab>
+                </bloc-tab-group>
+                <app-sample-code [code]="snippets.customToken" />
+            </div>
+        </div>
+    </bloc-tab>
+    <bloc-tab label="API">
+        <div class="api-card">
+            <app-api-table
+                title="Inputs"
+                selector="bloc-tab-group"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="inputsTabGroup"
+            />
+            <app-api-table
+                title="Outputs"
+                selector="bloc-tab-group"
+                [columns]="OUTPUTS_COLUMNS"
+                [rows]="outputsTabGroup"
+            />
+            <app-api-table
+                title="Inputs"
+                selector="bloc-tab"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="inputsTab"
+            />
+            <app-api-table title="CSS Tokens" [columns]="TOKENS_COLUMNS" [rows]="tokens" />
+        </div>
+    </bloc-tab>
+</bloc-tab-group>

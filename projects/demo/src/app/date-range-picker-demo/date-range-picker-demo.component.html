@@ -8,6 +8,10 @@
     <app-install-command package="@bloc-ui/date-picker" />
 </header>
 
+<bloc-tab-group>
+    <bloc-tab label="Examples">
+
+
 <!-- Basic -->
 <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
     Basic range
@@ -170,7 +174,7 @@
 <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
     Custom token
 </h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(300px,100%),1fr))] gap-5">
+<div class="grid grid-cols-[repeat(auto-fill,minmax(min(300px,100%),1fr))] gap-5 mb-10">
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
         <h3 class="m-0 text-base font-semibold text-slate-900">Custom colour</h3>
         <p class="m-0 text-[0.82rem] text-slate-400">
@@ -196,3 +200,14 @@
         <app-sample-code [code]="snippets.rangeCustomToken" />
     </div>
 </div>
+
+
+    </bloc-tab>
+    <bloc-tab label="API">
+        <div class="api-card">
+            <app-api-table title="Inputs" selector="[blocDateRangePickerTrigger]" [columns]="INPUTS_COLUMNS" [rows]="inputsTrigger" />
+            <app-api-table title="Exported properties" selector="#ref" [columns]="OUTPUTS_COLUMNS" [rows]="exportedProps" />
+            <app-api-table title="CSS Tokens" [columns]="TOKENS_COLUMNS" [rows]="tokens" />
+        </div>
+    </bloc-tab>
+</bloc-tab-group>

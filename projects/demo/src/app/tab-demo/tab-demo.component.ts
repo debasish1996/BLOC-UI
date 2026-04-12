@@ -2,6 +2,12 @@ import { Component } from '@angular/core';
 import { BlocTabGroupComponent, BlocTabComponent } from '@bloc-ui/tab';
 import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
+import {
+    ApiTableComponent,
+    INPUTS_COLUMNS,
+    OUTPUTS_COLUMNS,
+    TOKENS_COLUMNS,
+} from '../api-table/api-table.component';
 
 @Component({
     selector: 'app-tab-demo',
@@ -11,10 +17,41 @@ import { SampleCodeComponent } from '../sample-code/sample-code.component';
         BlocTabComponent,
         SampleCodeComponent,
         InstallCommandComponent,
+        ApiTableComponent,
     ],
     templateUrl: './tab-demo.component.html',
 })
 export class TabDemoComponent {
+    readonly INPUTS_COLUMNS = INPUTS_COLUMNS;
+    readonly OUTPUTS_COLUMNS = OUTPUTS_COLUMNS;
+    readonly TOKENS_COLUMNS = TOKENS_COLUMNS;
+
+    readonly inputsTabGroup: string[][] = [
+        ['selectedIndex', 'number', '0', 'Index of the initially active tab.'],
+    ];
+
+    readonly outputsTabGroup: string[][] = [
+        ['selectedIndexChange', 'number', 'Emits the new index whenever the active tab changes.'],
+    ];
+
+    readonly inputsTab: string[][] = [
+        ['label', 'string', '—', 'Label displayed in the tab header. Required.'],
+        ['disabled', 'boolean', 'false', 'Prevents this tab from being selected.'],
+    ];
+
+    readonly tokens: string[][] = [
+        ['--bloc-tab-padding', '10px 16px', 'Padding of each tab button.'],
+        ['--bloc-tab-font-size', '0.875rem', 'Font size of tab buttons.'],
+        ['--bloc-tab-header-gap', '0', 'Gap between tab buttons in the header.'],
+        ['--bloc-tab-border', '#d1d5db', 'Bottom border colour of the tab header.'],
+        ['--bloc-tab-color', '#6b7280', 'Inactive tab text colour.'],
+        ['--bloc-tab-hover-color', '#374151', 'Tab text colour on hover.'],
+        ['--bloc-tab-active-color', '#374151', 'Active tab text colour.'],
+        ['--bloc-tab-indicator', '#6b7280', 'Colour of the active tab bottom indicator.'],
+        ['--bloc-tab-focus-ring', '#6b7280', 'Focus outline colour for keyboard navigation.'],
+        ['--bloc-tab-body-padding', '16px 0', 'Padding of the tab panel body.'],
+    ];
+
     selectedIndex = 0;
 
     readonly snippets = {

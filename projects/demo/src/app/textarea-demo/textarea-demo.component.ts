@@ -9,6 +9,13 @@ import {
 import { BlocTextareaDirective, BlocInputErrorDirective } from 'bloc-ui-core';
 import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
+import {
+    ApiTableComponent,
+    INPUTS_COLUMNS,
+    TOKENS_COLUMNS,
+} from '../api-table/api-table.component';
+
+import { BlocTabGroupComponent, BlocTabComponent } from '@bloc-ui/tab';
 
 @Component({
     selector: 'app-textarea-demo',
@@ -20,10 +27,36 @@ import { SampleCodeComponent } from '../sample-code/sample-code.component';
         ReactiveFormsModule,
         SampleCodeComponent,
         InstallCommandComponent,
+        ApiTableComponent,
+        BlocTabGroupComponent,
+        BlocTabComponent,
     ],
     templateUrl: './textarea-demo.component.html',
 })
 export class TextareaDemoComponent {
+    readonly INPUTS_COLUMNS = INPUTS_COLUMNS;
+    readonly TOKENS_COLUMNS = TOKENS_COLUMNS;
+
+    readonly inputs: string[][] = [
+        [
+            'error',
+            'boolean',
+            'false',
+            'Forces the error border style. Auto-set when a bound form control is invalid and touched.',
+    ],
+    ];
+
+    readonly tokens: string[][] = [
+        ['--bloc-textarea-border', '--bloc-input-border / #d1d5db', 'Default border colour.'],
+        ['--bloc-textarea-focus-border', '--bloc-primary / #6b7280', 'Border colour on focus.'],
+        ['--bloc-textarea-error-border', '--bloc-error / #9ca3af', 'Border colour in error state.'],
+        ['--bloc-textarea-bg', '--bloc-input-bg / #ffffff', 'Background colour.'],
+        ['--bloc-textarea-color', '--bloc-input-color / #374151', 'Text colour.'],
+        ['--bloc-textarea-radius', '4px', 'Border radius.'],
+        ['--bloc-textarea-padding', '8px 12px', 'Inner padding.'],
+        ['--bloc-textarea-min-height', '96px', 'Minimum height before the user can resize.'],
+        ['--bloc-textarea-font-size', '14px', 'Font size.'],
+    ];
     readonly bio = signal('');
 
     ngModelValue = '';

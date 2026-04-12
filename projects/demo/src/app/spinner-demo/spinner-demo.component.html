@@ -6,113 +6,132 @@
     <app-install-command package="@bloc-ui/core" />
 </header>
 
-<!-- Preset sizes -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Preset sizes
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-    <!-- Preset sizes -->
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Preset Sizes</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">xs · sm · md · lg · xl</p>
-        <div class="flex items-center gap-5 flex-wrap">
-            <bloc-spinner size="xs" />
-            <bloc-spinner size="sm" />
-            <bloc-spinner size="md" />
-            <bloc-spinner size="lg" />
-            <bloc-spinner size="xl" />
-        </div>
-        <app-sample-code [code]="snippets.presetSizes" />
-    </div>
+<bloc-tab-group>
+    <bloc-tab label="Examples">
+        <!-- Preset sizes -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Preset sizes
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <!-- Preset sizes -->
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Preset Sizes</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">xs · sm · md · lg · xl</p>
+                <div class="flex items-center gap-5 flex-wrap">
+                    <bloc-spinner size="xs" />
+                    <bloc-spinner size="sm" />
+                    <bloc-spinner size="md" />
+                    <bloc-spinner size="lg" />
+                    <bloc-spinner size="xl" />
+                </div>
+                <app-sample-code [code]="snippets.presetSizes" />
+            </div>
 
-    <!-- Default (md) -->
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Default</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Uses <code>size="md"</code> when no size is provided.
-        </p>
-        <div>
-            <span blocSpinner></span>
-        </div>
-        <app-sample-code [code]="snippets.default" />
-    </div>
+            <!-- Default (md) -->
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Default</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Uses <code>size="md"</code> when no size is provided.
+                </p>
+                <div>
+                    <span blocSpinner></span>
+                </div>
+                <app-sample-code [code]="snippets.default" />
+            </div>
 
-    <!-- Inline with text -->
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Inline with text</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Inline next to text for inline loading states.
-        </p>
-        <div class="flex items-center gap-2 text-sm text-slate-600">
-            <span blocSpinner size="sm"></span>
-            Loading data...
+            <!-- Inline with text -->
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Inline with text</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Inline next to text for inline loading states.
+                </p>
+                <div class="flex items-center gap-2 text-sm text-slate-600">
+                    <span blocSpinner size="sm"></span>
+                    Loading data...
+                </div>
+                <app-sample-code [code]="snippets.inlineText" />
+            </div>
         </div>
-        <app-sample-code [code]="snippets.inlineText" />
-    </div>
-</div>
 
-<!-- Custom sizing -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Custom sizing
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-    <!-- Custom width/height inputs -->
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Custom Size via Inputs</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Pass <code>width</code> and <code>height</code> inputs for any dimensions.
-        </p>
-        <div class="flex items-center gap-4">
-            <span blocSpinner width="56px" height="56px"></span>
-            <span blocSpinner width="4rem" height="4rem"></span>
-        </div>
-        <app-sample-code [code]="snippets.customInputs" />
-    </div>
+        <!-- Custom sizing -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Custom sizing
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <!-- Custom width/height inputs -->
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Custom Size via Inputs</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Pass <code>width</code> and <code>height</code> inputs for any dimensions.
+                </p>
+                <div class="flex items-center gap-4">
+                    <span blocSpinner width="56px" height="56px"></span>
+                    <span blocSpinner width="4rem" height="4rem"></span>
+                </div>
+                <app-sample-code [code]="snippets.customInputs" />
+            </div>
 
-    <!-- Custom via class (Tailwind) -->
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Custom Size via Class</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Apply Tailwind or custom utility classes directly.
-        </p>
-        <div>
-            <span blocSpinner class="w-16 h-16"></span>
+            <!-- Custom via class (Tailwind) -->
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Custom Size via Class</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Apply Tailwind or custom utility classes directly.
+                </p>
+                <div>
+                    <span blocSpinner class="w-16 h-16"></span>
+                </div>
+                <app-sample-code [code]="snippets.customClass" />
+            </div>
         </div>
-        <app-sample-code [code]="snippets.customClass" />
-    </div>
-</div>
 
-<!-- Theming -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Theming</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5">
-    <!-- Themed via Tailwind text colour -->
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Custom Colour via Tailwind</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Apply a single <code>text-&#123;color&#125;</code> class — the track is derived
-            automatically.
-        </p>
-        <div class="flex items-center gap-4">
-            <span blocSpinner size="lg" class="text-emerald-500"></span>
-            <span blocSpinner size="lg" class="text-amber-500"></span>
-            <span blocSpinner size="lg" class="text-red-500"></span>
-        </div>
-        <app-sample-code [code]="snippets.customColour" />
-    </div>
+        <!-- Theming -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Theming
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5">
+            <!-- Themed via Tailwind text colour -->
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">
+                    Custom Colour via Tailwind
+                </h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Apply a single <code>text-&#123;color&#125;</code> class — the track is derived
+                    automatically.
+                </p>
+                <div class="flex items-center gap-4">
+                    <span blocSpinner size="lg" class="text-emerald-500"></span>
+                    <span blocSpinner size="lg" class="text-amber-500"></span>
+                    <span blocSpinner size="lg" class="text-red-500"></span>
+                </div>
+                <app-sample-code [code]="snippets.customColour" />
+            </div>
 
-    <!-- Custom token -->
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Custom token</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Override colour via CSS custom properties — works without Tailwind.
-        </p>
-        <div>
-            <span
-                blocSpinner
-                size="lg"
-                style="--bloc-spinner-color: #10b981; --bloc-spinner-track: #d1fae5"
-            ></span>
+            <!-- Custom token -->
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Custom token</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Override colour via CSS custom properties — works without Tailwind.
+                </p>
+                <div>
+                    <span
+                        blocSpinner
+                        size="lg"
+                        style="--bloc-spinner-color: #10b981; --bloc-spinner-track: #d1fae5"
+                    ></span>
+                </div>
+                <app-sample-code [code]="snippets.customToken" />
+            </div>
         </div>
-        <app-sample-code [code]="snippets.customToken" />
-    </div>
-</div>
+    </bloc-tab>
+    <bloc-tab label="API">
+        <div class="api-card">
+            <app-api-table
+                title="Inputs"
+                selector="bloc-spinner / [blocSpinner]"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="inputs"
+            />
+            <app-api-table title="CSS Tokens" [columns]="TOKENS_COLUMNS" [rows]="tokens" />
+        </div>
+    </bloc-tab>
+</bloc-tab-group>

@@ -1,0 +1,31 @@
+<div class="api-section">
+    <div class="api-section-header">
+        <span class="api-badge api-badge--{{ badgeVariant() }}">{{ title() }}</span>
+        @if (selector()) {
+            <code class="api-selector">{{ selector() }}</code>
+        }
+    </div>
+    @if (note()) {
+        <p class="api-note" [innerHTML]="note()"></p>
+    }
+    <div class="api-table-wrap">
+        <table>
+            <thead>
+                <tr>
+                    @for (col of columns(); track col.header) {
+                        <th>{{ col.header }}</th>
+                    }
+                </tr>
+            </thead>
+            <tbody>
+                @for (row of rows(); track $index) {
+                    <tr>
+                        @for (cell of row; track $index; let ci = $index) {
+                            <td [attr.data-type]="columns()[ci]?.cellType" [innerHTML]="cell"></td>
+                        }
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
+</div>

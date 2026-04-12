@@ -3,6 +3,11 @@ import { BlocVirtualScrollComponent, BlocVirtualItemDirective } from '@bloc-ui/v
 import { BlocTableComponent, BlocColumnComponent, BlocCellDefDirective } from '@bloc-ui/table';
 import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
+import {
+    ApiTableComponent,
+    INPUTS_COLUMNS,
+    OUTPUTS_COLUMNS,
+} from '../api-table/api-table.component';
 
 interface User {
     [key: string]: unknown;
@@ -12,6 +17,8 @@ interface User {
     role: string;
     status: 'Active' | 'Inactive';
 }
+
+import { BlocTabGroupComponent, BlocTabComponent } from '@bloc-ui/tab';
 
 @Component({
     selector: 'app-virtual-scroll-demo',
@@ -24,10 +31,59 @@ interface User {
         BlocCellDefDirective,
         SampleCodeComponent,
         InstallCommandComponent,
+        ApiTableComponent,
+        BlocTabGroupComponent,
+        BlocTabComponent,
     ],
     templateUrl: './virtual-scroll-demo.component.html',
 })
 export class VirtualScrollDemoComponent {
+    readonly INPUTS_COLUMNS = INPUTS_COLUMNS;
+    readonly OUTPUTS_COLUMNS = OUTPUTS_COLUMNS;
+
+    readonly inputs: string[][] = [
+        ['items', 'T[]', '[]', 'Full data array to virtualise.'],
+        [
+            'itemHeight',
+            'number (required)',
+            '—',
+            'Estimated row height in pixels. Used for scroll math on unmeasured items.',
+    ],
+        [
+            'overscan',
+            'number',
+            '10',
+            'Number of extra items rendered above and below the visible viewport.',
+    ],
+        [
+            'autoMeasure',
+            'boolean',
+            'false',
+            'Measures actual rendered row heights and caches them. Required for variable-height rows.',
+    ],
+    ];
+
+    readonly exportedState: string[][] = [
+        [
+            'visibleItems()',
+            'T[]',
+            'Signal getter returning the currently rendered slice of <code>items</code>.',
+    ],
+        [
+            'scrollToIndex(index)',
+            'void',
+            'Scrolls the viewport so the item at the given absolute index is at the top.',
+    ],
+    ];
+
+    readonly templateContext: string[][] = [
+        ['$implicit (let-item)', 'T', 'The data item for this row.'],
+        [
+            'index (let-i="index")',
+            'number',
+            'Absolute index of this item in the full <code>items</code> array.',
+    ],
+    ];
     /* ── 10 000 simple items ── */
     readonly simpleItems = Array.from({ length: 10_000 }, (_, i) => ({
         id: i + 1,

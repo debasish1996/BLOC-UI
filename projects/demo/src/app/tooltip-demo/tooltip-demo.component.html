@@ -7,145 +7,163 @@
     <app-install-command package="@bloc-ui/tooltip" />
 </header>
 
-<!-- Basic usage -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Basic Usage
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Simple Tooltip</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Attach <code>[blocTooltip]</code> to any element. Hover or focus to trigger.
-        </p>
-        <div class="flex items-center gap-3 flex-wrap">
-            <button blocButton [blocTooltip]="'Save changes'">Save</button>
-        </div>
-        <app-sample-code [code]="snippets.basic" />
-    </div>
+<bloc-tab-group>
+    <bloc-tab label="Examples">
+        <!-- Basic usage -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Basic Usage
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Simple Tooltip</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Attach <code>[blocTooltip]</code> to any element. Hover or focus to trigger.
+                </p>
+                <div class="flex items-center gap-3 flex-wrap">
+                    <button blocButton [blocTooltip]="'Save changes'">Save</button>
+                </div>
+                <app-sample-code [code]="snippets.basic" />
+            </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Disabled Tooltip</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Set <code>[tooltipDisabled]="true"</code> to suppress the tooltip entirely.
-        </p>
-        <div class="flex items-center gap-3 flex-wrap">
-            <button
-                blocButton
-                variant="secondary"
-                [disabled]="true"
-                [blocTooltip]="'You cannot see me'"
-                [tooltipDisabled]="true"
-            >
-                Disabled tooltip
-            </button>
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Disabled Tooltip</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Set <code>[tooltipDisabled]="true"</code> to suppress the tooltip entirely.
+                </p>
+                <div class="flex items-center gap-3 flex-wrap">
+                    <button
+                        blocButton
+                        variant="secondary"
+                        [disabled]="true"
+                        [blocTooltip]="'You cannot see me'"
+                        [tooltipDisabled]="true"
+                    >
+                        Disabled tooltip
+                    </button>
+                </div>
+                <app-sample-code [code]="snippets.disabled" />
+            </div>
         </div>
-        <app-sample-code [code]="snippets.disabled" />
-    </div>
-</div>
 
-<!-- Positions -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Positions</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">All Placements</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Use <code>tooltipPosition</code> to control placement: top, bottom, left, right.
-        </p>
-        <div
-            class="grid py-4"
-            style="
-                grid-template-areas: 'left top right' '. bottom .';
-                grid-template-columns: 1fr 1fr 1fr;
-                gap: 0.75rem;
-            "
-        >
-            <button
-                blocButton
-                style="grid-area: left"
-                [blocTooltip]="'Left tooltip'"
-                tooltipPosition="left"
-            >
-                Left
-            </button>
-            <button
-                blocButton
-                variant="secondary"
-                style="grid-area: top"
-                [blocTooltip]="'Top tooltip'"
-                tooltipPosition="top"
-            >
-                Top
-            </button>
-            <button
-                blocButton
-                style="grid-area: right"
-                [blocTooltip]="'Right tooltip'"
-                tooltipPosition="right"
-            >
-                Right
-            </button>
-            <button
-                blocButton
-                variant="secondary"
-                style="grid-area: bottom"
-                [blocTooltip]="'Bottom tooltip'"
-                tooltipPosition="bottom"
-            >
-                Bottom
-            </button>
+        <!-- Positions -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Positions
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">All Placements</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Use <code>tooltipPosition</code> to control placement: top, bottom, left, right.
+                </p>
+                <div
+                    class="grid py-4"
+                    style="
+                        grid-template-areas: 'left top right' '. bottom .';
+                        grid-template-columns: 1fr 1fr 1fr;
+                        gap: 0.75rem;
+                    "
+                >
+                    <button
+                        blocButton
+                        style="grid-area: left"
+                        [blocTooltip]="'Left tooltip'"
+                        tooltipPosition="left"
+                    >
+                        Left
+                    </button>
+                    <button
+                        blocButton
+                        variant="secondary"
+                        style="grid-area: top"
+                        [blocTooltip]="'Top tooltip'"
+                        tooltipPosition="top"
+                    >
+                        Top
+                    </button>
+                    <button
+                        blocButton
+                        style="grid-area: right"
+                        [blocTooltip]="'Right tooltip'"
+                        tooltipPosition="right"
+                    >
+                        Right
+                    </button>
+                    <button
+                        blocButton
+                        variant="secondary"
+                        style="grid-area: bottom"
+                        [blocTooltip]="'Bottom tooltip'"
+                        tooltipPosition="bottom"
+                    >
+                        Bottom
+                    </button>
+                </div>
+                <app-sample-code [code]="snippets.positions" />
+            </div>
         </div>
-        <app-sample-code [code]="snippets.positions" />
-    </div>
-</div>
 
-<!-- Delays -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Delay Control
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Custom Show / Hide Delay</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            <code>tooltipShowDelay</code> and <code>tooltipHideDelay</code> accept milliseconds.
-        </p>
-        <div class="flex items-center gap-3 flex-wrap">
-            <button
-                blocButton
-                [blocTooltip]="'Slow show, fast hide'"
-                [tooltipShowDelay]="600"
-                [tooltipHideDelay]="0"
-            >
-                Hover me
-            </button>
+        <!-- Delays -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Delay Control
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">Custom Show / Hide Delay</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    <code>tooltipShowDelay</code> and <code>tooltipHideDelay</code> accept
+                    milliseconds.
+                </p>
+                <div class="flex items-center gap-3 flex-wrap">
+                    <button
+                        blocButton
+                        [blocTooltip]="'Slow show, fast hide'"
+                        [tooltipShowDelay]="600"
+                        [tooltipHideDelay]="0"
+                    >
+                        Hover me
+                    </button>
+                </div>
+                <app-sample-code [code]="snippets.delays" />
+            </div>
         </div>
-        <app-sample-code [code]="snippets.delays" />
-    </div>
-</div>
 
-<!-- Theming -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Custom Tokens
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">CSS Token Override</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Override <code>--bloc-tooltip-*</code> tokens to customize appearance per-instance or
-            globally.
-        </p>
-        <div class="flex items-center gap-3 flex-wrap">
-            <button
-                blocButton
-                [blocTooltip]="'Custom styled tooltip'"
-                style="
-                    --bloc-tooltip-bg: #1e40af;
-                    --bloc-tooltip-color: #bfdbfe;
-                    --bloc-tooltip-radius: 8px;
-                "
-            >
-                Themed
-            </button>
+        <!-- Theming -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+            Custom Tokens
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-slate-900">CSS Token Override</h3>
+                <p class="m-0 text-[0.82rem] text-slate-400">
+                    Override <code>--bloc-tooltip-*</code> tokens to customize appearance
+                    per-instance or globally.
+                </p>
+                <div class="flex items-center gap-3 flex-wrap">
+                    <button
+                        blocButton
+                        [blocTooltip]="'Custom styled tooltip'"
+                        style="
+                            --bloc-tooltip-bg: #1e40af;
+                            --bloc-tooltip-color: #bfdbfe;
+                            --bloc-tooltip-radius: 8px;
+                        "
+                    >
+                        Themed
+                    </button>
+                </div>
+                <app-sample-code [code]="snippets.customToken" />
+            </div>
         </div>
-        <app-sample-code [code]="snippets.customToken" />
-    </div>
-</div>
+    </bloc-tab>
+    <bloc-tab label="API">
+        <div class="api-card">
+            <app-api-table
+                title="Inputs"
+                selector="[blocTooltip]"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="inputs"
+            />
+            <app-api-table title="CSS Tokens" [columns]="TOKENS_COLUMNS" [rows]="tokens" />
+        </div>
+    </bloc-tab>
+</bloc-tab-group>

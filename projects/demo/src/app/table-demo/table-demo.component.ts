@@ -2,6 +2,13 @@ import { Component } from '@angular/core';
 import { BlocTableComponent, BlocColumnComponent, BlocCellDefDirective } from '@bloc-ui/table';
 import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
+import {
+    ApiTableComponent,
+    INPUTS_COLUMNS,
+    TOKENS_COLUMNS,
+} from '../api-table/api-table.component';
+
+import { BlocTabGroupComponent, BlocTabComponent } from '@bloc-ui/tab';
 
 @Component({
     selector: 'app-table-demo',
@@ -12,10 +19,64 @@ import { SampleCodeComponent } from '../sample-code/sample-code.component';
         BlocCellDefDirective,
         SampleCodeComponent,
         InstallCommandComponent,
+        ApiTableComponent,
+        BlocTabGroupComponent,
+        BlocTabComponent,
     ],
     templateUrl: './table-demo.component.html',
 })
 export class TableDemoComponent {
+    readonly INPUTS_COLUMNS = INPUTS_COLUMNS;
+    readonly TOKENS_COLUMNS = TOKENS_COLUMNS;
+
+    readonly inputs: string[][] = [
+        ['data', 'Record&lt;string, unknown&gt;[]', '[]', 'Array of row objects to display.'],
+        ['striped', 'boolean', 'false', 'Applies alternating row background colours.'],
+        ['bordered', 'boolean', 'false', 'Shows cell borders on all sides.'],
+        ['hoverable', 'boolean', 'false', 'Highlights rows on hover.'],
+        ['sticky', 'boolean', 'false', 'Keeps the header fixed while the table body scrolls.'],
+        ['size', "'sm' | 'md' | 'lg'", "'md'", 'Preset cell padding and font size.'],
+        [
+            'trackBy',
+            'string',
+            "''",
+            'Row field used as the <code>&#64;for</code> track identity. Falls back to row index.',
+    ],
+    ];
+
+    readonly inputsColumn: string[][] = [
+        ['field', 'string', 'required', 'The object key to read from each data row.'],
+        ['header', 'string', "''", 'Column header label text.'],
+    ];
+
+    readonly tokens: string[][] = [
+        ['--bloc-table-border', '#d1d5db', 'Border and divider colour for header and rows.'],
+        ['--bloc-table-th-bg', 'transparent', 'Header cell background colour.'],
+        ['--bloc-table-th-color', '#374151', 'Header cell text colour.'],
+        ['--bloc-table-td-color', '#6b7280', 'Body cell text colour.'],
+        [
+            '--bloc-table-stripe-bg',
+            '#f9fafb',
+            'Even-row background when <code>[striped]</code> is on.',
+    ],
+        [
+            '--bloc-table-hover-bg',
+            '#f3f4f6',
+            'Row background on hover when <code>[hoverable]</code> is on.',
+    ],
+        [
+            '--bloc-table-th-padding',
+            '10px 14px',
+            'Header cell padding (overridden by <code>size</code> variants).',
+    ],
+        [
+            '--bloc-table-td-padding',
+            '10px 14px',
+            'Body cell padding (overridden by <code>size</code> variants).',
+    ],
+        ['--bloc-table-font-size', '0.8125rem', 'Font size for header and body cells.'],
+    ];
+
     readonly users = [
         { name: 'Alice Johnson', email: 'alice@example.com', role: 'Admin', status: 'Active' },
         { name: 'Bob Smith', email: 'bob@example.com', role: 'Editor', status: 'Active' },

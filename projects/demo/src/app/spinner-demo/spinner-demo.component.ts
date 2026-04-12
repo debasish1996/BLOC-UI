@@ -2,14 +2,59 @@ import { Component } from '@angular/core';
 import { BlocSpinnerDirective } from 'bloc-ui-core';
 import { InstallCommandComponent } from '../install-command/install-command.component';
 import { SampleCodeComponent } from '../sample-code/sample-code.component';
+import {
+    ApiTableComponent,
+    INPUTS_COLUMNS,
+    TOKENS_COLUMNS,
+} from '../api-table/api-table.component';
+
+import { BlocTabGroupComponent, BlocTabComponent } from '@bloc-ui/tab';
 
 @Component({
     selector: 'app-spinner-demo',
     standalone: true,
-    imports: [BlocSpinnerDirective, SampleCodeComponent, InstallCommandComponent],
+    imports: [
+        BlocSpinnerDirective,
+        SampleCodeComponent,
+        InstallCommandComponent,
+        ApiTableComponent,
+        BlocTabGroupComponent,
+        BlocTabComponent,
+    ],
     templateUrl: './spinner-demo.component.html',
 })
 export class SpinnerDemoComponent {
+    readonly INPUTS_COLUMNS = INPUTS_COLUMNS;
+    readonly TOKENS_COLUMNS = TOKENS_COLUMNS;
+
+    readonly inputs: string[][] = [
+        [
+            'size',
+            "'xs' | 'sm' | 'md' | 'lg' | 'xl' | null",
+            "'md'",
+            'Preset size. Pass <code>null</code> to control dimensions entirely via class or inline style.',
+    ],
+        [
+            'width',
+            'string',
+            "''",
+            'Explicit width as an inline style value (e.g. <code>"40px"</code>, <code>"2rem"</code>). Overrides the size preset.',
+    ],
+        [
+            'height',
+            'string',
+            "''",
+            'Explicit height as an inline style value (e.g. <code>"40px"</code>, <code>"2rem"</code>). Overrides the size preset.',
+    ],
+    ];
+
+    readonly tokens: string[][] = [
+        [
+            '--bloc-spinner-color',
+            '#6b7280',
+            'Arc colour. The track is automatically derived as 20% opacity of this value. Any Tailwind <code>text-{color}</code> class also sets this.',
+    ],
+    ];
     readonly snippets = {
         presetSizes: `<bloc-spinner size="xs" />\n<bloc-spinner size="sm" />\n<bloc-spinner size="md" />\n<bloc-spinner size="lg" />\n<bloc-spinner size="xl" />`,
         default: `<span blocSpinner></span>`,

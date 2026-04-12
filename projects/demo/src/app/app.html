@@ -1,4 +1,4 @@
-<div class="flex h-screen bg-slate-50">
+<div class="bg-slate-50">
     <!-- Mobile top bar -->
     <header
         class="mobile-topbar fixed top-0 left-0 right-0 h-14 bg-slate-800 text-white flex items-center justify-between px-4 z-40 md:hidden"
@@ -78,6 +78,30 @@
             <img src="logo.svg" alt="Bloc UI" class="h-7 w-7" />
             <span class="text-[1.1rem] font-bold tracking-[0.04em] text-white">Bloc UI</span>
         </a>
+        <!-- Search trigger -->
+        <button
+            class="mx-3 mt-3 mb-1 flex items-center gap-2.5 px-3 py-2 rounded-lg bg-slate-700/50 hover:bg-slate-700 text-slate-400 hover:text-slate-200 transition-colors border border-slate-600/40 cursor-pointer w-[calc(100%-1.5rem)]"
+            (click)="openSearch()"
+            aria-label="Open search (Ctrl+K)"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="shrink-0"
+            >
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <span class="flex-1 text-left text-[0.8rem]">Search...</span>
+            <span class="text-[0.68rem] text-slate-500 font-mono">Ctrl K</span>
+        </button>
         <nav class="flex flex-col py-3 overflow-y-auto flex-1 min-h-0">
             <!-- Core Components group -->
             <button
@@ -278,9 +302,14 @@
         </div>
     </aside>
 
+    <!-- Global search modal -->
+    @if (searchOpen()) {
+        <app-global-search (closed)="closeSearch()" />
+    }
+
     <!-- Main content -->
     <main
-        class="flex-1 pt-[4.5rem] pb-6 px-4 md:pt-8 md:pb-8 md:ml-55 md:px-10 overflow-y-auto flex flex-col min-h-screen"
+        class="pt-[4.5rem] pb-6 px-4 md:pt-8 md:pb-8 md:ml-55 md:px-10 flex flex-col min-h-screen"
     >
         <div class="flex-1">
             <router-outlet />
