@@ -163,15 +163,12 @@ export class BlocPaginationComponent {
     );
 
     constructor() {
-        effect(
-            () => {
-                const next = this.currentPage();
-                if (next !== this.page()) {
-                    this.page.set(next);
-                }
-            },
-            { allowSignalWrites: true },
-        );
+        effect(() => {
+            const next = this.currentPage();
+            if (next !== this.page()) {
+                this.page.set(next);
+            }
+        });
     }
 
     goToPage(page: number): void {

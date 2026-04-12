@@ -1,5 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
-import { navigateTo } from './utils/test-helpers';
+import { navigateTo, collectConsoleErrors } from './utils/test-helpers';
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
@@ -55,10 +55,7 @@ test.describe('DatePickerComponent', () => {
         });
 
         test('does not log console errors on load', async ({ page }) => {
-            const errors: string[] = [];
-            page.on('console', (msg) => {
-                if (msg.type() === 'error') errors.push(msg.text());
-            });
+            const errors = collectConsoleErrors(page);
             await navigateTo(page, '/date-picker');
             expect(errors).toHaveLength(0);
         });

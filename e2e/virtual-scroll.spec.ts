@@ -1,5 +1,5 @@
 import { test, expect, Page } from '@playwright/test';
-import { navigateTo } from './utils/test-helpers';
+import { navigateTo, collectConsoleErrors } from './utils/test-helpers';
 
 // ── Helpers ────────────────────────────────────────────────────────────────
 
@@ -52,10 +52,7 @@ test.describe('VirtualScrollDemoComponent', () => {
         });
 
         test('does not log console errors on load', async ({ page }) => {
-            const errors: string[] = [];
-            page.on('console', (msg) => {
-                if (msg.type() === 'error') errors.push(msg.text());
-            });
+            const errors = collectConsoleErrors(page);
             await navigateTo(page, '/virtual-scroll');
             expect(errors).toHaveLength(0);
         });
