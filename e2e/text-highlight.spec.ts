@@ -68,7 +68,7 @@ test.describe('TextHighlightDemoComponent', () => {
         test('No Match card renders text without any <mark> element', async ({ page }) => {
             const noMatchCard = card(page, 'No Match');
             await expect(noMatchCard.locator('mark')).toHaveCount(0);
-            await expect(noMatchCard.locator('[blocTextHighlight]')).toContainText('Banana');
+            await expect(noMatchCard.locator('.flex.flex-col.gap-2 span')).toContainText('Banana');
         });
     });
 

@@ -73,13 +73,10 @@ test.describe('SelectDemoComponent', () => {
         test('dropdown panel contains the projected options', async ({ page }) => {
             const simpleCard = card(page, 'Simple Select');
             await simpleCard.locator('bloc-select').click();
-            await expect(page.locator('[role="option"]', { hasText: 'Apple' }).first()).toBeVisible();
-            await expect(
-                page.locator('[role="option"]', { hasText: 'Banana' }).first(),
-            ).toBeVisible();
-            await expect(
-                page.locator('[role="option"]', { hasText: 'Orange' }).first(),
-            ).toBeVisible();
+            const panel = page.locator('.bloc-overlay-container .bloc-select__panel');
+            await expect(panel.locator('[role="option"]', { hasText: 'Apple' })).toBeVisible();
+            await expect(panel.locator('[role="option"]', { hasText: 'Banana' })).toBeVisible();
+            await expect(panel.locator('[role="option"]', { hasText: 'Orange' })).toBeVisible();
         });
 
         test('pressing Escape closes the dropdown', async ({ page }) => {
@@ -99,7 +96,8 @@ test.describe('SelectDemoComponent', () => {
             const simpleCard = card(page, 'Simple Select');
             const select = simpleCard.locator('bloc-select');
             await select.click();
-            await page.locator('[role="option"]', { hasText: 'Banana' }).first().click();
+            const panel = page.locator('.bloc-overlay-container .bloc-select__panel');
+            await panel.locator('[role="option"]', { hasText: 'Banana' }).click();
             await expect(select).toHaveAttribute('aria-expanded', 'false');
             await expect(select).toContainText('Banana');
         });
@@ -107,7 +105,8 @@ test.describe('SelectDemoComponent', () => {
         test('reactive FormControl card reflects selected value below select', async ({ page }) => {
             const reactiveCard = card(page, 'Reactive FormControl');
             await reactiveCard.locator('bloc-select').click();
-            await page.locator('[role="option"]', { hasText: 'Apple' }).first().click();
+            const panel = page.locator('.bloc-overlay-container .bloc-select__panel');
+            await panel.locator('[role="option"]', { hasText: 'Apple' }).click();
             await expect(reactiveCard.locator('strong')).toContainText('apple');
         });
     });
@@ -119,24 +118,25 @@ test.describe('SelectDemoComponent', () => {
             const disabledCard = card(page, 'Disabled');
             const select = disabledCard.locator('bloc-select');
             await expect(select).toHaveAttribute('aria-disabled', 'true');
-            await select.click();
+            await select.click({ force: true });
             await expect(select).toHaveAttribute('aria-expanded', 'false');
         });
 
         test('searchable select shows a search input when opened', async ({ page }) => {
             const searchCard = card(page, 'Search + Clear');
             await searchCard.locator('bloc-select').click();
-            await expect(page.locator('.bloc-select__search-input').first()).toBeVisible();
+            const panel = page.locator('.bloc-overlay-container .bloc-select__panel');
+            await expect(panel.locator('.bloc-select__search-input')).toBeVisible();
         });
 
         test('typing in search input filters options', async ({ page }) => {
             const searchCard = card(page, 'Search + Clear');
             await searchCard.locator('bloc-select').click();
-            await page.locator('.bloc-select__search-input').first().fill('ban');
-            const visibleOptions = page.locator('[role="option"]:not([hidden])', {
-                hasText: 'Banana',
-            });
-            await expect(visibleOptions.first()).toBeVisible();
+            const panel = page.locator('.bloc-overlay-container .bloc-select__panel');
+            await panel.locator('.bloc-select__search-input').fill('ban');
+            await expect(
+                panel.locator('[role="option"]:not([hidden])', { hasText: 'Banana' }),
+            ).toBeVisible();
         });
     });
 });

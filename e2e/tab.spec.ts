@@ -59,19 +59,22 @@ test.describe('TabDemoComponent', () => {
 
     test.describe('Basic usage', () => {
         test('Profile tab panel is active by default', async ({ page }) => {
-            await expect(card(page, 'Default').getByRole('tabpanel')).toBeVisible();
+            const demoTabs = card(page, 'Default').locator('bloc-tab-group').first();
+            await expect(demoTabs.getByRole('tabpanel')).toBeVisible();
         });
 
         test('clicking Settings tab shows Settings panel', async ({ page }) => {
             const defaultCard = card(page, 'Default');
-            await defaultCard.getByRole('tab', { name: 'Settings' }).click();
-            await expect(defaultCard.getByRole('tabpanel')).toBeVisible();
+            const demoTabs = defaultCard.locator('bloc-tab-group').first();
+            await demoTabs.getByRole('tab', { name: 'Settings' }).click();
+            await expect(demoTabs.getByRole('tabpanel')).toBeVisible();
         });
 
         test('clicking Billing tab switches active panel', async ({ page }) => {
             const defaultCard = card(page, 'Default');
-            await defaultCard.getByRole('tab', { name: 'Billing' }).click();
-            await expect(defaultCard.getByRole('tabpanel')).toBeVisible();
+            const demoTabs = defaultCard.locator('bloc-tab-group').first();
+            await demoTabs.getByRole('tab', { name: 'Billing' }).click();
+            await expect(demoTabs.getByRole('tabpanel')).toBeVisible();
         });
     });
 
