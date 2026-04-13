@@ -19,7 +19,7 @@
         <p class="m-0 text-[0.82rem] text-slate-400">
             <code>BlocToastService</code> is provided in root — just inject it in your component.
         </p>
-        <app-sample-code [code]="snippets.inject" language="typescript" />
+        <app-sample-code [files]="snippets.inject" />
     </div>
 
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -27,7 +27,7 @@
         <p class="m-0 text-[0.82rem] text-slate-400">
             Place the toast container component once in your root template.
         </p>
-        <app-sample-code [code]="snippets.container" language="typescript" />
+        <app-sample-code [files]="snippets.container" />
     </div>
 </div>
 
@@ -38,28 +38,28 @@
         <h3 class="m-0 text-base font-semibold text-slate-900">Info</h3>
         <p class="m-0 text-[0.82rem] text-slate-400">Default type for general messages.</p>
         <button blocButton (clicked)="showInfo()">Show Info</button>
-        <app-sample-code [code]="snippets.info" language="typescript" />
+        <app-sample-code [files]="snippets.info" />
     </div>
 
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
         <h3 class="m-0 text-base font-semibold text-slate-900">Success</h3>
         <p class="m-0 text-[0.82rem] text-slate-400">Confirms a completed action.</p>
         <button blocButton (clicked)="showSuccess()">Show Success</button>
-        <app-sample-code [code]="snippets.success" language="typescript" />
+        <app-sample-code [files]="snippets.success" />
     </div>
 
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
         <h3 class="m-0 text-base font-semibold text-slate-900">Warning</h3>
         <p class="m-0 text-[0.82rem] text-slate-400">Alerts the user to a potential issue.</p>
         <button blocButton (clicked)="showWarning()">Show Warning</button>
-        <app-sample-code [code]="snippets.warning" language="typescript" />
+        <app-sample-code [files]="snippets.warning" />
     </div>
 
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
         <h3 class="m-0 text-base font-semibold text-slate-900">Error</h3>
         <p class="m-0 text-[0.82rem] text-slate-400">Reports a failure or error.</p>
         <button blocButton (clicked)="showError()">Show Error</button>
-        <app-sample-code [code]="snippets.error" language="typescript" />
+        <app-sample-code [files]="snippets.error" />
     </div>
 </div>
 
@@ -72,7 +72,7 @@
             Set <code>duration: 0</code> to keep the toast until manually dismissed.
         </p>
         <button blocButton variant="outline" (clicked)="showPersistent()">Show Persistent</button>
-        <app-sample-code [code]="snippets.persistent" language="typescript" />
+        <app-sample-code [files]="snippets.persistent" />
     </div>
 
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -83,7 +83,7 @@
         <button blocButton variant="outline" (clicked)="showNonDismissible()">
             Show Non-Dismissible
         </button>
-        <app-sample-code [code]="snippets.nonDismissible" language="typescript" />
+        <app-sample-code [files]="snippets.nonDismissible" />
     </div>
 
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -101,7 +101,7 @@
         <p class="m-0 text-[0.82rem] text-slate-400">
             Override toast colours via CSS custom properties on the container.
         </p>
-        <app-sample-code [code]="snippets.customToken" language="typescript" />
+        <app-sample-code [files]="snippets.customToken" />
     </div>
 </div>
 

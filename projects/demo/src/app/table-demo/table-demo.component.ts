@@ -41,7 +41,7 @@ export class TableDemoComponent {
             'string',
             "''",
             'Row field used as the <code>&#64;for</code> track identity. Falls back to row index.',
-    ],
+        ],
     ];
 
     readonly inputsColumn: string[][] = [
@@ -58,22 +58,22 @@ export class TableDemoComponent {
             '--bloc-table-stripe-bg',
             '#f9fafb',
             'Even-row background when <code>[striped]</code> is on.',
-    ],
+        ],
         [
             '--bloc-table-hover-bg',
             '#f3f4f6',
             'Row background on hover when <code>[hoverable]</code> is on.',
-    ],
+        ],
         [
             '--bloc-table-th-padding',
             '10px 14px',
             'Header cell padding (overridden by <code>size</code> variants).',
-    ],
+        ],
         [
             '--bloc-table-td-padding',
             '10px 14px',
             'Body cell padding (overridden by <code>size</code> variants).',
-    ],
+        ],
         ['--bloc-table-font-size', '0.8125rem', 'Font size for header and body cells.'],
     ];
 
@@ -113,15 +113,130 @@ export class TableDemoComponent {
     ];
 
     readonly snippets = {
-        basic: `<bloc-table [data]="users">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="email" header="Email" />\n  <bloc-column field="role" header="Role" />\n</bloc-table>`,
-        striped: `<bloc-table [data]="users" [striped]="true">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="email" header="Email" />\n</bloc-table>`,
-        bordered: `<bloc-table [data]="users" [bordered]="true">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="email" header="Email" />\n</bloc-table>`,
-        hoverable: `<bloc-table [data]="users" [hoverable]="true">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="email" header="Email" />\n</bloc-table>`,
-        sticky: `<bloc-table [data]="users" [sticky]="true">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="email" header="Email" />\n  <bloc-column field="role" header="Role" />\n</bloc-table>`,
-        sizeSmall: `<bloc-table [data]="users" size="sm">\n  …\n</bloc-table>`,
-        sizeLarge: `<bloc-table [data]="users" size="lg">\n  …\n</bloc-table>`,
-        customCell: `<bloc-table [data]="users">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="status" header="Status">\n    <ng-template blocCellDef let-value>\n      <span [class]="value === 'Active'\n        ? 'text-green-600' : 'text-red-500'">{{ value }}</span>\n    </ng-template>\n  </bloc-column>\n</bloc-table>`,
-        emptyData: `<bloc-table [data]="[]">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="email" header="Email" />\n  <bloc-column field="role" header="Role" />\n</bloc-table>`,
-        customToken: `<bloc-table [data]="users"\n  style="--bloc-table-th-bg: #f0fdf4;\n         --bloc-table-border: #86efac;\n         --bloc-table-th-color: #15803d">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="email" header="Email" />\n</bloc-table>`,
+        basic: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-table [data]="users">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="email" header="Email" />\n  <bloc-column field="role" header="Role" />\n</bloc-table>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocTableComponent, BlocColumnComponent } from '@bloc-ui/table';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocTableComponent, BlocColumnComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {\n  readonly users = [\n    { name: 'Alice', email: 'alice@example.com', role: 'Admin' },\n    { name: 'Bob', email: 'bob@example.com', role: 'Editor' },\n  ];\n}`,
+            },
+        ],
+        striped: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-table [data]="users" [striped]="true">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="email" header="Email" />\n</bloc-table>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocTableComponent, BlocColumnComponent } from '@bloc-ui/table';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocTableComponent, BlocColumnComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {\n  readonly users = [\n    { name: 'Alice', email: 'alice@example.com' },\n    { name: 'Bob', email: 'bob@example.com' },\n  ];\n}`,
+            },
+        ],
+        bordered: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-table [data]="users" [bordered]="true">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="email" header="Email" />\n</bloc-table>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocTableComponent, BlocColumnComponent } from '@bloc-ui/table';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocTableComponent, BlocColumnComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {\n  readonly users = [\n    { name: 'Alice', email: 'alice@example.com' },\n    { name: 'Bob', email: 'bob@example.com' },\n  ];\n}`,
+            },
+        ],
+        hoverable: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-table [data]="users" [hoverable]="true">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="email" header="Email" />\n</bloc-table>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocTableComponent, BlocColumnComponent } from '@bloc-ui/table';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocTableComponent, BlocColumnComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {\n  readonly users = [\n    { name: 'Alice', email: 'alice@example.com' },\n    { name: 'Bob', email: 'bob@example.com' },\n  ];\n}`,
+            },
+        ],
+        sticky: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-table [data]="users" [sticky]="true">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="email" header="Email" />\n  <bloc-column field="role" header="Role" />\n</bloc-table>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocTableComponent, BlocColumnComponent } from '@bloc-ui/table';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocTableComponent, BlocColumnComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {\n  readonly users = [\n    { name: 'Alice', email: 'alice@example.com', role: 'Admin' },\n    { name: 'Bob', email: 'bob@example.com', role: 'Editor' },\n  ];\n}`,
+            },
+        ],
+        sizeSmall: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-table [data]="users" size="sm">\n  …\n</bloc-table>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocTableComponent, BlocColumnComponent } from '@bloc-ui/table';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocTableComponent, BlocColumnComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {\n  readonly users = [{ name: 'Alice', email: 'alice@example.com' }];\n}`,
+            },
+        ],
+        sizeLarge: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-table [data]="users" size="lg">\n  …\n</bloc-table>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocTableComponent, BlocColumnComponent } from '@bloc-ui/table';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocTableComponent, BlocColumnComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {\n  readonly users = [{ name: 'Alice', email: 'alice@example.com' }];\n}`,
+            },
+        ],
+        customCell: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-table [data]="users">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="status" header="Status">\n    <ng-template blocCellDef let-value>\n      <span [class]="value === 'Active'\n        ? 'text-green-600' : 'text-red-500'">{{ value }}</span>\n    </ng-template>\n  </bloc-column>\n</bloc-table>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocTableComponent, BlocColumnComponent, BlocCellDefDirective } from '@bloc-ui/table';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocTableComponent, BlocColumnComponent, BlocCellDefDirective],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {\n  readonly users = [\n    { name: 'Alice', status: 'Active' },\n    { name: 'Bob', status: 'Inactive' },\n  ];\n}`,
+            },
+        ],
+        emptyData: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-table [data]="[]">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="email" header="Email" />\n  <bloc-column field="role" header="Role" />\n</bloc-table>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocTableComponent, BlocColumnComponent } from '@bloc-ui/table';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocTableComponent, BlocColumnComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        customToken: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-table [data]="users" class="custom-table">\n  <bloc-column field="name" header="Name" />\n  <bloc-column field="email" header="Email" />\n</bloc-table>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocTableComponent, BlocColumnComponent } from '@bloc-ui/table';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocTableComponent, BlocColumnComponent],\n  templateUrl: './example.component.html',\n  styleUrl: './example.component.css',\n})\nexport class ExampleComponent {\n  readonly users = [{ name: 'Alice', email: 'alice@example.com' }];\n}`,
+            },
+            {
+                label: 'CSS',
+                language: 'css',
+                code: `.custom-table {\n  --bloc-table-th-bg: #f0fdf4;\n  --bloc-table-border: #86efac;\n  --bloc-table-th-color: #15803d;\n}`,
+            },
+        ],
     };
 }

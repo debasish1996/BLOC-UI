@@ -32,7 +32,7 @@
                 {{ formatRange(rangeBasic.rangeStart(), rangeBasic.rangeEnd()) || 'Pick a range' }}
             </button>
         </div>
-        <app-sample-code [code]="snippets.rangeBasic" />
+        <app-sample-code [files]="snippets.rangeBasic" />
     </div>
 </div>
 
@@ -65,7 +65,7 @@
             &nbsp; to:
             <strong>{{ ngModelRange.to ? ngModelRange.to.toLocaleDateString() : 'null' }}</strong>
         </p>
-        <app-sample-code [code]="snippets.rangeNgModel" />
+        <app-sample-code [files]="snippets.rangeNgModel" />
     </div>
 </div>
 
@@ -100,7 +100,7 @@
                 rangeCtrl.value?.to ? rangeCtrl.value!.to!.toLocaleDateString() : 'null'
             }}</strong>
         </p>
-        <app-sample-code [code]="snippets.rangeFormControl" />
+        <app-sample-code [files]="snippets.rangeFormControl" />
     </div>
 
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -137,7 +137,7 @@
                     : 'null'
             }}</strong>
         </p>
-        <app-sample-code [code]="snippets.rangeFormGroup" />
+        <app-sample-code [files]="snippets.rangeFormGroup" />
     </div>
 </div>
 
@@ -166,7 +166,7 @@
                 }}
             </button>
         </div>
-        <app-sample-code [code]="snippets.rangeMinMax" />
+        <app-sample-code [files]="snippets.rangeMinMax" />
     </div>
 </div>
 
@@ -197,7 +197,7 @@
                 }}
             </button>
         </div>
-        <app-sample-code [code]="snippets.rangeCustomToken" />
+        <app-sample-code [files]="snippets.rangeCustomToken" />
     </div>
 </div>
 

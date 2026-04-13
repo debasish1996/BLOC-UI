@@ -31,7 +31,7 @@
                 {{ pickerBasic.selectedDate()?.toLocaleDateString() || 'Pick a date' }}
             </button>
         </div>
-        <app-sample-code [code]="snippets.basic" />
+        <app-sample-code [files]="snippets.basic" />
     </div>
 
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -50,7 +50,7 @@
                 {{ pickerDiv.selectedDate()?.toLocaleDateString() || 'Choose date' }}
             </div>
         </div>
-        <app-sample-code [code]="snippets.customElement" />
+        <app-sample-code [files]="snippets.customElement" />
     </div>
 </div>
 
@@ -76,7 +76,7 @@
             ngModel value:
             <strong>{{ ngModelDate ? ngModelDate.toLocaleDateString() : 'null' }}</strong>
         </p>
-        <app-sample-code [code]="snippets.ngModel" />
+        <app-sample-code [files]="snippets.ngModel" />
     </div>
 </div>
 
@@ -102,7 +102,7 @@
             value:
             <strong>{{ dateCtrl.value ? dateCtrl.value.toLocaleDateString() : 'null' }}</strong>
         </p>
-        <app-sample-code [code]="snippets.formControl" />
+        <app-sample-code [files]="snippets.formControl" />
     </div>
 
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -123,7 +123,7 @@
                 {{ disabledCtrl.disabled ? 'Enable' : 'Disable' }} control
             </button>
         </div>
-        <app-sample-code [code]="snippets.disabled" />
+        <app-sample-code [files]="snippets.disabled" />
     </div>
 
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -155,7 +155,7 @@
                     : 'null'
             }}</strong>
         </p>
-        <app-sample-code [code]="snippets.formControlName" />
+        <app-sample-code [files]="snippets.formControlName" />
     </div>
 </div>
 
@@ -182,7 +182,7 @@
                 {{ pickerMinMax.selectedDate()?.toLocaleDateString() || 'Pick a date' }}
             </button>
         </div>
-        <app-sample-code [code]="snippets.minMax" />
+        <app-sample-code [files]="snippets.minMax" />
     </div>
 </div>
 
@@ -210,7 +210,7 @@
                 {{ pickerGreen.selectedDate()?.toLocaleDateString() || 'Green accent' }}
             </button>
         </div>
-        <app-sample-code [code]="snippets.customToken" />
+        <app-sample-code [files]="snippets.customToken" />
     </div>
 </div>
 

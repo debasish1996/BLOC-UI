@@ -22,7 +22,7 @@
                 <div class="flex items-center gap-3 flex-wrap">
                     <button blocButton [blocTooltip]="'Save changes'">Save</button>
                 </div>
-                <app-sample-code [code]="snippets.basic" />
+                <app-sample-code [files]="snippets.basic" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -41,7 +41,7 @@
                         Disabled tooltip
                     </button>
                 </div>
-                <app-sample-code [code]="snippets.disabled" />
+                <app-sample-code [files]="snippets.disabled" />
             </div>
         </div>
 
@@ -98,7 +98,7 @@
                         Bottom
                     </button>
                 </div>
-                <app-sample-code [code]="snippets.positions" />
+                <app-sample-code [files]="snippets.positions" />
             </div>
         </div>
 
@@ -123,7 +123,7 @@
                         Hover me
                     </button>
                 </div>
-                <app-sample-code [code]="snippets.delays" />
+                <app-sample-code [files]="snippets.delays" />
             </div>
         </div>
 
@@ -151,7 +151,7 @@
                         Themed
                     </button>
                 </div>
-                <app-sample-code [code]="snippets.customToken" />
+                <app-sample-code [files]="snippets.customToken" />
             </div>
         </div>
     </bloc-tab>

@@ -21,7 +21,7 @@
         <div class="max-w-[640px]">
             <bloc-video-player [src]="sampleVideoSrc" [poster]="samplePoster"></bloc-video-player>
         </div>
-        <app-sample-code [code]="snippets.basic" />
+        <app-sample-code [files]="snippets.basic" />
     </div>
 
     <!-- Autoplay + Loop -->
@@ -40,7 +40,7 @@
                 [muted]="true"
             ></bloc-video-player>
         </div>
-        <app-sample-code [code]="snippets.autoplay" />
+        <app-sample-code [files]="snippets.autoplay" />
     </div>
 
     <!-- Events -->
@@ -76,7 +76,7 @@
                 }
             </div>
         }
-        <app-sample-code [code]="snippets.events" />
+        <app-sample-code [files]="snippets.events" />
     </div>
 </div>
 

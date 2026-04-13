@@ -43,7 +43,7 @@ export class SliderDemoComponent {
             'boolean',
             'false',
             'Disables the slider. Also honoured by Angular reactive forms via <code>setDisabledState</code>.',
-    ],
+        ],
     ];
 
     readonly outputs: string[][] = [
@@ -62,7 +62,29 @@ export class SliderDemoComponent {
     readonly budgetControl = new FormControl(60, { nonNullable: true });
 
     readonly snippets = {
-        reactive: `<bloc-slider\n  label="Volume"\n  [min]="0"\n  [max]="100"\n  [step]="5"\n  [formControl]="volumeControl"\n></bloc-slider>`,
-        customRange: `<bloc-slider\n  label="Budget allocation"\n  [min]="10"\n  [max]="120"\n  [step]="10"\n  [formControl]="budgetControl"\n></bloc-slider>`,
+        reactive: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-slider\n  label="Volume"\n  [min]="0"\n  [max]="100"\n  [step]="5"\n  [formControl]="volumeControl"\n></bloc-slider>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { FormControl, ReactiveFormsModule } from '@angular/forms';\nimport { BlocSliderComponent } from '@bloc-ui/slider';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [ReactiveFormsModule, BlocSliderComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {\n  readonly volumeControl = new FormControl(35, { nonNullable: true });\n}`,
+            },
+        ],
+        customRange: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-slider\n  label="Budget allocation"\n  [min]="10"\n  [max]="120"\n  [step]="10"\n  [formControl]="budgetControl"\n></bloc-slider>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { FormControl, ReactiveFormsModule } from '@angular/forms';\nimport { BlocSliderComponent } from '@bloc-ui/slider';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [ReactiveFormsModule, BlocSliderComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {\n  readonly budgetControl = new FormControl(60, { nonNullable: true });\n}`,
+            },
+        ],
     };
 }

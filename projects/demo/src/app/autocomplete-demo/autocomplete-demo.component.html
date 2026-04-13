@@ -34,7 +34,7 @@
         <p class="m-0 text-xs text-slate-400">
             Selected value: <strong>{{ quickPick() || '(none)' }}</strong>
         </p>
-        <app-sample-code [code]="snippets.basic" />
+        <app-sample-code [files]="snippets.basic" />
     </div>
 
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
@@ -51,7 +51,7 @@
         <p class="m-0 text-xs text-slate-400">
             Form value: <strong>{{ teamControl.value || '(none)' }}</strong>
         </p>
-        <app-sample-code [code]="snippets.reactive" />
+        <app-sample-code [files]="snippets.reactive" />
     </div>
 
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
@@ -65,7 +65,7 @@
         <p class="m-0 text-xs text-slate-400">
             Form value: <strong>{{ requiredControl.value || '(none)' }}</strong>
         </p>
-        <app-sample-code [code]="snippets.required" />
+        <app-sample-code [files]="snippets.required" />
     </div>
 </div>
 
@@ -81,7 +81,7 @@
         </p>
         <bloc-autocomplete-highlight [options]="teamOptions" />
 
-        <app-sample-code [code]="snippets.highlight" />
+        <app-sample-code [files]="snippets.highlight" />
     </div>
 </div>
 
@@ -100,7 +100,7 @@
             [blocAutocompleteFuzzySearch]="{ keys: ['label', 'description'], threshold: 0.6 }"
             placeholder="Try typing 'usa' or 'euro'"
         />
-        <app-sample-code [code]="snippets.fuzzyBasic" />
+        <app-sample-code [files]="snippets.fuzzyBasic" />
     </div>
 
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
@@ -119,7 +119,7 @@
             }"
             placeholder="Type to fuzzy search..."
         />
-        <app-sample-code [code]="snippets.fuzzyAdvanced" />
+        <app-sample-code [files]="snippets.fuzzyAdvanced" />
     </div>
 </div>
 
@@ -137,7 +137,7 @@
             [formControl]="disabledControl"
             placeholder="Unavailable"
         />
-        <app-sample-code [code]="snippets.disabled" />
+        <app-sample-code [files]="snippets.disabled" />
     </div>
 
     <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
@@ -158,7 +158,7 @@
         >
             Toggle Loading
         </button>
-        <app-sample-code [code]="snippets.loading" />
+        <app-sample-code [files]="snippets.loading" />
     </div>
 </div>
 
@@ -179,7 +179,7 @@
             [clearable]="true"
             placeholder="Green themed"
         />
-        <app-sample-code [code]="snippets.theming" />
+        <app-sample-code [files]="snippets.theming" />
     </div>
 </div>
 

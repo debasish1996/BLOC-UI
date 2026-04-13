@@ -38,7 +38,7 @@ export class VideoPlayerDemoComponent {
             'boolean',
             'false',
             'Autoplays the video on load. Requires <code>[muted]="true"</code> to comply with browser policies.',
-    ],
+        ],
         ['loop', 'boolean', 'false', 'Restarts the video when it ends.'],
         ['muted', 'boolean', 'false', 'Starts the video muted.'],
         [
@@ -46,13 +46,13 @@ export class VideoPlayerDemoComponent {
             "'auto' | 'metadata' | 'none'",
             "'metadata'",
             'Native video preload strategy hint.',
-    ],
+        ],
         [
             'showPlaybackRate',
             'boolean',
             'true',
             'Shows or hides the playback rate cycle button in the toolbar.',
-    ],
+        ],
     ];
 
     readonly outputs: string[][] = [
@@ -63,7 +63,7 @@ export class VideoPlayerDemoComponent {
             'timeUpdate',
             'VideoPlayerTimeUpdate',
             'Fired on each time update. Payload: <code>{ currentTime, duration, percent }</code>.',
-    ],
+        ],
     ];
 
     readonly tokens: string[][] = [
@@ -73,12 +73,12 @@ export class VideoPlayerDemoComponent {
             '--bloc-video-player-track',
             'rgba(255,255,255,0.25)',
             'Progress bar track (empty portion) background.',
-    ],
+        ],
         [
             '--bloc-video-player-buffered',
             'rgba(255,255,255,0.35)',
             'Buffered range indicator colour on the progress bar.',
-    ],
+        ],
     ];
     readonly currentTime = signal('0:00');
     readonly percent = signal(0);
@@ -94,23 +94,102 @@ export class VideoPlayerDemoComponent {
         'https://www.learningcontainer.com/wp-content/uploads/2020/05/sample-mp4-file.mp4';
 
     readonly snippets = {
-        basic: `<bloc-video-player
+        basic: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-video-player
   src="https://example.com/video.mp4"
   poster="https://example.com/poster.jpg"
 ></bloc-video-player>`,
-        autoplay: `<bloc-video-player
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';
+import { BlocVideoPlayerComponent } from '@bloc-ui/video-player';
+
+@Component({
+  selector: 'app-example',
+  standalone: true,
+  imports: [BlocVideoPlayerComponent],
+  templateUrl: './example.component.html',
+})
+export class ExampleComponent {
+  readonly videoSrc = 'https://example.com/video.mp4';
+  readonly posterSrc = 'https://example.com/poster.jpg';
+}`,
+            },
+        ],
+        autoplay: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-video-player
   src="https://example.com/video.mp4"
   [autoplay]="true"
   [loop]="true"
   [muted]="true"
 ></bloc-video-player>`,
-        events: `<bloc-video-player
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';
+import { BlocVideoPlayerComponent } from '@bloc-ui/video-player';
+
+@Component({
+  selector: 'app-example',
+  standalone: true,
+  imports: [BlocVideoPlayerComponent],
+  templateUrl: './example.component.html',
+})
+export class ExampleComponent {}`,
+            },
+        ],
+        events: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-video-player
   src="https://example.com/video.mp4"
   (play)="onPlay()"
   (pause)="onPause()"
   (ended)="onEnded()"
   (timeUpdate)="onTimeUpdate($event)"
 ></bloc-video-player>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';
+import { BlocVideoPlayerComponent, VideoPlayerTimeUpdate } from '@bloc-ui/video-player';
+
+@Component({
+  selector: 'app-example',
+  standalone: true,
+  imports: [BlocVideoPlayerComponent],
+  templateUrl: './example.component.html',
+})
+export class ExampleComponent {
+  onPlay(): void {
+    console.log('Video started playing');
+  }
+
+  onPause(): void {
+    console.log('Video paused');
+  }
+
+  onEnded(): void {
+    console.log('Video ended');
+  }
+
+  onTimeUpdate(event: VideoPlayerTimeUpdate): void {
+    console.log(event.currentTime, event.duration, event.percent);
+  }
+}`,
+            },
+        ],
     };
 
     onPlay(): void {

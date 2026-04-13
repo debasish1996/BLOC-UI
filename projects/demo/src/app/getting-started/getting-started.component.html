@@ -22,7 +22,7 @@
                 Best when you want everything available from a single dependency.
             </p>
             <app-install-command package="@bloc-ui/kit" />
-            <app-sample-code [code]="kitImportCode" language="typescript" />
+            <app-sample-code [files]="kitImportCode" />
         </div>
 
         <div class="bg-white border border-slate-200 rounded-xl p-5 shadow-sm">
@@ -33,7 +33,7 @@
                 Smaller bundles by installing only what your app needs.
             </p>
             <app-install-command package="@bloc-ui/core @bloc-ui/modal @bloc-ui/table" />
-            <app-sample-code [code]="individualImportCode" language="typescript" />
+            <app-sample-code [files]="individualImportCode" />
         </div>
     </div>
 </section>
@@ -44,7 +44,7 @@
         <p class="text-sm text-slate-500 mb-3">
             Start with a button and input to verify setup quickly in your own component template.
         </p>
-        <app-sample-code [code]="firstUsageCode" language="xml" />
+        <app-sample-code [files]="firstUsageCode" />
     </div>
 </section>
 
@@ -56,7 +56,7 @@
             color, spacing, typography, and light or dark mode support.
         </p>
         <app-install-command package="@bloc-ui/theme" />
-        <app-sample-code [code]="themeCode" language="scss" />
+        <app-sample-code [files]="themeCode" />
     </div>
 </section>
 
@@ -67,7 +67,7 @@
             Register Bloc UI layers before Tailwind import so utilities can override component
             visuals predictably.
         </p>
-        <app-sample-code [code]="tailwindCode" language="css" />
+        <app-sample-code [files]="tailwindCode" />
     </div>
 </section>
 

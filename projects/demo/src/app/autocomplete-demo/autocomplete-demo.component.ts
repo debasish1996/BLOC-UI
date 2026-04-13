@@ -45,45 +45,45 @@ export class AutocompleteDemoComponent {
             'BlocAutocompleteOption&lt;T&gt;[]',
             '[]',
             'Array of options to display in the dropdown panel.',
-    ],
+        ],
         ['placeholder', 'string', "'Search options'", 'Input placeholder text.'],
         [
             'emptyText',
             'string',
             "'No results found'",
             'Message shown when no options match the current query.',
-    ],
+        ],
         [
             'loadingText',
             'string',
             "'Loading options...'",
             'Message shown in place of options while <code>loading</code> is true.',
-    ],
+        ],
         ['clearable', 'boolean', 'false', 'Shows a clear (×) button when a value is selected.'],
         [
             'loading',
             'boolean',
             'false',
             'Replaces the option list with a loading message — ideal for async data fetches.',
-    ],
+        ],
         [
             'disabled',
             'boolean',
             'false',
             'Disables all interaction. Also driven by a reactive <code>FormControl</code> disabled state.',
-    ],
+        ],
         [
             'error',
             'boolean',
             'false',
             'Applies error styling. Also triggered automatically when a bound <code>FormControl</code> is invalid and touched.',
-    ],
+        ],
         [
             'filterFn',
             '((options, query) =&gt; BlocAutocompleteOption&lt;T&gt;[]) | null',
             'null',
             'Custom filter function. When provided, overrides the default substring matching and any fuzzy search directive.',
-    ],
+        ],
     ];
 
     readonly outputs: string[][] = [
@@ -91,7 +91,7 @@ export class AutocompleteDemoComponent {
             'selectionChange',
             'T | null',
             'Emitted when an option is selected or the value is cleared.',
-    ],
+        ],
     ];
 
     readonly inputsHighlight: string[][] = [
@@ -100,7 +100,7 @@ export class AutocompleteDemoComponent {
             'BlocAutocompleteOption&lt;T&gt;[]',
             '[]',
             'Array of options. Matched text is highlighted automatically as the user types.',
-    ],
+        ],
         ['placeholder', 'string', "'Search options'", 'Input placeholder text.'],
         ['clearable', 'boolean', 'false', 'Shows a clear button when a value is selected.'],
         ['loading', 'boolean', 'false', 'Replaces options with a loading message.'],
@@ -114,20 +114,20 @@ export class AutocompleteDemoComponent {
             'number',
             '0.6',
             'Match score threshold. 0 = exact match only, 1 = match anything.',
-    ],
+        ],
         ['isCaseSensitive', 'boolean', 'false', 'Enables case-sensitive character matching.'],
         [
             'minMatchCharLength',
             'number',
             '1',
             'Minimum number of characters that must match for an option to be included.',
-    ],
+        ],
         [
             'distance',
             'number',
             '100',
             'Maximum allowable search distance between matched characters.',
-    ],
+        ],
     ];
 
     readonly tokens: string[][] = [
@@ -137,7 +137,7 @@ export class AutocompleteDemoComponent {
             '--bloc-autocomplete-border-focus',
             '--bloc-primary / #6b7280',
             'Input border colour when focused.',
-    ],
+        ],
         ['--bloc-autocomplete-color', '#374151', 'Input and option text colour.'],
         ['--bloc-autocomplete-muted', '#9ca3af', 'Placeholder and option description text colour.'],
         ['--bloc-autocomplete-radius', '4px', 'Corner radius for the input and option rows.'],
@@ -145,27 +145,27 @@ export class AutocompleteDemoComponent {
             '--bloc-autocomplete-panel-radius',
             '--bloc-autocomplete-radius',
             'Panel corner radius override (falls back to <code>--bloc-autocomplete-radius</code>).',
-    ],
+        ],
         [
             '--bloc-autocomplete-panel-shadow',
             '0 4px 16px rgba(0,0,0,0.08)',
             'Dropdown panel drop shadow.',
-    ],
+        ],
         [
             '--bloc-autocomplete-option-hover',
             'rgba(0,0,0,0.04)',
             'Option background on mouse hover.',
-    ],
+        ],
         [
             '--bloc-autocomplete-option-active',
             'rgba(0,0,0,0.06)',
             'Option background when keyboard-focused.',
-    ],
+        ],
         [
             '--bloc-autocomplete-option-selected',
             'rgba(0,0,0,0.08)',
             'Background for the currently selected option.',
-    ],
+        ],
     ];
 
     readonly quickPick = signal<string | null>(null);
@@ -207,19 +207,277 @@ export class AutocompleteDemoComponent {
     }
 
     readonly snippets = {
-        basic: `<bloc-autocomplete\n  [options]="teamOptions"\n  [clearable]="true"\n  placeholder="Search teams"\n  (selectionChange)="selectedTeam = $event"\n></bloc-autocomplete>`,
-        reactive: `<bloc-autocomplete\n  [options]="teamOptions"\n  [formControl]="teamControl"\n  placeholder="Assign owner"\n></bloc-autocomplete>`,
-        required: `<bloc-autocomplete\n  [options]="teamOptions"\n  [formControl]="requiredControl"\n   [clearable]="true"\n  placeholder="Required field"\n></bloc-autocomplete>`,
-        disabled: `<bloc-autocomplete\n  [options]="teamOptions"\n  [formControl]="disabledControl"\n  placeholder="Unavailable"\n></bloc-autocomplete>`,
-        loading: `<bloc-autocomplete\n  [options]="teamOptions"\n  [loading]="isLoading()"\n  placeholder="Search teams"\n></bloc-autocomplete>`,
-        highlight: `<bloc-autocomplete\n  [options]="teamOptions"\n  [clearable]="true"\n  [highlight]="true"\n  placeholder="Type to highlight"\n></bloc-autocomplete>`,
-        theming: `<bloc-autocomplete\n  style="\n    --bloc-autocomplete-border-focus: #10b981;\n    --bloc-autocomplete-option-selected: rgba(16, 185, 129, 0.12);\n    --bloc-autocomplete-option-active: rgba(16, 185, 129, 0.06);\n  "\n  [options]="teamOptions"\n  [clearable]="true"\n  placeholder="Green themed"\n></bloc-autocomplete>`,
-        fuzzyBasic: `<bloc-autocomplete
+        basic: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-autocomplete\n  [options]="teamOptions"\n  [clearable]="true"\n  placeholder="Search teams"\n  (selectionChange)="selectedTeam = $event"\n></bloc-autocomplete>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component, signal } from '@angular/core';
+import {
+  BlocAutocompleteComponent,
+  BlocAutocompleteOption,
+} from '@bloc-ui/autocomplete';
+
+@Component({
+  selector: 'app-example',
+  standalone: true,
+  imports: [BlocAutocompleteComponent],
+  templateUrl: './example.component.html',
+})
+export class ExampleComponent {
+  selectedTeam = signal<string | null>(null);
+
+  teamOptions: BlocAutocompleteOption<string>[] = [
+    { label: 'Design', value: 'design' },
+    { label: 'Engineering', value: 'engineering' },
+  ];
+}`,
+            },
+        ],
+        reactive: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-autocomplete\n  [options]="teamOptions"\n  [formControl]="teamControl"\n  placeholder="Assign owner"\n></bloc-autocomplete>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import {
+  BlocAutocompleteComponent,
+  BlocAutocompleteOption,
+} from '@bloc-ui/autocomplete';
+
+@Component({
+  selector: 'app-example',
+  standalone: true,
+  imports: [ReactiveFormsModule, BlocAutocompleteComponent],
+  templateUrl: './example.component.html',
+})
+export class ExampleComponent {
+  teamControl = new FormControl<string | null>('design');
+
+  teamOptions: BlocAutocompleteOption<string>[] = [
+    { label: 'Design', value: 'design' },
+    { label: 'Engineering', value: 'engineering' },
+  ];
+}`,
+            },
+        ],
+        required: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-autocomplete\n  [options]="teamOptions"\n  [formControl]="requiredControl"\n   [clearable]="true"\n  placeholder="Required field"\n></bloc-autocomplete>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';
+import { FormControl, ReactiveFormsModule, Validators } from '@angular/forms';
+import {
+  BlocAutocompleteComponent,
+  BlocAutocompleteOption,
+} from '@bloc-ui/autocomplete';
+
+@Component({
+  selector: 'app-example',
+  standalone: true,
+  imports: [ReactiveFormsModule, BlocAutocompleteComponent],
+  templateUrl: './example.component.html',
+})
+export class ExampleComponent {
+  requiredControl = new FormControl<string | null>(null, {
+    validators: [Validators.required],
+  });
+
+  teamOptions: BlocAutocompleteOption<string>[] = [
+    { label: 'Design', value: 'design' },
+    { label: 'Engineering', value: 'engineering' },
+  ];
+}`,
+            },
+        ],
+        disabled: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-autocomplete\n  [options]="teamOptions"\n  [formControl]="disabledControl"\n  placeholder="Unavailable"\n></bloc-autocomplete>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';
+import { FormControl, ReactiveFormsModule } from '@angular/forms';
+import {
+  BlocAutocompleteComponent,
+  BlocAutocompleteOption,
+} from '@bloc-ui/autocomplete';
+
+@Component({
+  selector: 'app-example',
+  standalone: true,
+  imports: [ReactiveFormsModule, BlocAutocompleteComponent],
+  templateUrl: './example.component.html',
+})
+export class ExampleComponent {
+  disabledControl = new FormControl<string | null>({
+    value: 'design',
+    disabled: true,
+  });
+
+  teamOptions: BlocAutocompleteOption<string>[] = [
+    { label: 'Design', value: 'design' },
+    { label: 'Engineering', value: 'engineering' },
+  ];
+}`,
+            },
+        ],
+        loading: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-autocomplete\n  [options]="teamOptions"\n  [loading]="isLoading()"\n  placeholder="Search teams"\n></bloc-autocomplete>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component, signal } from '@angular/core';
+import {
+  BlocAutocompleteComponent,
+  BlocAutocompleteOption,
+} from '@bloc-ui/autocomplete';
+
+@Component({
+  selector: 'app-example',
+  standalone: true,
+  imports: [BlocAutocompleteComponent],
+  templateUrl: './example.component.html',
+})
+export class ExampleComponent {
+  isLoading = signal(false);
+
+  teamOptions: BlocAutocompleteOption<string>[] = [
+    { label: 'Design', value: 'design' },
+    { label: 'Engineering', value: 'engineering' },
+  ];
+}`,
+            },
+        ],
+        highlight: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-autocomplete\n  [options]="teamOptions"\n  [clearable]="true"\n  [highlight]="true"\n  placeholder="Type to highlight"\n></bloc-autocomplete>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';
+import {
+  BlocAutocompleteHighlightComponent,
+  BlocAutocompleteOption,
+} from '@bloc-ui/autocomplete';
+
+@Component({
+  selector: 'app-example',
+  standalone: true,
+  imports: [BlocAutocompleteHighlightComponent],
+  templateUrl: './example.component.html',
+})
+export class ExampleComponent {
+  teamOptions: BlocAutocompleteOption<string>[] = [
+    { label: 'Design', value: 'design' },
+    { label: 'Engineering', value: 'engineering' },
+  ];
+}`,
+            },
+        ],
+        theming: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-autocomplete\n  style="\n    --bloc-autocomplete-border-focus: #10b981;\n    --bloc-autocomplete-option-selected: rgba(16, 185, 129, 0.12);\n    --bloc-autocomplete-option-active: rgba(16, 185, 129, 0.06);\n  "\n  [options]="teamOptions"\n  [clearable]="true"\n  placeholder="Green themed"\n></bloc-autocomplete>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';
+import {
+  BlocAutocompleteComponent,
+  BlocAutocompleteOption,
+} from '@bloc-ui/autocomplete';
+
+@Component({
+  selector: 'app-example',
+  standalone: true,
+  imports: [BlocAutocompleteComponent],
+  templateUrl: './example.component.html',
+  styleUrl: './example.component.css',
+})
+export class ExampleComponent {
+  teamOptions: BlocAutocompleteOption<string>[] = [
+    { label: 'Design', value: 'design' },
+    { label: 'Engineering', value: 'engineering' },
+  ];
+}`,
+            },
+            {
+                label: 'CSS',
+                language: 'css',
+                code: `/* Apply to a parent or the component host */
+.custom-autocomplete {
+  --bloc-autocomplete-border-focus: #10b981;
+  --bloc-autocomplete-option-selected: rgba(16, 185, 129, 0.12);
+  --bloc-autocomplete-option-active: rgba(16, 185, 129, 0.06);
+}`,
+            },
+        ],
+        fuzzyBasic: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-autocomplete
   [options]="countryOptions"
   [blocAutocompleteFuzzySearch]="{ keys: ['label', 'description'], threshold: 0.6 }"
   placeholder="Try typing 'usa' or 'euro'"
 ></bloc-autocomplete>`,
-        fuzzyAdvanced: `<bloc-autocomplete
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';
+import {
+  BlocAutocompleteComponent,
+  BlocAutocompleteFuzzySearch,
+  BlocAutocompleteOption,
+} from '@bloc-ui/autocomplete';
+
+@Component({
+  selector: 'app-example',
+  standalone: true,
+  imports: [BlocAutocompleteComponent, BlocAutocompleteFuzzySearch],
+  templateUrl: './example.component.html',
+})
+export class ExampleComponent {
+  countryOptions: BlocAutocompleteOption<string>[] = [
+    { label: 'United States', value: 'us', description: 'North America' },
+    { label: 'United Kingdom', value: 'uk', description: 'Europe' },
+  ];
+}`,
+            },
+        ],
+        fuzzyAdvanced: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-autocomplete
   [options]="countryOptions"
   [blocAutocompleteFuzzySearch]="{
     keys: ['label', 'description'],
@@ -229,5 +487,30 @@ export class AutocompleteDemoComponent {
   }"
   placeholder="Type to fuzzy search..."
 ></bloc-autocomplete>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';
+import {
+  BlocAutocompleteComponent,
+  BlocAutocompleteFuzzySearch,
+  BlocAutocompleteOption,
+} from '@bloc-ui/autocomplete';
+
+@Component({
+  selector: 'app-example',
+  standalone: true,
+  imports: [BlocAutocompleteComponent, BlocAutocompleteFuzzySearch],
+  templateUrl: './example.component.html',
+})
+export class ExampleComponent {
+  countryOptions: BlocAutocompleteOption<string>[] = [
+    { label: 'United States', value: 'us', description: 'North America' },
+    { label: 'United Kingdom', value: 'uk', description: 'Europe' },
+  ];
+}`,
+            },
+        ],
     };
 }

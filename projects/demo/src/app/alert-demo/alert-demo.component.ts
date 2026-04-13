@@ -40,7 +40,7 @@ export class AlertDemoComponent {
             "'info' | 'success' | 'warning' | 'danger'",
             "'info'",
             'Semantic colour and ARIA role variant.',
-    ],
+        ],
         ['title', 'string', "''", 'Optional bold title rendered above the content.'],
         ['dismissible', 'boolean', 'false', 'Shows a close button that hides the alert.'],
         [
@@ -48,19 +48,19 @@ export class AlertDemoComponent {
             'string',
             "'Dismiss alert'",
             '<code>aria-label</code> for the close button.',
-    ],
+        ],
         [
             'live',
             "'assertive' | 'polite' | undefined",
             'undefined',
             'Forces a specific ARIA live region role. Omit to use variant default.',
-    ],
+        ],
         [
             'visible',
             'boolean',
             'true',
             'Controls visibility externally. Both <code>visible</code> and the internal dismiss state must be true to show.',
-    ],
+        ],
         ['hideIcon', 'boolean', 'false', 'Removes the icon column from the layout.'],
     ];
 
@@ -78,15 +78,97 @@ export class AlertDemoComponent {
             '--bloc-alert-[variant]-bg / -border / -accent / -accent-color',
             'variant defaults',
             'Per-variant overrides (e.g. <code>--bloc-alert-success-bg</code>).',
-    ],
+        ],
     ];
     readonly dismissed = signal(false);
 
     readonly snippets = {
-        basic: `<bloc-alert variant="info" title="Heads up">\n  Alerts work well for inline guidance, success messaging, and warnings.\n</bloc-alert>`,
-        dismissible: `<bloc-alert\n  variant="warning"\n  title="Sync paused"\n  [dismissible]="true"\n>\n  Reconnect to resume background sync.\n</bloc-alert>`,
-        customIcon: `<bloc-alert variant="success" title="Deployed">\n  <svg blocAlertIcon ...>...</svg>\n  Your build passed all checks and is live in production.\n</bloc-alert>`,
-        noIcon: `<bloc-alert variant="info" title="Scheduled maintenance" [hideIcon]="true">\n  The system will be unavailable on Sunday between 02:00 and 04:00 UTC.\n</bloc-alert>`,
+        basic: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-alert variant="info" title="Heads up">\n  Alerts work well for inline guidance, success messaging, and warnings.\n</bloc-alert>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';
+import { BlocAlertComponent } from '@bloc-ui/alert';
+
+@Component({
+  selector: 'app-example',
+  standalone: true,
+  imports: [BlocAlertComponent],
+  templateUrl: './example.component.html',
+})
+export class ExampleComponent {}`,
+            },
+        ],
+        dismissible: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-alert\n  variant="warning"\n  title="Sync paused"\n  [dismissible]="true"\n>\n  Reconnect to resume background sync.\n</bloc-alert>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component, signal } from '@angular/core';
+import { BlocAlertComponent } from '@bloc-ui/alert';
+
+@Component({
+  selector: 'app-example',
+  standalone: true,
+  imports: [BlocAlertComponent],
+  templateUrl: './example.component.html',
+})
+export class ExampleComponent {
+  dismissed = signal(false);
+}`,
+            },
+        ],
+        customIcon: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-alert variant="success" title="Deployed">\n  <svg blocAlertIcon ...>...</svg>\n  Your build passed all checks and is live in production.\n</bloc-alert>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';
+import { BlocAlertComponent, BlocAlertIconDirective } from '@bloc-ui/alert';
+
+@Component({
+  selector: 'app-example',
+  standalone: true,
+  imports: [BlocAlertComponent, BlocAlertIconDirective],
+  templateUrl: './example.component.html',
+})
+export class ExampleComponent {}`,
+            },
+        ],
+        noIcon: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-alert variant="info" title="Scheduled maintenance" [hideIcon]="true">\n  The system will be unavailable on Sunday between 02:00 and 04:00 UTC.\n</bloc-alert>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';
+import { BlocAlertComponent } from '@bloc-ui/alert';
+
+@Component({
+  selector: 'app-example',
+  standalone: true,
+  imports: [BlocAlertComponent],
+  templateUrl: './example.component.html',
+})
+export class ExampleComponent {}`,
+            },
+        ],
     };
 
     restoreAlert(): void {

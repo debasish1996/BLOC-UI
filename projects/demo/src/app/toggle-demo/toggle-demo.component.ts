@@ -38,13 +38,13 @@ export class ToggleDemoComponent {
             "'before' | 'after'",
             "'after'",
             'Position of projected label relative to the toggle track.',
-    ],
+        ],
         [
             'disabled',
             'boolean',
             'false',
             'Disables interaction. Also disabled when the form control calls <code>setDisabledState</code>.',
-    ],
+        ],
     ];
 
     readonly tokens: string[][] = [
@@ -57,7 +57,7 @@ export class ToggleDemoComponent {
             '--bloc-toggle-width / --bloc-toggle-height',
             'size preset',
             'Override track dimensions without changing the size preset.',
-    ],
+        ],
     ];
     // Template-driven (ngModel)
     ngModelValue = false;
@@ -77,18 +77,149 @@ export class ToggleDemoComponent {
     }
 
     readonly snippets = {
-        sizeSmall: `<bloc-toggle size="sm"></bloc-toggle>`,
-        sizeMedium: `<bloc-toggle></bloc-toggle>`,
-        sizeLarge: `<bloc-toggle size="lg"></bloc-toggle>`,
-        default: `<bloc-toggle></bloc-toggle>`,
-        defaultOn: `<bloc-toggle [ngModel]="true"></bloc-toggle>`,
-        disabledOff: `<bloc-toggle [disabled]="true"></bloc-toggle>`,
-        disabledOn: `<bloc-toggle [formControl]="ctrl"></bloc-toggle>\n<!-- ctrl = new FormControl(true); ctrl.disable(); -->`,
-        labelAfter: `<bloc-toggle>Enable notifications</bloc-toggle>`,
-        labelBefore: `<bloc-toggle labelPosition="before">\n  Enable notifications\n</bloc-toggle>`,
-        ngModel: `<bloc-toggle [(ngModel)]="isOn">\n  Label text\n</bloc-toggle>`,
-        formControl: `<bloc-toggle [formControl]="myCtrl">\n  Label text\n</bloc-toggle>`,
-        setDisabled: `<!-- disable from code -->\nctrl = new FormControl(true);\nctrl.disable();`,
-        customToken: `<bloc-toggle\n  style="--bloc-toggle-track-checked-bg: #3bf6a2;\n         --bloc-toggle-focus-ring: #3b82f6">\n  Green track\n</bloc-toggle>`,
+        sizeSmall: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-toggle size="sm"></bloc-toggle>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocToggleComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocToggleComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        sizeMedium: [
+            { label: 'HTML', language: 'xml', code: `<bloc-toggle></bloc-toggle>` },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocToggleComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocToggleComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        sizeLarge: [
+            { label: 'HTML', language: 'xml', code: `<bloc-toggle size="lg"></bloc-toggle>` },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocToggleComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocToggleComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        default: [
+            { label: 'HTML', language: 'xml', code: `<bloc-toggle></bloc-toggle>` },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocToggleComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocToggleComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        defaultOn: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-toggle [ngModel]="true"></bloc-toggle>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { FormsModule } from '@angular/forms';\nimport { BlocToggleComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [FormsModule, BlocToggleComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        disabledOff: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-toggle [disabled]="true"></bloc-toggle>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocToggleComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocToggleComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        disabledOn: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-toggle [formControl]="ctrl"></bloc-toggle>\n<!-- ctrl = new FormControl(true); ctrl.disable(); -->`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { ReactiveFormsModule, FormControl } from '@angular/forms';\nimport { BlocToggleComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [ReactiveFormsModule, BlocToggleComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {\n  readonly ctrl = new FormControl(true);\n  constructor() { this.ctrl.disable(); }\n}`,
+            },
+        ],
+        labelAfter: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-toggle>Enable notifications</bloc-toggle>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocToggleComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocToggleComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        labelBefore: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-toggle labelPosition="before">\n  Enable notifications\n</bloc-toggle>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocToggleComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocToggleComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        ngModel: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-toggle [(ngModel)]="isOn">\n  Label text\n</bloc-toggle>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { FormsModule } from '@angular/forms';\nimport { BlocToggleComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [FormsModule, BlocToggleComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {\n  isOn = false;\n}`,
+            },
+        ],
+        formControl: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-toggle [formControl]="myCtrl">\n  Label text\n</bloc-toggle>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { ReactiveFormsModule, FormControl } from '@angular/forms';\nimport { BlocToggleComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [ReactiveFormsModule, BlocToggleComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {\n  readonly myCtrl = new FormControl(false);\n}`,
+            },
+        ],
+        setDisabled: [
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `<!-- disable from code -->\nctrl = new FormControl(true);\nctrl.disable();`,
+            },
+        ],
+        customToken: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-toggle\n  style="--bloc-toggle-track-checked-bg: #3bf6a2;\n         --bloc-toggle-focus-ring: #3b82f6">\n  Green track\n</bloc-toggle>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocToggleComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocToggleComponent],\n  templateUrl: './example.component.html',\n  styleUrl: './example.component.css',\n})\nexport class ExampleComponent {}`,
+            },
+            {
+                label: 'CSS',
+                language: 'css',
+                code: `.custom-toggle {\n  --bloc-toggle-track-checked-bg: #3bf6a2;\n  --bloc-toggle-focus-ring: #3b82f6;\n}`,
+            },
+        ],
     };
 }

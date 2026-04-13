@@ -34,7 +34,7 @@
                     ></textarea>
                     <span class="text-xs text-slate-400">{{ bio().length }} characters</span>
                 </div>
-                <app-sample-code [code]="snippets.basic" />
+                <app-sample-code [files]="snippets.basic" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -43,7 +43,7 @@
                     Non-interactive state for read-only flows.
                 </p>
                 <textarea blocTextarea rows="4" placeholder="Cannot edit" disabled></textarea>
-                <app-sample-code [code]="snippets.disabled" />
+                <app-sample-code [files]="snippets.disabled" />
             </div>
         </div>
 
@@ -65,7 +65,7 @@
                     ></textarea>
                     <bloc-input-error>A summary is required.</bloc-input-error>
                 </div>
-                <app-sample-code [code]="snippets.manualError" />
+                <app-sample-code [files]="snippets.manualError" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -85,7 +85,7 @@
                         <bloc-input-error>Please add at least 20 characters.</bloc-input-error>
                     }
                 </div>
-                <app-sample-code [code]="snippets.formControl" />
+                <app-sample-code [files]="snippets.formControl" />
             </div>
         </div>
 
@@ -107,7 +107,7 @@
                 <p class="m-0 text-xs text-slate-400">
                     Characters: <strong>{{ ngModelValue.length }}</strong>
                 </p>
-                <app-sample-code [code]="snippets.ngModel" />
+                <app-sample-code [files]="snippets.ngModel" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -135,7 +135,7 @@
                         180 - (feedbackFormGroup.get('notes')?.value?.length || 0)
                     }}</strong>
                 </p>
-                <app-sample-code [code]="snippets.formControlName" />
+                <app-sample-code [files]="snippets.formControlName" />
             </div>
         </div>
 
@@ -154,7 +154,7 @@
                     placeholder="Resizable notes"
                     style="--bloc-textarea-min-height: 140px; --bloc-textarea-radius: 16px"
                 ></textarea>
-                <app-sample-code [code]="snippets.customToken" />
+                <app-sample-code [files]="snippets.customToken" />
             </div>
         </div>
     </bloc-tab>

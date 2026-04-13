@@ -39,7 +39,7 @@ export class RadioDemoComponent {
             "'before' | 'after'",
             "'after'",
             'Default label position inherited by child radios.',
-    ],
+        ],
     ];
 
     readonly inputsRadio: string[][] = [
@@ -51,7 +51,7 @@ export class RadioDemoComponent {
             "'before' | 'after' | null",
             'null',
             'Per-item label position override; inherits from group when <code>null</code>.',
-    ],
+        ],
     ];
 
     readonly tokens: string[][] = [
@@ -61,12 +61,12 @@ export class RadioDemoComponent {
             '--bloc-radio-checked-border',
             'var(--bloc-primary, #6b7280)',
             'Border colour when checked.',
-    ],
+        ],
         [
             '--bloc-radio-dot-color',
             'var(--bloc-primary, #6b7280)',
             'Inner dot fill colour when checked.',
-    ],
+        ],
         ['--bloc-radio-focus-ring', 'var(--bloc-primary, #6b7280)', 'Focus outline colour.'],
         ['--bloc-radio-group-gap', '8px', 'Gap between radio items in the group.'],
     ];
@@ -91,19 +91,173 @@ export class RadioDemoComponent {
     }
 
     readonly snippets = {
-        sizeSmall: `<bloc-radio-group>\n  <bloc-radio value="a" size="sm">Option A</bloc-radio>\n  <bloc-radio value="b" size="sm">Option B</bloc-radio>\n</bloc-radio-group>`,
-        sizeMedium: `<bloc-radio-group>\n  <bloc-radio value="a">Option A</bloc-radio>\n  <bloc-radio value="b">Option B</bloc-radio>\n</bloc-radio-group>`,
-        sizeLarge: `<bloc-radio-group>\n  <bloc-radio value="a" size="lg">Option A</bloc-radio>\n  <bloc-radio value="b" size="lg">Option B</bloc-radio>\n</bloc-radio-group>`,
-        groupDisabled: `<bloc-radio-group [disabled]="true">\n  <bloc-radio value="a">Option A</bloc-radio>\n  <bloc-radio value="b">Option B</bloc-radio>\n</bloc-radio-group>`,
-        itemDisabled: `<bloc-radio-group>\n  <bloc-radio value="a">Option A</bloc-radio>\n  <bloc-radio value="b" [disabled]="true">\n    Option B (disabled)\n  </bloc-radio>\n  <bloc-radio value="c">Option C</bloc-radio>\n</bloc-radio-group>`,
-        disabledSelected: `<bloc-radio-group\n  [(ngModel)]="selectedValue"\n  [disabled]="true">\n  <bloc-radio value="a">Option A</bloc-radio>\n  <bloc-radio value="b">Option B</bloc-radio>\n  <bloc-radio value="c">Option C</bloc-radio>\n</bloc-radio-group>`,
-        labelAfter: `<bloc-radio-group>\n  <bloc-radio value="a">Option A</bloc-radio>\n  <bloc-radio value="b">Option B</bloc-radio>\n</bloc-radio-group>`,
-        labelBefore: `<bloc-radio-group labelPosition="before">\n  <bloc-radio value="a">Option A</bloc-radio>\n  <bloc-radio value="b">Option B</bloc-radio>\n</bloc-radio-group>`,
-        perItem: `<bloc-radio-group>\n  <bloc-radio value="a" labelPosition="before">\n    Before\n  </bloc-radio>\n  <bloc-radio value="b">After</bloc-radio>\n</bloc-radio-group>`,
-        horizontal: `<bloc-radio-group class="flex-row! flex-wrap"\n  style="--bloc-radio-group-gap: 16px">\n  <bloc-radio value="xs">XS</bloc-radio>\n  <bloc-radio value="sm">SM</bloc-radio>\n  <bloc-radio value="md">MD</bloc-radio>\n</bloc-radio-group>`,
-        ngModel: `<bloc-radio-group [(ngModel)]="selected">\n  <bloc-radio value="apple">Apple</bloc-radio>\n  <bloc-radio value="banana">Banana</bloc-radio>\n  <bloc-radio value="cherry">Cherry</bloc-radio>\n</bloc-radio-group>`,
-        formControl: `<bloc-radio-group [formControl]="sizeCtrl">\n  <bloc-radio value="xs">Extra small</bloc-radio>\n  <bloc-radio value="sm">Small</bloc-radio>\n  <bloc-radio value="md">Medium</bloc-radio>\n</bloc-radio-group>`,
-        setDisabled: `<!-- disable from code -->\nctrl = new FormControl('b');\nctrl.disable();`,
-        customToken: `<bloc-radio-group\n  style="--bloc-radio-checked-border: #3b82f6;\n         --bloc-radio-dot-color: #3b82f6;\n         --bloc-radio-focus-ring: #3b82f6">\n  <bloc-radio value="xs">Extra small</bloc-radio>\n  <bloc-radio value="sm">Small</bloc-radio>\n</bloc-radio-group>`,
+        sizeSmall: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-radio-group>\n  <bloc-radio value="a" size="sm">Option A</bloc-radio>\n  <bloc-radio value="b" size="sm">Option B</bloc-radio>\n</bloc-radio-group>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocRadioGroupComponent, BlocRadioComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocRadioGroupComponent, BlocRadioComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        sizeMedium: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-radio-group>\n  <bloc-radio value="a">Option A</bloc-radio>\n  <bloc-radio value="b">Option B</bloc-radio>\n</bloc-radio-group>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocRadioGroupComponent, BlocRadioComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocRadioGroupComponent, BlocRadioComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        sizeLarge: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-radio-group>\n  <bloc-radio value="a" size="lg">Option A</bloc-radio>\n  <bloc-radio value="b" size="lg">Option B</bloc-radio>\n</bloc-radio-group>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocRadioGroupComponent, BlocRadioComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocRadioGroupComponent, BlocRadioComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        groupDisabled: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-radio-group [disabled]="true">\n  <bloc-radio value="a">Option A</bloc-radio>\n  <bloc-radio value="b">Option B</bloc-radio>\n</bloc-radio-group>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocRadioGroupComponent, BlocRadioComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocRadioGroupComponent, BlocRadioComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        itemDisabled: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-radio-group>\n  <bloc-radio value="a">Option A</bloc-radio>\n  <bloc-radio value="b" [disabled]="true">\n    Option B (disabled)\n  </bloc-radio>\n  <bloc-radio value="c">Option C</bloc-radio>\n</bloc-radio-group>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocRadioGroupComponent, BlocRadioComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocRadioGroupComponent, BlocRadioComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        disabledSelected: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-radio-group\n  [(ngModel)]="selectedValue"\n  [disabled]="true">\n  <bloc-radio value="a">Option A</bloc-radio>\n  <bloc-radio value="b">Option B</bloc-radio>\n  <bloc-radio value="c">Option C</bloc-radio>\n</bloc-radio-group>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { FormsModule } from '@angular/forms';\nimport { BlocRadioGroupComponent, BlocRadioComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [FormsModule, BlocRadioGroupComponent, BlocRadioComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {\n  selectedValue = 'b';\n}`,
+            },
+        ],
+        labelAfter: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-radio-group>\n  <bloc-radio value="a">Option A</bloc-radio>\n  <bloc-radio value="b">Option B</bloc-radio>\n</bloc-radio-group>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocRadioGroupComponent, BlocRadioComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocRadioGroupComponent, BlocRadioComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        labelBefore: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-radio-group labelPosition="before">\n  <bloc-radio value="a">Option A</bloc-radio>\n  <bloc-radio value="b">Option B</bloc-radio>\n</bloc-radio-group>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocRadioGroupComponent, BlocRadioComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocRadioGroupComponent, BlocRadioComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        perItem: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-radio-group>\n  <bloc-radio value="a" labelPosition="before">\n    Before\n  </bloc-radio>\n  <bloc-radio value="b">After</bloc-radio>\n</bloc-radio-group>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocRadioGroupComponent, BlocRadioComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocRadioGroupComponent, BlocRadioComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        horizontal: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-radio-group class="flex-row! flex-wrap"\n  style="--bloc-radio-group-gap: 16px">\n  <bloc-radio value="xs">XS</bloc-radio>\n  <bloc-radio value="sm">SM</bloc-radio>\n  <bloc-radio value="md">MD</bloc-radio>\n</bloc-radio-group>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocRadioGroupComponent, BlocRadioComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocRadioGroupComponent, BlocRadioComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        ngModel: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-radio-group [(ngModel)]="selected">\n  <bloc-radio value="apple">Apple</bloc-radio>\n  <bloc-radio value="banana">Banana</bloc-radio>\n  <bloc-radio value="cherry">Cherry</bloc-radio>\n</bloc-radio-group>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { FormsModule } from '@angular/forms';\nimport { BlocRadioGroupComponent, BlocRadioComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [FormsModule, BlocRadioGroupComponent, BlocRadioComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {\n  selected = '';\n}`,
+            },
+        ],
+        formControl: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-radio-group [formControl]="sizeCtrl">\n  <bloc-radio value="xs">Extra small</bloc-radio>\n  <bloc-radio value="sm">Small</bloc-radio>\n  <bloc-radio value="md">Medium</bloc-radio>\n</bloc-radio-group>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { FormControl, ReactiveFormsModule } from '@angular/forms';\nimport { BlocRadioGroupComponent, BlocRadioComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [ReactiveFormsModule, BlocRadioGroupComponent, BlocRadioComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {\n  readonly sizeCtrl = new FormControl<string>('');\n}`,
+            },
+        ],
+        setDisabled: [
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `<!-- disable from code -->\nctrl = new FormControl('b');\nctrl.disable();`,
+            },
+        ],
+        customToken: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-radio-group class="my-radio">\n  <bloc-radio value="xs">Extra small</bloc-radio>\n  <bloc-radio value="sm">Small</bloc-radio>\n</bloc-radio-group>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocRadioGroupComponent, BlocRadioComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocRadioGroupComponent, BlocRadioComponent],\n  templateUrl: './example.component.html',\n  styleUrl: './example.component.css',\n})\nexport class ExampleComponent {}`,
+            },
+            {
+                label: 'CSS',
+                language: 'css',
+                code: `.my-radio {\n  --bloc-radio-checked-border: #3b82f6;\n  --bloc-radio-dot-color: #3b82f6;\n  --bloc-radio-focus-ring: #3b82f6;\n}`,
+            },
+        ],
     };
 }

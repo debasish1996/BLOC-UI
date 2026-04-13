@@ -31,7 +31,7 @@
                         >Option B</bloc-radio
                     >
                 </bloc-radio-group>
-                <app-sample-code [code]="snippets.sizeSmall" />
+                <app-sample-code [files]="snippets.sizeSmall" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -43,7 +43,7 @@
                     <bloc-radio value="a" class="text-sm text-slate-700">Option A</bloc-radio>
                     <bloc-radio value="b" class="text-sm text-slate-700">Option B</bloc-radio>
                 </bloc-radio-group>
-                <app-sample-code [code]="snippets.sizeMedium" />
+                <app-sample-code [files]="snippets.sizeMedium" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -55,7 +55,7 @@
                     <bloc-radio value="a" size="lg" class="text-slate-700">Option A</bloc-radio>
                     <bloc-radio value="b" size="lg" class="text-slate-700">Option B</bloc-radio>
                 </bloc-radio-group>
-                <app-sample-code [code]="snippets.sizeLarge" />
+                <app-sample-code [files]="snippets.sizeLarge" />
             </div>
         </div>
 
@@ -73,7 +73,7 @@
                     <bloc-radio value="a" class="text-sm text-slate-700">Option A</bloc-radio>
                     <bloc-radio value="b" class="text-sm text-slate-700">Option B</bloc-radio>
                 </bloc-radio-group>
-                <app-sample-code [code]="snippets.groupDisabled" />
+                <app-sample-code [files]="snippets.groupDisabled" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -86,7 +86,7 @@
                     >
                     <bloc-radio value="c" class="text-sm text-slate-700">Option C</bloc-radio>
                 </bloc-radio-group>
-                <app-sample-code [code]="snippets.itemDisabled" />
+                <app-sample-code [files]="snippets.itemDisabled" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -99,7 +99,7 @@
                     <bloc-radio value="b" class="text-sm text-slate-700">Option B</bloc-radio>
                     <bloc-radio value="c" class="text-sm text-slate-700">Option C</bloc-radio>
                 </bloc-radio-group>
-                <app-sample-code [code]="snippets.disabledSelected" />
+                <app-sample-code [files]="snippets.disabledSelected" />
             </div>
         </div>
 
@@ -114,7 +114,7 @@
                     <bloc-radio value="a" class="text-sm text-slate-700">Option A</bloc-radio>
                     <bloc-radio value="b" class="text-sm text-slate-700">Option B</bloc-radio>
                 </bloc-radio-group>
-                <app-sample-code [code]="snippets.labelAfter" />
+                <app-sample-code [files]="snippets.labelAfter" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -126,7 +126,7 @@
                     <bloc-radio value="a" class="text-sm text-slate-700">Option A</bloc-radio>
                     <bloc-radio value="b" class="text-sm text-slate-700">Option B</bloc-radio>
                 </bloc-radio-group>
-                <app-sample-code [code]="snippets.labelBefore" />
+                <app-sample-code [files]="snippets.labelBefore" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -142,7 +142,7 @@
                         >After (inherited)</bloc-radio
                     >
                 </bloc-radio-group>
-                <app-sample-code [code]="snippets.perItem" />
+                <app-sample-code [files]="snippets.perItem" />
             </div>
         </div>
 
@@ -162,7 +162,7 @@
                     <bloc-radio value="md" class="text-sm text-slate-700">MD</bloc-radio>
                     <bloc-radio value="lg" class="text-sm text-slate-700">LG</bloc-radio>
                 </bloc-radio-group>
-                <app-sample-code [code]="snippets.horizontal" />
+                <app-sample-code [files]="snippets.horizontal" />
             </div>
         </div>
 
@@ -182,7 +182,7 @@
                 <p class="m-0 text-xs text-slate-400">
                     ngModel value: <strong>{{ ngModelValue || '(none)' }}</strong>
                 </p>
-                <app-sample-code [code]="snippets.ngModel" />
+                <app-sample-code [files]="snippets.ngModel" />
             </div>
         </div>
 
@@ -207,7 +207,7 @@
                     touched:
                     <strong>{{ reactiveCtrl.touched }}</strong>
                 </p>
-                <app-sample-code [code]="snippets.formControl" />
+                <app-sample-code [files]="snippets.formControl" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -222,7 +222,7 @@
                         {{ disabledCtrl.disabled ? 'Enable' : 'Disable' }} group
                     </button>
                 </div>
-                <app-sample-code [code]="snippets.setDisabled" language="typescript" />
+                <app-sample-code [files]="snippets.setDisabled" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -242,7 +242,7 @@
                     <bloc-radio value="sm" class="text-sm text-slate-700">Small</bloc-radio>
                     <bloc-radio value="md" class="text-sm text-slate-700">Medium</bloc-radio>
                 </bloc-radio-group>
-                <app-sample-code [code]="snippets.customToken" />
+                <app-sample-code [files]="snippets.customToken" />
             </div>
         </div>
     </bloc-tab>

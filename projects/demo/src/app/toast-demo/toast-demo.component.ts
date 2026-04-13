@@ -130,19 +130,102 @@ export class ToastDemoComponent {
     }
 
     readonly snippets = {
-        info: `toastService.info('Informational message.');`,
-        success: `toastService.success('Operation completed!', 'Success');`,
-        warning: `toastService.warning('Review your input.', 'Warning');`,
-        error: `toastService.error('Something went wrong.', 'Error');`,
-        persistent: `toastService.show({\n  message: 'This toast will not auto-dismiss.',\n  type: 'info',\n  title: 'Persistent',\n  duration: 0,\n});`,
-        nonDismissible: `toastService.show({\n  message: 'Cannot be closed manually.',\n  type: 'warning',\n  dismissible: false,\n  duration: 5000,\n});`,
-        inject: `private readonly toast = inject(BlocToastService);`,
-        container: `<!-- in app.component.html -->
-<bloc-toast-container />`,
-        customToken: `<!-- Override colours on the container -->
-<bloc-toast-container
-  style="--bloc-toast-success-color: #7c3aed;
-         --bloc-toast-bg: #faf5ff;
-         --bloc-toast-border: #e9d5ff" />`,
+        info: [
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `toastService.info('Informational message.');`,
+            },
+        ],
+        success: [
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `toastService.success('Operation completed!', 'Success');`,
+            },
+        ],
+        warning: [
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `toastService.warning('Review your input.', 'Warning');`,
+            },
+        ],
+        error: [
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `toastService.error('Something went wrong.', 'Error');`,
+            },
+        ],
+        persistent: [
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `toastService.show({\n  message: 'This toast will not auto-dismiss.',\n  type: 'info',\n  title: 'Persistent',\n  duration: 0,\n});`,
+            },
+        ],
+        nonDismissible: [
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `toastService.show({\n  message: 'Cannot be closed manually.',\n  type: 'warning',\n  dismissible: false,\n  duration: 5000,\n});`,
+            },
+        ],
+        inject: [
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `private readonly toast = inject(BlocToastService);`,
+            },
+        ],
+        container: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<!-- in app.component.html -->\n<bloc-toast-container />`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';
+import { BlocToastContainerComponent } from '@bloc-ui/toast';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [BlocToastContainerComponent],
+  templateUrl: './example.component.html',
+})
+export class AppComponent {}`,
+            },
+        ],
+        customToken: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<!-- Override colours on the container -->\n<bloc-toast-container\n  style="--bloc-toast-success-color: #7c3aed;\n         --bloc-toast-bg: #faf5ff;\n         --bloc-toast-border: #e9d5ff" />`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';
+import { BlocToastContainerComponent } from '@bloc-ui/toast';
+
+@Component({
+  selector: 'app-root',
+  standalone: true,
+  imports: [BlocToastContainerComponent],
+  templateUrl: './example.component.html',
+  styleUrl: './example.component.css',
+})
+export class AppComponent {}`,
+            },
+            {
+                label: 'CSS',
+                language: 'css',
+                code: `.custom-toast-container {\n  --bloc-toast-success-color: #7c3aed;\n  --bloc-toast-bg: #faf5ff;\n  --bloc-toast-border: #e9d5ff;\n}`,
+            },
+        ],
     };
 }

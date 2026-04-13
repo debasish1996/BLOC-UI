@@ -24,7 +24,7 @@
                     Tight layouts, table cells, or dense form rows.
                 </p>
                 <bloc-toggle size="sm"></bloc-toggle>
-                <app-sample-code [code]="snippets.sizeSmall" />
+                <app-sample-code [files]="snippets.sizeSmall" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -33,7 +33,7 @@
                     Standard form controls and most UI contexts.
                 </p>
                 <bloc-toggle></bloc-toggle>
-                <app-sample-code [code]="snippets.sizeMedium" />
+                <app-sample-code [files]="snippets.sizeMedium" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -42,7 +42,7 @@
                     Touch targets, prominent CTAs, or accessibility-first interfaces.
                 </p>
                 <bloc-toggle size="lg"></bloc-toggle>
-                <app-sample-code [code]="snippets.sizeLarge" />
+                <app-sample-code [files]="snippets.sizeLarge" />
             </div>
         </div>
 
@@ -55,14 +55,14 @@
                 <h3 class="m-0 text-base font-semibold text-slate-900">Default (off)</h3>
                 <p class="m-0 text-[0.82rem] text-slate-400">Uncontrolled — click to toggle.</p>
                 <div><bloc-toggle></bloc-toggle></div>
-                <app-sample-code [code]="snippets.default" />
+                <app-sample-code [files]="snippets.default" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
                 <h3 class="m-0 text-base font-semibold text-slate-900">Default (on)</h3>
                 <p class="m-0 text-[0.82rem] text-slate-400">Starts on — uncontrolled.</p>
                 <div><bloc-toggle [ngModel]="true"></bloc-toggle></div>
-                <app-sample-code [code]="snippets.defaultOn" />
+                <app-sample-code [files]="snippets.defaultOn" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -71,7 +71,7 @@
                     Non-interactive via <code>[disabled]</code>.
                 </p>
                 <div><bloc-toggle [disabled]="true"></bloc-toggle></div>
-                <app-sample-code [code]="snippets.disabledOff" />
+                <app-sample-code [files]="snippets.disabledOff" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -82,7 +82,7 @@
                 <div>
                     <bloc-toggle [formControl]="disabledCtrl"></bloc-toggle>
                 </div>
-                <app-sample-code [code]="snippets.disabledOn" />
+                <app-sample-code [files]="snippets.disabledOn" />
             </div>
         </div>
 
@@ -100,7 +100,7 @@
                     <bloc-toggle class="text-sm text-slate-700">Enable notifications</bloc-toggle>
                     <bloc-toggle size="sm" class="text-sm text-slate-700">Dark mode</bloc-toggle>
                 </div>
-                <app-sample-code [code]="snippets.labelAfter" />
+                <app-sample-code [files]="snippets.labelAfter" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -116,7 +116,7 @@
                         >Dark mode</bloc-toggle
                     >
                 </div>
-                <app-sample-code [code]="snippets.labelBefore" />
+                <app-sample-code [files]="snippets.labelBefore" />
             </div>
         </div>
 
@@ -134,7 +134,7 @@
                 <p class="m-0 text-xs text-slate-400">
                     ngModel value: <strong>{{ ngModelValue }}</strong>
                 </p>
-                <app-sample-code [code]="snippets.ngModel" />
+                <app-sample-code [files]="snippets.ngModel" />
             </div>
         </div>
 
@@ -155,7 +155,7 @@
                     value: <strong>{{ reactiveCtrl.value }}</strong> &nbsp;|&nbsp; touched:
                     <strong>{{ reactiveCtrl.touched }}</strong>
                 </p>
-                <app-sample-code [code]="snippets.formControl" />
+                <app-sample-code [files]="snippets.formControl" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -171,7 +171,7 @@
                         {{ disabledCtrl.disabled ? 'Enable' : 'Disable' }} control
                     </button>
                 </div>
-                <app-sample-code [code]="snippets.setDisabled" language="typescript" />
+                <app-sample-code [files]="snippets.setDisabled" />
             </div>
 
             <!-- Custom token override -->
@@ -190,7 +190,7 @@
                 >
                     Green track
                 </bloc-toggle>
-                <app-sample-code [code]="snippets.customToken" />
+                <app-sample-code [files]="snippets.customToken" />
             </div>
         </div>
     </bloc-tab>

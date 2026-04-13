@@ -28,7 +28,7 @@
                     <div bloc-option value="banana">Banana</div>
                     <div bloc-option value="orange">Orange</div>
                 </bloc-select>
-                <app-sample-code [code]="snippets.basic" />
+                <app-sample-code [files]="snippets.basic" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -44,7 +44,7 @@
                 <p class="m-0 text-xs text-slate-400">
                     Selected value: <strong>{{ fruitControl.value || '(none)' }}</strong>
                 </p>
-                <app-sample-code [code]="snippets.reactive" />
+                <app-sample-code [files]="snippets.reactive" />
             </div>
         </div>
 
@@ -67,7 +67,7 @@
                         <div bloc-option [value]="fruit.value">{{ fruit.label }}</div>
                     }
                 </bloc-select>
-                <app-sample-code [code]="snippets.search" />
+                <app-sample-code [files]="snippets.search" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -79,7 +79,7 @@
                     <div bloc-option value="apple">Apple</div>
                     <div bloc-option value="banana">Banana</div>
                 </bloc-select>
-                <app-sample-code [code]="snippets.disabled" />
+                <app-sample-code [files]="snippets.disabled" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -97,7 +97,7 @@
                 >
                     Toggle Loading
                 </button>
-                <app-sample-code [code]="snippets.loading" />
+                <app-sample-code [files]="snippets.loading" />
             </div>
         </div>
 
@@ -124,7 +124,7 @@
                         </div>
                     }
                 </bloc-select>
-                <app-sample-code [code]="snippets.custom" />
+                <app-sample-code [files]="snippets.custom" />
             </div>
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
                 <h3 class="m-0 text-base font-semibold text-slate-900">formControlName</h3>
@@ -141,7 +141,7 @@
                         Form value: <strong>{{ profileForm.value.fruit || '(none)' }}</strong>
                     </p>
                 </form>
-                <app-sample-code [code]="snippets.formControlName" />
+                <app-sample-code [files]="snippets.formControlName" />
             </div>
         </div>
 
@@ -167,7 +167,7 @@
                         <div bloc-option [value]="fruit.value">{{ fruit.label }}</div>
                     }
                 </bloc-select>
-                <app-sample-code [code]="snippets.customToken" />
+                <app-sample-code [files]="snippets.customToken" />
             </div>
         </div>
     </bloc-tab>

@@ -49,9 +49,47 @@ export class ProgressDemoComponent {
     readonly uploadProgress = signal(42);
 
     readonly snippets = {
-        sizes: `<bloc-progress size="sm" [value]="30"></bloc-progress>\n<bloc-progress size="md" [value]="52"></bloc-progress>\n<bloc-progress size="lg" [value]="74"></bloc-progress>`,
-        labelled: `<bloc-progress label="Upload progress"\n  [showValue]="true"\n  [value]="uploadProgress()"></bloc-progress>`,
-        customToken: `<bloc-progress\n  [value]="64"\n  style="--bloc-progress-track-bg: #dbeafe; --bloc-progress-fill: #2563eb"></bloc-progress>`,
+        sizes: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-progress size="sm" [value]="30"></bloc-progress>\n<bloc-progress size="md" [value]="52"></bloc-progress>\n<bloc-progress size="lg" [value]="74"></bloc-progress>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocProgressComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocProgressComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        labelled: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-progress label="Upload progress"\n  [showValue]="true"\n  [value]="uploadProgress()"></bloc-progress>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component, signal } from '@angular/core';\nimport { BlocProgressComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocProgressComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {\n  readonly uploadProgress = signal(42);\n}`,
+            },
+        ],
+        customToken: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-progress\n  [value]="64"\n  class="my-progress"\n></bloc-progress>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocProgressComponent } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocProgressComponent],\n  templateUrl: './example.component.html',\n  styleUrl: './example.component.css',\n})\nexport class ExampleComponent {}`,
+            },
+            {
+                label: 'CSS',
+                language: 'css',
+                code: `.my-progress {\n  --bloc-progress-track-bg: #dbeafe;\n  --bloc-progress-fill: #2563eb;\n}`,
+            },
+        ],
     };
 
     increase(): void {

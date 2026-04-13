@@ -155,15 +155,80 @@ export class ModalDemoComponent {
     }
 
     readonly snippets = {
-        defaultMd: `const ref = this.modal.open(MyComponent, {\n  title: 'Modal — md',\n  size: 'md',\n  data: { ... },\n});\nref.afterClosed$.subscribe(result => { });`,
-        small: `this.modal.open(MyComponent, {\n  title: 'Small Modal',\n  size: 'sm',\n  data: { ... },\n});`,
-        large: `this.modal.open(MyComponent, {\n  title: 'Large Modal',\n  size: 'lg',\n  data: { ... },\n});`,
-        noBackdrop: `this.modal.open(MyComponent, {\n  title: 'No Backdrop',\n  showBackdrop: false,\n});`,
-        noDismiss: `this.modal.open(MyComponent, {\n  title: 'No Dismiss',\n  closeOnBackdropClick: false,\n});`,
-        noCloseButton: `this.modal.open(MyComponent, {\n  title: 'No Close Button',\n  showCloseButton: false,\n});`,
-        panelClass: `this.modal.open(MyComponent, {\n  title: 'Custom Panel',\n  panelClass: 'my-panel',\n});`,
-        backdropClass: `this.modal.open(MyComponent, {\n  title: 'Custom Backdrop',\n  backdropClass: 'bg-white/30',\n});`,
-        dataPass: `const ref = this.modal.open(DataModalComponent, {\n  title: 'Edit User',\n  data: { name: 'Alice', role: 'Admin' },\n});\n\n// Inside DataModalComponent:\n// readonly data = inject<UserData>(BLOC_MODAL_DATA);`,
-        returnValue: `const ref = this.modal.open(ConfirmComponent, {\n  title: 'Confirm Action',\n  size: 'sm',\n});\nref.afterClosed$.subscribe(result => {\n  console.log(result); // true | false | undefined\n});`,
+        defaultMd: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<button bloc-button (click)="openModal('md')">Open Modal (md)</button>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `const ref = this.modal.open(MyComponent, {\n  title: 'Modal — md',\n  size: 'md',\n  data: { ... },\n});\nref.afterClosed$.subscribe(result => { });`,
+            },
+        ],
+        small: [
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `this.modal.open(MyComponent, {\n  title: 'Small Modal',\n  size: 'sm',\n  data: { ... },\n});`,
+            },
+        ],
+        large: [
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `this.modal.open(MyComponent, {\n  title: 'Large Modal',\n  size: 'lg',\n  data: { ... },\n});`,
+            },
+        ],
+        noBackdrop: [
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `this.modal.open(MyComponent, {\n  title: 'No Backdrop',\n  showBackdrop: false,\n});`,
+            },
+        ],
+        noDismiss: [
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `this.modal.open(MyComponent, {\n  title: 'No Dismiss',\n  closeOnBackdropClick: false,\n});`,
+            },
+        ],
+        noCloseButton: [
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `this.modal.open(MyComponent, {\n  title: 'No Close Button',\n  showCloseButton: false,\n});`,
+            },
+        ],
+        panelClass: [
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `this.modal.open(MyComponent, {\n  title: 'Custom Panel',\n  panelClass: 'my-panel',\n});`,
+            },
+        ],
+        backdropClass: [
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `this.modal.open(MyComponent, {\n  title: 'Custom Backdrop',\n  backdropClass: 'bg-white/30',\n});`,
+            },
+        ],
+        dataPass: [
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `const ref = this.modal.open(DataModalComponent, {\n  title: 'Edit User',\n  data: { name: 'Alice', role: 'Admin' },\n});\n\n// Inside DataModalComponent:\n// readonly data = inject<UserData>(BLOC_MODAL_DATA);`,
+            },
+        ],
+        returnValue: [
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `const ref = this.modal.open(ConfirmComponent, {\n  title: 'Confirm Action',\n  size: 'sm',\n});\nref.afterClosed$.subscribe(result => {\n  console.log(result); // true | false | undefined\n});`,
+            },
+        ],
     };
 }

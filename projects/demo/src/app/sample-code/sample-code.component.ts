@@ -1,10 +1,17 @@
-import { Component, input, signal, ElementRef, viewChild } from '@angular/core';
+import { Component, computed, input, signal, ElementRef, viewChild } from '@angular/core';
 import { Highlight } from 'ngx-highlightjs';
+import { BlocTabGroupComponent, BlocTabComponent } from '@bloc-ui/tab';
+
+export interface CodeFile {
+    label: string;
+    language: string;
+    code: string;
+}
 
 @Component({
     selector: 'app-sample-code',
     standalone: true,
-    imports: [Highlight],
+    imports: [Highlight, BlocTabGroupComponent, BlocTabComponent],
     styles: `
         :host {
             display: block;
@@ -20,11 +27,26 @@ import { Highlight } from 'ngx-highlightjs';
         .code-inner {
             overflow: hidden;
         }
+        .code-block {
+            margin-top: 0.75rem;
+            border-radius: 0.75rem;
+            overflow: hidden;
+            background: #0d1117;
+        }
+        .code-tabs {
+            --bloc-tab-body-padding: 0;
+            --bloc-tab-padding: 6px 16px;
+            --bloc-tab-font-size: 0.8125rem;
+            --bloc-tab-color: #8b949e;
+            --bloc-tab-hover-color: #c9d1d9;
+            --bloc-tab-active-color: #e6edf3;
+            --bloc-tab-indicator: #f0f6fc;
+            --bloc-tab-border: #30363d;
+            --bloc-tab-focus-ring: #58a6ff;
+            background: #161b22;
+        }
         .code-container {
             position: relative;
-            margin-top: 0.75rem;
-            background: #0d1117;
-            border-radius: 0.75rem;
             padding: 1rem;
         }
         .scroll-anchor {
@@ -94,60 +116,86 @@ import { Highlight } from 'ngx-highlightjs';
 
         <div class="code-wrapper" [class.is-open]="open()" #wrapper>
             <div class="code-inner">
-                <div class="code-container" #codeBlock>
-                    <button
-                        class="copy-btn"
-                        [class.copied]="copied()"
-                        (click)="copyCode()"
-                        type="button"
-                        title="Copy code"
-                    >
-                        @if (copied()) {
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="14"
-                                height="14"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
+                @if (files().length) {
+                    <div class="code-block">
+                        @if (files().length > 1) {
+                            <bloc-tab-group
+                                class="code-tabs"
+                                (selectedIndexChange)="onTabChange($event)"
                             >
-                                <polyline points="20 6 9 17 4 12" />
-                            </svg>
-                        } @else {
-                            <svg
-                                xmlns="http://www.w3.org/2000/svg"
-                                width="14"
-                                height="14"
-                                viewBox="0 0 24 24"
-                                fill="none"
-                                stroke="currentColor"
-                                stroke-width="2"
-                                stroke-linecap="round"
-                                stroke-linejoin="round"
-                            >
-                                <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
-                                <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1" />
-                            </svg>
+                                @for (file of files(); track file.label) {
+                                    <bloc-tab [label]="file.label"></bloc-tab>
+                                }
+                            </bloc-tab-group>
                         }
-                    </button>
-                    <pre><code [highlight]="code()" [language]="language()"></code></pre>
-                </div>
+                        <div class="code-container" #codeBlock>
+                            <button
+                                class="copy-btn"
+                                [class.copied]="copied()"
+                                (click)="copyCode()"
+                                type="button"
+                                title="Copy code"
+                            >
+                                @if (copied()) {
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="14"
+                                        height="14"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <polyline points="20 6 9 17 4 12" />
+                                    </svg>
+                                } @else {
+                                    <svg
+                                        xmlns="http://www.w3.org/2000/svg"
+                                        width="14"
+                                        height="14"
+                                        viewBox="0 0 24 24"
+                                        fill="none"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                    >
+                                        <rect x="9" y="9" width="13" height="13" rx="2" ry="2" />
+                                        <path
+                                            d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"
+                                        />
+                                    </svg>
+                                }
+                            </button>
+                            <pre><code [highlight]="activeFile().code" [language]="activeFile().language"></code></pre>
+                        </div>
+                    </div>
+                }
                 <div class="scroll-anchor" #scrollAnchor></div>
             </div>
         </div>
     `,
 })
 export class SampleCodeComponent {
-    readonly code = input.required<string>();
-    readonly language = input<string>('xml');
+    readonly files = input<CodeFile[]>([]);
     readonly open = signal(false);
     readonly copied = signal(false);
+    readonly activeIndex = signal(0);
 
     private readonly wrapper = viewChild<ElementRef>('wrapper');
     private readonly scrollAnchor = viewChild<ElementRef>('scrollAnchor');
+
+    readonly activeFile = computed(() => {
+        const files = this.files();
+        return files[this.activeIndex()] ?? files[0] ?? { label: '', language: 'xml', code: '' };
+    });
+
+    onTabChange(index: number): void {
+        this.activeIndex.set(index);
+        this.copied.set(false);
+    }
 
     toggle(): void {
         const opening = !this.open();
@@ -168,8 +216,11 @@ export class SampleCodeComponent {
     }
 
     copyCode(): void {
-        navigator.clipboard.writeText(this.code());
-        this.copied.set(true);
-        setTimeout(() => this.copied.set(false), 2000);
+        const file = this.activeFile();
+        if (file) {
+            navigator.clipboard.writeText(file.code);
+            this.copied.set(true);
+            setTimeout(() => this.copied.set(false), 2000);
+        }
     }
 }

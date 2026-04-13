@@ -24,7 +24,7 @@
                     Tight layouts, table cells, or dense form rows.
                 </p>
                 <bloc-checkbox size="sm" class="text-sm text-slate-700">Accept terms</bloc-checkbox>
-                <app-sample-code [code]="snippets.sizeSmall" />
+                <app-sample-code [files]="snippets.sizeSmall" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -33,7 +33,7 @@
                     Standard form controls and most UI contexts.
                 </p>
                 <bloc-checkbox class="text-sm text-slate-700">Accept terms</bloc-checkbox>
-                <app-sample-code [code]="snippets.sizeMedium" />
+                <app-sample-code [files]="snippets.sizeMedium" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -42,7 +42,7 @@
                     Touch targets, prominent CTAs, or accessibility-first interfaces.
                 </p>
                 <bloc-checkbox size="lg" class="text-slate-700">Accept terms</bloc-checkbox>
-                <app-sample-code [code]="snippets.sizeLarge" />
+                <app-sample-code [files]="snippets.sizeLarge" />
             </div>
         </div>
 
@@ -55,7 +55,7 @@
                 <h3 class="m-0 text-base font-semibold text-slate-900">Default (unchecked)</h3>
                 <p class="m-0 text-[0.82rem] text-slate-400">Uncontrolled — click to toggle.</p>
                 <div><bloc-checkbox class="text-sm text-slate-700">Remember me</bloc-checkbox></div>
-                <app-sample-code [code]="snippets.default" />
+                <app-sample-code [files]="snippets.default" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -66,7 +66,7 @@
                         >Pre-checked</bloc-checkbox
                     >
                 </div>
-                <app-sample-code [code]="snippets.defaultChecked" />
+                <app-sample-code [files]="snippets.defaultChecked" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -79,7 +79,7 @@
                         >Unavailable</bloc-checkbox
                     >
                 </div>
-                <app-sample-code [code]="snippets.disabled" />
+                <app-sample-code [files]="snippets.disabled" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -92,7 +92,7 @@
                         >Locked on</bloc-checkbox
                     >
                 </div>
-                <app-sample-code [code]="snippets.disabledChecked" />
+                <app-sample-code [files]="snippets.disabledChecked" />
             </div>
         </div>
 
@@ -114,7 +114,7 @@
                         >Subscribe to newsletter</bloc-checkbox
                     >
                 </div>
-                <app-sample-code [code]="snippets.labelAfter" />
+                <app-sample-code [files]="snippets.labelAfter" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -130,7 +130,7 @@
                         >Subscribe to newsletter</bloc-checkbox
                     >
                 </div>
-                <app-sample-code [code]="snippets.labelBefore" />
+                <app-sample-code [files]="snippets.labelBefore" />
             </div>
         </div>
 
@@ -148,7 +148,7 @@
                 <p class="m-0 text-xs text-slate-400">
                     ngModel value: <strong>{{ ngModelValue }}</strong>
                 </p>
-                <app-sample-code [code]="snippets.ngModel" />
+                <app-sample-code [files]="snippets.ngModel" />
             </div>
         </div>
 
@@ -169,7 +169,7 @@
                     value: <strong>{{ reactiveCtrl.value }}</strong> &nbsp;|&nbsp; touched:
                     <strong>{{ reactiveCtrl.touched }}</strong>
                 </p>
-                <app-sample-code [code]="snippets.formControl" />
+                <app-sample-code [files]="snippets.formControl" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -185,7 +185,7 @@
                         {{ disabledCtrl.disabled ? 'Enable' : 'Disable' }} control
                     </button>
                 </div>
-                <app-sample-code [code]="snippets.setDisabled" language="typescript" />
+                <app-sample-code [files]="snippets.setDisabled" />
             </div>
 
             <!-- Custom token override -->
@@ -205,7 +205,7 @@
                 >
                     Blue checkbox
                 </bloc-checkbox>
-                <app-sample-code [code]="snippets.customToken" />
+                <app-sample-code [files]="snippets.customToken" />
             </div>
         </div>
     </bloc-tab>

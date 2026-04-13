@@ -22,7 +22,7 @@
                     <div blocSkeleton width="100%"></div>
                     <div blocSkeleton width="55%"></div>
                 </div>
-                <app-sample-code [code]="snippets.textLines" />
+                <app-sample-code [files]="snippets.textLines" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -34,7 +34,7 @@
                     <bloc-skeleton shape="circle"></bloc-skeleton>
                     <bloc-skeleton shape="rect" width="160px" height="80px"></bloc-skeleton>
                 </div>
-                <app-sample-code [code]="snippets.shapes" />
+                <app-sample-code [files]="snippets.shapes" />
             </div>
         </div>
 
@@ -50,7 +50,7 @@
                 <div class="flex flex-col gap-3">
                     <bloc-skeleton [animated]="false" height="1rem"></bloc-skeleton>
                 </div>
-                <app-sample-code [code]="snippets.static" />
+                <app-sample-code [files]="snippets.static" />
             </div>
         </div>
 
@@ -64,7 +64,7 @@
                     Match your loading surfaces with a custom skeleton base colour.
                 </p>
                 <bloc-skeleton height="1rem" style="--bloc-skeleton-bg: #cbd5e1"></bloc-skeleton>
-                <app-sample-code [code]="snippets.customToken" />
+                <app-sample-code [files]="snippets.customToken" />
             </div>
         </div>
     </bloc-tab>

@@ -25,7 +25,7 @@
                     <span [blocTextHighlight]="'Application'" query="App"></span>
                     <span [blocTextHighlight]="'Pineapple'" query="app"></span>
                 </div>
-                <app-sample-code [code]="snippets.basic" />
+                <app-sample-code [files]="snippets.basic" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -36,7 +36,7 @@
                 <div class="flex flex-col gap-2 text-sm">
                     <span [blocTextHighlight]="'Banana'" query="xyz"></span>
                 </div>
-                <app-sample-code [code]="snippets.noMatch" />
+                <app-sample-code [files]="snippets.noMatch" />
             </div>
         </div>
 
@@ -69,7 +69,7 @@
                         <li class="px-3 py-2 text-sm text-slate-400 italic">No matches</li>
                     }
                 </ul>
-                <app-sample-code [code]="snippets.interactive" />
+                <app-sample-code [files]="snippets.interactive" />
             </div>
         </div>
 
@@ -97,7 +97,7 @@
                         ></span>
                     </div>
                 </div>
-                <app-sample-code [code]="snippets.caseSensitive" />
+                <app-sample-code [files]="snippets.caseSensitive" />
             </div>
         </div>
 
@@ -120,7 +120,7 @@
                     ></span>
                     <span [blocTextHighlight]="'Pineapple'" query="app" [highlighted]="true"></span>
                 </div>
-                <app-sample-code [code]="snippets.withColor" />
+                <app-sample-code [files]="snippets.withColor" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
@@ -146,7 +146,7 @@
                         <span [blocTextHighlight]="'Green themed highlight'" query="Green"></span>
                     </div>
                 </div>
-                <app-sample-code [code]="snippets.customToken" />
+                <app-sample-code [files]="snippets.customToken" />
             </div>
         </div>
     </bloc-tab>

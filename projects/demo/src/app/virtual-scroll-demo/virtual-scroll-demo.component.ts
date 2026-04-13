@@ -48,19 +48,19 @@ export class VirtualScrollDemoComponent {
             'number (required)',
             '—',
             'Estimated row height in pixels. Used for scroll math on unmeasured items.',
-    ],
+        ],
         [
             'overscan',
             'number',
             '10',
             'Number of extra items rendered above and below the visible viewport.',
-    ],
+        ],
         [
             'autoMeasure',
             'boolean',
             'false',
             'Measures actual rendered row heights and caches them. Required for variable-height rows.',
-    ],
+        ],
     ];
 
     readonly exportedState: string[][] = [
@@ -68,12 +68,12 @@ export class VirtualScrollDemoComponent {
             'visibleItems()',
             'T[]',
             'Signal getter returning the currently rendered slice of <code>items</code>.',
-    ],
+        ],
         [
             'scrollToIndex(index)',
             'void',
             'Scrolls the viewport so the item at the given absolute index is at the top.',
-    ],
+        ],
     ];
 
     readonly templateContext: string[][] = [
@@ -82,7 +82,7 @@ export class VirtualScrollDemoComponent {
             'index (let-i="index")',
             'number',
             'Absolute index of this item in the full <code>items</code> array.',
-    ],
+        ],
     ];
     /* ── 10 000 simple items ── */
     readonly simpleItems = Array.from({ length: 10_000 }, (_, i) => ({
@@ -119,7 +119,11 @@ export class VirtualScrollDemoComponent {
     }));
 
     readonly snippets = {
-        basic: `<bloc-virtual-scroll [items]="items" [itemHeight]="40"
+        basic: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-virtual-scroll [items]="items" [itemHeight]="40"
                      style="height: 400px">
   <ng-template blocVirtualItem let-item let-i="index">
     <div style="height: 40px; padding: 8px 16px;
@@ -128,8 +132,32 @@ export class VirtualScrollDemoComponent {
     </div>
   </ng-template>
 </bloc-virtual-scroll>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';
+import { BlocVirtualScrollComponent, BlocVirtualItemDirective } from '@bloc-ui/virtual-scroll';
 
-        table: `<bloc-virtual-scroll [items]="rows" [itemHeight]="48"
+@Component({
+  selector: 'app-example',
+  standalone: true,
+  imports: [BlocVirtualScrollComponent, BlocVirtualItemDirective],
+  templateUrl: './example.component.html',
+})
+export class ExampleComponent {
+  readonly items = Array.from({ length: 10_000 }, (_, i) => ({
+    id: i + 1,
+    label: \`Item #\${i + 1}\`,
+  }));
+}`,
+            },
+        ],
+        table: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-virtual-scroll [items]="rows" [itemHeight]="48"
                      style="height: 500px"
                      #vs="blocVirtualScroll">
   <bloc-table [data]="vs.visibleItems()" [sticky]="true">
@@ -139,8 +167,35 @@ export class VirtualScrollDemoComponent {
     <bloc-column field="role"   header="Role" />
   </bloc-table>
 </bloc-virtual-scroll>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';
+import { BlocVirtualScrollComponent } from '@bloc-ui/virtual-scroll';
+import { BlocTableComponent, BlocColumnComponent } from '@bloc-ui/table';
 
-        custom: `<bloc-virtual-scroll [items]="people" [itemHeight]="56"
+@Component({
+  selector: 'app-example',
+  standalone: true,
+  imports: [BlocVirtualScrollComponent, BlocTableComponent, BlocColumnComponent],
+  templateUrl: './example.component.html',
+})
+export class ExampleComponent {
+  readonly rows = Array.from({ length: 5_000 }, (_, i) => ({
+    id: i + 1,
+    name: \`User \${i + 1}\`,
+    email: \`user\${i + 1}@example.com\`,
+    role: ['Admin', 'Editor', 'Viewer'][i % 3],
+  }));
+}`,
+            },
+        ],
+        custom: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-virtual-scroll [items]="people" [itemHeight]="56"
                      style="height: 400px">
   <ng-template blocVirtualItem let-person let-i="index">
     <div style="height: 56px; display: flex; align-items: center;
@@ -154,5 +209,28 @@ export class VirtualScrollDemoComponent {
     </div>
   </ng-template>
 </bloc-virtual-scroll>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';
+import { BlocVirtualScrollComponent, BlocVirtualItemDirective } from '@bloc-ui/virtual-scroll';
+
+@Component({
+  selector: 'app-example',
+  standalone: true,
+  imports: [BlocVirtualScrollComponent, BlocVirtualItemDirective],
+  templateUrl: './example.component.html',
+})
+export class ExampleComponent {
+  readonly people = Array.from({ length: 10_000 }, (_, i) => ({
+    id: i + 1,
+    name: \`Person \${i + 1}\`,
+    initials: \`P\${i + 1}\`,
+    role: ['Engineer', 'Designer', 'Manager', 'Analyst'][i % 4],
+  }));
+}`,
+            },
+        ],
     };
 }

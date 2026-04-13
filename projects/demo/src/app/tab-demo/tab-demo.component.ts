@@ -55,10 +55,70 @@ export class TabDemoComponent {
     selectedIndex = 0;
 
     readonly snippets = {
-        basic: `<bloc-tab-group>\n  <bloc-tab label="Profile">Profile content</bloc-tab>\n  <bloc-tab label="Settings">Settings content</bloc-tab>\n  <bloc-tab label="Billing">Billing content</bloc-tab>\n</bloc-tab-group>`,
-        manualSizing: `<bloc-tab-group\n  style="--bloc-tab-padding: 6px 12px;\n         --bloc-tab-font-size: 0.8125rem;\n         --bloc-tab-body-padding: 12px 0">\n  <bloc-tab label="Tab 1">…</bloc-tab>\n  <bloc-tab label="Tab 2">…</bloc-tab>\n</bloc-tab-group>`,
-        disabled: `<bloc-tab-group>\n  <bloc-tab label="Active">…</bloc-tab>\n  <bloc-tab label="Disabled" [disabled]="true">…</bloc-tab>\n  <bloc-tab label="Another">…</bloc-tab>\n</bloc-tab-group>`,
-        selectedIndex: `<bloc-tab-group [selectedIndex]="1"\n  (selectedIndexChange)="onTabChange($event)">\n  <bloc-tab label="First">…</bloc-tab>\n  <bloc-tab label="Second">…</bloc-tab>\n</bloc-tab-group>`,
-        customToken: `<bloc-tab-group\n  style="--bloc-tab-indicator: #16a34a;\n         --bloc-tab-active-color: #16a34a">\n  <bloc-tab label="Tab 1">…</bloc-tab>\n  <bloc-tab label="Tab 2">…</bloc-tab>\n</bloc-tab-group>`,
+        basic: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-tab-group>\n  <bloc-tab label="Profile">Profile content</bloc-tab>\n  <bloc-tab label="Settings">Settings content</bloc-tab>\n  <bloc-tab label="Billing">Billing content</bloc-tab>\n</bloc-tab-group>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocTabGroupComponent, BlocTabComponent } from '@bloc-ui/tab';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocTabGroupComponent, BlocTabComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        manualSizing: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-tab-group\n  style="--bloc-tab-padding: 6px 12px;\n         --bloc-tab-font-size: 0.8125rem;\n         --bloc-tab-body-padding: 12px 0">\n  <bloc-tab label="Tab 1">…</bloc-tab>\n  <bloc-tab label="Tab 2">…</bloc-tab>\n</bloc-tab-group>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocTabGroupComponent, BlocTabComponent } from '@bloc-ui/tab';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocTabGroupComponent, BlocTabComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        disabled: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-tab-group>\n  <bloc-tab label="Active">…</bloc-tab>\n  <bloc-tab label="Disabled" [disabled]="true">…</bloc-tab>\n  <bloc-tab label="Another">…</bloc-tab>\n</bloc-tab-group>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocTabGroupComponent, BlocTabComponent } from '@bloc-ui/tab';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocTabGroupComponent, BlocTabComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        selectedIndex: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-tab-group [selectedIndex]="1"\n  (selectedIndexChange)="onTabChange($event)">\n  <bloc-tab label="First">…</bloc-tab>\n  <bloc-tab label="Second">…</bloc-tab>\n</bloc-tab-group>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocTabGroupComponent, BlocTabComponent } from '@bloc-ui/tab';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocTabGroupComponent, BlocTabComponent],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {\n  selectedIndex = 1;\n\n  onTabChange(index: number): void {\n    this.selectedIndex = index;\n  }\n}`,
+            },
+        ],
+        customToken: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-tab-group class="custom-tabs">\n  <bloc-tab label="Tab 1">…</bloc-tab>\n  <bloc-tab label="Tab 2">…</bloc-tab>\n</bloc-tab-group>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocTabGroupComponent, BlocTabComponent } from '@bloc-ui/tab';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocTabGroupComponent, BlocTabComponent],\n  templateUrl: './example.component.html',\n  styleUrl: './example.component.css',\n})\nexport class ExampleComponent {}`,
+            },
+            {
+                label: 'CSS',
+                language: 'css',
+                code: `.custom-tabs {\n  --bloc-tab-indicator: #16a34a;\n  --bloc-tab-active-color: #16a34a;\n}`,
+            },
+        ],
     };
 }

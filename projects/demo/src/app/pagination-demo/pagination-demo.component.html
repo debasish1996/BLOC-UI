@@ -27,7 +27,7 @@
                 <p class="m-0 text-xs text-slate-400">
                     Current page: <strong>{{ currentPage() }}</strong>
                 </p>
-                <app-sample-code [code]="snippets.basic" />
+                <app-sample-code [files]="snippets.basic" />
             </div>
         </div>
 
@@ -47,7 +47,7 @@
                     [siblingCount]="2"
                     [boundaryCount]="1"
                 />
-                <app-sample-code [code]="snippets.dense" />
+                <app-sample-code [files]="snippets.dense" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
@@ -61,7 +61,7 @@
                     [siblingCount]="1"
                     [boundaryCount]="1"
                 />
-                <app-sample-code [code]="snippets.compact" />
+                <app-sample-code [files]="snippets.compact" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
@@ -75,7 +75,7 @@
                     [siblingCount]="1"
                     [boundaryCount]="1"
                 />
-                <app-sample-code [code]="snippets.large" />
+                <app-sample-code [files]="snippets.large" />
             </div>
         </div>
 
@@ -90,7 +90,7 @@
                     Prev is disabled — only Next is active.
                 </p>
                 <bloc-pagination [(page)]="firstPage" [totalPages]="8" />
-                <app-sample-code [code]="snippets.stateFirst" />
+                <app-sample-code [files]="snippets.stateFirst" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
@@ -99,7 +99,7 @@
                     Next is disabled — only Prev is active.
                 </p>
                 <bloc-pagination [(page)]="lastPage" [totalPages]="8" />
-                <app-sample-code [code]="snippets.stateLast" />
+                <app-sample-code [files]="snippets.stateLast" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
@@ -108,7 +108,7 @@
                     When there is only one page, both controls are disabled.
                 </p>
                 <bloc-pagination [(page)]="singlePage" [totalPages]="1" />
-                <app-sample-code [code]="snippets.stateSingle" />
+                <app-sample-code [files]="snippets.stateSingle" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
@@ -118,7 +118,7 @@
                     loading.
                 </p>
                 <bloc-pagination [(page)]="currentPage" [totalPages]="8" [disabled]="true" />
-                <app-sample-code [code]="snippets.disabled" />
+                <app-sample-code [files]="snippets.disabled" />
             </div>
         </div>
 
@@ -138,7 +138,7 @@
                     [totalPages]="20"
                     [showFirstLast]="true"
                 />
-                <app-sample-code [code]="snippets.firstLast" />
+                <app-sample-code [files]="snippets.firstLast" />
             </div>
 
             <div
@@ -157,7 +157,7 @@
                     firstLabel="First"
                     lastLabel="Last"
                 />
-                <app-sample-code [code]="snippets.customLabels" />
+                <app-sample-code [files]="snippets.customLabels" />
             </div>
         </div>
 
@@ -180,7 +180,7 @@
                         --bloc-pagination-border: #d1fae5;
                     "
                 />
-                <app-sample-code [code]="snippets.theming" />
+                <app-sample-code [files]="snippets.theming" />
             </div>
         </div>
     </bloc-tab>

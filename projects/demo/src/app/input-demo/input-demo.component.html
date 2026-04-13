@@ -36,7 +36,7 @@
                         <span class="text-xs text-slate-400">Value: {{ name() }}</span>
                     }
                 </div>
-                <app-sample-code [code]="snippets.text" />
+                <app-sample-code [files]="snippets.text" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -53,7 +53,7 @@
                         placeholder="Enter password"
                     />
                 </div>
-                <app-sample-code [code]="snippets.password" />
+                <app-sample-code [files]="snippets.password" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -62,7 +62,7 @@
                 <div>
                     <input blocInput type="search" placeholder="Search..." />
                 </div>
-                <app-sample-code [code]="snippets.noLabel" />
+                <app-sample-code [files]="snippets.noLabel" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -80,7 +80,7 @@
                         disabled
                     />
                 </div>
-                <app-sample-code [code]="snippets.disabled" />
+                <app-sample-code [files]="snippets.disabled" />
             </div>
         </div>
 
@@ -96,7 +96,7 @@
                     <bloc-prefix><app-icon name="search" /></bloc-prefix>
                     <input blocInput type="search" placeholder="Search..." />
                 </bloc-input-group>
-                <app-sample-code [code]="snippets.prefix" />
+                <app-sample-code [files]="snippets.prefix" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -106,7 +106,7 @@
                     <input blocInput type="email" placeholder="Enter email" />
                     <bloc-suffix><app-icon name="mail" /></bloc-suffix>
                 </bloc-input-group>
-                <app-sample-code [code]="snippets.suffix" />
+                <app-sample-code [files]="snippets.suffix" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -117,7 +117,7 @@
                     <input blocInput type="text" placeholder="Search..." />
                     <bloc-suffix><app-icon name="x" /></bloc-suffix>
                 </bloc-input-group>
-                <app-sample-code [code]="snippets.prefixSuffix" />
+                <app-sample-code [files]="snippets.prefixSuffix" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -130,7 +130,7 @@
                     <input blocInput type="password" placeholder="Enter password" />
                     <span blocSuffix><app-icon name="eye" /></span>
                 </div>
-                <app-sample-code [code]="snippets.attrSelector" />
+                <app-sample-code [files]="snippets.attrSelector" />
             </div>
         </div>
 
@@ -154,7 +154,7 @@
                     />
                     <bloc-input-error>This field is required.</bloc-input-error>
                 </div>
-                <app-sample-code [code]="snippets.errorManual" />
+                <app-sample-code [files]="snippets.errorManual" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -179,7 +179,7 @@
                         <bloc-input-error>Please enter a valid email address.</bloc-input-error>
                     }
                 </div>
-                <app-sample-code [code]="snippets.errorFormControl" />
+                <app-sample-code [files]="snippets.errorFormControl" />
             </div>
         </div>
 
@@ -202,7 +202,7 @@
                 <p class="m-0 text-xs text-slate-400">
                     value: <strong>{{ ngModelValue || '(empty)' }}</strong>
                 </p>
-                <app-sample-code [code]="snippets.ngModel" />
+                <app-sample-code [files]="snippets.ngModel" />
             </div>
         </div>
 
@@ -231,7 +231,7 @@
                     touched: <strong>{{ requiredCtrl.touched }}</strong> &nbsp;|&nbsp; valid:
                     <strong>{{ requiredCtrl.valid }}</strong>
                 </p>
-                <app-sample-code [code]="snippets.formControlRequired" />
+                <app-sample-code [files]="snippets.formControlRequired" />
             </div>
 
             <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
@@ -259,7 +259,7 @@
                     group value:
                     <strong>{{ userFormGroup.get('username')?.value || '(empty)' }}</strong>
                 </p>
-                <app-sample-code [code]="snippets.formControlName" />
+                <app-sample-code [files]="snippets.formControlName" />
             </div>
         </div>
 
@@ -297,7 +297,7 @@
                         />
                     </div>
                 </div>
-                <app-sample-code [code]="snippets.customToken" />
+                <app-sample-code [files]="snippets.customToken" />
             </div>
         </div>
     </bloc-tab>

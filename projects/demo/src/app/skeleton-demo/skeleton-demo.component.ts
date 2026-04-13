@@ -33,20 +33,20 @@ export class SkeletonDemoComponent {
             "'line' | 'rect' | 'circle'",
             "'line'",
             'Shape preset controlling dimensions and border radius.',
-    ],
+        ],
         ['animated', 'boolean', 'true', 'Enables or disables the shimmer animation.'],
         [
             'width',
             'string',
             "''",
             'Explicit width (e.g. <code>"200px"</code>, <code>"100%"</code>). Overrides shape default.',
-    ],
+        ],
         [
             'height',
             'string',
             "''",
             'Explicit height (e.g. <code>"16px"</code>, <code>"4rem"</code>). Overrides shape default.',
-    ],
+        ],
     ];
 
     readonly tokens: string[][] = [
@@ -55,7 +55,7 @@ export class SkeletonDemoComponent {
             '--bloc-skeleton-radius',
             '8px',
             'Border radius (overridden to <code>9999px</code> for the circle shape).',
-    ],
+        ],
         ['--bloc-skeleton-shimmer', 'rgba(255,255,255,0.55)', 'Shimmer highlight colour.'],
         ['--bloc-skeleton-line-height', '1rem', 'Default height for the <code>line</code> shape.'],
         ['--bloc-skeleton-rect-height', '96px', 'Default height for the <code>rect</code> shape.'],
@@ -63,13 +63,62 @@ export class SkeletonDemoComponent {
             '--bloc-skeleton-circle-size',
             '48px',
             'Default width and height for the <code>circle</code> shape.',
-    ],
+        ],
     ];
 
     readonly snippets = {
-        textLines: `<div blocSkeleton width="70%"></div>\n<div blocSkeleton width="100%"></div>\n<div blocSkeleton width="55%"></div>`,
-        shapes: `<bloc-skeleton shape="circle"></bloc-skeleton>\n<bloc-skeleton shape="rect" height="80px"></bloc-skeleton>`,
-        static: `<bloc-skeleton [animated]="false" height="1rem"></bloc-skeleton>`,
-        customToken: `<bloc-skeleton\n  height="1rem"\n  style="--bloc-skeleton-bg: #cbd5e1"></bloc-skeleton>`,
+        textLines: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<div blocSkeleton width="70%"></div>\n<div blocSkeleton width="100%"></div>\n<div blocSkeleton width="55%"></div>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocSkeletonDirective } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocSkeletonDirective],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        shapes: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-skeleton shape="circle"></bloc-skeleton>\n<bloc-skeleton shape="rect" height="80px"></bloc-skeleton>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocSkeletonDirective } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocSkeletonDirective],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        static: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-skeleton [animated]="false" height="1rem"></bloc-skeleton>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocSkeletonDirective } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocSkeletonDirective],\n  templateUrl: './example.component.html',\n})\nexport class ExampleComponent {}`,
+            },
+        ],
+        customToken: [
+            {
+                label: 'HTML',
+                language: 'xml',
+                code: `<bloc-skeleton\n  height="1rem"\n  class="custom-skeleton"></bloc-skeleton>`,
+            },
+            {
+                label: 'TypeScript',
+                language: 'typescript',
+                code: `import { Component } from '@angular/core';\nimport { BlocSkeletonDirective } from '@bloc-ui/core';\n\n@Component({\n  selector: 'app-example',\n  standalone: true,\n  imports: [BlocSkeletonDirective],\n  templateUrl: './example.component.html',\n  styleUrl: './example.component.css',\n})\nexport class ExampleComponent {}`,
+            },
+            {
+                label: 'CSS',
+                language: 'css',
+                code: `.custom-skeleton {\n  --bloc-skeleton-bg: #cbd5e1;\n}`,
+            },
+        ],
     };
 }
