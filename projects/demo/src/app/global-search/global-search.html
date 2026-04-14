@@ -5,14 +5,14 @@
 >
     <!-- Dialog — stop click bubbling to backdrop -->
     <div
-        class="search-dialog bg-white rounded-xl shadow-2xl w-full max-w-[560px] overflow-hidden"
+        class="search-dialog bg-gray-900 rounded-xl shadow-2xl w-full max-w-[560px] overflow-hidden"
         role="dialog"
         aria-label="Search components"
         aria-modal="true"
         (click)="$event.stopPropagation()"
     >
         <!-- Search input row -->
-        <div class="flex items-center gap-3 px-4 py-3 border-b border-slate-200">
+        <div class="flex items-center gap-3 px-4 py-3 border-b border-gray-700">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="18"
@@ -23,7 +23,7 @@
                 stroke-width="2"
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                class="text-slate-400 shrink-0"
+                class="text-gray-500 shrink-0"
             >
                 <circle cx="11" cy="11" r="8" />
                 <line x1="21" y1="21" x2="16.65" y2="16.65" />
@@ -32,7 +32,7 @@
                 #searchInput
                 type="text"
                 placeholder="Search components..."
-                class="flex-1 outline-none text-slate-800 text-[0.95rem] placeholder:text-slate-400 bg-transparent"
+                class="flex-1 outline-none text-gray-100 text-[0.95rem] placeholder:text-gray-500 bg-transparent"
                 [value]="query()"
                 (input)="onQuery($any($event.target).value)"
                 (keydown)="onKeyDown($event)"
@@ -41,7 +41,7 @@
             />
             <button
                 type="button"
-                class="text-slate-400 hover:text-slate-600 shrink-0 p-0.5 rounded transition-colors cursor-pointer"
+                class="text-gray-500 hover:text-gray-300 shrink-0 p-0.5 rounded transition-colors cursor-pointer"
                 aria-label="Close search"
                 (click)="closed.emit()"
             >
@@ -65,33 +65,37 @@
         <!-- Results list -->
         <div class="max-h-72 overflow-y-auto overscroll-contain" role="listbox">
             @if (filtered().length === 0) {
-                <p class="text-center text-slate-400 text-sm py-10">
-                    No results for "<span class="font-medium text-slate-600">{{ query() }}</span
+                <p class="text-center text-gray-500 text-sm py-10">
+                    No results for "<span class="font-medium text-gray-300">{{ query() }}</span
                     >"
                 </p>
             } @else {
                 @for (item of filtered(); track item.path; let i = $index) {
                     <button
                         class="w-full text-left px-4 py-2.5 flex items-center gap-3 text-sm transition-colors cursor-pointer border-none outline-none"
-                        [class]="activeIndex() === i ? 'bg-blue-50' : 'bg-white hover:bg-slate-50'"
+                        [class]="
+                            activeIndex() === i ? 'bg-violet-950' : 'bg-gray-900 hover:bg-gray-800'
+                        "
                         role="option"
                         [attr.aria-selected]="activeIndex() === i"
                         (click)="navigate(item.path)"
                         (mouseenter)="activeIndex.set(i)"
                     >
                         <span
-                            class="text-[0.7rem] font-medium text-slate-400 w-28 shrink-0 uppercase tracking-wide"
+                            class="text-[0.7rem] font-medium text-gray-500 w-28 shrink-0 uppercase tracking-wide"
                             >{{ item.group }}</span
                         >
                         <span
                             [class]="
-                                activeIndex() === i ? 'text-blue-700 font-medium' : 'text-slate-700'
+                                activeIndex() === i
+                                    ? 'text-violet-400 font-medium'
+                                    : 'text-gray-300'
                             "
                             >{{ item.label }}</span
                         >
                         @if (activeIndex() === i) {
                             <svg
-                                class="ml-auto text-blue-400 shrink-0"
+                                class="ml-auto text-violet-400 shrink-0"
                                 xmlns="http://www.w3.org/2000/svg"
                                 width="14"
                                 height="14"
@@ -113,25 +117,25 @@
 
         <!-- Footer hints -->
         <div
-            class="border-t border-slate-100 px-4 py-2 flex items-center gap-4 text-[0.72rem] text-slate-400 bg-slate-50/80"
+            class="border-t border-gray-800 px-4 py-2 flex items-center gap-4 text-[0.72rem] text-gray-500 bg-gray-800/80"
         >
             <span class="flex items-center gap-1">
                 <kbd
-                    class="bg-white border border-slate-200 px-1 py-0.5 rounded text-[0.65rem] font-mono"
+                    class="bg-gray-700 border border-gray-600 px-1 py-0.5 rounded text-[0.65rem] font-mono"
                     >↑↓</kbd
                 >
                 navigate
             </span>
             <span class="flex items-center gap-1">
                 <kbd
-                    class="bg-white border border-slate-200 px-1 py-0.5 rounded text-[0.65rem] font-mono"
+                    class="bg-gray-700 border border-gray-600 px-1 py-0.5 rounded text-[0.65rem] font-mono"
                     >↵</kbd
                 >
                 select
             </span>
             <span class="flex items-center gap-1">
                 <kbd
-                    class="bg-white border border-slate-200 px-1 py-0.5 rounded text-[0.65rem] font-mono"
+                    class="bg-gray-700 border border-gray-600 px-1 py-0.5 rounded text-[0.65rem] font-mono"
                     >Esc</kbd
                 >
                 close

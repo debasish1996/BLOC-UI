@@ -1,9 +1,9 @@
-<header class="mb-8 pb-4 border-b border-slate-200">
-    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Textarea</h1>
-    <p class="m-0 text-slate-400 text-[0.95rem]">
+<header class="mb-8 pb-4 border-b border-gray-700/50">
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-gray-100">Textarea</h1>
+    <p class="m-0 text-gray-500 text-[0.95rem]">
         Native <code>textarea</code> styled with the <code>blocTextarea</code> directive.
     </p>
-    <p class="m-0 text-xs text-slate-400 mt-1">
+    <p class="m-0 text-xs text-gray-500 mt-1">
         Keyboard: native browser. ARIA: <code>aria-invalid</code> set automatically on error state.
     </p>
     <app-install-command package="@bloc-ui/core" />
@@ -11,17 +11,17 @@
 
 <bloc-tab-group>
     <bloc-tab label="Examples">
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Basics
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(280px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Basic</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Basic</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Multi-line text entry with native resize.
                 </p>
                 <div class="flex flex-col gap-1">
-                    <label class="text-xs font-medium text-slate-700" for="textarea-bio"
+                    <label class="text-xs font-medium text-gray-300" for="textarea-bio"
                         >Project brief</label
                     >
                     <textarea
@@ -32,14 +32,14 @@
                         [value]="bio()"
                         (input)="bio.set($any($event.target).value)"
                     ></textarea>
-                    <span class="text-xs text-slate-400">{{ bio().length }} characters</span>
+                    <span class="text-xs text-gray-500">{{ bio().length }} characters</span>
                 </div>
                 <app-sample-code [files]="snippets.basic" />
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Disabled</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Disabled</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Non-interactive state for read-only flows.
                 </p>
                 <textarea blocTextarea rows="4" placeholder="Cannot edit" disabled></textarea>
@@ -47,13 +47,13 @@
             </div>
         </div>
 
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Validation
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(280px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Error, manual</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Error, manual</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Force the error style with <code>[error]</code>.
                 </p>
                 <div class="flex flex-col gap-1">
@@ -68,9 +68,9 @@
                 <app-sample-code [files]="snippets.manualError" />
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Error, FormControl</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Error, FormControl</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Driven by <code>invalid &amp;&amp; touched</code>. Enter fewer than 20
                     characters and blur.
                 </p>
@@ -89,30 +89,28 @@
             </div>
         </div>
 
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Angular Forms
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(280px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Two-way binding</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
-                    Bound with <code>[(ngModel)]</code>.
-                </p>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Two-way binding</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">Bound with <code>[(ngModel)]</code>.</p>
                 <textarea
                     blocTextarea
                     rows="4"
                     [(ngModel)]="ngModelValue"
                     placeholder="Start typing"
                 ></textarea>
-                <p class="m-0 text-xs text-slate-400">
+                <p class="m-0 text-xs text-gray-500">
                     Characters: <strong>{{ ngModelValue.length }}</strong>
                 </p>
                 <app-sample-code [files]="snippets.ngModel" />
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-                <h3 class="m-0 text-base font-semibold text-slate-900">formControlName</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">formControlName</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Works inside a <code>FormGroup</code> the same way inputs do.
                 </p>
                 <form [formGroup]="feedbackFormGroup" class="flex flex-col gap-1">
@@ -129,7 +127,7 @@
                         <bloc-input-error>Feedback is required.</bloc-input-error>
                     }
                 </form>
-                <p class="m-0 text-xs text-slate-400">
+                <p class="m-0 text-xs text-gray-500">
                     Remaining:
                     <strong>{{
                         180 - (feedbackFormGroup.get('notes')?.value?.length || 0)
@@ -139,13 +137,13 @@
             </div>
         </div>
 
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Theming
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(280px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Custom tokens</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Custom tokens</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Override size and shape with CSS custom properties.
                 </p>
                 <textarea

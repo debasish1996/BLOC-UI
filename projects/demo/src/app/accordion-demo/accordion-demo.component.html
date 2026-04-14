@@ -1,9 +1,9 @@
-<header class="mb-8 pb-4 border-b border-slate-200">
-    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Accordion</h1>
-    <p class="m-0 text-slate-400 text-[0.95rem]">
+<header class="mb-8 pb-4 border-b border-gray-700/50">
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-gray-100">Accordion</h1>
+    <p class="m-0 text-gray-500 text-[0.95rem]">
         Directive-based disclosure UI — items use headless directives so you control the markup.
     </p>
-    <p class="m-0 text-xs text-slate-400 mt-1">
+    <p class="m-0 text-xs text-gray-500 mt-1">
         Keyboard: Tab between triggers, Enter / Space to toggle. Sets <code>aria-expanded</code> on
         triggers and <code>role="region"</code> on panels.
     </p>
@@ -13,13 +13,13 @@
 <bloc-tab-group>
     <bloc-tab label="Examples">
         <!-- Common Patterns -->
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Common Patterns
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Single Open Item</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Single Open Item</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Default behaviour keeps focus on one section at a time.
                 </p>
                 <bloc-accordion class="gap-3">
@@ -37,9 +37,9 @@
                 <app-sample-code [files]="snippets.basic" />
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Multi Expand</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Multi Expand</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Enable multiple expanded sections when users need quick comparison.
                 </p>
                 <bloc-accordion [multi]="true" class="gap-3">
@@ -69,13 +69,13 @@
         </div>
 
         <!-- States -->
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             States
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Disabled</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Disabled</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Visually muted and non-interactive. Clicks are suppressed.
                 </p>
                 <bloc-accordion class="gap-3">
@@ -95,16 +95,16 @@
                 <app-sample-code [files]="snippets.disabled" />
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Rich Content</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Rich Content</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Project any content — lists, links, or other components.
                 </p>
                 <bloc-accordion class="gap-3">
                     <div blocAccordionItem [expanded]="true">
                         <button blocAccordionTrigger class="font-semibold">Getting started</button>
                         <div blocAccordionContent class="px-4 py-2">
-                            <ol class="m-0 flex flex-col gap-1 text-sm text-slate-600">
+                            <ol class="m-0 flex flex-col gap-1 text-sm text-gray-300">
                                 <li>Install the package</li>
                                 <li>Import the directives</li>
                                 <li>Add <code>&lt;bloc-accordion&gt;</code> to your template</li>
@@ -116,9 +116,9 @@
                         <div blocAccordionContent class="px-4 py-2">
                             <ul class="m-0 flex flex-col gap-1 text-sm">
                                 <li>
-                                    <a class="text-blue-600 underline" href="#">Documentation</a>
+                                    <a class="text-violet-400 underline" href="#">Documentation</a>
                                 </li>
-                                <li><a class="text-blue-600 underline" href="#">GitHub</a></li>
+                                <li><a class="text-violet-400 underline" href="#">GitHub</a></li>
                             </ul>
                         </div>
                     </div>
@@ -128,13 +128,13 @@
         </div>
 
         <!-- Custom Icon -->
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Custom Icon
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Custom Chevron</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Custom Chevron</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Add <code>blocAccordionChevron</code> to your own icon to replace the default
                     chevron. The <code>.is-open</code> rotation is applied automatically.
                 </p>
@@ -161,9 +161,9 @@
                 <app-sample-code [files]="snippets.customIcon" />
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-                <h3 class="m-0 text-base font-semibold text-slate-900">No Chevron</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-gray-100">No Chevron</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Set <code>[chevron]="false"</code> to hide the icon entirely.
                 </p>
                 <bloc-accordion class="gap-3">
@@ -185,13 +185,13 @@
         </div>
 
         <!-- Theming -->
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Theming
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Custom Tokens</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Custom Tokens</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Override colours via CSS custom properties — works without Tailwind.
                 </p>
                 <bloc-accordion
@@ -222,12 +222,12 @@
                 <app-sample-code [files]="snippets.theming" />
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Available Tokens</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Available Tokens</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     All CSS custom properties exposed by the accordion.
                 </p>
-                <ul class="m-0 pl-5 flex flex-col gap-1 text-xs text-slate-600 font-mono">
+                <ul class="m-0 pl-5 flex flex-col gap-1 text-xs text-gray-300 font-mono">
                     <li>--bloc-accordion-border</li>
                     <li>--bloc-accordion-radius</li>
                     <li>--bloc-accordion-bg</li>

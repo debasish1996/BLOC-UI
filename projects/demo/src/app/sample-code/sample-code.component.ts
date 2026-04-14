@@ -71,8 +71,8 @@ export interface CodeFile {
             height: 2rem;
             border-radius: 50%;
             border: none;
-            background: rgba(255, 255, 255, 0.85);
-            color: #475569;
+            background: rgba(255, 255, 255, 0.1);
+            color: #9ca3af;
             cursor: pointer;
             display: flex;
             align-items: center;
@@ -83,8 +83,8 @@ export interface CodeFile {
             z-index: 1;
         }
         .copy-btn:hover {
-            background: rgba(255, 255, 255, 1);
-            color: #1e293b;
+            background: rgba(255, 255, 255, 0.2);
+            color: #e5e7eb;
         }
         .copy-btn.copied {
             color: #4ade80;
@@ -93,8 +93,8 @@ export interface CodeFile {
     template: `
         <button
             type="button"
-            class="inline-flex items-center gap-1.5 text-xs font-medium text-slate-400
-             hover:text-slate-600 transition-colors cursor-pointer bg-transparent border-none p-0 mt-2"
+            class="inline-flex items-center gap-1.5 text-xs font-medium text-gray-500
+             hover:text-gray-300 transition-colors cursor-pointer bg-transparent border-none p-0 mt-2"
             (click)="toggle()"
         >
             <svg

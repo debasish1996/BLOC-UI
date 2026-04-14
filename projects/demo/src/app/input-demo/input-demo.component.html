@@ -1,9 +1,9 @@
-<header class="mb-8 pb-4 border-b border-slate-200">
-    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Input</h1>
-    <p class="m-0 text-slate-400 text-[0.95rem]">
+<header class="mb-8 pb-4 border-b border-gray-700/50">
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-gray-100">Input</h1>
+    <p class="m-0 text-gray-500 text-[0.95rem]">
         Native input styled with the <code>blocInput</code> directive.
     </p>
-    <p class="m-0 text-xs text-slate-400 mt-1">
+    <p class="m-0 text-xs text-gray-500 mt-1">
         Keyboard: native browser. ARIA: <code>aria-invalid</code> set automatically on error state.
     </p>
     <app-install-command package="@bloc-ui/core" />
@@ -12,15 +12,15 @@
 <bloc-tab-group>
     <bloc-tab label="Examples">
         <!-- Basic types -->
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Basic types
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Text</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">Basic text field.</p>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Text</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">Basic text field.</p>
                 <div class="flex flex-col gap-1">
-                    <label class="text-xs font-medium text-slate-700" for="input-name"
+                    <label class="text-xs font-medium text-gray-300" for="input-name"
                         >Full name</label
                     >
                     <input
@@ -33,17 +33,17 @@
                         (input)="name.set($any($event.target).value)"
                     />
                     @if (name()) {
-                        <span class="text-xs text-slate-400">Value: {{ name() }}</span>
+                        <span class="text-xs text-gray-500">Value: {{ name() }}</span>
                     }
                 </div>
                 <app-sample-code [files]="snippets.text" />
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Password</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">Masked input for secrets.</p>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Password</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">Masked input for secrets.</p>
                 <div class="flex flex-col gap-1">
-                    <label class="text-xs font-medium text-slate-700" for="input-password"
+                    <label class="text-xs font-medium text-gray-300" for="input-password"
                         >Password</label
                     >
                     <input
@@ -56,20 +56,20 @@
                 <app-sample-code [files]="snippets.password" />
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-                <h3 class="m-0 text-base font-semibold text-slate-900">No label</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">Standalone input, no label needed.</p>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">No label</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">Standalone input, no label needed.</p>
                 <div>
                     <input blocInput type="search" placeholder="Search..." />
                 </div>
                 <app-sample-code [files]="snippets.noLabel" />
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Disabled</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">Non-interactive state.</p>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Disabled</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">Non-interactive state.</p>
                 <div class="flex flex-col gap-1">
-                    <label class="text-xs font-medium text-slate-700" for="input-disabled"
+                    <label class="text-xs font-medium text-gray-300" for="input-disabled"
                         >Read-only field</label
                     >
                     <input
@@ -85,13 +85,13 @@
         </div>
 
         <!-- Prefix / Suffix -->
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Prefix / Suffix
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Prefix icon</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">Search field with a leading icon.</p>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Prefix icon</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">Search field with a leading icon.</p>
                 <bloc-input-group>
                     <bloc-prefix><app-icon name="search" /></bloc-prefix>
                     <input blocInput type="search" placeholder="Search..." />
@@ -99,9 +99,9 @@
                 <app-sample-code [files]="snippets.prefix" />
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Suffix icon</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">Input with a trailing action icon.</p>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Suffix icon</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">Input with a trailing action icon.</p>
                 <bloc-input-group>
                     <input blocInput type="email" placeholder="Enter email" />
                     <bloc-suffix><app-icon name="mail" /></bloc-suffix>
@@ -109,9 +109,9 @@
                 <app-sample-code [files]="snippets.suffix" />
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Prefix &amp; suffix</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">Both adornments combined.</p>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Prefix &amp; suffix</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">Both adornments combined.</p>
                 <bloc-input-group>
                     <bloc-prefix><app-icon name="search" /></bloc-prefix>
                     <input blocInput type="text" placeholder="Search..." />
@@ -120,9 +120,9 @@
                 <app-sample-code [files]="snippets.prefixSuffix" />
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Attribute selector</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Attribute selector</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Same group using attribute directives on divs.
                 </p>
                 <div blocInputGroup>
@@ -135,13 +135,13 @@
         </div>
 
         <!-- Validation -->
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Validation
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Error — manual</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Error — manual</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Explicit <code>[error]="true"</code> flag.
                 </p>
                 <div class="flex flex-col gap-1">
@@ -157,15 +157,13 @@
                 <app-sample-code [files]="snippets.errorManual" />
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Error — FormControl</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Error — FormControl</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Driven by <code>invalid &amp;&amp; touched</code>. Click the field then blur.
                 </p>
                 <div class="flex flex-col gap-1">
-                    <label class="text-xs font-medium text-slate-700" for="input-email"
-                        >Email</label
-                    >
+                    <label class="text-xs font-medium text-gray-300" for="input-email">Email</label>
                     <bloc-input-group>
                         <bloc-prefix><app-icon name="mail" /></bloc-prefix>
                         <input
@@ -184,13 +182,13 @@
         </div>
 
         <!-- Template-driven (ngModel) -->
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Template-driven (ngModel)
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Two-way binding</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">Bound via <code>[(ngModel)]</code>.</p>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Two-way binding</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">Bound via <code>[(ngModel)]</code>.</p>
                 <div class="flex flex-col gap-1">
                     <input
                         blocInput
@@ -199,7 +197,7 @@
                         placeholder="Type something"
                     />
                 </div>
-                <p class="m-0 text-xs text-slate-400">
+                <p class="m-0 text-xs text-gray-500">
                     value: <strong>{{ ngModelValue || '(empty)' }}</strong>
                 </p>
                 <app-sample-code [files]="snippets.ngModel" />
@@ -207,13 +205,13 @@
         </div>
 
         <!-- Reactive forms -->
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Reactive forms
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-                <h3 class="m-0 text-base font-semibold text-slate-900">FormControl</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">FormControl</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Required field — shows error when touched and blank.
                 </p>
                 <div class="flex flex-col gap-1">
@@ -227,16 +225,16 @@
                         <bloc-input-error>This field is required.</bloc-input-error>
                     }
                 </div>
-                <p class="m-0 text-xs text-slate-400">
+                <p class="m-0 text-xs text-gray-500">
                     touched: <strong>{{ requiredCtrl.touched }}</strong> &nbsp;|&nbsp; valid:
                     <strong>{{ requiredCtrl.valid }}</strong>
                 </p>
                 <app-sample-code [files]="snippets.formControlRequired" />
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-                <h3 class="m-0 text-base font-semibold text-slate-900">formControlName</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">formControlName</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Inside a <code>FormGroup</code> via <code>formControlName</code>.
                 </p>
                 <div class="flex flex-col gap-1">
@@ -255,7 +253,7 @@
                         }
                     </form>
                 </div>
-                <p class="m-0 text-xs text-slate-400">
+                <p class="m-0 text-xs text-gray-500">
                     group value:
                     <strong>{{ userFormGroup.get('username')?.value || '(empty)' }}</strong>
                 </p>
@@ -264,18 +262,18 @@
         </div>
 
         <!-- Theming -->
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Theming
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Custom token</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Custom token</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Override via CSS custom properties — radius and focus ring.
                 </p>
                 <div class="flex flex-col gap-2">
                     <div>
-                        <label class="text-xs font-medium text-slate-500 mb-1 block"
+                        <label class="text-xs font-medium text-gray-400 mb-1 block"
                             >Pill radius (<code>--bloc-input-radius</code>)</label
                         >
                         <input
@@ -286,7 +284,7 @@
                         />
                     </div>
                     <div>
-                        <label class="text-xs font-medium text-slate-500 mb-1 block"
+                        <label class="text-xs font-medium text-gray-400 mb-1 block"
                             >Emerald focus ring (<code>--bloc-input-focus-ring</code>)</label
                         >
                         <input

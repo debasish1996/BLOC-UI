@@ -1,9 +1,9 @@
-<header class="mb-8 pb-4 border-b border-slate-200">
-    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Autocomplete</h1>
-    <p class="m-0 text-slate-400 text-[0.95rem]">
+<header class="mb-8 pb-4 border-b border-gray-700/50">
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-gray-100">Autocomplete</h1>
+    <p class="m-0 text-gray-500 text-[0.95rem]">
         Searchable option picker with keyboard navigation, optional clear action, and CVA support.
     </p>
-    <p class="m-0 text-xs text-slate-400 mt-1">
+    <p class="m-0 text-xs text-gray-500 mt-1">
         Keyboard: <code>ArrowUp</code>, <code>ArrowDown</code>, <code>Enter</code>,
         <code>Escape</code>. Closes on outside click and supports disabled, clearable, and loading
         states.
@@ -13,184 +13,211 @@
 
 <bloc-tab-group>
     <bloc-tab label="Examples">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Basic Usage
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Quick Pick</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Great for command menus, owner pickers, or lightweight search-and-select flows.
+                    Includes option descriptions and a clearable control.
+                </p>
+                <bloc-autocomplete
+                    [options]="teamOptions"
+                    [clearable]="true"
+                    placeholder="Search teams"
+                    (selectionChange)="quickPick.set($event)"
+                />
+                <p class="m-0 text-xs text-gray-500">
+                    Selected value: <strong>{{ quickPick() || '(none)' }}</strong>
+                </p>
+                <app-sample-code [files]="snippets.basic" />
+            </div>
 
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Reactive FormControl</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Full CVA support — set an initial value via <code>FormControl</code> and read
+                    back the selected value programmatically.
+                </p>
+                <bloc-autocomplete
+                    [options]="teamOptions"
+                    [formControl]="teamControl"
+                    placeholder="Assign owner"
+                />
+                <p class="m-0 text-xs text-gray-500">
+                    Form value: <strong>{{ teamControl.value || '(none)' }}</strong>
+                </p>
+                <app-sample-code [files]="snippets.reactive" />
+            </div>
 
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Basic Usage
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Quick Pick</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Great for command menus, owner pickers, or lightweight search-and-select flows. Includes
-            option descriptions and a clearable control.
-        </p>
-        <bloc-autocomplete
-            [options]="teamOptions"
-            [clearable]="true"
-            placeholder="Search teams"
-            (selectionChange)="quickPick.set($event)"
-        />
-        <p class="m-0 text-xs text-slate-400">
-            Selected value: <strong>{{ quickPick() || '(none)' }}</strong>
-        </p>
-        <app-sample-code [files]="snippets.basic" />
-    </div>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Required Field</h3>
+                <bloc-autocomplete
+                    [options]="teamOptions"
+                    [formControl]="requiredControl"
+                    [clearable]="true"
+                    placeholder="Required field (try clearing)"
+                />
+                <p class="m-0 text-xs text-gray-500">
+                    Form value: <strong>{{ requiredControl.value || '(none)' }}</strong>
+                </p>
+                <app-sample-code [files]="snippets.required" />
+            </div>
+        </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Reactive FormControl</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Full CVA support — set an initial value via <code>FormControl</code> and read back the
-            selected value programmatically.
-        </p>
-        <bloc-autocomplete
-            [options]="teamOptions"
-            [formControl]="teamControl"
-            placeholder="Assign owner"
-        />
-        <p class="m-0 text-xs text-slate-400">
-            Form value: <strong>{{ teamControl.value || '(none)' }}</strong>
-        </p>
-        <app-sample-code [files]="snippets.reactive" />
-    </div>
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Text Highlight
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Highlighted Matches</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Enable <code>[highlight]="true"</code> to bold the matching portion of each
+                    option label as the user types.
+                </p>
+                <bloc-autocomplete-highlight [options]="teamOptions" />
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Required Field</h3>
-        <bloc-autocomplete
-            [options]="teamOptions"
-            [formControl]="requiredControl"
-            [clearable]="true"
-            placeholder="Required field (try clearing)"
-        />
-        <p class="m-0 text-xs text-slate-400">
-            Form value: <strong>{{ requiredControl.value || '(none)' }}</strong>
-        </p>
-        <app-sample-code [files]="snippets.required" />
-    </div>
-</div>
+                <app-sample-code [files]="snippets.highlight" />
+            </div>
+        </div>
 
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Text Highlight
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Highlighted Matches</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Enable <code>[highlight]="true"</code> to bold the matching portion of each option label
-            as the user types.
-        </p>
-        <bloc-autocomplete-highlight [options]="teamOptions" />
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Fuzzy Search
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Basic Fuzzy Search</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Use <code>[blocAutocompleteFuzzySearch]</code> to enable fuzzy matching. Try
+                    typing abbreviations like 'usa', 'uk', or 'euro' — they'll match even if not
+                    exact.
+                </p>
+                <bloc-autocomplete
+                    [options]="countryOptions"
+                    [blocAutocompleteFuzzySearch]="{
+                        keys: ['label', 'description'],
+                        threshold: 0.6,
+                    }"
+                    placeholder="Try typing 'usa' or 'euro'"
+                />
+                <app-sample-code [files]="snippets.fuzzyBasic" />
+            </div>
 
-        <app-sample-code [files]="snippets.highlight" />
-    </div>
-</div>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Advanced Fuzzy Config</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Configure threshold (0=perfect match, 1=match anything), case sensitivity, and
+                    minimum match length for fine-tuned control.
+                </p>
+                <bloc-autocomplete
+                    [options]="countryOptions"
+                    [blocAutocompleteFuzzySearch]="{
+                        keys: ['label', 'description'],
+                        threshold: 0.5,
+                        isCaseSensitive: false,
+                        minMatchCharLength: 2,
+                    }"
+                    placeholder="Type to fuzzy search..."
+                />
+                <app-sample-code [files]="snippets.fuzzyAdvanced" />
+            </div>
+        </div>
 
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Fuzzy Search
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Basic Fuzzy Search</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Use <code>[blocAutocompleteFuzzySearch]</code> to enable fuzzy matching.
-            Try typing abbreviations like 'usa', 'uk', or 'euro' — they'll match even if not exact.
-        </p>
-        <bloc-autocomplete
-            [options]="countryOptions"
-            [blocAutocompleteFuzzySearch]="{ keys: ['label', 'description'], threshold: 0.6 }"
-            placeholder="Try typing 'usa' or 'euro'"
-        />
-        <app-sample-code [files]="snippets.fuzzyBasic" />
-    </div>
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            States
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Disabled</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Disables click, keyboard interaction, and form participation. Works via
+                    <code>[disabled]="true"</code> or a <code>FormControl</code> with
+                    <code>disabled: true</code>.
+                </p>
+                <bloc-autocomplete
+                    [options]="teamOptions"
+                    [formControl]="disabledControl"
+                    placeholder="Unavailable"
+                />
+                <app-sample-code [files]="snippets.disabled" />
+            </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Advanced Fuzzy Config</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Configure threshold (0=perfect match, 1=match anything), case sensitivity,
-            and minimum match length for fine-tuned control.
-        </p>
-        <bloc-autocomplete
-            [options]="countryOptions"
-            [blocAutocompleteFuzzySearch]="{
-                keys: ['label', 'description'],
-                threshold: 0.5,
-                isCaseSensitive: false,
-                minMatchCharLength: 2
-            }"
-            placeholder="Type to fuzzy search..."
-        />
-        <app-sample-code [files]="snippets.fuzzyAdvanced" />
-    </div>
-</div>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Loading</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    <code>[loading]="true"</code> replaces the option list with a status message —
+                    ideal while fetching async data. An empty query also demonstrates the no-results
+                    state.
+                </p>
+                <bloc-autocomplete
+                    [options]="teamOptions"
+                    [loading]="isLoading()"
+                    placeholder="Search teams"
+                />
+                <button
+                    type="button"
+                    class="self-start px-3 py-2 rounded-md border border-gray-700/50 bg-gray-900/50 text-sm text-gray-300 cursor-pointer hover:bg-gray-700"
+                    (click)="toggleLoading()"
+                >
+                    Toggle Loading
+                </button>
+                <app-sample-code [files]="snippets.loading" />
+            </div>
+        </div>
 
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">States</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Disabled</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Disables click, keyboard interaction, and form participation. Works via
-            <code>[disabled]="true"</code> or a <code>FormControl</code> with
-            <code>disabled: true</code>.
-        </p>
-        <bloc-autocomplete
-            [options]="teamOptions"
-            [formControl]="disabledControl"
-            placeholder="Unavailable"
-        />
-        <app-sample-code [files]="snippets.disabled" />
-    </div>
-
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Loading</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            <code>[loading]="true"</code> replaces the option list with a status message — ideal
-            while fetching async data. An empty query also demonstrates the no-results state.
-        </p>
-        <bloc-autocomplete
-            [options]="teamOptions"
-            [loading]="isLoading()"
-            placeholder="Search teams"
-        />
-        <button
-            type="button"
-            class="self-start px-3 py-2 rounded-md border border-slate-200 bg-slate-50 text-sm text-slate-700 cursor-pointer hover:bg-slate-100"
-            (click)="toggleLoading()"
-        >
-            Toggle Loading
-        </button>
-        <app-sample-code [files]="snippets.loading" />
-    </div>
-</div>
-
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Theming</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-4">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Custom Token</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Override colours via CSS custom properties — works without a theme package.
-        </p>
-        <bloc-autocomplete
-            style="
-                --bloc-autocomplete-border-focus: #10b981;
-                --bloc-autocomplete-option-selected: rgba(16, 185, 129, 0.12);
-                --bloc-autocomplete-option-active: rgba(16, 185, 129, 0.06);
-            "
-            [options]="teamOptions"
-            [clearable]="true"
-            placeholder="Green themed"
-        />
-        <app-sample-code [files]="snippets.theming" />
-    </div>
-</div>
-
-
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Theming
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Custom Token</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Override colours via CSS custom properties — works without a theme package.
+                </p>
+                <bloc-autocomplete
+                    style="
+                        --bloc-autocomplete-border-focus: #10b981;
+                        --bloc-autocomplete-option-selected: rgba(16, 185, 129, 0.12);
+                        --bloc-autocomplete-option-active: rgba(16, 185, 129, 0.06);
+                    "
+                    [options]="teamOptions"
+                    [clearable]="true"
+                    placeholder="Green themed"
+                />
+                <app-sample-code [files]="snippets.theming" />
+            </div>
+        </div>
     </bloc-tab>
     <bloc-tab label="API">
         <div class="api-card">
-            <app-api-table title="Inputs" selector="bloc-autocomplete" [columns]="INPUTS_COLUMNS" [rows]="inputs" />
-            <app-api-table title="Outputs" selector="bloc-autocomplete" [columns]="OUTPUTS_COLUMNS" [rows]="outputs" />
-            <app-api-table title="Inputs" selector="bloc-autocomplete-highlight" [columns]="INPUTS_COLUMNS" [rows]="inputsHighlight" note="Drop-in replacement for &lt;code&gt;bloc-autocomplete&lt;/code&gt; that automatically bolds matching text." />
-            <app-api-table title="Config" selector="[blocAutocompleteFuzzySearch]" [columns]="INPUTS_COLUMNS" [rows]="fuzzyConfig" note="Applied directly to &lt;code&gt;bloc-autocomplete&lt;/code&gt;. Pass a config object as the binding value." />
+            <app-api-table
+                title="Inputs"
+                selector="bloc-autocomplete"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="inputs"
+            />
+            <app-api-table
+                title="Outputs"
+                selector="bloc-autocomplete"
+                [columns]="OUTPUTS_COLUMNS"
+                [rows]="outputs"
+            />
+            <app-api-table
+                title="Inputs"
+                selector="bloc-autocomplete-highlight"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="inputsHighlight"
+                note="Drop-in replacement for &lt;code&gt;bloc-autocomplete&lt;/code&gt; that automatically bolds matching text."
+            />
+            <app-api-table
+                title="Config"
+                selector="[blocAutocompleteFuzzySearch]"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="fuzzyConfig"
+                note="Applied directly to &lt;code&gt;bloc-autocomplete&lt;/code&gt;. Pass a config object as the binding value."
+            />
             <app-api-table title="CSS Tokens" [columns]="TOKENS_COLUMNS" [rows]="tokens" />
         </div>
     </bloc-tab>

@@ -204,7 +204,7 @@ export class AppComponent {}`,
             {
                 label: 'HTML',
                 language: 'xml',
-                code: `<!-- Override colours on the container -->\n<bloc-toast-container\n  style="--bloc-toast-success-color: #7c3aed;\n         --bloc-toast-bg: #faf5ff;\n         --bloc-toast-border: #e9d5ff" />`,
+                code: `<!-- Override colours on the container -->\n<bloc-toast-container\n  style="--bloc-toast-success-color: #685fff;\n         --bloc-toast-bg: #faf5ff;\n         --bloc-toast-border: #e9d5ff" />`,
             },
             {
                 label: 'TypeScript',
@@ -224,7 +224,7 @@ export class AppComponent {}`,
             {
                 label: 'CSS',
                 language: 'css',
-                code: `.custom-toast-container {\n  --bloc-toast-success-color: #7c3aed;\n  --bloc-toast-bg: #faf5ff;\n  --bloc-toast-border: #e9d5ff;\n}`,
+                code: `.custom-toast-container {\n  --bloc-toast-success-color: #685fff;\n  --bloc-toast-bg: #faf5ff;\n  --bloc-toast-border: #e9d5ff;\n}`,
             },
         ],
     };

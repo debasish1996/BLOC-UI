@@ -52,7 +52,7 @@ export class BlocSliderComponent implements ControlValueAccessor {
     readonly trackBackground = computed(() => {
         const range = Math.max(1, this.max() - this.min());
         const percent = ((this.value() - this.min()) / range) * 100;
-        return `linear-gradient(90deg, var(--bloc-slider-fill, #2563eb) 0%, var(--bloc-slider-fill, #2563eb) ${percent}%, var(--bloc-slider-track, #dbe3ee) ${percent}%, var(--bloc-slider-track, #dbe3ee) 100%)`;
+        return `linear-gradient(90deg, var(--bloc-slider-fill, var(--bloc-primary, #6b7280)) 0%, var(--bloc-slider-fill, var(--bloc-primary, #6b7280)) ${percent}%, var(--bloc-slider-track, #dbe3ee) ${percent}%, var(--bloc-slider-track, #dbe3ee) 100%)`;
     });
 
     private readonly _formsDisabled = signal(false);

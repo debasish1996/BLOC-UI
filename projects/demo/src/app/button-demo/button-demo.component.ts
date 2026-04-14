@@ -311,7 +311,7 @@ export class ExampleComponent {}`,
             {
                 label: 'HTML',
                 language: 'xml',
-                code: `<div style="--bloc-primary: #7c3aed; --bloc-secondary: #0ea5e9">\n  <button blocButton variant="primary">Custom Primary</button>\n  <button blocButton variant="secondary">Custom Secondary</button>\n</div>`,
+                code: `<div style="--bloc-primary: #685fff; --bloc-secondary: #0ea5e9">\n  <button blocButton variant="primary">Custom Primary</button>\n  <button blocButton variant="secondary">Custom Secondary</button>\n</div>`,
             },
             {
                 label: 'TypeScript',
@@ -333,7 +333,7 @@ export class ExampleComponent {}`,
                 language: 'css',
                 code: `/* Apply to a parent or the component host */
 .custom-buttons {
-  --bloc-primary: #7c3aed;
+  --bloc-primary: #685fff;
   --bloc-secondary: #0ea5e9;
 }`,
             },

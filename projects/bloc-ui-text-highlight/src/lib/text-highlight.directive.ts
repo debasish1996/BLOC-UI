@@ -1,6 +1,8 @@
 import { DOCUMENT } from '@angular/common';
 import { Directive, computed, effect, ElementRef, inject, input, Renderer2 } from '@angular/core';
 
+const LAYER_ORDER = '@layer theme, base, bloc-text-highlight, components, utilities;';
+
 const TEXT_HIGHLIGHT_CSS = [
     '@layer bloc-text-highlight{',
     ':where(.bloc-text-highlight__match){',
@@ -10,16 +12,21 @@ const TEXT_HIGHLIGHT_CSS = [
     'padding:var(--bloc-text-highlight-padding,0);',
     'font-weight:var(--bloc-text-highlight-font-weight,700);}',
     ':where(.bloc-text-highlight__match--highlighted){',
-    '--bloc-text-highlight-bg:#fef08a;',
+    '--bloc-text-highlight-bg:var(--bloc-text-highlight-highlighted-bg,#fef08a);',
+    '--bloc-text-highlight-color:var(--bloc-text-highlight-highlighted-color,#1e293b);',
     'padding:var(--bloc-text-highlight-padding,0 2px);}',
     '}',
 ].join('');
 
 function ensureTextHighlightStyles(doc: Document): void {
-    if (!doc?.head || doc.head.hasAttribute('data-bloc-text-highlight-styles')) return;
+    if (!doc?.head || doc.getElementById('bloc-text-highlight-layers')) return;
+    const layerStyle = doc.createElement('style');
+    layerStyle.id = 'bloc-text-highlight-layers';
+    layerStyle.textContent = LAYER_ORDER;
+    doc.head.insertBefore(layerStyle, doc.head.firstChild);
+
     const style = doc.createElement('style');
     style.textContent = TEXT_HIGHLIGHT_CSS;
-    doc.head.setAttribute('data-bloc-text-highlight-styles', '');
     doc.head.appendChild(style);
 }
 

@@ -1,6 +1,6 @@
-<header class="mb-8 pb-4 border-b border-slate-200">
-    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Text Highlight</h1>
-    <p class="m-0 text-slate-400 text-[0.95rem]">
+<header class="mb-8 pb-4 border-b border-gray-700/50">
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-gray-100">Text Highlight</h1>
+    <p class="m-0 text-gray-500 text-[0.95rem]">
         Highlights matching portions of text, ideal for search results, autocomplete dropdowns, and
         select option filtering.
     </p>
@@ -10,13 +10,13 @@
 <bloc-tab-group>
     <bloc-tab label="Examples">
         <!-- Basic usage -->
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Basic Usage
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Simple Highlight</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Simple Highlight</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Pass <code>[blocTextHighlight]</code> and <code>query</code> to highlight
                     matching segments.
                 </p>
@@ -28,9 +28,9 @@
                 <app-sample-code [files]="snippets.basic" />
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">No Match</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">No Match</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     When query doesn't match, the full text renders without highlights.
                 </p>
                 <div class="flex flex-col gap-2 text-sm">
@@ -41,32 +41,32 @@
         </div>
 
         <!-- Interactive demo -->
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Interactive Search
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Filter List</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Filter List</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Type to filter and highlight matches — typical autocomplete / select dropdown
                     pattern.
                 </p>
                 <input
-                    class="border border-slate-300 rounded px-3 py-1.5 text-sm outline-none focus:border-blue-500"
+                    class="border border-gray-600 rounded px-3 py-1.5 text-sm outline-none focus:border-violet-500 bg-gray-900 text-gray-200"
                     placeholder="Search fruits..."
                     (input)="searchTerm.set($any($event.target).value)"
                 />
                 <ul
-                    class="list-none m-0 p-0 flex flex-col border border-slate-200 rounded max-h-48 overflow-auto"
+                    class="list-none m-0 p-0 flex flex-col border border-gray-700/50 rounded max-h-48 overflow-auto"
                 >
                     @for (fruit of filteredFruits(); track fruit) {
                         <li
-                            class="px-3 py-2 text-sm hover:bg-slate-50 cursor-pointer border-b border-slate-100 last:border-b-0"
+                            class="px-3 py-2 text-sm hover:bg-gray-900/50 cursor-pointer border-b border-slate-100 last:border-b-0"
                             [blocTextHighlight]="fruit"
                             [query]="searchTerm()"
                         ></li>
                     } @empty {
-                        <li class="px-3 py-2 text-sm text-slate-400 italic">No matches</li>
+                        <li class="px-3 py-2 text-sm text-gray-500 italic">No matches</li>
                     }
                 </ul>
                 <app-sample-code [files]="snippets.interactive" />
@@ -74,22 +74,22 @@
         </div>
 
         <!-- Case sensitive -->
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Case Sensitivity
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Case-Sensitive Mode</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Case-Sensitive Mode</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Set <code>[caseSensitive]="true"</code> for exact case matching.
                 </p>
                 <div class="flex flex-col gap-2 text-sm">
                     <div class="flex items-center gap-2">
-                        <span class="text-slate-400 text-xs w-32">case-insensitive:</span>
+                        <span class="text-gray-500 text-xs w-32">case-insensitive:</span>
                         <span [blocTextHighlight]="'Apple Application'" query="app"></span>
                     </div>
                     <div class="flex items-center gap-2">
-                        <span class="text-slate-400 text-xs w-32">case-sensitive:</span>
+                        <span class="text-gray-500 text-xs w-32">case-sensitive:</span>
                         <span
                             [blocTextHighlight]="'Apple Application'"
                             query="app"
@@ -102,13 +102,13 @@
         </div>
 
         <!-- Highlight color -->
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Highlight Color
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">With Color</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">With Color</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Use <code>[highlighted]="true"</code> to add a background color to matched text.
                 </p>
                 <div class="flex flex-col gap-3 text-sm">
@@ -123,9 +123,9 @@
                 <app-sample-code [files]="snippets.withColor" />
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">CSS Token Override</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">CSS Token Override</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Override <code>--bloc-text-highlight-*</code> tokens to customize globally.
                 </p>
                 <div class="flex flex-col gap-3 text-sm">

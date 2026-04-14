@@ -9,11 +9,11 @@ import { Component, input, signal } from '@angular/core';
         >
             <span>
                 <span class="text-slate-500 select-none">$ </span>npm install
-                <span class="text-blue-400 font-semibold">{{ package() }}</span>
+                <span class="text-violet-400 font-semibold">{{ package() }}</span>
             </span>
             <button
                 (click)="copy()"
-                class="ml-2 p-1 rounded hover:bg-slate-700 transition-colors text-slate-400 hover:text-white cursor-pointer bg-transparent border-none outline-none"
+                class="ml-2 p-1 rounded hover:bg-slate-700 transition-colors text-slate-400 hover:text-gray-100 cursor-pointer bg-transparent border-none outline-none"
                 [attr.aria-label]="copied() ? 'Copied!' : 'Copy to clipboard'"
             >
                 @if (copied()) {

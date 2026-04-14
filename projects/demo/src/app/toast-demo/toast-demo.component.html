@@ -1,6 +1,6 @@
-<header class="mb-8 pb-4 border-b border-slate-200">
-    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Toast</h1>
-    <p class="m-0 text-slate-400 text-[0.95rem]">
+<header class="mb-8 pb-4 border-b border-gray-700/50">
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-gray-100">Toast</h1>
+    <p class="m-0 text-gray-500 text-[0.95rem]">
         Service-driven toast notifications. Inject <code>BlocToastService</code> and call its
         methods to show notifications.
     </p>
@@ -9,108 +9,129 @@
 
 <bloc-tab-group>
     <bloc-tab label="Examples">
+        <!-- Setup -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Setup
+        </h2>
+        <div class="grid grid-cols-1 gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Inject the service</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    <code>BlocToastService</code> is provided in root — just inject it in your
+                    component.
+                </p>
+                <app-sample-code [files]="snippets.inject" />
+            </div>
 
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Add the container</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Place the toast container component once in your root template.
+                </p>
+                <app-sample-code [files]="snippets.container" />
+            </div>
+        </div>
 
-<!-- Setup -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Setup</h2>
-<div class="grid grid-cols-1 gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Inject the service</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            <code>BlocToastService</code> is provided in root — just inject it in your component.
-        </p>
-        <app-sample-code [files]="snippets.inject" />
-    </div>
+        <!-- Types -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Types
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(220px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Info</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">Default type for general messages.</p>
+                <button blocButton (clicked)="showInfo()">Show Info</button>
+                <app-sample-code [files]="snippets.info" />
+            </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Add the container</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Place the toast container component once in your root template.
-        </p>
-        <app-sample-code [files]="snippets.container" />
-    </div>
-</div>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Success</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">Confirms a completed action.</p>
+                <button blocButton (clicked)="showSuccess()">Show Success</button>
+                <app-sample-code [files]="snippets.success" />
+            </div>
 
-<!-- Types -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Types</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(220px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Info</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Default type for general messages.</p>
-        <button blocButton (clicked)="showInfo()">Show Info</button>
-        <app-sample-code [files]="snippets.info" />
-    </div>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Warning</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Alerts the user to a potential issue.
+                </p>
+                <button blocButton (clicked)="showWarning()">Show Warning</button>
+                <app-sample-code [files]="snippets.warning" />
+            </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Success</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Confirms a completed action.</p>
-        <button blocButton (clicked)="showSuccess()">Show Success</button>
-        <app-sample-code [files]="snippets.success" />
-    </div>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Error</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">Reports a failure or error.</p>
+                <button blocButton (clicked)="showError()">Show Error</button>
+                <app-sample-code [files]="snippets.error" />
+            </div>
+        </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Warning</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Alerts the user to a potential issue.</p>
-        <button blocButton (clicked)="showWarning()">Show Warning</button>
-        <app-sample-code [files]="snippets.warning" />
-    </div>
+        <!-- Options -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Options
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">
+                    Persistent (no auto-dismiss)
+                </h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Set <code>duration: 0</code> to keep the toast until manually dismissed.
+                </p>
+                <button blocButton variant="outline" (clicked)="showPersistent()">
+                    Show Persistent
+                </button>
+                <app-sample-code [files]="snippets.persistent" />
+            </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Error</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Reports a failure or error.</p>
-        <button blocButton (clicked)="showError()">Show Error</button>
-        <app-sample-code [files]="snippets.error" />
-    </div>
-</div>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Non-dismissible</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Set <code>dismissible: false</code> to hide the close button.
+                </p>
+                <button blocButton variant="outline" (clicked)="showNonDismissible()">
+                    Show Non-Dismissible
+                </button>
+                <app-sample-code [files]="snippets.nonDismissible" />
+            </div>
 
-<!-- Options -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Options</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Persistent (no auto-dismiss)</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Set <code>duration: 0</code> to keep the toast until manually dismissed.
-        </p>
-        <button blocButton variant="outline" (clicked)="showPersistent()">Show Persistent</button>
-        <app-sample-code [files]="snippets.persistent" />
-    </div>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Dismiss all</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">Clear all visible toasts at once.</p>
+                <button blocButton variant="outline" (clicked)="dismissAll()">Dismiss All</button>
+            </div>
+        </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Non-dismissible</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Set <code>dismissible: false</code> to hide the close button.
-        </p>
-        <button blocButton variant="outline" (clicked)="showNonDismissible()">
-            Show Non-Dismissible
-        </button>
-        <app-sample-code [files]="snippets.nonDismissible" />
-    </div>
-
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Dismiss all</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">Clear all visible toasts at once.</p>
-        <button blocButton variant="outline" (clicked)="dismissAll()">Dismiss All</button>
-    </div>
-</div>
-
-<!-- Theming -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">Theming</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Custom token</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Override toast colours via CSS custom properties on the container.
-        </p>
-        <app-sample-code [files]="snippets.customToken" />
-    </div>
-</div>
-
-
+        <!-- Theming -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Theming
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Custom token</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Override toast colours via CSS custom properties on the container.
+                </p>
+                <app-sample-code [files]="snippets.customToken" />
+            </div>
+        </div>
     </bloc-tab>
     <bloc-tab label="API">
         <div class="api-card">
-            <app-api-table title="Methods" selector="BlocToastService" [columns]="OUTPUTS_COLUMNS" [rows]="methods" />
-            <app-api-table title="Config" selector="BlocToastConfig" [columns]="INPUTS_COLUMNS" [rows]="config" />
+            <app-api-table
+                title="Methods"
+                selector="BlocToastService"
+                [columns]="OUTPUTS_COLUMNS"
+                [rows]="methods"
+            />
+            <app-api-table
+                title="Config"
+                selector="BlocToastConfig"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="config"
+            />
             <app-api-table title="CSS Tokens" [columns]="TOKENS_COLUMNS" [rows]="tokens" />
         </div>
     </bloc-tab>

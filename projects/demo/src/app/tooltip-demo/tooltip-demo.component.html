@@ -1,6 +1,6 @@
-<header class="mb-8 pb-4 border-b border-slate-200">
-    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Tooltip</h1>
-    <p class="m-0 text-slate-400 text-[0.95rem]">
+<header class="mb-8 pb-4 border-b border-gray-700/50">
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-gray-100">Tooltip</h1>
+    <p class="m-0 text-gray-500 text-[0.95rem]">
         Hover/focus tooltip with intelligent repositioning and delay control, built on the overlay
         platform layer.
     </p>
@@ -10,13 +10,13 @@
 <bloc-tab-group>
     <bloc-tab label="Examples">
         <!-- Basic usage -->
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Basic Usage
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Simple Tooltip</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Simple Tooltip</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Attach <code>[blocTooltip]</code> to any element. Hover or focus to trigger.
                 </p>
                 <div class="flex items-center gap-3 flex-wrap">
@@ -25,9 +25,9 @@
                 <app-sample-code [files]="snippets.basic" />
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Disabled Tooltip</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Disabled Tooltip</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Set <code>[tooltipDisabled]="true"</code> to suppress the tooltip entirely.
                 </p>
                 <div class="flex items-center gap-3 flex-wrap">
@@ -46,13 +46,13 @@
         </div>
 
         <!-- Positions -->
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Positions
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">All Placements</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">All Placements</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Use <code>tooltipPosition</code> to control placement: top, bottom, left, right.
                 </p>
                 <div
@@ -103,13 +103,13 @@
         </div>
 
         <!-- Delays -->
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Delay Control
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Custom Show / Hide Delay</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Custom Show / Hide Delay</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     <code>tooltipShowDelay</code> and <code>tooltipHideDelay</code> accept
                     milliseconds.
                 </p>
@@ -128,13 +128,13 @@
         </div>
 
         <!-- Theming -->
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Custom Tokens
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">CSS Token Override</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">CSS Token Override</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Override <code>--bloc-tooltip-*</code> tokens to customize appearance
                     per-instance or globally.
                 </p>

@@ -4,6 +4,40 @@ body {
     font-family: var(--bloc-font-family);
     font-size: var(--bloc-font-size-base);
     color: var(--bloc-text);
+    background-color: #0c0d14;
+}
+
+/* ── Primary shade scale (demo-only) ─────────────────── */
+:root {
+    --bloc-primary-300: #b4afff;
+    --bloc-primary-400: #9089ff;
+    --bloc-primary-600: #5a4ee0;
+    --bloc-primary-700: #4a3ec9;
+    --bloc-primary-800: #2e2678;
+    --bloc-primary-900: #1c1850;
+    --bloc-primary-950: #110f28;
+}
+
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme='light']) {
+        --bloc-primary-300: #c9c4ff;
+        --bloc-primary-400: #a89fff;
+        --bloc-primary-600: #7a6fe6;
+        --bloc-primary-700: #6558d6;
+        --bloc-primary-800: #3d338c;
+        --bloc-primary-900: #241e5e;
+        --bloc-primary-950: #161240;
+    }
+}
+
+:root[data-theme='dark'] {
+    --bloc-primary-300: #c9c4ff;
+    --bloc-primary-400: #a89fff;
+    --bloc-primary-600: #7a6fe6;
+    --bloc-primary-700: #6558d6;
+    --bloc-primary-800: #3d338c;
+    --bloc-primary-900: #241e5e;
+    --bloc-primary-950: #161240;
 }
 
 /* Prevent horizontal page overflow on mobile */
@@ -27,7 +61,7 @@ bloc-table {
 
 .demo-card__hint {
     font-size: 0.8rem;
-    color: var(--bloc-primary, #3b82f6);
+    color: var(--bloc-primary, #a78bfa);
 }
 
 /* Card expands to full grid width when code sample is open */
@@ -36,15 +70,15 @@ bloc-table {
 }
 
 .demo-panel {
-    outline: 2px dashed #3b82f6;
+    outline: 2px dashed #685fff;
     outline-offset: 4px;
 }
 
 /* ── API card (used inside the API tab) ───────────────── */
 .api-card {
-    background: #ffffff;
-    border: 1px solid #e2e8f0;
+    background: #111827;
+    border: 1px solid rgba(55, 65, 81, 0.5);
     border-radius: 0.75rem;
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.06), 0 1px 2px -1px rgba(0, 0, 0, 0.04);
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.2), 0 1px 2px -1px rgba(0, 0, 0, 0.15);
     overflow: hidden;
 }

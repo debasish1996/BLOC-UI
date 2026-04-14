@@ -1,6 +1,6 @@
-<header class="mb-8 pb-4 border-b border-slate-200">
-    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Date Range Picker</h1>
-    <p class="m-0 text-slate-400 text-[0.95rem]">
+<header class="mb-8 pb-4 border-b border-gray-700/50">
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-gray-100">Date Range Picker</h1>
+    <p class="m-0 text-gray-500 text-[0.95rem]">
         Range date picker with auto-sorting — click any two dates in any order, the range is always
         correct. Trigger-based: attach to any element. Works with <code>ngModel</code>,
         <code>formControl</code>, and <code>FormGroup</code>.
@@ -10,203 +10,218 @@
 
 <bloc-tab-group>
     <bloc-tab label="Examples">
-
-
-<!-- Basic -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Basic range
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(300px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Default</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Click the first date, then click the second — range is auto-sorted.
-        </p>
-        <div>
-            <button
-                blocDateRangePickerTrigger
-                #rangeBasic="blocDateRangePickerTrigger"
-                class="inline-flex items-center gap-2 px-3 py-2 text-sm text-slate-700 border border-slate-300 rounded-md bg-white cursor-pointer hover:bg-slate-50 transition-colors"
-            >
-                <app-icon name="calendar" [size]="14"></app-icon>
-                {{ formatRange(rangeBasic.rangeStart(), rangeBasic.rangeEnd()) || 'Pick a range' }}
-            </button>
+        <!-- Basic -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Basic range
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(300px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Default</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Click the first date, then click the second — range is auto-sorted.
+                </p>
+                <div>
+                    <button
+                        blocDateRangePickerTrigger
+                        #rangeBasic="blocDateRangePickerTrigger"
+                        class="inline-flex items-center gap-2 px-3 py-2 text-sm text-gray-300 border border-gray-600 rounded-md bg-gray-900 cursor-pointer hover:bg-gray-900/50 transition-colors"
+                    >
+                        <app-icon name="calendar" [size]="14"></app-icon>
+                        {{
+                            formatRange(rangeBasic.rangeStart(), rangeBasic.rangeEnd()) ||
+                                'Pick a range'
+                        }}
+                    </button>
+                </div>
+                <app-sample-code [files]="snippets.rangeBasic" />
+            </div>
         </div>
-        <app-sample-code [files]="snippets.rangeBasic" />
-    </div>
-</div>
 
-<!-- ngModel -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Template-driven (ngModel)
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(300px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Two-way binding</h3>
-        <div>
-            <button
-                blocDateRangePickerTrigger
-                [(ngModel)]="ngModelRange"
-                #rangeNgModel="blocDateRangePickerTrigger"
-                class="inline-flex items-center gap-2 px-3 py-2 text-sm text-slate-700 border border-slate-300 rounded-md bg-white cursor-pointer hover:bg-slate-50 transition-colors"
-            >
-                <app-icon name="calendar" [size]="14"></app-icon>
-                {{
-                    formatRange(rangeNgModel.rangeStart(), rangeNgModel.rangeEnd()) ||
-                        'Pick a range'
-                }}
-            </button>
+        <!-- ngModel -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Template-driven (ngModel)
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(300px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Two-way binding</h3>
+                <div>
+                    <button
+                        blocDateRangePickerTrigger
+                        [(ngModel)]="ngModelRange"
+                        #rangeNgModel="blocDateRangePickerTrigger"
+                        class="inline-flex items-center gap-2 px-3 py-2 text-sm text-gray-300 border border-gray-600 rounded-md bg-gray-900 cursor-pointer hover:bg-gray-900/50 transition-colors"
+                    >
+                        <app-icon name="calendar" [size]="14"></app-icon>
+                        {{
+                            formatRange(rangeNgModel.rangeStart(), rangeNgModel.rangeEnd()) ||
+                                'Pick a range'
+                        }}
+                    </button>
+                </div>
+                <p class="m-0 text-xs text-gray-500">
+                    from:
+                    <strong>{{
+                        ngModelRange.from ? ngModelRange.from.toLocaleDateString() : 'null'
+                    }}</strong>
+                    &nbsp; to:
+                    <strong>{{
+                        ngModelRange.to ? ngModelRange.to.toLocaleDateString() : 'null'
+                    }}</strong>
+                </p>
+                <app-sample-code [files]="snippets.rangeNgModel" />
+            </div>
         </div>
-        <p class="m-0 text-xs text-slate-400">
-            from:
-            <strong>{{
-                ngModelRange.from ? ngModelRange.from.toLocaleDateString() : 'null'
-            }}</strong>
-            &nbsp; to:
-            <strong>{{ ngModelRange.to ? ngModelRange.to.toLocaleDateString() : 'null' }}</strong>
-        </p>
-        <app-sample-code [files]="snippets.rangeNgModel" />
-    </div>
-</div>
 
-<!-- Reactive forms -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Reactive forms
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(300px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">FormControl</h3>
-        <div>
-            <button
-                blocDateRangePickerTrigger
-                [formControl]="rangeCtrl"
-                #rangeCtrlRef="blocDateRangePickerTrigger"
-                class="inline-flex items-center gap-2 px-3 py-2 text-sm text-slate-700 border border-slate-300 rounded-md bg-white cursor-pointer hover:bg-slate-50 transition-colors"
-            >
-                <app-icon name="calendar" [size]="14"></app-icon>
-                {{
-                    formatRange(rangeCtrlRef.rangeStart(), rangeCtrlRef.rangeEnd()) ||
-                        'Select range'
-                }}
-            </button>
+        <!-- Reactive forms -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Reactive forms
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(300px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">FormControl</h3>
+                <div>
+                    <button
+                        blocDateRangePickerTrigger
+                        [formControl]="rangeCtrl"
+                        #rangeCtrlRef="blocDateRangePickerTrigger"
+                        class="inline-flex items-center gap-2 px-3 py-2 text-sm text-gray-300 border border-gray-600 rounded-md bg-gray-900 cursor-pointer hover:bg-gray-900/50 transition-colors"
+                    >
+                        <app-icon name="calendar" [size]="14"></app-icon>
+                        {{
+                            formatRange(rangeCtrlRef.rangeStart(), rangeCtrlRef.rangeEnd()) ||
+                                'Select range'
+                        }}
+                    </button>
+                </div>
+                <p class="m-0 text-xs text-gray-500">
+                    from:
+                    <strong>{{
+                        rangeCtrl.value?.from ? rangeCtrl.value!.from!.toLocaleDateString() : 'null'
+                    }}</strong>
+                    &nbsp; to:
+                    <strong>{{
+                        rangeCtrl.value?.to ? rangeCtrl.value!.to!.toLocaleDateString() : 'null'
+                    }}</strong>
+                </p>
+                <app-sample-code [files]="snippets.rangeFormControl" />
+            </div>
+
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">FormGroup</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Pass a <code>FormGroup</code> with <code>from</code> /
+                    <code>to</code>
+                    controls — they update individually.
+                </p>
+                <div>
+                    <button
+                        blocDateRangePickerTrigger
+                        [rangeFormGroup]="rangeFormGroup"
+                        #rangeGrpRef="blocDateRangePickerTrigger"
+                        class="inline-flex items-center gap-2 px-3 py-2 text-sm text-gray-300 border border-gray-600 rounded-md bg-gray-900 cursor-pointer hover:bg-gray-900/50 transition-colors"
+                    >
+                        <app-icon name="calendar" [size]="14"></app-icon>
+                        {{
+                            formatRange(rangeGrpRef.rangeStart(), rangeGrpRef.rangeEnd()) ||
+                                'Select range'
+                        }}
+                    </button>
+                </div>
+                <p class="m-0 text-xs text-gray-500">
+                    from control:
+                    <strong>{{
+                        rangeFormGroup.get('from')?.value
+                            ? rangeFormGroup.get('from')!.value!.toLocaleDateString()
+                            : 'null'
+                    }}</strong>
+                    &nbsp; to control:
+                    <strong>{{
+                        rangeFormGroup.get('to')?.value
+                            ? rangeFormGroup.get('to')!.value!.toLocaleDateString()
+                            : 'null'
+                    }}</strong>
+                </p>
+                <app-sample-code [files]="snippets.rangeFormGroup" />
+            </div>
         </div>
-        <p class="m-0 text-xs text-slate-400">
-            from:
-            <strong>{{
-                rangeCtrl.value?.from ? rangeCtrl.value!.from!.toLocaleDateString() : 'null'
-            }}</strong>
-            &nbsp; to:
-            <strong>{{
-                rangeCtrl.value?.to ? rangeCtrl.value!.to!.toLocaleDateString() : 'null'
-            }}</strong>
-        </p>
-        <app-sample-code [files]="snippets.rangeFormControl" />
-    </div>
 
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">FormGroup</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Pass a <code>FormGroup</code> with <code>from</code> /
-            <code>to</code>
-            controls — they update individually.
-        </p>
-        <div>
-            <button
-                blocDateRangePickerTrigger
-                [rangeFormGroup]="rangeFormGroup"
-                #rangeGrpRef="blocDateRangePickerTrigger"
-                class="inline-flex items-center gap-2 px-3 py-2 text-sm text-slate-700 border border-slate-300 rounded-md bg-white cursor-pointer hover:bg-slate-50 transition-colors"
-            >
-                <app-icon name="calendar" [size]="14"></app-icon>
-                {{
-                    formatRange(rangeGrpRef.rangeStart(), rangeGrpRef.rangeEnd()) || 'Select range'
-                }}
-            </button>
+        <!-- Min/Max -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Min / Max date
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(300px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Constrained range</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Only dates between Jan 2024 and Dec 2026 are selectable.
+                </p>
+                <div>
+                    <button
+                        blocDateRangePickerTrigger
+                        [(ngModel)]="ngModelRange"
+                        [minDate]="minDate"
+                        [maxDate]="maxDate"
+                        #rangeMinMax="blocDateRangePickerTrigger"
+                        class="inline-flex items-center gap-2 px-3 py-2 text-sm text-gray-300 border border-gray-600 rounded-md bg-gray-900 cursor-pointer hover:bg-gray-900/50 transition-colors"
+                    >
+                        <app-icon name="calendar" [size]="14"></app-icon>
+                        {{
+                            formatRange(rangeMinMax.rangeStart(), rangeMinMax.rangeEnd()) ||
+                                'Pick a range'
+                        }}
+                    </button>
+                </div>
+                <app-sample-code [files]="snippets.rangeMinMax" />
+            </div>
         </div>
-        <p class="m-0 text-xs text-slate-400">
-            from control:
-            <strong>{{
-                rangeFormGroup.get('from')?.value
-                    ? rangeFormGroup.get('from')!.value!.toLocaleDateString()
-                    : 'null'
-            }}</strong>
-            &nbsp; to control:
-            <strong>{{
-                rangeFormGroup.get('to')?.value
-                    ? rangeFormGroup.get('to')!.value!.toLocaleDateString()
-                    : 'null'
-            }}</strong>
-        </p>
-        <app-sample-code [files]="snippets.rangeFormGroup" />
-    </div>
-</div>
 
-<!-- Min/Max -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Min / Max date
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(300px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Constrained range</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Only dates between Jan 2024 and Dec 2026 are selectable.
-        </p>
-        <div>
-            <button
-                blocDateRangePickerTrigger
-                [(ngModel)]="ngModelRange"
-                [minDate]="minDate"
-                [maxDate]="maxDate"
-                #rangeMinMax="blocDateRangePickerTrigger"
-                class="inline-flex items-center gap-2 px-3 py-2 text-sm text-slate-700 border border-slate-300 rounded-md bg-white cursor-pointer hover:bg-slate-50 transition-colors"
-            >
-                <app-icon name="calendar" [size]="14"></app-icon>
-                {{
-                    formatRange(rangeMinMax.rangeStart(), rangeMinMax.rangeEnd()) || 'Pick a range'
-                }}
-            </button>
+        <!-- Custom token -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Custom token
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(300px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Custom colour</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Override range picker colours via CSS custom properties on the trigger.
+                </p>
+                <div>
+                    <button
+                        blocDateRangePickerTrigger
+                        #rangeCustomToken="blocDateRangePickerTrigger"
+                        style="
+                            --bloc-date-picker-selected-bg: #685fff;
+                            --bloc-date-picker-today-border: #685fff;
+                        "
+                        class="inline-flex items-center gap-2 px-3 py-2 text-sm text-gray-300 border border-gray-600 rounded-md bg-gray-900 cursor-pointer hover:bg-gray-900/50 transition-colors"
+                    >
+                        <app-icon name="calendar" [size]="14"></app-icon>
+                        {{
+                            formatRange(
+                                rangeCustomToken.rangeStart(),
+                                rangeCustomToken.rangeEnd()
+                            ) || 'Purple accent'
+                        }}
+                    </button>
+                </div>
+                <app-sample-code [files]="snippets.rangeCustomToken" />
+            </div>
         </div>
-        <app-sample-code [files]="snippets.rangeMinMax" />
-    </div>
-</div>
-
-<!-- Custom token -->
-<h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
-    Custom token
-</h2>
-<div class="grid grid-cols-[repeat(auto-fill,minmax(min(300px,100%),1fr))] gap-5 mb-10">
-    <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-        <h3 class="m-0 text-base font-semibold text-slate-900">Custom colour</h3>
-        <p class="m-0 text-[0.82rem] text-slate-400">
-            Override range picker colours via CSS custom properties on the trigger.
-        </p>
-        <div>
-            <button
-                blocDateRangePickerTrigger
-                #rangeCustomToken="blocDateRangePickerTrigger"
-                style="
-                    --bloc-date-picker-selected-bg: #7c3aed;
-                    --bloc-date-picker-today-border: #7c3aed;
-                "
-                class="inline-flex items-center gap-2 px-3 py-2 text-sm text-slate-700 border border-slate-300 rounded-md bg-white cursor-pointer hover:bg-slate-50 transition-colors"
-            >
-                <app-icon name="calendar" [size]="14"></app-icon>
-                {{
-                    formatRange(rangeCustomToken.rangeStart(), rangeCustomToken.rangeEnd()) ||
-                        'Purple accent'
-                }}
-            </button>
-        </div>
-        <app-sample-code [files]="snippets.rangeCustomToken" />
-    </div>
-</div>
-
-
     </bloc-tab>
     <bloc-tab label="API">
         <div class="api-card">
-            <app-api-table title="Inputs" selector="[blocDateRangePickerTrigger]" [columns]="INPUTS_COLUMNS" [rows]="inputsTrigger" />
-            <app-api-table title="Exported properties" selector="#ref" [columns]="OUTPUTS_COLUMNS" [rows]="exportedProps" />
+            <app-api-table
+                title="Inputs"
+                selector="[blocDateRangePickerTrigger]"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="inputsTrigger"
+            />
+            <app-api-table
+                title="Exported properties"
+                selector="#ref"
+                [columns]="OUTPUTS_COLUMNS"
+                [rows]="exportedProps"
+            />
             <app-api-table title="CSS Tokens" [columns]="TOKENS_COLUMNS" [rows]="tokens" />
         </div>
     </bloc-tab>

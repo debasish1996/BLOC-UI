@@ -1,6 +1,6 @@
-<header class="mb-8 pb-4 border-b border-slate-200">
-    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Spinner</h1>
-    <p class="m-0 text-slate-400 text-[0.95rem]">
+<header class="mb-8 pb-4 border-b border-gray-700/50">
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-gray-100">Spinner</h1>
+    <p class="m-0 text-gray-500 text-[0.95rem]">
         Loading indicator with preset sizes and custom sizing support.
     </p>
     <app-install-command package="@bloc-ui/core" />
@@ -9,14 +9,14 @@
 <bloc-tab-group>
     <bloc-tab label="Examples">
         <!-- Preset sizes -->
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Preset sizes
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
             <!-- Preset sizes -->
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Preset Sizes</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">xs · sm · md · lg · xl</p>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Preset Sizes</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">xs · sm · md · lg · xl</p>
                 <div class="flex items-center gap-5 flex-wrap">
                     <bloc-spinner size="xs" />
                     <bloc-spinner size="sm" />
@@ -28,9 +28,9 @@
             </div>
 
             <!-- Default (md) -->
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Default</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Default</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Uses <code>size="md"</code> when no size is provided.
                 </p>
                 <div>
@@ -40,12 +40,12 @@
             </div>
 
             <!-- Inline with text -->
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Inline with text</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Inline with text</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Inline next to text for inline loading states.
                 </p>
-                <div class="flex items-center gap-2 text-sm text-slate-600">
+                <div class="flex items-center gap-2 text-sm text-gray-300">
                     <span blocSpinner size="sm"></span>
                     Loading data...
                 </div>
@@ -54,14 +54,14 @@
         </div>
 
         <!-- Custom sizing -->
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Custom sizing
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
             <!-- Custom width/height inputs -->
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Custom Size via Inputs</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Custom Size via Inputs</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Pass <code>width</code> and <code>height</code> inputs for any dimensions.
                 </p>
                 <div class="flex items-center gap-4">
@@ -72,9 +72,9 @@
             </div>
 
             <!-- Custom via class (Tailwind) -->
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Custom Size via Class</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Custom Size via Class</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Apply Tailwind or custom utility classes directly.
                 </p>
                 <div>
@@ -85,16 +85,16 @@
         </div>
 
         <!-- Theming -->
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Theming
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5">
             <!-- Themed via Tailwind text colour -->
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">
                     Custom Colour via Tailwind
                 </h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Apply a single <code>text-&#123;color&#125;</code> class — the track is derived
                     automatically.
                 </p>
@@ -107,9 +107,9 @@
             </div>
 
             <!-- Custom token -->
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Custom token</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Custom token</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Override colour via CSS custom properties — works without Tailwind.
                 </p>
                 <div>

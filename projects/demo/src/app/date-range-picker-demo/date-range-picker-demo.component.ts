@@ -257,7 +257,7 @@ export class ExampleComponent {
             {
                 label: 'HTML',
                 language: 'xml',
-                code: `<button blocDateRangePickerTrigger\n  style="--bloc-date-picker-selected-bg: #7c3aed;\n         --bloc-date-picker-today-border: #7c3aed"\n  #range="blocDateRangePickerTrigger">\n  {{ formatRange(range.rangeStart(), range.rangeEnd()) || 'Purple accent' }}\n</button>`,
+                code: `<button blocDateRangePickerTrigger\n  style="--bloc-date-picker-selected-bg: #685fff;\n         --bloc-date-picker-today-border: #685fff"\n  #range="blocDateRangePickerTrigger">\n  {{ formatRange(range.rangeStart(), range.rangeEnd()) || 'Purple accent' }}\n</button>`,
             },
             {
                 label: 'TypeScript',
@@ -285,8 +285,8 @@ export class ExampleComponent {
                 language: 'css',
                 code: `/* Apply to a parent or the component host */
 .custom-range-picker {
-  --bloc-date-picker-selected-bg: #7c3aed;
-  --bloc-date-picker-today-border: #7c3aed;
+  --bloc-date-picker-selected-bg: #685fff;
+  --bloc-date-picker-today-border: #685fff;
 }`,
             },
         ],

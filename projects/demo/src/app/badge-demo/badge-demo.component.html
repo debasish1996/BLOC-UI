@@ -1,9 +1,7 @@
-<header class="mb-8 pb-4 border-b border-slate-200">
-    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Badge</h1>
-    <p class="m-0 text-slate-400 text-[0.95rem]">
-        Compact labels for status, counts, and metadata.
-    </p>
-    <p class="m-0 text-xs text-slate-400 mt-1">
+<header class="mb-8 pb-4 border-b border-gray-700/50">
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-gray-100">Badge</h1>
+    <p class="m-0 text-gray-500 text-[0.95rem]">Compact labels for status, counts, and metadata.</p>
+    <p class="m-0 text-xs text-gray-500 mt-1">
         Decorative element — no keyboard interaction. Use <code>aria-label</code> when the badge
         conveys status not available in surrounding text.
     </p>
@@ -12,13 +10,13 @@
 
 <bloc-tab-group>
     <bloc-tab label="Examples">
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Variants
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Intent badges</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Intent badges</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Use colour to communicate context quickly.
                 </p>
                 <div class="flex flex-wrap gap-3">
@@ -32,13 +30,13 @@
             </div>
         </div>
 
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Sizing
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Small to large</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Small to large</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Choose a density that matches the surrounding UI.
                 </p>
                 <div class="flex items-center flex-wrap gap-3">
@@ -49,9 +47,9 @@
                 <app-sample-code [files]="snippets.sizes" />
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Pill count</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Pill count</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Useful for compact counters and chips.
                 </p>
                 <div class="flex items-center gap-3">
@@ -61,25 +59,25 @@
             </div>
         </div>
 
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             In context
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Inline with heading</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Inline with heading</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Badge next to a label for a quick count.
                 </p>
                 <div class="flex items-center gap-2">
-                    <span class="text-base font-semibold text-slate-900">Messages</span>
+                    <span class="text-base font-semibold text-gray-100">Messages</span>
                     <bloc-badge size="sm">3</bloc-badge>
                 </div>
                 <app-sample-code [files]="snippets.inlineLabel" />
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Button with count</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">Notification count inside a button.</p>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Button with count</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">Notification count inside a button.</p>
                 <div class="flex items-center gap-3">
                     <button blocButton variant="outline">
                         Notifications
@@ -89,12 +87,10 @@
                 <app-sample-code [files]="snippets.buttonCount" />
             </div>
 
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Status in a list</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
-                    Indicate state alongside list items.
-                </p>
-                <ul class="m-0 pl-4 flex flex-col gap-2 text-sm text-slate-700">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Status in a list</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">Indicate state alongside list items.</p>
+                <ul class="m-0 pl-4 flex flex-col gap-2 text-sm text-gray-300">
                     <li class="flex items-center gap-2">
                         Deploy #42 <bloc-badge variant="success">Live</bloc-badge>
                     </li>
@@ -106,13 +102,13 @@
             </div>
         </div>
 
-        <h2 class="mt-0 mb-4 text-base font-semibold text-slate-500 uppercase tracking-wide">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
             Theming
         </h2>
         <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
-            <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-3">
-                <h3 class="m-0 text-base font-semibold text-slate-900">Custom tokens</h3>
-                <p class="m-0 text-[0.82rem] text-slate-400">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Custom tokens</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
                     Override background, text, and border tokens directly.
                 </p>
                 <div class="flex items-center gap-3">
