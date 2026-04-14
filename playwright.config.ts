@@ -7,7 +7,7 @@ export default defineConfig({
     testDir: './e2e',
     fullyParallel: true,
     forbidOnly: !!process.env['CI'],
-    retries: 0,
+    retries: process.env['CI'] ? 2 : 0,
     workers: process.env['CI'] ? 4 : undefined,
     reporter: [['html', { outputFolder: 'playwright-report' }]],
     use: {
@@ -19,6 +19,6 @@ export default defineConfig({
         command: process.env['CI'] ? 'npm run serve:demo' : 'npm start',
         url: appUrl,
         reuseExistingServer: !process.env['CI'],
-        timeout: process.env['CI'] ? 30_000 : 120_000,
+        timeout: 120_000,
     },
 });

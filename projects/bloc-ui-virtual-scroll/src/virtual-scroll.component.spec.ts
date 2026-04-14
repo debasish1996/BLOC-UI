@@ -5,6 +5,15 @@ import { BlocVirtualScrollComponent } from './virtual-scroll.component';
 import { BlocVirtualItemDirective } from './virtual-scroll-item.directive';
 import { BlocVirtualScrollModule } from './virtual-scroll.module';
 
+// jsdom does not provide ResizeObserver — supply a minimal stub
+if (typeof globalThis.ResizeObserver === 'undefined') {
+    globalThis.ResizeObserver = class ResizeObserver {
+        observe() {}
+        unobserve() {}
+        disconnect() {}
+    } as unknown as typeof globalThis.ResizeObserver;
+}
+
 // ── Template-mode host (provides a blocVirtualItem template) ────────
 @Component({
     template: `
