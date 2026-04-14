@@ -7,8 +7,8 @@ export default defineConfig({
     testDir: './e2e',
     fullyParallel: true,
     forbidOnly: !!process.env['CI'],
-    retries: process.env['CI'] ? 2 : 1,
-    workers: process.env['CI'] ? 1 : undefined,
+    retries: 0,
+    workers: process.env['CI'] ? 4 : undefined,
     reporter: [['html', { outputFolder: 'playwright-report' }]],
     use: {
         baseURL: appUrl,
@@ -16,9 +16,9 @@ export default defineConfig({
     },
     projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
     webServer: {
-        command: 'npm start',
+        command: process.env['CI'] ? 'npm run serve:demo' : 'npm start',
         url: appUrl,
         reuseExistingServer: !process.env['CI'],
-        timeout: 120_000,
+        timeout: process.env['CI'] ? 30_000 : 120_000,
     },
 });

@@ -7,7 +7,7 @@ function card(page: Page, heading: string) {
     const escaped = heading.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
     const exactName = new RegExp(`^\\s*${escaped}\\s*$`, 'i');
     return page
-        .locator('.bg-white.rounded-lg')
+        .locator('.bg-gray-900.rounded-lg')
         .filter({ has: page.getByRole('heading', { name: exactName, level: 3 }) });
 }
 
