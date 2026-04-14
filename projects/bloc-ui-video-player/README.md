@@ -20,9 +20,9 @@ npm install @bloc-ui/video-player
 
 ## Selectors / API
 
-| Export                      | Selector             | Type      | Description                               |
-| --------------------------- | -------------------- | --------- | ----------------------------------------- |
-| `BlocVideoPlayerComponent`  | `bloc-video-player`  | Component | Video player with full playback controls  |
+| Export                     | Selector            | Type      | Description                              |
+| -------------------------- | ------------------- | --------- | ---------------------------------------- |
+| `BlocVideoPlayerComponent` | `bloc-video-player` | Component | Video player with full playback controls |
 
 ---
 
@@ -68,34 +68,34 @@ import { BlocVideoPlayerComponent } from '@bloc-ui/video-player';
 
 ## Inputs — `BlocVideoPlayerComponent`
 
-| Input              | Type                                | Default      | Description                                  |
-| ------------------ | ----------------------------------- | ------------ | -------------------------------------------- |
-| `src`              | `string`                            | *required*   | URL of the video source                      |
-| `poster`           | `string`                            | `''`         | Poster image URL shown before playback       |
-| `autoplay`         | `boolean`                           | `false`      | Auto-start playback on load                  |
-| `loop`             | `boolean`                           | `false`      | Loop playback                                |
-| `muted`            | `boolean`                           | `false`      | Start muted                                  |
-| `preload`          | `'auto' \| 'metadata' \| 'none'`    | `'metadata'` | Preload strategy                             |
-| `showPlaybackRate` | `boolean`                           | `true`       | Show playback rate toggle button             |
+| Input              | Type                             | Default      | Description                            |
+| ------------------ | -------------------------------- | ------------ | -------------------------------------- |
+| `src`              | `string`                         | _required_   | URL of the video source                |
+| `poster`           | `string`                         | `''`         | Poster image URL shown before playback |
+| `autoplay`         | `boolean`                        | `false`      | Auto-start playback on load            |
+| `loop`             | `boolean`                        | `false`      | Loop playback                          |
+| `muted`            | `boolean`                        | `false`      | Start muted                            |
+| `preload`          | `'auto' \| 'metadata' \| 'none'` | `'metadata'` | Preload strategy                       |
+| `showPlaybackRate` | `boolean`                        | `true`       | Show playback rate toggle button       |
 
 ---
 
 ## Outputs
 
-| Output       | Payload               | Description                                         |
-| ------------ | --------------------- | --------------------------------------------------- |
-| `play`       | `void`                | Emitted when playback starts                        |
-| `pause`      | `void`                | Emitted when playback pauses                        |
-| `ended`      | `void`                | Emitted when playback ends                          |
+| Output       | Payload                 | Description                                                |
+| ------------ | ----------------------- | ---------------------------------------------------------- |
+| `play`       | `void`                  | Emitted when playback starts                               |
+| `pause`      | `void`                  | Emitted when playback pauses                               |
+| `ended`      | `void`                  | Emitted when playback ends                                 |
 | `timeUpdate` | `VideoPlayerTimeUpdate` | Emitted on time update with currentTime, duration, percent |
 
 ---
 
 ## CSS Tokens
 
-| Token                            | Fallback                       | Description                          |
-| -------------------------------- | ------------------------------ | ------------------------------------ |
-| `--bloc-video-player-radius`     | `0.5rem`                       | Container border radius              |
-| `--bloc-video-player-track`      | `rgba(255, 255, 255, 0.25)`    | Progress bar track background        |
-| `--bloc-video-player-buffered`   | `rgba(255, 255, 255, 0.35)`    | Buffered progress colour             |
-| `--bloc-video-player-accent`     | `#ef4444`                      | Filled progress / accent colour      |
+| Token                          | Fallback                    | Description                     |
+| ------------------------------ | --------------------------- | ------------------------------- |
+| `--bloc-video-player-radius`   | `0.5rem`                    | Container border radius         |
+| `--bloc-video-player-track`    | `rgba(255, 255, 255, 0.25)` | Progress bar track background   |
+| `--bloc-video-player-buffered` | `rgba(255, 255, 255, 0.35)` | Buffered progress colour        |
+| `--bloc-video-player-accent`   | `#ef4444`                   | Filled progress / accent colour |
