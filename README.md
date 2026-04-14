@@ -2,6 +2,7 @@
 
 Lightweight, accessible Angular component library — barebone structure and behaviour with zero design opinions. Bring your own styles or use the optional theme package.
 
+[![CI](https://github.com/debasish1996/BLOC-UI/actions/workflows/ci.yml/badge.svg)](https://github.com/debasish1996/BLOC-UI/actions/workflows/ci.yml)
 [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](./LICENSE)
 [![npm @bloc-ui/kit](https://img.shields.io/npm/v/@bloc-ui/kit?label=%40bloc-ui%2Fkit)](https://www.npmjs.com/package/@bloc-ui/kit)
 [![npm @bloc-ui/core](https://img.shields.io/npm/v/@bloc-ui/core?label=%40bloc-ui%2Fcore)](https://www.npmjs.com/package/@bloc-ui/core)
