@@ -1,6 +1,6 @@
 {
     "name": "@bloc-ui/toast",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "Toast notification service for Angular with info/success/warning/error severity helpers.",
     "keywords": [
         "angular",

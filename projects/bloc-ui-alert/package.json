@@ -1,6 +1,6 @@
 {
     "name": "@bloc-ui/alert",
-    "version": "1.0.7",
+    "version": "1.0.8",
     "description": "Inline alert banners for Angular with severity variants (info, success, warning, error) and optional dismiss.",
     "keywords": [
         "angular",

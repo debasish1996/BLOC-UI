@@ -1,6 +1,6 @@
 {
     "name": "@bloc-ui/table",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "Declarative data table for Angular with custom cell templates, striped/bordered/hover options.",
     "keywords": [
         "angular",

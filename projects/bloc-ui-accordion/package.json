@@ -1,6 +1,6 @@
 {
     "name": "@bloc-ui/accordion",
-    "version": "1.0.5",
+    "version": "1.0.6",
     "description": "Collapsible accordion for Angular with single/multi-open modes and keyboard navigation.",
     "keywords": [
         "angular",

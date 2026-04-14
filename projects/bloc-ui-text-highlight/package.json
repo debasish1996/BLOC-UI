@@ -1,6 +1,6 @@
 {
     "name": "@bloc-ui/text-highlight",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "Lightweight text highlighting directive for Angular — highlights search/filter matches inside rendered content.",
     "keywords": [
         "angular",

@@ -1,6 +1,6 @@
 {
     "name": "@bloc-ui/core",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "Lightweight Angular component library — button, checkbox, input, radio, spinner, toggle, and more with secondary entry points for tree-shaking.",
     "keywords": [
         "angular",

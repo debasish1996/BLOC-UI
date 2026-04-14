@@ -1,6 +1,6 @@
 # @bloc-ui/text-highlight
 
-> **Latest:** v1.0.4
+> **Latest:** v1.0.5
 
 Lightweight Angular text-highlighting directive used to emphasize query matches inside rendered content. Ideal for search results, autocomplete dropdowns, and select option filtering.
 

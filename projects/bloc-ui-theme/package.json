@@ -1,6 +1,6 @@
 {
     "name": "@bloc-ui/theme",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "Optional theme layer for Bloc UI — CSS custom properties, colour tokens, dark mode.",
     "keywords": [
         "angular",

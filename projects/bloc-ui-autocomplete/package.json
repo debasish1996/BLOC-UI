@@ -1,6 +1,6 @@
 {
     "name": "@bloc-ui/autocomplete",
-    "version": "1.0.8",
+    "version": "1.0.9",
     "description": "Searchable single-select autocomplete for Angular with async-friendly option list, custom filterFn, and forms integration.",
     "keywords": [
         "angular",
@@ -32,8 +32,8 @@
         "@angular/forms": "^21.2.0"
     },
     "dependencies": {
-        "@bloc-ui/text-highlight": "^1.0.4",
-        "@bloc-ui/overlay": "^1.0.6",
+        "@bloc-ui/text-highlight": "^1.0.5",
+        "@bloc-ui/overlay": "^1.0.7",
         "tslib": "^2.3.0"
     },
     "sideEffects": false

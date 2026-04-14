@@ -1,6 +1,6 @@
 # @bloc-ui/tooltip
 
-> **Latest:** v1.0.6
+> **Latest:** v1.0.7
 
 Hover/focus tooltip with intelligent repositioning and delay control, built on the `@bloc-ui/overlay` platform layer.
 

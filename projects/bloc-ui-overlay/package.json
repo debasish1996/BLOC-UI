@@ -1,6 +1,6 @@
 {
     "name": "@bloc-ui/overlay",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "Low-level overlay positioning primitive used internally by Bloc UI components (select, tooltip, autocomplete).",
     "keywords": [
         "angular",

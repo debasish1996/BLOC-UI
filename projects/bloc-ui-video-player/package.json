@@ -1,6 +1,6 @@
 {
     "name": "@bloc-ui/video-player",
-    "version": "1.0.4",
+    "version": "1.0.5",
     "description": "Lightweight HTML5 video player component for Angular with native controls and lifecycle events.",
     "keywords": [
         "angular",

@@ -1,6 +1,6 @@
 {
     "name": "@bloc-ui/select",
-    "version": "1.0.6",
+    "version": "1.0.7",
     "description": "Single-select dropdown for Angular with overlay positioning, keyboard navigation, search, and loading state.",
     "keywords": [
         "angular",
@@ -31,7 +31,7 @@
         "@angular/forms": "^21.2.0"
     },
     "dependencies": {
-        "@bloc-ui/overlay": "^1.0.6",
+        "@bloc-ui/overlay": "^1.0.7",
         "tslib": "^2.3.0"
     },
     "sideEffects": false

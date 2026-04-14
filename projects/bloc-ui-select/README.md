@@ -1,6 +1,6 @@
 # @bloc-ui/select
 
-> **Latest:** v1.0.6
+> **Latest:** v1.0.7
 
 Single-select dropdown for Angular forms with overlay positioning, keyboard navigation,
 optional search filtering, projected custom option markup, and disabled/loading states.

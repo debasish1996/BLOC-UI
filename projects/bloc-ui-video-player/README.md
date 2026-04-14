@@ -1,6 +1,6 @@
 # @bloc-ui/video-player
 
-> **Latest:** v1.0.4
+> **Latest:** v1.0.5
 
 A feature-rich, customisable HTML5 video player component for Angular with built-in controls, keyboard accessibility, and CSS custom property theming.
 
