@@ -17,7 +17,7 @@ If this saves you time, consider supporting `⭐ Star on GitHub`</br>
 
 ## Components
 
-All components are `standalone: true` with NgModule wrappers available.
+Built on Angular 21. All components are `standalone` by default with NgModule wrappers available.
 
 | Component      | Package                   | Description                                                  |
 | -------------- | ------------------------- | ------------------------------------------------------------ |
