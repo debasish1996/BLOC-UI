@@ -11,7 +11,7 @@ If this saves you time, consider supporting `⭐ Star on GitHub`</br>
 **[Documentation & Demos](https://ui.bloc-verse.com/)** · **[Getting Started](https://ui.bloc-verse.com/getting-started)** · **[Star on GitHub](https://github.com/debasish1996/BLOC-UI)**
 
 > [!WARNING]
-> ⚠️ Work in progress — the API may change in breaking ways.</br>
+> ⚠️ Work in progress - the API may change in breaking ways.</br>
 
 ---
 
@@ -53,7 +53,11 @@ All components are `standalone: true` with NgModule wrappers available.
 ## Quick Start
 
 ```bash
-npm install @bloc-ui/kit        # all-in-one
+# all-in-one
+npm install @bloc-ui/kit
+```
+
+```bash
 # or pick what you need
 npm install @bloc-ui/core @bloc-ui/modal
 ```
@@ -66,7 +70,7 @@ import { BlocButtonComponent } from '@bloc-ui/core/button';
 <button blocButton variant="primary" [loading]="saving">Save</button>
 ```
 
-**Optional theming** — adds light/dark mode, colour tokens, and consistent typography:
+**Optional theming** - adds light/dark mode, colour tokens, and consistent typography:
 
 ```bash
 npm install @bloc-ui/theme
@@ -93,12 +97,12 @@ ng test              # run tests
 
 ## Design Principles
 
-- **Barebone** — minimal structural styles, neutral grey fallbacks
-- **No hard-coded colours** — everything through `var()` CSS custom properties
-- **Cascade-friendly** — `:where()` zero specificity + `@layer` so your styles always win
-- **Accessible** — ARIA roles, keyboard navigation, focus management
-- **Tree-shakeable** — secondary entry points (`@bloc-ui/core/button`) and standalone packages
-- **Forms-ready** — `ControlValueAccessor` on checkbox, toggle, radio, date picker
+- **Barebone** - minimal structural styles, neutral grey fallbacks
+- **No hard-coded colours** - everything through `var()` CSS custom properties
+- **Cascade-friendly** - `:where()` zero specificity + `@layer` so your styles always win
+- **Accessible** - ARIA roles, keyboard navigation, focus management
+- **Tree-shakeable** - secondary entry points (`@bloc-ui/core/button`) and standalone packages
+- **Forms-ready** - `ControlValueAccessor` on checkbox, toggle, radio, date picker
 
 ---
 
