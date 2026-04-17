@@ -54,3 +54,6 @@ todo.md
 # Manager reports
 Managers/
 playwright-report/
+
+# Graphify output (local only)
+graphify-out/
