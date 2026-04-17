@@ -57,3 +57,7 @@ playwright-report/
 
 # Graphify output (local only)
 graphify-out/
+
+# Local docs
+CLAUDE.md
+ARCHITECTURE.md
