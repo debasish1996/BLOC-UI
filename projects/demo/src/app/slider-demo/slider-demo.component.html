@@ -1,0 +1,61 @@
+<header class="mb-8 pb-4 border-b border-gray-700/50">
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-gray-100">Slider</h1>
+    <p class="m-0 text-gray-500 text-[0.95rem]">
+        Range input wrapper with CVA support, labels, and a styled progress track.
+    </p>
+    <app-install-command package="@bloc-ui/slider" />
+</header>
+
+<bloc-tab-group>
+    <bloc-tab label="Examples">
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Reactive Forms</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Use it anywhere you’d use a regular CVA-enabled form control.
+                </p>
+                <bloc-slider
+                    label="Volume"
+                    [min]="0"
+                    [max]="100"
+                    [step]="5"
+                    [formControl]="volumeControl"
+                />
+                <p class="m-0 text-xs text-gray-500">
+                    Current value: <strong>{{ volumeControl.value }}</strong>
+                </p>
+                <app-sample-code [files]="snippets.reactive" />
+            </div>
+
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Custom Range</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Adjust min, max, and step to match your domain instead of a generic 0–100 range.
+                </p>
+                <bloc-slider
+                    label="Budget allocation"
+                    [min]="10"
+                    [max]="120"
+                    [step]="10"
+                    [formControl]="budgetControl"
+                />
+                <p class="m-0 text-xs text-gray-500">
+                    Current value: <strong>{{ budgetControl.value }}</strong>
+                </p>
+                <app-sample-code [files]="snippets.customRange" />
+            </div>
+        </div>
+    </bloc-tab>
+    <bloc-tab label="API">
+        <div class="api-card">
+            <app-api-table
+                title="Inputs"
+                selector="bloc-slider"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="inputs"
+            />
+            <app-api-table title="Outputs" [columns]="OUTPUTS_COLUMNS" [rows]="outputs" />
+            <app-api-table title="CSS Tokens" [columns]="TOKENS_COLUMNS" [rows]="tokens" />
+        </div>
+    </bloc-tab>
+</bloc-tab-group>

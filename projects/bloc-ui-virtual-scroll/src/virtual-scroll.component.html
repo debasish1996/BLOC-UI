@@ -1,0 +1,29 @@
+<div class="bloc-vs__viewport" #viewport>
+    @if (itemDef(); as tpl) {
+        <!-- Template mode: transform-based positioning (no reflow) -->
+        <div class="bloc-vs__sentinel" [style.height.px]="totalHeight()">
+            <div
+                class="bloc-vs__content"
+                #contentRef
+                [style.transform]="'translate3d(0,' + offsetY() + 'px,0)'"
+            >
+                @for (item of visibleItems(); track startIndex() + $index) {
+                    <div class="bloc-vs__item">
+                        <ng-container
+                            [ngTemplateOutlet]="tpl.templateRef"
+                            [ngTemplateOutletContext]="{
+                                $implicit: item,
+                                index: startIndex() + $index,
+                            }"
+                        />
+                    </div>
+                }
+            </div>
+        </div>
+    } @else {
+        <!-- Projection mode: spacer divs for sticky-header compat -->
+        <div class="bloc-vs__spacer" [style.height.px]="topSpace()"></div>
+        <ng-content />
+        <div class="bloc-vs__spacer" [style.height.px]="bottomSpace()"></div>
+    }
+</div>

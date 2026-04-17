@@ -1,0 +1,139 @@
+<!-- Page header -->
+<div class="mb-10">
+    <h1 class="text-3xl font-extrabold text-gray-100 mb-2">About Bloc UI</h1>
+    <p class="text-gray-400 text-base">The philosophy behind the library.</p>
+</div>
+
+<!-- Section 1: Why Bloc UI exists -->
+<section class="mb-12">
+    <h2 class="text-xl font-bold text-gray-200 mb-4">Why Bloc UI exists</h2>
+    <div class="bg-gray-900 border border-gray-700/50 rounded-xl p-6 shadow-sm">
+        <p class="text-gray-300 leading-relaxed mb-4">
+            Building a production Angular app typically forces a choice between two uncomfortable
+            options. You either reach for a heavy, opinionated library that decides your colours,
+            your spacing, your motion, and your layout for you, then spend the next six months
+            fighting its specificity. Or you wire everything up from Angular CDK primitives, which
+            gives you the control you want but buries you in boilerplate for focus traps, overlays,
+            and accessibility plumbing before you have shipped a single feature.
+        </p>
+        <p class="text-gray-300 leading-relaxed mb-4">
+            Bloc UI exists because neither of those trade-offs should be necessary. The CDK provides
+            an excellent platform layer. What was missing was a thin, production-ready component
+            layer sitting on top of it, handling structure, keyboard navigation, ARIA semantics, and
+            form integration without touching a single design decision.
+        </p>
+        <p class="text-gray-300 leading-relaxed">
+            Every component in Bloc UI ships with neutral grey fallbacks and zero brand colour. Your
+            design system lives in your stylesheet, not ours. Bloc UI is the skeleton; you provide
+            the skin.
+        </p>
+    </div>
+</section>
+
+<!-- Section 2: What makes it different -->
+<section class="mb-12">
+    <h2 class="text-xl font-bold text-gray-200 mb-4">What makes it different</h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+        <div class="bg-gray-900 border border-gray-700/50 rounded-xl p-5 shadow-sm">
+            <div class="text-2xl mb-2">⚡</div>
+            <h3 class="font-semibold text-gray-200 mb-1">Lightweight</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+                No runtime dependencies beyond Angular itself. Each component is a separate entry
+                point. Import only what you use and let your bundler tree-shake the rest.
+            </p>
+        </div>
+        <div class="bg-gray-900 border border-gray-700/50 rounded-xl p-5 shadow-sm">
+            <div class="text-2xl mb-2">🔌</div>
+            <h3 class="font-semibold text-gray-200 mb-1">Signal-based inputs</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+                Every input is declared with Angular's signal
+                <code class="bg-gray-800 px-1 rounded text-xs">input()</code> API, not
+                decorator-based <code class="bg-gray-800 px-1 rounded text-xs">&#64;Input()</code>.
+                That means change detection stays fine-grained and component templates stay reactive
+                by default.
+            </p>
+        </div>
+        <div class="bg-gray-900 border border-gray-700/50 rounded-xl p-5 shadow-sm">
+            <div class="text-2xl mb-2">🎨</div>
+            <h3 class="font-semibold text-gray-200 mb-1">Zero CSS opinion</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+                Base styles use
+                <code class="bg-gray-800 px-1 rounded text-xs">:where()</code> (zero specificity)
+                and <code class="bg-gray-800 px-1 rounded text-xs">&#64;layer</code> so your own
+                classes, Tailwind utilities, or a custom theme always win without
+                <code class="bg-gray-800 px-1 rounded text-xs">!important</code>.
+            </p>
+        </div>
+        <div class="bg-gray-900 border border-gray-700/50 rounded-xl p-5 shadow-sm">
+            <div class="text-2xl mb-2">📦</div>
+            <h3 class="font-semibold text-gray-200 mb-1">Modular packages</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+                Each feature ships as its own npm package:
+                <code class="bg-gray-800 px-1 rounded text-xs">&#64;bloc-ui/modal</code>,
+                <code class="bg-gray-800 px-1 rounded text-xs">&#64;bloc-ui/table</code>, and so on.
+                Take the kit for everything, or pick exactly what your project needs.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- Section 3: Support the project -->
+<section class="mb-12">
+    <h2 class="text-xl font-bold text-gray-200 mb-4">Support the project</h2>
+    <p class="text-gray-400 text-sm mb-6 leading-relaxed">
+        Bloc UI is built and maintained in spare time. If it saves you time at work or on a side
+        project, any of the following goes a long way.
+    </p>
+    <div class="grid grid-cols-1 sm:grid-cols-3 gap-4">
+        <!-- Ko-fi -->
+        <a
+            href="https://ko-fi.com/blocverse"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex flex-col items-center gap-3 bg-gray-900 border border-orange-800 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-orange-500 transition-all no-underline group"
+        >
+            <img
+                src="https://storage.ko-fi.com/cdn/kofi2.png?v=3"
+                alt="Support on Ko-fi"
+                class="h-8 w-auto"
+            />
+            <span
+                class="font-semibold text-gray-200 group-hover:text-orange-600 transition-colors text-center"
+                >Support on Ko-fi</span
+            >
+            <span class="text-xs text-gray-500 text-center"
+                >Opens Ko-fi. Click "Support" to buy a coffee</span
+            >
+        </a>
+        <!-- Star on GitHub -->
+        <a
+            href="https://github.com/debasish1996/BLOC-UI"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex flex-col items-center gap-3 bg-gray-900 border border-gray-700/50 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-gray-600 transition-all no-underline group"
+        >
+            <span class="text-3xl">⭐</span>
+            <span
+                class="font-semibold text-gray-200 group-hover:text-gray-100 transition-colors text-center"
+                >Star on GitHub</span
+            >
+            <span class="text-xs text-gray-500 text-center">Helps others discover the library</span>
+        </a>
+        <!-- Contribute -->
+        <a
+            href="https://github.com/debasish1996/BLOC-UI"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="flex flex-col items-center gap-3 bg-gray-900 border border-violet-800 rounded-xl p-6 shadow-sm hover:shadow-md hover:border-violet-500 transition-all no-underline group"
+        >
+            <span class="text-3xl">🧑‍💻</span>
+            <span
+                class="font-semibold text-gray-200 group-hover:text-violet-300 transition-colors text-center"
+                >Contribute</span
+            >
+            <span class="text-xs text-gray-500 text-center"
+                >Open issues, send PRs, improve docs</span
+            >
+        </a>
+    </div>
+</section>

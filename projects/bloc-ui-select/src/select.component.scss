@@ -1,0 +1,206 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// Unlayered — authoritative structural rules (intentionally not overridable)
+// ─────────────────────────────────────────────────────────────────────────────
+bloc-select {
+    box-sizing: border-box;
+    outline: none;
+}
+
+.bloc-select__portal-host {
+    display: none;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// @layer bloc-select — overridable visual rules
+// Tailwind utilities and consumer classes always win via later-declared layers.
+// ─────────────────────────────────────────────────────────────────────────────
+@layer bloc-select {
+    // ── Host trigger ─────────────────────────────────────────────────────────
+    :where(bloc-select) {
+        --bloc-select-bg: var(--bloc-surface, #ffffff);
+        --bloc-select-border: var(--bloc-border, #d1d5db);
+        --bloc-select-border-hover: var(--bloc-primary, #6b7280);
+        --bloc-select-muted: var(--bloc-muted, #9ca3af);
+        --bloc-select-text: var(--bloc-text, #374151);
+        --bloc-select-panel-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        --bloc-select-option-hover: rgba(0, 0, 0, 0.04);
+        --bloc-select-option-active: rgba(0, 0, 0, 0.06);
+        --bloc-select-option-selected: rgba(0, 0, 0, 0.08);
+
+        display: inline-flex;
+        width: 100%;
+        align-items: center;
+        justify-content: space-between;
+        gap: 8px;
+        padding: 8px 12px;
+        border: 1px solid var(--bloc-select-border);
+        border-radius: var(--bloc-select-radius, 4px);
+        background: var(--bloc-select-bg);
+        color: var(--bloc-select-text);
+        cursor: pointer;
+        transition:
+            border-color 160ms ease,
+            background-color 160ms ease;
+    }
+
+    :where(bloc-select:focus-visible),
+    :where(bloc-select.bloc-select--open) {
+        border-color: var(--bloc-select-border-hover, var(--bloc-primary, #6b7280));
+    }
+
+    :where(bloc-select.bloc-select--disabled) {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    // ── Label ────────────────────────────────────────────────────────────────
+    :where(.bloc-select__label) {
+        min-width: 0;
+        flex: 1 1 auto;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+    }
+
+    :where(.bloc-select__label--placeholder) {
+        color: var(--bloc-select-muted, var(--bloc-muted, #9ca3af));
+    }
+
+    // ── Actions (chevron, clear) ─────────────────────────────────────────────
+    :where(.bloc-select__actions) {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        flex: 0 0 auto;
+        color: var(--bloc-select-muted, var(--bloc-muted, #9ca3af));
+    }
+
+    :where(.bloc-select__clear) {
+        width: 24px;
+        height: 24px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 0;
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: inherit;
+        cursor: pointer;
+    }
+
+    :where(.bloc-select__clear:hover) {
+        background: rgba(0, 0, 0, 0.06);
+    }
+
+    :where(.bloc-select__clear svg),
+    :where(.bloc-select__chevron) {
+        width: 16px;
+        height: 16px;
+    }
+
+    :where(bloc-select.bloc-select--open .bloc-select__chevron) {
+        transform: rotate(180deg);
+    }
+
+    :where(.bloc-select__chevron) {
+        transition: transform 160ms ease;
+    }
+
+    // ── Panel (overlay) ──────────────────────────────────────────────────────
+    :where(.bloc-select__panel) {
+        max-height: min(320px, calc(100vh - 24px));
+        overflow: hidden;
+        display: flex;
+        flex-direction: column;
+        border: 1px solid var(--bloc-select-border, var(--bloc-border, #d1d5db));
+        border-radius: var(--bloc-select-panel-radius, 6px);
+        background: var(--bloc-select-bg, var(--bloc-surface, #ffffff));
+        box-shadow: var(--bloc-select-panel-shadow, 0 4px 16px rgba(0, 0, 0, 0.08));
+    }
+
+    // ── Search ───────────────────────────────────────────────────────────────
+    :where(.bloc-select__search) {
+        padding: 8px;
+        border-bottom: 1px solid var(--bloc-select-border, var(--bloc-border, #d1d5db));
+    }
+
+    :where(.bloc-select__search-input) {
+        width: 100%;
+        box-sizing: border-box;
+        padding: 8px 12px;
+        border: 1px solid var(--bloc-select-border, var(--bloc-border, #d1d5db));
+        border-radius: var(--bloc-select-radius, 4px);
+        outline: none;
+        font: inherit;
+        color: var(--bloc-select-text, var(--bloc-text, #374151));
+        background: var(--bloc-select-bg, var(--bloc-surface, #ffffff));
+    }
+
+    :where(.bloc-select__search-input:focus) {
+        border-color: var(--bloc-select-border-hover, var(--bloc-primary, #6b7280));
+    }
+
+    // ── Options list ─────────────────────────────────────────────────────────
+    :where(.bloc-select__options) {
+        min-width: 100%;
+        max-height: min(280px, calc(100vh - 48px));
+        overflow: auto;
+        padding: 4px;
+        box-sizing: border-box;
+    }
+
+    :where(.bloc-select__state) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 12px;
+        color: var(--bloc-select-muted, var(--bloc-muted, #9ca3af));
+        font-size: 0.875rem;
+    }
+
+    :where(.bloc-select__spinner) {
+        width: 20px;
+        height: 20px;
+        animation: bloc-select-spin 0.6s linear infinite;
+    }
+
+    @keyframes bloc-select-spin {
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+    // ── Individual option ────────────────────────────────────────────────────
+    :where(.bloc-select-option) {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        width: 100%;
+        box-sizing: border-box;
+        padding: 8px 12px;
+        border-radius: var(--bloc-select-radius, 4px);
+        color: var(--bloc-select-text, var(--bloc-text, #374151));
+        cursor: pointer;
+        user-select: none;
+        transition: background-color 140ms ease;
+    }
+
+    :where(.bloc-select-option--active) {
+        background: var(--bloc-select-option-active, rgba(0, 0, 0, 0.06));
+    }
+
+    :where(.bloc-select-option--selected) {
+        background: var(--bloc-select-option-selected, rgba(0, 0, 0, 0.08));
+        font-weight: 600;
+    }
+
+    :where(.bloc-select-option:hover:not(.bloc-select-option--disabled)) {
+        background: var(--bloc-select-option-hover, rgba(0, 0, 0, 0.04));
+    }
+
+    :where(.bloc-select-option--disabled) {
+        color: var(--bloc-select-muted, var(--bloc-muted, #9ca3af));
+        cursor: not-allowed;
+    }
+}

@@ -1,0 +1,298 @@
+<!-- Header -->
+<header class="mb-8 pb-4 border-b border-gray-700/50">
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-gray-100">Virtual Scroll</h1>
+    <p class="m-0 text-gray-500 text-[0.95rem]">
+        Lightweight virtual scrolling — renders only visible items, positions via
+        <code>transform</code> (no reflow), signal-driven calculations.
+    </p>
+    <app-install-command package="@bloc-ui/virtual-scroll" />
+</header>
+
+<bloc-tab-group>
+    <bloc-tab label="Examples">
+        <!-- ── Basic List ── -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Basic List (10 000 items)
+        </h2>
+
+        <div class="grid grid-cols-1 gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Template Mode</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Only visible rows exist in the DOM. Each item is positioned via
+                    <code>translateY</code> — zero reflow on scroll.
+                </p>
+
+                <bloc-virtual-scroll
+                    [items]="simpleItems"
+                    [itemHeight]="40"
+                    style="
+                        height: 400px;
+                        border: 1px solid var(--bloc-border, #e2e8f0);
+                        border-radius: 8px;
+                    "
+                >
+                    <ng-template blocVirtualItem let-item let-i="index">
+                        <div
+                            style="
+                                height: 40px;
+                                padding: 8px 16px;
+                                display: flex;
+                                align-items: center;
+                                border-bottom: 1px solid var(--bloc-border, #e2e8f0);
+                                font-size: 0.875rem;
+                                color: var(--bloc-text, #1e293b);
+                            "
+                            [style.background]="
+                                i % 2 === 0
+                                    ? 'var(--bloc-vs-stripe-bg, #f8fafc)'
+                                    : 'var(--bloc-surface, #ffffff)'
+                            "
+                        >
+                            <span style="color: var(--bloc-muted, #94a3b8); width: 60px"
+                                >{{ i + 1 }}.</span
+                            >
+                            <span>{{ item.label }}</span>
+                        </div>
+                    </ng-template>
+                </bloc-virtual-scroll>
+
+                <app-sample-code [files]="snippets.basic" />
+            </div>
+        </div>
+
+        <!-- ── Table Integration ── -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Table Integration (5 000 rows)
+        </h2>
+
+        <div class="grid grid-cols-1 gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">
+                    Projection Mode + Sticky Header
+                </h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Wraps <code>&lt;bloc-table&gt;</code> and feeds only the visible slice via
+                    <code>vs.visibleItems()</code>. The table's sticky header stays fixed —
+                    projection mode uses spacer divs instead of <code>transform</code> to preserve
+                    <code>position: sticky</code> compatibility.
+                </p>
+
+                <bloc-virtual-scroll
+                    [items]="tableRows"
+                    [itemHeight]="48"
+                    style="
+                        height: 500px;
+                        border: 1px solid var(--bloc-border, #e2e8f0);
+                        border-radius: 8px;
+                    "
+                    #vs="blocVirtualScroll"
+                >
+                    <bloc-table
+                        [data]="vs.visibleItems()"
+                        [sticky]="true"
+                        trackBy="id"
+                        [striped]="true"
+                    >
+                        <bloc-column field="id" header="#">
+                            <ng-template blocCellDef let-value>
+                                <span style="color: var(--bloc-muted, #94a3b8)">{{ value }}</span>
+                            </ng-template>
+                        </bloc-column>
+                        <bloc-column field="name" header="Name" />
+                        <bloc-column field="email" header="Email" />
+                        <bloc-column field="role" header="Role" />
+                        <bloc-column field="status" header="Status">
+                            <ng-template blocCellDef let-value>
+                                <span
+                                    [style.color]="value === 'Active' ? '#16a34a' : '#dc2626'"
+                                    style="font-weight: 500"
+                                >
+                                    {{ value }}
+                                </span>
+                            </ng-template>
+                        </bloc-column>
+                    </bloc-table>
+                </bloc-virtual-scroll>
+
+                <app-sample-code [files]="snippets.table" />
+            </div>
+        </div>
+
+        <!-- ── Custom Templates ── -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Custom Templates (10 000 items)
+        </h2>
+
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(360px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Rich Item Template</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Each row contains an avatar, name, and role — showing that arbitrary templates
+                    work with the <code>blocVirtualItem</code> directive.
+                </p>
+
+                <bloc-virtual-scroll
+                    [items]="richItems"
+                    [itemHeight]="56"
+                    style="
+                        height: 400px;
+                        border: 1px solid var(--bloc-border, #e2e8f0);
+                        border-radius: 8px;
+                    "
+                >
+                    <ng-template blocVirtualItem let-person let-i="index">
+                        <div
+                            style="
+                                height: 56px;
+                                display: flex;
+                                align-items: center;
+                                gap: 12px;
+                                padding: 0 16px;
+                                border-bottom: 1px solid var(--bloc-border, #e2e8f0);
+                                color: var(--bloc-text, #1e293b);
+                            "
+                            [style.background]="
+                                i % 2 === 0
+                                    ? 'var(--bloc-vs-stripe-bg, #f8fafc)'
+                                    : 'var(--bloc-surface, #ffffff)'
+                            "
+                        >
+                            <div
+                                style="
+                                    width: 36px;
+                                    height: 36px;
+                                    border-radius: 50%;
+                                    background: var(--bloc-muted, #cbd5e1);
+                                    display: flex;
+                                    align-items: center;
+                                    justify-content: center;
+                                    font-size: 0.75rem;
+                                    font-weight: 600;
+                                    color: var(--bloc-surface, #334155);
+                                    flex-shrink: 0;
+                                "
+                            >
+                                {{ person.initials }}
+                            </div>
+                            <div style="min-width: 0">
+                                <div
+                                    style="
+                                        font-weight: 500;
+                                        font-size: 0.875rem;
+                                        color: var(--bloc-text, #0f172a);
+                                        white-space: nowrap;
+                                        overflow: hidden;
+                                        text-overflow: ellipsis;
+                                    "
+                                >
+                                    {{ person.name }}
+                                </div>
+                                <div style="font-size: 0.75rem; color: var(--bloc-muted, #94a3b8)">
+                                    {{ person.role }}
+                                </div>
+                            </div>
+                        </div>
+                    </ng-template>
+                </bloc-virtual-scroll>
+
+                <app-sample-code [files]="snippets.custom" />
+            </div>
+        </div>
+
+        <!-- ── Mixed Heights Stress Test ── -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-red-500 uppercase tracking-wide">
+            &#x26A0; Stress Test — Mixed Row Heights (500 items)
+        </h2>
+
+        <div class="grid grid-cols-1 gap-5 mb-10">
+            <div class="bg-gray-900 border border-red-200 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">
+                    Auto-Measured Variable Heights
+                </h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    With <b class="text-gray-100">[autoMeasure]="true"</b>, actual row heights are
+                    measured after render and cached — scroll positions, offsets, and total height
+                    all adapt automatically.
+                </p>
+
+                <bloc-virtual-scroll
+                    [items]="mixedItems"
+                    [itemHeight]="40"
+                    [autoMeasure]="true"
+                    style="height: 400px; border: 2px solid #fca5a5"
+                >
+                    <ng-template blocVirtualItem let-item let-i="index">
+                        <div
+                            style="
+                                padding: 8px 16px;
+                                display: flex;
+                                flex-direction: column;
+                                justify-content: center;
+                                border-bottom: 1px solid var(--bloc-border, #e2e8f0);
+                                font-size: 0.875rem;
+                                color: var(--bloc-text, #1e293b);
+                            "
+                            [style.background]="
+                                item.tall
+                                    ? 'var(--bloc-alert-danger-bg, #fef2f2)'
+                                    : i % 2 === 0
+                                      ? 'var(--bloc-vs-stripe-bg, #f8fafc)'
+                                      : 'var(--bloc-surface, #ffffff)'
+                            "
+                            [style.min-height.px]="item.tall ? 120 : 40"
+                        >
+                            <div class="flex items-center gap-2">
+                                <span style="color: var(--bloc-muted, #94a3b8); width: 60px"
+                                    >{{ i + 1 }}.</span
+                                >
+                                <span [style.font-weight]="item.tall ? '700' : '400'">
+                                    {{ item.label }}
+                                    @if (item.tall) {
+                                        <span style="color: #ef4444"> — OVERSIZED ROW</span>
+                                    }
+                                </span>
+                            </div>
+                            @if (item.tall) {
+                                <p
+                                    style="
+                                        margin: 4px 0 0 60px;
+                                        font-size: 0.75rem;
+                                        color: var(--bloc-muted, #6b7280);
+                                        line-height: 1.4;
+                                    "
+                                >
+                                    {{ item.description }}
+                                </p>
+                            }
+                        </div>
+                    </ng-template>
+                </bloc-virtual-scroll>
+            </div>
+        </div>
+    </bloc-tab>
+    <bloc-tab label="API">
+        <div class="api-card">
+            <app-api-table
+                title="Inputs"
+                selector="bloc-virtual-scroll"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="inputs"
+            />
+            <app-api-table
+                title="Exported state"
+                selector="#vs"
+                [columns]="OUTPUTS_COLUMNS"
+                [rows]="exportedState"
+                note="Use exportAs via #vs to access the component instance from the template."
+            />
+            <app-api-table
+                title="Template context"
+                selector="[blocVirtualItem]"
+                [columns]="OUTPUTS_COLUMNS"
+                [rows]="templateContext"
+                note="Variables exposed inside an ng-template marked with the blocVirtualItem structural directive."
+            />
+        </div>
+    </bloc-tab>
+</bloc-tab-group>

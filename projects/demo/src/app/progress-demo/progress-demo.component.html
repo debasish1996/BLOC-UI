@@ -1,0 +1,74 @@
+<header class="mb-8 pb-4 border-b border-gray-700/50">
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-gray-100">Progress</h1>
+    <p class="m-0 text-gray-500 text-[0.95rem]">
+        Accessible progress bars for tasks, uploads, and completion states.
+    </p>
+    <app-install-command package="@bloc-ui/core" />
+</header>
+
+<bloc-tab-group>
+    <bloc-tab label="Examples">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Sizing
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(280px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Track density</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Choose the right visual weight for the layout.
+                </p>
+                <div class="flex flex-col gap-4">
+                    <bloc-progress size="sm" [value]="30"></bloc-progress>
+                    <bloc-progress size="md" [value]="52"></bloc-progress>
+                    <bloc-progress size="lg" [value]="74"></bloc-progress>
+                </div>
+                <app-sample-code [files]="snippets.sizes" />
+            </div>
+
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Interactive label</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Show the current percentage above the bar.
+                </p>
+                <bloc-progress
+                    label="Upload progress"
+                    [showValue]="true"
+                    [value]="uploadProgress()"
+                ></bloc-progress>
+                <div class="flex gap-3">
+                    <button blocButton variant="outline" (clicked)="decrease()">-12%</button>
+                    <button blocButton (clicked)="increase()">+12%</button>
+                </div>
+                <app-sample-code [files]="snippets.labelled" />
+            </div>
+        </div>
+
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Theming
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(280px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Custom tokens</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Override track and fill tokens without changing component logic.
+                </p>
+                <bloc-progress
+                    [value]="64"
+                    style="--bloc-progress-track-bg: #dbeafe; --bloc-progress-fill: #2563eb"
+                ></bloc-progress>
+                <app-sample-code [files]="snippets.customToken" />
+            </div>
+        </div>
+    </bloc-tab>
+    <bloc-tab label="API">
+        <div class="api-card">
+            <app-api-table
+                title="Inputs"
+                selector="bloc-progress"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="inputs"
+            />
+            <app-api-table title="CSS Tokens" [columns]="TOKENS_COLUMNS" [rows]="tokens" />
+        </div>
+    </bloc-tab>
+</bloc-tab-group>

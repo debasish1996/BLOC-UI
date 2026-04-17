@@ -1,0 +1,40 @@
+{
+    "name": "@bloc-ui/autocomplete",
+    "version": "1.0.9",
+    "description": "Searchable single-select autocomplete for Angular with async-friendly option list, custom filterFn, and forms integration.",
+    "keywords": [
+        "angular",
+        "angular-components",
+        "component-library",
+        "autocomplete",
+        "combobox",
+        "search",
+        "select",
+        "forms",
+        "accessible",
+        "standalone-components",
+        "bloc-ui"
+    ],
+    "license": "MIT",
+    "author": "Bloc Verse",
+    "homepage": "https://ui.bloc-verse.com",
+    "bugs": {
+        "url": "https://github.com/debasish1996/BLOC-UI/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/debasish1996/BLOC-UI.git",
+        "directory": "projects/bloc-ui-autocomplete"
+    },
+    "peerDependencies": {
+        "@angular/common": "^21.2.0",
+        "@angular/core": "^21.2.0",
+        "@angular/forms": "^21.2.0"
+    },
+    "dependencies": {
+        "@bloc-ui/text-highlight": "^1.0.5",
+        "@bloc-ui/overlay": "^1.0.7",
+        "tslib": "^2.3.0"
+    },
+    "sideEffects": false
+}

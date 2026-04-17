@@ -1,0 +1,49 @@
+:host {
+    display: inline-block;
+    border-radius: 50%;
+    border-style: solid;
+    color: var(--bloc-spinner-color, #6b7280);
+    border-style: solid !important;
+    border-color: color-mix(in srgb, currentColor 20%, transparent) !important;
+    border-top-color: currentColor !important;
+    animation: bloc-spin 0.7s linear infinite;
+    box-sizing: border-box;
+    flex-shrink: 0;
+
+    $sizes: (
+        'xs': (
+            12px,
+            2px,
+        ),
+        'sm': (
+            16px,
+            2px,
+        ),
+        'md': (
+            24px,
+            3px,
+        ),
+        'lg': (
+            32px,
+            3px,
+        ),
+        'xl': (
+            48px,
+            4px,
+        ),
+    );
+
+    @each $name, $vals in $sizes {
+        &.bloc-spinner--#{$name} {
+            width: nth($vals, 1);
+            height: nth($vals, 1);
+            border-width: nth($vals, 2);
+        }
+    }
+}
+
+@keyframes bloc-spin {
+    to {
+        transform: rotate(360deg);
+    }
+}

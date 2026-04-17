@@ -1,0 +1,130 @@
+// Individual toast — authoritative structural
+:host {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    padding: var(--bloc-toast-padding, 12px 14px);
+    border-radius: var(--bloc-toast-radius, 8px);
+    pointer-events: auto;
+    animation: bloc-toast-in 0.25s ease;
+    border-width: 1px;
+    border-style: solid;
+}
+
+// Individual toast — overridable visual (zero-specificity via :where)
+:where(:host) {
+    background-color: var(--bloc-toast-bg, #ffffff);
+    border-color: var(--bloc-toast-border, var(--bloc-border, #d1d5db));
+    box-shadow: var(--bloc-toast-shadow, 0 4px 12px rgba(0, 0, 0, 0.1));
+}
+
+// Icon — authoritative structural
+.bloc-toast__icon {
+    flex-shrink: 0;
+    width: 20px;
+    height: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+    line-height: 1;
+    border-radius: 50%;
+}
+
+// Icon colours — overridable via :where
+:where(.bloc-toast__icon--info) {
+    color: var(--bloc-toast-info-color, #6b7280);
+}
+:where(.bloc-toast__icon--success) {
+    color: var(--bloc-toast-success-color, #16a34a);
+}
+:where(.bloc-toast__icon--warning) {
+    color: var(--bloc-toast-warning-color, #d97706);
+}
+:where(.bloc-toast__icon--error) {
+    color: var(--bloc-toast-error-color, #dc2626);
+}
+
+// Body — authoritative structural
+.bloc-toast__body {
+    flex: 1;
+    min-width: 0;
+}
+
+// Title — authoritative structural
+.bloc-toast__title {
+    font-weight: 600;
+    font-size: var(--bloc-toast-title-size, 0.8125rem);
+    margin-bottom: 2px;
+}
+
+:where(.bloc-toast__title) {
+    color: var(--bloc-toast-title-color, #374151);
+}
+
+// Message — overridable visual
+.bloc-toast__message {
+    font-size: var(--bloc-toast-message-size, 0.8125rem);
+    line-height: 1.4;
+}
+
+:where(.bloc-toast__message) {
+    color: var(--bloc-toast-message-color, #6b7280);
+}
+
+// Close button — authoritative structural
+.bloc-toast__close {
+    appearance: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    flex-shrink: 0;
+    padding: 2px;
+    font-size: 12px;
+    line-height: 1;
+    border-radius: 4px;
+    transition: background-color 0.15s ease;
+}
+
+:where(.bloc-toast__close) {
+    color: var(--bloc-toast-close-color, #9ca3af);
+
+    &:hover {
+        color: var(--bloc-toast-close-hover-color, #374151);
+        background-color: var(--bloc-toast-close-hover-bg, #f3f4f6);
+    }
+}
+
+// Type-specific left border accent
+:host(.bloc-toast--info) {
+    border-left-width: 3px;
+    border-left-style: solid;
+    border-left-color: var(--bloc-toast-info-color, #6b7280);
+}
+:host(.bloc-toast--success) {
+    border-left-width: 3px;
+    border-left-style: solid;
+    border-left-color: var(--bloc-toast-success-color, #16a34a);
+}
+:host(.bloc-toast--warning) {
+    border-left-width: 3px;
+    border-left-style: solid;
+    border-left-color: var(--bloc-toast-warning-color, #d97706);
+}
+:host(.bloc-toast--error) {
+    border-left-width: 3px;
+    border-left-style: solid;
+    border-left-color: var(--bloc-toast-error-color, #dc2626);
+}
+
+// Slide-in animation
+@keyframes bloc-toast-in {
+    from {
+        opacity: 0;
+        transform: translateX(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}

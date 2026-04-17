@@ -6,6 +6,7 @@
 /out-tsc
 /bazel-out
 
+
 # Node
 /node_modules
 npm-debug.log
@@ -38,7 +39,25 @@ yarn-error.log
 testem.log
 /typings
 __screenshots__/
+/test-results
 
 # System files
 .DS_Store
 Thumbs.db
+
+# Personal notes
+todo.md
+
+# Claude Code
+.claude/
+
+# Manager reports
+Managers/
+playwright-report/
+
+# Graphify output (local only)
+graphify-out/
+
+# Local docs
+CLAUDE.md
+ARCHITECTURE.md

@@ -1,0 +1,54 @@
+// ─── BlocSidebarLayoutComponent ───────────────────────────────────────────────
+
+// Authoritative structural — grid shell
+:host.bloc-sidebar-layout {
+    display: grid;
+    grid-template-columns: var(--bloc-sidebar-width, 18rem) minmax(0, 1fr);
+    gap: var(--bloc-sidebar-gap, 1.25rem);
+    min-height: 100%;
+}
+
+:host.bloc-sidebar-layout.bloc-sidebar-layout--collapsed {
+    grid-template-columns: var(--bloc-sidebar-collapsed-width, 4.75rem) minmax(0, 1fr);
+}
+
+@media (max-width: 900px) {
+    :host.bloc-sidebar-layout,
+    :host.bloc-sidebar-layout.bloc-sidebar-layout--collapsed {
+        grid-template-columns: 1fr;
+    }
+}
+
+// ─── BlocSidebarComponent ─────────────────────────────────────────────────────
+
+// Authoritative structural — block container, clips collapsed content
+:host.bloc-sidebar {
+    display: block;
+    overflow: hidden;
+}
+
+// Overridable visual (zero specificity — consumer classes always win)
+:where(:host.bloc-sidebar) {
+    border: 1px solid var(--bloc-sidebar-border, #d1d5db);
+    border-radius: var(--bloc-sidebar-radius, 1.25rem);
+    background: var(--bloc-sidebar-bg, #ffffff);
+    color: var(--bloc-sidebar-color, #374151);
+    padding: var(--bloc-sidebar-padding, 1rem);
+}
+
+// ─── BlocSidebarContentComponent ──────────────────────────────────────────────
+
+// Authoritative structural — block container, prevents grid blowout
+:host.bloc-sidebar-content {
+    display: block;
+    min-width: 0;
+}
+
+// Overridable visual (zero specificity — consumer classes always win)
+:where(:host.bloc-sidebar-content) {
+    border: 1px solid var(--bloc-sidebar-content-border, #d1d5db);
+    border-radius: var(--bloc-sidebar-content-radius, 1.25rem);
+    background: var(--bloc-sidebar-content-bg, #ffffff);
+    color: var(--bloc-sidebar-content-color, #374151);
+    padding: var(--bloc-sidebar-content-padding, 1.25rem);
+}

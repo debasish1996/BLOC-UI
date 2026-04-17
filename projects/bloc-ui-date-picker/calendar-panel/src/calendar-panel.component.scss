@@ -1,0 +1,251 @@
+:host {
+    display: block;
+    font-family: inherit;
+}
+
+// ── Shared button reset ────────────────────────────────────────────────────
+// Applied to every interactive element in the panel
+%btn-reset {
+    appearance: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    font-family: inherit;
+}
+
+// ── Shared selected / active state ─────────────────────────────────────────
+%selected-state {
+    background-color: var(--bloc-date-picker-selected-bg, var(--bloc-primary, #6b7280)) !important;
+    color: var(--bloc-date-picker-selected-color, #fff) !important;
+    font-weight: 600;
+}
+
+// ── Header ─────────────────────────────────────────────────────────────────
+
+.bloc-dp-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+
+.bloc-dp-myb,
+.bloc-dp-myl {
+    font-weight: 600;
+    font-size: 0.875rem;
+    flex: 1;
+    text-align: center;
+}
+
+.bloc-dp-myb {
+    @extend %btn-reset;
+    border-radius: 4px;
+    padding: 2px 6px;
+    transition: background-color 0.1s ease;
+}
+
+:where(.bloc-dp-myb),
+:where(.bloc-dp-myl) {
+    color: var(--bloc-date-picker-header-color, var(--bloc-date-picker-day-color, #374151));
+}
+
+:where(.bloc-dp-myb:hover) {
+    background-color: var(--bloc-date-picker-nav-hover-bg, #f3f4f6);
+}
+
+.bloc-dp-nav {
+    @extend %btn-reset;
+    font-size: 1.25rem;
+    line-height: 1;
+    width: 28px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 4px;
+    transition: background-color 0.1s ease;
+}
+
+:where(.bloc-dp-nav) {
+    color: var(--bloc-date-picker-nav-color, #6b7280);
+
+    &:hover {
+        background-color: var(--bloc-date-picker-nav-hover-bg, #f3f4f6);
+    }
+}
+
+// ── Weekday headers ────────────────────────────────────────────────────────
+
+.bloc-dp-wds {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 0;
+    margin-bottom: 4px;
+}
+
+.bloc-dp-wd {
+    font-size: 0.75rem;
+    font-weight: 600;
+    text-align: center;
+    padding: 4px 0;
+    user-select: none;
+}
+
+:where(.bloc-dp-wd) {
+    color: var(--bloc-date-picker-weekday-color, var(--bloc-date-picker-day-color, #374151));
+}
+
+// ── Days grid ──────────────────────────────────────────────────────────────
+
+.bloc-dp-days {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 2px;
+}
+
+.bloc-dp-d {
+    @extend %btn-reset;
+    font-size: 0.8125rem;
+    width: 32px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    border-radius: var(--bloc-date-picker-day-radius, 6px);
+    transition:
+        background-color 0.1s ease,
+        color 0.1s ease;
+
+    &--oth {
+        opacity: 0.35;
+    }
+
+    &--tod {
+        font-weight: 700;
+        border: 1px solid var(--bloc-date-picker-today-border, var(--bloc-primary, #6b7280));
+    }
+
+    &--sel {
+        @extend %selected-state;
+    }
+
+    &--dis {
+        cursor: not-allowed;
+        opacity: 0.3;
+    }
+
+    &--ir {
+        background-color: var(
+            --bloc-date-picker-range-bg,
+            var(--bloc-date-picker-nav-hover-bg, #f3f4f6)
+        );
+        border-radius: 0;
+    }
+
+    &--rs {
+        @extend %selected-state;
+        border-radius: var(--bloc-date-picker-day-radius, 6px) 0 0
+            var(--bloc-date-picker-day-radius, 6px);
+    }
+
+    &--re {
+        @extend %selected-state;
+        border-radius: 0 var(--bloc-date-picker-day-radius, 6px)
+            var(--bloc-date-picker-day-radius, 6px) 0;
+    }
+
+    &--rs.bloc-dp-d--re {
+        border-radius: var(--bloc-date-picker-day-radius, 6px);
+    }
+}
+
+:where(.bloc-dp-d) {
+    color: var(--bloc-date-picker-day-color, #374151);
+
+    &:hover:not(:disabled) {
+        background-color: var(--bloc-date-picker-day-hover-bg, #f3f4f6);
+    }
+}
+
+// ── Footer ─────────────────────────────────────────────────────────────────
+
+.bloc-dp-footer {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 1px solid var(--bloc-date-picker-footer-border, var(--bloc-border, #d1d5db));
+}
+
+.bloc-dp-tbtn,
+.bloc-dp-cbtn {
+    @extend %btn-reset;
+    font-size: 0.8125rem;
+    font-weight: 500;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: background-color 0.1s ease;
+}
+
+:where(.bloc-dp-tbtn) {
+    color: var(--bloc-date-picker-action-color, var(--bloc-primary, #6b7280));
+
+    &:hover {
+        background-color: var(--bloc-date-picker-nav-hover-bg, #f3f4f6);
+    }
+}
+
+:where(.bloc-dp-cbtn) {
+    color: var(--bloc-date-picker-clear-color, #9ca3af);
+
+    &:hover {
+        background-color: var(--bloc-date-picker-nav-hover-bg, #f3f4f6);
+        color: var(
+            --bloc-date-picker-clear-hover-color,
+            var(--bloc-date-picker-day-color, #374151)
+        );
+    }
+}
+
+// ── Month / Year grids ─────────────────────────────────────────────────────
+
+.bloc-dp-mgrid,
+.bloc-dp-ygrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 4px;
+    padding: 4px 0;
+}
+
+.bloc-dp-mc,
+.bloc-dp-yc {
+    @extend %btn-reset;
+    font-size: 0.8125rem;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--bloc-date-picker-day-radius, 6px);
+    transition:
+        background-color 0.1s ease,
+        color 0.1s ease;
+
+    &--cur {
+        font-weight: 700;
+        border: 1px solid var(--bloc-date-picker-today-border, var(--bloc-primary, #6b7280));
+    }
+
+    &--sel {
+        @extend %selected-state;
+    }
+}
+
+:where(.bloc-dp-mc),
+:where(.bloc-dp-yc) {
+    color: var(--bloc-date-picker-day-color, #374151);
+
+    &:hover:not(:disabled) {
+        background-color: var(--bloc-date-picker-day-hover-bg, #f3f4f6);
+    }
+}

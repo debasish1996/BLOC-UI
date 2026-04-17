@@ -1,0 +1,36 @@
+{
+    "name": "@bloc-ui/tooltip",
+    "version": "1.0.7",
+    "description": "Hover/focus tooltip directive for Angular with intelligent repositioning and delay control.",
+    "keywords": [
+        "angular",
+        "angular-components",
+        "component-library",
+        "tooltip",
+        "popover",
+        "overlay",
+        "accessible",
+        "standalone-components",
+        "bloc-ui"
+    ],
+    "license": "MIT",
+    "author": "Bloc Verse",
+    "homepage": "https://ui.bloc-verse.com",
+    "bugs": {
+        "url": "https://github.com/debasish1996/BLOC-UI/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/debasish1996/BLOC-UI.git",
+        "directory": "projects/bloc-ui-tooltip"
+    },
+    "peerDependencies": {
+        "@angular/common": "^21.2.0",
+        "@angular/core": "^21.2.0"
+    },
+    "dependencies": {
+        "@bloc-ui/overlay": "^1.0.7",
+        "tslib": "^2.3.0"
+    },
+    "sideEffects": false
+}

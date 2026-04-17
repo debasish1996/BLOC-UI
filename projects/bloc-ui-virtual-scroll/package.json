@@ -1,0 +1,35 @@
+{
+    "name": "@bloc-ui/virtual-scroll",
+    "version": "1.0.6",
+    "description": "Lightweight virtual scrolling for Angular — renders only visible items, signal-driven, zero CDK dependency.",
+    "keywords": [
+        "angular",
+        "angular-components",
+        "component-library",
+        "virtual-scroll",
+        "virtualization",
+        "performance",
+        "signals",
+        "standalone-components",
+        "bloc-ui"
+    ],
+    "license": "MIT",
+    "author": "Bloc Verse",
+    "homepage": "https://ui.bloc-verse.com",
+    "bugs": {
+        "url": "https://github.com/debasish1996/BLOC-UI/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/debasish1996/BLOC-UI.git",
+        "directory": "projects/bloc-ui-virtual-scroll"
+    },
+    "peerDependencies": {
+        "@angular/common": "^21.2.0",
+        "@angular/core": "^21.2.0"
+    },
+    "dependencies": {
+        "tslib": "^2.3.0"
+    },
+    "sideEffects": false
+}

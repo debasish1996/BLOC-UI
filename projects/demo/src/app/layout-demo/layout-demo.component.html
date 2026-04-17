@@ -1,0 +1,218 @@
+<header class="mb-8 pb-4 border-b border-gray-700/50">
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-gray-100">Layout Sidebar</h1>
+    <p class="m-0 text-gray-500 text-[0.95rem]">
+        Structural layout primitives for dashboard shells with a sidebar and main content column.
+    </p>
+    <p class="m-0 text-xs text-gray-500 mt-1">
+        Accessibility: layout primitive only — no interactive role. Place focusable navigation
+        elements (links, buttons) directly inside <code>bloc-sidebar</code>.
+    </p>
+    <app-install-command package="@bloc-ui/layout" />
+</header>
+
+<!-- Basic -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">Basic</h2>
+<div class="grid grid-cols-1 gap-5 mb-10">
+    <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+        <div class="flex items-center justify-between gap-3 flex-wrap">
+            <div>
+                <h3 class="m-0 text-base font-semibold text-gray-100">Sidebar Shell</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500 mt-1">
+                    Two-column grid: <code>bloc-sidebar</code> on the left,
+                    <code>bloc-sidebar-content</code> on the right. Toggle collapses the rail to
+                    <code>collapsedWidth</code>.
+                </p>
+            </div>
+            <button
+                type="button"
+                class="px-3 py-2 rounded-md border border-gray-700/50 bg-gray-900/50 text-sm text-gray-300 cursor-pointer hover:bg-gray-700"
+                (click)="toggleCollapsed()"
+            >
+                Toggle Sidebar
+            </button>
+        </div>
+
+        <div class="p-3 rounded-xl bg-gray-900/50 border border-gray-700/50 overflow-auto">
+            <bloc-sidebar-layout [collapsed]="collapsed()" sidebarWidth="14rem">
+                <bloc-sidebar>
+                    <nav class="grid gap-1 text-sm">
+                        <a
+                            class="px-3 py-2 rounded-lg bg-gray-800 text-gray-100 no-underline cursor-pointer"
+                            >Overview</a
+                        >
+                        <a
+                            class="px-3 py-2 rounded-lg text-gray-300 no-underline cursor-pointer hover:bg-gray-700"
+                            >Components</a
+                        >
+                        <a
+                            class="px-3 py-2 rounded-lg text-gray-300 no-underline cursor-pointer hover:bg-gray-700"
+                            >Settings</a
+                        >
+                    </nav>
+                </bloc-sidebar>
+
+                <bloc-sidebar-content>
+                    <h4 class="m-0 mb-2 text-base font-semibold text-gray-100">Dashboard</h4>
+                    <p class="m-0 text-sm text-gray-400">
+                        Sidebar is {{ collapsed() ? 'collapsed' : 'expanded' }}.
+                    </p>
+                </bloc-sidebar-content>
+            </bloc-sidebar-layout>
+        </div>
+
+        <app-sample-code [files]="snippets.basic" />
+    </div>
+</div>
+
+<!-- Collapsed -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">Collapsed</h2>
+<div class="grid grid-cols-1 gap-5 mb-10">
+    <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+        <div>
+            <h3 class="m-0 text-base font-semibold text-gray-100">Static Collapsed State</h3>
+            <p class="m-0 text-[0.82rem] text-gray-500 mt-1">
+                Set <code>[collapsed]="true"</code> to narrow the rail to
+                <code>collapsedWidth</code> (default <code>4.75rem</code>). Content inside
+                <code>bloc-sidebar</code> is clipped automatically via
+                <code>overflow: hidden</code>.
+            </p>
+        </div>
+
+        <div class="p-3 rounded-xl bg-gray-900/50 border border-gray-700/50 overflow-auto">
+            <bloc-sidebar-layout [collapsed]="true" sidebarWidth="14rem">
+                <bloc-sidebar>
+                    <nav class="grid gap-1 text-sm">
+                        <a
+                            class="px-3 py-2 rounded-lg bg-gray-800 text-gray-100 no-underline cursor-pointer"
+                            >OV</a
+                        >
+                        <a class="px-3 py-2 rounded-lg text-gray-300 no-underline cursor-pointer"
+                            >CO</a
+                        >
+                        <a class="px-3 py-2 rounded-lg text-gray-300 no-underline cursor-pointer"
+                            >SE</a
+                        >
+                    </nav>
+                </bloc-sidebar>
+
+                <bloc-sidebar-content>
+                    <h4 class="m-0 mb-2 text-base font-semibold text-gray-100">Dashboard</h4>
+                    <p class="m-0 text-sm text-gray-400">Sidebar is statically collapsed.</p>
+                </bloc-sidebar-content>
+            </bloc-sidebar-layout>
+        </div>
+
+        <app-sample-code [files]="snippets.collapsed" />
+    </div>
+</div>
+
+<!-- Theming -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">Theming</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(min(340px,100%),1fr))] gap-5 mb-10">
+    <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+        <div>
+            <h3 class="m-0 text-base font-semibold text-gray-100">Dark Sidebar via CSS Tokens</h3>
+            <p class="m-0 text-[0.82rem] text-gray-500 mt-1">
+                Override <code>--bloc-sidebar-bg</code>, <code>--bloc-sidebar-color</code>, and
+                <code>--bloc-sidebar-border</code> inline or via a theme class.
+            </p>
+        </div>
+
+        <div class="p-3 rounded-xl bg-gray-900/50 border border-gray-700/50 overflow-auto">
+            <bloc-sidebar-layout sidebarWidth="12rem">
+                <bloc-sidebar
+                    style="
+                        --bloc-sidebar-bg: #0f172a;
+                        --bloc-sidebar-color: #e2e8f0;
+                        --bloc-sidebar-border: #1e293b;
+                        --bloc-sidebar-radius: 0.75rem;
+                    "
+                >
+                    <nav class="grid gap-1 text-sm">
+                        <a
+                            class="px-3 py-2 rounded-lg bg-gray-900/10 text-inherit no-underline cursor-pointer"
+                            >Overview</a
+                        >
+                        <a
+                            class="px-3 py-2 rounded-lg text-inherit no-underline opacity-60 cursor-pointer"
+                            >Components</a
+                        >
+                        <a
+                            class="px-3 py-2 rounded-lg text-inherit no-underline opacity-60 cursor-pointer"
+                            >Settings</a
+                        >
+                    </nav>
+                </bloc-sidebar>
+
+                <bloc-sidebar-content>
+                    <h4 class="m-0 mb-2 text-base font-semibold text-gray-100">Content area</h4>
+                    <p class="m-0 text-sm text-gray-400">Light content panel, dark sidebar.</p>
+                </bloc-sidebar-content>
+            </bloc-sidebar-layout>
+        </div>
+
+        <app-sample-code [files]="snippets.themingDark" />
+    </div>
+
+    <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-4">
+        <div>
+            <h3 class="m-0 text-base font-semibold text-gray-100">Custom Radius &amp; Spacing</h3>
+            <p class="m-0 text-[0.82rem] text-gray-500 mt-1">
+                Use <code>--bloc-sidebar-radius</code> and <code>--bloc-sidebar-padding</code> to
+                adjust shape and density. Both panels are independently controllable.
+            </p>
+        </div>
+
+        <div class="p-3 rounded-xl bg-gray-900/50 border border-gray-700/50 overflow-auto">
+            <bloc-sidebar-layout sidebarWidth="12rem">
+                <bloc-sidebar
+                    style="
+                        --bloc-sidebar-radius: 0;
+                        --bloc-sidebar-padding: 0.5rem;
+                        --bloc-sidebar-bg: #f1f5f9;
+                    "
+                >
+                    <nav class="grid gap-1 text-sm">
+                        <a class="px-3 py-2 bg-gray-900 text-gray-100 no-underline cursor-pointer"
+                            >Overview</a
+                        >
+                        <a class="px-3 py-2 text-gray-300 no-underline cursor-pointer"
+                            >Components</a
+                        >
+                        <a class="px-3 py-2 text-gray-300 no-underline cursor-pointer">Settings</a>
+                    </nav>
+                </bloc-sidebar>
+
+                <bloc-sidebar-content
+                    style="
+                        --bloc-sidebar-content-radius: 0;
+                        --bloc-sidebar-content-padding: 0.75rem;
+                    "
+                >
+                    <h4 class="m-0 mb-2 text-base font-semibold text-gray-100">Content area</h4>
+                    <p class="m-0 text-sm text-gray-400">Square corners, tight padding.</p>
+                </bloc-sidebar-content>
+            </bloc-sidebar-layout>
+        </div>
+
+        <app-sample-code [files]="snippets.themingRadius" />
+    </div>
+</div>
+
+<!-- Responsive -->
+<h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">Responsive</h2>
+<div class="grid grid-cols-[repeat(auto-fill,minmax(min(340px,100%),1fr))] gap-5">
+    <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+        <h3 class="m-0 text-base font-semibold text-gray-100">Single-column below 900 px</h3>
+        <p class="m-0 text-[0.82rem] text-gray-500">
+            The layout automatically collapses to a stacked single column when the viewport is
+            narrower than <code>900px</code>. Both <code>sidebarWidth</code> and
+            <code>collapsedWidth</code> are ignored at that breakpoint — each slot fills full width.
+        </p>
+        <p class="m-0 text-[0.82rem] text-gray-500">
+            Stack order follows DOM order: <code>bloc-sidebar</code> appears above
+            <code>bloc-sidebar-content</code> on small screens.
+        </p>
+        <app-sample-code [files]="snippets.responsive" />
+    </div>
+</div>

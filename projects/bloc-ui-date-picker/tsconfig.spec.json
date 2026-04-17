@@ -1,0 +1,15 @@
+{
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "../../out-tsc/spec",
+        "types": ["vitest/globals"]
+    },
+    "include": [
+        "calendar-panel/src/**/*.d.ts",
+        "calendar-panel/src/**/*.spec.ts",
+        "date-picker/src/**/*.d.ts",
+        "date-picker/src/**/*.spec.ts",
+        "range-date-picker/src/**/*.d.ts",
+        "range-date-picker/src/**/*.spec.ts"
+    ]
+}

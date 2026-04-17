@@ -1,0 +1,101 @@
+<div class="mb-10">
+    <h1 class="text-3xl font-extrabold text-gray-100 mb-2">Getting Started</h1>
+    <p class="text-gray-400 text-base mb-4">
+        Install Bloc UI, import your first components, and set up optional theming in minutes.
+    </p>
+    <a
+        href="https://stackblitz.com/github/debasish1996/BLOC-UI"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="inline-flex items-center gap-2 px-4 py-2 rounded-lg bg-slate-900 text-gray-100 text-sm font-semibold hover:bg-slate-700 transition-colors no-underline"
+    >
+        Try it now in StackBlitz &rarr;
+    </a>
+</div>
+
+<section class="mb-10">
+    <h2 class="text-xl font-bold text-gray-200 mb-4">1. Choose installation strategy</h2>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div class="bg-gray-900 border border-gray-700/50 rounded-xl p-5 shadow-sm">
+            <h3 class="text-base font-semibold text-gray-100 m-0">Option A: All-in-one package</h3>
+            <p class="text-sm text-gray-400 mt-2 mb-0">
+                Best when you want everything available from a single dependency.
+            </p>
+            <app-install-command package="@bloc-ui/kit" />
+            <app-sample-code [files]="kitImportCode" />
+        </div>
+
+        <div class="bg-gray-900 border border-gray-700/50 rounded-xl p-5 shadow-sm">
+            <h3 class="text-base font-semibold text-gray-100 m-0">Option B: Individual packages</h3>
+            <p class="text-sm text-gray-400 mt-2 mb-0">
+                Smaller bundles by installing only what your app needs.
+            </p>
+            <app-install-command package="@bloc-ui/core @bloc-ui/modal @bloc-ui/table" />
+            <app-sample-code [files]="individualImportCode" />
+        </div>
+    </div>
+</section>
+
+<section class="mb-10">
+    <h2 class="text-xl font-bold text-gray-200 mb-4">2. Use your first component</h2>
+    <div class="bg-gray-900 border border-gray-700/50 rounded-xl p-5 shadow-sm">
+        <p class="text-sm text-gray-400 mb-3">
+            Start with a button and input to verify setup quickly in your own component template.
+        </p>
+        <app-sample-code [files]="firstUsageCode" />
+    </div>
+</section>
+
+<section class="mb-10">
+    <h2 class="text-xl font-bold text-gray-200 mb-4">3. Add optional theme package</h2>
+    <div class="bg-gray-900 border border-gray-700/50 rounded-xl p-5 shadow-sm">
+        <p class="text-sm text-gray-400 mb-2">
+            The core packages are style-neutral. Add theme only if you want default tokens for
+            color, spacing, typography, and light or dark mode support.
+        </p>
+        <app-install-command package="@bloc-ui/theme" />
+        <app-sample-code [files]="themeCode" />
+    </div>
+</section>
+
+<section class="mb-10">
+    <h2 class="text-xl font-bold text-gray-200 mb-4">4. Tailwind CSS users</h2>
+    <div class="bg-gray-900 border border-gray-700/50 rounded-xl p-5 shadow-sm">
+        <p class="text-sm text-gray-400 mb-3">
+            Register Bloc UI layers before Tailwind import so utilities can override component
+            visuals predictably.
+        </p>
+        <app-sample-code [files]="tailwindCode" />
+    </div>
+</section>
+
+<section>
+    <h2 class="text-xl font-bold text-gray-200 mb-4">Next steps</h2>
+    <div class="bg-gray-900 border border-gray-700/50 rounded-xl p-5 shadow-sm">
+        <p class="text-sm text-gray-400 mb-4">
+            Continue with component-specific examples and API details.
+        </p>
+        <div class="flex flex-wrap gap-2">
+            <a
+                routerLink="/button"
+                class="inline-flex items-center rounded-lg border border-gray-600 px-3 py-1.5 text-xs font-medium text-gray-300 no-underline hover:border-violet-600 hover:text-violet-300 transition-colors"
+                >Button docs</a
+            >
+            <a
+                routerLink="/input"
+                class="inline-flex items-center rounded-lg border border-gray-600 px-3 py-1.5 text-xs font-medium text-gray-300 no-underline hover:border-violet-600 hover:text-violet-300 transition-colors"
+                >Input docs</a
+            >
+            <a
+                routerLink="/modal"
+                class="inline-flex items-center rounded-lg border border-gray-600 px-3 py-1.5 text-xs font-medium text-gray-300 no-underline hover:border-violet-600 hover:text-violet-300 transition-colors"
+                >Modal docs</a
+            >
+            <a
+                routerLink="/table"
+                class="inline-flex items-center rounded-lg border border-gray-600 px-3 py-1.5 text-xs font-medium text-gray-300 no-underline hover:border-violet-600 hover:text-violet-300 transition-colors"
+                >Table docs</a
+            >
+        </div>
+    </div>
+</section>

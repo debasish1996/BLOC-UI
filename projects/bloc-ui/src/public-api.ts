@@ -1,39 +1,32 @@
 /*
- * Public API Surface of bloc-ui
+ * Public API Surface of @bloc-ui/kit
+ *
+ * All-in-one re-export: installing this package gives you
+ * every stable and experimental Bloc UI component.
  */
 
-// Button
-export * from './lib/button/button.component';
-export * from './lib/button/button.module';
-
-// Input
-export * from './lib/input/input.directive';
-export * from './lib/input/input-error.directive';
-export * from './lib/input/input.module';
-
-// Modal
-export * from './lib/modal/modal.ref';
-export * from './lib/modal/modal.config';
-export * from './lib/modal/modal.service';
-export * from './lib/modal/modal.module';
-export * from './lib/modal/generic-modal.service';
-// Note: BlocModalContainerComponent and BlocGenericModalContentComponent are internal
-// and intentionally not exported.
-
-// Spinner
-export * from './lib/spinner/spinner.directive';
-export * from './lib/spinner/spinner.module';
-
-// Toggle
-export * from './lib/toggle/toggle.component';
-export * from './lib/toggle/toggle.module';
-
-// Radio
-export * from './lib/radio/radio-group.component';
-export * from './lib/radio/radio.component';
-export * from './lib/radio/radio.module';
-
-// Checkbox
-export * from './lib/checkbox/checkbox.component';
-export * from './lib/checkbox/checkbox.module';
-
+export * from '@bloc-ui/core/button';
+export * from '@bloc-ui/core/badge';
+export * from '@bloc-ui/core/checkbox';
+export * from '@bloc-ui/core/input';
+export * from '@bloc-ui/core/progress';
+export * from '@bloc-ui/core/radio';
+export * from '@bloc-ui/core/skeleton';
+export * from '@bloc-ui/core/toggle';
+export * from '@bloc-ui/core/spinner';
+export * from '@bloc-ui/core/textarea';
+export * from '@bloc-ui/accordion';
+export * from '@bloc-ui/alert';
+export * from '@bloc-ui/autocomplete';
+export * from '@bloc-ui/layout';
+export * from '@bloc-ui/modal';
+export * from '@bloc-ui/pagination';
+export * from '@bloc-ui/select';
+export * from '@bloc-ui/slider';
+export * from '@bloc-ui/table';
+export * from '@bloc-ui/text-highlight';
+export * from '@bloc-ui/toast';
+export * from '@bloc-ui/date-picker';
+export * from '@bloc-ui/tab';
+export * from '@bloc-ui/tooltip';
+export * from '@bloc-ui/virtual-scroll';

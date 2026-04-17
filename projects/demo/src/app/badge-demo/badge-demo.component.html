@@ -1,0 +1,140 @@
+<header class="mb-8 pb-4 border-b border-gray-700/50">
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-gray-100">Badge</h1>
+    <p class="m-0 text-gray-500 text-[0.95rem]">Compact labels for status, counts, and metadata.</p>
+    <p class="m-0 text-xs text-gray-500 mt-1">
+        Decorative element — no keyboard interaction. Use <code>aria-label</code> when the badge
+        conveys status not available in surrounding text.
+    </p>
+    <app-install-command package="@bloc-ui/core" />
+</header>
+
+<bloc-tab-group>
+    <bloc-tab label="Examples">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Variants
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Intent badges</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Use colour to communicate context quickly.
+                </p>
+                <div class="flex flex-wrap gap-3">
+                    <bloc-badge>Neutral</bloc-badge>
+                    <bloc-badge variant="primary">Primary</bloc-badge>
+                    <bloc-badge variant="success">Success</bloc-badge>
+                    <bloc-badge variant="warning">Warning</bloc-badge>
+                    <bloc-badge variant="danger">Danger</bloc-badge>
+                </div>
+                <app-sample-code [files]="snippets.variants" />
+            </div>
+        </div>
+
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Sizing
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Small to large</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Choose a density that matches the surrounding UI.
+                </p>
+                <div class="flex items-center flex-wrap gap-3">
+                    <bloc-badge size="sm">Small</bloc-badge>
+                    <bloc-badge size="md">Medium</bloc-badge>
+                    <bloc-badge size="lg">Large</bloc-badge>
+                </div>
+                <app-sample-code [files]="snippets.sizes" />
+            </div>
+
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Pill count</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Useful for compact counters and chips.
+                </p>
+                <div class="flex items-center gap-3">
+                    <bloc-badge variant="primary" [pill]="true">99+</bloc-badge>
+                </div>
+                <app-sample-code [files]="snippets.pill" />
+            </div>
+        </div>
+
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            In context
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Inline with heading</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Badge next to a label for a quick count.
+                </p>
+                <div class="flex items-center gap-2">
+                    <span class="text-base font-semibold text-gray-100">Messages</span>
+                    <bloc-badge size="sm">3</bloc-badge>
+                </div>
+                <app-sample-code [files]="snippets.inlineLabel" />
+            </div>
+
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Button with count</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">Notification count inside a button.</p>
+                <div class="flex items-center gap-3">
+                    <button blocButton variant="outline">
+                        Notifications
+                        <bloc-badge variant="primary" [pill]="true" size="sm">5</bloc-badge>
+                    </button>
+                </div>
+                <app-sample-code [files]="snippets.buttonCount" />
+            </div>
+
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Status in a list</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">Indicate state alongside list items.</p>
+                <ul class="m-0 pl-4 flex flex-col gap-2 text-sm text-gray-300">
+                    <li class="flex items-center gap-2">
+                        Deploy #42 <bloc-badge variant="success">Live</bloc-badge>
+                    </li>
+                    <li class="flex items-center gap-2">
+                        Deploy #41 <bloc-badge variant="danger">Failed</bloc-badge>
+                    </li>
+                </ul>
+                <app-sample-code [files]="snippets.statusList" />
+            </div>
+        </div>
+
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Theming
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Custom tokens</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Override background, text, and border tokens directly.
+                </p>
+                <div class="flex items-center gap-3">
+                    <bloc-badge
+                        style="
+                            --bloc-badge-bg: #111827;
+                            --bloc-badge-color: #f8fafc;
+                            --bloc-badge-border: #374151;
+                        "
+                    >
+                        Custom
+                    </bloc-badge>
+                </div>
+                <app-sample-code [files]="snippets.customToken" />
+            </div>
+        </div>
+    </bloc-tab>
+    <bloc-tab label="API">
+        <div class="api-card">
+            <app-api-table
+                title="Inputs"
+                selector="bloc-badge"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="inputs"
+            />
+            <app-api-table title="CSS Tokens" [columns]="TOKENS_COLUMNS" [rows]="tokens" />
+        </div>
+    </bloc-tab>
+</bloc-tab-group>

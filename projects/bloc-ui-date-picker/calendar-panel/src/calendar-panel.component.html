@@ -1,0 +1,118 @@
+<div class="bloc-dp-header">
+    @switch (_view()) {
+        @case ('day') {
+            <button
+                type="button"
+                class="bloc-dp-nav"
+                (click)="navMonth(-1)"
+                aria-label="Previous month"
+            >
+                &#8249;
+            </button>
+            <button type="button" class="bloc-dp-myb" (click)="openMonthView()">
+                {{ monthYearLabel() }}
+            </button>
+            <button type="button" class="bloc-dp-nav" (click)="navMonth(1)" aria-label="Next month">
+                &#8250;
+            </button>
+        }
+        @case ('month') {
+            <button
+                type="button"
+                class="bloc-dp-nav"
+                (click)="navYear(-1)"
+                aria-label="Previous year"
+            >
+                &#8249;
+            </button>
+            <button type="button" class="bloc-dp-myb" (click)="openYearView()">
+                {{ viewYear() }}
+            </button>
+            <button type="button" class="bloc-dp-nav" (click)="navYear(1)" aria-label="Next year">
+                &#8250;
+            </button>
+        }
+        @case ('year') {
+            <button
+                type="button"
+                class="bloc-dp-nav"
+                (click)="navYearRange(-12)"
+                aria-label="Previous years"
+            >
+                &#8249;
+            </button>
+            <span class="bloc-dp-myl">{{ yearRange()[0] }} &ndash; {{ yearRange()[11] }}</span>
+            <button
+                type="button"
+                class="bloc-dp-nav"
+                (click)="navYearRange(12)"
+                aria-label="Next years"
+            >
+                &#8250;
+            </button>
+        }
+    }
+</div>
+
+@switch (_view()) {
+    @case ('day') {
+        <div class="bloc-dp-wds">
+            @for (day of weekdays; track day) {
+                <span class="bloc-dp-wd">{{ day }}</span>
+            }
+        </div>
+        <div class="bloc-dp-days">
+            @for (day of calendarDays(); track day.date.getTime()) {
+                <button
+                    type="button"
+                    [class]="day.cls"
+                    [disabled]="day.dis"
+                    (click)="selectDay(day)"
+                    (mouseenter)="onDayHover(day)"
+                >
+                    {{ day.day }}
+                </button>
+            }
+        </div>
+        <div class="bloc-dp-footer">
+            <button type="button" class="bloc-dp-tbtn" (click)="goToToday()">Today</button>
+            @if (selectedDate() || rangeStart()) {
+                <button type="button" class="bloc-dp-cbtn" (click)="clear()">Clear</button>
+            }
+        </div>
+    }
+    @case ('month') {
+        <div class="bloc-dp-mgrid">
+            @for (m of months; track $index) {
+                <button
+                    type="button"
+                    class="bloc-dp-mc"
+                    [class.bloc-dp-mc--sel]="
+                        selectedDate() &&
+                        viewYear() === selectedDate()!.getFullYear() &&
+                        $index === selectedDate()!.getMonth()
+                    "
+                    [class.bloc-dp-mc--cur]="viewYear() === currentYear && $index === currentMonth"
+                    (click)="selectMonth($index)"
+                >
+                    {{ m }}
+                </button>
+            }
+        </div>
+    }
+    @case ('year') {
+        <div class="bloc-dp-ygrid">
+            @for (y of yearRange(); track y) {
+                <button
+                    type="button"
+                    class="bloc-dp-yc"
+                    [class.bloc-dp-yc--sel]="selectedDate() && y === selectedDate()!.getFullYear()"
+                    [class.bloc-dp-yc--cur]="y === currentYear"
+                    (click)="selectYear(y)"
+                >
+                    {{ y }}
+                </button>
+            }
+        </div>
+    }
+}

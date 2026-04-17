@@ -1,16 +1,52 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" data-theme="dark">
+    <head>
+        <meta charset="utf-8" />
+        <title>Bloc UI</title>
+        <base href="/" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta
+            name="description"
+            content="Bloc UI is a lightweight, themeable, and accessible Angular component library. Build modern UIs with buttons, inputs, modals, toggles, and more."
+        />
+        <meta
+            name="keywords"
+            content="Angular, component library, UI library, Bloc UI, accessible components, lightweight, themeable, CSS custom properties, dark mode, Tailwind CSS"
+        />
+        <meta name="author" content="Debasish" />
+        <meta property="og:title" content="Bloc UI — Lightweight Angular Component Library" />
+        <meta
+            property="og:description"
+            content="A lightweight, themeable, and accessible Angular component library with zero-specificity base styles."
+        />
+        <meta property="og:type" content="website" />
+        <meta property="og:url" content="https://ui.bloc-verse.com/" />
+        <link rel="canonical" href="https://ui.bloc-verse.com/" />
+        <meta name="twitter:card" content="summary" />
+        <meta name="twitter:title" content="Bloc UI — Lightweight Angular Component Library" />
+        <meta
+            name="twitter:description"
+            content="A lightweight, themeable, and accessible Angular component library with zero-specificity base styles."
+        />
+        <link rel="icon" type="image/x-icon" href="favicon.ico" />
+        <!-- GitHub Pages SPA redirect handler: restores the real path from 404.html redirect -->
+        <script>
+            (function () {
+                var redirect = sessionStorage.redirect;
+                delete sessionStorage.redirect;
+                if (redirect && redirect !== location.href) {
+                    history.replaceState(null, null, redirect);
+                }
+            })();
+        </script>
+    </head>
 
-<head>
-  <meta charset="utf-8" />
-  <title>Demo</title>
-  <base href="/" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
-</head>
-
-<body>
-  <app-root></app-root>
-</body>
-
+    <body>
+        <app-root></app-root>
+    </body>
+    <script
+        data-goatcounter="https://bloc-verse.goatcounter.com/count"
+        async
+        src="//gc.zgo.at/count.js"
+    ></script>
 </html>

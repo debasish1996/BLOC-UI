@@ -1,7 +1,33 @@
 {
-  "name": "@bloc-ui/theme",
-  "version": "0.0.1",
-  "sideEffects": ["**/*.css", "**/*.scss"],
-  "peerDependencies": {
-  }
+    "name": "@bloc-ui/theme",
+    "version": "1.0.7",
+    "description": "Optional theme layer for Bloc UI — CSS custom properties, colour tokens, dark mode.",
+    "keywords": [
+        "angular",
+        "component-library",
+        "ui-library",
+        "tailwind",
+        "theme",
+        "theming",
+        "css-custom-properties",
+        "dark-mode",
+        "design-tokens",
+        "bloc-ui"
+    ],
+    "license": "MIT",
+    "author": "Bloc Verse",
+    "homepage": "https://ui.bloc-verse.com",
+    "bugs": {
+        "url": "https://github.com/debasish1996/BLOC-UI/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/debasish1996/BLOC-UI.git",
+        "directory": "projects/bloc-ui-theme"
+    },
+    "sideEffects": [
+        "**/*.css",
+        "**/*.scss"
+    ],
+    "peerDependencies": {}
 }

@@ -1,12 +1,54 @@
 {
-  "name": "@bloc-ui/core",
-  "version": "0.0.2",
-  "peerDependencies": {
-    "@angular/common": "^21.2.0",
-    "@angular/core": "^21.2.0"
-  },
-  "dependencies": {
-    "tslib": "^2.3.0"
-  },
-  "sideEffects": false
+    "name": "@bloc-ui/kit",
+    "version": "1.1.2",
+    "description": "All-in-one umbrella package — re-exports every stable and experimental Bloc UI component (except @bloc-ui/video-player, which must be installed directly).",
+    "keywords": [
+        "angular",
+        "angular-components",
+        "component-library",
+        "ui-library",
+        "tailwind",
+        "accessible",
+        "standalone-components",
+        "typescript",
+        "lightweight",
+        "themeable",
+        "bloc-ui"
+    ],
+    "license": "MIT",
+    "author": "Bloc Verse",
+    "homepage": "https://ui.bloc-verse.com",
+    "bugs": {
+        "url": "https://github.com/debasish1996/BLOC-UI/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/debasish1996/BLOC-UI.git",
+        "directory": "projects/bloc-ui"
+    },
+    "peerDependencies": {
+        "@angular/common": "^21.2.0",
+        "@angular/core": "^21.2.0"
+    },
+    "dependencies": {
+        "@bloc-ui/accordion": "^1.0.6",
+        "@bloc-ui/alert": "^1.0.8",
+        "@bloc-ui/autocomplete": "^1.0.9",
+        "@bloc-ui/core": "^1.0.7",
+        "@bloc-ui/layout": "^1.0.6",
+        "@bloc-ui/modal": "^1.0.6",
+        "@bloc-ui/overlay": "^1.0.7",
+        "@bloc-ui/pagination": "^1.0.6",
+        "@bloc-ui/select": "^1.0.7",
+        "@bloc-ui/slider": "^1.0.6",
+        "@bloc-ui/table": "^1.0.6",
+        "@bloc-ui/text-highlight": "^1.0.5",
+        "@bloc-ui/toast": "^1.0.6",
+        "@bloc-ui/date-picker": "^1.0.6",
+        "@bloc-ui/tab": "^1.0.6",
+        "@bloc-ui/tooltip": "^1.0.7",
+        "@bloc-ui/virtual-scroll": "^1.0.6",
+        "tslib": "^2.3.0"
+    },
+    "sideEffects": false
 }

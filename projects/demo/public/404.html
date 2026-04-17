@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>Demo</title>
+        <script>
+            // GitHub Pages SPA support: store the current URL and redirect to index.html
+            // so Angular's router can handle the route client-side.
+            sessionStorage.redirect = location.href;
+            var pathSegmentsToKeep = 0; // root domain — no path prefix to keep
+            var l = location;
+            l.replace(
+                l.protocol +
+                    '//' +
+                    l.hostname +
+                    (l.port ? ':' + l.port : '') +
+                    l.pathname
+                        .split('/')
+                        .slice(0, 1 + pathSegmentsToKeep)
+                        .join('/') +
+                    '/',
+            );
+        </script>
+    </head>
+
+    <body></body>
+</html>

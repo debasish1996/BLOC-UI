@@ -1,0 +1,191 @@
+<header class="mb-8 pb-4 border-b border-gray-700/50">
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-gray-100">Select</h1>
+    <p class="m-0 text-gray-500 text-[0.95rem]">
+        Single-select dropdown built on the Bloc overlay layer with Angular forms support, keyboard
+        navigation, projected option markup, and optional search.
+    </p>
+    <p class="m-0 text-xs text-gray-500 mt-1">
+        Keyboard: <code>ArrowUp</code>, <code>ArrowDown</code>, <code>Enter</code>,
+        <code>Escape</code>. Closes on outside click and supports disabled, clearable, and loading
+        states.
+    </p>
+    <app-install-command package="@bloc-ui/select" />
+</header>
+
+<bloc-tab-group>
+    <bloc-tab label="Examples">
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Basic Usage
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(280px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Simple Select</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Minimal projected options using the API shape you asked for.
+                </p>
+                <bloc-select placeholder="Select fruit">
+                    <div bloc-option value="apple">Apple</div>
+                    <div bloc-option value="banana">Banana</div>
+                    <div bloc-option value="orange">Orange</div>
+                </bloc-select>
+                <app-sample-code [files]="snippets.basic" />
+            </div>
+
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Reactive FormControl</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Full CVA support with programmatic reads and writes.
+                </p>
+                <bloc-select [formControl]="fruitControl" placeholder="Pick one">
+                    <div bloc-option value="apple">Apple</div>
+                    <div bloc-option value="banana">Banana</div>
+                    <div bloc-option value="orange">Orange</div>
+                </bloc-select>
+                <p class="m-0 text-xs text-gray-500">
+                    Selected value: <strong>{{ fruitControl.value || '(none)' }}</strong>
+                </p>
+                <app-sample-code [files]="snippets.reactive" />
+            </div>
+        </div>
+
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Search And States
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(280px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Search + Clear</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Optional search input inside the dropdown plus clear selection control.
+                </p>
+                <bloc-select
+                    [formControl]="fruitControl"
+                    [searchable]="true"
+                    [clearable]="true"
+                    placeholder="Search fruit"
+                >
+                    @for (fruit of fruits; track fruit.value) {
+                        <div bloc-option [value]="fruit.value">{{ fruit.label }}</div>
+                    }
+                </bloc-select>
+                <app-sample-code [files]="snippets.search" />
+            </div>
+
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Disabled</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Disables click, keyboard interaction, and form participation.
+                </p>
+                <bloc-select [disabled]="true" placeholder="Unavailable">
+                    <div bloc-option value="apple">Apple</div>
+                    <div bloc-option value="banana">Banana</div>
+                </bloc-select>
+                <app-sample-code [files]="snippets.disabled" />
+            </div>
+
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Loading</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Loading state replaces the options list with a lightweight status message.
+                </p>
+                <bloc-select [loading]="loading()" [searchable]="true" placeholder="Loading fruits">
+                    <div bloc-option value="apple">Apple</div>
+                </bloc-select>
+                <button
+                    type="button"
+                    class="self-start px-3 py-2 rounded-md border border-gray-700/50 bg-gray-900/50 text-sm text-gray-300 cursor-pointer hover:bg-gray-700"
+                    (click)="toggleLoading()"
+                >
+                    Toggle Loading
+                </button>
+                <app-sample-code [files]="snippets.loading" />
+            </div>
+        </div>
+
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Custom Option Template
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(320px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Rich Projected Content</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Options can contain arbitrary markup, badges, and metadata.
+                </p>
+                <bloc-select
+                    [formControl]="fruitControl"
+                    [searchable]="true"
+                    placeholder="Choose fruit"
+                >
+                    @for (fruit of fruits; track fruit.value) {
+                        <div bloc-option [value]="fruit.value">
+                            <div class="flex items-center justify-between gap-3 w-full">
+                                <span class="font-medium text-gray-200">{{ fruit.label }}</span>
+                                <span class="text-xs text-gray-400">{{ fruit.note }}</span>
+                            </div>
+                        </div>
+                    }
+                </bloc-select>
+                <app-sample-code [files]="snippets.custom" />
+            </div>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">formControlName</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Works the same inside a larger reactive form.
+                </p>
+                <form [formGroup]="profileForm" class="flex flex-col gap-2">
+                    <bloc-select formControlName="fruit" placeholder="Favorite fruit">
+                        <div bloc-option value="apple">Apple</div>
+                        <div bloc-option value="banana">Banana</div>
+                        <div bloc-option value="orange">Orange</div>
+                    </bloc-select>
+                    <p class="m-0 text-xs text-gray-500">
+                        Form value: <strong>{{ profileForm.value.fruit || '(none)' }}</strong>
+                    </p>
+                </form>
+                <app-sample-code [files]="snippets.formControlName" />
+            </div>
+        </div>
+
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Theming
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(280px,100%),1fr))] gap-5">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-3">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Custom token</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Override colours via CSS custom properties — works without a theme package.
+                </p>
+                <bloc-select
+                    style="
+                        --bloc-select-border-hover: #10b981;
+                        --bloc-select-option-selected: rgba(16, 185, 129, 0.12);
+                        --bloc-select-option-hover: rgba(16, 185, 129, 0.06);
+                    "
+                    [formControl]="fruitControl"
+                    placeholder="Green themed"
+                >
+                    @for (fruit of fruits; track fruit.value) {
+                        <div bloc-option [value]="fruit.value">{{ fruit.label }}</div>
+                    }
+                </bloc-select>
+                <app-sample-code [files]="snippets.customToken" />
+            </div>
+        </div>
+    </bloc-tab>
+    <bloc-tab label="API">
+        <div class="api-card">
+            <app-api-table
+                title="Inputs"
+                selector="bloc-select"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="inputs"
+            />
+            <app-api-table
+                title="Inputs"
+                selector="[bloc-option]"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="inputsOption"
+            />
+            <app-api-table title="CSS Tokens" [columns]="TOKENS_COLUMNS" [rows]="tokens" />
+        </div>
+    </bloc-tab>
+</bloc-tab-group>

@@ -1,9 +1,86 @@
+/* Search dialog slide-down animation */
+@keyframes search-in {
+    from {
+        opacity: 0;
+        transform: translateY(-8px) scale(0.98);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+.search-dialog {
+    animation: search-in 150ms cubic-bezier(0.16, 1, 0.3, 1) both;
+}
+
 /* Active nav item driven by routerLinkActive */
 .nav-active {
-  background-color: #3b82f6 !important;
-  color: #fff !important;
+    background-color: #685fff !important;
+    color: #fff !important;
 
-  &:hover {
-    background-color: #2563eb !important;
-  }
+    &:hover {
+        background-color: #5046fd !important;
+    }
+}
+
+/* Chevron rotation for collapsible group */
+.nav-chevron {
+    transform: rotate(-90deg);
+}
+.nav-chevron--open {
+    transform: rotate(0deg);
+}
+
+/* ── Mobile drawer ────────────────────────────────────── */
+.sidebar-drawer {
+    transition: transform 250ms cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Below md (< 768px): hidden off-screen by default */
+@media (max-width: 767.98px) {
+    .sidebar-drawer {
+        transform: translateX(-100%);
+    }
+    .sidebar-drawer--open {
+        transform: translateX(0);
+    }
+}
+
+/* Backdrop fade-in */
+.sidebar-backdrop {
+    animation: backdrop-in 200ms ease-out;
+}
+@keyframes backdrop-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
+
+/* Body scroll lock when drawer is open on mobile */
+body.sidebar-open {
+    overflow: hidden;
+
+    @media (min-width: 768px) {
+        overflow: auto;
+    }
+}
+
+/* Custom scrollbar for sidebar nav — Chrome, Edge, Safari */
+nav.flex-col::-webkit-scrollbar {
+    width: 4px;
+}
+nav.flex-col::-webkit-scrollbar-track {
+    background: transparent;
+}
+nav.flex-col::-webkit-scrollbar-thumb {
+    background-color: #475569; /* slate-600 */
+    border-radius: 999px;
+}
+nav.flex-col::-webkit-scrollbar-thumb:hover {
+    background-color: #64748b; /* slate-500 */
+}
+
+/* Firefox */
+nav.flex-col {
+    scrollbar-width: thin;
+    scrollbar-color: #475569 transparent;
 }

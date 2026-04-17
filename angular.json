@@ -1,127 +1,580 @@
 {
-  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1,
-  "cli": {
-    "packageManager": "npm"
-  },
-  "newProjectRoot": "projects",
-  "projects": {
-    "bloc-ui-theme": {
-      "projectType": "library",
-      "root": "projects/bloc-ui-theme",
-      "sourceRoot": "projects/bloc-ui-theme/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular/build:ng-packagr",
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/bloc-ui-theme/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/bloc-ui-theme/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        }
-      }
+    "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+    "version": 1,
+    "cli": {
+        "packageManager": "npm"
     },
-    "bloc-ui": {
-      "projectType": "library",
-      "root": "projects/bloc-ui",
-      "sourceRoot": "projects/bloc-ui/src",
-      "prefix": "lib",
-      "architect": {
-        "build": {
-          "builder": "@angular/build:ng-packagr",
-          "configurations": {
-            "production": {
-              "tsConfig": "projects/bloc-ui/tsconfig.lib.prod.json"
-            },
-            "development": {
-              "tsConfig": "projects/bloc-ui/tsconfig.lib.json"
-            }
-          },
-          "defaultConfiguration": "production"
-        },
-        "test": {
-          "builder": "@angular/build:unit-test",
-          "options": {
-            "tsConfig": "projects/bloc-ui/tsconfig.spec.json"
-          }
-        }
-      }
-    },
-    "demo": {
-      "projectType": "application",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
-      "root": "projects/demo",
-      "sourceRoot": "projects/demo/src",
-      "prefix": "app",
-      "architect": {
-        "build": {
-          "builder": "@angular/build:application",
-          "options": {
-            "browser": "projects/demo/src/main.ts",
-            "tsConfig": "projects/demo/tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
-            "assets": [
-              {
-                "glob": "**/*",
-                "input": "projects/demo/public"
-              }
-            ],
-            "styles": [
-              "projects/bloc-ui-theme/styles/bloc-theme.scss",
-              "projects/demo/src/tailwind.css",
-              "projects/demo/src/styles.scss"
-            ],
-            "allowedCommonJsDependencies": ["feather-icons"]
-          },
-          "configurations": {
-            "production": {
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "500kB",
-                  "maximumError": "1MB"
-                },
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "4kB",
-                  "maximumError": "8kB"
+    "newProjectRoot": "projects",
+    "projects": {
+        "bloc-ui-theme": {
+            "projectType": "library",
+            "root": "projects/bloc-ui-theme",
+            "sourceRoot": "projects/bloc-ui-theme/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/bloc-ui-theme/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/bloc-ui-theme/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
                 }
-              ],
-              "outputHashing": "all"
-            },
-            "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
             }
-          },
-          "defaultConfiguration": "production"
         },
-        "serve": {
-          "builder": "@angular/build:dev-server",
-          "configurations": {
-            "production": {
-              "buildTarget": "demo:build:production"
-            },
-            "development": {
-              "buildTarget": "demo:build:development"
+        "bloc-ui-modal": {
+            "projectType": "library",
+            "root": "projects/bloc-ui-modal",
+            "sourceRoot": "projects/bloc-ui-modal/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/bloc-ui-modal/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/bloc-ui-modal/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-modal/tsconfig.spec.json"
+                    }
+                }
             }
-          },
-          "defaultConfiguration": "development"
         },
-        "test": {
-          "builder": "@angular/build:unit-test"
+        "bloc-ui-accordion": {
+            "projectType": "library",
+            "root": "projects/bloc-ui-accordion",
+            "sourceRoot": "projects/bloc-ui-accordion/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/bloc-ui-accordion/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/bloc-ui-accordion/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                }
+            }
+        },
+        "bloc-ui-alert": {
+            "projectType": "library",
+            "root": "projects/bloc-ui-alert",
+            "sourceRoot": "projects/bloc-ui-alert/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/bloc-ui-alert/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/bloc-ui-alert/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-alert/tsconfig.spec.json"
+                    }
+                }
+            }
+        },
+        "bloc-ui-autocomplete": {
+            "projectType": "library",
+            "root": "projects/bloc-ui-autocomplete",
+            "sourceRoot": "projects/bloc-ui-autocomplete/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/bloc-ui-autocomplete/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/bloc-ui-autocomplete/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-autocomplete/tsconfig.spec.json"
+                    }
+                }
+            }
+        },
+        "bloc-ui-table": {
+            "projectType": "library",
+            "root": "projects/bloc-ui-table",
+            "sourceRoot": "projects/bloc-ui-table/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/bloc-ui-table/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/bloc-ui-table/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-table/tsconfig.spec.json"
+                    }
+                }
+            }
+        },
+        "bloc-ui-layout": {
+            "projectType": "library",
+            "root": "projects/bloc-ui-layout",
+            "sourceRoot": "projects/bloc-ui-layout/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/bloc-ui-layout/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/bloc-ui-layout/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                }
+            }
+        },
+        "bloc-ui-pagination": {
+            "projectType": "library",
+            "root": "projects/bloc-ui-pagination",
+            "sourceRoot": "projects/bloc-ui-pagination/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/bloc-ui-pagination/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/bloc-ui-pagination/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-pagination/tsconfig.spec.json"
+                    }
+                }
+            }
+        },
+        "bloc-ui-slider": {
+            "projectType": "library",
+            "root": "projects/bloc-ui-slider",
+            "sourceRoot": "projects/bloc-ui-slider/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/bloc-ui-slider/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/bloc-ui-slider/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-slider/tsconfig.spec.json"
+                    }
+                }
+            }
+        },
+        "bloc-ui-toast": {
+            "projectType": "library",
+            "root": "projects/bloc-ui-toast",
+            "sourceRoot": "projects/bloc-ui-toast/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/bloc-ui-toast/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/bloc-ui-toast/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-toast/tsconfig.spec.json"
+                    }
+                }
+            }
+        },
+        "bloc-ui-tab": {
+            "projectType": "library",
+            "root": "projects/bloc-ui-tab",
+            "sourceRoot": "projects/bloc-ui-tab/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/bloc-ui-tab/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/bloc-ui-tab/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-tab/tsconfig.spec.json"
+                    }
+                }
+            }
+        },
+        "bloc-ui-date-picker": {
+            "projectType": "library",
+            "root": "projects/bloc-ui-date-picker",
+            "sourceRoot": "projects/bloc-ui-date-picker",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/bloc-ui-date-picker/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/bloc-ui-date-picker/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-date-picker/tsconfig.spec.json"
+                    }
+                }
+            }
+        },
+        "bloc-ui": {
+            "projectType": "library",
+            "root": "projects/bloc-ui",
+            "sourceRoot": "projects/bloc-ui/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/bloc-ui/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/bloc-ui/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                }
+            }
+        },
+        "bloc-ui-core": {
+            "projectType": "library",
+            "root": "projects/bloc-ui-core",
+            "sourceRoot": "projects/bloc-ui-core",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/bloc-ui-core/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/bloc-ui-core/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-core/tsconfig.spec.json"
+                    }
+                }
+            }
+        },
+        "demo": {
+            "projectType": "application",
+            "schematics": {
+                "@schematics/angular:component": {
+                    "style": "scss"
+                }
+            },
+            "root": "projects/demo",
+            "sourceRoot": "projects/demo/src",
+            "prefix": "app",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:application",
+                    "options": {
+                        "browser": "projects/demo/src/main.ts",
+                        "server": "projects/demo/src/main.server.ts",
+                        "outputMode": "static",
+                        "tsConfig": "projects/demo/tsconfig.app.json",
+                        "inlineStyleLanguage": "scss",
+                        "assets": [
+                            {
+                                "glob": "**/*",
+                                "input": "projects/demo/public"
+                            }
+                        ],
+                        "styles": [
+                            "projects/bloc-ui-theme/styles/bloc-theme.scss",
+                            "projects/demo/src/tailwind.css",
+                            "projects/demo/src/styles.scss",
+                            "node_modules/highlight.js/styles/github-dark.css"
+                        ],
+                        "allowedCommonJsDependencies": ["feather-icons"]
+                    },
+                    "configurations": {
+                        "production": {
+                            "budgets": [
+                                {
+                                    "type": "initial",
+                                    "maximumWarning": "500kB",
+                                    "maximumError": "1MB"
+                                },
+                                {
+                                    "type": "anyComponentStyle",
+                                    "maximumWarning": "4kB",
+                                    "maximumError": "8kB"
+                                }
+                            ],
+                            "outputHashing": "all"
+                        },
+                        "development": {
+                            "optimization": false,
+                            "extractLicenses": false,
+                            "sourceMap": true
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "serve": {
+                    "builder": "@angular/build:dev-server",
+                    "configurations": {
+                        "production": {
+                            "buildTarget": "demo:build:production"
+                        },
+                        "development": {
+                            "buildTarget": "demo:build:development"
+                        }
+                    },
+                    "defaultConfiguration": "development"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test"
+                }
+            }
+        },
+        "bloc-ui-overlay": {
+            "projectType": "library",
+            "root": "projects/bloc-ui-overlay",
+            "sourceRoot": "projects/bloc-ui-overlay/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/bloc-ui-overlay/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/bloc-ui-overlay/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-overlay/tsconfig.spec.json"
+                    }
+                }
+            }
+        },
+        "bloc-ui-select": {
+            "projectType": "library",
+            "root": "projects/bloc-ui-select",
+            "sourceRoot": "projects/bloc-ui-select/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/bloc-ui-select/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/bloc-ui-select/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-select/tsconfig.spec.json"
+                    }
+                }
+            }
+        },
+        "bloc-ui-tooltip": {
+            "projectType": "library",
+            "root": "projects/bloc-ui-tooltip",
+            "sourceRoot": "projects/bloc-ui-tooltip/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/bloc-ui-tooltip/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/bloc-ui-tooltip/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-tooltip/tsconfig.spec.json"
+                    }
+                }
+            }
+        },
+        "bloc-ui-text-highlight": {
+            "projectType": "library",
+            "root": "projects/bloc-ui-text-highlight",
+            "sourceRoot": "projects/bloc-ui-text-highlight/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/bloc-ui-text-highlight/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/bloc-ui-text-highlight/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-text-highlight/tsconfig.spec.json"
+                    }
+                }
+            }
+        },
+        "bloc-ui-virtual-scroll": {
+            "projectType": "library",
+            "root": "projects/bloc-ui-virtual-scroll",
+            "sourceRoot": "projects/bloc-ui-virtual-scroll/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/bloc-ui-virtual-scroll/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/bloc-ui-virtual-scroll/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-virtual-scroll/tsconfig.spec.json"
+                    }
+                }
+            }
+        },
+        "bloc-ui-video-player": {
+            "projectType": "library",
+            "root": "projects/bloc-ui-video-player",
+            "sourceRoot": "projects/bloc-ui-video-player/src",
+            "prefix": "lib",
+            "architect": {
+                "build": {
+                    "builder": "@angular/build:ng-packagr",
+                    "configurations": {
+                        "production": {
+                            "tsConfig": "projects/bloc-ui-video-player/tsconfig.lib.prod.json"
+                        },
+                        "development": {
+                            "tsConfig": "projects/bloc-ui-video-player/tsconfig.lib.json"
+                        }
+                    },
+                    "defaultConfiguration": "production"
+                },
+                "test": {
+                    "builder": "@angular/build:unit-test",
+                    "options": {
+                        "tsConfig": "projects/bloc-ui-video-player/tsconfig.spec.json"
+                    }
+                }
+            }
         }
-      }
     }
-  }
 }

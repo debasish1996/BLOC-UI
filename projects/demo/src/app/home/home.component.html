@@ -1,0 +1,372 @@
+<!-- Hero Section -->
+<section class="text-center py-12 px-6">
+    <div
+        class="inline-flex items-center gap-2 bg-[var(--bloc-primary-950)] text-[var(--bloc-primary-300)] text-xs font-semibold px-3 py-1 rounded-full mb-6 tracking-wide uppercase"
+    >
+        <span>Open Source</span>
+        <span class="text-[var(--bloc-primary-600)]">·</span>
+        <span>Multi-Package</span>
+    </div>
+
+    <h1 class="text-4xl sm:text-5xl font-extrabold text-gray-100 leading-tight m-0">
+        Build Angular UIs<br />
+        <span class="text-[var(--bloc-primary-400)]">without the bloat.</span>
+    </h1>
+
+    <p class="mt-4 text-lg text-gray-400 max-w-2xl mx-auto leading-relaxed m-0">
+        <strong>Bloc UI</strong> is a lightweight, accessible, and fully themeable Angular component
+        library. Ship polished interfaces with zero-specificity base styles, CSS custom-property
+        theming, and first-class dark mode support.
+    </p>
+
+    <div class="mt-8 flex justify-center gap-4 flex-wrap">
+        <a
+            routerLink="/button"
+            class="inline-flex items-center gap-2 bg-[var(--bloc-primary)] text-gray-100 px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-[var(--bloc-primary-700)] transition-colors no-underline shadow-sm"
+        >
+            Explore Components →
+        </a>
+        <a
+            href="https://github.com/debasish1996/BLOC-UI"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-gray-800 border border-gray-600 text-gray-200 px-6 py-2.5 rounded-lg font-semibold text-sm hover:bg-gray-700 transition-colors no-underline shadow-sm"
+        >
+            GitHub ↗
+        </a>
+    </div>
+
+    <!-- Install snippet -->
+    <div
+        class="mt-8 inline-flex items-center gap-2 bg-slate-800 text-slate-200 font-mono text-sm px-5 py-3 rounded-lg shadow-inner max-w-full overflow-x-auto"
+    >
+        <span>
+            <span class="text-gray-400 select-none">$ </span>npm install
+            <span class="text-[var(--bloc-primary-400)] font-semibold">&#64;bloc-ui/kit</span>
+        </span>
+        <button
+            (click)="copyToClipboard('npm install @bloc-ui/kit', -1)"
+            class="ml-2 p-1 rounded hover:bg-slate-700 transition-colors text-gray-500 hover:text-gray-100 cursor-pointer bg-transparent border-none outline-none"
+            [attr.aria-label]="copiedIndex === -1 ? 'Copied!' : 'Copy to clipboard'"
+        >
+            @if (copiedIndex === -1) {
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-4 h-4 text-green-400"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M5 13l4 4L19 7" />
+                </svg>
+            } @else {
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    class="w-4 h-4"
+                    fill="none"
+                    viewBox="0 0 24 24"
+                    stroke="currentColor"
+                    stroke-width="2"
+                >
+                    <path
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                        d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                    />
+                </svg>
+            }
+        </button>
+    </div>
+</section>
+
+<!-- Divider -->
+<hr class="border-gray-700/50 my-0" />
+
+<!-- Getting Started Section -->
+<section class="py-10 px-6 bg-[var(--bloc-primary-950)] border-b border-[var(--bloc-primary-800)]">
+    <div class="max-w-3xl mx-auto flex flex-col sm:flex-row items-center justify-between gap-6">
+        <div>
+            <h2 class="text-xl font-bold text-gray-100 m-0">New to Bloc UI?</h2>
+            <p class="mt-1 text-sm text-gray-400 m-0 leading-relaxed">
+                Follow the step-by-step guide to install, configure, and use your first component in
+                minutes.
+            </p>
+        </div>
+        <a
+            routerLink="/getting-started"
+            class="shrink-0 inline-flex items-center gap-2 bg-[var(--bloc-primary)] text-gray-100 px-5 py-2.5 rounded-lg font-semibold text-sm hover:bg-[var(--bloc-primary-700)] transition-colors no-underline shadow-sm"
+        >
+            Getting Started →
+        </a>
+    </div>
+</section>
+
+<!-- Features Section -->
+<section class="py-12 px-6">
+    <div class="text-center mb-10">
+        <h2 class="text-2xl font-bold text-gray-100 m-0">Why Bloc UI?</h2>
+        <p class="mt-2 text-gray-500 text-sm m-0">Designed around the principles that matter.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+        @for (feature of features; track feature.title) {
+            <div
+                class="bg-gray-900 border border-gray-700/50 rounded-xl p-6 hover:shadow-md transition-shadow"
+            >
+                <div class="text-2xl mb-2">{{ feature.icon }}</div>
+                <h3 class="text-base font-semibold text-gray-100 m-0">{{ feature.title }}</h3>
+                <p class="mt-1 text-sm text-gray-400 m-0 leading-relaxed">
+                    {{ feature.description }}
+                </p>
+            </div>
+        }
+    </div>
+</section>
+
+<!-- Packages / Architecture Section -->
+<section class="py-10 px-6 bg-gray-900 border-y border-gray-700/50">
+    <div class="max-w-5xl mx-auto">
+        <div class="text-center mb-8">
+            <h2 class="text-2xl font-bold text-gray-100 m-0">Multi-Package Architecture</h2>
+            <p class="mt-2 text-gray-500 text-sm m-0">
+                Install only what you need — each package is independently versioned and published.
+            </p>
+        </div>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            @for (pkg of packages; track pkg.name; let i = $index) {
+                <div class="rounded-xl border border-gray-700/50 p-6 bg-gray-900/50 flex flex-col">
+                    <div class="flex items-center gap-2 mb-3">
+                        <span
+                            class="inline-flex items-center justify-center w-8 h-8 rounded-lg text-sm font-bold"
+                            [class]="pkg.badgeBg + ' ' + pkg.badgeText"
+                            >{{ pkg.badge }}</span
+                        >
+                        <h3 class="text-sm font-semibold text-gray-100 m-0">{{ pkg.name }}</h3>
+                    </div>
+                    <p class="text-sm text-gray-400 m-0 leading-relaxed flex-1">
+                        {{ pkg.description }}
+                    </p>
+                    <div
+                        class="mt-3 flex items-center justify-between gap-2 bg-slate-800 rounded-md px-3 py-2"
+                    >
+                        <code class="text-xs text-gray-400 font-mono">{{ pkg.npm }}</code>
+                        <button
+                            (click)="copyToClipboard(pkg.npm, i)"
+                            class="p-1 rounded hover:bg-slate-700 transition-colors text-gray-500 hover:text-gray-100 cursor-pointer bg-transparent border-none outline-none shrink-0"
+                            [attr.aria-label]="copiedIndex === i ? 'Copied!' : 'Copy to clipboard'"
+                        >
+                            @if (copiedIndex === i) {
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="w-3.5 h-3.5 text-green-400"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M5 13l4 4L19 7"
+                                    />
+                                </svg>
+                            } @else {
+                                <svg
+                                    xmlns="http://www.w3.org/2000/svg"
+                                    class="w-3.5 h-3.5"
+                                    fill="none"
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                    stroke-width="2"
+                                >
+                                    <path
+                                        stroke-linecap="round"
+                                        stroke-linejoin="round"
+                                        d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                                    />
+                                </svg>
+                            }
+                        </button>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
+
+<!-- CSS Cascade Section -->
+<section class="py-10 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+        <h2 class="text-2xl font-bold text-gray-100 m-0">Cascade-Friendly by Design</h2>
+        <p class="mt-2 text-gray-500 text-sm m-0 max-w-xl mx-auto">
+            All base styles use
+            <code class="text-xs bg-gray-800 px-1.5 py-0.5 rounded text-gray-300">:where()</code>
+            for zero specificity. Your classes and Tailwind utilities always win — no
+            <code class="text-xs bg-gray-800 px-1.5 py-0.5 rounded text-gray-300">!important</code>
+            needed.
+        </p>
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-3 gap-4 text-sm text-left max-w-3xl mx-auto">
+            <div class="rounded-lg border border-gray-700/50 bg-gray-900 p-4">
+                <div class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
+                    Highest Priority
+                </div>
+                <div class="font-semibold text-gray-200">Your Classes</div>
+                <div class="text-gray-400 text-xs mt-0.5">Consumer styles always win.</div>
+            </div>
+            <div class="rounded-lg border border-gray-700/50 bg-gray-900 p-4">
+                <div class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
+                    Mid Priority
+                </div>
+                <div class="font-semibold text-gray-200">Theme Tokens</div>
+                <div class="text-gray-400 text-xs mt-0.5">
+                    CSS custom properties from &#64;bloc-ui/theme.
+                </div>
+            </div>
+            <div class="rounded-lg border border-gray-700/50 bg-gray-900 p-4">
+                <div class="text-xs font-semibold text-gray-500 uppercase tracking-wide mb-1">
+                    Lowest Priority
+                </div>
+                <div class="font-semibold text-gray-200">Barebone Styles</div>
+                <div class="text-gray-400 text-xs mt-0.5">
+                    Zero-specificity structural defaults.
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Components Section -->
+<section class="py-12 px-6 bg-gray-900 border-y border-gray-700/50">
+    <div class="text-center mb-10">
+        <h2 class="text-2xl font-bold text-gray-100 m-0">Components</h2>
+        <p class="mt-2 text-gray-500 text-sm m-0">Everything you need to get started.</p>
+    </div>
+
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 max-w-5xl mx-auto">
+        @for (comp of components; track comp.name) {
+            <a
+                [routerLink]="comp.path"
+                class="group bg-gray-900/50 border border-gray-700/50 rounded-xl p-5 no-underline hover:border-[var(--bloc-primary)] hover:shadow-md transition-all"
+            >
+                <div class="flex items-center gap-3 mb-2">
+                    <span
+                        class="inline-flex h-10 w-10 items-center justify-center rounded-lg border border-[var(--bloc-primary-800)] bg-[var(--bloc-primary-950)] text-[var(--bloc-primary-400)]"
+                    >
+                        <app-icon [name]="comp.icon" [size]="18" />
+                    </span>
+                    <h3
+                        class="text-base font-semibold text-gray-100 m-0 group-hover:text-[var(--bloc-primary-300)] transition-colors"
+                    >
+                        {{ comp.name }}
+                    </h3>
+                </div>
+                <p class="text-sm text-gray-400 m-0 leading-relaxed">{{ comp.description }}</p>
+            </a>
+        }
+    </div>
+</section>
+
+<!-- Quick Start Section -->
+<section class="py-12 px-6">
+    <div class="max-w-3xl mx-auto text-center">
+        <h2 class="text-2xl font-bold text-gray-100 m-0">Quick Start</h2>
+        <p class="mt-2 text-gray-500 text-sm m-0">Up and running in three steps.</p>
+        <a
+            routerLink="/getting-started"
+            class="mt-3 inline-flex items-center rounded-lg border border-[var(--bloc-primary-700)] bg-[var(--bloc-primary-950)] px-3 py-1.5 text-xs font-semibold text-[var(--bloc-primary-300)] no-underline hover:bg-[var(--bloc-primary-900)] transition-colors"
+            >Open full Getting Started guide</a
+        >
+
+        <div class="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-5 text-left">
+            <div class="bg-gray-900 rounded-xl border border-gray-700/50 p-5">
+                <div
+                    class="w-8 h-8 rounded-full bg-[var(--bloc-primary)] text-gray-100 text-sm font-bold flex items-center justify-center mb-3"
+                >
+                    1
+                </div>
+                <h3 class="text-sm font-semibold text-gray-100 m-0">Install</h3>
+                <div
+                    class="mt-2 flex items-center justify-between gap-1 bg-gray-900/50 rounded p-2"
+                >
+                    <code class="text-xs text-gray-300">npm i &#64;bloc-ui/core</code>
+                    <button
+                        (click)="copyToClipboard('npm i @bloc-ui/core', -2)"
+                        class="p-0.5 rounded hover:bg-gray-700 transition-colors text-gray-500 hover:text-gray-200 cursor-pointer bg-transparent border-none outline-none shrink-0"
+                        [attr.aria-label]="copiedIndex === -2 ? 'Copied!' : 'Copy to clipboard'"
+                    >
+                        @if (copiedIndex === -2) {
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-3.5 h-3.5 text-green-500"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M5 13l4 4L19 7"
+                                />
+                            </svg>
+                        } @else {
+                            <svg
+                                xmlns="http://www.w3.org/2000/svg"
+                                class="w-3.5 h-3.5"
+                                fill="none"
+                                viewBox="0 0 24 24"
+                                stroke="currentColor"
+                                stroke-width="2"
+                            >
+                                <path
+                                    stroke-linecap="round"
+                                    stroke-linejoin="round"
+                                    d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"
+                                />
+                            </svg>
+                        }
+                    </button>
+                </div>
+            </div>
+            <div class="bg-gray-900 rounded-xl border border-gray-700/50 p-5">
+                <div
+                    class="w-8 h-8 rounded-full bg-[var(--bloc-primary)] text-gray-100 text-sm font-bold flex items-center justify-center mb-3"
+                >
+                    2
+                </div>
+                <h3 class="text-sm font-semibold text-gray-100 m-0">Import</h3>
+                <code class="block mt-2 text-xs text-gray-300 bg-gray-900/50 p-2 rounded"
+                    >import&nbsp;&#123;&nbsp;BlocButtonComponent&nbsp;&#125;<br />from&nbsp;'&#64;bloc-ui/core';</code
+                >
+            </div>
+            <div class="bg-gray-900 rounded-xl border border-gray-700/50 p-5">
+                <div
+                    class="w-8 h-8 rounded-full bg-[var(--bloc-primary)] text-gray-100 text-sm font-bold flex items-center justify-center mb-3"
+                >
+                    3
+                </div>
+                <h3 class="text-sm font-semibold text-gray-100 m-0">Use</h3>
+                <code class="block mt-2 text-xs text-gray-300 bg-gray-900/50 p-2 rounded"
+                    >&lt;button&nbsp;blocButton<br />&nbsp;&nbsp;variant="primary"&gt;<br />&nbsp;&nbsp;Click&nbsp;me<br />&lt;/button&gt;</code
+                >
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-8 px-6 text-center border-t border-gray-700/50">
+    <p class="text-xs text-gray-500 m-0">
+        Bloc UI is open source under the MIT License.
+        <a
+            href="https://github.com/debasish1996/BLOC-UI"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-[var(--bloc-primary-400)] hover:text-[var(--bloc-primary-400)] underline underline-offset-2"
+        >
+            View on GitHub ↗
+        </a>
+    </p>
+</footer>

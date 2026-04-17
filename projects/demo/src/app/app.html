@@ -1,22 +1,327 @@
-<div class="flex min-h-screen bg-slate-50">
-  <!-- Sidebar -->
-  <aside class="w-[220px] shrink-0 bg-slate-800 text-slate-200 flex flex-col">
-    <div class="px-5 pt-6 pb-4 text-[1.1rem] font-bold tracking-[0.04em] text-white border-b border-slate-700">
-      Bloc UI
-    </div>
-    <nav class="flex flex-col py-3">
-      @for (item of menuItems; track item.path) {
-      <button
-        class="cursor-pointer px-5 py-[0.65rem] text-[0.9rem] text-slate-400 hover:bg-[#273549] hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left"
-        [routerLink]="item.path" routerLinkActive="nav-active">
-        {{ item.label }}
-      </button>
-      }
-    </nav>
-  </aside>
+<div class="bg-[#0c0d14]">
+    <!-- Mobile top bar -->
+    <header
+        class="mobile-topbar fixed top-0 left-0 right-0 h-14 bg-[#0f1015] text-gray-100 flex items-center justify-between px-4 z-40 md:hidden"
+    >
+        <button
+            class="p-2 -ml-2 rounded-lg hover:bg-gray-800 transition-colors bg-transparent border-none outline-none cursor-pointer text-gray-100"
+            (click)="toggleSidebar()"
+            aria-label="Toggle navigation menu"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="22"
+                height="22"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                @if (sidebarOpen()) {
+                    <line x1="18" y1="6" x2="6" y2="18" />
+                    <line x1="6" y1="6" x2="18" y2="18" />
+                } @else {
+                    <line x1="3" y1="12" x2="21" y2="12" />
+                    <line x1="3" y1="6" x2="21" y2="6" />
+                    <line x1="3" y1="18" x2="21" y2="18" />
+                }
+            </svg>
+        </button>
+        <a routerLink="/" class="flex items-center gap-2 no-underline" (click)="closeSidebar()">
+            <img src="logo.svg" alt="Bloc UI" class="h-6 w-6" />
+            <span class="text-base font-bold tracking-wide text-gray-100">Bloc UI</span>
+        </a>
+        <a
+            href="https://github.com/debasish1996/BLOC-UI"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="p-2 -mr-2 rounded-lg hover:bg-gray-800 transition-colors text-gray-400 hover:text-amber-400 no-underline"
+            aria-label="Star on GitHub"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+            >
+                <polygon
+                    points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"
+                />
+            </svg>
+        </a>
+    </header>
 
-  <!-- Main content -->
-  <main class="flex-1 py-8 px-10 overflow-y-auto">
-    <router-outlet />
-  </main>
+    <!-- Backdrop overlay (mobile only) -->
+    @if (sidebarOpen()) {
+        <div
+            class="sidebar-backdrop fixed inset-0 bg-black/50 z-40 md:hidden"
+            (click)="closeSidebar()"
+        ></div>
+    }
+
+    <!-- Sidebar -->
+    <aside
+        class="sidebar-drawer fixed top-0 left-0 w-[17rem] h-screen bg-[#0f1219] text-gray-200 flex flex-col z-50 md:w-55 md:z-auto"
+        [class.sidebar-drawer--open]="sidebarOpen()"
+    >
+        <a
+            routerLink="/"
+            class="px-5 pt-6 pb-4 flex items-center gap-2.5 border-b border-gray-800 no-underline cursor-pointer hover:opacity-90 transition-opacity"
+        >
+            <img src="logo.svg" alt="Bloc UI" class="h-7 w-7" />
+            <span class="text-[1.1rem] font-bold tracking-[0.04em] text-white">Bloc UI</span>
+        </a>
+        <!-- Search trigger -->
+        <button
+            class="mx-3 mt-3 mb-1 flex items-center gap-2.5 px-3 py-2 rounded-lg bg-gray-800/50 hover:bg-gray-800 text-gray-400 hover:text-gray-200 transition-colors border border-gray-700/40 cursor-pointer w-[calc(100%-1.5rem)]"
+            (click)="openSearch()"
+            aria-label="Open search (Ctrl+K)"
+        >
+            <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="14"
+                height="14"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                class="shrink-0"
+            >
+                <circle cx="11" cy="11" r="8" />
+                <line x1="21" y1="21" x2="16.65" y2="16.65" />
+            </svg>
+            <span class="flex-1 text-left text-[0.8rem]">Search...</span>
+            <span class="text-[0.68rem] text-gray-500 font-mono">Ctrl K</span>
+        </button>
+        <nav class="flex flex-col py-3 overflow-y-auto flex-1 min-h-0">
+            <!-- Core Components group -->
+            <button
+                class="nav-group-toggle cursor-pointer px-5 py-[0.65rem] text-[0.9rem] text-slate-400 hover:bg-gray-800 hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left flex items-center justify-between"
+                (click)="toggleCore()"
+            >
+                <span>{{ coreGroup.label }}</span>
+                <svg
+                    class="nav-chevron transition-transform duration-200"
+                    [class.nav-chevron--open]="coreExpanded()"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <polyline points="6 9 12 15 18 9" />
+                </svg>
+            </button>
+            @if (coreExpanded()) {
+                @for (item of coreGroup.children; track item.path) {
+                    <button
+                        class="cursor-pointer pl-8 pr-5 py-[0.55rem] text-[0.85rem] text-slate-400 hover:bg-gray-800 hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left"
+                        [routerLink]="item.path"
+                        routerLinkActive="nav-active"
+                        [routerLinkActiveOptions]="{ exact: false }"
+                    >
+                        {{ item.label }}
+                    </button>
+                }
+            }
+
+            <!-- Date Picker Components group -->
+            <button
+                class="nav-group-toggle cursor-pointer px-5 py-[0.65rem] text-[0.9rem] text-slate-400 hover:bg-gray-800 hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left flex items-center justify-between"
+                (click)="toggleDatePicker()"
+            >
+                <span>{{ datePickerGroup.label }}</span>
+                <svg
+                    class="nav-chevron transition-transform duration-200"
+                    [class.nav-chevron--open]="datePickerExpanded()"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <polyline points="6 9 12 15 18 9" />
+                </svg>
+            </button>
+            @if (datePickerExpanded()) {
+                @for (item of datePickerGroup.children; track item.path) {
+                    <button
+                        class="cursor-pointer pl-8 pr-5 py-[0.55rem] text-[0.85rem] text-slate-400 hover:bg-gray-800 hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left"
+                        [routerLink]="item.path"
+                        routerLinkActive="nav-active"
+                        [routerLinkActiveOptions]="{ exact: false }"
+                    >
+                        {{ item.label }}
+                    </button>
+                }
+            }
+
+            <!-- Standalone items -->
+            @for (item of standaloneItems; track item.path) {
+                <button
+                    class="cursor-pointer px-5 py-[0.65rem] text-[0.9rem] text-slate-400 hover:bg-gray-800 hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left flex items-center gap-2"
+                    [routerLink]="item.path"
+                    routerLinkActive="nav-active"
+                    [routerLinkActiveOptions]="{ exact: false }"
+                >
+                    {{ item.label }}
+                    @if (item.beta) {
+                        <span
+                            class="text-[0.6rem] font-semibold uppercase tracking-wide bg-amber-500/20 text-amber-400 px-1.5 py-0.5 rounded"
+                            >beta</span
+                        >
+                    }
+                </button>
+            }
+
+            <!-- Experimental group -->
+            <button
+                class="nav-group-toggle cursor-pointer px-5 py-[0.65rem] text-[0.9rem] text-slate-400 hover:bg-gray-800 hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left flex items-center justify-between"
+                (click)="toggleExperimental()"
+            >
+                <span class="flex items-center gap-2">
+                    {{ experimentalGroup.label }}
+                    <span
+                        class="text-[0.6rem] font-semibold uppercase tracking-wide bg-red-500/20 text-red-400 px-1.5 py-0.5 rounded"
+                        >alpha</span
+                    >
+                </span>
+                <svg
+                    class="nav-chevron transition-transform duration-200"
+                    [class.nav-chevron--open]="experimentalExpanded()"
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <polyline points="6 9 12 15 18 9" />
+                </svg>
+            </button>
+            @if (experimentalExpanded()) {
+                @for (item of experimentalGroup.children; track item.path) {
+                    <button
+                        class="cursor-pointer pl-8 pr-5 py-[0.55rem] text-[0.85rem] text-slate-400 hover:bg-gray-800 hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left"
+                        [routerLink]="item.path"
+                        routerLinkActive="nav-active"
+                        [routerLinkActiveOptions]="{ exact: false }"
+                    >
+                        {{ item.label }}
+                    </button>
+                }
+            }
+        </nav>
+
+        <!-- Sidebar footer CTAs (always visible) -->
+        <div class="px-3 pb-4 pt-3 border-t border-gray-800 flex flex-col gap-1 shrink-0">
+            <button
+                class="w-full cursor-pointer px-4 py-[0.55rem] text-[0.82rem] text-slate-400 hover:bg-gray-800 hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left rounded flex items-center gap-2"
+                [routerLink]="whyItem.path"
+                routerLinkActive="nav-active"
+                [routerLinkActiveOptions]="{ exact: true }"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3" />
+                    <line x1="12" y1="17" x2="12.01" y2="17" />
+                    <circle cx="12" cy="12" r="10" />
+                </svg>
+                Why Bloc UI?
+            </button>
+            <button
+                class="w-full cursor-pointer px-4 py-[0.55rem] text-[0.82rem] text-slate-400 hover:bg-gray-800 hover:text-slate-200 transition-colors duration-150 bg-transparent border-none outline-none text-left rounded flex items-center gap-2"
+                [routerLink]="aboutItem.path"
+                routerLinkActive="nav-active"
+                [routerLinkActiveOptions]="{ exact: true }"
+            >
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="14"
+                    height="14"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="2"
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                >
+                    <circle cx="12" cy="12" r="10" />
+                    <line x1="12" y1="16" x2="12" y2="12" />
+                    <line x1="12" y1="8" x2="12.01" y2="8" />
+                </svg>
+                About
+            </button>
+            <a
+                href="https://github.com/debasish1996/BLOC-UI"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-2 px-4 py-[0.55rem] rounded text-[0.82rem] text-slate-400 hover:bg-gray-800 hover:text-amber-400 transition-colors duration-150 no-underline"
+            >
+                <span>⭐</span>
+                <span>Star on GitHub</span>
+            </a>
+            <a
+                href="https://ko-fi.com/blocverse"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="flex items-center gap-2 px-4 py-[0.55rem] rounded text-[0.82rem] text-slate-400 hover:bg-gray-800 hover:text-orange-400 transition-colors duration-150 no-underline"
+            >
+                <span>☕</span>
+                <span>Ko-fi</span>
+            </a>
+        </div>
+    </aside>
+
+    <!-- Global search modal -->
+    @if (searchOpen()) {
+        <app-global-search (closed)="closeSearch()" />
+    }
+
+    <!-- Main content -->
+    <main
+        class="pt-[4.5rem] pb-6 px-4 md:pt-8 md:pb-8 md:ml-55 md:px-10 flex flex-col min-h-screen"
+    >
+        <div class="flex-1">
+            <router-outlet />
+        </div>
+        <!-- Demo footer -->
+        <footer class="mt-12 pt-6 border-t border-gray-800 text-center text-sm text-gray-500">
+            Built with ❤️ by Bloc-verse —
+            <a
+                [routerLink]="'/about'"
+                class="text-gray-400 hover:text-gray-200 transition-colors underline underline-offset-2"
+                >support the project</a
+            >
+        </footer>
+    </main>
 </div>

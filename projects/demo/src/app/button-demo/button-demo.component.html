@@ -1,76 +1,242 @@
-<header class="mb-8 pb-4 border-b border-slate-200">
-  <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-slate-900">Button</h1>
-  <p class="m-0 text-slate-400 text-[0.95rem]">Explore button variants and states.</p>
+<header class="mb-8 pb-4 border-b border-gray-700/50">
+    <h1 class="m-0 mb-1 text-[1.75rem] font-bold text-gray-100">Button</h1>
+    <p class="m-0 text-gray-500 text-[0.95rem]">
+        Accessible, loading-aware button with built-in spinner. Fully themeable via CSS custom
+        properties — no colour opinions baked in.
+    </p>
+    <p class="m-0 text-xs text-gray-500 mt-1">
+        Keyboard: native &lt;button&gt; — Tab, Enter, Space. Sets <code>aria-busy</code> during
+        loading. <code>(clicked)</code> output is suppressed when disabled or loading.
+    </p>
+    <app-install-command package="@bloc-ui/core" />
 </header>
 
-<div class="grid grid-cols-[repeat(auto-fill,minmax(260px,1fr))] gap-5">
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Primary</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Default action button.</p>
-    <div>
-      <button blocButton variant="primary" (clicked)="onButtonClick()">Primary Button</button>
-    </div>
-  </div>
+<bloc-tab-group>
+    <bloc-tab label="Examples">
+        <!-- Variants -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Variants
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Primary</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Use for primary CTAs — form submits, confirmations, main actions.
+                </p>
+                <div>
+                    <button blocButton variant="primary" (clicked)="onButtonClick()">
+                        Primary Button
+                    </button>
+                </div>
+                <app-sample-code [files]="snippets.primary" />
+            </div>
 
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Secondary</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Less prominent action.</p>
-    <div>
-      <button blocButton variant="secondary" class="flex gap-2">
-        <app-icon name="check" />
-        Secondary Button
-      </button>
-    </div>
-  </div>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Secondary</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    De-emphasised action — pairs with a primary button for secondary flows.
+                </p>
+                <div>
+                    <button blocButton variant="secondary">Secondary Button</button>
+                </div>
+                <app-sample-code [files]="snippets.secondary" />
+            </div>
 
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Outline</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Subtle bordered style.</p>
-    <div>
-      <button blocButton variant="outline">Outline Button</button>
-    </div>
-  </div>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Outline</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Lightweight bordered style for tertiary or cancel-type actions.
+                </p>
+                <div>
+                    <button blocButton variant="outline">Outline Button</button>
+                </div>
+                <app-sample-code [files]="snippets.outline" />
+            </div>
+        </div>
 
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Disabled</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Non-interactive state.</p>
-    <div>
-      <button blocButton variant="primary" [disabled]="true">Disabled Button</button>
-    </div>
-  </div>
+        <!-- States -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            States
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Disabled</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Visually muted + pointer disabled. The <code>(clicked)</code> output is
+                    automatically suppressed.
+                </p>
+                <div>
+                    <button blocButton variant="primary" [disabled]="true">Disabled Button</button>
+                </div>
+                <app-sample-code [files]="snippets.disabled" />
+            </div>
 
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Disabled Outline</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Outline in disabled state.</p>
-    <div>
-      <button blocButton variant="outline" [disabled]="true">Disabled Outline</button>
-    </div>
-  </div>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Disabled Outline</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Outline variant, visually muted + non-interactive.
+                </p>
+                <div>
+                    <button blocButton variant="outline" [disabled]="true">Disabled Outline</button>
+                </div>
+                <app-sample-code [files]="snippets.disabledOutline" />
+            </div>
 
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Loading — Primary</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Click to simulate a 2.5 s async operation.</p>
-    <div>
-      <button blocButton variant="primary" [loading]="loadingPrimary()"
-        (clicked)="simulateLoad(loadingPrimary)">Submit</button>
-    </div>
-  </div>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Loading — Primary</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Click to simulate async work. The built-in spinner and interaction blocking kick
+                    in automatically.
+                </p>
+                <div>
+                    <button
+                        blocButton
+                        variant="primary"
+                        [loading]="loadingPrimary()"
+                        (clicked)="simulateLoad(loadingPrimary)"
+                    >
+                        Submit
+                    </button>
+                </div>
+                <app-sample-code [files]="snippets.loadingPrimary" />
+            </div>
 
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Loading — Secondary</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Secondary variant in loading state.</p>
-    <div>
-      <button blocButton variant="secondary" [loading]="loadingSecondary()"
-        (clicked)="simulateLoad(loadingSecondary)">Save Draft</button>
-    </div>
-  </div>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Loading — Secondary</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Secondary variant with loading state.
+                </p>
+                <div>
+                    <button
+                        blocButton
+                        variant="secondary"
+                        [loading]="loadingSecondary()"
+                        (clicked)="simulateLoad(loadingSecondary)"
+                    >
+                        Save Draft
+                    </button>
+                </div>
+                <app-sample-code [files]="snippets.loadingSecondary" />
+            </div>
 
-  <div class="bg-white border border-slate-200 rounded-lg p-5 flex flex-col gap-2">
-    <h3 class="m-0 text-base font-semibold text-slate-900">Loading — Outline</h3>
-    <p class="m-0 text-[0.82rem] text-slate-400">Outline variant in loading state.</p>
-    <div>
-      <button blocButton variant="outline" [loading]="loadingOutline()"
-        (clicked)="simulateLoad(loadingOutline)">Export</button>
-    </div>
-  </div>
-</div>
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Loading — Outline</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">Outline variant with loading state.</p>
+                <div>
+                    <button
+                        blocButton
+                        variant="outline"
+                        [loading]="loadingOutline()"
+                        (clicked)="simulateLoad(loadingOutline)"
+                    >
+                        Export
+                    </button>
+                </div>
+                <app-sample-code [files]="snippets.loadingOutline" />
+            </div>
+        </div>
+
+        <!-- Custom Loading Icon -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Custom Loading Icon
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Custom Icon Template</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Pass a <code>#template</code> reference via <code>[loadingTemplate]</code> to
+                    replace the default spinner with your own icon.
+                </p>
+                <div>
+                    <ng-template #customLoader>
+                        <span
+                            class="inline-block w-4 h-4 border-2 border-current border-t-transparent rounded-full animate-spin"
+                        ></span>
+                    </ng-template>
+                    <button
+                        blocButton
+                        variant="primary"
+                        [loading]="loadingCustomIcon()"
+                        [loadingTemplate]="customLoader"
+                        (clicked)="simulateLoad(loadingCustomIcon)"
+                    >
+                        Submit
+                    </button>
+                </div>
+                <app-sample-code [files]="snippets.customLoader" />
+            </div>
+        </div>
+
+        <!-- Composition -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Composition
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Leading Icon</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">Icon placed before the label.</p>
+                <div>
+                    <button blocButton variant="primary">
+                        <app-icon name="check" />
+                        Confirm
+                    </button>
+                </div>
+                <app-sample-code [files]="snippets.leadingIcon" />
+            </div>
+
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Trailing Icon</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">Icon placed after the label.</p>
+                <div>
+                    <button blocButton variant="outline">
+                        Continue
+                        <app-icon name="arrow-right" />
+                    </button>
+                </div>
+                <app-sample-code [files]="snippets.trailingIcon" />
+            </div>
+
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Full Width</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">Stretches to fill its container.</p>
+                <div>
+                    <button blocButton variant="primary" class="w-full">Full Width</button>
+                </div>
+                <app-sample-code [files]="snippets.fullWidth" />
+            </div>
+        </div>
+
+        <!-- Theming -->
+        <h2 class="mt-0 mb-4 text-base font-semibold text-gray-400 uppercase tracking-wide">
+            Theming
+        </h2>
+        <div class="grid grid-cols-[repeat(auto-fill,minmax(min(260px,100%),1fr))] gap-5 mb-10">
+            <div class="bg-gray-900 border border-gray-700/50 rounded-lg p-5 flex flex-col gap-2">
+                <h3 class="m-0 text-base font-semibold text-gray-100">Custom Token</h3>
+                <p class="m-0 text-[0.82rem] text-gray-500">
+                    Override colours via CSS custom properties.
+                </p>
+                <div
+                    class="flex gap-2 flex-wrap"
+                    style="--bloc-primary: #685fff; --bloc-secondary: #0ea5e9"
+                >
+                    <button blocButton variant="primary">Custom Primary</button>
+                    <button blocButton variant="secondary">Custom Secondary</button>
+                </div>
+                <app-sample-code [files]="snippets.customToken" />
+            </div>
+        </div>
+    </bloc-tab>
+    <bloc-tab label="API">
+        <div class="api-card">
+            <app-api-table
+                title="Inputs"
+                selector="button[blocButton]"
+                [columns]="INPUTS_COLUMNS"
+                [rows]="inputs"
+            />
+            <app-api-table title="Outputs" [columns]="OUTPUTS_COLUMNS" [rows]="outputs" />
+            <app-api-table title="CSS Tokens" [columns]="TOKENS_COLUMNS" [rows]="tokens" />
+        </div>
+    </bloc-tab>
+</bloc-tab-group>

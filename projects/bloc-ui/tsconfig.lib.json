@@ -1,13 +1,33 @@
 /* To learn more about Typescript configuration file: https://www.typescriptlang.org/docs/handbook/tsconfig-json.html. */
 /* To learn more about Angular compiler options: https://angular.dev/reference/configs/angular-compiler-options. */
 {
-  "extends": "../../tsconfig.json",
-  "compilerOptions": {
-    "outDir": "../../out-tsc/lib",
-    "declaration": true,
-    "declarationMap": true,
-    "types": []
-  },
-  "include": ["src/**/*.ts"],
-  "exclude": ["**/*.spec.ts"]
+    "extends": "../../tsconfig.json",
+    "compilerOptions": {
+        "outDir": "../../out-tsc/lib",
+        "rootDir": "./src",
+        "declaration": true,
+        "declarationMap": true,
+        "types": [],
+        "paths": {
+            "@bloc-ui/accordion": ["../../dist/bloc-ui-accordion"],
+            "@bloc-ui/alert": ["../../dist/bloc-ui-alert"],
+            "@bloc-ui/autocomplete": ["../../dist/bloc-ui-autocomplete"],
+            "@bloc-ui/core/*": ["../../dist/bloc-ui-core/*"],
+            "@bloc-ui/layout": ["../../dist/bloc-ui-layout"],
+            "@bloc-ui/modal": ["../../dist/bloc-ui-modal"],
+            "@bloc-ui/pagination": ["../../dist/bloc-ui-pagination"],
+            "@bloc-ui/table": ["../../dist/bloc-ui-table"],
+            "@bloc-ui/toast": ["../../dist/bloc-ui-toast"],
+            "@bloc-ui/date-picker": ["../../dist/bloc-ui-date-picker"],
+            "@bloc-ui/tab": ["../../dist/bloc-ui-tab"],
+            "@bloc-ui/overlay": ["../../dist/bloc-ui-overlay"],
+            "@bloc-ui/select": ["../../dist/bloc-ui-select"],
+            "@bloc-ui/slider": ["../../dist/bloc-ui-slider"],
+            "@bloc-ui/text-highlight": ["../../dist/bloc-ui-text-highlight"],
+            "@bloc-ui/tooltip": ["../../dist/bloc-ui-tooltip"],
+            "@bloc-ui/virtual-scroll": ["../../dist/bloc-ui-virtual-scroll"]
+        }
+    },
+    "include": ["src/**/*.ts"],
+    "exclude": ["**/*.spec.ts"]
 }

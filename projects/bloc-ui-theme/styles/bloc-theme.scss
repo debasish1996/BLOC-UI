@@ -2,7 +2,7 @@
 // Bloc UI — Default Theme
 //
 // This file is part of the optional `bloc-ui-theme` package.
-// The `bloc-ui` component library works without it (components use var()
+// The `bloc-ui-core` component library works without it (components use var()
 // fallbacks), but installing this theme gives you the full design system:
 // light/dark modes, consistent tokens, and easy overrides.
 //
@@ -33,68 +33,269 @@
 // so that: preflight resets < bloc defaults < Tailwind utilities < inline styles.
 // This file must be imported BEFORE tailwindcss for this to take effect.
 //
-@layer theme, base, bloc-spinner, bloc-input, components, utilities;
-
+@layer theme, base, bloc-spinner, bloc-input, bloc-select, bloc-modal, bloc-badge, components, utilities;
 
 // ── Light theme (default) ────────────────────────────────────────────────────
 :root {
-  // Brand
-  --bloc-primary:   #3b82f6;
-  --bloc-secondary: #64748b;
+    color-scheme: light;
 
-  // Typography
-  --bloc-font-family:    'Inter', system-ui, sans-serif;
-  --bloc-font-size-base: 14px;
+    // Brand
+    --bloc-primary: #685fff;
+    --bloc-secondary: #64748b;
 
-  // Neutrals
-  --bloc-text:    #1e293b;
-  --bloc-muted:   #94a3b8;
-  --bloc-border:  #e2e8f0;
-  --bloc-surface: #ffffff;
+    // Typography
+    --bloc-font-family: 'Inter', system-ui, sans-serif;
+    --bloc-font-size-base: 14px;
 
-  // Shape & spacing
-  --bloc-radius:     8px;
-  --bloc-radius-sm:  4px;
-  --bloc-spacing-sm: 8px;
+    // Neutrals
+    --bloc-text: #1e293b;
+    --bloc-muted: #94a3b8;
+    --bloc-border: #e2e8f0;
+    --bloc-surface: #ffffff;
 
-  // Modal
-  --bloc-modal-backdrop:       rgba(0, 0, 0, 0.45);
-  --bloc-modal-shadow:         0 8px 32px rgba(0, 0, 0, 0.15);
-  --bloc-modal-z-index:        1000;
-  --bloc-modal-title-size:     1rem;
-  --bloc-modal-title-weight:   600;
-  --bloc-modal-close-size:     1rem;
-  --bloc-modal-header-padding: 16px 20px;
-  --bloc-modal-body-padding:   20px;
-  --bloc-modal-footer-padding: 12px 20px;
-  --bloc-modal-sm:             360px;
-  --bloc-modal-md:             560px;
-  --bloc-modal-lg:             800px;
+    // Shape & spacing
+    --bloc-radius: 8px;
+    --bloc-radius-sm: 4px;
+    --bloc-spacing-sm: 8px;
+
+    // Modal
+    --bloc-modal-backdrop: rgba(0, 0, 0, 0.45);
+    --bloc-modal-shadow: 0 8px 32px rgba(0, 0, 0, 0.15);
+    --bloc-modal-z-index: 1000;
+    --bloc-modal-title-size: 1rem;
+    --bloc-modal-title-weight: 600;
+    --bloc-modal-close-size: 1rem;
+    --bloc-modal-header-padding: 16px 20px;
+    --bloc-modal-body-padding: 20px;
+    --bloc-modal-footer-padding: 12px 20px;
+    --bloc-modal-sm: 360px;
+    --bloc-modal-md: 560px;
+    --bloc-modal-lg: 800px;
+
+    // Alert severity tokens
+    --bloc-alert-info-border: #bfdbfe;
+    --bloc-alert-info-bg: #eff6ff;
+    --bloc-alert-info-accent: #dbeafe;
+    --bloc-alert-info-accent-color: #1d4ed8;
+
+    --bloc-alert-success-border: #bbf7d0;
+    --bloc-alert-success-bg: #f0fdf4;
+    --bloc-alert-success-accent: #dcfce7;
+    --bloc-alert-success-accent-color: #15803d;
+
+    --bloc-alert-warning-border: #fde68a;
+    --bloc-alert-warning-bg: #fffbeb;
+    --bloc-alert-warning-accent: #fef3c7;
+    --bloc-alert-warning-accent-color: #b45309;
+
+    --bloc-alert-danger-border: #fecaca;
+    --bloc-alert-danger-bg: #fef2f2;
+    --bloc-alert-danger-accent: #fee2e2;
+    --bloc-alert-danger-accent-color: #b91c1c;
+
+    // Virtual Scroll (demo row tokens)
+    --bloc-vs-stripe-bg: #f8fafc;
+
+    // Tooltip tokens
+    --bloc-tooltip-bg: #374151;
+    --bloc-tooltip-color: #f9fafb;
+    --bloc-tooltip-padding: 8px 16px;
+    --bloc-tooltip-radius: 4px;
+    --bloc-tooltip-font-size: 12px;
+    --bloc-tooltip-max-width: 240px;
+    --bloc-tooltip-line-height: 1.4;
 }
-
 
 // ── Dark token overrides ──────────────────────────────────────────────────────
 @mixin _bloc-dark-tokens {
-  --bloc-primary:   #60a5fa;
-  --bloc-secondary: #94a3b8;
+    color-scheme: dark;
 
-  --bloc-text:    #f1f5f9;
-  --bloc-muted:   #475569;
-  --bloc-border:  #334155;
-  --bloc-surface: #1e293b;
+    // Brand
+    --bloc-primary: #8b7fff;
+    --bloc-secondary: #94a3b8;
 
-  --bloc-modal-backdrop: rgba(0, 0, 0, 0.65);
-  --bloc-modal-shadow:   0 8px 32px rgba(0, 0, 0, 0.4);
+    // Neutrals
+    --bloc-text: #f1f5f9;
+    --bloc-muted: #475569;
+    --bloc-border: #334155;
+    --bloc-surface: #1e293b;
+
+    // Modal
+    --bloc-modal-backdrop: rgba(0, 0, 0, 0.65);
+    --bloc-modal-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+
+    // ── Input / Textarea ─────────────────────────────────────────────────────
+    --bloc-input-bg: #1e293b;
+    --bloc-input-color: #e2e8f0;
+    --bloc-input-border: #334155;
+    --bloc-input-focus-border: #60a5fa;
+
+    // Input group
+    --bloc-input-group-bg: #1e293b;
+    --bloc-input-group-border: #334155;
+    --bloc-input-group-focus-border: #60a5fa;
+    --bloc-input-group-adornment-color: #64748b;
+
+    // Textarea (inherits from input tokens by default, explicit for completeness)
+    --bloc-textarea-bg: #1e293b;
+    --bloc-textarea-color: #e2e8f0;
+    --bloc-textarea-border: #334155;
+    --bloc-textarea-focus-border: #60a5fa;
+
+    // ── Checkbox ─────────────────────────────────────────────────────────────
+    --bloc-checkbox-bg: #1e293b;
+    --bloc-checkbox-border: #475569;
+
+    // ── Radio ────────────────────────────────────────────────────────────────
+    --bloc-radio-bg: #1e293b;
+    --bloc-radio-border: #475569;
+
+    // ── Toggle / Switch ──────────────────────────────────────────────────────
+    --bloc-toggle-track-bg: #475569;
+    --bloc-toggle-thumb-bg: #e2e8f0;
+
+    // ── Badge ────────────────────────────────────────────────────────────────
+    --bloc-badge-bg: #334155;
+    --bloc-badge-color: #cbd5e1;
+    --bloc-badge-neutral-bg: #334155;
+    --bloc-badge-neutral-color: #cbd5e1;
+    --bloc-badge-primary-bg: rgba(37, 99, 235, 0.25);
+    --bloc-badge-primary-color: #93c5fd;
+    --bloc-badge-success-bg: rgba(22, 163, 74, 0.25);
+    --bloc-badge-success-color: #86efac;
+    --bloc-badge-warning-bg: rgba(217, 119, 6, 0.25);
+    --bloc-badge-warning-color: #fde68a;
+    --bloc-badge-danger-bg: rgba(220, 38, 38, 0.25);
+    --bloc-badge-danger-color: #fca5a5;
+
+    // ── Skeleton ─────────────────────────────────────────────────────────────
+    --bloc-skeleton-bg: #334155;
+    --bloc-skeleton-shimmer: rgba(255, 255, 255, 0.06);
+
+    // ── Progress ─────────────────────────────────────────────────────────────
+    --bloc-progress-track-bg: #334155;
+    --bloc-progress-meta-color: #cbd5e1;
+
+    // ── Accordion ────────────────────────────────────────────────────────────
+    --bloc-accordion-bg: #1e293b;
+    --bloc-accordion-border: #334155;
+    --bloc-accordion-color: #e2e8f0;
+    --bloc-accordion-header-hover-bg: #273549;
+
+    // ── Alert severity ───────────────────────────────────────────────────────
+    --bloc-alert-border: #334155;
+    --bloc-alert-bg: #1e293b;
+    --bloc-alert-color: #e2e8f0;
+    --bloc-alert-accent: #273549;
+    --bloc-alert-accent-color: #cbd5e1;
+
+    --bloc-alert-info-border: rgba(37, 99, 235, 0.3);
+    --bloc-alert-info-bg: rgba(37, 99, 235, 0.1);
+    --bloc-alert-info-accent: rgba(37, 99, 235, 0.2);
+    --bloc-alert-info-accent-color: #93c5fd;
+
+    --bloc-alert-success-border: rgba(22, 163, 74, 0.3);
+    --bloc-alert-success-bg: rgba(22, 163, 74, 0.1);
+    --bloc-alert-success-accent: rgba(22, 163, 74, 0.2);
+    --bloc-alert-success-accent-color: #86efac;
+
+    --bloc-alert-warning-border: rgba(217, 119, 6, 0.3);
+    --bloc-alert-warning-bg: rgba(217, 119, 6, 0.1);
+    --bloc-alert-warning-accent: rgba(217, 119, 6, 0.2);
+    --bloc-alert-warning-accent-color: #fde68a;
+
+    --bloc-alert-danger-border: rgba(220, 38, 38, 0.3);
+    --bloc-alert-danger-bg: rgba(220, 38, 38, 0.1);
+    --bloc-alert-danger-accent: rgba(220, 38, 38, 0.2);
+    --bloc-alert-danger-accent-color: #fca5a5;
+
+    // ── Select ───────────────────────────────────────────────────────────────
+    --bloc-select-bg: #1e293b;
+    --bloc-select-border: #334155;
+    --bloc-select-option-active: rgba(255, 255, 255, 0.08);
+    --bloc-select-option-selected: rgba(255, 255, 255, 0.12);
+    --bloc-select-option-hover: rgba(255, 255, 255, 0.05);
+
+    // ── Tab ──────────────────────────────────────────────────────────────────
+    --bloc-tab-border: #334155;
+    --bloc-tab-color: #94a3b8;
+    --bloc-tab-hover-color: #e2e8f0;
+    --bloc-tab-active-color: var(--bloc-primary);
+    --bloc-tab-indicator: var(--bloc-primary);
+
+    // ── Table ────────────────────────────────────────────────────────────────
+    --bloc-table-border: #334155;
+    --bloc-table-th-color: #94a3b8;
+    --bloc-table-th-bg: #1e293b;
+    --bloc-table-td-color: #cbd5e1;
+    --bloc-table-stripe-bg: rgba(255, 255, 255, 0.03);
+    --bloc-table-hover-bg: rgba(255, 255, 255, 0.05);
+
+    // ── Toast ────────────────────────────────────────────────────────────────
+    --bloc-toast-bg: #1e293b;
+    --bloc-toast-border: #334155;
+    --bloc-toast-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    --bloc-toast-title-color: #f1f5f9;
+    --bloc-toast-message-color: #94a3b8;
+    --bloc-toast-close-color: #64748b;
+    --bloc-toast-close-hover-color: #e2e8f0;
+    --bloc-toast-close-hover-bg: #273549;
+
+    // ── Date Picker ──────────────────────────────────────────────────────────
+    --bloc-date-picker-dropdown-bg: #1e293b;
+    --bloc-date-picker-dropdown-border: #334155;
+    --bloc-date-picker-dropdown-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+    --bloc-date-picker-nav-hover-bg: #273549;
+    --bloc-date-picker-nav-color: #94a3b8;
+    --bloc-date-picker-day-color: #e2e8f0;
+    --bloc-date-picker-day-hover-bg: #273549;
+    --bloc-date-picker-range-bg: #273549;
+    --bloc-date-picker-footer-border: #334155;
+    --bloc-date-picker-clear-color: #64748b;
+    --bloc-date-picker-header-color: #e2e8f0;
+    --bloc-date-picker-weekday-color: #94a3b8;
+
+    // ── Pagination ───────────────────────────────────────────────────────────
+    --bloc-pagination-bg: #1e293b;
+    --bloc-pagination-color: #e2e8f0;
+    --bloc-pagination-border: #334155;
+    --bloc-pagination-hover-bg: #273549;
+    --bloc-pagination-hover-border: #475569;
+    --bloc-pagination-muted: #64748b;
+
+    // ── Slider ───────────────────────────────────────────────────────────────
+    --bloc-slider-track: #334155;
+    --bloc-slider-color: #f1f5f9;
+    --bloc-slider-muted: #94a3b8;
+
+    // ── Virtual Scroll (demo row tokens) ─────────────────────────────────────
+    --bloc-vs-stripe-bg: rgba(255, 255, 255, 0.03);
+
+    // ── Layout / Sidebar ─────────────────────────────────────────────────────
+    --bloc-sidebar-bg: #1e293b;
+    --bloc-sidebar-border: #334155;
+    --bloc-sidebar-color: #e2e8f0;
+    --bloc-sidebar-content-bg: #1e293b;
+    --bloc-sidebar-content-border: #334155;
+    --bloc-sidebar-content-color: #e2e8f0;
+
+    // ── Text Highlight ───────────────────────────────────────────────────────
+    --bloc-text-highlight-highlighted-bg: rgba(139, 127, 255, 0.3);
+    --bloc-text-highlight-highlighted-color: #e2e8f0;
+
+    // ── Video Player ─────────────────────────────────────────────────────────
+    --bloc-video-player-track: rgba(255, 255, 255, 0.15);
+    --bloc-video-player-buffered: rgba(255, 255, 255, 0.25);
 }
 
 // Automatic: follows OS preference, suppressible with data-theme="light"
 @media (prefers-color-scheme: dark) {
-  :root:not([data-theme='light']) {
-    @include _bloc-dark-tokens;
-  }
+    :root:not([data-theme='light']) {
+        @include _bloc-dark-tokens;
+    }
 }
 
 // Programmatic: pin dark regardless of OS preference
 :root[data-theme='dark'] {
-  @include _bloc-dark-tokens;
+    @include _bloc-dark-tokens;
 }

@@ -1,0 +1,54 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// Unlayered — authoritative structural rules (intentionally not overridable)
+// ViewEncapsulation.None means :host won't be rewritten, so we use the element
+// selector directly.
+// ─────────────────────────────────────────────────────────────────────────────
+button[blocButton] {
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    gap: 6px;
+    box-sizing: border-box;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// @layer bloc-button — overridable visual rules
+// The layer order (base < bloc-button < utilities) is declared at runtime by the
+// component, so Tailwind utilities and consumer classes always win.
+// ─────────────────────────────────────────────────────────────────────────────
+@layer bloc-button {
+    :where(button[blocButton]) {
+        border: none;
+        border-radius: 4px;
+        padding: 8px 16px;
+        font-size: 14px;
+        transition: background-color 0.2s ease;
+    }
+
+    :where(button[blocButton]:disabled) {
+        cursor: not-allowed;
+        opacity: 0.5;
+    }
+
+    :where(button[blocButton].bloc-button--loading) {
+        --bloc-spinner-color: currentColor;
+    }
+
+    :where(button[blocButton].bloc-button--primary) {
+        background-color: var(--bloc-primary, #3b82f6);
+        color: #fff;
+    }
+
+    :where(button[blocButton].bloc-button--secondary) {
+        background-color: var(--bloc-secondary, #64748b);
+        color: #fff;
+    }
+
+    :where(button[blocButton].bloc-button--outline) {
+        background-color: transparent;
+        border: 1px solid var(--bloc-primary, #3b82f6);
+        color: var(--bloc-primary, #3b82f6);
+    }
+}

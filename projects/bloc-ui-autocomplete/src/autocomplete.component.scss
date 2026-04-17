@@ -1,0 +1,139 @@
+// ─────────────────────────────────────────────────────────────────────────────
+// Unlayered — authoritative structural rules (intentionally not overridable)
+// ─────────────────────────────────────────────────────────────────────────────
+:host {
+    position: relative;
+    display: block;
+}
+
+.bloc-autocomplete__field {
+    position: relative;
+}
+
+// Hide the template anchor — the panel gets moved to the global overlay
+// container (document.body) by OverlayService when the panel opens.
+.bloc-autocomplete__portal-host {
+    display: none;
+}
+
+// ─────────────────────────────────────────────────────────────────────────────
+// @layer bloc-autocomplete — overridable visual rules
+// Tailwind utilities and consumer classes always win via later-declared layers.
+// ─────────────────────────────────────────────────────────────────────────────
+@layer bloc-autocomplete {
+    :where(bloc-autocomplete) {
+        --bloc-autocomplete-bg: var(--bloc-surface, #ffffff);
+        --bloc-autocomplete-border: var(--bloc-border, #d1d5db);
+        --bloc-autocomplete-border-focus: var(--bloc-primary, #6b7280);
+        --bloc-autocomplete-color: var(--bloc-text, #374151);
+        --bloc-autocomplete-muted: var(--bloc-muted, #9ca3af);
+        --bloc-autocomplete-radius: 4px;
+        --bloc-autocomplete-panel-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+        --bloc-autocomplete-option-hover: rgba(0, 0, 0, 0.04);
+        --bloc-autocomplete-option-active: rgba(0, 0, 0, 0.06);
+        --bloc-autocomplete-option-selected: rgba(0, 0, 0, 0.08);
+    }
+
+    :where(.bloc-autocomplete__input) {
+        width: 100%;
+        min-height: 2.75rem;
+        border: 1px solid var(--bloc-autocomplete-border);
+        background: var(--bloc-autocomplete-bg);
+        color: var(--bloc-autocomplete-color);
+        border-radius: var(--bloc-autocomplete-radius);
+        padding: 0.625rem 2.5rem 0.625rem 0.75rem;
+        font: inherit;
+        outline: none;
+        box-sizing: border-box;
+        transition: border-color 160ms ease;
+    }
+
+    :where(.bloc-autocomplete__input:focus) {
+        border-color: var(--bloc-autocomplete-border-focus);
+        box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.06);
+    }
+
+    :where(bloc-autocomplete.is-error) {
+        & .bloc-autocomplete__input {
+            border-color: var(--bloc-error, #ef4444);
+        }
+
+        & .bloc-autocomplete__input:focus {
+            box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.2);
+        }
+    }
+
+    :where(.bloc-autocomplete__input:disabled) {
+        opacity: 0.5;
+        cursor: not-allowed;
+    }
+
+    :where(.bloc-autocomplete__clear) {
+        position: absolute;
+        top: 50%;
+        right: 0.5rem;
+        transform: translateY(-50%);
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        width: 24px;
+        height: 24px;
+        font-size: 1rem;
+        cursor: pointer;
+        color: var(--bloc-autocomplete-muted);
+    }
+
+    :where(.bloc-autocomplete__panel) {
+        padding: 4px;
+        border: 1px solid var(--bloc-autocomplete-border);
+        background: var(--bloc-autocomplete-bg);
+        border-radius: var(--bloc-autocomplete-panel-radius, var(--bloc-autocomplete-radius));
+        box-shadow: var(--bloc-autocomplete-panel-shadow);
+        display: grid;
+        gap: 2px;
+        max-height: min(260px, calc(100vh - 24px));
+        overflow-y: auto;
+    }
+
+    :where(.bloc-autocomplete__option),
+    :where(.bloc-autocomplete__state) {
+        width: 100%;
+        box-sizing: border-box;
+        border: none;
+        background: transparent;
+        padding: 8px 12px;
+        border-radius: var(--bloc-autocomplete-radius);
+        display: grid;
+        justify-items: start;
+        gap: 2px;
+        text-align: left;
+        font: inherit;
+        color: var(--bloc-autocomplete-color);
+    }
+
+    :where(.bloc-autocomplete__option) {
+        cursor: pointer;
+        transition: background-color 140ms ease;
+    }
+
+    :where(.bloc-autocomplete__option small),
+    :where(.bloc-autocomplete__state) {
+        color: var(--bloc-autocomplete-muted);
+        font-size: 0.8125rem;
+    }
+
+    :where(.bloc-autocomplete__option.is-active),
+    :where(.bloc-autocomplete__option:hover:not(:disabled)) {
+        background: var(--bloc-autocomplete-option-active);
+    }
+
+    :where(.bloc-autocomplete__option.is-selected) {
+        background: var(--bloc-autocomplete-option-selected);
+        font-weight: 600;
+    }
+
+    :where(.bloc-autocomplete__option:disabled) {
+        opacity: 0.45;
+        cursor: not-allowed;
+    }
+}
